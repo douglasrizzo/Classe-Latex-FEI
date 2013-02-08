@@ -1,0 +1,32 @@
+\chapter{INTRODUÇÃO}
+
+Para o desenvolvimento de trabalhos acadêmicos, a biblioteca do Centro Universitário da FEI utiliza um modelo baseado na norma da ABNT. O modelo da FEI é baseado na ABNT pois este não é em si um padrão fixo, mas uma séria de opções cuja escolha fica a cargo da instituição.
+
+Existem diversas instituições que utilizam modelos baseados na ABNT e até mesmo a classe ABNTex (que foi utilizada em parte para este modelo), porém certas configurações são necessárias para que o texto se torne o mais próximo possível do modelo requisitado pela biblioteca da FEI.
+
+O conjunto final de arquivos necessários para escrever o documento seguindo o modelo proposto se divide em duas partes. A primeira depende somente do arquivo \texttt{fei.cls} que realiza a formatação de todo o texto, iniciando pela capa, passando pelos elementos de pré-texto, textuais e, finalmente, pela formatação de anexos e apêndices. 
+
+A segunda parte depende de três arquivos: \texttt{abnt-alf.bst}, \texttt{abnt-options.bib} e \texttt{abntex.sty}. Estes são arquivos retirados da ABNTex que foram modificados e reduzidos a fim de gerar um estilo de referências bibliográficas que segue o modelo da FEI.
+
+\section{A classe da FEI (fei.cls)}
+
+A escrita da classe que formata o texto foi realizada seguindo apenas o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007).
+
+Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \LaTeX{} existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
+
+Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
+
+Entretanto, a formatações de citações utilizando o bibtex não foi desenvolvido neste arquivo. Esta formatação ficou a cargo de alguns arquivos pertencentes ao ABNTex.
+
+\section{Citações utilizando o ABNTex}
+
+Dentre todos os arquivos fornecidos pelo pacote ABNTex, alguns são utilizados para a formatação de citações e referências bibliográficas. A partir destes arquivos, algumas modificações foram feitas para que o resultado se aproximasse com o proposto pela biblioteca da FEI.
+
+O resultado final foram os outros três arquivos já citados, que não foram importados automaticamente no arquivo \texttt{fei.cls} para permitir que o autor possa utilizar o pacote de citação que desejar.
+
+\section{Organização do Texto}
+
+Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da ABNT seguido pela biblioteca do Centro Universitário da FEI.
+
+O próximo capítulo trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O último capítulo apresenta uma breve explicação de como o pacote ABNTex foi utilizado e seus dois comandos de citação que seguem os padrões utilizados no modelo da FEI.
+
