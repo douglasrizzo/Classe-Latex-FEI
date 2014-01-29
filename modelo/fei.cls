@@ -2,6 +2,8 @@
 
 % Novos comandos/ambientes:
 
+% - *subtitulo* [comando]: guarda o subtítulo do trabalho, se houver. Este, então, aparece na capa e folha de rosto, separado do título por dois pontos, como pede a norma da ABNT.
+
 % - *bibliografia* [comando]: arruma a bibliografia no modelo da FEI. Coloca a pagina de referencia no sumario, arruma o titulo e deixa centralizado e recebe como argumento o arquivo .bib, substituindo o \bibliography{}.
 
 % - *figuras*,*tabelas*, *sumario* [comandos]: foram criados os comandos \figuras{}, \tabelas{} e \sumario{} para geras as listas de acordo com o modelo da FEI. A lista de algoritmos nao possui comando novo, eh utilizado o \listofalgorithms{} 
@@ -134,7 +136,7 @@
 \@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
 
 \renewcommand{\subsection}{% 
-\@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 \renewcommand{\subsubsection}{% 
 \@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
@@ -152,7 +154,7 @@
 
 % novas paginas
 % capa
-\renewcommand{\maketitle}[1]{% recebe um argumento opcional para utilizar como subtitulo
+\renewcommand{\maketitle}{
 \selectlanguage{brazil}
 \newpage
 \pagestyle{empty}
@@ -160,7 +162,7 @@
 \uppercase{centro universit\'ario da fei}\\
 \MakeUppercase{\@author}
 \vfill
-\textbf{\MakeUppercase{\@title}\MakeLowercase{#1}}
+\textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 S\~ao Bernardo do Campo\\
 \number\year
@@ -174,7 +176,7 @@ S\~ao Bernardo do Campo\\
 \begin{center}
 \MakeUppercase{\@author}\\
 \vspace*{0.45\textheight}
-\textbf{\@title}\\
+\ifthenelse{\isundefined{\@subtitulo}}{\textbf{\@title}}{\textbf{\@title: \@subtitulo}}\\
 \vfill
 \begin{flushright}
 \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
@@ -196,6 +198,9 @@ S\~ao Bernardo do Campo\\
     \addtocounter{page}{-1}
     \ifthenelse{\equal{#1}{ficha.pdf}}{\includepdf{#1}}{\newpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}}
 }
+
+% subtítulo
+\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
 % dedicatoria
 \newcommand{\dedicatoria}[1]{
@@ -270,4 +275,3 @@ S\~ao Bernardo do Campo\\
 \bibliography{#1}  % adiciona realmente a bibliografia
 \end{singlespace}
 }
-

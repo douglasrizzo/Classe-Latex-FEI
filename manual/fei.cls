@@ -2,6 +2,8 @@
 
 % Novos comandos/ambientes:
 
+% - *subtitulo* [comando]: guarda o subtítulo do trabalho, se houver. Este, então, aparece na capa e folha de rosto, separado do título por dois pontos, como pede a norma da ABNT.
+
 % - *bibliografia* [comando]: arruma a bibliografia no modelo da FEI. Coloca a pagina de referencia no sumario, arruma o titulo e deixa centralizado e recebe como argumento o arquivo .bib, substituindo o \bibliography{}.
 
 % - *figuras*,*tabelas*, *sumario* [comandos]: foram criados os comandos \figuras{}, \tabelas{} e \sumario{} para geras as listas de acordo com o modelo da FEI. A lista de algoritmos nao possui comando novo, eh utilizado o \listofalgorithms{} 
@@ -21,8 +23,6 @@
 % - *agradecimentos* [ambiente]: pagina com o ambiente para os agradecimentos. 
 
 % - *outralingua* [comando]: o formato da ABNT pede que palavras em outra lingua sejam em italico, mas como eles podem mudar (e a FEI nem sempre segue a ABNT) o comando \outralingua{} deixa a palavra em italico. Se durante o trabalho eles mudarem, eh so trocar o comando e recompilar.
-
-% - *aspas* [comando]: como eu sempre erro as aspas no latex (que nao sao " ", mas `` ''), o comando \aspas deixa as palavras dentro das aspas do jeito ``certo''. 
 
 % - *palavraschave* e *keyword* [comandos]: dentro do *resumo* e *abstract* devem ser colocadas as palavras chaves. Os comandos deixam nas linguas certas para que seja mais dificil de acontecer o erro na divisao de silabas.
 
@@ -58,7 +58,6 @@
 
 % i18n
 \RequirePackage[english,brazil]{babel}
-\RequirePackage{times}             % Times New Roman como fonte
 \RequirePackage[T1]{fontenc}
 
 % algoritmos
@@ -93,6 +92,7 @@
 \RequirePackage{amsmath}
 
 % outros pacotes
+\usepackage{times}             % Times New Roman como fonte de tudo
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{paralist}      % listas na mesma linha
 \RequirePackage{multirow}      % uma coluna ocupando varias linhas
@@ -116,7 +116,7 @@
 
 % configuracao da legenda da figura
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
-
+\renewcommand{\tablename}{\fontsize{12pt}{14.4pt}\selectfont Tabela}
 % listas
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 \renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
@@ -127,19 +127,19 @@
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{12pt}{14.4pt}{\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{14.4pt}{\newpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\newpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\section}{% 
-\@startsection{section}{1}{0pt}{12pt}{14.4pt}{\fontsize{12pt}{14.4pt}\bf}}
+\@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
 
 \renewcommand{\subsection}{% 
-\@startsection{subsection}{2}{0pt}{12pt}{14.4pt}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 \renewcommand{\subsubsection}{% 
-\@startsection{subsubsection}{3}{0pt}{12pt}{14.4pt}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 % titulos de listas centralizadas
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
@@ -154,7 +154,7 @@
 
 % novas paginas
 % capa
-\renewcommand{\maketitle}[1]{% recebe um argumento opcional para utilizar como subtitulo
+\renewcommand{\maketitle}{
 \selectlanguage{brazil}
 \newpage
 \pagestyle{empty}
@@ -162,7 +162,7 @@
 \uppercase{centro universit\'ario da fei}\\
 \MakeUppercase{\@author}
 \vfill
-\textbf{\MakeUppercase{\@title}\MakeLowercase{#1}}
+\textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 S\~ao Bernardo do Campo\\
 \number\year
@@ -176,7 +176,7 @@ S\~ao Bernardo do Campo\\
 \begin{center}
 \MakeUppercase{\@author}\\
 \vspace*{0.45\textheight}
-\textbf{\@title}\\
+\ifthenelse{\isundefined{\@subtitulo}}{\textbf{\@title}}{\textbf{\@title: \@subtitulo}}\\
 \vfill
 \begin{flushright}
 \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
@@ -198,6 +198,9 @@ S\~ao Bernardo do Campo\\
     \addtocounter{page}{-1}
     \ifthenelse{\equal{#1}{ficha.pdf}}{\includepdf{#1}}{\newpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}}
 }
+
+% subtítulo
+\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
 % dedicatoria
 \newcommand{\dedicatoria}[1]{
@@ -268,6 +271,7 @@ S\~ao Bernardo do Campo\\
 \newcommand{\bibliografia}[1]{%
 \addcontentsline{toc}{chapter}{REFERÊNCIAS}                 % adiciona o titulo ao sumario
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}} % muda o nome do titulo (modelo da biblioteca)
-\bibliography{#1}                                           % adiciona realmente a bibliografia
+\begin{singlespace}
+\bibliography{#1}  % adiciona realmente a bibliografia
+\end{singlespace}
 }
-
