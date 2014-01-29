@@ -61,35 +61,26 @@
 \RequirePackage[T1]{fontenc}
 
 % algoritmos
-\RequirePackage[noend]{algorithmic} % algoritmos
-\RequirePackage[boxed,chapter]{algorithm} % algoritmos
-\floatname{algorithm}{Algoritmo}
-\renewcommand{\listalgorithmname}{Lista de Algoritmos}
-
-\renewcommand{\algorithmicrequire}{\textbf{Fa\c{c}a}} 
-\renewcommand{\algorithmicensure}{\textbf{Inicialize}} 
-\renewcommand{\algorithmicend}{\textbf{Fim}} 
-\renewcommand{\algorithmicif}{\textbf{Se}} 
-\renewcommand{\algorithmicthen}{\textbf{Ent\~ao}} 
-\renewcommand{\algorithmicelse}{\textbf{Sen\~ao}} 
-\renewcommand{\algorithmicelsif}{\algorithmicelse\ \algorithmicif} 
-\renewcommand{\algorithmicendif}{\algorithmicend\ \algorithmicif} 
-\renewcommand{\algorithmicfor}{\textbf{Para}} 
-\renewcommand{\algorithmicforall}{\textbf{Para cada}} 
-\renewcommand{\algorithmicdo}{\textbf{fa\c{c}a}}
-\renewcommand{\algorithmicendfor}{\algorithmicend\ \algorithmicfor} 
-\renewcommand{\algorithmicwhile}{\textbf{Enquanto}} 
-\renewcommand{\algorithmicendwhile}{\algorithmicend\ \algorithmicwhile} 
-\renewcommand{\algorithmicloop}{\textbf{Repita at\'e que algum crit\'erio de parada seja atingido}} 
-\renewcommand{\algorithmicendloop}{\textbf{At\'e que algum crit\'erio de parada seja atingido}}
-\renewcommand{\algorithmicrepeat}{\textbf{Repita}} 
-\renewcommand{\algorithmicuntil}{\textbf{At\'e que}} 
-\renewcommand{\algorithmicprint}{\textbf{Imprima}} 
-\renewcommand{\algorithmicreturn}{\textbf{Retorne}}
-\renewcommand{\algorithmiccomment}[1]{// #1}
+\RequirePackage[boxed,portuguese]{algorithm2e}
+\SetKwInput{Entrada}{Entrada}
+\SetKwInput{Saida}{Sa\'ida}
+\SetKwInput{Dados}{Dados}
+\SetKwInput{Resultado}{Resultado}
+\SetKw{Ate}{at\'e}
+\SetKw{KwRetorna}{retorna}
+\SetKw{Retorna}{retorna}
+\SetKwBlock{Inicio}{in\'icio}{fim}
+\SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
+\SetKwSwitch{Selec}{Caso}{Outro}{selecione}{faça}{caso}{sen\~ao}{fim caso}{fim selec}
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwFor{ParaPar}{para}{fa\c{c}a em paralelo}{fim para}
+\SetKwFor{ParaCada}{para cada}{fa\c{c}a}{fim para cada}
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
+\SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
+\SetKwRepeat{Repita}{repita}{at\'e}
 
 % matematica
-\RequirePackage{amsmath}
+\RequirePackage{mathtools}
 
 % outros pacotes
 \usepackage{times}             % Times New Roman como fonte de tudo
@@ -147,7 +138,7 @@
 \newcommand{\figuras}{\newpage\begin{center}\part*{Lista de Figuras}\end{center}\@starttoc{lof}}
 \newcommand{\tabelas}{\newpage\begin{center}\part*{Lista de Tabelas}\end{center}\@starttoc{lot}}
 \renewcommand{\listoftables}{\begin{center}\listof{tables}{\listtablesname}\end{center}}
-\renewcommand{\listofalgorithms}{\begin{center}\listof{algorithm}{\listalgorithmname}\end{center}}
+\renewcommand{\listofalgorithms}{\newpage\begin{center}\part*{\listalgorithmcfname}\end{center}\@starttoc{loa}}
 
 % configuracao do sumario
 \renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
