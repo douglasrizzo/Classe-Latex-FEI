@@ -132,6 +132,9 @@
 \renewcommand{\subsubsection}{% 
 \@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
+\setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
+\setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
+
 % titulos de listas centralizadas
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 \newcommand{\sumario}{\newpage\begin{center}\part*{Sum\'ario}\end{center}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
