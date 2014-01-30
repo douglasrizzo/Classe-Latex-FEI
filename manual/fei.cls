@@ -137,6 +137,7 @@
 
 % titulos de listas centralizadas
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
+
 \newcommand{\sumario}{\newpage\begin{center}\part*{Sum\'ario}\end{center}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
 \newcommand{\figuras}{\newpage\begin{center}\part*{Lista de Figuras}\end{center}\@starttoc{lof}}
 \newcommand{\tabelas}{\newpage\begin{center}\part*{Lista de Tabelas}\end{center}\@starttoc{lot}}
@@ -231,6 +232,40 @@ S\~ao Bernardo do Campo\\
 % agradecimentos
 \newenvironment{agradecimentos}{\newpage\begin{center}\part*{Agradecimentos}\end{center}}{}
 
+%índice
+\RequirePackage{makeidx}
+
+\renewcommand{\indexname}{\'Indice}
+
+\renewenvironment{theindex}{%
+\addcontentsline{toc}{chapter}{\'INDICE}
+\newpage
+\begin{center}\part*{\'Indice}\end{center}
+\thispagestyle{plain}\let\item\@idxitem
+}
+{}
+
+%lista de símbolos
+\RequirePackage[portuguese]{nomencl}
+
+%formata título da lista de símbolos para o padrão da biblioteca
+\def\thenomenclature{%
+    \begin{center}
+		\newpage\part*{\nomname}
+    \end{center}
+    \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
+    
+  \nompreamble
+  \list{}{%
+    \labelwidth\nom@tempdim
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemsep\nomitemsep
+    \let\makelabel\nomlabel}}
+    
+%traduz título da lista de símbolos
+\renewcommand{\nomname}{Lista de S\'imbolos}
+
 % novos comandos
 \newcommand{\outralingua}[1]{\emph{#1}}                                       % palavras em linguas estrangeiras sao em italico (por enquanto)
 \newcommand{\aspas}[1]{``#1''}                                                % coloca as aspas no jeito do latex, uma coisa que eu sempre errei
@@ -262,6 +297,7 @@ S\~ao Bernardo do Campo\\
 \mbox{}\vfill\begin{center}\part*{ANEXO \Alph{an} - #1}\addtocounter{an}{1}\end{center}\vfill\mbox{}\newpage}
 
 % bibliografia
+
 \newcommand{\bibliografia}[1]{%
 \addcontentsline{toc}{chapter}{REFERÊNCIAS}                 % adiciona o titulo ao sumario
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}} % muda o nome do titulo (modelo da biblioteca)
