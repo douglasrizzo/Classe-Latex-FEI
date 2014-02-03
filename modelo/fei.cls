@@ -233,41 +233,13 @@ S\~ao Bernardo do Campo\\
 \newenvironment{agradecimentos}{\newpage\begin{center}\part*{Agradecimentos}\end{center}}{}
 
 %índice
-\RequirePackage{makeidx}
-
+\RequirePackage[xindy]{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 
-\renewenvironment{theindex}{%
-\addcontentsline{toc}{chapter}{\'INDICE}
-\newpage
-\begin{center}\part*{\'Indice}\end{center}
-\thispagestyle{plain}\let\item\@idxitem
-}
-{}
+%lista de símbolos e de abreviaturas
+\RequirePackage[nomain,xindy,acronym]{glossaries}
+\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 
-%lista de símbolos
-\RequirePackage[portuguese]{nomencl}
-
-%formata título da lista de símbolos para o padrão da biblioteca
-\def\thenomenclature{%
-    \begin{center}
-		\newpage\part*{\nomname}
-    \end{center}
-    \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
-    
-  \nompreamble
-  \list{}{%
-    \labelwidth\nom@tempdim
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemsep\nomitemsep
-    \let\makelabel\nomlabel}}
-    
-%traduz título da lista de símbolos
-\renewcommand{\nomname}{Lista de S\'imbolos}
-
-% novos comandos
-\newcommand{\outralingua}[1]{\emph{#1}}                                       % palavras em linguas estrangeiras sao em italico (por enquanto)
 \newcommand{\aspas}[1]{``#1''}                                                % coloca as aspas no jeito do latex, uma coisa que eu sempre errei
 \newcommand{\marca}{\cellcolor{darkgray}}                                     % deixa a celula da tabela em cinza (usado para fazer o cronograma)
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1} % o resumo pede palavras chave no final
