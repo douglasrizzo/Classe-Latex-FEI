@@ -15,14 +15,14 @@
     \section{Citação no final de linha}
     A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{nome_do_autor}+.
 
-    Exemplo: Este texto deveria ser uma referência \verb+\cite{autor00}+. $\to$ Este texto deveria ser uma referência (AUTOR, 2000).
+    Exemplo: Este texto deveria ser uma referência \verb+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
 
     \section{Citação durante o texto}
-    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da abn\TeX fornece o comando \verb+\citeonline{nome_do_autor+ para este caso.
+    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da abn\TeX fornece o comando \verb+\citeonline{nome_do_autor}+ para este caso.
 
-    Exemplo: Segundo \verb+\citeonline{autor00}+, este texto deveria ser uma referência. $\to$ Segundo Autor (2000), este texto deveria ser uma referência.
+    Exemplo: Segundo \verb+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
 	
 	\section{Citação indireta}
 	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O abn\TeX disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 	
-	Exemplo: \verb+\apud{obra01}{obra02}+ formata a citação de forma semelhante a (AUTOR01, 1996; \textit{apud} AUTOR02, 1999).
+	Exemplo: \verb+\apud{Mcc43}{RusselNo10}+ formata a citação de forma semelhante a \apud{Mcc43}{RusselNo10}.
