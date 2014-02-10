@@ -61,7 +61,7 @@
 \RequirePackage[T1]{fontenc}
 
 % algoritmos
-\RequirePackage[boxed,portuguese]{algorithm2e}
+\RequirePackage[boxed,portuguese,algochapter]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
 \SetKwInput{Dados}{Dados}
@@ -236,9 +236,10 @@ S\~ao Bernardo do Campo\\
 \RequirePackage[xindy]{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 
-%lista de símbolos e de abreviaturas
-\RequirePackage[nomain,xindy,acronym]{glossaries}
-\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
+%pacote para gerar listas (símbolos, abreviaturas, etc), não compatível com o abntex antigo, somente o novo
+%\RequirePackage[nomain,xindy,acronym]{glossaries}
+%\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
+%\newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 
 \newcommand{\aspas}[1]{``#1''}                                                % coloca as aspas no jeito do latex, uma coisa que eu sempre errei
 \newcommand{\marca}{\cellcolor{darkgray}}                                     % deixa a celula da tabela em cinza (usado para fazer o cronograma)

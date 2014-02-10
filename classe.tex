@@ -7,9 +7,8 @@
         \item\verb+fancyhdr+: utilizado na formatação do cabeçalho;
         \item\verb+babel+: escolha de línguas (importado pacote para português e inglês);
         \item\verb+fontenc+: codificação da fonte;
-        \item\verb+algorithmic+: provê comandos para a escrita de algoritmos;
-        \item\verb+algorithm+: utilizado junto ao \texttt{algorithmic}, faz com que os algoritmos possam ser utilizados como \outralingua{float} do \LaTeX;
-        \item\verb+amsmath+: extensões da \outralingua{American Mathematical Society} para facilitar a escrita de fórmulas matemáticas;
+        \item\verb+algorithm2e+: provê comandos para a escrita de algoritmos;
+        \item\verb+mathtool+: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \verb+amsmath+);
         \item\verb+times+: carrega fonte Times New Roman;
         \item\verb+graphicx+: importação e utilização de imagens;
         \item\verb+paralist+: para gerar listas sem quebra de linha;
@@ -21,20 +20,21 @@
         \item\verb+tocloft+: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
         \item\verb+pdfpages+: faz a inclusão de páginas em PDF no documento final;
         \item\verb+ifthen+: permite a utilização de condições na geração do texto;
+        \item\verb+imakeidx+: permite a criação de um índice remissivo ao fim do texto;
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
 
     \begin{enumerate}
         \item\verb+inputenc+: codificação de entrada do texto. Depende do editor que está sendo utilizado, normalmente \texttt{latin1} ou \texttt{utf8}.
-        \item Referências: o pacote de referência pode ser escolhido pelo autor. O que será descrito neste texto é uma versão modificada do ABNTex.
+        \item Referências: o pacote de referência pode ser escolhido pelo autor. O que será descrito neste texto é uma versão modificada do abn\TeX.
     \end{enumerate}
 
 \section{Comandos e ambientes modificados}
     
-    \subsection{\textbackslash maketitle\{\}}
+    \subsection{\textbackslash maketitle}
     
-    O comando \verb+\maketitle{}+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa. O local (São Bernardo do Campo) é fixo (podendo ser alterado no arquivo da classe).
+    O comando \verb+\maketitle+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa. O local (São Bernardo do Campo) é fixo (podendo ser alterado no arquivo da classe).
 
 %    O comando \verb+\maketitle{}+ pode receber um argumento com o subtítulo do trabalho seguindo um caracter de \aspas{:}. Por exemplo, neste manual foi utilizado o comando: \\ \verb+\maketitle{: Segundo o manual disponibilisado em 2007}+
 
@@ -42,23 +42,41 @@
     
     Segundo o padrão da biblioteca, toda lista deve utilizar a sequência de letras. Para que não houvesse problemas de formatação, o ambiente \verb+itemize+ foi redirecionado para utilizar o \verb+enumerate+ e este passa a utilizar a letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}).
     
-    \subsection{\textbackslash listofalgorithms\{\}}
+    \subsection{\textbackslash listofalgorithms}
     
-    O pacote \verb+algorithm+ já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando foi modificado para deixar o título centralizado e em português.
+    O pacote \verb+algorithm2e+ já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando foi modificado para deixar o título centralizado e em português.
     
-    \subsection{Variáveis do pacote \texttt{algorithmic}}
+    \subsection{Variáveis do pacote \texttt{algorithm2e}}
     
-    O pacote \verb+algorithmic+ fornece diversos comandos para a escrita de pseudo código, porém estes comandos estão em inglês. As variáveis foram traduzidas para um comando próximo dos utilizados em português.
+    O pacote \verb+algorithm2e+ fornece diversos comandos para a escrita de pseudo-código em diversos idiomas. O idioma importado pela fei.cls foi o português.
+    
+    Exemplo:
+    
+\begin{algorithm}
+\Entrada{Vetor \(X\)}
+\Saida{Vetor \(Y\)}
+
+\ParaCada{variável \(x_i \in X\)}{
+
+\(y_i = x_i^2\)
+
+}
+
+\Retorna \(Y\)
+
+\caption{Exemplo de algoritmo usando algorithm2e em português}
+\label{lst:alg}
+\end{algorithm}
     
     \subsection{Outros comandos/ambientes internos}
     
     Alguns comandos como \verb+chapter+, \verb+abstract+ e \verb+fontsize+, que são comandos já definidos dentro do \LaTeX foram modificados para seguir as descrições do manual da biblioteca.
 
-    Apesar destes comandos terem sido modificados, as mudanças foram feitas de forma que a utilização dos mesmos continuasse igual, assim um texto já escrito para outro modelo poderia ser apenas recompilado utilizando esta classe.% A única mudança é no caso do \verb+\maketitle{}+, que passa a receber um parâmetro opcional a mais.
+    Apesar destes comandos terem sido modificados, as mudanças foram feitas de forma que a utilização dos mesmos continuasse igual, assim um texto já escrito para outro modelo poderia ser apenas recompilado utilizando esta classe.
 
 \section{Novos ambientes}
 
-    \subsection{\textbackslash folhaderosto\{\}}
+    \subsection{\textbackslash folhaderosto}
     A folha de rosto recebe um texto já definido dependendo do tipo de texto escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no manual da biblioteca e deve ser colocado entre o início e o fim do ambiente. Por exemplo,
     \begin{verbatim}
 \begin{folhaderosto}
@@ -68,10 +86,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
 \end{folhaderosto}
     \end{verbatim}
 
-    \subsection{\textbackslash resumo\{\}}
+    \subsection{\textbackslash resumo}
     O ambiente \verb+resumo+ funciona da mesma forma que o ambiente \verb+abstract+, sendo a única diferença que o \verb+abstract+ possui o comando \verb+\selectlanguage{english}+ no início e o \verb+resumo+ utiliza \verb+\selectlanguage{brazil}+.
 
-    \subsection{\textbackslash agradecimentos\{\}}
+    \subsection{\textbackslash agradecimentos}
     O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \verb+begin+ e \verb+end+ na formatação esperada.
 
 \section{Novos comandos}
@@ -79,10 +97,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \subsection{\textbackslash subtitulo\{\}}
     Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por \aspas{:}), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
     
-    \subsection{\textbackslash sumario\{\},\textbackslash figuras\{\},\textbackslash tabelas\{\}}
+    \subsection{\textbackslash sumario,\textbackslash figuras,\textbackslash tabelas}
     O \LaTeX já possui comandos que criam sumário, lista de figuras e lista de tabelas, porém, para seguir o modelo necessário e facilitar a manutenção do mesmo foram criados novos comandos que geram estas listas.
 
-    Neste caso, \verb+\sumario{}+ substitui \verb+\tableofcontents+, \verb+\figuras{}+ substitui \verb+\listoffigures+ e \verb+\tabelas{}+ o \verb+\listoftables+.
+    Neste caso, \verb+\sumario+ substitui \verb+\tableofcontents+, \verb+\figuras+ substitui \verb+\listoffigures+ e \verb+\tabelas+ o \verb+\listoftables+.
 
     \subsection{\textbackslash folhadeaprovacao\{\}}
     O comando para a folha de aprovação pode receber o argumento \texttt{ata.pdf}. Se este argumento foi passado, o comando tenta importar uma página em PDF com o mesmo nome para utilizar como folha de aprovação. Se o argumento não for passado ou for diferente de \texttt{ata.pdf}, será inserido um texto no lugar da página para marcar a posição da folha de aprovação.
@@ -101,18 +119,13 @@ orientado pelo Prof. Dr. Nome do Orientador.
         \item \verb+\fichacatalografica{ficha.pdf}+: insere o PDF com a ficha catalográfica fornecida pela biblioteca.
     \end{itemize}
  
- Estes dois comandos são os únicos que dependem dos pacotes \verb+pdfpages+ (para importar a página em PDF). % e \verb+ifthen+ (para verificar o argumento passado).
+ Estes dois comandos são os únicos que dependem do pacote \verb+pdfpages+ (para importar a página em PDF).
 
     \subsection{\textbackslash dedicatoria\{\}}
     O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \verb+\dedicatoria{A quem eu quero dedicar o texto}+.
     
     \subsection{\textbackslash epigrafe\{\}\{\}}
     A epigrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epigrafe e o segundo o autor da mesma. Por exemplo, \verb+\epigrafe{Haw-Haw!}{Nelson Muntz}+
-    
-    \subsection{\textbackslash outralingua\{\}}
-    Por ter sido escrito no Brasil, o texto deve ser redigido na língua portuguesa e todas as palavras estrangeiras devem ser formatadas utilizando itálico. Como esta regra pode ser mudada pela ABNT ou pela biblioteca, o comando \verb+\outralingua{}+ foi criado. Atualmente, este comando só utiliza o \verb+\emph+ para formatar o texto passado.
-    
-    Exemplo: \verb+\outralingua{Hello World!}+
     
     \subsection{\textbackslash aspas\{\}}
     As aspas no \LaTeX são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \LaTeX. Apenas para facilitar a inserção de aspas no formato do \LaTeX, foi criado o comando \verb+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
