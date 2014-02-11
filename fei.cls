@@ -270,6 +270,8 @@ S\~ao Bernardo do Campo\\
 \mbox{}\vfill\begin{center}\part*{ANEXO \Alph{an} - #1}\addtocounter{an}{1}\end{center}\vfill\mbox{}\newpage}
 
 % bibliografia
+\RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+
 
 \newcommand{\bibliografia}[1]{%
 \addcontentsline{toc}{chapter}{REFERÊNCIAS}                 % adiciona o titulo ao sumario

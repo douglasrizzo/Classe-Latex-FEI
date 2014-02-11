@@ -1,6 +1,5 @@
 \documentclass{fei}
 \usepackage[utf8]{inputenc}
-\usepackage[alf]{abntex}
 
 \begin{document}
 \author{Leonardo Anjoletto Ferreira \& Douglas De Rizzo Meneghetti}
@@ -14,33 +13,29 @@
 
 Para o desenvolvimento de trabalhos acadêmicos, a biblioteca do Centro Universitário da FEI utiliza um modelo baseado na norma da ABNT. O modelo da FEI é baseado na ABNT pois este não é em si um padrão fixo, mas uma séria de opções cuja escolha fica a cargo da instituição.
 
-Existem diversas instituições que utilizam modelos baseados na ABNT e até mesmo a classe abn\TeX (que foi utilizada em parte para este modelo), porém certas configurações são necessárias para que o texto se torne o mais próximo possível do modelo requisitado pela biblioteca da FEI.
+Existem diversas instituições que utilizam modelos baseados na ABNT e até mesmo a classe abn\TeX, porém certas configurações são necessárias para que o texto se torne o mais próximo possível do modelo requisitado pela biblioteca da FEI.
 
-O conjunto final de arquivos necessários para escrever o documento seguindo o modelo proposto se divide em duas partes. A primeira depende somente do arquivo \texttt{fei.cls} que realiza a formatação de todo o texto, iniciando pela capa, passando pelos elementos de pré-texto, textuais e, finalmente, pela formatação de anexos e apêndices. 
+O único arquivo necessário para escrever o documento seguindo o modelo proposto é a classe \texttt{fei.cls} que realiza a formatação de todo o texto, iniciando pela capa, passando pelos elementos de pré-texto, textuais, referências e, finalmente, pela formatação de anexos e apêndices.
 
-A segunda parte depende de três arquivos: \texttt{abnt-alf.bst}, \texttt{abnt-options.bib} e \texttt{abntex.sty}. Estes são arquivos retirados da abn\TeX que foram modificados e reduzidos a fim de gerar um estilo de referências bibliográficas que segue o modelo da FEI.
+É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX (para Windows) e \TeX~Live (para Linux e Mac OS).
 
 \section{A classe da FEI (fei.cls)}
 
 A escrita da classe que formata o texto foi realizada seguindo apenas o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007).
 
-Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \LaTeX{} existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
+Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \LaTeX existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
-Entretanto, a formatação de citações utilizando o bibtex não foi desenvolvida neste arquivo. Esta formatação ficou a cargo de alguns arquivos pertencentes ao abn\TeX.
-
 \section{Citações utilizando o abn\TeX}
 
-Dentre todos os arquivos fornecidos pelo pacote abn\TeX, alguns são utilizados para a formatação de citações e referências bibliográficas. A partir destes arquivos, algumas modificações foram feitas para que o resultado se aproximasse com o proposto pela biblioteca da FEI.
-
-O resultado final foram os outros três arquivos já citados, que não foram importados automaticamente no arquivo \texttt{fei.cls} para permitir que o autor possa utilizar o pacote de citação que desejar.
+Para a formatação de citações e referências, foi importado o pacote \verb+abntex2cite+, o qual é mantido e atualizado constantemente de acordo com as normas da ABNT. Algumas modificações foram executadas para satisfazer o padrão (obsoleto) da biblioteca.
 
 \section{Organização do Texto}
 
 Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da ABNT seguido pela biblioteca do Centro Universitário da FEI.
 
-O próximo capítulo trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O último capítulo apresenta uma breve explicação de como o pacote abn\TeX foi utilizado e seus dois comandos de citação que seguem os padrões utilizados no modelo da FEI.
+O próximo capítulo trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O último capítulo apresenta uma breve explicação de como o pacote abn\TeX~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da FEI.
 
 \chapter{CLASSE FEI.CLS}\label{chap:classe}
 
@@ -65,13 +60,13 @@ O próximo capítulo trata da classe \texttt{fei.cls}, explicando os comandos e 
         \item\verb+pdfpages+: faz a inclusão de páginas em PDF no documento final;
         \item\verb+ifthen+: permite a utilização de condições na geração do texto;
         \item\verb+imakeidx+: permite a criação de um índice remissivo ao fim do texto;
+        \item\verb+abntex2cite+: formata citações e referências de acordo com o padrão ABNT 6023.
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
 
     \begin{enumerate}
-        \item\verb+inputenc+: codificação de entrada do texto. Depende do editor que está sendo utilizado, normalmente \texttt{latin1} ou \texttt{utf8}.
-        \item Referências: o pacote de referência pode ser escolhido pelo autor. O que será descrito neste texto é uma versão modificada do abn\TeX.
+        \item\verb+inputenc+: codificação dos arquivos \texttt{.tex} de entrada. Depende do editor que está sendo utilizado, normalmente \texttt{latin1} ou \texttt{utf8}.
     \end{enumerate}
 
 \section{Comandos e ambientes modificados}
@@ -248,32 +243,75 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
 \chapter{REFERÊNCIA USANDO O abn\TeX}\label{chap:referencia}
 
-    \section{O que é a abn\TeX e como foi utilizado}
+    \section{O que é o abn\TeX~e como foi utilizado}
 
-    O abn\TeX (\href{http://sourceforge.net/projects/abntex/}{http://sourceforge.net/projects/abntex/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da ABNT para formatos acadêmicos. O pacote completo do abn\TeX fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
+    O abn\TeX~(\href{https://code.google.com/p/abntex2/}{https://code.google.com/p/abntex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da ABNT para formatos acadêmicos. O pacote completo do abn\TeX~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
 
     Entretanto, a ABNT fornece certas opções para que o texto seja produzido, sendo que a biblioteca do Centro Universitário da FEI ficou a cargo de escolher estas formatações para seus trabalhos.
 
-    Tendo em vista da quantidade de arquivos fornecidos pelo abn\TeX e a utilização de apenas algumas opções necessárias para seguir o modelo da FEI, os arquivos referentes a formatação das referências bibliográficas foram alterados a fim de reduzir o número de arquivos e deixar somente o necessário para atender as normas da instituição.
+    Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da FEI, foi importado o pacote \verb+abntex2cite-alf+, que utiliza o modelo autor-data.
 
-    Os arquivos finais necessários para utilizar o abn\TeX modificado para o modelo da FEI são: \texttt{abnt-alf.bst}, \texttt{abnt-options.bib} e \texttt{abntex.sty}.
-
-    Dentre os comandos que o abn\TeX fornece para a citação, os dois mais utilizados são os para citações no final de linha e para citações durante o texto.
+    As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \verb+abntex2cite-alf+.
 
     \section{Citação no final de linha}
-    A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{nome_do_autor}+.
+    A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
 
     Exemplo: Este texto deveria ser uma referência \verb+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
 
     \section{Citação durante o texto}
-    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da abn\TeX fornece o comando \verb+\citeonline{nome_do_autor}+ para este caso.
+    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da abn\TeX~fornece o comando \verb+\citeonline{obra}+ para este caso.
 
     Exemplo: Segundo \verb+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
 	
 	\section{Citação indireta}
-	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O abn\TeX disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
+	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O abn\TeX~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 	
 	Exemplo: \verb+\apud{Mcc43}{RusselNo10}+ formata a citação de forma semelhante a \apud{Mcc43}{RusselNo10}.
+	
+	\section{Citação no rodapé}
+	
+	Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \verb+\footciteref{obra}+.
+	
+	\section{Citações múltiplas}
+	
+	Citações múltiplas podem ser utilizadas utilizando os comandos \verb+\cite{obra1,obra2,\ldots}+ e \verb+\citeonline{obra1,obra2,obra3}+.
+	
+	Exemplos: 
+	
+	\verb+\cite{Mcc43,RusselNo10,haykin99a}+ \(\to\) \cite{Mcc43,RusselNo10,haykin99a}.
+	
+	\verb+\citeonline{Mcc43,RusselNo10,haykin99a}+ \(\to\) \citeonline{Mcc43,RusselNo10,haykin99a}.
+	
+	\section{Citações de campos específicos}
+	
+	Para citar o nome do autor em linha, utilize o comando \verb+\citeauthoronline{obra}+.
 
-\bibliografia{referencias}
+	\verb+\citeauthoronline{galilei_dialogue_1953}+ \(\to\) \citeauthoronline{galilei_dialogue_1953}
+	
+	Para citar o nome do autor em letras maiúsculas, utilize\verb+\citeauthor{obra}+.
+
+	\verb+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
+
+	Para citar o ano de uma obra, utilize \verb+\citeyear{obra}+.
+	
+	\verb+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
+
+	\section{Outros exemplos}
+
+	\verb+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
+
+	\verb+\Ibidem[p.~2]{j:turing50}+ \(\to\) \Ibidem[p.~2]{j:turing50}
+
+	\verb+\opcit[p.~2]{j:turing50}+ \(\to\) \opcit[p.~2]{j:turing50}
+
+	\verb+\passim{j:turing50}+ \(\to\) \passim{j:turing50}
+
+	\verb+\loccit{j:turing50}+ \(\to\) \loccit{j:turing50}
+
+	\verb+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
+
+	\verb+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
+
+	\bibliografia{referencias}
+
 \end{document}
