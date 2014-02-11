@@ -10,5 +10,5 @@ Atualmente, este projeto está passando por modificações
 constantes na tentativa de adicionar novas funcionalidades
 à classe e novas seções ao documento final.
 
-As modificações mais recentes podem ser encontradas no próprio
-manual da classe.
+O manual também se encontra desatualizado, fatos estes que
+serão corrigidos no futuro próximo.
