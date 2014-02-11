@@ -1,25 +1,38 @@
+% arara: pdflatex
+% arara: makeindex
+% arara: makeglossaries
+% arara: bibtex
+% arara: pdflatex
+% arara: pdflatex
+
 \documentclass{fei}
 \usepackage[utf8]{inputenc}
 
-\begin{document}
 \author{Leonardo Anjoletto Ferreira \& Douglas De Rizzo Meneghetti}
 \title{Manual da classe fei.cls e pacotes para desenvolvimento de texto no modelo da biblioteca do Centro Universitário da FEI}
 \subtitulo{Segundo o manual disponibilizado em 2007}
 
+\begin{document}
+
+\newacronym{fei}{FEI}{Fundação Educacional Inaciana}
+\newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
+\newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
+
 \maketitle
+\printglossaries
 \sumario
 
 \chapter{INTRODUÇÃO}
 
-Para o desenvolvimento de trabalhos acadêmicos, a biblioteca do Centro Universitário da FEI utiliza um modelo baseado na norma da ABNT. O modelo da FEI é baseado na ABNT pois este não é em si um padrão fixo, mas uma séria de opções cuja escolha fica a cargo da instituição.
+Para o desenvolvimento de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} utiliza um modelo baseado na norma da \index{ABNT}\gls{abnt}. O modelo da \index{FEI}\gls{fei} é baseado na \index{ABNT}\gls{abnt} pois este não é em si um padrão fixo, mas uma série de opções cuja escolha fica a cargo da instituição.
 
-Existem diversas instituições que utilizam modelos baseados na ABNT e até mesmo a classe abn\TeX, porém certas configurações são necessárias para que o texto se torne o mais próximo possível do modelo requisitado pela biblioteca da FEI.
+Existem diversas instituições que utilizam modelos baseados na \index{ABNT}\gls{abnt} e até mesmo a classe \gls{abntex}, porém certas configurações são necessárias para que o texto se torne o mais próximo possível do modelo requisitado pela biblioteca da \index{FEI}\gls{fei}.
 
 O único arquivo necessário para escrever o documento seguindo o modelo proposto é a classe \texttt{fei.cls} que realiza a formatação de todo o texto, iniciando pela capa, passando pelos elementos de pré-texto, textuais, referências e, finalmente, pela formatação de anexos e apêndices.
 
-É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX (para Windows) e \TeX~Live (para Linux e Mac OS).
+É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX (para Windows) e \TeX~Live (para Linux).
 
-\section{A classe da FEI (fei.cls)}
+\section{A classe da \index{FEI}FEI (fei.cls)}
 
 A escrita da classe que formata o texto foi realizada seguindo apenas o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007).
 
@@ -29,13 +42,13 @@ Para facilitar a escrita do texto final, alguns comandos/ambientes já existente
 
 \section{Citações utilizando o abn\TeX}
 
-Para a formatação de citações e referências, foi importado o pacote \verb+abntex2cite+, o qual é mantido e atualizado constantemente de acordo com as normas da ABNT. Algumas modificações foram executadas para satisfazer o padrão (obsoleto) da biblioteca.
+Para a formatação de citações e referências, foi importado o pacote \verb+abntex2cite+, o qual é mantido e atualizado constantemente de acordo com as normas da \index{ABNT}\gls{abnt}. Algumas modificações foram executadas para satisfazer o padrão (obsoleto) da biblioteca.
 
 \section{Organização do Texto}
 
-Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da ABNT seguido pela biblioteca do Centro Universitário da FEI.
+Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da \index{ABNT}\gls{abnt} seguido pela biblioteca do Centro Universitário da \index{FEI}\gls{fei}.
 
-O próximo capítulo trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O último capítulo apresenta uma breve explicação de como o pacote abn\TeX~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da FEI.
+O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \verb+glossaries+ na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado, assim como introduz o leitor à ferramenta \verb+arara+ de compilação automatizada de projetos \LaTeX. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
 
 \chapter{CLASSE FEI.CLS}\label{chap:classe}
 
@@ -60,7 +73,7 @@ O próximo capítulo trata da classe \texttt{fei.cls}, explicando os comandos e 
         \item\verb+pdfpages+: faz a inclusão de páginas em PDF no documento final;
         \item\verb+ifthen+: permite a utilização de condições na geração do texto;
         \item\verb+imakeidx+: permite a criação de um índice remissivo ao fim do texto;
-        \item\verb+abntex2cite+: formata citações e referências de acordo com o padrão ABNT 6023.
+        \item\verb+\index{ABNT}\gls{abnt}ex2cite+: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023.
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
@@ -206,7 +219,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \end{table}
         
     \subsection{\textbackslash palavraschave\{\} e \textbackslash keyword\{\}}
-    Segundo o modelo da biblioteca da FEI, o resumo e o abstract devem receber no máximo 3 palavras chave. Estes comandos devem ser utilizados dentro dos respectivos ambientes e as palavras devem ser passadas como argumentos.
+    Segundo o modelo da biblioteca da \index{FEI}\gls{fei}, o resumo e o abstract devem receber no máximo 3 palavras chave. Estes comandos devem ser utilizados dentro dos respectivos ambientes e as palavras devem ser passadas como argumentos.
 
     Exemplo:
     \begin{verbatim}
@@ -220,7 +233,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \subsection{\textbackslash apendice\{\}, \textbackslash apendices\{\}, \textbackslash anexo\{\} e \textbackslash anexos\{\}}
     Para os apêndices e anexos foram criados dois comandos separados.
 
-    O modelo da FEI requer que os apêndices e anexos sejam numerados apenas quando existe mais de um no trabalho. Caso exista apenas um anexo ou apêndice, este não leva número sequencial.
+    O modelo da \index{FEI}\gls{fei} requer que os apêndices e anexos sejam numerados apenas quando existe mais de um no trabalho. Caso exista apenas um anexo ou apêndice, este não leva número sequencial.
 
     Exemplos: \\
     \verb+\apendice{Único apêndice do trabalho}+ \\
@@ -245,13 +258,13 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
     \section{O que é o abn\TeX~e como foi utilizado}
 
-    O abn\TeX~(\href{https://code.google.com/p/abntex2/}{https://code.google.com/p/abntex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da ABNT para formatos acadêmicos. O pacote completo do abn\TeX~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
+    O \gls{abntex}~(\href{https://code.google.com/p/ABNTex2/}{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
 
-    Entretanto, a ABNT fornece certas opções para que o texto seja produzido, sendo que a biblioteca do Centro Universitário da FEI ficou a cargo de escolher estas formatações para seus trabalhos.
+    Entretanto, a \index{ABNT}\gls{abnt} fornece certas opções para que o texto seja produzido, sendo que a biblioteca do Centro Universitário da \index{FEI}\gls{fei} ficou a cargo de escolher estas formatações para seus trabalhos.
 
-    Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da FEI, foi importado o pacote \verb+abntex2cite-alf+, que utiliza o modelo autor-data.
+    Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da \index{FEI}\gls{fei}, foi importado o pacote \verb+\index{ABNT}\gls{abnt}ex2cite-alf+, que utiliza o modelo autor-data.
 
-    As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \verb+abntex2cite-alf+.
+    As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \verb+\index{ABNT}\gls{abnt}ex2cite-alf+.
 
     \section{Citação no final de linha}
     A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
@@ -259,12 +272,12 @@ orientado pelo Prof. Dr. Nome do Orientador.
     Exemplo: Este texto deveria ser uma referência \verb+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
 
     \section{Citação durante o texto}
-    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da abn\TeX~fornece o comando \verb+\citeonline{obra}+ para este caso.
+    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\citeonline{obra}+ para este caso.
 
     Exemplo: Segundo \verb+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
 	
 	\section{Citação indireta}
-	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O abn\TeX~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
+	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 	
 	Exemplo: \verb+\apud{Mcc43}{RusselNo10}+ formata a citação de forma semelhante a \apud{Mcc43}{RusselNo10}.
 	
@@ -312,6 +325,140 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
 	\verb+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
 
+	\chapter{ÍNDICES USANDO MAKEINDEX E XINDY}\label{chap:indice}
+	
+	Para a criação de índices remissivos, foi importado o pacote \verb+imakeidx+. Este pacote utiliza o programa \verb+xindy+ na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Portanto, é necessário ter o \verb+xindy+ instalado para que a compilação tenha sucesso.
+	
+	\section{Indexando palavras}
+	
+	Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \verb+\index{palavra}+, o qual inclui \aspas{palavras} no arquivo auxiliar de indexação.
+
+	Exemplo: [\ldots] a biblioteca do Centro Universitário da \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+	
+	É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
+	
+	\section{Imprimindo o índice}
+
+	A impressão do índice é feita utilizando o comando \verb+\indice+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
+
+	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
+	
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \verb+glossaries+, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \verb+glossaries+ exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	
+	\section{Indexando abreviaturas}
+	
+	A indexação de abreviaturas é feita utilizando o comando
+	
+	\verb+\newacronym[longplural=1]{2}{3}{4}+, onde:
+	
+	\begin{enumerate}
+	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional})
+	\item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto
+	\item 3: a abreviatura em si
+	\item 4: o significado a abreviatura, escrito por extenso
+	\end{enumerate}
+	
+	Exemplo: \verb+\newacronym[longplural=Associações+
+	
+			 \verb+Brasileiras de Normas Técnicas]+
+			 
+			 \verb+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
+			 
+	\section{Indexando símbolos}
+	
+	A indexação de símbolos é feita utilizando o comando
+	
+	\verb+\newglossaryentry{1}{type=simbolos,+
+	
+	\verb+name={2},sort=3,description={4}}+, onde:
+	
+	\begin{enumerate}
+	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto)
+	\item 2: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo)
+	\item 3: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista
+	\item 4: a descrição do símbolo, que aparecerá na lista
+	\end{enumerate}
+	
+	Exemplo: \verb+\newglossaryentry{pi}{type=simbolos,+
+	
+			 \verb+name={\ensuremath{\pi}},sort=p,+
+			 
+			 \verb+description={número irracional que representa [...]}}+
+
+	\section{Utilizando abreviaturas e símbolos indexados}
+	
+	O pacote \verb+glossaries+ disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
+	
+	\begin{enumerate}
+	\item \verb+\gls{codigo}+: imprime a entrada em letras minúsculas;
+	\item \verb+\Gls{codigo}+: imprime a entrada em letras maiúsculas;
+	\item \verb+\glspl{codigo}+: imprime a entrada no plural;
+	\end{enumerate}
+	
+	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha.
+	
+	\section{Imprimindo as listas}
+	
+	O comando \verb+\printglossaries+ imprime ambas as listas em sequência.
+
+	\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
+	
+	Para a utilização de todos os recursos que a classe \verb+fei.cls+ disponibiliza, é necessário compilar o projeto utilizando diversas ferramentas diferentes em ordem específica:
+	
+	\[\operatorname*{\text{PDF\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{PDF\LaTeX}}_e \to \operatorname*{\text{PDF\LaTeX}}_f\]
+	
+	onde:
+	
+	\begin{enumerate}
+	\item gera o PDF e arquivos auxiliares básicos;
+	\item lê os arquivos auxiliares criados em 1, gerando a bibliografia apenas com as referências utilizadas do arquivo \verb+.bib+ utilizado. Necessário apenas se citações e referências forem usadas no texto;
+	\item lê os arquivos auxiliares, criando um ou mais arquivos de índice. Necessário apenas se houve indexação de palavras para serem adicionadas ao índice;
+	\item lê os arquivos auxiliares, criando um ou mais arquivos de listas. Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b--d não foram realizados});
+	\item gera o PDF final (\emph{desnecessário se os passos b--e não foram realizados}).
+	\end{enumerate}
+	
+	\section{Compilação utilizando arara}
+	
+	O \texttt{arara} (\href{cereda.github.io/arara/}{cereda.github.io/arara/}) é uma ferramenta de automação de compilação de projetos em \LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{.tex} utilizando como instruções comentários colocados nas primeiras linhas do arquivo. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex}, \texttt{xindy} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
+	
+	\begin{verbatim}
+% arara: pdflatex
+% arara: makeindex
+% arara: makeglossaries
+% arara: bibtex
+% arara: pdflatex
+% arara: pdflatex
+
+\documentclass{fei}
+[...]
+	\end{verbatim}
+	
+	E a chamada ao \texttt{arara} seria feita da seguinte forma:
+	
+	\texttt{arara manual.tex}
+	
+	A escolha de como compilar o projeto fica a cargo do leitor.	
+	
+	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
+	
+	Este capítulo guia o leitor na instalação dos diferentes pacotes e programas necessários para utilizar todas as funcionalidades da classe \texttt{fei.cls}.
+	
+	\section{Ubuntu}
+	
+	No Ubuntu, é necessária a instalação dos seguintes pacotes através do \texttt{apt-get}:
+	
+	\begin{enumerate}
+	\item \texttt{texlive}: pacotes essenciais do \TeX~Live;
+	\item \texttt{texlive-science}: instala pacotes científicos, como \texttt{algorithm2e} e \texttt{mathtools};
+	\item \texttt{texlive-lang-portuguese}: idioma português do \texttt{babel};
+	\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex}.
+	\item \texttt{texlive-extra-utils}: \texttt{arara};
+	\item \texttt{xindy}: criação de índices e listas usando \texttt{xindy}.
+	\end{enumerate}
+	
 	\bibliografia{referencias}
 
+	\indice
+	
 \end{document}
