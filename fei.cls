@@ -239,7 +239,7 @@ S\~ao Bernardo do Campo\\
 \newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}\printindex}
 
 %pacote para gerar listas (símbolos, abreviaturas, etc), não compatível com o abntex antigo, somente o novo
-\RequirePackage[nomain,xindy,acronym]{glossaries}
+\RequirePackage[nomain,xindy,acronym,nonumberlist]{glossaries}
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries

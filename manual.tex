@@ -55,31 +55,32 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
 \section{Pacotes necessários}\label{sec:pacotes}
     
     \begin{enumerate}
-        \item\verb+geometry+: utilizado para formatar as margens da folha;
-        \item\verb+fancyhdr+: utilizado na formatação do cabeçalho;
-        \item\verb+babel+: escolha de línguas (importado pacote para português e inglês);
-        \item\verb+fontenc+: codificação da fonte;
-        \item\verb+algorithm2e+: provê comandos para a escrita de algoritmos;
-        \item\verb+mathtool+: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \verb+amsmath+);
-        \item\verb+times+: carrega fonte Times New Roman;
-        \item\verb+graphicx+: importação e utilização de imagens;
-        \item\verb+paralist+: para gerar listas sem quebra de linha;
-        \item\verb+multirow+: permite que uma coluna ocupe várias linhas em uma tabela;
-        \item\verb+xcolor+: utilizado para alterar cores em células de tabela;
-        \item\verb+hyperref+: gera os links entre referências no PDF;
-        \item\verb+setspace+: espacejamento entre linhas;
-        \item\verb+caption+: altera a formatação de certas legendas;
-        \item\verb+tocloft+: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
-        \item\verb+pdfpages+: faz a inclusão de páginas em PDF no documento final;
-        \item\verb+ifthen+: permite a utilização de condições na geração do texto;
-        \item\verb+imakeidx+: permite a criação de um índice remissivo ao fim do texto;
-        \item\verb+\index{ABNT}\gls{abnt}ex2cite+: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023.
+        \item\texttt{geometry}: utilizado para formatar as margens da folha;
+        \item\texttt{fancyhdr}: utilizado na formatação do cabeçalho;
+        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
+        \item\texttt{fontenc}: codificação da fonte;
+        \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
+        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+        \item\texttt{times}: carrega fonte Times New Roman;
+        \item\texttt{graphicx}: importação e utilização de imagens;
+        \item\texttt{paralist}: para gerar listas sem quebra de linha;
+        \item\texttt{multirow}: permite que uma coluna ocupe várias linhas em uma tabela;
+        \item\texttt{xcolor}: utilizado para alterar cores em células de tabela;
+        \item\texttt{hyperref}: gera os links entre referências no PDF;
+        \item\texttt{setspace}: espacejamento entre linhas;
+        \item\texttt{caption}: altera a formatação de certas legendas;
+        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
+        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+        \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
+        \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
+        \item\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
+        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023.
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
 
     \begin{enumerate}
-        \item\verb+inputenc+: codificação dos arquivos \texttt{.tex} de entrada. Depende do editor que está sendo utilizado, normalmente \texttt{latin1} ou \texttt{utf8}.
+        \item\texttt{inputenc}: codificação dos arquivos \texttt{.tex} de entrada. Depende do editor que está sendo utilizado, normalmente \texttt{latin1} ou \texttt{utf8}.
     \end{enumerate}
 
 \section{Comandos e ambientes modificados}
@@ -88,19 +89,17 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     
     O comando \verb+\maketitle+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa. O local (São Bernardo do Campo) é fixo (podendo ser alterado no arquivo da classe).
 
-%    O comando \verb+\maketitle{}+ pode receber um argumento com o subtítulo do trabalho seguindo um caracter de \aspas{:}. Por exemplo, neste manual foi utilizado o comando: \\ \verb+\maketitle{: Segundo o manual disponibilisado em 2007}+
-
     \subsection{Ambientes itemize e enumerate}
     
-    Segundo o padrão da biblioteca, toda lista deve utilizar a sequência de letras. Para que não houvesse problemas de formatação, o ambiente \verb+itemize+ foi redirecionado para utilizar o \verb+enumerate+ e este passa a utilizar a letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}).
+    Segundo o padrão da biblioteca, toda lista deve utilizar a sequência de letras. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar a letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}).
     
     \subsection{\textbackslash listofalgorithms}
     
-    O pacote \verb+algorithm2e+ já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando foi modificado para deixar o título centralizado e em português.
+    O pacote \texttt{algorithm2e} já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando foi modificado para deixar o título centralizado e em português.
     
     \subsection{Variáveis do pacote \texttt{algorithm2e}}
     
-    O pacote \verb+algorithm2e+ fornece diversos comandos para a escrita de pseudo-código em diversos idiomas. O idioma importado pela fei.cls foi o português.
+    O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita de pseudo-código em diversos idiomas. O idioma importado pela fei.cls foi o português.
     
     Exemplo:
     
@@ -122,7 +121,7 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     
     \subsection{Outros comandos/ambientes internos}
     
-    Alguns comandos como \verb+chapter+, \verb+abstract+ e \verb+fontsize+, que são comandos já definidos dentro do \LaTeX foram modificados para seguir as descrições do manual da biblioteca.
+    Alguns comandos como \texttt{chapter}, \texttt{abstract} e \texttt{fontsize}, que são comandos já definidos dentro do \LaTeX foram modificados para seguir as descrições do manual da biblioteca.
 
     Apesar destes comandos terem sido modificados, as mudanças foram feitas de forma que a utilização dos mesmos continuasse igual, assim um texto já escrito para outro modelo poderia ser apenas recompilado utilizando esta classe.
 
@@ -139,10 +138,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \end{verbatim}
 
     \subsection{\textbackslash resumo}
-    O ambiente \verb+resumo+ funciona da mesma forma que o ambiente \verb+abstract+, sendo a única diferença que o \verb+abstract+ possui o comando \verb+\selectlanguage{english}+ no início e o \verb+resumo+ utiliza \verb+\selectlanguage{brazil}+.
+    O ambiente \texttt{resum} funciona da mesma forma que o ambiente \texttt{abstract}, sendo a única diferença que o \texttt{abstract} possui o comando \verb+\selectlanguage{english}+ no início e o \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+.
 
     \subsection{\textbackslash agradecimentos}
-    O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \verb+begin+ e \verb+end+ na formatação esperada.
+    O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
 
 \section{Novos comandos}
     
@@ -171,7 +170,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
         \item \verb+\fichacatalografica{ficha.pdf}+: insere o PDF com a ficha catalográfica fornecida pela biblioteca.
     \end{itemize}
  
- Estes dois comandos são os únicos que dependem do pacote \verb+pdfpages+ (para importar a página em PDF).
+ Estes dois comandos são os únicos que dependem do pacote \texttt{pdfpages} (para importar a página em PDF).
 
     \subsection{\textbackslash dedicatoria\{\}}
     O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \verb+\dedicatoria{A quem eu quero dedicar o texto}+.
@@ -185,7 +184,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     Exemplo: \verb+\aspas{Texto entre aspas}+ $\to$ \aspas{Texto entre aspas}
     
     \subsection{\textbackslash marca\{\}}
-    É comum precisar que certas células de uma tabela precisem ser destacadas das demais, como em cronogramas, por exemplo. O comando \verb+\marca{}+ foi feito para que a célula de uma tabela ficasse com o fundo cinza. Este é o único comando que utiliza o pacote \verb+xcolor+.
+    É comum precisar que certas células de uma tabela precisem ser destacadas das demais, como em cronogramas, por exemplo. O comando \verb+\marca{}+ foi feito para que a célula de uma tabela ficasse com o fundo cinza. Este é o único comando que utiliza o pacote \texttt{xcolor}.
 
     Exemplo:
     \begin{verbatim}
@@ -248,7 +247,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \verb+\anexos{Segundo anexo}+\\
 
     \subsection{\textbackslash bibliografia\{\}}
-    A utilização de referências bibliográficas a partir do \texttt{bibtex} depende do comando \verb+\bibliography{}+ que recebe o caminho até o arquivo \texttt{.bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \verb+babel+ substitui o nome da página de referências e este só pode ser mudado após o início do texto).
+    A utilização de referências bibliográficas a partir do \texttt{bibtex} depende do comando \verb+\bibliography{}+ que recebe o caminho até o arquivo \texttt{.bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \texttt{babel} substitui o nome da página de referências e este só pode ser mudado após o início do texto).
 
     Para facilitar, foi criado o comando \verb+\bibliografia{}+ que recebe como parâmetro o caminho para o arquivo \texttt{.bib}. Este comando realiza a formatação necessária e repassa o caminho para o comando \verb+\bibliography{}+ padrão do \LaTeX.
 
@@ -287,7 +286,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	\section{Citações múltiplas}
 	
-	Citações múltiplas podem ser utilizadas utilizando os comandos \verb+\cite{obra1,obra2,\ldots}+ e \verb+\citeonline{obra1,obra2,obra3}+.
+	Citações múltiplas podem ser utilizadas utilizando os comandos \verb+\cite{obra_1,...,obra_n}+ e \verb+\citeonline{obra_1,...,obra_m}+.
 	
 	Exemplos: 
 	
@@ -327,7 +326,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
 	\chapter{ÍNDICES USANDO MAKEINDEX E XINDY}\label{chap:indice}
 	
-	Para a criação de índices remissivos, foi importado o pacote \verb+imakeidx+. Este pacote utiliza o programa \verb+xindy+ na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Portanto, é necessário ter o \verb+xindy+ instalado para que a compilação tenha sucesso.
+	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \texttt{xindy} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Portanto, é necessário ter o \texttt{xindy} instalado para que a compilação tenha sucesso.
 	
 	\section{Indexando palavras}
 	
@@ -393,9 +392,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\item \verb+\gls{codigo}+: imprime a entrada em letras minúsculas;
 	\item \verb+\Gls{codigo}+: imprime a entrada em letras maiúsculas;
 	\item \verb+\glspl{codigo}+: imprime a entrada no plural;
+	\item \verb+\Glspl{codigo}+: imprime a entrada no plural e em letras maiúsculas;
 	\end{enumerate}
 	
-	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha.
+	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \texttt{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
 	
 	\section{Imprimindo as listas}
 	
