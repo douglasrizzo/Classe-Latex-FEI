@@ -7,6 +7,11 @@
 
 \documentclass{fei}
 \usepackage[utf8]{inputenc}
+\hypersetup{pdftitle={Manual da classe fei.cls e pacotes para desenvolvimento de texto no modelo da biblioteca do Centro Universitário da FEI},
+pdfauthor={Leonardo Anjoletto Ferreira e Douglas De Rizzo Meneghetti},
+pdfsubject={LaTeX},
+pdfkeywords={LaTeX}
+}
 
 \author{Leonardo Anjoletto Ferreira \& Douglas De Rizzo Meneghetti}
 \title{Manual da classe fei.cls e pacotes para desenvolvimento de texto no modelo da biblioteca do Centro Universitário da FEI}
@@ -257,7 +262,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
     \section{O que é o abn\TeX~e como foi utilizado}
 
-    O \gls{abntex}~(\href{https://code.google.com/p/ABNTex2/}{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
+    O \gls{abntex}~(\url{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
 
     Entretanto, a \index{ABNT}\gls{abnt} fornece certas opções para que o texto seja produzido, sendo que a biblioteca do Centro Universitário da \index{FEI}\gls{fei} ficou a cargo de escolher estas formatações para seus trabalhos.
 
@@ -420,7 +425,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	\section{Compilação utilizando arara}
 	
-	O \texttt{arara} (\href{cereda.github.io/arara/}{cereda.github.io/arara/}) é uma ferramenta de automação de compilação de projetos em \LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{.tex} utilizando como instruções comentários colocados nas primeiras linhas do arquivo. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex}, \texttt{xindy} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
+	O \texttt{arara} (\url{cereda.github.io/arara/}) é uma ferramenta de automação de compilação de projetos em \LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{.tex} utilizando como instruções comentários colocados nas primeiras linhas do arquivo. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex}, \texttt{xindy} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
 	
 	\begin{verbatim}
 % arara: pdflatex

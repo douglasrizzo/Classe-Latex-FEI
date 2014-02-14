@@ -81,6 +81,7 @@
 
 % matematica
 \RequirePackage{mathtools}
+\numberwithin{equation}{section}
 
 % outros pacotes
 \usepackage{times}             % Times New Roman como fonte de tudo
