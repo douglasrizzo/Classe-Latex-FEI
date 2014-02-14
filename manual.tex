@@ -126,7 +126,7 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     
     \subsection{Outros comandos/ambientes internos}
     
-    Alguns comandos como \texttt{chapter}, \texttt{abstract} e \texttt{fontsize}, que são comandos já definidos dentro do \LaTeX foram modificados para seguir as descrições do manual da biblioteca.
+    Alguns comandos como \texttt{chapter}, \texttt{abstract}, \texttt{fontsize} \texttt{quote} e \texttt{quotation}, que são comandos já definidos dentro do \LaTeX foram modificados para seguir as descrições do manual da biblioteca.
 
     Apesar destes comandos terem sido modificados, as mudanças foram feitas de forma que a utilização dos mesmos continuasse igual, assim um texto já escrito para outro modelo poderia ser apenas recompilado utilizando esta classe.
 
@@ -328,6 +328,16 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\verb+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
 
 	\verb+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
+	
+	\section{Citações com mais de três linhas}
+	
+	O único tipo de citação que independe do pacote \texttt{abntex2cite} é a citação com mais de três linhas. De acordo com o manual da biblioteca, ela deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo ao início do parágrafo. No \LaTeX, os ambientes responsáveis por tais citações são \texttt{quote} (para citações de um parágrafo) e \texttt{quotation} (para citações com mais de um parágrafo).
+	
+	Exemplo:
+	
+	\begin{quote}		
+	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think 'are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
+	\end{quote}
 
 	\chapter{ÍNDICES USANDO MAKEINDEX E XINDY}\label{chap:indice}
 	

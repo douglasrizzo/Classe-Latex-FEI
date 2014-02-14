@@ -273,8 +273,25 @@ S\~ao Bernardo do Campo\\
 \addcontentsline{toc}{chapter}{ANEXO \Alph{an} - #1}%
 \mbox{}\vfill\begin{center}\part*{ANEXO \Alph{an} - #1}\addtocounter{an}{1}\end{center}\vfill\mbox{}\newpage}
 
-% bibliografia
+% referências e citações
 \RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+
+% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
+\renewenvironment{quote}
+               {\begin{singlespace}\list{}{%
+               \fontsize{10pt}{1em}%
+               \leftmargin=2cm \rightmargin=2cm}%
+               \item\relax\ignorespaces}
+               {\endlist\end{singlespace}}
+
+% quotation é igual a quote, porém para citações com mais de um parágrafo.
+\renewenvironment{quotation}
+               {\begin{singlespace}\list{}{%
+               \fontsize{10pt}{1em}%
+               \leftmargin=2cm \rightmargin=2cm%
+               \listparindent .5cm \itemindent}%
+                \item\relax}
+               {\endlist\end{singlespace}}
 
 \newcommand{\bibliografia}[1]{%
 \addcontentsline{toc}{chapter}{REFERÊNCIAS}                 % adiciona o titulo ao sumario
