@@ -103,12 +103,12 @@
 \widowpenalty=10000
 \clubpenalty=10000
 
-% legendas
-\RequirePackage[font={small,rm,singlespacing},justification=centering,labelsep=endash]{caption}
+% legendas fonte 10 pt, linhas com espaçamento único, justificado e separado por traço
+\RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption}
 
 % configuracao da legenda da figura
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
-\renewcommand{\tablename}{\fontsize{12pt}{14.4pt}\selectfont Tabela}
+\renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
 % listas
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 \renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
@@ -136,9 +136,9 @@
 \setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
-% titulos de listas centralizadas
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
+% titulos de listas centralizadas
 \newcommand{\sumario}{\newpage\begin{center}\part*{Sum\'ario}\end{center}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
 \newcommand{\figuras}{\newpage\begin{center}\part*{Lista de Figuras}\end{center}\@starttoc{lof}}
 \newcommand{\tabelas}{\newpage\begin{center}\part*{Lista de Tabelas}\end{center}\@starttoc{lot}}
