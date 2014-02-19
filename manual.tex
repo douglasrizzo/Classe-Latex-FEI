@@ -1,7 +1,7 @@
 % arara: pdflatex
+% arara: bibtex
 % arara: makeindex
 % arara: makeglossaries
-% arara: bibtex
 % arara: pdflatex
 % arara: pdflatex
 
@@ -41,7 +41,7 @@ O único arquivo necessário para escrever o documento seguindo o modelo propost
 
 A escrita da classe que formata o texto foi realizada seguindo apenas o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007).
 
-Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{\LaTeX}\LaTeX~existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
+Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX~existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
@@ -53,7 +53,7 @@ Para a formatação de citações e referências, foi importado o pacote \texttt
 
 Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da \index{ABNT}\gls{abnt} seguido pela biblioteca do Centro Universitário da \index{FEI}\gls{fei}.
 
-O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \texttt{glossaries} na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado, assim como introduz o leitor à ferramenta \texttt{arara} de compilação automatizada de projetos \index{\LaTeX}\LaTeX. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
+O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes modificados e criados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \texttt{glossaries} na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado, assim como introduz o leitor à ferramenta \texttt{arara} de compilação automatizada de projetos \index{Latex@\LaTeX}\LaTeX. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
 
 \chapter{CLASSE FEI.CLS}\label{chap:classe}
 
@@ -126,7 +126,7 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     
     \subsection{Outros comandos/ambientes internos}
     
-    Alguns comandos como \texttt{chapter}, \texttt{abstract}, \texttt{fontsize} \texttt{quote} e \texttt{quotation}, que são comandos já definidos dentro do \index{\LaTeX}\LaTeX~foram modificados para seguir as descrições do manual da biblioteca.
+    Alguns comandos como \texttt{chapter}, \texttt{abstract}, \texttt{fontsize} \texttt{quote} e \texttt{quotation}, que são comandos já definidos dentro do \index{Latex@\LaTeX}\LaTeX~foram modificados para seguir as descrições do manual da biblioteca.
 
     Apesar destes comandos terem sido modificados, as mudanças foram feitas de forma que a utilização dos mesmos continuasse igual, assim um texto já escrito para outro modelo poderia ser apenas recompilado utilizando esta classe.
 
@@ -154,7 +154,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por \aspas{:}), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
     
     \subsection{\textbackslash sumario,\textbackslash figuras,\textbackslash tabelas}
-    O \index{\LaTeX}\LaTeX~já possui comandos que criam sumário, lista de figuras e lista de tabelas, porém, para seguir o modelo necessário e facilitar a manutenção do mesmo foram criados novos comandos que geram estas listas.
+    O \index{Latex@\LaTeX}\LaTeX~já possui comandos que criam sumário, lista de figuras e lista de tabelas, porém, para seguir o modelo necessário e facilitar a manutenção do mesmo foram criados novos comandos que geram estas listas.
 
     Neste caso, \verb+\sumario+ substitui \verb+\tableofcontents+, \verb+\figuras+ substitui \verb+\listoffigures+ e \verb+\tabelas+ o \verb+\listoftables+.
 
@@ -184,7 +184,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     A epigrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epigrafe e o segundo o autor da mesma. Por exemplo, \verb+\epigrafe{Haw-Haw!}{Nelson Muntz}+
     
     \subsection{\textbackslash aspas\{\}}
-    As aspas no \index{\LaTeX}\LaTeX~são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \index{\LaTeX}\LaTeX. Apenas para facilitar a inserção de aspas no formato do \index{\LaTeX}\LaTeX, foi criado o comando \verb+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
+    As aspas no \index{Latex@\LaTeX}\LaTeX~são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \index{Latex@\LaTeX}\LaTeX. Apenas para facilitar a inserção de aspas no formato do \index{Latex@\LaTeX}\LaTeX, foi criado o comando \verb+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
 
     Exemplo: \verb+\aspas{Texto entre aspas}+ $\to$ \aspas{Texto entre aspas}
     
@@ -254,7 +254,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \subsection{\textbackslash bibliografia\{\}}
     A utilização de referências bibliográficas a partir do \texttt{bibtex} depende do comando \verb+\bibliography{}+ que recebe o caminho até o arquivo \texttt{bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \texttt{babel} substitui o nome da página de referências e este só pode ser mudado após o início do texto).
 
-    Para facilitar, foi criado o comando \verb+\bibliografia{}+ que recebe como parâmetro o caminho para o arquivo \texttt{bib}. Este comando realiza a formatação necessária e repassa o caminho para o comando \verb+\bibliography{}+ padrão do \index{\LaTeX}\LaTeX.
+    Para facilitar, foi criado o comando \verb+\bibliografia{}+ que recebe como parâmetro o caminho para o arquivo \texttt{bib}. Este comando realiza a formatação necessária e repassa o caminho para o comando \verb+\bibliography{}+ padrão do \index{Latex@\LaTeX}\LaTeX.
 
     Exemplo: \verb+\bibliografia{minha_bibliografia.bib}+
 
@@ -331,7 +331,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	\section{Citações com mais de três linhas}
 	
-	O único tipo de citação que independe do pacote \texttt{abntex2cite} é a citação com mais de três linhas. De acordo com o manual da biblioteca, ela deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo ao início do parágrafo. No \index{\LaTeX}\LaTeX, os ambientes responsáveis por tais citações são \texttt{quote} (para citações de um parágrafo) e \texttt{quotation} (para citações com mais de um parágrafo).
+	O único tipo de citação que independe do pacote \texttt{abntex2cite} é a citação com mais de três linhas. De acordo com o manual da biblioteca, ela deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo ao início do parágrafo. No \index{Latex@\LaTeX}\LaTeX, os ambientes responsáveis por tais citações são \texttt{quote} (para citações de um parágrafo) e \texttt{quotation} (para citações com mais de um parágrafo).
 	
 	Exemplo:
 	
@@ -343,7 +343,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \texttt{xindy} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Portanto, é necessário ter o \texttt{xindy} instalado para que a compilação tenha sucesso.
 	
-	\emph{Nota:} antes do advento do \texttt{xindy}, era comum (e ainda o é) a comunidade \index{\LaTeX}\LaTeX~utilizar a ferramenta \texttt{makeindex}. Pelo fato do \texttt{makeindex} não suportar idiomas que não sejam o inglês, foi decidido importar o \texttt{xindy} neste projeto. No entanto, se você quiser dicas avançadas para a criação de índices, recomenda-se a leitura da documentação do \texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex), uma vez que ambos os programas seguem o mesmo padrão de codificação.
+	\emph{Nota:} antes do advento do \texttt{xindy}, era comum (e ainda o é) a comunidade \index{Latex@\LaTeX}\LaTeX~utilizar a ferramenta \texttt{makeindex}. Pelo fato do \texttt{makeindex} não suportar idiomas que não sejam o inglês, foi decidido importar o \texttt{xindy} neste projeto. No entanto, se você quiser dicas avançadas para a criação de índices, recomenda-se a leitura da documentação do \texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex), uma vez que ambos os programas seguem o mesmo padrão de codificação.
 	
 	\section{Indexando palavras}
 	
@@ -439,7 +439,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	\section{Compilação utilizando arara}
 	
-	O \texttt{arara} (\url{cereda.github.io/arara/}) é uma ferramenta que automatiza a compilação de projetos em \index{\LaTeX}\LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{tex} utilizando comentários colocados nas primeiras linhas do arquivo como instruções. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex} e \texttt{xindy} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
+	O \texttt{arara} (\url{cereda.github.io/arara/}) é uma ferramenta que automatiza a compilação de projetos em \index{Latex@\LaTeX}\LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{tex} utilizando comentários colocados nas primeiras linhas do arquivo como instruções. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex} e \texttt{xindy} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
 	
 	\begin{verbatim}
 % arara: pdflatex
