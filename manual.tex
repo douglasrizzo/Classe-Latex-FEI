@@ -24,6 +24,31 @@ pdfkeywords={LaTeX}
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 
 \maketitle
+
+\begin{folhaderosto}
+Dissertação/tese de Mestrado/Doutorado apresentada ao Centro Universitário da FEI para obtenção do título de Mestre/Doutor em [Curso], orientado pelo Prof. Dr. [Orientador].
+\end{folhaderosto}
+
+%\fichacatalografica{}
+%\folhadeaprovacao{}
+\dedicatoria{A quem eu quero dedicar o texto.}
+\begin{agradecimentos}
+A quem eu quero agradecer.
+\end{agradecimentos}
+\epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
+
+\begin{resumo}
+Resumo vai aqui. 
+\palavraschave{Palavras. Chave. Vão. Aqui.}
+\end{resumo}
+
+\begin{abstract}
+Abstract goes here.
+\keyword{Keywords. Go. Here.}
+\end{abstract}
+
+\tabelas
+\listofalgorithms
 \printglossaries
 \sumario
 
@@ -94,13 +119,47 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     
     O comando \verb+\maketitle+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa. O local (São Bernardo do Campo) é fixo (podendo ser alterado no arquivo da classe).
 
-    \subsection{Ambientes itemize e enumerate}
+    \subsection{Ambientes \texttt{itemize} e \texttt{enumerate}}
     
     Segundo o padrão da biblioteca, toda lista deve utilizar a sequência de letras. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar a letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}).
     
     \subsection{\textbackslash listofalgorithms}
     
     O pacote \texttt{algorithm2e} já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando foi modificado para deixar o título centralizado e em português.
+    
+    \subsection{Ambiente \texttt{table}}
+
+	O manual da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, o pacote \texttt{caption} disponibiliza os comandos \verb+\caption{}+ e \verb+\caption*{}+. O primeiro, situado acima da tabela, representará a legenda principal e aparecerá na lista de tabelas. Já o segundo é formatado da mesma forma que uma legenda comum, porém não aparece na lista de tabelas e não recebe numeração. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
+
+\begin{verbatim}
+	\begin{table}[ht!]
+    \caption{Legenda da tabela}
+    \begin{tabular}{|c|c|c|c|}
+	[...]
+    \end{tabular}
+    \caption*{Fonte: Autor}
+    \end{table}
+\end{verbatim}
+
+\begin{table}[ht!]
+    \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline 
+    • & \(x_1\) & \(x_2\) & \(x_3\) \\ 
+    \hline 
+    \(y_1\) & 1 & 0 & 0 \\ 
+    \hline 
+    \(y_2\) & 0 & 1 & 0 \\ 
+    \hline 
+    \(y_3\) & 0 & 0 & 1 \\ 
+    \hline 
+    \end{tabular}
+    \caption*{Fonte: Autor}
+\end{table}
+
+
+
     
     \subsection{Variáveis do pacote \texttt{algorithm2e}}
     
@@ -181,7 +240,11 @@ orientado pelo Prof. Dr. Nome do Orientador.
     O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \verb+\dedicatoria{A quem eu quero dedicar o texto}+.
     
     \subsection{\textbackslash epigrafe\{\}\{\}}
-    A epigrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epigrafe e o segundo o autor da mesma. Por exemplo, \verb+\epigrafe{Haw-Haw!}{Nelson Muntz}+
+    A epígrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epigrafe e o segundo o autor da mesma.
+    
+    \emph{Nota:} O manual da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \verb+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
+    
+    Exemplo: \verb+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
     
     \subsection{\textbackslash aspas\{\}}
     As aspas no \index{Latex@\LaTeX}\LaTeX~são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \index{Latex@\LaTeX}\LaTeX. Apenas para facilitar a inserção de aspas no formato do \index{Latex@\LaTeX}\LaTeX, foi criado o comando \verb+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
