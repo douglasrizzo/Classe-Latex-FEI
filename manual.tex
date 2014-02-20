@@ -302,17 +302,18 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
     O modelo da \index{FEI}\gls{fei} requer que os apêndices e anexos sejam numerados apenas quando existe mais de um no trabalho. Caso exista apenas um anexo ou apêndice, este não leva número sequencial.
 
-    Exemplos: \\
-    \verb+\apendice{Único apêndice do trabalho}+ \\
-    \verb+\anexo{Único anexo do trabalho}+ \\
+    Exemplos:
+    
+    \begin{verbatim}
+    \apendice{Único apêndice do trabalho}
+    \anexo{Único anexo do trabalho}
 
-    \noindent{}
-    \verb+\apendices{Primeiro apêndice}+\\
-    \verb+\apendices{Segundo apêndice}+\\
-
-    \noindent{}
-    \verb+\anexos{Primeiro anexo}+\\
-    \verb+\anexos{Segundo anexo}+\\
+    \apendices{Primeiro apêndice}
+    \apendices{Segundo apêndice}
+    
+    \anexos{Primeiro anexo}
+    \anexos{Segundo anexo}
+    \end{verbatim}
 
     \subsection{\textbackslash bibliografia\{\}}
     A utilização de referências bibliográficas a partir do \texttt{bibtex} depende do comando \verb+\bibliography{}+ que recebe o caminho até o arquivo \texttt{bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \texttt{babel} substitui o nome da página de referências e este só pode ser mudado após o início do texto).
@@ -433,10 +434,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\verb+\newacronym[longplural=1]{2}{3}{4}+, onde:
 	
 	\begin{enumerate}
-	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional})
-	\item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto
-	\item 3: a abreviatura em si
-	\item 4: o significado a abreviatura, escrito por extenso
+	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
+	\item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto;
+	\item 3: a abreviatura em si;
+	\item 4: o significado a abreviatura, escrito por extenso.
 	\end{enumerate}
 	
 	Exemplo: \verb+\newacronym[longplural=Associações+
@@ -454,10 +455,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\verb+name={2},sort=3,description={4}}+, onde:
 	
 	\begin{enumerate}
-	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto)
-	\item 2: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo)
-	\item 3: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista
-	\item 4: a descrição do símbolo, que aparecerá na lista
+	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
+	\item 2: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo);
+	\item 3: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
+	\item 4: a descrição do símbolo, que aparecerá na lista.
 	\end{enumerate}
 	
 	Exemplo: \verb+\newglossaryentry{pi}{type=simbolos,+
@@ -474,7 +475,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\item \verb+\gls{codigo}+: imprime a entrada em letras minúsculas;
 	\item \verb+\Gls{codigo}+: imprime a entrada em letras maiúsculas;
 	\item \verb+\glspl{codigo}+: imprime a entrada no plural;
-	\item \verb+\Glspl{codigo}+: imprime a entrada no plural e em letras maiúsculas;
+	\item \verb+\Glspl{codigo}+: imprime a entrada no plural e em letras maiúsculas.
 	\end{enumerate}
 	
 	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \texttt{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
@@ -487,18 +488,29 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	Para a utilização de todos os recursos que a classe \verb+fei.cls+ disponibiliza, é necessário compilar o projeto utilizando diversas ferramentas diferentes em ordem específica:
 	
-	\[\operatorname*{\text{PDF\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{PDF\LaTeX}}_e \to \operatorname*{\text{PDF\LaTeX}}_f\]
+	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{pdf\LaTeX}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 	
 	onde:
 	
 	\begin{enumerate}
 	\item gera o PDF e arquivos auxiliares básicos;
-	\item lê os arquivos auxiliares criados em 1, gerando a bibliografia apenas com as referências utilizadas do arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+	\item lê os arquivos auxiliares criados em \emph{a}, gerando a bibliografia apenas com as referências utilizadas do arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
 	\item lê os arquivos auxiliares, criando um ou mais arquivos de índice. Necessário apenas se houve indexação de palavras para serem adicionadas ao índice;
 	\item lê os arquivos auxiliares, criando um ou mais arquivos de listas. Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
 	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b--d não foram realizados});
 	\item gera o PDF final (\emph{desnecessário se os passos b--e não foram realizados}).
 	\end{enumerate}
+	
+	Um exemplo de comando que executa todas essas funções é o seguinte:
+	
+	\begin{verbatim}
+	pdflatex manual.tex
+	bibtex manual.aux
+	makeindex manual.idx
+	makeglossaries manual
+	pdflatex manual.tex
+	pdflatex manual.tex
+	\end{verbatim}
 	
 	\section{Compilação utilizando arara}
 	
@@ -538,6 +550,75 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\item \texttt{texlive-extra-utils}: \texttt{arara};
 	\item \texttt{xindy}: criação de índices e listas usando \texttt{xindy}.
 	\end{enumerate}
+	
+	\apendice{Arquivos criados pelo processo de compilação}
+	
+	A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
+	
+	\begin{enumerate}
+	
+	\item\verb+pdflatex manual.tex+
+	\begin{enumerate}
+	\item \texttt{alg}: \emph{log} do \texttt{xindy};
+	\item \texttt{aux}: arquivo com as referências a serem processadas pelo Bib\TeX;
+	\item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
+	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo MakeIndex/xindy;	
+	\item \texttt{loa}: lista de algoritmos;
+	\item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
+	\item \texttt{toc}: sumário;
+	\end{enumerate}	
+	
+	\item\verb+bibtex manual.aux+
+	\begin{enumerate}
+	\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
+	\item \texttt{blg}: \emph{log} do Bib\TeX.
+	\end{enumerate}	
+	
+	\item\verb+makeindex manual.idx+
+	\begin{enumerate}
+	\item \texttt{ilg}: \emph{log} do MakeIndex.
+	\item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
+	\end{enumerate}	
+	
+	\item\verb+makeglossaries manual+
+	\begin{enumerate}
+	\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \verb+\printglossaries+;
+	\item \texttt{glg}: \emph{log} do MakeGlossaries.
+	\end{enumerate}
+	\end{enumerate}
+	
+	\anexo{Arquivo de estilo para o índice}
+	
+	Segue abaixo o código para um estilo de índice no qual os termos indexados são separados pela primeira letra. Para utilizá-lo, salve-o com a extensão \texttt{ist} no mesmo diretório do arquivo \texttt{tex} e modifique a chamada a MakeIndex de forma que ele utilize o arquivo de estilo na formatação do índice:
+	
+	Exemplo: \verb+makeindex -s estilo.ist manual.idx+
+	
+	\begin{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% estilo.ist                                  %
+% Como usar:                                  %
+%     makeindex -s estilo.ist manual.idx      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+preamble "
+\\begin{theindex}
+  \\providecommand*\\indexgroup[1]{\\indexspace
+    \\item \\textbf{#1}\\nopagebreak}
+"
+
+postamble "\n\n\\end{theindex}\n"
+
+group_skip "  %\n  \\indexspace\n  %\n"
+
+headings_flag 1
+heading_prefix "  %\n  \\indexgroup{"
+heading_suffix "}\n  %\n"
+
+numhead_positive "Números";
+numhead_negative "Números";
+symhead_positive "Símbolos";
+symhead_negative "Símbolos";
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\end{verbatim}
 	
 	\bibliografia{referencias}
 

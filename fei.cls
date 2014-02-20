@@ -114,7 +114,7 @@
 \renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
 \renewcommand{\labelenumi}{\theenumi}                          % continuacao
  
-\renewcommand{\theenumii}{\alph{enumii})}                      % troca a numeracao no segundo nivel para letras
+\renewcommand{\theenumii}{\roman{enumii})}                      % troca a numeracao no segundo nivel para letras
 \renewcommand{\labelenumii}{\theenumii}                        % continuacao
 
 % divisoes do texto
@@ -253,25 +253,25 @@ S\~ao Bernardo do Campo\\
 % apendice
 \newcommand{\apendice}[1]{                                                           % caso exista apenas 1 apendice, nao eh necessario  enumerar cada um
 \addcontentsline{toc}{chapter}{AP\^ENDICE - #1}                                      % adiciona o apendice no sumario
-\mbox{}\vfill\begin{center}\part*{AP\^ENDICE - #1}\end{center}\vfill\mbox{}\newpage} % coloca o titulo do apendice segundo o manual
+\newpage\mbox{}\vfill\begin{center}\part*{AP\^ENDICE - #1}\end{center}\vfill\mbox{}\newpage} % coloca o titulo do apendice segundo o manual
 
 % mesma coisa para mais de um apendice
 \newcounter{ap}             % contador para o numero de apendices 
 \setcounter{ap}{1}          % inicia o contador em 1
 \newcommand{\apendices}[1]{ % mesma coisa do anterior, soh que tem o "s" no final para diferenciar o nome do comando
 \addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{ap} - #1}%
-\mbox{}\vfill\begin{center}\part*{AP\^ENDICE \Alph{ap} - #1}\addtocounter{ap}{1}\end{center}\vfill\mbox{}\newpage}
+\newpage\mbox{}\vfill\begin{center}\part*{AP\^ENDICE \Alph{ap} - #1}\addtocounter{ap}{1}\end{center}\vfill\mbox{}\newpage}
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
 \newcommand{\anexo}[1]{%
 \addcontentsline{toc}{chapter}{ANEXO - #1}%
-\mbox{}\vfill\begin{center}\part*{ANEXO - #1}\end{center}\vfill\mbox{}\newpage}
+\newpage\mbox{}\vfill\begin{center}\part*{ANEXO - #1}\end{center}\vfill\mbox{}\newpage}
 
 \newcounter{an}
 \setcounter{an}{1}
 \newcommand{\anexos}[1]{%
 \addcontentsline{toc}{chapter}{ANEXO \Alph{an} - #1}%
-\mbox{}\vfill\begin{center}\part*{ANEXO \Alph{an} - #1}\addtocounter{an}{1}\end{center}\vfill\mbox{}\newpage}
+\newpage\mbox{}\vfill\begin{center}\part*{ANEXO \Alph{an} - #1}\addtocounter{an}{1}\end{center}\vfill\mbox{}\newpage}
 
 % referências e citações
 \RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
