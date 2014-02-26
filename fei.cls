@@ -119,10 +119,10 @@
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\newpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\section}{% 
 \@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
@@ -139,11 +139,11 @@
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
 % titulos de listas centralizadas
-\newcommand{\sumario}{\newpage\begin{center}\part*{Sum\'ario}\end{center}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
-\newcommand{\figuras}{\newpage\begin{center}\part*{Lista de Figuras}\end{center}\@starttoc{lof}}
-\newcommand{\tabelas}{\newpage\begin{center}\part*{Lista de Tabelas}\end{center}\@starttoc{lot}}
-\renewcommand{\listoftables}{\begin{center}\listof{tables}{\listtablesname}\end{center}}
-\renewcommand{\listofalgorithms}{\newpage\begin{center}\part*{\listalgorithmcfname}\end{center}\@starttoc{loa}}
+\newcommand{\sumario}{\part*{Sum\'ario}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
+\newcommand{\figuras}{\part*{Lista de Figuras}\@starttoc{lof}}
+\newcommand{\tabelas}{\part*{Lista de Tabelas}\@starttoc{lot}}
+\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\@starttoc{loa}}
+\renewcommand{\listoftables}{\clearpage\listof{tables}{\listtablesname}}
 
 % configuracao do sumario
 \renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
@@ -152,7 +152,7 @@
 % capa
 \renewcommand{\maketitle}{
 \selectlanguage{brazil}
-\newpage
+\clearpage
 \pagestyle{empty}
 \begin{center}
 \uppercase{centro universit\'ario da fei}\\
@@ -167,7 +167,7 @@ S\~ao Bernardo do Campo\\
 
 % folha de rosto
 \newenvironment{folhaderosto}{
-\newpage
+\clearpage
 \pagenumbering{arabic}
 \begin{center}
 \MakeUppercase{\@author}\\
@@ -186,13 +186,13 @@ S\~ao Bernardo do Campo\\
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}[1]{
-    \ifthenelse{\equal{#1}{ata.pdf}}{\includepdf{#1}}{\newpage\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}}
+    \ifthenelse{\equal{#1}{ata.pdf}}{\includepdf{#1}}{\clearpage\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}}
 }
 
 % ficha catalografica: funciona da mesma forma da folha de aprovacao, so que procura o arquivo *ficha.pdf*
 \newcommand{\fichacatalografica}[1]{
     \addtocounter{page}{-1}
-    \ifthenelse{\equal{#1}{ficha.pdf}}{\includepdf{#1}}{\newpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}}
+    \ifthenelse{\equal{#1}{ficha.pdf}}{\includepdf{#1}}{\clearpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}}
 }
 
 % subtítulo
@@ -200,7 +200,7 @@ S\~ao Bernardo do Campo\\
 
 % dedicatoria
 \newcommand{\dedicatoria}[1]{
-\newpage
+\clearpage
 \begin{flushleft}
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.5\paperwidth\relax}
@@ -212,7 +212,7 @@ S\~ao Bernardo do Campo\\
 
 % epigrafe
 \newcommand{\epigrafe}[2]{
-\newpage
+\clearpage
 \begin{flushleft}
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.4\paperwidth\relax}
@@ -225,22 +225,22 @@ S\~ao Bernardo do Campo\\
 }
 
 % resumo
-\newenvironment{resumo}{\newpage\begin{center}\part*{Resumo}\end{center}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
+\newenvironment{resumo}{\part*{Resumo}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\newpage\begin{center}\part*{Abstract}\end{center}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
 
 % agradecimentos
-\newenvironment{agradecimentos}{\newpage\begin{center}\part*{Agradecimentos}\end{center}}{}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}}{}
 
 %índice
-\RequirePackage{imakeidx}
+\RequirePackage[xindy]{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 \makeindex[title=\hfill \'INDICE \hfill \mbox{}]
 \newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}\printindex}
 
 %pacote para gerar listas (símbolos, abreviaturas, etc), não compatível com o abntex antigo, somente o novo
-\RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[nomain,xindy,acronym,nonumberlist]{glossaries}
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries
@@ -251,27 +251,29 @@ S\~ao Bernardo do Campo\\
 \newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}             % mesma coisa, mas pro abstract
 
 % apendice
-\newcommand{\apendice}[1]{                                                           % caso exista apenas 1 apendice, nao eh necessario  enumerar cada um
-\addcontentsline{toc}{chapter}{AP\^ENDICE - #1}                                      % adiciona o apendice no sumario
-\newpage\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\part*{AP\^ENDICE - #1}\end{center}\vfill\mbox{}\newpage} % coloca o titulo do apendice segundo o manual
+\newcommand{\apendice}[1]{% caso exista apenas 1 apendice, nao eh necessario  enumerar
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{AP\^ENDICE - #1}}\end{center}\vfill\newpage%
+\addcontentsline{toc}{chapter}{AP\^ENDICE - #1}}
 
 % mesma coisa para mais de um apendice
 \newcounter{ap}             % contador para o numero de apendices 
 \setcounter{ap}{1}          % inicia o contador em 1
 \newcommand{\apendices}[1]{ % mesma coisa do anterior, soh que tem o "s" no final para diferenciar o nome do comando
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{ap} - #1}%
-\newpage\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\part*{AP\^ENDICE \Alph{ap} - #1}\addtocounter{ap}{1}\end{center}\vfill\mbox{}\newpage}
+
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{AP\^ENDICE \Alph{ap} - #1}}\end{center}\addtocounter{ap}{1}\vfill\newpage%
+\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{ap} - #1}}
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
 \newcommand{\anexo}[1]{%
-\addcontentsline{toc}{chapter}{ANEXO - #1}%
-\newpage\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\part*{ANEXO - #1}\end{center}\vfill\mbox{}\newpage}
+
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{ANEXO - #1}}\end{center}\vfill\newpage%
+\addcontentsline{toc}{chapter}{ANEXO - #1}}
 
 \newcounter{an}
 \setcounter{an}{1}
 \newcommand{\anexos}[1]{%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{an} - #1}%
-\newpage\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\part*{ANEXO \Alph{an} - #1}\addtocounter{an}{1}\end{center}\vfill\mbox{}\newpage}
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{ANEXO \Alph{an} - #1}}\end{center}\addtocounter{an}{1}\vfill\newpage%
+\addcontentsline{toc}{chapter}{ANEXO \Alph{an} - #1}}
 
 % referências e citações
 \RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
