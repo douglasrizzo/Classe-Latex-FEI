@@ -60,7 +60,7 @@ Existem diversas instituições que utilizam modelos baseados na \index{ABNT}\gl
 
 O único arquivo necessário para escrever o documento seguindo o modelo proposto é a classe \texttt{fei.cls} que realiza a formatação de todo o texto, iniciando pela capa, passando pelos elementos de pré-texto, textuais, referências e, finalmente, pela formatação de anexos e apêndices.
 
-É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX~(para Windows), Mac\TeX~(para Mac OS) e \TeX Live (para Linux e Mac OS).
+É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX~(para Windows), Mac\TeX~(para Mac OS) e \TeX~Live (para Linux e Mac OS).
 
 \section{A classe da \index{FEI}FEI (fei.cls)}
 
@@ -403,11 +403,11 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think 'are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
 	\end{quote}
 
-	\chapter{ÍNDICES USANDO MAKEINDEX E XINDY}\label{chap:indice}
+	\chapter{ÍNDICES USANDO MAKEINDEX}\label{chap:indice}
 	
-	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \texttt{xindy} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Portanto, é necessário ter o \texttt{xindy} instalado para que a compilação tenha sucesso.
+	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \texttt{makeindex} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Normalmente, o \texttt{makeindex} vem junto com a instalação do \LaTeX.
 	
-	\emph{Nota:} antes do advento do \texttt{xindy}, era comum (e ainda o é) a comunidade \index{Latex@\LaTeX}\LaTeX~utilizar a ferramenta \texttt{makeindex}. Pelo fato do \texttt{makeindex} não suportar idiomas que não sejam o inglês, foi decidido importar o \texttt{xindy} neste projeto. No entanto, se você quiser dicas avançadas para a criação de índices, recomenda-se a leitura da documentação do \texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex), uma vez que ambos os programas seguem o mesmo padrão de codificação.
+	\emph{Nota:} pelo fato do \texttt{makeindex} não processar palavras que não sejam do idioma inglês muito bem, foi criado um sucessor espiritual para ele, o \texttt{xindy}. No entanto, o \texttt{xindy} não possui versões para Windows e Mac OS, então foi optado utilizar o \texttt{makeindex} neste projeto. Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex).
 	
 	\section{Indexando palavras}
 	
@@ -425,7 +425,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \verb+glossaries+, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \verb+glossaries+ exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
-	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \texttt{glossaries} depende das ferramentas \texttt{makeindex} ou \texttt{xindy} para funcionar. Aqui, nós também optamos pelo \texttt{xindy} e é necessário que você possua ele instalado no computador para gerar as listas.
+	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \texttt{glossaries} depende das ferramentas \texttt{makeindex}.
 	
 	\section{Indexando abreviaturas}
 	
@@ -514,7 +514,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	\section{Compilação utilizando arara}
 	
-	O \texttt{arara} (\url{cereda.github.io/arara/}) é uma ferramenta que automatiza a compilação de projetos em \index{Latex@\LaTeX}\LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{tex} utilizando comentários colocados nas primeiras linhas do arquivo como instruções. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex} e \texttt{xindy} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
+	O \texttt{arara} (\url{cereda.github.io/arara/}) é uma ferramenta que automatiza a compilação de projetos em \index{Latex@\LaTeX}\LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{tex} utilizando comentários colocados nas primeiras linhas do arquivo como instruções. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
 	
 	\begin{verbatim}
 % arara: pdflatex
@@ -538,18 +538,25 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	Este capítulo guia o leitor na instalação dos diferentes pacotes e programas necessários para utilizar todas as funcionalidades da classe \texttt{fei.cls}.
 	
+	\section{Windows}
+	
+	A opção mais simples para instalação do \LaTeX~no Windows é o aplicativo Mik\TeX~(\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados.
+	
+	Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX~para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:pacotes}.
+	
 	\section{Ubuntu}
 	
 	No Ubuntu, é necessária a instalação dos seguintes pacotes através do \texttt{apt-get}:
 	
 	\begin{enumerate}
-	\item \texttt{texlive}: pacotes essenciais do \TeX Live;
+	\item \texttt{texlive}: pacotes essenciais do \TeX~Live;
 	\item \texttt{texlive-science}: instala pacotes científicos, como \texttt{algorithm2e} e \texttt{mathtools};
 	\item \texttt{texlive-lang-portuguese}: idioma português do \texttt{babel};
 	\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex}.
 	\item \texttt{texlive-extra-utils}: \texttt{arara};
-	\item \texttt{xindy}: criação de índices e listas usando \texttt{xindy}.
 	\end{enumerate}
+
+	\bibliografia{referencias}
 	
 	\apendice{Arquivos criados pelo processo de compilação}
 	
@@ -559,10 +566,10 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	
 	\item\verb+pdflatex manual.tex+
 	\begin{enumerate}
-	\item \texttt{alg}: \emph{log} do \texttt{xindy};
+	\item \texttt{alg}: \emph{log} do \texttt{makeindex};
 	\item \texttt{aux}: arquivo com as referências a serem processadas pelo Bib\TeX;
 	\item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
-	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo MakeIndex/xindy;	
+	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo MakeIndex;	
 	\item \texttt{loa}: lista de algoritmos;
 	\item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
 	\item \texttt{toc}: sumário;
@@ -619,8 +626,6 @@ symhead_positive "Símbolos";
 symhead_negative "Símbolos";
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\end{verbatim}
-	
-	\bibliografia{referencias}
 
 	\indice
 	
