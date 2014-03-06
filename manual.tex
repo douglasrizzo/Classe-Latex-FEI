@@ -297,22 +297,17 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \end{resumo}
     \end{verbatim}
     
-    \subsection{\textbackslash apendice\{\}, \textbackslash apendices\{\}, \textbackslash anexo\{\} e \textbackslash anexos\{\}}
-    Para os apêndices e anexos foram criados dois comandos separados.
-
-    O modelo da \index{FEI}\gls{fei} requer que os apêndices e anexos sejam numerados apenas quando existe mais de um no trabalho. Caso exista apenas um anexo ou apêndice, este não leva número sequencial.
-
+    \subsection{\textbackslash apendice\{\}, e \textbackslash anexo\{\}}
+    Para os apêndices e anexos foram criados dois comandos separados. Eles devem ser utilizados durante a abertura do apêndice e o argumento entre chaves leva o nome do apêndice ou anexo, assim como em capítulos, seções etc.
+    
     Exemplos:
     
     \begin{verbatim}
-    \apendice{Único apêndice do trabalho}
+    \apendice{Primeiro apêndice}
+    [...]
+    \apendice{Segundo apêndice}
+    [...]
     \anexo{Único anexo do trabalho}
-
-    \apendices{Primeiro apêndice}
-    \apendices{Segundo apêndice}
-    
-    \anexos{Primeiro anexo}
-    \anexos{Segundo anexo}
     \end{verbatim}
 
     \subsection{\textbackslash bibliografia\{\}}
@@ -561,7 +556,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\apendice{Arquivos criados pelo processo de compilação}
 	
 	A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
-	
+		
 	\begin{enumerate}
 	
 	\item\verb+pdflatex manual.tex+
@@ -594,39 +589,6 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\end{enumerate}
 	\end{enumerate}
 	
-	\anexo{Arquivo de estilo para o índice}
-	
-	Segue abaixo o código para um estilo de índice no qual os termos indexados são separados pela primeira letra. Para utilizá-lo, salve-o com a extensão \texttt{ist} no mesmo diretório do arquivo \texttt{tex} e modifique a chamada a MakeIndex de forma que ele utilize o arquivo de estilo na formatação do índice:
-	
-	Exemplo: \verb+makeindex -s estilo.ist manual.idx+
-	
-	\begin{verbatim}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% estilo.ist                                  %
-% Como usar:                                  %
-%     makeindex -s estilo.ist manual.idx      %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-preamble "
-\\begin{theindex}
-  \\providecommand*\\indexgroup[1]{\\indexspace
-    \\item \\textbf{#1}\\nopagebreak}
-"
-
-postamble "\n\n\\end{theindex}\n"
-
-group_skip "  %\n  \\indexspace\n  %\n"
-
-headings_flag 1
-heading_prefix "  %\n  \\indexgroup{"
-heading_suffix "}\n  %\n"
-
-numhead_positive "Números";
-numhead_negative "Números";
-symhead_positive "Símbolos";
-symhead_negative "Símbolos";
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\end{verbatim}
-
 	\indice
 	
 \end{document}

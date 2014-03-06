@@ -245,34 +245,37 @@ S\~ao Bernardo do Campo\\
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries
 
-\newcommand{\aspas}[1]{``#1''}                                                % coloca as aspas no jeito do latex, uma coisa que eu sempre errei
-\newcommand{\marca}{\cellcolor{darkgray}}                                     % deixa a celula da tabela em cinza (usado para fazer o cronograma)
-\newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1} % o resumo pede palavras chave no final
-\newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}             % mesma coisa, mas pro abstract
+\newcommand{\aspas}[1]{``#1''}% coloca as aspas no jeito do latex, uma coisa que eu sempre errei
+\newcommand{\marca}{\cellcolor{darkgray}}% deixa a celula da tabela em cinza (usado para fazer o cronograma)
+\newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1}% o resumo pede palavras chave no final
+\newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}% mesma coisa, mas pro abstract
 
 % apendice
-\newcommand{\apendice}[1]{% caso exista apenas 1 apendice, nao eh necessario  enumerar
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{AP\^ENDICE - #1}}\end{center}\vfill\newpage%
-\addcontentsline{toc}{chapter}{AP\^ENDICE - #1}}
-
-% mesma coisa para mais de um apendice
-\newcounter{ap}             % contador para o numero de apendices 
-\setcounter{ap}{1}          % inicia o contador em 1
-\newcommand{\apendices}[1]{ % mesma coisa do anterior, soh que tem o "s" no final para diferenciar o nome do comando
-
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{AP\^ENDICE \Alph{ap} - #1}}\end{center}\addtocounter{ap}{1}\vfill\newpage%
+\newcounter{ap}% contador para o numero de apendices 
+\setcounter{ap}{0}% inicia o contador em 1
+\newcommand{\apendice}[1]{% mesma coisa do anterior, soh que tem o "s" no final para diferenciar o nome do comando
+\setcounter{table}{0}%
+\setcounter{figure}{0}%
+\setcounter{algocf}{0}%
+\setcounter{footnote}{0}%
+\setcounter{equation}{0}%
+\renewcommand\thechapter{\Alph{chapter}}%
+\stepcounter{ap}\setcounter{chapter}{\value{ap}}%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{AP\^ENDICE \Alph{ap} - #1}}\end{center}\vfill\newpage%
 \addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{ap} - #1}}
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
-\newcommand{\anexo}[1]{%
-
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{ANEXO - #1}}\end{center}\vfill\newpage%
-\addcontentsline{toc}{chapter}{ANEXO - #1}}
-
 \newcounter{an}
-\setcounter{an}{1}
-\newcommand{\anexos}[1]{%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{ANEXO \Alph{an} - #1}}\end{center}\addtocounter{an}{1}\vfill\newpage%
+\setcounter{an}{0}
+\newcommand{\anexo}[1]{%
+\setcounter{table}{0}%
+\setcounter{figure}{0}%
+\setcounter{algocf}{0}%
+\setcounter{footnote}{0}%
+\setcounter{equation}{0}%
+\renewcommand\thechapter{\Alph{chapter}}%
+\stepcounter{an}\setcounter{chapter}{\value{an}}%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{ANEXO \Alph{an} - #1}}\end{center}\vfill\newpage%
 \addcontentsline{toc}{chapter}{ANEXO \Alph{an} - #1}}
 
 % referências e citações
