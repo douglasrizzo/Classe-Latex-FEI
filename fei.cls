@@ -299,9 +299,10 @@ S\~ao Bernardo do Campo\\
                {\endlist\end{singlespace}}
 
 \newcommand{\bibliografia}[1]{%
-\addcontentsline{toc}{chapter}{REFERÊNCIAS}                 % adiciona o titulo ao sumario
-\renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}} % muda o nome do titulo (modelo da biblioteca)
+\renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
+\clearpage
+\addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
 \begin{singlespace}
-\bibliography{#1}  % adiciona realmente a bibliografia
+\bibliography{#1}% adiciona realmente a bibliografia
 \end{singlespace}
 }
