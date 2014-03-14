@@ -1,14 +1,7 @@
-% arara: pdflatex: { shell : yes }
-% arara: bibtex
-% arara: makeindex
-% arara: makeglossaries
-% arara: pdflatex: { shell : yes }
-% arara: pdflatex: { shell : yes }
-
 \documentclass{fei}
 \usepackage[utf8]{inputenc}
 \usepackage{minted}
-\hypersetup{pdftitle={Classe LaTeX da FEI para criação de dissertações e teses de pós-graduação stricto sensu},
+\hypersetup{pdftitle={Classe LaTeX da FEI para criação de trabalhos acadêmicos},
 pdfauthor={Leonardo Anjoletto Ferreira e Douglas De Rizzo Meneghetti},
 pdfsubject={LaTeX},
 pdfkeywords={LaTeX}
@@ -19,7 +12,7 @@ pdfkeywords={LaTeX}
 \newmintinline{latex}{}
 
 \author{Leonardo Anjoletto Ferreira \& Douglas De Rizzo Meneghetti}
-\title{Classe \LaTeX~da FEI para criação de dissertações e teses de pós-graduação stricto sensu}
+\title{Classe \LaTeX~da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o manual de 2007 da biblioteca}
 
 \begin{document}
@@ -31,20 +24,20 @@ pdfkeywords={LaTeX}
 \maketitle
 
 \begin{folhaderosto}
-Dissertação/tese de Mestrado/Doutorado apresentada ao Centro Universitário da FEI para obtenção do título de Mestre/Doutor em [Curso], orientado pelo Prof. Dr. [Orientador].
+Manual da classe \LaTeX~do Centro Universitário da FEI para criação de trabalhos acadêmicos.
 \end{folhaderosto}
 
 %\fichacatalografica{}
 %\folhadeaprovacao{}
-\dedicatoria{A quem eu quero dedicar o texto.}
+\dedicatoria{A todas as pessoas que venham a utilizar essa classe.}
 \begin{agradecimentos}
-A quem eu quero agradecer.
+Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX~e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
 \end{agradecimentos}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
-Resumo vai aqui. 
-\palavraschave{Palavras. Chave. Vão. Aqui.}
+O \TeX~é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX~para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio manual para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste manual, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+\palavraschave{\LaTeX. FEI.}
 \end{resumo}
 
 \begin{abstract}
@@ -79,7 +72,7 @@ Para facilitar a escrita do texto final, alguns comandos/ambientes já existente
 
 Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da \index{ABNT}\gls{abnt} seguido pela biblioteca do Centro Universitário da \index{FEI}\gls{fei}.
 
-O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes criados e modificados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \texttt{glossaries} na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado, assim como introduz o leitor à ferramenta \texttt{arara} de compilação automatizada de projetos \index{Latex@\LaTeX}\LaTeX. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
+O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes criados e modificados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \index{glossaries}\texttt{glossaries} na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
 
 \chapter{CLASSE FEI.CLS}\label{chap:classe}
 
@@ -104,7 +97,7 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
         \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
         \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-        \item\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
+        \item\index{glossaries}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
         \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023.
     \end{enumerate}
 
@@ -116,15 +109,16 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
 
 \section{Comandos e ambientes modificados}
     
-    \subsection{\textbackslash maketitle}
+    \subsection{\texttt{\textbackslash maketitle}}
     
     O comando \latexinline+\maketitle+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \latexinline+\author{}+, o título em \latexinline+\title{}+, o subtítulo de \latexinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa. O local (São Bernardo do Campo) é fixo (podendo ser alterado no arquivo da classe).
 
     \subsection{Ambientes \texttt{itemize} e \texttt{enumerate}}
     
-    Segundo o padrão da biblioteca, toda lista deve utilizar a sequência de letras. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar a letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}).
+    Segundo o padrão da biblioteca, \aspas{Se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas
+ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm}. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
     
-    \subsection{\textbackslash listofalgorithms}
+    \subsection{\texttt{\textbackslash listofalgorithms}}
     
     O pacote \texttt{algorithm2e} já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando \latexinline+\listofalgorithms+ foi modificado para deixar o título centralizado e em português.
     
@@ -158,6 +152,22 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     \end{tabular}
     \caption*{Fonte: Autor}
 \end{table}
+
+	\subsection{Ambiente \texttt{equation}}
+	
+	O manual da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. o ambientes \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \latexinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \latexinline+\ref{}+, porém com a adição dos parênteses.
+	
+	\begin{equation} \label{eq:euler}
+	e^{i\pi}+1=0
+	\end{equation}
+	
+	A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
+	
+	\begin{latexcode}
+	\begin{equation} \label{eq:euler}
+	e^{i\pi}+1=0
+	\end{equation}	
+	\end{latexcode}
     
     \subsection{Variáveis do pacote \texttt{algorithm2e}}
     
@@ -202,28 +212,28 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
 
 \section{Novos ambientes}
 
-    \subsection{\textbackslash folhaderosto}
+    \subsection{\texttt{\textbackslash folhaderosto}}
     A folha de rosto recebe um texto já definido dependendo do tipo de texto escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no manual da biblioteca e deve ser colocado entre o início e o fim do ambiente. Por exemplo,
     \begin{latexcode}
 \begin{folhaderosto}
 Dissertação de Mestrado apresentada ao Centro Universitário
-da FEI para obtenção do título de Mestre em Engenharia Elétrica, 
-orientado pelo Prof. Dr. Nome do Orientador. 
+da FEI para obtenção do título de Mestre em Engenharia
+Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
 \end{folhaderosto}
     \end{latexcode}
 
-    \subsection{\textbackslash resumo}
+    \subsection{\texttt{\textbackslash resumo}}
     O ambiente \texttt{resumo} funciona da mesma forma que o ambiente \texttt{abstract}, sendo a única diferença que o \texttt{abstract} possui o comando \latexinline+\selectlanguage{english}+ no início e o \texttt{resumo} utiliza \latexinline+\selectlanguage{brazil}+.
 
-    \subsection{\textbackslash agradecimentos}
+    \subsection{\texttt{\textbackslash agradecimentos}}
     O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
 
 \section{Novos comandos}
     
-    \subsection{\textbackslash subtitulo\{\}}
+    \subsection{\texttt{\textbackslash subtitulo\{\}}}
     Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por \aspas{:}), foi criado o comando \latexinline+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \latexinline+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
     
-    \subsection{\textbackslash sumario,\textbackslash figuras,\textbackslash tabelas}
+    \subsection{\texttt{\textbackslash sumario},\texttt{\textbackslash figuras},\texttt{\textbackslash tabelas}}
     O \index{Latex@\LaTeX}\LaTeX~já possui comandos que criam sumário, lista de figuras e lista de tabelas, porém, para seguir o modelo necessário e facilitar a manutenção do mesmo foram criados novos comandos que geram estas listas.
 
     As substituições estão visíveis na tabela \ref{tbl:substituicoes}.
@@ -245,7 +255,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \caption*{Fonte: Autor}
 \end{table}
 
-    \subsection{\textbackslash folhadeaprovacao\{\}}
+    \subsection{\texttt{\textbackslash folhadeaprovacao\{\}}}
     O comando para a folha de aprovação pode receber o argumento \texttt{ata.pdf}. Se este argumento foi passado, o comando tenta importar uma página em PDF com o mesmo nome para utilizar como folha de aprovação. Se o argumento não for passado ou for diferente de \texttt{ata.pdf}, será inserido um texto no lugar da página para marcar a posição da folha de aprovação.
 
     As possibilidades de utilização do comando são:
@@ -255,7 +265,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \end{itemize}
     
     
-    \subsection{\textbackslash fichacatalografica\{\}}
+    \subsection{\texttt{\textbackslash fichacatalografica\{\}}}
     Este comando segue o mesmo princípio do \latexinline+\folhadeaprovacao{}+, mas espera que o argumento passado seja \texttt{ficha.pdf}. As possibilidades de utilização do comando são:
     \begin{itemize}
         \item \latexinline+\fichacatalografica{}+: insere uma página com o texto, como descrito;
@@ -264,22 +274,22 @@ orientado pelo Prof. Dr. Nome do Orientador.
  
  Estes dois comandos são os únicos que dependem do pacote \texttt{pdfpages} (para importar a página em PDF).
 
-    \subsection{\textbackslash dedicatoria\{\}}
+    \subsection{\texttt{\textbackslash dedicatoria\{\}}}
     O comando \latexinline+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \latexinline+\dedicatoria{A quem eu quero dedicar o texto}+.
     
-    \subsection{\textbackslash epigrafe\{\}\{\}}
+    \subsection{\texttt{\textbackslash epigrafe\{\}\{\}}}
     A epígrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epigrafe e o segundo o autor da mesma.
     
     \emph{Nota:} O manual da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \latexinline+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
     
     Exemplo: \latexinline+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
     
-    \subsection{\textbackslash aspas\{\}}
+    \subsection{\texttt{\textbackslash aspas\{\}}}
     As aspas no \index{Latex@\LaTeX}\LaTeX~são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \index{Latex@\LaTeX}\LaTeX. Apenas para facilitar a inserção de aspas no formato do \index{Latex@\LaTeX}\LaTeX, foi criado o comando \latexinline+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
 
     Exemplo: \latexinline+\aspas{Texto entre aspas}+ $\to$ \aspas{Texto entre aspas}
     
-    \subsection{\textbackslash marca}
+    \subsection{\texttt{\textbackslash marca}}
     É comum precisar que certas células de uma tabela precisem ser destacadas das demais, como em cronogramas, por exemplo. O comando \latexinline+\marca+ foi feito para que a célula de uma tabela ficasse com o fundo cinza. Este é o único comando que utiliza o pacote \texttt{xcolor}.
 
     Exemplo:
@@ -313,7 +323,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
         \end{center}
     \end{table}
         
-    \subsection{\textbackslash palavraschave\{\} e \textbackslash keyword\{\}}
+    \subsection{\texttt{\textbackslash palavraschave\{\}} e \texttt{\textbackslash keyword\{\}}}
     Segundo o modelo da biblioteca da \index{FEI}\gls{fei}, o resumo e o abstract devem receber no máximo 3 palavras chave. Estes comandos devem ser utilizados dentro dos respectivos ambientes e as palavras devem ser passadas como argumentos.
 
     Exemplo:
@@ -325,7 +335,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \end{resumo}
     \end{latexcode}
     
-    \subsection{\textbackslash apendice\{\}, e \textbackslash anexo\{\}}
+    \subsection{\texttt{\textbackslash apendice\{\}} e \texttt{\textbackslash anexo\{\}}}
     Para os apêndices e anexos foram criados dois comandos separados. Eles devem ser utilizados durante a abertura do apêndice e o argumento entre chaves leva o nome do apêndice ou anexo, assim como em capítulos, seções etc.
     
     Exemplos:
@@ -338,18 +348,16 @@ orientado pelo Prof. Dr. Nome do Orientador.
     \anexo{Único anexo do trabalho}
     \end{latexcode}
 
-    \subsection{\textbackslash bibliografia\{\}}
-    A utilização de referências bibliográficas a partir do \texttt{bibtex} depende do comando \latexinline+\bibliography{}+ que recebe o caminho até o arquivo \texttt{bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \texttt{babel} substitui o nome da página de referências e este só pode ser mudado após o início do texto).
+    \subsection{\texttt{\textbackslash bibliografia\{\}}}
+    A utilização de referências bibliográficas a partir do \index{Bibtex@Bib\TeX}Bib\TeX depende do comando \latexinline+\bibliography{}+ que recebe o caminho até o arquivo \texttt{bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \texttt{babel} substitui o nome da página de referências e este só pode ser mudado após o início do texto).
 
     Para facilitar, foi criado o comando \latexinline+\bibliografia{}+ que recebe como parâmetro o caminho para o arquivo \texttt{bib}. Este comando realiza a formatação necessária e repassa o caminho para o comando \latexinline+\bibliography{}+ padrão do \index{Latex@\LaTeX}\LaTeX.
 
     Exemplo: \latexinline+\bibliografia{minha_bibliografia.bib}+
 
-\chapter{REFERÊNCIA USANDO O abn\TeX}\label{chap:referencia}
+\chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
 
-    \section{O que é o abn\TeX~e como foi utilizado}
-
-    O \gls{abntex}~(\url{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
+    O \gls{abntex} (\url{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas.
 
     Entretanto, a \index{ABNT}\gls{abnt} fornece certas opções para que o texto seja produzido, sendo que a biblioteca do Centro Universitário da \index{FEI}\gls{fei} ficou a cargo de escolher estas formatações para seus trabalhos.
 
@@ -428,9 +436,9 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
 	\chapter{ÍNDICES USANDO MAKEINDEX}\label{chap:indice}
 	
-	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \texttt{makeindex} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Normalmente, o \texttt{makeindex} vem junto com a instalação do \LaTeX.
+	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \index{makeindex}\texttt{makeindex} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Normalmente, o \index{makeindex}\texttt{makeindex} vem junto com a instalação do \LaTeX.
 	
-	\emph{Nota:} pelo fato do \texttt{makeindex} não processar palavras que não sejam do idioma inglês muito bem, foi criado um sucessor espiritual para ele, o \texttt{xindy}. No entanto, o \texttt{xindy} não possui versões para Windows e Mac OS, então foi optado utilizar o \texttt{makeindex} neste projeto. Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex).
+	\emph{Nota:} pelo fato do \index{makeindex}\texttt{makeindex} não processar palavras que não sejam do idioma inglês muito bem, foi criado um sucessor espiritual para ele, o \texttt{xindy}. No entanto, o \texttt{xindy} não possui versões para Windows e Mac OS, então foi optado utilizar o \index{makeindex}\texttt{makeindex} neste projeto. Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \index{makeindex}\texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex).
 	
 	\section{Indexando palavras}
 	
@@ -446,9 +454,9 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	
-	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \latexinline+glossaries+, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \latexinline+glossaries+ exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries}\texttt{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \index{glossaries}\texttt{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
-	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \texttt{glossaries} depende das ferramentas \texttt{makeindex}.
+	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \index{glossaries}\texttt{glossaries} depende das ferramentas \index{makeindex}\texttt{makeindex}.
 	
 	\section{Indexando abreviaturas}
 	
@@ -492,7 +500,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 
 	\section{Utilizando abreviaturas e símbolos indexados}
 	
-	O pacote \latexinline+glossaries+ disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
+	O pacote \index{glossaries}\texttt{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 	
 	\begin{enumerate}
 	\item \latexinline+\gls{codigo}+: imprime a entrada em letras minúsculas;
@@ -501,7 +509,7 @@ orientado pelo Prof. Dr. Nome do Orientador.
 	\item \latexinline+\Glspl{codigo}+: imprime a entrada no plural e em letras maiúsculas.
 	\end{enumerate}
 	
-	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \texttt{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
+	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries}\texttt{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
 	
 	\section{Imprimindo as listas}
 	
@@ -535,28 +543,6 @@ pdflatex manual.tex
 pdflatex manual.tex
 	\end{verbatim}
 	
-	\section{Compilação utilizando arara}
-	
-	O \texttt{arara} (\url{cereda.github.io/arara/}) é uma ferramenta que automatiza a compilação de projetos em \index{Latex@\LaTeX}\LaTeX. Seu trabalho consiste em compilar um arquivo \texttt{tex} utilizando comentários colocados nas primeiras linhas do arquivo como instruções. Esta abordagem permite a abstração por parte do usuário de chamadas complexas a programas como \texttt{makeindex} e \texttt{glossaries}. Abaixo, um exemplo de como os comandos para o processo de compilação exemplificado acima ficariam em \texttt{arara}:
-	
-	\begin{latexcode}
-% arara: pdflatex
-% arara: makeindex
-% arara: makeglossaries
-% arara: bibtex
-% arara: pdflatex
-% arara: pdflatex
-
-\documentclass{fei}
-[...]
-	\end{latexcode}
-	
-	E a chamada ao \texttt{arara} seria feita da seguinte forma:
-	
-	\texttt{arara manual.tex}
-	
-	A escolha de como compilar o projeto fica a cargo do leitor.	
-	
 	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
 	
 	Este capítulo guia o leitor na instalação dos diferentes pacotes e programas necessários para utilizar todas as funcionalidades da classe \texttt{fei.cls}.
@@ -567,17 +553,20 @@ pdflatex manual.tex
 	
 	Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX~para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:pacotes}.
 	
-	\section{Ubuntu}
+	\section{Linux}
 	
-	No Ubuntu, é necessária a instalação dos seguintes pacotes através do \texttt{apt-get}:
+	O \LaTeX é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX~Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
 	
 	\begin{enumerate}
 	\item \texttt{texlive}: pacotes essenciais do \TeX~Live;
 	\item \texttt{texlive-science}: instala pacotes científicos, como \texttt{algorithm2e} e \texttt{mathtools};
 	\item \texttt{texlive-lang-portuguese}: idioma português do \texttt{babel};
 	\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex}.
-	\item \texttt{texlive-extra-utils}: \texttt{arara};
 	\end{enumerate}
+
+	\section{Mac OS}
+	
+	No Mac, o \LaTeX~pode ser instalado através do Mac\TeX (\url{http://tug.org/mactex/}), uma compilação completa do \TeX~Live para Mac.
 
 	\bibliografia{referencias}
 	
@@ -589,10 +578,10 @@ pdflatex manual.tex
 	
 	\item\verb+pdflatex manual.tex+
 	\begin{enumerate}
-	\item \texttt{alg}: \emph{log} do \texttt{makeindex};
-	\item \texttt{aux}: arquivo com as referências a serem processadas pelo Bib\TeX;
+	\item \texttt{alg}: \emph{log} do \index{makeindex}\texttt{makeindex};
+	\item \texttt{aux}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
 	\item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
-	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo MakeIndex;	
+	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \index{makeindex}MakeIndex;	
 	\item \texttt{loa}: lista de algoritmos;
 	\item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
 	\item \texttt{toc}: sumário;
@@ -601,7 +590,7 @@ pdflatex manual.tex
 	\item\verb+bibtex manual.aux+
 	\begin{enumerate}
 	\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
-	\item \texttt{blg}: \emph{log} do Bib\TeX.
+	\item \texttt{blg}: \emph{log} do \index{Bibtex@Bib\TeX}Bib\TeX.
 	\end{enumerate}	
 	
 	\item\verb+makeindex manual.idx+
@@ -613,7 +602,7 @@ pdflatex manual.tex
 	\item\verb+makeglossaries manual+
 	\begin{enumerate}
 	\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \latexinline+\printglossaries+;
-	\item \texttt{glg}: \emph{log} do MakeGlossaries.
+	\item \texttt{glg}: \emph{log} do \index{makeglossaries}MakeGlossaries.
 	\end{enumerate}
 	\end{enumerate}
 	
