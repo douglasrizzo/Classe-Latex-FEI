@@ -12,7 +12,7 @@ pdfkeywords={LaTeX}
 \newmintinline{latex}{}
 
 \author{Leonardo Anjoletto Ferreira \& Douglas De Rizzo Meneghetti}
-\title{Classe \LaTeX~da FEI para criação de trabalhos acadêmicos}
+\title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o manual de 2007 da biblioteca}
 
 \begin{document}
@@ -24,19 +24,19 @@ pdfkeywords={LaTeX}
 \maketitle
 
 \begin{folhaderosto}
-Manual da classe \LaTeX~do Centro Universitário da FEI para criação de trabalhos acadêmicos.
+Manual da classe \LaTeX\ do Centro Universitário da FEI para criação de trabalhos acadêmicos.
 \end{folhaderosto}
 
 %\fichacatalografica{}
 %\folhadeaprovacao{}
 \dedicatoria{A todas as pessoas que venham a utilizar essa classe.}
 \begin{agradecimentos}
-Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX~e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
+Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX\ e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
 \end{agradecimentos}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
-O \TeX~é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX~para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio manual para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste manual, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+O \TeX\ é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX\ para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio manual para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste manual, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
 \palavraschave{\LaTeX. FEI.}
 \end{resumo}
 
@@ -58,13 +58,13 @@ Existem diversas instituições que utilizam modelos baseados na \index{ABNT}\gl
 
 O único arquivo necessário para escrever o documento seguindo o modelo proposto é a classe \texttt{fei.cls} que realiza a formatação de todo o texto, iniciando pela capa, passando pelos elementos de pré-texto, textuais, referências e, finalmente, pela formatação de anexos e apêndices.
 
-É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX~(para Windows), Mac\TeX~(para Mac OS) e \TeX~Live (para Linux e Mac OS).
+É necessário enfatizar a necessidade de instalação de determinados pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX\ (para Windows), Mac\TeX\ (para Mac OS) e \TeX\ Live (para Linux e Mac OS).
 
 \section{A classe da \index{FEI}FEI (fei.cls)}
 
 A escrita da classe que formata o texto foi realizada seguindo apenas o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007).
 
-Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX~existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
+Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX\ existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados.
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
@@ -72,7 +72,7 @@ Para facilitar a escrita do texto final, alguns comandos/ambientes já existente
 
 Este capítulo descreveu a ideia geral utilizada para criar um pacote que forneça os recursos necessários para desenvolver um trabalho escrito segundo o modelo da \index{ABNT}\gls{abnt} seguido pela biblioteca do Centro Universitário da \index{FEI}\gls{fei}.
 
-O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes criados e modificados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \index{glossaries}\texttt{glossaries} na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
+O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os comandos e ambientes criados e modificados. O capítulo \ref{chap:referencia} apresenta uma breve explicação de como o pacote \gls{abntex}~foi utilizado e seus comandos de citação que seguem os padrões utilizados no modelo da \index{FEI}\gls{fei}. O capítulo \ref{chap:indice} ensina os comandos básicos para a criação de um índice remissivo de palavras. O capítulo \ref{chap:indice} ensina como utilizar o pacote \index{glossaries@\texttt{glossaries}}\texttt{glossaries} na indexação e utilização de abreviaturas e símbolos, assim como a impressão das suas respectivas listas. O capítulo \ref{chap:compilando} ensina a ordem em que o projeto deve ser compilado. Por fim, o capítulo \ref{chap:instalacao} guia o leitor na instalação dos diversos pacotes e programas necessários para utilização de todas as funcionalidades da classe \texttt{fei.cls}.
 
 \chapter{CLASSE FEI.CLS}\label{chap:classe}
 
@@ -97,8 +97,9 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
         \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
         \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-        \item\index{glossaries}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
-        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023.
+        \item\index{glossaries@\texttt{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
+        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
+        \item\texttt{ifplatform}: detecta o sistema operacional do usuário.
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
@@ -234,7 +235,7 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
     Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por \aspas{:}), foi criado o comando \latexinline+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \latexinline+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
     
     \subsection{\texttt{\textbackslash sumario},\texttt{\textbackslash figuras},\texttt{\textbackslash tabelas}}
-    O \index{Latex@\LaTeX}\LaTeX~já possui comandos que criam sumário, lista de figuras e lista de tabelas, porém, para seguir o modelo necessário e facilitar a manutenção do mesmo foram criados novos comandos que geram estas listas.
+    O \index{Latex@\LaTeX}\LaTeX\ já possui comandos que criam sumário, lista de figuras e lista de tabelas, porém, para seguir o modelo necessário e facilitar a manutenção do mesmo foram criados novos comandos que geram estas listas.
 
     As substituições estão visíveis na tabela \ref{tbl:substituicoes}.
     
@@ -285,7 +286,7 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
     Exemplo: \latexinline+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
     
     \subsection{\texttt{\textbackslash aspas\{\}}}
-    As aspas no \index{Latex@\LaTeX}\LaTeX~são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \index{Latex@\LaTeX}\LaTeX. Apenas para facilitar a inserção de aspas no formato do \index{Latex@\LaTeX}\LaTeX, foi criado o comando \latexinline+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
+    As aspas no \index{Latex@\LaTeX}\LaTeX\ são geradas de forma diferente dos outros editores de texto e pode ser encontrada em qualquer manual sobre \index{Latex@\LaTeX}\LaTeX. Apenas para facilitar a inserção de aspas no formato do \index{Latex@\LaTeX}\LaTeX, foi criado o comando \latexinline+\aspas{}+ que recebe o texto desejado e o coloca entre aspas.
 
     Exemplo: \latexinline+\aspas{Texto entre aspas}+ $\to$ \aspas{Texto entre aspas}
     
@@ -434,11 +435,13 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think 'are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
 	\end{quote}
 
-	\chapter{ÍNDICES USANDO MAKEINDEX}\label{chap:indice}
+	\chapter{ÍNDICES}\label{chap:indice}
 	
-	Para a criação de índices remissivos, foi importado o pacote \texttt{imakeidx}. Este pacote utiliza o programa \index{makeindex}\texttt{makeindex} na criação de arquivos auxiliares que indexam as palavras a serem colocadas no índice. Normalmente, o \index{makeindex}\texttt{makeindex} vem junto com a instalação do \LaTeX.
+	Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\texttt{makeindex}}\texttt{makeindex} é o programa pioneiro na geração de índices e é parte integrante em todas as instalações do \LaTeX. Contudo, o \index{makeindex@\texttt{makeindex}}\texttt{makeindex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou a cedilha -- não serão organizados corretamente. Para solucionar este problemas, usuários de Linux possuem como opção secundária o \index{xindy@\texttt{xindy}}\texttt{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \index{makeindex@\texttt{makeindex}}\texttt{makeindex}, porém com suporte a uma infinidade de idiomas.
 	
-	\emph{Nota:} pelo fato do \index{makeindex}\texttt{makeindex} não processar palavras que não sejam do idioma inglês muito bem, foi criado um sucessor espiritual para ele, o \texttt{xindy}. No entanto, o \texttt{xindy} não possui versões para Windows e Mac OS, então foi optado utilizar o \index{makeindex}\texttt{makeindex} neste projeto. Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \index{makeindex}\texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex).
+	Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \index{makeindex@\texttt{makeindex}}\texttt{makeindex} e o \index{xindy@\texttt{xindy}}\texttt{xindy} em suas opções. O pacote \texttt{ifplatform} foi utilizado então, para detectar o sistema operacional da máquina do usuário e selecionar o programa de geração de índices.
+	
+	Repare que a classe foi codificada de forma a selecionar o programa de indexação automaticamente. Portanto, mesmo que usuários de Linux \emph{possam} optar por utilizar o \index{makeindex@\texttt{makeindex}}\texttt{makeindex}, a classe \emph{sempre} procurará pelo \index{xindy@\texttt{xindy}}\texttt{xindy} e produzirá um erro se ele não estiver instalado. Como o \index{xindy@\texttt{xindy}}\texttt{xindy} não é parte integrante do \LaTeX, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}.
 	
 	\section{Indexando palavras}
 	
@@ -448,15 +451,17 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 	
 	É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 	
+	Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \index{makeindex@\texttt{makeindex}}\texttt{makeindex} \url(http://www.ctan.org/pkg/makeindex) assim como de \citeonline{goossens1994latex}, que disserta tanto sobre o \index{xindy@\texttt{xindy}}\texttt{xindy} como \index{makeindex@\texttt{makeindex}}\texttt{makeindex}.
+	
 	\section{Imprimindo o índice}
 
 	A impressão do índice é feita utilizando o comando \latexinline+\indice+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	
-	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries}\texttt{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \index{glossaries}\texttt{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\texttt{glossaries}}\texttt{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \index{glossaries@\texttt{glossaries}}\texttt{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
-	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \index{glossaries}\texttt{glossaries} depende das ferramentas \index{makeindex}\texttt{makeindex}.
+	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \index{glossaries@\texttt{glossaries}}\texttt{glossaries} depende das ferramentas \index{makeindex@\texttt{makeindex}}\texttt{makeindex}.
 	
 	\section{Indexando abreviaturas}
 	
@@ -500,7 +505,7 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 
 	\section{Utilizando abreviaturas e símbolos indexados}
 	
-	O pacote \index{glossaries}\texttt{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
+	O pacote \index{glossaries@\texttt{glossaries}}\texttt{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 	
 	\begin{enumerate}
 	\item \latexinline+\gls{codigo}+: imprime a entrada em letras minúsculas;
@@ -509,7 +514,7 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 	\item \latexinline+\Glspl{codigo}+: imprime a entrada no plural e em letras maiúsculas.
 	\end{enumerate}
 	
-	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries}\texttt{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
+	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\texttt{glossaries}}\texttt{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
 	
 	\section{Imprimindo as listas}
 	
@@ -517,7 +522,7 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 
 	\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 	
-	Para a utilização de todos os recursos que a classe \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diversas ferramentas diferentes em ordem específica:
+	Para a utilização de todos os recursos que a classe \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando ferramentas diferentes em ordem específica.
 	
 	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{pdf\LaTeX}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 	
@@ -528,20 +533,22 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 	\item lê os arquivos auxiliares criados em \emph{a}, gerando a bibliografia apenas com as referências utilizadas do arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
 	\item lê os arquivos auxiliares, criando um ou mais arquivos de índice. Necessário apenas se houve indexação de palavras para serem adicionadas ao índice;
 	\item lê os arquivos auxiliares, criando um ou mais arquivos de listas. Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
-	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b--d não foram realizados});
-	\item gera o PDF final (\emph{desnecessário se os passos b--e não foram realizados}).
+	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
+	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}).
 	\end{enumerate}
 	
 	Um exemplo de comando que executa todas essas funções é o seguinte:
 	
 	\begin{verbatim}
-pdflatex manual.tex
+pdflatex -shell-escape manual.tex
 bibtex manual.aux
 makeindex manual.idx
 makeglossaries manual
-pdflatex manual.tex
-pdflatex manual.tex
+pdflatex -shell-escape manual.tex
+pdflatex -shell-escape manual.tex
 	\end{verbatim}
+	
+	\emph{Importante:} o pacote \texttt{ifplatform} exige que o pdf\LaTeX\ seja rodado com a \emph{flag} \texttt{-shell-escape} para detectar o sistema operacional.
 	
 	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
 	
@@ -549,24 +556,25 @@ pdflatex manual.tex
 	
 	\section{Windows}
 	
-	A opção mais simples para instalação do \LaTeX~no Windows é o aplicativo Mik\TeX~(\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados.
+	A opção mais simples para instalação do \LaTeX\ no Windows é o aplicativo Mik\TeX\ (\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados.
 	
-	Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX~para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:pacotes}.
+	Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX\ para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:pacotes}.
 	
 	\section{Linux}
 	
-	O \LaTeX é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX~Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
+	O \LaTeX é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX\ Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
 	
 	\begin{enumerate}
-	\item \texttt{texlive}: pacotes essenciais do \TeX~Live;
+	\item \texttt{texlive}: pacotes essenciais do \TeX\ Live;
 	\item \texttt{texlive-science}: instala pacotes científicos, como \texttt{algorithm2e} e \texttt{mathtools};
 	\item \texttt{texlive-lang-portuguese}: idioma português do \texttt{babel};
-	\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex}.
+	\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex};
+	\item \index{xindy@\texttt{xindy}}\texttt{xindy}: o indexador \index{xindy@\texttt{xindy}}\texttt{xindy}.
 	\end{enumerate}
 
 	\section{Mac OS}
 	
-	No Mac, o \LaTeX~pode ser instalado através do Mac\TeX (\url{http://tug.org/mactex/}), uma compilação completa do \TeX~Live para Mac.
+	No Mac, o \LaTeX\ pode ser instalado através do Mac\TeX\ (\url{http://tug.org/mactex/}), uma compilação completa do \TeX\ Live para Mac.
 
 	\bibliografia{referencias}
 	
@@ -578,10 +586,10 @@ pdflatex manual.tex
 	
 	\item\verb+pdflatex manual.tex+
 	\begin{enumerate}
-	\item \texttt{alg}: \emph{log} do \index{makeindex}\texttt{makeindex};
+	\item \texttt{alg}: \emph{log} do \index{makeindex@\texttt{makeindex}}\texttt{makeindex};
 	\item \texttt{aux}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
 	\item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
-	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \index{makeindex}MakeIndex;	
+	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \index{makeindex@\texttt{makeindex}}MakeIndex;	
 	\item \texttt{loa}: lista de algoritmos;
 	\item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
 	\item \texttt{toc}: sumário;

@@ -233,14 +233,19 @@ S\~ao Bernardo do Campo\\
 % agradecimentos
 \newenvironment{agradecimentos}{\part*{Agradecimentos}}{}
 
+% detecta o sistema operacional
+\RequirePackage{ifplatform}
+
 %índice
-\RequirePackage{imakeidx}
+\iflinux\RequirePackage[xindy]{imakeidx}
+\else\RequirePackage{imakeidx}\fi
 \renewcommand{\indexname}{\'Indice}
 \makeindex[title=\hfill \'INDICE \hfill \mbox{}]
 \newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}\printindex}
 
 %pacote para gerar listas (símbolos, abreviaturas, etc), não compatível com o abntex antigo, somente o novo
-\RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+\iflinux\RequirePackage[xindy,nomain,acronym,nonumberlist]{glossaries}
+\else\RequirePackage[nomain,acronym,nonumberlist]{glossaries}\fi
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries
