@@ -46,7 +46,7 @@
 % tamanho do papel (A4) e margens
 \setlength{\paperheight}{297mm} 
 \setlength{\paperwidth}{210mm}
-\RequirePackage[top=2cm,bottom=3cm,left=3cm,right=2cm]{geometry}
+\RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 
 % cabecalho e rodape
 \RequirePackage{fancyhdr}
@@ -84,7 +84,8 @@
 \numberwithin{equation}{chapter}
 
 % outros pacotes
-\usepackage{times}             % Times New Roman como fonte de tudo
+\RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{times}         % Times New Roman como fonte de tudo
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{paralist}      % listas na mesma linha
 \RequirePackage{multirow}      % uma coluna ocupando varias linhas
@@ -102,6 +103,12 @@
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
 \clubpenalty=10000
+
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{algocf}{chapter}
+\counterwithout{equation}{chapter}
 
 % legendas fonte 10 pt, linhas com espaçamento único, justificado e separado por traço
 \RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption}
@@ -236,14 +243,14 @@ S\~ao Bernardo do Campo\\
 % detecta o sistema operacional
 \RequirePackage{ifplatform}
 
-%índice
+% índice
 \iflinux\RequirePackage[xindy]{imakeidx}
 \else\RequirePackage{imakeidx}\fi
 \renewcommand{\indexname}{\'Indice}
 \makeindex[title=\hfill \'INDICE \hfill \mbox{}]
 \newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}\printindex}
 
-%pacote para gerar listas (símbolos, abreviaturas, etc), não compatível com o abntex antigo, somente o novo
+% pacote para gerar listas (símbolos, abreviaturas, etc)
 \iflinux\RequirePackage[xindy,nomain,acronym,nonumberlist]{glossaries}
 \else\RequirePackage[nomain,acronym,nonumberlist]{glossaries}\fi
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
@@ -258,7 +265,7 @@ S\~ao Bernardo do Campo\\
 % apendice
 \newcounter{ap}% contador para o numero de apendices 
 \setcounter{ap}{0}% inicia o contador em 1
-\newcommand{\apendice}[1]{% mesma coisa do anterior, soh que tem o "s" no final para diferenciar o nome do comando
+\newcommand{\apendice}[1]{%
 \setcounter{table}{0}%
 \setcounter{figure}{0}%
 \setcounter{algocf}{0}%

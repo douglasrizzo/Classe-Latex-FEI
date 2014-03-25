@@ -82,9 +82,10 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
         \item\texttt{geometry}: utilizado para formatar as margens da folha;
         \item\texttt{fancyhdr}: utilizado na formatação do cabeçalho;
         \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-        \item\texttt{fontenc}: codificação da fonte;
+        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
         \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
         \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
         \item\texttt{times}: carrega fonte Times New Roman;
         \item\texttt{graphicx}: importação e utilização de imagens;
         \item\texttt{paralist}: para gerar listas sem quebra de linha;
@@ -99,7 +100,8 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
         \item\index{glossaries@\texttt{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
         \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-        \item\texttt{ifplatform}: detecta o sistema operacional do usuário.
+        \item\texttt{ifplatform}: detecta o sistema operacional do usuário;
+        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações.
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
