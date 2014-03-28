@@ -131,6 +131,9 @@
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
+\renewcommand{\chapter}{%
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+
 \renewcommand{\section}{% 
 \@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
 
@@ -248,7 +251,10 @@ S\~ao Bernardo do Campo\\
 \else\RequirePackage{imakeidx}\fi
 \renewcommand{\indexname}{\'Indice}
 \makeindex[title=\hfill \'INDICE \hfill \mbox{}]
-\newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}\printindex}
+\newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\renewcommand{\chapter}{%
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
+\printindex}%
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
 \iflinux\RequirePackage[xindy,nomain,acronym,nonumberlist]{glossaries}
@@ -262,33 +268,33 @@ S\~ao Bernardo do Campo\\
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1}% o resumo pede palavras chave no final
 \newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}% mesma coisa, mas pro abstract
 
-% apendice
-\newcounter{ap}% contador para o numero de apendices 
-\setcounter{ap}{0}% inicia o contador em 1
-\newcommand{\apendice}[1]{%
-\setcounter{table}{0}%
-\setcounter{figure}{0}%
-\setcounter{algocf}{0}%
-\setcounter{footnote}{0}%
-\setcounter{equation}{0}%
-\renewcommand\thechapter{\Alph{chapter}}%
-\stepcounter{ap}\setcounter{chapter}{\value{ap}}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{AP\^ENDICE \Alph{ap} - #1}}\end{center}\vfill\newpage%
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{ap} - #1}}
+%apendice novo
+\renewcommand{\appendix}{%
+\renewcommand{\chaptername}{\appendixname}%
+\setcounter{chapter}{0}% zera o contador do capítulo
+\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
+\renewcommand{\chapter}[1]{% redefine o comando do capítulo
+\stepcounter{chapter}% soma 1 ao contador do capítulo
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{AP\^ENDICE \thechapter\ -- ##1}\end{center}\vfill\newpage% adiciona uma folha com a letra e título do apêndice
+\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+{\noindent\fontsize{12pt}{14.4pt} \textbf{\MakeUppercase{Ap\^endice \Alph{chapter} -- ##1}}}\vspace{2\baselineskip}
+%\addtocounter{chapter}{-1}
+%\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}{##1}% inicia o apêndice como se fosse um capítulo
+}%
+}%
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
-\newcounter{an}
-\setcounter{an}{0}
-\newcommand{\anexo}[1]{%
-\setcounter{table}{0}%
-\setcounter{figure}{0}%
-\setcounter{algocf}{0}%
-\setcounter{footnote}{0}%
-\setcounter{equation}{0}%
-\renewcommand\thechapter{\Alph{chapter}}%
-\stepcounter{an}\setcounter{chapter}{\value{an}}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\textbf{\MakeUppercase{ANEXO \Alph{an} - #1}}\end{center}\vfill\newpage%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{an} - #1}}
+\newcommand{\anexos}{%
+\renewcommand{\chaptername}{Anexo}%
+\setcounter{chapter}{0}%
+\renewcommand{\thechapter}{\Alph{chapter}}%
+\renewcommand{\chapter}[1]{%
+\stepcounter{chapter}%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{ANEXO \thechapter\ -- ##1}\end{center}\vfill\newpage%
+\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+{\noindent\fontsize{12pt}{14.4pt} \textbf{\MakeUppercase{Anexo \Alph{chapter} -- ##1}}}%
+}%
+}%
 
 % referências e citações
 \RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)

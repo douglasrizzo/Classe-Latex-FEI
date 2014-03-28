@@ -1,6 +1,6 @@
 \documentclass{fei}
 \usepackage[utf8]{inputenc}
-\usepackage{minted}
+\usepackage{minted,multicol}
 \hypersetup{pdftitle={Classe LaTeX da FEI para criação de trabalhos acadêmicos},
 pdfauthor={Leonardo Anjoletto Ferreira e Douglas De Rizzo Meneghetti},
 pdfsubject={LaTeX},
@@ -206,6 +206,22 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 \caption{Exemplo de algoritmo usando algorithm2e em português}
 \label{lst:alg}
 \end{algorithm}
+
+	\subsection{\texttt{\textbackslash appendix}}
+	
+	O \LaTeX\ possui o comando nativo \latexinline+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
+	
+	\begin{latexcode}
+	\chapter{Último capítulo}
+	...
+	\appendix
+	\chapter{Primeiro apêndice}
+	...
+	\chapter{Segundo apêndice}
+	...
+	\end{latexcode}
+	
+	Os anexos, descritos na subseção \ref{sub:anexos}, seguem um raciocínio semelhante, utilizando o comando \latexinline+\anexos+.
     
     \subsection{Outros comandos/ambientes internos}
     
@@ -338,18 +354,18 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
     \end{resumo}
     \end{latexcode}
     
-    \subsection{\texttt{\textbackslash apendice\{\}} e \texttt{\textbackslash anexo\{\}}}
-    Para os apêndices e anexos foram criados dois comandos separados. Eles devem ser utilizados durante a abertura do apêndice e o argumento entre chaves leva o nome do apêndice ou anexo, assim como em capítulos, seções etc.
-    
-    Exemplos:
-    
-    \begin{latexcode}
-    \apendice{Primeiro apêndice}
-    [...]
-    \apendice{Segundo apêndice}
-    [...]
-    \anexo{Único anexo do trabalho}
-    \end{latexcode}
+    \subsection{\texttt{\textbackslash anexos}} \label{sub:anexos}
+    Ao contrário dos apêndices, o \LaTeX\ não possui um comando nativo para tratar anexos. Para isso, foi criado o comando \latexinline+\anexos+ que transforma os capítulos subsequentes em anexos.
+	
+	\begin{latexcode}
+	\chapter{Último capítulo ou anexo}
+	...
+	\anexos
+	\chapter{Primeiro anexo}
+	...
+	\chapter{Segundo anexo}
+	...
+	\end{latexcode}
 
     \subsection{\texttt{\textbackslash bibliografia\{\}}}
     A utilização de referências bibliográficas a partir do \index{Bibtex@Bib\TeX}Bib\TeX depende do comando \latexinline+\bibliography{}+ que recebe o caminho até o arquivo \texttt{bib} utilizado. Porém, a adição da página de referências ao sumário e a formatação do título da mesma dependem de outras variáveis que precisam ser definidas durante a produção do texto (o pacote \texttt{babel} substitui o nome da página de referências e este só pode ser mudado após o início do texto).
@@ -580,7 +596,9 @@ pdflatex -shell-escape manual.tex
 
 	\bibliografia{referencias}
 	
-	\apendice{Arquivos criados pelo processo de compilação}
+	\appendix
+	
+	\chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO}
 	
 	A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
 		
@@ -616,6 +634,224 @@ pdflatex -shell-escape manual.tex
 	\end{enumerate}
 	\end{enumerate}
 	
-	\indice
+	\chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}}
+
+\section{Letras Gregas}
+\begin{multicols}{3}
+\noindent
+\(\alpha\) \verb+\alpha+\\
+\(\beta\) \verb+\beta+\\
+\(\gamma\) \verb+\gamma+\\
+\(\delta\) \verb+\delta+\\
+\(\epsilon\) \verb+\epsilon+\\
+\(\varepsilon\) \verb+\varepsilon+\\
+\(\zeta\) \verb+\zeta+\\
+\(\eta\) \verb+\eta+\\
+\(\theta\) \verb+\theta+\\
+\(\vartheta\) \verb+\vartheta+\\
+\(\iota\) \verb+\iota+\\
+\(\kappa\) \verb+\kappa+\\
+\(\lambda\) \verb+\lambda+\\
+\(\mu\) \verb+\mu+\\
+\(\nu\) \verb+\nu+\\
+\(\xi\) \verb+\xi+\\
+\(\o\) \verb+\o+\\
+\(\pi\) \verb+\pi+\\
+\(\varpi\) \verb+\varpi+\\
+\(\rho\) \verb+\rho+\\
+\(\Gamma\) \verb+\Gamma+\\
+\(\Delta\) \verb+\Delta+\\
+\(\Theta\) \verb+\Theta+\\
+\(\Lambda\) \verb+\Lambda+\\
+\(\Xi\) \verb+\Xi+\\
+\(\Pi\) \verb+\Pi+\\
+\(\Sigma\) \verb+\Sigma+\\
+\(\Upsilon\) \verb+\Upsilon+\\
+\(\varrho\) \verb+\varrho+\\
+\(\sigma\) \verb+\sigma+\\
+\(\varsigma\) \verb+\varsigma+\\
+\(\tau\) \verb+\tau+\\
+\(\upsilon\) \verb+\upsilon+\\
+\(\phi\) \verb+\phi+\\
+\(\varphi\) \verb+\varphi+\\
+\(\chi\) \verb+\chi+\\
+\(\psi\) \verb+\psi+\\
+\(\omega\) \verb+\omega+\\
+\(\Phi\) \verb+\Phi+\\
+\(\Psi\) \verb+\Psi+\\
+\(\Omega\) \verb+\Omega+\\
+\end{multicols}
+
+\section{Símbolos}
+\begin{multicols}{3}
+\noindent
+\(\aleph\) \verb+\aleph+\\
+\(\hbar\) \verb+\hbar+\\
+\(\imath\) \verb+\imath+\\
+\(\jmath\) \verb+\jmath+\\
+\(\ell\) \verb+\ell+\\
+\(\wp\) \verb+\wp+\\
+\(\Re\) \verb+\Re+\\
+\(\Im\) \verb+\Im+\\
+\(\partial\) \verb+\partial+\\
+\(\infty\) \verb+\infty+\\
+\(\prime\) \verb+\prime+\\
+\(\emptyset\) \verb+\emptyset+\\
+\(\nabla\) \verb+\nabla+\\
+\(\surd\) \verb+\surd+\\
+\(\top\) \verb+\top+\\
+\(\bot\) \verb+\bot+\\
+\(\|\) \verb+\|+\\
+\(\angle\) \verb+\angle+\\
+\(\triangle\) \verb+\triangle+\\
+\(\backslash\) \verb+\backslash+\\
+\(\forall\) \verb+\forall+\\
+\(\exists\) \verb+\exists+\\
+\(\lnot\) \verb+\neg+ ou \verb+\lnot+\\
+\(\flat\) \verb+\flat+\\
+\(\natural\) \verb+\natural+\\
+\(\sharp\) \verb+\sharp+\\
+\(\clubsuit\) \verb+\clubsuit+\\
+\(\diamondsuit\) \verb+\diamondsuit+\\
+\(\heartsuit\) \verb+\heartsuit+\\
+\(\spadesuit\) \verb+\spadesuit+\\
+\end{multicols}
+
+\section{Operadores Binários}
+\begin{multicols}{3}
+\noindent
+\(\pm\) \verb+\pm+\\
+\(\mp\) \verb+\mp+\\
+\(\setminus\) \verb+\setminus+\\
+\(\cdot\) \verb+\cdot+\\
+\(\times\) \verb+\times+\\
+\(\ast\) \verb+\ast+\\
+\(\star\) \verb+\star+\\
+\(\diamond\) \verb+\diamond+\\
+\(\circ\) \verb+\circ+\\
+\(\bullet\) \verb+\bullet+\\
+\(\div\) \verb+\div+\\
+\(\cap\) \verb+\cap+\\
+\(\cup\) \verb+\cup+\\
+\(\uplus\) \verb+\uplus+\\
+\(\sqcap\) \verb+\sqcap+\\
+\(\sqcup\) \verb+\sqcup+\\
+\(\triangleleft\) \verb+\triangleleft+\\
+\(\triangleright\) \verb+\triangleright+\\
+\(\wr\) \verb+\wr+\\
+\(\bigcirc\) \verb+\bigcirc+\\
+\(\bigtriangleup\) \verb+\bigtriangleup+\\
+\(\bigtriangledown\) \verb+\bigtriangledown+\\
+\(\vee\) \verb+\vee+\\
+\(\wedge\) \verb+\wedge+\\
+\(\oplus\) \verb+\oplus+\\
+\(\ominus\) \verb+\ominus+\\
+\(\otimes\) \verb+\otimes+\\
+\(\oslash\) \verb+\oslash+\\
+\(\odot\) \verb+\odot+\\
+\(\dagger\) \verb+\dagger+\\
+\(\ddagger\) \verb+\ddagger+\\
+\(\amalg\) \verb+\amalg+\\
+\end{multicols}
+
+\section{Relações}
+\begin{multicols}{3}
+\noindent
+\(\leq\) \verb+\leq+\\
+\(\prec\) \verb+\prec+\\
+\(\preceq\) \verb+\preceq+\\
+\(\ll\) \verb+\ll+\\
+\(\subset\) \verb+\subset+\\
+\(\subseteq\) \verb+\subseteq+\\
+\(\sqsubseteq\) \verb+\sqsubseteq+\\
+\(\in\) \verb+\in+\\
+\(\vdash\) \verb+\vdash+\\
+\(\smile\) \verb+\smile+\\
+\(\frown\) \verb+\frown+\\
+\(\propto\) \verb+\propto+\\
+\(\geq\) \verb+\geq+\\
+\(\succ\) \verb+\succ+\\
+\(\succeq\) \verb+\succeq+\\
+\(\gg\) \verb+\gg+\\
+\(\supset\) \verb+\supset+\\
+\(\supseteq\) \verb+\supseteq+\\
+\(\sqsupseteq\) \verb+\sqsupseteq+\\
+\(\notin\) \verb+\notin+\\
+\(\dashv\) \verb+\dashv+\\
+\(\mid\) \verb+\mid+\\
+%\(\parallet\) \verb++\\
+\(\equiv\) \verb+\equiv+\\
+\(\sim\) \verb+\sim+\\
+\(\simeq\) \verb+\simeq+\\
+\(\asymp\) \verb+\asymp+\\
+\(\approx\) \verb+\approx+\\
+\(\cong\) \verb+\cong+\\
+\(\bowtie\) \verb+\bowtie+\\
+\(\ni\) \verb+\ni+\\
+\(\models\) \verb+\models+\\
+\(\doteq\) \verb+\doteq+\\
+\(\perp\) \verb+\perp+\\
+\(\not\equiv\) \verb+\not\equiv+\\
+\(\notin\) \verb+\notin+\\
+\(\ne\) \verb+\ne+\\
+\end{multicols}
+
+\section{Delimitadores}
+\begin{multicols}{3}
+\noindent
+\((\) \verb+(+\\
+\()\) \verb+)+\\
+\(\lbrack\) \verb+\lbrack+\\
+\(\rbrack\) \verb+\rbrack+\\
+\(\lbrace\) \verb+\lbrace+ ou \verb+\{+\\
+\(\rbrace\) \verb+\rbrace+ ou \verb+\}+\\
+\(\langle\) \verb+\langle+\\
+\(\rangle\) \verb+\rangle+\\
+\(\vert\) \verb+\vert+\\
+\(\Vert\) \verb+\Vert+\\
+\([\![\) \verb+[\![+\\
+\(]\!]\) \verb+]\!]+\\
+\(\lfloor\) \verb+\lfloor+\\
+\(\rfloor\) \verb+\rfloor+\\
+\((\!(\) \verb+(\!(+\\
+\()\!)\) \verb+)\!)+\\
+\(\lceil\) \verb+\lceil+\\
+\(\rceil\) \verb+\rceil+\\
+\(\langle\!\langle\) \verb+\langle\!\langle+\\
+\(\rangle\!\rangle\) \verb+\rangle\!\rangle+\\
+\end{multicols}
+
+\section{Setas}
+\begin{multicols}{2}
+\noindent
+\(\leftarrow\) \verb+\leftarrow+\\
+\(\longleftarrow\) \verb+\longleftarrow+\\
+\(\Leftarrow\) \verb+\Leftarrow+\\
+\(\Longleftarrow\) \verb+\Longleftarrow+\\
+\(\rightarrow\) \verb+\rightarrow+\\
+\(\longrightarrow\) \verb+\longrightarrow+\\
+\(\Rightarrow\) \verb+\Rightarrow+\\
+\(\Longrightarrow\) \verb+\Longrightarrow+\\
+\(\leftrightarrow\) \verb+\leftrightarrow+\\
+\(\longleftrightarrow\) \verb+\longleftrightarrow+\\
+\(\Leftrightarrow\) \verb+\Leftrightarrow+\\
+\(\Longleftrightarrow\) \verb+\Longleftrightarrow+\\
+\(\mapsto\) \verb+\mapsto+\\
+\(\longmapsto\) \verb+\longmapsto+\\
+\(\hookleftarrow\) \verb+\hookleftarroq+\\
+\(\hookrightarrow\) \verb+\hookrightarrow+\\
+\(\uparrow\) \verb+\uparrow+\\
+\(\Uparrow\) \verb+\Uparrow+\\
+\(\downarrow\) \verb+\downarrow+\\
+\(\Downarrow\) \verb+\Downarrow+\\
+\(\updownarrow\) \verb+\updownarrow+\\
+\(\Updownarrow\) \verb+\Updownarrow+\\
+\(\nearrow\) \verb+\nearrow+\\
+\(\searrow\) \verb+\searrow+\\
+\(\nwarrow\) \verb+\nwarrow+\\
+\(\swarrow\) \verb+\swarrow+\\
+\end{multicols}
+
+\indice
 	
 \end{document}
