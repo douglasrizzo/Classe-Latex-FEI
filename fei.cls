@@ -306,11 +306,9 @@
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{AP\^ENDICE \thechapter\ -- ##1}\end{center}\vfill\newpage% adiciona uma folha com a letra e título do apêndice
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{AP\^ENDICE \thechapter\ -- ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
 \addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
-{\noindent\fontsize{12pt}{14.4pt} \textbf{\MakeUppercase{Ap\^endice \Alph{chapter} -- ##1}}}\vspace{2\baselineskip}
-%\addtocounter{chapter}{-1}
-%\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}{##1}% inicia o apêndice como se fosse um capítulo
+\newpage%
 }%
 }%
 
@@ -321,9 +319,9 @@
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{ANEXO \thechapter\ -- ##1}\end{center}\vfill\newpage%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{ANEXO \thechapter\ -- ##1}\end{center}\vfill%
 \addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
-{\noindent\fontsize{12pt}{14.4pt} \textbf{\MakeUppercase{Anexo \Alph{chapter} -- ##1}}}%
+\newpage%
 }%
 }%
 
