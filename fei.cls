@@ -40,8 +40,28 @@
 %%% Aqui comeca a classe %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{fei}[2010/06/30 Modelo da FEI] 
+\ProvidesClass{fei}[2010/06/30 Modelo da FEI]
 \LoadClass{report}
+
+\DeclareOption{xindy}{
+  \PassOptionsToPackage{\CurrentOption}{imakeidx}
+  \PassOptionsToPackage{\CurrentOption}{glossaries}
+}
+
+\DeclareOption{draft}
+{
+\newif\iflogvar
+}
+
+\DeclareOption{final}
+{
+\newif\iflogvar
+\logvartrue
+}
+
+\ExecuteOptions{final}
+
+\ProcessOptions\relax
 
 % tamanho do papel (A4) e margens
 \setlength{\paperheight}{297mm} 
@@ -165,12 +185,12 @@
 \clearpage
 \pagestyle{empty}
 \begin{center}
-\uppercase{centro universit\'ario da fei}\\
+\MakeUppercase{\@instituicao}\\
 \MakeUppercase{\@author}
 \vfill
 \textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
-S\~ao Bernardo do Campo\\
+\@cidade\\
 \number\year
 \end{center}
 }
@@ -188,25 +208,41 @@ S\~ao Bernardo do Campo\\
 \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
 \end{flushright}
 \vfill
-S\~ao Bernardo do Campo\\
+\@cidade\\
 \number\year
 \end{center}}
 
 % folha de aprovacao: procura o arquivo *ata.pdf* e inclui no texto, se nao encontrar, deixa um texto no lugar falando que pagina é essa
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
-\newcommand{\folhadeaprovacao}[1]{
-    \ifthenelse{\equal{#1}{ata.pdf}}{\includepdf{#1}}{\clearpage\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}}
+\newcommand{\folhadeaprovacao}{
+\iflogvar
+  \includepdf{ata.pdf}
+\else
+  \clearpage\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+\fi
 }
 
 % ficha catalografica: funciona da mesma forma da folha de aprovacao, so que procura o arquivo *ficha.pdf*
-\newcommand{\fichacatalografica}[1]{
+\newcommand{\fichacatalografica}{
     \addtocounter{page}{-1}
-    \ifthenelse{\equal{#1}{ficha.pdf}}{\includepdf{#1}}{\clearpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}}
+	\iflogvar
+		\includepdf{ficha.pdf}
+	\else
+		\clearpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+	\fi
 }
 
 % subtítulo
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
+
+% cidade
+\def\@cidade{S\~ao Bernardo do Campo}
+\newcommand{\cidade}[1]{\def\@cidade{#1}}
+
+% instituicao
+\def\@instituicao{Centro Universit\'ario da FEI}
+\newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
 % dedicatoria
 \newcommand{\dedicatoria}[1]{
@@ -243,12 +279,8 @@ S\~ao Bernardo do Campo\\
 % agradecimentos
 \newenvironment{agradecimentos}{\part*{Agradecimentos}}{}
 
-% detecta o sistema operacional
-\RequirePackage{ifplatform}
-
 % índice
-\iflinux\RequirePackage[xindy]{imakeidx}
-\else\RequirePackage{imakeidx}\fi
+\RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 \makeindex[title=\hfill \'INDICE \hfill \mbox{}]
 \newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}%
@@ -257,8 +289,7 @@ S\~ao Bernardo do Campo\\
 \printindex}%
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\iflinux\RequirePackage[xindy,nomain,acronym,nonumberlist]{glossaries}
-\else\RequirePackage[nomain,acronym,nonumberlist]{glossaries}\fi
+\RequirePackage[nomain,acronym,nonumberlist]{glossaries}
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries

@@ -2,7 +2,7 @@
 Classe de Latex seguindo o manual da FEI
 
 ##Versão 0.9
-No formato que se encontra, a classe possibilita a utilização de diversos recursos do LaTeX para criação de uma dissertação/tese de pós-graduação no formato exigido pela biblioteca da FEI. No entanto, ela ainda não foi testada extensamente (exceto pelos desenvolvedores que vos falam), então agradecemos a compreensão caso possíveis bugs sejam encontrados.
+No formato que se encontra, a classe possibilita a utilização de diversos recursos do LaTeX para criação de uma monografia, dissertação ou tese no formato exigido pela biblioteca da FEI. No entanto, ela ainda não foi testada extensamente (exceto pelos desenvolvedores que vos falam), então agradecemos a compreensão caso possíveis bugs sejam encontrados.
 
 ###Como utilizar
 O arquivo `modelo.tex` contém um exemplo básico de documento para ser utilizado como ponto de partida para a escrita de um trabalho.
