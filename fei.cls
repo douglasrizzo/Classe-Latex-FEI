@@ -81,7 +81,7 @@
 \RequirePackage[T1]{fontenc}
 
 % algoritmos
-\RequirePackage[portuguese,algochapter]{algorithm2e}
+\RequirePackage[plain,portuguese,algochapter]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
 \SetKwInput{Dados}{Dados}
@@ -98,6 +98,10 @@
 \SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
+
+\SetAlgoCaptionSeparator{--}
+\SetAlCapFnt{\normalfont}
+\SetAlCapSkip{10pt}
 
 % matematica
 \RequirePackage{mathtools}
