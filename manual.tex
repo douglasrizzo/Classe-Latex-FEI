@@ -1,4 +1,4 @@
-\documentclass[xindy,draft]{fei}
+\documentclass[xindy,rascunho]{fei}
 \usepackage[utf8]{inputenc}
 \usepackage{minted,multicol}
 \hypersetup{pdftitle={Classe LaTeX da FEI para criação de trabalhos acadêmicos},
@@ -20,6 +20,8 @@ pdfkeywords={LaTeX}
 \newacronym{fei}{FEI}{Fundação Educacional Inaciana}
 \newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
+\newacronym{cqd}{CQD}{como se queria demonstrar}
+\newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
 
 \maketitle
 
@@ -46,7 +48,8 @@ Abstract goes here.
 \end{abstract}
 
 \tabelas
-\listofalgorithms
+\algoritmos
+\teoremas
 \printglossaries
 \sumario
 
@@ -100,7 +103,9 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
         \item\index{glossaries@\emph{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
         \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações.
+        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+        \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm}.
     \end{enumerate}
 
 \section{Pacotes que faltam importar}
@@ -119,16 +124,12 @@ O capítulo \ref{chap:classe} trata da classe \texttt{fei.cls}, explicando os co
     
     \subsection{\texttt{\textbackslash maketitle}}
     
-    O comando \latexinline+\maketitle+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \latexinline+\author{}+, o título em \latexinline+\title{}+, o subtítulo de \latexinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa. O local (São Bernardo do Campo) é fixo (podendo ser alterado no arquivo da classe).
+    O comando \latexinline+\maketitle+ foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \latexinline+\author{}+, o título em \latexinline+\title{}+, o subtítulo de \latexinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
 
     \subsection{Ambientes \texttt{itemize} e \texttt{enumerate}}
     
     Segundo o padrão da biblioteca, \aspas{Se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas
 ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm}. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:pacotes}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
-    
-    \subsection{\texttt{\textbackslash listofalgorithms}}
-    
-    O pacote \texttt{algorithm2e} já importado permite que algumas configurações sejam feitas, como a formatação da lista de algoritmos. O comando \latexinline+\listofalgorithms+ foi modificado para deixar o título centralizado e em português.
     
     \subsection{Ambiente \texttt{table}}
 
@@ -251,6 +252,31 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 
     \subsection{\texttt{\textbackslash agradecimentos}}
     O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
+    
+    \subsection{Teoremas e outros ambientes semelhantes}
+    É comum encontrar, na literatura de exatas, teoremas e seus derivados, tipografados de maneira diferenciada. Em \LaTeX, a classe \texttt{amsthm} permite que teoremas sejam escritos em seus próprios ambientes e formatados de acordo, como no seguinte exemplo:
+    
+\begin{latexcode}
+\begin{teorema}
+Exemplo de teorema.
+\end{teorema}
+\end{latexcode}
+
+Resultado:
+
+\begin{teorema}
+Exemplo de teorema.
+\end{teorema}
+
+Caso um teorema possua um nome ou referência, essa informação pode ser passada entre colchetes, como uma opção do ambiente:
+
+\latexinline+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
+
+\begin{teorema}[Teorema de Pitágoras \cite{heath1921history}]
+Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
+\end{teorema}
+
+A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese, proposicao, conjectura, paradoxo, corolario, definicao} e \emph{exemplo}, com chamada e numeração em negrito e texto com formatação padrão. Também há o ambiente \emph{prova}, utilizado para se demonstrar alguma propriedade mencionada, o qual não é numerado e tem sua chamada em itálico. O término de um teorema, denominado \aspas{como se queria demonstrar} (CQD), do latim \gls{qed}, é representado pelo símbolo \qedsymbol, denominado \aspas{lápide}.
 
 \section{Novos comandos}
     
@@ -284,6 +310,10 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
     \latexinline+\listoffigures+ & \latexinline+\figuras+ \\ 
     \hline 
     \latexinline+\listoftables+ & \latexinline+\tabelas+ \\ 
+    \hline 
+    \latexinline+\listoftheorems+ & \latexinline+\teoremas+ \\ 
+    \hline 
+    \latexinline+\listofalgorithms+ & \latexinline+\algoritmos+ \\ 
     \hline 
     \end{tabular}
     \caption*{Fonte: Autor}
