@@ -1,3 +1,5 @@
+minted.sty
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -60,6 +62,7 @@
 *.gls
 *.sbl
 *.sym
+*.glsdefs
 
 # hyperref
 *.brf
