@@ -48,7 +48,7 @@
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 
-\DeclareOption{draft}
+\DeclareOption{rascunho}
 {
 \newif\iflogvar
 }
@@ -81,7 +81,7 @@
 \RequirePackage[T1]{fontenc}
 
 % algoritmos
-\RequirePackage[boxed,portuguese,algochapter]{algorithm2e}
+\RequirePackage[portuguese,algochapter]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
 \SetKwInput{Dados}{Dados}
@@ -172,8 +172,8 @@
 \newcommand{\sumario}{\part*{Sum\'ario}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
 \newcommand{\figuras}{\part*{Lista de Figuras}\@starttoc{lof}}
 \newcommand{\tabelas}{\part*{Lista de Tabelas}\@starttoc{lot}}
-\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\@starttoc{loa}}
-\renewcommand{\listoftables}{\clearpage\listof{tables}{\listtablesname}}
+\newcommand{\algoritmos}{\part*{\listalgorithmcfname}\@starttoc{loa}}
+\newcommand{\teoremas}{\part*{\listtheoremname}\@starttoc{loe}}
 
 % configuracao do sumario
 \renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
@@ -185,10 +185,11 @@
 \clearpage
 \pagestyle{empty}
 \begin{center}
+\textbf{
 \MakeUppercase{\@instituicao}\\
 \MakeUppercase{\@author}
 \vfill
-\textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
+\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
 \number\year
@@ -202,7 +203,7 @@
 \begin{center}
 \MakeUppercase{\@author}\\
 \vspace*{0.45\textheight}
-\ifthenelse{\isundefined{\@subtitulo}}{\textbf{\@title}}{\textbf{\@title: \@subtitulo}}\\
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
 \vfill
 \begin{flushright}
 \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
@@ -299,7 +300,23 @@
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1}% o resumo pede palavras chave no final
 \newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}% mesma coisa, mas pro abstract
 
-%apendice novo
+% teoremas
+\RequirePackage{amsthm,thmtools}
+\renewcommand{\listtheoremname}{Lista de Teoremas}
+
+\declaretheorem[style=definition,name=Axioma,qed=\qedsymbol]{axioma}
+\declaretheorem[style=definition,name=Teorema,qed=\qedsymbol]{teorema}
+\declaretheorem[style=definition,name=Lema,qed=\qedsymbol]{lema}
+\declaretheorem[style=definition,name=Hip\'otese,qed=\qedsymbol]{hipotese}
+\declaretheorem[style=definition,name=Proposi\c{c}\~ao,qed=\qedsymbol]{proposicao}
+\declaretheorem[style=definition,name=Conjectura,qed=\qedsymbol]{conjectura}
+\declaretheorem[style=definition,name=Paradoxo,qed=\qedsymbol]{paradoxo}
+\declaretheorem[style=definition,name=Corol\'ario,qed=\qedsymbol]{corolario}
+\declaretheorem[style=definition,name=Defini\c{c}\~ao,qed=\qedsymbol]{definicao}
+\declaretheorem[style=definition,name=Exemplo,qed=\qedsymbol]{exemplo}
+\declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
+
+% apendice novo
 \renewcommand{\appendix}{%
 \renewcommand{\chaptername}{\appendixname}%
 \setcounter{chapter}{0}% zera o contador do capítulo
