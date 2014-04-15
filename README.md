@@ -1,5 +1,3 @@
-**Aviso: ultimamente o GitHub anda bloqueando algumas submissões, então as atualizações estão passando por dificuldades técnicas. Assim que tudo normalizar, essa mensagem desaparecerá daqui.**
-
 #Classe Latex da FEI
 Este repositório contém a classe LaTeX do Centro Universitário da FEI para formatação de trabalhos acadêmicos (monografia, dissertação ou tese), baseada no manual de 2007 da biblioteca. A classe possibilita a criação de um trabalho acadêmico completo, com inserção de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário e listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos).
 
