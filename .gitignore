@@ -36,6 +36,7 @@
 
 # amsthm
 *.thm
+*.loe
 
 # beamer
 *.nav
@@ -57,6 +58,8 @@
 *.glg
 *.glo
 *.gls
+*.sbl
+*.sym
 
 # hyperref
 *.brf
