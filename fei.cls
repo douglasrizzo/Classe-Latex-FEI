@@ -116,6 +116,22 @@
 \RequirePackage[table]{xcolor} % cores na tabela
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref} % links dentro do texto
 
+% teoremas
+\RequirePackage{amsthm,thmtools}
+\renewcommand{\listtheoremname}{Lista de Teoremas}
+
+\declaretheorem[style=definition,name=Axioma,qed=\qedsymbol]{axioma}
+\declaretheorem[style=definition,name=Teorema,qed=\qedsymbol]{teorema}
+\declaretheorem[style=definition,name=Lema,qed=\qedsymbol]{lema}
+\declaretheorem[style=definition,name=Hip\'otese,qed=\qedsymbol]{hipotese}
+\declaretheorem[style=definition,name=Proposi\c{c}\~ao,qed=\qedsymbol]{proposicao}
+\declaretheorem[style=definition,name=Conjectura,qed=\qedsymbol]{conjectura}
+\declaretheorem[style=definition,name=Paradoxo,qed=\qedsymbol]{paradoxo}
+\declaretheorem[style=definition,name=Corol\'ario,qed=\qedsymbol]{corolario}
+\declaretheorem[style=definition,name=Defini\c{c}\~ao,qed=\qedsymbol]{definicao}
+\declaretheorem[style=definition,name=Exemplo,qed=\qedsymbol]{exemplo}
+\declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
+
 % configuracao do texto
 \RequirePackage{setspace}      % pacote para controlar o espacamento
 \onehalfspace                  % espacamento de 1,5 (segundo manual)
@@ -303,22 +319,6 @@
 \newcommand{\marca}{\cellcolor{darkgray}}% deixa a celula da tabela em cinza (usado para fazer o cronograma)
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1}% o resumo pede palavras chave no final
 \newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}% mesma coisa, mas pro abstract
-
-% teoremas
-\RequirePackage{amsthm,thmtools}
-\renewcommand{\listtheoremname}{Lista de Teoremas}
-
-\declaretheorem[style=definition,name=Axioma,qed=\qedsymbol]{axioma}
-\declaretheorem[style=definition,name=Teorema,qed=\qedsymbol]{teorema}
-\declaretheorem[style=definition,name=Lema,qed=\qedsymbol]{lema}
-\declaretheorem[style=definition,name=Hip\'otese,qed=\qedsymbol]{hipotese}
-\declaretheorem[style=definition,name=Proposi\c{c}\~ao,qed=\qedsymbol]{proposicao}
-\declaretheorem[style=definition,name=Conjectura,qed=\qedsymbol]{conjectura}
-\declaretheorem[style=definition,name=Paradoxo,qed=\qedsymbol]{paradoxo}
-\declaretheorem[style=definition,name=Corol\'ario,qed=\qedsymbol]{corolario}
-\declaretheorem[style=definition,name=Defini\c{c}\~ao,qed=\qedsymbol]{definicao}
-\declaretheorem[style=definition,name=Exemplo,qed=\qedsymbol]{exemplo}
-\declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
 
 % apendice novo
 \renewcommand{\appendix}{%
