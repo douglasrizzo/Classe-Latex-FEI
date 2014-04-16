@@ -81,7 +81,7 @@
 \RequirePackage[T1]{fontenc}
 
 % algoritmos
-\RequirePackage[plain,portuguese,algochapter]{algorithm2e}
+\RequirePackage[plain,portuguese,algochapter,linesnumbered,inoutnumbered]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
 \SetKwInput{Dados}{Dados}
@@ -194,6 +194,7 @@
 \newcommand{\tabelas}{\part*{Lista de Tabelas}\@starttoc{lot}}
 \newcommand{\algoritmos}{\part*{\listalgorithmcfname}\@starttoc{loa}}
 \newcommand{\teoremas}{\part*{\listtheoremname}\@starttoc{loe}}
+\newcommand{\glossario}{\printglossaries}
 
 % configuracao do sumario
 \renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
@@ -284,7 +285,7 @@
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
-\aspas{#1}
+``{#1}''
 \\
 #2
 \end{minipage}
@@ -315,7 +316,6 @@
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries
 
-\newcommand{\aspas}[1]{``#1''}% coloca as aspas no jeito do latex, uma coisa que eu sempre errei
 \newcommand{\marca}{\cellcolor{darkgray}}% deixa a celula da tabela em cinza (usado para fazer o cronograma)
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1}% o resumo pede palavras chave no final
 \newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}% mesma coisa, mas pro abstract
