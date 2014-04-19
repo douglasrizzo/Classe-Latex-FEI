@@ -115,6 +115,7 @@
 \RequirePackage{multirow}      % uma coluna ocupando varias linhas
 \RequirePackage[table]{xcolor} % cores na tabela
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref} % links dentro do texto
+\RequirePackage{morewrites} % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
 % teoremas
 \RequirePackage{amsthm,thmtools}
@@ -198,7 +199,6 @@
 \newcommand{\tabelas}{\part*{Lista de Tabelas}\@starttoc{lot}}
 \newcommand{\algoritmos}{\part*{\listalgorithmcfname}\@starttoc{loa}}
 \newcommand{\teoremas}{\part*{\listtheoremname}\@starttoc{loe}}
-\newcommand{\glossario}{\printglossaries}
 
 % novas paginas
 % capa
