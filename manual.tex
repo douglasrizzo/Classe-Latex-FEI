@@ -15,6 +15,8 @@ pdfkeywords={LaTeX}
 \title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o manual de 2007 da biblioteca}
 
+\makeindex
+
 \begin{document}
 
 \newacronym{fei}{FEI}{Fundação Educacional Inaciana}
@@ -39,12 +41,12 @@ Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX\
 
 \begin{resumo}
 O \TeX\ é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX\ para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio manual para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste manual, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
-\palavraschave{\LaTeX. FEI.}
+\keywords{\LaTeX. FEI.}
 \end{resumo}
 
 \begin{abstract}
 Abstract goes here.
-\keyword{Keywords. Go. Here.}
+\keywords{Keywords. Go. Here.}
 \end{abstract}
 
 \tabelas
@@ -614,7 +616,7 @@ pdflatex manual.tex
 	
 	No Mac, o \LaTeX\ pode ser instalado através do Mac\TeX\ (\url{http://tug.org/mactex/}), uma compilação completa do \TeX\ Live para Mac.
 
-	\bibliografia{referencias}
+	\bibliography{referencias}
 	
 	\appendix
 	
@@ -872,6 +874,6 @@ pdflatex manual.tex
 \(\swarrow\) \verb+\swarrow+\\
 \end{multicols}
 
-\indice
+\printindex
 	
 \end{document}

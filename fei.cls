@@ -305,11 +305,13 @@
 % índice
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
-\makeindex[title=\hfill \'INDICE \hfill \mbox{}]
-\newcommand{\indice}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\let\oldmakeindex\makeindex
+\let\oldprintindex\printindex
+\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
-\printindex}%
+\oldprintindex}%
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
 \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
@@ -319,7 +321,7 @@
 
 \newcommand{\marca}{\cellcolor{darkgray}}% deixa a celula da tabela em cinza (usado para fazer o cronograma)
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
-\newcommand{\keyword}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
+\newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
 % apendice novo
 \renewcommand{\appendix}{%
@@ -367,11 +369,12 @@
                 \item\relax}
                {\endlist\end{singlespace}}
 
-\newcommand{\bibliografia}[1]{%
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
 \clearpage
 \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
 \begin{singlespace}
-\bibliography{#1}% adiciona realmente a bibliografia
+\oldbibliography{#1}% adiciona realmente a bibliografia
 \end{singlespace}
 }
