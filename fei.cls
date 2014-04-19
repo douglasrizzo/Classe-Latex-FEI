@@ -187,6 +187,10 @@
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
+% configuracao do sumario
+\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
 % titulos de listas centralizadas
 \newcommand{\sumario}{\part*{Sum\'ario}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
@@ -195,9 +199,6 @@
 \newcommand{\algoritmos}{\part*{\listalgorithmcfname}\@starttoc{loa}}
 \newcommand{\teoremas}{\part*{\listtheoremname}\@starttoc{loe}}
 \newcommand{\glossario}{\printglossaries}
-
-% configuracao do sumario
-\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
 
 % novas paginas
 % capa
@@ -282,12 +283,10 @@
 \newcommand{\epigrafe}[2]{
 \clearpage
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
-\hspace*{0.4\paperwidth\relax}
+\vspace*{.5\paperheight\relax}
+\hspace*{.5\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
-``{#1}''
-\\
-#2
+\textit{``{#1}''\\#2}
 \end{minipage}
 \end{flushleft}
 }
@@ -317,8 +316,8 @@
 \makeglossaries
 
 \newcommand{\marca}{\cellcolor{darkgray}}% deixa a celula da tabela em cinza (usado para fazer o cronograma)
-\newcommand{\palavraschave}[1]{\mbox{}\\\noindent\textbf{Palavras-chave:} #1}% o resumo pede palavras chave no final
-\newcommand{\keyword}[1]{\mbox{}\\\noindent\textbf{Keywords:} #1}% mesma coisa, mas pro abstract
+\newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
+\newcommand{\keyword}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
 % apendice novo
 \renewcommand{\appendix}{%
