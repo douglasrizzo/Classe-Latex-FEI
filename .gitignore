@@ -1,6 +1,7 @@
 *~
-
+.tex
 minted.sty
+*.mw
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

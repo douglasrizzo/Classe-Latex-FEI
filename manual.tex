@@ -73,8 +73,8 @@ O texto é organizado da seguinte forma: este capítulo termina enumerando os pa
 Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX\ existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados. É necessário enfatizar a necessidade de instalação destes pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX\ (para Windows), Mac\TeX\ (para Mac OS) e \TeX\ Live (para Linux e Mac OS).
     
     \begin{enumerate}
-        \item\texttt{geometry}: utilizado para formatar as margens da folha;
-        \item\texttt{fancyhdr}: utilizado na formatação do cabeçalho;
+        \item\texttt{geometry}: mudança do tamanho das margens;
+        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
         \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
         \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
         \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
@@ -82,11 +82,9 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
         \item\texttt{times}: carrega fonte Times New Roman;
         \item\texttt{graphicx}: importação e utilização de imagens;
-        \item\texttt{paralist}: para gerar listas sem quebra de linha;
-        \item\texttt{multirow}: permite que uma coluna ocupe várias linhas em uma tabela;
-        \item\texttt{xcolor}: utilizado para alterar cores em células de tabela;
+        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{hyperref}: gera os links entre referências no PDF;
-        \item\texttt{setspace}: espacejamento entre linhas;
+        \item\texttt{setspace}: espaçamento entre linhas;
         \item\texttt{caption}: altera a formatação de certas legendas;
         \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
         \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
@@ -94,7 +92,6 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
         \item\index{glossaries@\emph{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
         \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
         \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
         \item\texttt{morewrites}:  permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente.
@@ -370,9 +367,9 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\subsection{Referências bibliográficas}
 	
-    Para formatar o título da página de referências e adicioná-la ao sumário, foi criado o comando \latexinline+\bibliografia{}+, que recebe como parâmetro o caminho para o arquivo \texttt{bib} e o repassa ao comando \latexinline+\bibliography{}+ do do \index{Latex@\LaTeX}\LaTeX.
+    Para formatar o título da página de referências e adicioná-la ao sumário, utiliza-se o comando \latexinline+\bibliography{}+, que recebe como parâmetro o caminho para o arquivo \texttt{bib} e formata o título da página como pede o manual da biblioteca.
 
-    Exemplo: \latexinline+\bibliografia{minha_bibliografia.bib}+
+    Exemplo: \latexinline+\bibliography{minha_bibliografia.bib}+
 	
 	\subsection{Apêndices e anexos}
 	
@@ -402,7 +399,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\subsection{Índice}
 	
-	A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \latexinline+\indice+.
+	A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \latexinline+\printindex+.
 
 	\chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
 
@@ -487,6 +484,10 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	Como o \emph{xindy} não é parte integrante do \LaTeX, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}.
 	
+	\section{Sinalizando a criação dos arquivos de índice}
+	
+	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo makeindex, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeindex+ ao preâmbulo de seu texto.
+	
 	\section{Indexando palavras}
 	
 	Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \latexinline+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
@@ -499,7 +500,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\section{Imprimindo o índice}
 
-	A impressão do índice é feita utilizando o comando \latexinline+\indice+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
+	A impressão do índice é feita utilizando o comando \latexinline+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	

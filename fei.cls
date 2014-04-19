@@ -111,9 +111,6 @@
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
 \RequirePackage{times}         % Times New Roman como fonte de tudo
 \RequirePackage{graphicx}      % figuras
-\RequirePackage{paralist}      % listas na mesma linha
-\RequirePackage{multirow}      % uma coluna ocupando varias linhas
-\RequirePackage[table]{xcolor} % cores na tabela
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref} % links dentro do texto
 \RequirePackage{morewrites} % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
@@ -199,6 +196,13 @@
 \newcommand{\tabelas}{\part*{Lista de Tabelas}\@starttoc{lot}}
 \newcommand{\algoritmos}{\part*{\listalgorithmcfname}\@starttoc{loa}}
 \newcommand{\teoremas}{\part*{\listtheoremname}\@starttoc{loe}}
+
+\renewcommand{\listoffigures}{\figuras}
+\renewcommand{\listoftables}{\tabelas}
+\renewcommand{\listofalgorithms}{\algoritmos}
+\renewcommand{\listoftheorems}{\teoremas}
+\renewcommand{\tableofcontents}{\sumario}
+
 
 % novas paginas
 % capa
@@ -319,7 +323,6 @@
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries
 
-\newcommand{\marca}{\cellcolor{darkgray}}% deixa a celula da tabela em cinza (usado para fazer o cronograma)
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
