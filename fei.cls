@@ -283,10 +283,12 @@
 \newcommand{\epigrafe}[2]{
 \clearpage
 \begin{flushleft}
-\vspace*{.5\paperheight\relax}
-\hspace*{.5\paperwidth\relax}
+\vspace*{0.5\paperheight\relax}
+\hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
-\textit{``{#1}''\\#2}
+\textit{``{#1}''
+\\
+#2}
 \end{minipage}
 \end{flushleft}
 }
