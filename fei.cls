@@ -318,7 +318,7 @@
 \oldprintindex}%
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 \makeglossaries
