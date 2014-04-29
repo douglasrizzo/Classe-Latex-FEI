@@ -185,24 +185,30 @@
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
-% configuracao do sumario
-\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao com negrito
+
+%% configuracao do sumario e listas de tabelas e figuras
+% títulos centralizados, negritos e maiúsculos
+\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+% sumário não possui recuo
+\renewcommand{\cftchapindent}{0pt}
+\renewcommand{\cftsecindent}{0pt}
+\renewcommand{\cftsubsecindent}{0pt}
+\renewcommand{\cftsubsubsecindent}{0pt}
+
+\renewcommand{\cftchapfont}{\bfseries} % coloca o titulo do capítulo em negrito
+\renewcommand{\cftchappagefont}{} % o número da página do capítulo não é em negrito
+\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao emm negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-% titulos de listas centralizadas
-\newcommand{\sumario}{\part*{Sum\'ario}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
-\newcommand{\figuras}{\part*{Lista de Figuras}\@starttoc{lof}}
-\newcommand{\tabelas}{\part*{Lista de Tabelas}\@starttoc{lot}}
-\newcommand{\algoritmos}{\part*{\listalgorithmcfname}\@starttoc{loa}}
-\newcommand{\teoremas}{\part*{\listtheoremname}\@starttoc{loe}}
-
-\renewcommand{\listoffigures}{\figuras}
-\renewcommand{\listoftables}{\tabelas}
-\renewcommand{\listofalgorithms}{\algoritmos}
-\renewcommand{\listoftheorems}{\teoremas}
-\renewcommand{\tableofcontents}{\sumario}
-
+% formatando títulos de listas de algoritmos e teoremas
+\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\@starttoc{loa}}
+\renewcommand{\listoftheorems}{\part*{\listtheoremname}\@starttoc{loe}}
 
 % novas paginas
 % capa

@@ -50,12 +50,12 @@ Abstract goes here.
 \keywords{Keywords. Go. Here.}
 \end{abstract}
 
-\figuras
-\tabelas
-\algoritmos
-\teoremas
+\listoffigures
+\listoftables
+\listofalgorithms
+\listoftheorems
 \printglossaries
-\sumario
+\tableofcontents
 
 \chapter{INTRODUÇÃO}
 
@@ -198,26 +198,26 @@ Abstract goes here.
 
 	\subsection{Listas e sumário}
 	
-	A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos, cujos comandos para criação serão descritos nas seções posteriores. Também é possível inserir um sumário. Os comandos originais do \LaTeX\ foram traduzidos e redefinidos para aderirem aos padrões da biblioteca. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário
+	A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos usando os comandos nativos do \LaTeX, redefinidos para aderirem aos padrões da biblioteca. Também é possível inserir um sumário. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário.
 		
 \begin{table}[ht!]
-    \caption{Comandos originais e suas substituições} \label{tbl:substituicoes}
+    \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
     \centering
     \begin{tabular}{|c|c|}
     \hline 
     \textbf{Elemento} & \textbf{Comando} \\ 
     \hline 
-	Sumário & \latexinline+\sumario+ \\ 
+	Sumário & \latexinline+\tableofcontents+ \\ 
     \hline 
-    Lista de Figuras & \latexinline+\figuras+ \\ 
+    Lista de Figuras & \latexinline+\listoffigures+ \\ 
     \hline 
-    Lista de Tabelas & \latexinline+\tabelas+ \\ 
+    Lista de Tabelas & \latexinline+\listoftables+ \\ 
     \hline 
-    Lista de Algoritmos & \latexinline+\algoritmos+ \\ 
+    Lista de Algoritmos & \latexinline+\listofalgorithms+ \\ 
     \hline 
-    Lista de Teoremas & \latexinline+\teoremas+ \\ 
+    Lista de Teoremas & \latexinline+\listoftheorems+ \\ 
     \hline 
-    Listas de Abreviaturas e Símbolos & \latexinline+\glossario+ \\ 
+    Listas de Abreviaturas e Símbolos & \latexinline+\printglossaries+ \\ 
     \hline 
     \end{tabular}
     \caption*{Fonte: Autor}
