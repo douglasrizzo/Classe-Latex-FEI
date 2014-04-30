@@ -1,0 +1,14 @@
+language: java
+
+install:
+  - sudo apt-get update -qq
+  - sudo apt-get -y install texlive texlive-science texlive-lang-portuguese texlive-publishers texlive-extra-utils xindy
+  - wget https://raw.githubusercontent.com/gpoore/minted/master/source/minted.sty
+
+script:
+  - pdflatex -shell-escape manual.tex
+  - bibtex manual.aux
+  - makeindex manual.idx
+  - makeglossaries manual
+  - pdflatex -shell-escape manual.tex
+  - pdflatex -shell-escape manual.tex
