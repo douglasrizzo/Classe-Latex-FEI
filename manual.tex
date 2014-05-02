@@ -554,10 +554,18 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	O pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 	
 	\begin{enumerate}
-	\item \latexinline+\gls{codigo}+: imprime a entrada em letras minúsculas;
-	\item \latexinline+\Gls{codigo}+: imprime a entrada em letras maiúsculas;
-	\item \latexinline+\glspl{codigo}+: imprime a entrada no plural;
-	\item \latexinline+\Glspl{codigo}+: imprime a entrada no plural e em letras maiúsculas.
+	\item \latexinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
+	\item \latexinline+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
+	\item \latexinline+\glspl{<rotulo>}+: imprime a entrada no plural;
+	\item \latexinline+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
+	\end{enumerate}
+	
+	As siglas possuem alguns comandos únicos para serem referenciadas:
+	
+	\begin{enumerate}
+	\item \latexinline+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
+	\item \latexinline+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
+	\item \latexinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 	\end{enumerate}
 	
 	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
