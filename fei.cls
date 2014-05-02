@@ -137,6 +137,8 @@
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto 
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodape 
+\pagenumbering{arabic} % estilo da numeração das páginas
+\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
 
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
@@ -167,10 +169,7 @@
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
-
-\renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\section}{% 
 \@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
@@ -188,9 +187,9 @@
 
 %% configuracao do sumario e listas de tabelas e figuras
 % títulos centralizados, negritos e maiúsculos
-\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\clearpage\thispagestyle{empty}\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
@@ -207,15 +206,15 @@
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
 % formatando títulos de listas de algoritmos e teoremas
-\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\@starttoc{loa}}
-\renewcommand{\listoftheorems}{\part*{\listtheoremname}\@starttoc{loe}}
+\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
+\renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
 
 % novas paginas
 % capa
 \renewcommand{\maketitle}{
 \selectlanguage{brazil}
 \clearpage
-\pagestyle{empty}
+\thispagestyle{empty}
 \begin{center}
 \textbf{
 \MakeUppercase{\@instituicao}\\
@@ -231,7 +230,8 @@
 % folha de rosto
 \newenvironment{folhaderosto}{
 \clearpage
-\pagenumbering{arabic}
+%\pagenumbering{arabic}
+\thispagestyle{empty}
 \begin{center}
 \MakeUppercase{\@author}\\
 \vspace*{0.45\textheight}
@@ -252,7 +252,7 @@
 \iflogvar
   \includepdf{ata.pdf}
 \else
-  \clearpage\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
 \fi
 }
 
@@ -262,7 +262,7 @@
 	\iflogvar
 		\includepdf{ficha.pdf}
 	\else
-		\clearpage\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+		\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
 	\fi
 }
 
@@ -280,6 +280,7 @@
 % dedicatoria
 \newcommand{\dedicatoria}[1]{
 \clearpage
+\thispagestyle{empty}
 \begin{flushleft}
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.5\paperwidth\relax}
@@ -292,6 +293,7 @@
 % epigrafe
 \newcommand{\epigrafe}[2]{
 \clearpage
+\thispagestyle{empty}
 \begin{flushleft}
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.4\paperwidth\relax}
@@ -304,13 +306,13 @@
 }
 
 % resumo
-\newenvironment{resumo}{\part*{Resumo}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
+\newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
 
 % agradecimentos
-\newenvironment{agradecimentos}{\part*{Agradecimentos}}{}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
 
 % índice
 \RequirePackage{imakeidx}
