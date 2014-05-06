@@ -103,17 +103,26 @@
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\normalfont\bfseries, notebraces={-- }{},
+bodyfont=\normalfont,
+postheadspace=1em,
+qed=\qedsymbol
+]{feistyle}
+
 % declaração dos principais tipos de teoremas que o usuário pode querer vir a usar
-\declaretheorem[style=definition,name=Axioma,qed=\qedsymbol]{axioma}
-\declaretheorem[style=definition,name=Teorema,qed=\qedsymbol]{teorema}
-\declaretheorem[style=definition,name=Lema,qed=\qedsymbol]{lema}
-\declaretheorem[style=definition,name=Hip\'otese,qed=\qedsymbol]{hipotese}
-\declaretheorem[style=definition,name=Proposi\c{c}\~ao,qed=\qedsymbol]{proposicao}
-\declaretheorem[style=definition,name=Conjectura,qed=\qedsymbol]{conjectura}
-\declaretheorem[style=definition,name=Paradoxo,qed=\qedsymbol]{paradoxo}
-\declaretheorem[style=definition,name=Corol\'ario,qed=\qedsymbol]{corolario}
-\declaretheorem[style=definition,name=Defini\c{c}\~ao,qed=\qedsymbol]{definicao}
-\declaretheorem[style=definition,name=Exemplo,qed=\qedsymbol]{exemplo}
+\declaretheorem[style=feistyle,name=Axioma]{axioma}
+\declaretheorem[style=feistyle,name=Teorema]{teorema}
+\declaretheorem[style=feistyle,name=Lema]{lema}
+\declaretheorem[style=feistyle,name=Hip\'otese]{hipotese}
+\declaretheorem[style=feistyle,name=Proposi\c{c}\~ao]{proposicao}
+\declaretheorem[style=feistyle,name=Conjectura]{conjectura}
+\declaretheorem[style=feistyle,name=Paradoxo]{paradoxo}
+\declaretheorem[style=feistyle,name=Corol\'ario]{corolario}
+\declaretheorem[style=feistyle,name=Defini\c{c}\~ao]{definicao}
+\declaretheorem[style=feistyle,name=Exemplo]{exemplo}
 \declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
 
 % contadores de floats serão contínuos
