@@ -11,7 +11,7 @@ pdfkeywords={LaTeX}
 \newmint{latex}{}
 \newmintinline{latex}{}
 
-\author{Leonardo Anjoletto Ferreira \& Douglas De Rizzo Meneghetti}
+\author{Leonardo Anjoletto Ferreira \and Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o manual de 2007 da biblioteca}
 
@@ -125,7 +125,11 @@ A declaração da classe é feita da seguinte forma:
 
 	\subsection{Nome do autor e título}
 	
-	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \latexinline+\author{autor}+ e \latexinline+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca.
+	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \latexinline+\author{autor}+ e \latexinline+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \latexinline+\and+ ou \latexinline+\\+, como no exemplo:
+	
+\begin{latexcode}
+\author{Leonardo \and Douglas}
+\end{latexcode}
 
     \subsection{Subtítulo (opcional)}
     
