@@ -139,6 +139,7 @@
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodape 
 \pagenumbering{arabic} % estilo da numeração das páginas
 \pagestyle{fancy} % estilo dos cabeçalhos/rodapés
+\selectlanguage{brazil} % idioma do documento
 
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
@@ -209,16 +210,17 @@
 \renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
 \renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
 
+\def\and{\\}
+
 % novas paginas
 % capa
 \renewcommand{\maketitle}{
-\selectlanguage{brazil}
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \textbf{
-\MakeUppercase{\@instituicao}\\
-\MakeUppercase{\@author}
+\MakeUppercase{\@instituicao}\\[\baselineskip]
+\uppercase\expandafter{\@author}
 \vfill
 \MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
@@ -230,10 +232,9 @@
 % folha de rosto
 \newenvironment{folhaderosto}{
 \clearpage
-%\pagenumbering{arabic}
 \thispagestyle{empty}
 \begin{center}
-\MakeUppercase{\@author}\\
+\uppercase\expandafter{\@author}\\
 \vspace*{0.45\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
 \vfill
