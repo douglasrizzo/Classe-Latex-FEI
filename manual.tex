@@ -16,6 +16,7 @@ pdfkeywords={LaTeX}
 \subtitulo{de acordo com o manual de 2007 da biblioteca}
 
 \makeindex
+\makeglossaries
 
 \begin{document}
 
@@ -491,7 +492,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\section{Sinalizando a criação dos arquivos de índice}
 	
-	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo makeindex, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeindex+ ao preâmbulo de seu texto.
+	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeindex+ ao preâmbulo de seu texto.
 	
 	\section{Indexando palavras}
 	
@@ -512,6 +513,10 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
+	
+		\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
+	
+	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeglossaries+ ao preâmbulo de seu texto.
 	
 	\section{Indexando abreviaturas}
 	
