@@ -164,6 +164,9 @@ qed=\qedsymbol
 
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
+% configura estilo de página "plain" para "empty", sumindo com a numeração de algumas páginas
+\let\ps@plain\ps@empty
+
 %% configuracao do sumario e listas de tabelas e figuras
 % títulos centralizados, negritos e maiúsculos
 \renewcommand{\cfttoctitlefont}{\clearpage\thispagestyle{empty}\hfil\bf\MakeUppercase}
