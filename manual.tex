@@ -322,7 +322,7 @@ Abstract goes here.
 	
 	\subsubsection{Equações}
 	
-	O manual da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. o ambientes \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \latexinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \latexinline+\ref{}+, porém com a adição dos parênteses.
+	O manual da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \latexinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \latexinline+\ref{}+, porém com a adição dos parênteses.
 	
 	\begin{equation} \label{eq:euler}
 	e^{i\pi}+1=0
@@ -426,7 +426,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	\section{Citação indireta}
 	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \latexinline+\apud{obra_inacessivel}{obra_acessivel}+.
 	
-	Exemplo: \latexinline+\apud{Mcc43}{RusselNo10}+ formata a citação de forma semelhante a \apud{Mcc43}{RusselNo10}.
+	Exemplo: \latexinline+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
 	
 	\section{Citação no rodapé}
 	
@@ -438,9 +438,9 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	Exemplos: 
 	
-	\latexinline+\cite{Mcc43,RusselNo10,haykin99a}+ \(\to\) \cite{Mcc43,RusselNo10,haykin99a}.
+	\latexinline+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
 	
-	\latexinline+\citeonline{Mcc43,RusselNo10,haykin99a}+ \(\to\) \citeonline{Mcc43,RusselNo10,haykin99a}.
+	\latexinline+\citeonline{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \citeonline{Mcc43,russell_artificial_2010,haykin99a}.
 	
 	\section{Citações de campos específicos}
 	
@@ -502,7 +502,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 	
-	Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} \url(http://www.ctan.org/pkg/makeindex) assim como de \citeonline{goossens1994latex}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
+	Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \citeonline{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
 	
 	\section{Imprimindo o índice}
 
@@ -623,7 +623,7 @@ pdflatex manual.tex
 	
 	\section{Linux}
 	
-	O \LaTeX é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX\ Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
+	O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX\ Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
 	
 	\begin{enumerate}
 	\item \texttt{texlive}: pacotes essenciais do \TeX\ Live;
@@ -639,7 +639,7 @@ pdflatex manual.tex
 	
 	\chapter{LEITURA COMPLEMENTAR}
 	
-	\citeonline{lamport1994latex} e \citeonline{goossens1994latex} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthoronline{lamport1994latex} o criador do \LaTeXe e \citeauthoronline{goossens1994latex} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX\ 3. \citeonline{lshort} mantém um guia atualizado de \LaTeX\ em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX\ no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX, assim como seus manuais.
+	\citeonline{lamport1994latex} e \citeonline{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthoronline{lamport1994latex} o criador do \LaTeXe e \citeauthoronline{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX\ 3. \citeonline{lshort} mantém um guia atualizado de \LaTeX\ em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX\ no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX, assim como seus manuais.
 	
 	\bibliography{referencias}
 	
