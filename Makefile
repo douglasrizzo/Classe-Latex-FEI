@@ -16,7 +16,7 @@ $(NAME).pdf: $(NAME).dtx
 	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
 	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
 clean:
-	rm -f $(NAME).{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,sbl,sym}
+	rm -f $(NAME).{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,sbl,sym,xdy}
 distclean: clean
 	rm -f $(NAME).{pdf,cls} README README.txt
 inst: all
