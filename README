@@ -7,7 +7,6 @@ See http://www.latex-project.org/lppl.txt
 ----------------------------------------------------------------
 
 Abstract vai aqui
-%%\(\parallet\) \verb++\\
 
 \LoadClass{report}
 \DeclareOption{xindy}{

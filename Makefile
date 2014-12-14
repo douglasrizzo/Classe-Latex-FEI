@@ -9,16 +9,16 @@ UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all:	$(NAME).pdf clean
 	test -e README.txt && mv README.txt README || exit 0
 $(NAME).pdf: $(NAME).dtx
-	pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx > /dev/null
+	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
 	bibtex $(NAME).aux
-	if [ -f $(NAME).glo ]; then makeindex -q -s gglo.ist -o $(NAME).gls $(NAME).glo; fi
-	if [ -f $(NAME).idx ]; then makeindex -q -s gind.ist -o $(NAME).ind $(NAME).idx; fi
-	pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx > /dev/null
-	pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx > /dev/null
+	makeindex $(NAME).idx
+	makeglossaries $(NAME)
+	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
+	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
 clean:
-	rm -f $(NAME).{aux,bbl,fls,glo,gls,hd,idx,ilg,ind,ins,log,out,blg,mw}
+	rm -f $(NAME).{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,sbl,sym}
 distclean: clean
-	rm -f $(NAME).{pdf,cls} README
+	rm -f $(NAME).{pdf,cls} README README.txt
 inst: all
 	mkdir -p $(UTREE)/{tex,source,doc}/latex/$(NAME)
 	cp $(NAME).dtx $(UTREE)/source/latex/$(NAME)
