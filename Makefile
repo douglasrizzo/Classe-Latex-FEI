@@ -3,7 +3,7 @@ SHELL = bash
 PWD   = $(shell pwd)
 TEMP := $(shell mktemp -d)
 TDIR  = $(TEMP)/$(NAME)
-VERS  = $(shell ltxfileinfo -v $(NAME).dtx)
+VERS  = $(shell ltxfileinfo -v $(NAME).cls)
 LOCAL = $(shell kpsewhich --var-value TEXMFLOCAL)
 UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all:	$(NAME).pdf clean

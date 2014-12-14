@@ -5,15 +5,16 @@
 %% The original source files were:
 %%
 %% fei.dtx  (with options: `class')
-%% ---------------------------------------------------------------
-%% fei --- Classe LaTeX da FEI para criação de trabalhos acadêmicos
+%% -----------------------------------------------------------------------------------------------------
+%% fei --- Class for the creation of academic works under the typographic rules of FEI University Center
+%% Author: Douglas De Rizzo Meneghetti
 %% E-mail: douglasrizzo@fei.edu.br
 %% 
 %% Released under the LaTeX Project Public License v1.3c or later
 %% See http://www.latex-project.org/lppl.txt
-%% ----------------------------------------------------------------
+%% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2014/05/06 v0.9 Modelo da FEI]
+\ProvidesClass{fei}[2014/05/06 0.9 Modelo da FEI]
 \LoadClass{report}
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -346,9 +347,8 @@ qed=\qedsymbol
 %% This work is "maintained" (as per LPPL maintenance status) by
 %% Douglas De Rizzo Meneghetti.
 %% 
-%% This work consists of the file  fei.dtx
-%% and the derived files           fei.ins,
-%%                                 fei.pdf and
+%% This work consists of the file  fei.dtx,
+%% and the derived files           fei.pdf and
 %%                                 fei.cls.
 %% 
 %%

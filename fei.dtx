@@ -4,36 +4,27 @@
 \iffalse
 %</internal>
 %<*readme>
-----------------------------------------------------------------
-fei --- Classe LaTeX da FEI para criação de trabalhos acadêmicos
+-----------------------------------------------------------------------------------------------------
+fei --- Class for the creation of academic works under the typographic rules of FEI University Center
 Author: Douglas De Rizzo Meneghetti
 E-mail: douglasrizzo@fei.edu.br
 
 Released under the LaTeX Project Public License v1.3c or later
 See http://www.latex-project.org/lppl.txt
-----------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 
-Este repositório contém a classe LaTeX do Centro Universitário da FEI para formatação de trabalhos acadêmicos (monografia, dissertação ou tese), baseada no manual de 2007 da biblioteca. A classe possibilita a criação de um trabalho acadêmico completo, com inserção de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário e listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos).
+fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
 
-No manual, os usuários encontrarão informações detalhadas sobre a utilização da classe, seus comandos e algumas boas práticas para que o trabalho fique no formato desejado pela biblioteca.
+fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as ABNT NBR 10520:2002 (Citations) and ABNT NBR 6023:2002 (Bibligraphic References).
 
-##Arquivos no repositório
-- **fei.cls**: a classe em si, que deve ser adicionada ao diretório do seu projeto. Se você deseja *utilizar* a classe,é esse o arquivo que te interessa;
-- **fei.dtx**: o arquivo documentado do classe, utilizado para instalação através de repositórios de terceiros;
-- **fei.pdf**: manual da classe, gerado utilizando a classe, com uma explicação detalhada de como utilizar a classe;
-- **Makefile**: o arquivo que descompacta o `dtx` nos demais arquivos (manual, classe e README);
-- **modelo.tex**: exemplo básico de documento para ser utilizado como ponto de partida para a escrita de um trabalho;
-- **minted.sty**: classe utilizada no processo de desenvolvimento para que os exemplos de códigos fiquem coloridos
-- **referencias.bib**: arquivo de referências usado nos exemplos.
-- **README**: o arquivo "leiame" da classe, quegerado pelo Makefile e que deve ser enviado para os repositórios internacionais;
-- **README.md**: o arquivo "leiame" do repositório, que você está lendo agora.
+In the manual (fei.pdf), users will find detailed information regarding the class commands, environments and best practices to create a an academic text of good quality. We also made available a template file (fei-template.tex) which students may use as a starting point for their texts.
 
-##Licença
+##License
 Released under the LaTeX Project Public License v1.3c or later
 See http://www.latex-project.org/lppl.txt
 
-##Controle de versão
-Para saber as mudanças entre essa versão e as anteriores, acesse https://github.com/OpenFEI/Classe-Latex-FEI/commits/master.
+##Latest releases and version control
+To get the newest version of fei.cls, as well as to know the change we are doing to the class and its functionalities, visit https://github.com/OpenFEI/Classe-Latex-FEI/.
 %</readme>
 %<*internal>
 \fi
@@ -47,13 +38,14 @@ Para saber as mudanças entre essa versão e as anteriores, acesse https://githu
 \keepsilent
 \askforoverwritefalse
 \preamble
----------------------------------------------------------------
-fei --- Classe LaTeX da FEI para criação de trabalhos acadêmicos
+-----------------------------------------------------------------------------------------------------
+fei --- Class for the creation of academic works under the typographic rules of FEI University Center
+Author: Douglas De Rizzo Meneghetti
 E-mail: douglasrizzo@fei.edu.br
 
 Released under the LaTeX Project Public License v1.3c or later
 See http://www.latex-project.org/lppl.txt
-----------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 \endpreamble
 \postamble
 
@@ -69,9 +61,8 @@ http://www.latex-project.org/lppl.txt
 This work is "maintained" (as per LPPL maintenance status) by
 Douglas De Rizzo Meneghetti.
 
-This work consists of the file  fei.dtx
-and the derived files           fei.ins,
-                                fei.pdf and
+This work consists of the file  fei.dtx,
+and the derived files           fei.pdf and
                                 fei.cls.
 
 \endpostamble
@@ -102,13 +93,9 @@ and the derived files           fei.ins,
 %<*driver>
 \documentclass[rascunho,xindy]{\jobname}
 \usepackage[utf8]{inputenc}
-\usepackage{minted,multicol}
+\usepackage{multicol}
 
-\newminted{latex}{tabsize=4}
-\newmint{latex}{}
-\newmintinline{latex}{}
-
-\author{Leonardo Anjoletto Ferreira \and Douglas De Rizzo Meneghetti}
+\author{Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o manual de 2007 da biblioteca}
 
@@ -209,9 +196,9 @@ Este capítulo descreve os comandos disponibilizados pela classe. Ele é separad
 
 A declaração da classe é feita da seguinte forma:
 
-\begin{latexcode}
+\begin{verbatim}
 \documentclass[opções]{fei}
-\end{latexcode}
+\end{verbatim}
 	
 	A classe da FEI pode receber as seguintes opções:
 
@@ -222,18 +209,18 @@ A declaração da classe é feita da seguinte forma:
 
 	\subsection{Nome do autor e título}
 	
-	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \latexinline+\author{autor}+ e \latexinline+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \latexinline+\and+ ou \latexinline+\\+, como no exemplo:
+	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \verb+\author{autor}+ e \verb+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \verb+\and+ ou \verb+\\+, como no exemplo:
 	
 \begin{latexcode}
 \author{Leonardo \and Douglas}
-\end{latexcode}
+\end{verbatim}
 
     \subsection{Subtítulo (opcional)}
     
-    Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \latexinline+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \latexinline+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
+    Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
     
     \subsection{Cidade e Instituição (opcionais)}
-    Os comandos \latexinline+\cidade{}+ e \latexinline+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
+    Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
    
    \section{Pré-texto}\label{sec:pretexto}
    
@@ -241,51 +228,51 @@ A declaração da classe é feita da seguinte forma:
    
    \subsection{Título}
    
-   A folha de título é inserida através do comando \latexinline+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \latexinline+\author{}+, o título em \latexinline+\title{}+, o subtítulo de \latexinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
+   A folha de título é inserida através do comando \verb+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
    
    \subsection{Folha de rosto}
    
    A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabalho escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no manual da biblioteca e deve ser colocado dentro do ambiente \texttt{folhaderosto}. Por exemplo,
-\begin{latexcode}
+\begin{verbatim}
 \begin{folhaderosto}
 Dissertação de Mestrado apresentada ao Centro Universitário
 da FEI para obtenção do título de Mestre em Engenharia
 Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
 \end{folhaderosto}
-\end{latexcode}
+\end{verbatim}
 
 	\subsection{Ficha catalográfica e folha de aprovação}
 	
-	Os comandos \latexinline+\fichacatalografica+ e \latexinline+\folhadeaprovacao+ inserem, respectivamente, a ficha catalográfica e a folha de aprovação do trabalho no local onde o comando foi chamado. O comando  \latexinline+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \latexinline+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
+	Os comandos \verb+\fichacatalografica+ e \verb+\folhadeaprovacao+ inserem, respectivamente, a ficha catalográfica e a folha de aprovação do trabalho no local onde o comando foi chamado. O comando  \verb+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \verb+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
 	
-	Caso você ainda não possua estes arquivos, mas queira visualizar o documento com páginas que demarquem a posição das futuras folha de aprovação e ficha catalográfica, é possível compilar o projeto passando a opção \texttt{rascunho} na declaração da classe, da seguinte forma: \latexinline+\documentclass[rascunho]{fei}+.
+	Caso você ainda não possua estes arquivos, mas queira visualizar o documento com páginas que demarquem a posição das futuras folha de aprovação e ficha catalográfica, é possível compilar o projeto passando a opção \texttt{rascunho} na declaração da classe, da seguinte forma: \verb+\documentclass[rascunho]{fei}+.
 	
 	\subsection{Dedicatória}
 	
-    O comando \latexinline+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \latexinline+\dedicatoria{A quem eu quero dedicar o texto}+.
+    O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \verb+\dedicatoria{A quem eu quero dedicar o texto}+.
     
     \subsection{Agradecimentos}
     
     O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
 
-\begin{latexcode}    
+\begin{verbatim}    
 \begin{agradecimentos}
 A quem se deseja agradecer.
 \end{agradecimentos}
-\end{latexcode}
+\end{verbatim}
     
     \subsection{Epígrafe}
     A epígrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epígrafe e o segundo o autor da mesma.
     
-    \emph{Nota:} O manual da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \latexinline+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
+    \emph{Nota:} O manual da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \verb+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
     
-    Exemplo: \latexinline+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
+    Exemplo: \verb+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
     
     \subsection{Resumo e \emph{abstract}}
     
-    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \latexinline+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \latexinline+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \latexinline+\palavraschave{...}+ e no \emph{abstract}, o comando \latexinline+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
 
-\begin{latexcode}
+\begin{verbatim}
 \begin{resumo}
 Resumo vem aqui.
 \palavraschave{\LaTeX. FEI.}
@@ -295,7 +282,7 @@ Resumo vem aqui.
 Abstract goes here.
 \keyword{Keywords. Go. Here.}
 \end{abstract}
-\end{latexcode}
+\end{verbatim}
 
 	\subsection{Listas e sumário}
 	
@@ -308,17 +295,17 @@ Abstract goes here.
     \hline 
     \textbf{Elemento} & \textbf{Comando} \\ 
     \hline 
-	Sumário & \latexinline+\tableofcontents+ \\ 
+	Sumário & \verb+\tableofcontents+ \\ 
     \hline 
-    Lista de Figuras & \latexinline+\listoffigures+ \\ 
+    Lista de Figuras & \verb+\listoffigures+ \\ 
     \hline 
-    Lista de Tabelas & \latexinline+\listoftables+ \\ 
+    Lista de Tabelas & \verb+\listoftables+ \\ 
     \hline 
-    Lista de Algoritmos & \latexinline+\listofalgorithms+ \\ 
+    Lista de Algoritmos & \verb+\listofalgorithms+ \\ 
     \hline 
-    Lista de Teoremas & \latexinline+\listoftheorems+ \\ 
+    Lista de Teoremas & \verb+\listoftheorems+ \\ 
     \hline 
-    Listas de Abreviaturas e Símbolos & \latexinline+\printglossaries+ \\ 
+    Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\ 
     \hline 
     \end{tabular}
     \caption*{Fonte: Autor}
@@ -326,7 +313,7 @@ Abstract goes here.
 
 	\section{Texto}\label{sec:texto}
 
-	O texto é estruturado em 4 níveis: capítulo, seção, subseção e subsubseção. Para isso, são usados os comandos nativos do \LaTeX\ para divisão do texto: \latexinline+\chapter{...}+, \latexinline+\section{...}+, \latexinline+\subsection{...}+ e \latexinline+\subsubsection{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o manual e são usados posteriormente na criação automática do sumário.
+	O texto é estruturado em 4 níveis: capítulo, seção, subseção e subsubseção. Para isso, são usados os comandos nativos do \LaTeX\ para divisão do texto: \verb+\chapter{...}+, \verb+\section{...}+, \verb+\subsection{...}+ e \verb+\subsubsection{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o manual e são usados posteriormente na criação automática do sumário.
 
 	\subsection{\emph{Floats}}
 	
@@ -342,19 +329,19 @@ Abstract goes here.
 	\caption{Exemplo de figura com sua fonte.\\Fonte: Autor.} \label{fig:exemplo}
 	\end{figure}	
 
-\begin{latexcode}
+\begin{verbatim}
 	\begin{figure}
 	\centering
 	\includegraphics[...]{...}
 	\caption{Exemplo de figura com sua fonte.\\Fonte: Autor.}
 	\end{figure}
-\end{latexcode}	
+\end{verbatim}	
 	
 	\subsubsection{Tabelas}
 
-	O manual da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, o pacote \texttt{caption} redefine o comando \latexinline+\caption{}+ e disponibiliza o comando novo \latexinline+\caption*{}+. O primeiro, situado acima da tabela, representará a legenda principal e aparecerá na lista de tabelas. Já o segundo é formatado da mesma forma que uma legenda comum, porém não aparece na lista de tabelas e não recebe numeração. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
+	O manual da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, o pacote \texttt{caption} redefine o comando \verb+\caption{}+ e disponibiliza o comando novo \verb+\caption*{}+. O primeiro, situado acima da tabela, representará a legenda principal e aparecerá na lista de tabelas. Já o segundo é formatado da mesma forma que uma legenda comum, porém não aparece na lista de tabelas e não recebe numeração. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
 
-\begin{latexcode}
+\begin{verbatim}
 \begin{table}[ht!]
 	\caption{Legenda da tabela}
 	\begin{tabular}{|c|c|c|c|}
@@ -362,7 +349,7 @@ Abstract goes here.
 	\end{tabular}
 	\caption*{Fonte: Autor}
 \end{table}
-\end{latexcode}
+\end{verbatim}
 
 \begin{table}[ht!]
     \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
@@ -387,7 +374,7 @@ Abstract goes here.
     
     Exemplo:
 
-\begin{latexcode}
+\begin{verbatim}
 \begin{algorithm}
 	\Entrada{Vetor \(X\)}
 	\Saida{Vetor \(Y\)}
@@ -398,7 +385,7 @@ Abstract goes here.
 	\caption{Exemplo de algoritmo usando algorithm2e em português.}
 	\label{lst:alg}
 \end{algorithm}
-\end{latexcode}
+\end{verbatim}
     
 \begin{algorithm}
 \Entrada{Vetor \(X\)}
@@ -418,7 +405,7 @@ Abstract goes here.
 	
 	\subsubsection{Equações}
 	
-	O manual da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \latexinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \latexinline+\ref{}+, porém com a adição dos parênteses.
+	O manual da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \verb+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \verb+\ref{}+, porém com a adição dos parênteses.
 	
 	\begin{equation} \label{eq:euler}
 	e^{i\pi}+1=0
@@ -426,21 +413,21 @@ Abstract goes here.
 	
 	A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
 	
-	\begin{latexcode}
+	\begin{verbatim}
 	\begin{equation} \label{eq:euler}
 	e^{i\pi}+1=0
 	\end{equation}	
-	\end{latexcode}
+	\end{verbatim}
 	
 	\subsubsection{Teoremas}
 	
     É comum encontrar, na literatura de exatas, teoremas e seus derivados, tipografados de maneira diferenciada. Em \LaTeX, a classe \texttt{amsthm} permite que teoremas sejam escritos em seus próprios ambientes e formatados de acordo, como no seguinte exemplo:
     
-\begin{latexcode}
+\begin{verbatim}
 \begin{teorema}
 Exemplo de teorema.
 \end{teorema}
-\end{latexcode}
+\end{verbatim}
 
 Resultado:
 
@@ -450,7 +437,7 @@ Exemplo de teorema.
 
 Caso um teorema possua um nome ou referência, essa informação pode ser passada entre colchetes, como uma opção do ambiente:
 
-\latexinline+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
+\verb+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
 
 \begin{teorema}[Teorema de Pitágoras \cite{heath1921history}] \label{thm:ex2}
 Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
@@ -469,15 +456,15 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\subsection{Referências bibliográficas}
 	
-    Para formatar o título da página de referências e adicioná-la ao sumário, utiliza-se o comando \latexinline+\bibliography{}+, que recebe como parâmetro o caminho para o arquivo \texttt{bib} e formata o título da página como pede o manual da biblioteca.
+    Para formatar o título da página de referências e adicioná-la ao sumário, utiliza-se o comando \verb+\bibliography{}+, que recebe como parâmetro o caminho para o arquivo \texttt{bib} e formata o título da página como pede o manual da biblioteca.
 
-    Exemplo: \latexinline+\bibliography{minha_bibliografia.bib}+
+    Exemplo: \verb+\bibliography{minha_bibliografia.bib}+
 	
 	\subsection{Apêndices e anexos}
 	
-	O \LaTeX\ possui o comando nativo \latexinline+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
+	O \LaTeX\ possui o comando nativo \verb+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
 	
-	\begin{latexcode}
+	\begin{verbatim}
 	\chapter{Último capítulo}
 	...
 	\appendix
@@ -485,11 +472,11 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	...
 	\chapter{Segundo apêndice}
 	...
-	\end{latexcode}
+	\end{verbatim}
 	
-    Ao contrário dos apêndices, o \LaTeX\ não possui um comando nativo para declarar anexos. Para isso, foi criado o comando \latexinline+\anexos+ que transforma os capítulos subsequentes em anexos.
+    Ao contrário dos apêndices, o \LaTeX\ não possui um comando nativo para declarar anexos. Para isso, foi criado o comando \verb+\anexos+ que transforma os capítulos subsequentes em anexos.
 	
-	\begin{latexcode}
+	\begin{verbatim}
 	\chapter{Último capítulo ou anexo}
 	...
 	\anexos
@@ -497,11 +484,11 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	...
 	\chapter{Segundo anexo}
 	...
-	\end{latexcode}
+	\end{verbatim}
 	
 	\subsection{Índice}
 	
-	A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \latexinline+\printindex+.
+	A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \verb+\printindex+.
 
 	\chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
 
@@ -510,63 +497,63 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
     As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \texttt{abntex2cite-alf}.
 
     \section{Citação no final de linha}
-    A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \latexinline+\cite{obra}+.
+    A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
 
-    Exemplo: Este texto deveria ser uma referência \latexinline+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
+    Exemplo: Este texto deveria ser uma referência \verb+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
 
     \section{Citação durante o texto}
-    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \latexinline+\citeonline{obra}+ para este caso.
+    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\citeonline{obra}+ para este caso.
 
-    Exemplo: Segundo \latexinline+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
+    Exemplo: Segundo \verb+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
 	
 	\section{Citação indireta}
-	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \latexinline+\apud{obra_inacessivel}{obra_acessivel}+.
+	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 	
-	Exemplo: \latexinline+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
+	Exemplo: \verb+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
 	
 	\section{Citação no rodapé}
 	
-	Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \latexinline+\footciteref{obra}+.
+	Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \verb+\footciteref{obra}+.
 	
 	\section{Citações múltiplas}
 	
-	Os comandos \latexinline+\cite{obra_1,...,obra_n}+ e \latexinline+\citeonline{obra_1,...,obra_m}+ também possibilitam a utilização de citações múltiplas.
+	Os comandos \verb+\cite{obra_1,...,obra_n}+ e \verb+\citeonline{obra_1,...,obra_m}+ também possibilitam a utilização de citações múltiplas.
 	
 	Exemplos: 
 	
-	\latexinline+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
+	\verb+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
 	
-	\latexinline+\citeonline{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \citeonline{Mcc43,russell_artificial_2010,haykin99a}.
+	\verb+\citeonline{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \citeonline{Mcc43,russell_artificial_2010,haykin99a}.
 	
 	\section{Citações de campos específicos}
 	
-	Para citar o nome do autor em linha, utilize o comando \latexinline+\citeauthoronline{obra}+.
+	Para citar o nome do autor em linha, utilize o comando \verb+\citeauthoronline{obra}+.
 
-	\latexinline+\citeauthoronline{galilei_dialogue_1953}+ \(\to\) \citeauthoronline{galilei_dialogue_1953}
+	\verb+\citeauthoronline{galilei_dialogue_1953}+ \(\to\) \citeauthoronline{galilei_dialogue_1953}
 	
-	Para citar o nome do autor em letras maiúsculas, utilize\latexinline+\citeauthor{obra}+.
+	Para citar o nome do autor em letras maiúsculas, utilize\verb+\citeauthor{obra}+.
 
-	\latexinline+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
+	\verb+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
 
-	Para citar o ano de uma obra, utilize \latexinline+\citeyear{obra}+.
+	Para citar o ano de uma obra, utilize \verb+\citeyear{obra}+.
 	
-	\latexinline+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
+	\verb+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
 
 	\section{Outros exemplos}
 
-	\latexinline+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
+	\verb+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
 
-	\latexinline+\Ibidem[p.~2]{j:turing50}+ \(\to\) \Ibidem[p.~2]{j:turing50}
+	\verb+\Ibidem[p.~2]{j:turing50}+ \(\to\) \Ibidem[p.~2]{j:turing50}
 
-	\latexinline+\opcit[p.~2]{j:turing50}+ \(\to\) \opcit[p.~2]{j:turing50}
+	\verb+\opcit[p.~2]{j:turing50}+ \(\to\) \opcit[p.~2]{j:turing50}
 
-	\latexinline+\passim{j:turing50}+ \(\to\) \passim{j:turing50}
+	\verb+\passim{j:turing50}+ \(\to\) \passim{j:turing50}
 
-	\latexinline+\loccit{j:turing50}+ \(\to\) \loccit{j:turing50}
+	\verb+\loccit{j:turing50}+ \(\to\) \loccit{j:turing50}
 
-	\latexinline+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
+	\verb+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
 
-	\latexinline+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
+	\verb+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
 	
 	\section{Citações com mais de três linhas}
 	
@@ -582,19 +569,19 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante em todas as instalações do \LaTeX. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou a cedilha -- não serão organizados corretamente. Para solucionar este problemas, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
 	
-	Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \latexinline+\documentclass[xindy]{fei}+
+	Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \verb+\documentclass[xindy]{fei}+
 	
 	Como o \emph{xindy} não é parte integrante do \LaTeX, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}.
 	
 	\section{Sinalizando a criação dos arquivos de índice}
 	
-	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeindex+ ao preâmbulo de seu texto.
+	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \verb+\makeindex+ ao preâmbulo de seu texto.
 	
 	\section{Indexando palavras}
 	
-	Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \latexinline+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
+	Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \verb+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
 
-	Exemplo: [\ldots] a biblioteca do Centro Universitário da \latexinline+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \latexinline+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+	Exemplo: [\ldots] a biblioteca do Centro Universitário da \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
 	
 	É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 	
@@ -602,23 +589,23 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\section{Imprimindo o índice}
 
-	A impressão do índice é feita utilizando o comando \latexinline+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
+	A impressão do índice é feita utilizando o comando \verb+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	
-	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 	
 		\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
 	
-	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeglossaries+ ao preâmbulo de seu texto.
+	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \verb+\makeglossaries+ ao preâmbulo de seu texto.
 	
 	\section{Indexando abreviaturas}
 	
 	A indexação de abreviaturas é feita utilizando o comando
 	
-	\latexinline+\newacronym[longplural=1]{2}{3}{4}+, onde:
+	\verb+\newacronym[longplural=1]{2}{3}{4}+, onde:
 	
 	\begin{enumerate}
 	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
@@ -627,57 +614,57 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	\item 4: o significado a abreviatura, escrito por extenso.
 	\end{enumerate}
 	
-	Exemplo: \latexinline+\newacronym[longplural=Associações+
+	Exemplo: \verb+\newacronym[longplural=Associações+
 	
-			 \latexinline+Brasileiras de Normas Técnicas]+
+			 \verb+Brasileiras de Normas Técnicas]+
 			 
-			 \latexinline+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
+			 \verb+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
 			 
 	\section{Indexando símbolos}
 	
 	A indexação de símbolos é feita utilizando o comando
 	
-	\latexinline+\newglossaryentry{1}{type=simbolos,+
+	\verb+\newglossaryentry{1}{type=simbolos,+
 	
-	\latexinline+name={2},sort=3,description={4}}+, onde:
+	\verb+name={2},sort=3,description={4}}+, onde:
 	
 	\begin{enumerate}
 	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
-	\item 2: o símbolo; caso a notação matemática seja necessária, use \latexinline+\ensuremath{2}+ (Cf. exemplo abaixo);
+	\item 2: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo);
 	\item 3: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
 	\item 4: a descrição do símbolo, que aparecerá na lista.
 	\end{enumerate}
 	
-	Exemplo: \latexinline+\newglossaryentry{pi}{type=simbolos,+
+	Exemplo: \verb+\newglossaryentry{pi}{type=simbolos,+
 	
-			 \latexinline+name={\ensuremath{\pi}},sort=p,+
+			 \verb+name={\ensuremath{\pi}},sort=p,+
 			 
-			 \latexinline+description={número irracional que representa [...]}}+
+			 \verb+description={número irracional que representa [...]}}+
 
 	\section{Utilizando abreviaturas e símbolos indexados}
 	
 	O pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 	
 	\begin{enumerate}
-	\item \latexinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
-	\item \latexinline+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
-	\item \latexinline+\glspl{<rotulo>}+: imprime a entrada no plural;
-	\item \latexinline+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
+	\item \verb+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
+	\item \verb+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
+	\item \verb+\glspl{<rotulo>}+: imprime a entrada no plural;
+	\item \verb+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
 	\end{enumerate}
 	
 	As siglas possuem alguns comandos únicos para serem referenciadas:
 	
 	\begin{enumerate}
-	\item \latexinline+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
-	\item \latexinline+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
-	\item \latexinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
+	\item \verb+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
+	\item \verb+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
+	\item \verb+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 	\end{enumerate}
 	
-	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
+	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
 	
 	\section{Imprimindo as listas}
 	
-	O comando \latexinline+\printglossaries+ imprime ambas as listas em sequência.
+	O comando \verb+\printglossaries+ imprime ambas as listas em sequência.
 
 	\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 	
@@ -767,12 +754,12 @@ pdflatex manual.tex
 	\item\verb+makeindex manual.idx+
 	\begin{enumerate}
 	\item \texttt{ilg}: \emph{log} do MakeIndex.
-	\item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \latexinline+\printindex+;
+	\item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
 	\end{enumerate}	
 	
 	\item\verb+makeglossaries manual+
 	\begin{enumerate}
-	\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \latexinline+\printglossaries+;
+	\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \verb+\printglossaries+;
 	\item \texttt{glg}: \emph{log} do \emph{glossaries}.
 	\end{enumerate}
 	\end{enumerate}
@@ -1001,7 +988,7 @@ pdflatex manual.tex
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{fei}[2014/05/06 v0.9 Modelo da FEI]
+\ProvidesClass{fei}[2014/05/06 0.9 Modelo da FEI]
 \LoadClass{report}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
