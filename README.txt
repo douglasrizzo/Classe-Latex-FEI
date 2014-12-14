@@ -1,25 +1,20 @@
-%-------------------------------------------------------------
-% Classe LaTeX da FEI para criação de trabalhos acadêmicos
-% de acordo com o manual de 2007 da biblioteca
-% Autores: Leonardo Anjoletto Ferreira
-%          Douglas De Rizzo Meneghetti
-%
-% Rep. oficial: http://github.com/Tetamusha/Classe-Latex_FEI
-%-------------------------------------------------------------
-% Aqui comeca a classe
-%-------------------------------------------------------------
-\NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{fei}[2014/05/06 Modelo da FEI]
-\LoadClass{report}
+------------------------------------------------------------
+fei --- Classe LaTeX da FEI para criação de trabalhos acadêmicos
+E-mail: douglasrizzo@fei.edu.br
 
-% passa a opção do xindy pros pacotes que podem utilizá-lo
+Released under the LaTeX Project Public License v1.3c or later
+See http://www.latex-project.org/lppl.txt
+----------------------------------------------------------------
+
+Abstract vai aqui
+%%\(\parallet\) \verb++\\
+
+\LoadClass{report}
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 
-% opções rascunho e final controlam a exibição da folha
-% de aprovação e ficha catalográfica
 \DeclareOption{rascunho}
 {
 \newif\iflogvar
@@ -35,12 +30,10 @@
 
 \ProcessOptions\relax % processa todas as opções
 
-% tamanho do papel (A4) e margens
-\setlength{\paperheight}{297mm} 
+\setlength{\paperheight}{297mm}
 \setlength{\paperwidth}{210mm}
 \RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 
-% cabecalho e rodape
 \RequirePackage{fancyhdr}
 \fancyhf{}
 \rhead{\thepage}
@@ -48,11 +41,9 @@
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14.4pt}
 
-% carrega idiomas e caracteres de saída de 8 bits
 \RequirePackage[english,brazil]{babel}
 \RequirePackage[T1]{fontenc}
 
-% espaçamento do texto
 \RequirePackage{setspace}      % pacote para controlar o espacamento
 \onehalfspace                  % espacamento de 1,5 (segundo manual)
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
@@ -65,18 +56,15 @@
 \pagestyle{fancy} % estilo dos cabeçalhos/rodapés
 \selectlanguage{brazil} % idioma do documento
 
-% linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
 \clubpenalty=10000
 
-% outros pacotes
 \RequirePackage{mathtools}     % matematica
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
 \RequirePackage{times}         % Times New Roman como fonte de tudo
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
-% pacote de algoritmos e tradução do scomandos
 \RequirePackage[plain,portuguese,algochapter,linesnumbered,inoutnumbered]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
@@ -95,11 +83,9 @@
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
 
-%outras opções do pacote de algoritmos
 \SetAlgoCaptionSeparator{--} % separador da legenda
 \SetAlCapFnt{\normalfont} % fonte da legenda
 \SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
-% teoremas
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
@@ -112,7 +98,6 @@ postheadspace=1em,
 qed=\qedsymbol
 ]{feistyle}
 
-% declaração dos principais tipos de teoremas que o usuário pode querer vir a usar
 \declaretheorem[style=feistyle,name=Axioma]{axioma}
 \declaretheorem[style=feistyle,name=Teorema]{teorema}
 \declaretheorem[style=feistyle,name=Lema]{lema}
@@ -125,38 +110,35 @@ qed=\qedsymbol
 \declaretheorem[style=feistyle,name=Exemplo]{exemplo}
 \declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
 
-% contadores de floats serão contínuos
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 \counterwithout{algocf}{chapter}
 \counterwithout{equation}{chapter}
 
-% configuracao da legenda da figura
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
-% listas
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 \renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
 \renewcommand{\labelenumi}{\theenumi}                          % continuacao
- 
-\renewcommand{\theenumii}{--}                      % troca a numeracao no segundo nivel para letras
-\renewcommand{\labelenumii}{\theenumii}            % continuacao
 
-% divisoes do texto
+ % troca a numeracao no segundo nivel para letras
+\renewcommand{\theenumii}{--}
+\renewcommand{\labelenumii}{\theenumii}
+
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
-\renewcommand{\section}{% 
+\renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
 
-\renewcommand{\subsection}{% 
+\renewcommand{\subsection}{%
 \@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
-\renewcommand{\subsubsection}{% 
+\renewcommand{\subsubsection}{%
 \@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 \setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
@@ -164,18 +146,13 @@ qed=\qedsymbol
 
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
-% configura estilo de página "plain" para "empty", sumindo com a numeração de algumas páginas
-\let\ps@plain\ps@empty
-
 %% configuracao do sumario e listas de tabelas e figuras
-% títulos centralizados, negritos e maiúsculos
 \renewcommand{\cfttoctitlefont}{\clearpage\thispagestyle{empty}\hfil\bf\MakeUppercase}
 \renewcommand{\cftloftitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
 \renewcommand{\cftlottitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
-% sumário não possui recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
 \renewcommand{\cftsubsecindent}{0pt}
@@ -187,14 +164,11 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-% redefinindo listas de algoritmos e teoremas para formatar seus títulos
 \renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
 \renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
-% novas paginas
-% capa
 \renewcommand{\maketitle}{
 \clearpage
 \thispagestyle{empty}
@@ -210,7 +184,6 @@ qed=\qedsymbol
 \end{center}
 }
 
-% folha de rosto
 \newenvironment{folhaderosto}{
 \clearpage
 \thispagestyle{empty}
@@ -227,8 +200,6 @@ qed=\qedsymbol
 \number\year
 \end{center}}
 
-% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
-% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
@@ -239,28 +210,23 @@ qed=\qedsymbol
 \fi
 }
 
-% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
 \newcommand{\fichacatalografica}{
     \addtocounter{page}{-1}
-	\iflogvar
-		\includepdf{ficha.pdf}
-	\else
-		\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
-	\fi
+\iflogvar
+\includepdf{ficha.pdf}
+\else
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+\fi
 }
 
-% subtítulo
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
-% cidade (padrão São Bernardo do Campo)
 \def\@cidade{S\~ao Bernardo do Campo}
 \newcommand{\cidade}[1]{\def\@cidade{#1}}
 
-% instituicao (padrão Centro Universitário da FEI)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
-% dedicatória
 \newcommand{\dedicatoria}[1]{
 \clearpage
 \thispagestyle{empty}
@@ -273,7 +239,6 @@ qed=\qedsymbol
 \end{flushleft}
 }
 
-% epígrafe
 \newcommand{\epigrafe}[2]{
 \clearpage
 \thispagestyle{empty}
@@ -288,16 +253,12 @@ qed=\qedsymbol
 \end{flushleft}
 }
 
-% resumo
 \newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
 
-% abstract
 \renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
 
-% agradecimentos
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
 
-% índice
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 \let\oldmakeindex\makeindex
@@ -308,7 +269,6 @@ qed=\qedsymbol
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
-% pacote para gerar listas (símbolos, abreviaturas, etc)
 \RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
@@ -316,7 +276,6 @@ qed=\qedsymbol
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
-% apendice novo
 \renewcommand{\appendix}{%
 \renewcommand{\chaptername}{\appendixname}%
 \setcounter{chapter}{0}% zera o contador do capítulo
@@ -329,7 +288,6 @@ qed=\qedsymbol
 }%
 }%
 
-% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
 \newcommand{\anexos}{%
 \renewcommand{\chaptername}{Anexo}%
 \setcounter{chapter}{0}%
@@ -342,14 +300,10 @@ qed=\qedsymbol
 }%
 }%
 
-% hyperlinks entre partes do documento
-% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
-% referências e citações
 \RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
 
-% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
                \fontsize{10pt}{1em}%
@@ -357,7 +311,6 @@ qed=\qedsymbol
                \item\relax\ignorespaces}
                {\endlist\end{singlespace}}
 
-% quotation é igual a quote, porém para citações com mais de um parágrafo.
 \renewenvironment{quotation}
                {\begin{singlespace}\list{}{%
                \fontsize{10pt}{1em}%

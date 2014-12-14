@@ -1,0 +1,1352 @@
+% \iffalse meta-comment
+% !TEX program  = pdfLaTeX
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+------------------------------------------------------------
+fei --- Classe LaTeX da FEI para criação de trabalhos acadêmicos
+E-mail: douglasrizzo@fei.edu.br
+
+Released under the LaTeX Project Public License v1.3c or later
+See http://www.latex-project.org/lppl.txt
+----------------------------------------------------------------
+
+Abstract vai aqui
+%</readme>
+%<*internal>
+\fi
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+------------------------------------------------------------
+fei --- Classe LaTeX da FEI para criação de trabalhos acadêmicos
+E-mail: douglasrizzo@fei.edu.br
+
+Released under the LaTeX Project Public License v1.3c or later
+See http://www.latex-project.org/lppl.txt
+----------------------------------------------------------------
+
+Abstract vai aqui
+\endpreamble
+\postamble
+
+Copyright (C) 2014 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License (LPPL), either
+version 1.3c of this license or (at your option) any later
+version.  The latest version of this license is in the file:
+
+http://www.latex-project.org/lppl.txt
+
+This work is "maintained" (as per LPPL maintenance status) by
+Douglas De Rizzo Meneghetti.
+
+This work consists of the file  fei.dtx
+and the derived files           fei.ins,
+                                fei.pdf and
+                                fei.cls.
+
+\endpostamble
+\usedir{tex/latex/fei}
+\generate{
+  \file{\jobname.cls}{\from{\jobname.dtx}{class}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/fei}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+\usedir{doc/latex/fei}
+\generate{
+  \file{README.txt}{\from{\jobname.dtx}{readme}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>
+%<*class>
+\NeedsTeXFormat{LaTeX2e} 
+\ProvidesClass{fei}[2014/05/06 v0.9 Modelo da FEI]
+%</class>
+%<*driver>
+\documentclass{\jobname}
+\usepackage[utf8]{inputenc}
+\usepackage{minted,multicol}
+
+%\EnableCrossrefs
+%\CodelineIndex
+%\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%\texttt{\newminted{latex}{tabsize=4}
+%\newmint{latex}{}
+%\newmintinline{latex}{}
+%
+%\author{Leonardo Anjoletto Ferreira \and Douglas De Rizzo Meneghetti}
+%\title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
+%\subtitulo{de acordo com o manual de 2007 da biblioteca}
+%
+%\makeindex
+%\makeglossaries
+%
+%\newacronym{fei}{FEI}{Fundação Educacional Inaciana}
+%\newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
+%\newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
+%\newacronym{cqd}{CQD}{como se queria demonstrar}
+%\newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
+%\newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
+%
+%\maketitle
+%
+%\begin{folhaderosto}
+%Manual da classe \LaTeX\ do Centro Universitário da FEI para criação de trabalhos acadêmicos.
+%\end{folhaderosto}
+%
+%\fichacatalografica
+%\folhadeaprovacao
+%\dedicatoria{A todas as pessoas que venham a utilizar essa classe.}
+%\begin{agradecimentos}
+%Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX\ e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
+%\end{agradecimentos}
+%\epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
+%
+%\begin{resumo}
+%O \TeX\ é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX\ para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio manual para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste manual, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+%\keywords{\LaTeX. FEI.}
+%\end{resumo}
+%
+%\begin{abstract}
+%Abstract goes here.
+%\keywords{Keywords. Go. Here.}
+%\end{abstract}
+%
+%\listoffigures
+%\listoftables
+%\listofalgorithms
+%\listoftheorems
+%\printglossaries
+%\tableofcontents
+%
+%\chapter{INTRODUÇÃO}
+%
+%Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um manual, cuja última versão data de 2007, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu a o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX\ especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
+%
+%A versão mais recente da classe, assim como este manual, estão disponíveis através do \emph{GitHub} \url{http://tetamusha.github.io/Classe-Latex-FEI}. O único arquivo necessário é a classe \texttt{fei.cls}, a qual deve ser referenciada pelo arquivo \texttt{tex} do trabalho do aluno.
+%
+%A escrita da classe que formata o texto foi realizada tendo-se como referência principal o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007). Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo manual, como algoritmos e teoremas.
+%
+%Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
+%
+%O texto é organizado da seguinte forma: este capítulo termina enumerando os pacotes dos quais a classe depende para formatar o texto; o capítulo \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX, necessários para a criação do corpo do trabalho acadêmico; o capítulo \ref{chap:referencia} explica o uso do abn\TeX\ e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; o capítulo \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; o capítulo \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \texttt{fei.cls} com todas as suas funcionalidades; o capítulo \ref{chap:instalacao} aponta o autor às principais distribuições de \TeX\ para diferentes sistemas operacionais. O apêndice A explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice B disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX.
+%
+%\section{Dependências}\label{sec:dependencias}
+%
+%Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX\ existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados. É necessário enfatizar a necessidade de instalação destes pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX\ (para Windows), Mac\TeX\ (para Mac OS) e \TeX\ Live (para Linux e Mac OS).
+%    
+%    \begin{enumerate}
+%        \item\texttt{geometry}: mudança do tamanho das margens;
+%        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
+%        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
+%        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+%        \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
+%        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+%        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
+%        \item\texttt{times}: carrega fonte Times New Roman;
+%        \item\texttt{graphicx}: importação e utilização de imagens;
+%        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+%        \item\texttt{hyperref}: gera os links entre referências no PDF;
+%        \item\texttt{setspace}: espaçamento entre linhas;
+%        \item\texttt{caption}: altera a formatação de certas legendas;
+%        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
+%        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+%        \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
+%        \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
+%        \item\index{glossaries@\emph{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
+%        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
+%        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+%        \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
+%        \item\texttt{morewrites}:  permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente.
+%    \end{enumerate}
+%
+%Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+%
+%\chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
+%
+%Este capítulo descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem utilizados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem utilizados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, , apêndices, anexos e índice remissivo.
+%   
+%	\section{Preâmbulo}\label{sec:preambulo}
+%
+%	No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
+%	
+%	\subsection{Declaração da classe}
+%
+%A declaração da classe é feita da seguinte forma:
+%
+%\begin{latexcode}
+%\documentclass[opções]{fei}
+%\end{latexcode}
+%	
+%	A classe da FEI pode receber as seguintes opções:
+%
+%	\begin{enumerate}
+%	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
+%	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice}).
+%	\end{enumerate}
+%
+%	\subsection{Nome do autor e título}
+%	
+%	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \latexinline+\author{autor}+ e \latexinline+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \latexinline+\and+ ou \latexinline+\\+, como no exemplo:
+%	
+%\begin{latexcode}
+%\author{Leonardo \and Douglas}
+%\end{latexcode}
+%
+%    \subsection{Subtítulo (opcional)}
+%    
+%    Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \latexinline+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \latexinline+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
+%    
+%    \subsection{Cidade e Instituição (opcionais)}
+%    Os comandos \latexinline+\cidade{}+ e \latexinline+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
+%   
+%   \section{Pré-texto}\label{sec:pretexto}
+%   
+%   O pré-texto do documento engloba todos os elementos textuais que precedem o corpo da obra. A seguir são listados os elementos pré-textuais suportados pela classe \texttt{fei.cls} e os respectivos comandos para a criação de cada um deles.
+%   
+%   \subsection{Título}
+%   
+%   A folha de título é inserida através do comando \latexinline+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \latexinline+\author{}+, o título em \latexinline+\title{}+, o subtítulo de \latexinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
+%   
+%   \subsection{Folha de rosto}
+%   
+%   A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabalho escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no manual da biblioteca e deve ser colocado dentro do ambiente \texttt{folhaderosto}. Por exemplo,
+%\begin{latexcode}
+%\begin{folhaderosto}
+%Dissertação de Mestrado apresentada ao Centro Universitário
+%da FEI para obtenção do título de Mestre em Engenharia
+%Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
+%\end{folhaderosto}
+%\end{latexcode}
+%
+%	\subsection{Ficha catalográfica e folha de aprovação}
+%	
+%	Os comandos \latexinline+\fichacatalografica+ e \latexinline+\folhadeaprovacao+ inserem, respectivamente, a ficha catalográfica e a folha de aprovação do trabalho no local onde o comando foi chamado. O comando  \latexinline+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \latexinline+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
+%	
+%	Caso você ainda não possua estes arquivos, mas queira visualizar o documento com páginas que demarquem a posição das futuras folha de aprovação e ficha catalográfica, é possível compilar o projeto passando a opção \texttt{rascunho} na declaração da classe, da seguinte forma: \latexinline+\documentclass[rascunho]{fei}+.
+%	
+%	\subsection{Dedicatória}
+%	
+%    O comando \latexinline+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo manual da biblioteca. Por exemplo: \\ \latexinline+\dedicatoria{A quem eu quero dedicar o texto}+.
+%    
+%    \subsection{Agradecimentos}
+%    
+%    O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
+%
+%\begin{latexcode}    
+%\begin{agradecimentos}
+%A quem se deseja agradecer.
+%\end{agradecimentos}
+%\end{latexcode}
+%    
+%    \subsection{Epígrafe}
+%    A epígrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epígrafe e o segundo o autor da mesma.
+%    
+%    \emph{Nota:} O manual da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \latexinline+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
+%    
+%    Exemplo: \latexinline+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
+%    
+%    \subsection{Resumo e \emph{abstract}}
+%    
+%    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \latexinline+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \latexinline+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \latexinline+\palavraschave{...}+ e no \emph{abstract}, o comando \latexinline+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+%
+%\begin{latexcode}
+%\begin{resumo}
+%Resumo vem aqui.
+%\palavraschave{\LaTeX. FEI.}
+%\end{resumo}
+%
+%\begin{abstract}
+%Abstract goes here.
+%\keyword{Keywords. Go. Here.}
+%\end{abstract}
+%\end{latexcode}
+%
+%	\subsection{Listas e sumário}
+%	
+%	A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos usando os comandos nativos do \LaTeX, redefinidos para aderirem aos padrões da biblioteca. Também é possível inserir um sumário. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário.
+%		
+%\begin{table}[ht!]
+%    \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
+%    \centering
+%    \begin{tabular}{|c|c|}
+%    \hline 
+%    \textbf{Elemento} & \textbf{Comando} \\ 
+%    \hline 
+%	Sumário & \latexinline+\tableofcontents+ \\ 
+%    \hline 
+%    Lista de Figuras & \latexinline+\listoffigures+ \\ 
+%    \hline 
+%    Lista de Tabelas & \latexinline+\listoftables+ \\ 
+%    \hline 
+%    Lista de Algoritmos & \latexinline+\listofalgorithms+ \\ 
+%    \hline 
+%    Lista de Teoremas & \latexinline+\listoftheorems+ \\ 
+%    \hline 
+%    Listas de Abreviaturas e Símbolos & \latexinline+\printglossaries+ \\ 
+%    \hline 
+%    \end{tabular}
+%    \caption*{Fonte: Autor}
+%\end{table}
+%
+%	\section{Texto}\label{sec:texto}
+%
+%	O texto é estruturado em 4 níveis: capítulo, seção, subseção e subsubseção. Para isso, são usados os comandos nativos do \LaTeX\ para divisão do texto: \latexinline+\chapter{...}+, \latexinline+\section{...}+, \latexinline+\subsection{...}+ e \latexinline+\subsubsection{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o manual e são usados posteriormente na criação automática do sumário.
+%
+%	\subsection{\emph{Floats}}
+%	
+%	As regras da biblioteca definem formatações distintas para os diferentes tipos de \emph{float} disponibilizados pelo \LaTeX. A seguir, serão descritas as diferentes formas de utilizar cada um deles.
+%	
+%	\subsubsection{Figuras}
+%	
+%	As figuras devem conter, nas primeiras linhas da legenda, uma breve descrição e, na última linha, a fonte da imagem. O \LaTeX\ não vincula nativamente figuras a suas fontes. É necessário inserir uma quebra de linha ao final da legenda para digitar a fonte, como no exemplo da figura \ref{fig:exemplo}.
+%	
+%	\begin{figure}
+%	\centering
+%	\rule{2cm}{2cm}
+%	\caption{Exemplo de figura com sua fonte.\\Fonte: Autor.} \label{fig:exemplo}
+%	\end{figure}	
+%
+%\begin{latexcode}
+%	\begin{figure}
+%	\centering
+%	\includegraphics[...]{...}
+%	\caption{Exemplo de figura com sua fonte.\\Fonte: Autor.}
+%	\end{figure}
+%\end{latexcode}	
+%	
+%	\subsubsection{Tabelas}
+%
+%	O manual da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, o pacote \texttt{caption} redefine o comando \latexinline+\caption{}+ e disponibiliza o comando novo \latexinline+\caption*{}+. O primeiro, situado acima da tabela, representará a legenda principal e aparecerá na lista de tabelas. Já o segundo é formatado da mesma forma que uma legenda comum, porém não aparece na lista de tabelas e não recebe numeração. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
+%
+%\begin{latexcode}
+%\begin{table}[ht!]
+%	\caption{Legenda da tabela}
+%	\begin{tabular}{|c|c|c|c|}
+%		[...]
+%	\end{tabular}
+%	\caption*{Fonte: Autor}
+%\end{table}
+%\end{latexcode}
+%
+%\begin{table}[ht!]
+%    \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
+%    \centering
+%    \begin{tabular}{|c|c|c|c|}
+%    \hline 
+%    & \(x_1\) & \(x_2\) & \(x_3\) \\ 
+%    \hline 
+%    \(y_1\) & 1 & 0 & 0 \\ 
+%    \hline 
+%    \(y_2\) & 0 & 1 & 0 \\ 
+%    \hline 
+%    \(y_3\) & 0 & 0 & 1 \\ 
+%    \hline 
+%    \end{tabular}
+%    \caption*{Fonte: Autor}
+%\end{table}
+%	
+%	\subsubsection{Algoritmos}
+%    
+%    Apesar de estar ausente no manual, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura
+%    
+%    Exemplo:
+%
+%\begin{latexcode}
+%\begin{algorithm}
+%	\Entrada{Vetor \(X\)}
+%	\Saida{Vetor \(Y\)}
+%	\ParaCada{variável \(x_i \in X\)}{
+%		\(y_i = x_i^2\)
+%	}
+%	\Retorna \(Y\)
+%	\caption{Exemplo de algoritmo usando algorithm2e em português.}
+%	\label{lst:alg}
+%\end{algorithm}
+%\end{latexcode}
+%    
+%\begin{algorithm}
+%\Entrada{Vetor \(X\)}
+%\Saida{Vetor \(Y\)}
+%
+%\ParaCada{variável \(x_i \in X\)}{
+%
+%\(y_i = x_i^2\)
+%
+%}
+%
+%\Retorna \(Y\)
+%
+%\caption{Exemplo de algoritmo usando algorithm2e em português.}
+%\label{lst:alg}
+%\end{algorithm}
+%	
+%	\subsubsection{Equações}
+%	
+%	O manual da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \latexinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \latexinline+\ref{}+, porém com a adição dos parênteses.
+%	
+%	\begin{equation} \label{eq:euler}
+%	e^{i\pi}+1=0
+%	\end{equation}
+%	
+%	A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
+%	
+%	\begin{latexcode}
+%	\begin{equation} \label{eq:euler}
+%	e^{i\pi}+1=0
+%	\end{equation}	
+%	\end{latexcode}
+%	
+%	\subsubsection{Teoremas}
+%	
+%    É comum encontrar, na literatura de exatas, teoremas e seus derivados, tipografados de maneira diferenciada. Em \LaTeX, a classe \texttt{amsthm} permite que teoremas sejam escritos em seus próprios ambientes e formatados de acordo, como no seguinte exemplo:
+%    
+%\begin{latexcode}
+%\begin{teorema}
+%Exemplo de teorema.
+%\end{teorema}
+%\end{latexcode}
+%
+%Resultado:
+%
+%\begin{teorema}\label{thm:ex1}
+%Exemplo de teorema.
+%\end{teorema}
+%
+%Caso um teorema possua um nome ou referência, essa informação pode ser passada entre colchetes, como uma opção do ambiente:
+%
+%\latexinline+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
+%
+%\begin{teorema}[Teorema de Pitágoras \cite{heath1921history}] \label{thm:ex2}
+%Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
+%\end{teorema}
+%
+%A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese, proposicao, conjectura, paradoxo, corolario, definicao} e \emph{exemplo}, com chamada e numeração em negrito e texto com formatação padrão, como nos teoremas \ref{thm:ex1} e \ref{thm:ex2}. Também há o ambiente \emph{prova}, utilizado para se demonstrar alguma propriedade mencionada, o qual não é numerado e tem sua chamada em itálico. O término de um teorema, denominado ``como se queria demonstrar'' (CQD), do latim \gls{qed}, é representado pelo símbolo \qedsymbol, denominado ``lápide''.
+%	
+%	\subsection{Alíneas}
+%    
+%    Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas
+%ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:dependencias}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
+%
+%	\section{Pós-texto}\label{sec:postexto}
+%	
+%	Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Este capítulo descreve os comandos para \emph{inserção} destes elementos. Os capítulos seguintes instruirão como \emph{criá-los}.
+%	
+%	\subsection{Referências bibliográficas}
+%	
+%    Para formatar o título da página de referências e adicioná-la ao sumário, utiliza-se o comando \latexinline+\bibliography{}+, que recebe como parâmetro o caminho para o arquivo \texttt{bib} e formata o título da página como pede o manual da biblioteca.
+%
+%    Exemplo: \latexinline+\bibliography{minha_bibliografia.bib}+
+%	
+%	\subsection{Apêndices e anexos}
+%	
+%	O \LaTeX\ possui o comando nativo \latexinline+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
+%	
+%	\begin{latexcode}
+%	\chapter{Último capítulo}
+%	...
+%	\appendix
+%	\chapter{Primeiro apêndice}
+%	...
+%	\chapter{Segundo apêndice}
+%	...
+%	\end{latexcode}
+%	
+%    Ao contrário dos apêndices, o \LaTeX\ não possui um comando nativo para declarar anexos. Para isso, foi criado o comando \latexinline+\anexos+ que transforma os capítulos subsequentes em anexos.
+%	
+%	\begin{latexcode}
+%	\chapter{Último capítulo ou anexo}
+%	...
+%	\anexos
+%	\chapter{Primeiro anexo}
+%	...
+%	\chapter{Segundo anexo}
+%	...
+%	\end{latexcode}
+%	
+%	\subsection{Índice}
+%	
+%	A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \latexinline+\printindex+.
+%
+%	\chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
+%
+%    O \gls{abntex} (\url{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas. Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da \index{FEI}\gls{fei}, foi importado o pacote \texttt{abntex2cite-alf}, que utiliza o modelo autor-data.
+%
+%    As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \texttt{abntex2cite-alf}.
+%
+%    \section{Citação no final de linha}
+%    A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \latexinline+\cite{obra}+.
+%
+%    Exemplo: Este texto deveria ser uma referência \latexinline+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
+%
+%    \section{Citação durante o texto}
+%    Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \latexinline+\citeonline{obra}+ para este caso.
+%
+%    Exemplo: Segundo \latexinline+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
+%	
+%	\section{Citação indireta}
+%	Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \latexinline+\apud{obra_inacessivel}{obra_acessivel}+.
+%	
+%	Exemplo: \latexinline+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
+%	
+%	\section{Citação no rodapé}
+%	
+%	Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \latexinline+\footciteref{obra}+.
+%	
+%	\section{Citações múltiplas}
+%	
+%	Os comandos \latexinline+\cite{obra_1,...,obra_n}+ e \latexinline+\citeonline{obra_1,...,obra_m}+ também possibilitam a utilização de citações múltiplas.
+%	
+%	Exemplos: 
+%	
+%	\latexinline+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
+%	
+%	\latexinline+\citeonline{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \citeonline{Mcc43,russell_artificial_2010,haykin99a}.
+%	
+%	\section{Citações de campos específicos}
+%	
+%	Para citar o nome do autor em linha, utilize o comando \latexinline+\citeauthoronline{obra}+.
+%
+%	\latexinline+\citeauthoronline{galilei_dialogue_1953}+ \(\to\) \citeauthoronline{galilei_dialogue_1953}
+%	
+%	Para citar o nome do autor em letras maiúsculas, utilize\latexinline+\citeauthor{obra}+.
+%
+%	\latexinline+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
+%
+%	Para citar o ano de uma obra, utilize \latexinline+\citeyear{obra}+.
+%	
+%	\latexinline+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
+%
+%	\section{Outros exemplos}
+%
+%	\latexinline+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
+%
+%	\latexinline+\Ibidem[p.~2]{j:turing50}+ \(\to\) \Ibidem[p.~2]{j:turing50}
+%
+%	\latexinline+\opcit[p.~2]{j:turing50}+ \(\to\) \opcit[p.~2]{j:turing50}
+%
+%	\latexinline+\passim{j:turing50}+ \(\to\) \passim{j:turing50}
+%
+%	\latexinline+\loccit{j:turing50}+ \(\to\) \loccit{j:turing50}
+%
+%	\latexinline+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
+%
+%	\latexinline+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
+%	
+%	\section{Citações com mais de três linhas}
+%	
+%	O único tipo de citação que independe do pacote \texttt{abntex2cite} é a citação com mais de três linhas. De acordo com o manual da biblioteca, ela deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo ao início do parágrafo. No \index{Latex@\LaTeX}\LaTeX, os ambientes responsáveis por tais citações são \texttt{quote} (para citações de um parágrafo) e \texttt{quotation} (para citações com mais de um parágrafo).
+%	
+%	Exemplo:
+%	
+%	\begin{quote}		
+%	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think 'are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
+%	\end{quote}
+%
+%	\chapter{ÍNDICES}\label{chap:indice}
+%	
+%	Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante em todas as instalações do \LaTeX. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou a cedilha -- não serão organizados corretamente. Para solucionar este problemas, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
+%	
+%	Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \latexinline+\documentclass[xindy]{fei}+
+%	
+%	Como o \emph{xindy} não é parte integrante do \LaTeX, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}.
+%	
+%	\section{Sinalizando a criação dos arquivos de índice}
+%	
+%	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeindex+ ao preâmbulo de seu texto.
+%	
+%	\section{Indexando palavras}
+%	
+%	Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \latexinline+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
+%
+%	Exemplo: [\ldots] a biblioteca do Centro Universitário da \latexinline+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \latexinline+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+%	
+%	É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
+%	
+%	Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \citeonline{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
+%	
+%	\section{Imprimindo o índice}
+%
+%	A impressão do índice é feita utilizando o comando \latexinline+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
+%
+%	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
+%	
+%	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \latexinline+\input+ ou \latexinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+%	
+%	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
+%	
+%		\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
+%	
+%	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \latexinline+\makeglossaries+ ao preâmbulo de seu texto.
+%	
+%	\section{Indexando abreviaturas}
+%	
+%	A indexação de abreviaturas é feita utilizando o comando
+%	
+%	\latexinline+\newacronym[longplural=1]{2}{3}{4}+, onde:
+%	
+%	\begin{enumerate}
+%	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
+%	\item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto;
+%	\item 3: a abreviatura em si;
+%	\item 4: o significado a abreviatura, escrito por extenso.
+%	\end{enumerate}
+%	
+%	Exemplo: \latexinline+\newacronym[longplural=Associações+
+%	
+%			 \latexinline+Brasileiras de Normas Técnicas]+
+%			 
+%			 \latexinline+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
+%			 
+%	\section{Indexando símbolos}
+%	
+%	A indexação de símbolos é feita utilizando o comando
+%	
+%	\latexinline+\newglossaryentry{1}{type=simbolos,+
+%	
+%	\latexinline+name={2},sort=3,description={4}}+, onde:
+%	
+%	\begin{enumerate}
+%	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
+%	\item 2: o símbolo; caso a notação matemática seja necessária, use \latexinline+\ensuremath{2}+ (Cf. exemplo abaixo);
+%	\item 3: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
+%	\item 4: a descrição do símbolo, que aparecerá na lista.
+%	\end{enumerate}
+%	
+%	Exemplo: \latexinline+\newglossaryentry{pi}{type=simbolos,+
+%	
+%			 \latexinline+name={\ensuremath{\pi}},sort=p,+
+%			 
+%			 \latexinline+description={número irracional que representa [...]}}+
+%
+%	\section{Utilizando abreviaturas e símbolos indexados}
+%	
+%	O pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
+%	
+%	\begin{enumerate}
+%	\item \latexinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
+%	\item \latexinline+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
+%	\item \latexinline+\glspl{<rotulo>}+: imprime a entrada no plural;
+%	\item \latexinline+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
+%	\end{enumerate}
+%	
+%	As siglas possuem alguns comandos únicos para serem referenciadas:
+%	
+%	\begin{enumerate}
+%	\item \latexinline+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
+%	\item \latexinline+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
+%	\item \latexinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
+%	\end{enumerate}
+%	
+%	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \latexinline+\glsaddall+ no corpo do texto.
+%	
+%	\section{Imprimindo as listas}
+%	
+%	O comando \latexinline+\printglossaries+ imprime ambas as listas em sequência.
+%
+%	\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
+%	
+%	Para a utilização de todos os recursos que a classe \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando ferramentas diferentes em ordem específica.
+%	
+%	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{pdf\LaTeX}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
+%	
+%	onde:
+%	
+%	\begin{enumerate}
+%	\item gera o PDF e arquivos auxiliares básicos;
+%	\item lê os arquivos auxiliares criados em \emph{a}, gerando a bibliografia apenas com as referências utilizadas do arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+%	\item lê os arquivos auxiliares, criando um ou mais arquivos de índice. Necessário apenas se houve indexação de palavras para serem adicionadas ao índice;
+%	\item lê os arquivos auxiliares, criando um ou mais arquivos de listas. Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+%	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
+%	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}).
+%	\end{enumerate}
+%	
+%	Um exemplo de comando que executa todas essas funções é o seguinte:
+%	
+%	\begin{verbatim}
+%pdflatex manual.tex
+%bibtex manual.aux
+%makeindex manual.idx
+%makeglossaries manual
+%pdflatex manual.tex
+%pdflatex manual.tex
+%	\end{verbatim}
+%	
+%	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
+%	
+%	Este capítulo guia o leitor na instalação dos diferentes pacotes e programas necessários para utilizar todas as funcionalidades da classe \texttt{fei.cls}.
+%	
+%	\section{Windows}
+%	
+%	A opção mais simples para instalação do \LaTeX\ no Windows é o aplicativo Mik\TeX\ (\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados.
+%	
+%	Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX\ para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:dependencias}.
+%	
+%	\section{Linux}
+%	
+%	O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX\ Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
+%	
+%	\begin{enumerate}
+%	\item \texttt{texlive}: pacotes essenciais do \TeX\ Live;
+%	\item \texttt{texlive-science}: instala pacotes científicos, como \texttt{algorithm2e} e \texttt{mathtools};
+%	\item \texttt{texlive-lang-portuguese}: idioma português do \texttt{babel};
+%	\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex};
+%	\item \index{xindy@\emph{xindy}}\texttt{xindy}: o indexador \emph{xindy}.
+%	\end{enumerate}
+%
+%	\section{Mac OS}
+%	
+%	No Mac, o \LaTeX\ pode ser instalado através do Mac\TeX\ (\url{http://tug.org/mactex/}), uma compilação completa do \TeX\ Live para Mac.
+%	
+%	\chapter{LEITURA COMPLEMENTAR}
+%	
+%	\citeonline{lamport1994latex} e \citeonline{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthoronline{lamport1994latex} o criador do \LaTeXe e \citeauthoronline{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX\ 3. \citeonline{lshort} mantém um guia atualizado de \LaTeX\ em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX\ no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX, assim como seus manuais.
+%	
+%	\bibliography{referencias}
+%	
+%	\appendix
+%	
+%	\chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
+%	
+%	A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
+%		
+%	\begin{enumerate}
+%	
+%	\item\verb+pdflatex manual.tex+
+%	\begin{enumerate}
+%	\item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
+%	\item \texttt{aux}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
+%	\item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
+%	\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
+%	\item \texttt{loa}: lista de algoritmos;
+%	\item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
+%	\item \texttt{toc}: sumário;
+%	\end{enumerate}	
+%	
+%	\item\verb+bibtex manual.aux+
+%	\begin{enumerate}
+%	\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
+%	\item \texttt{blg}: \emph{log} do \index{Bibtex@Bib\TeX}Bib\TeX.
+%	\end{enumerate}	
+%	
+%	\item\verb+makeindex manual.idx+
+%	\begin{enumerate}
+%	\item \texttt{ilg}: \emph{log} do MakeIndex.
+%	\item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \latexinline+\printindex+;
+%	\end{enumerate}	
+%	
+%	\item\verb+makeglossaries manual+
+%	\begin{enumerate}
+%	\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \latexinline+\printglossaries+;
+%	\item \texttt{glg}: \emph{log} do \emph{glossaries}.
+%	\end{enumerate}
+%	\end{enumerate}
+%	
+%	\chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}} \label{chap:simbolos}
+%
+%\section{Letras Gregas}
+%\begin{multicols}{3}
+%\noindent
+%\(\alpha\) \verb+\alpha+\\
+%\(\beta\) \verb+\beta+\\
+%\(\gamma\) \verb+\gamma+\\
+%\(\delta\) \verb+\delta+\\
+%\(\epsilon\) \verb+\epsilon+\\
+%\(\varepsilon\) \verb+\varepsilon+\\
+%\(\zeta\) \verb+\zeta+\\
+%\(\eta\) \verb+\eta+\\
+%\(\theta\) \verb+\theta+\\
+%\(\vartheta\) \verb+\vartheta+\\
+%\(\iota\) \verb+\iota+\\
+%\(\kappa\) \verb+\kappa+\\
+%\(\lambda\) \verb+\lambda+\\
+%\(\mu\) \verb+\mu+\\
+%\(\nu\) \verb+\nu+\\
+%\(\xi\) \verb+\xi+\\
+%\(\o\) \verb+\o+\\
+%\(\pi\) \verb+\pi+\\
+%\(\varpi\) \verb+\varpi+\\
+%\(\rho\) \verb+\rho+\\
+%\(\Gamma\) \verb+\Gamma+\\
+%\(\Delta\) \verb+\Delta+\\
+%\(\Theta\) \verb+\Theta+\\
+%\(\Lambda\) \verb+\Lambda+\\
+%\(\Xi\) \verb+\Xi+\\
+%\(\Pi\) \verb+\Pi+\\
+%\(\Sigma\) \verb+\Sigma+\\
+%\(\Upsilon\) \verb+\Upsilon+\\
+%\(\varrho\) \verb+\varrho+\\
+%\(\sigma\) \verb+\sigma+\\
+%\(\varsigma\) \verb+\varsigma+\\
+%\(\tau\) \verb+\tau+\\
+%\(\upsilon\) \verb+\upsilon+\\
+%\(\phi\) \verb+\phi+\\
+%\(\varphi\) \verb+\varphi+\\
+%\(\chi\) \verb+\chi+\\
+%\(\psi\) \verb+\psi+\\
+%\(\omega\) \verb+\omega+\\
+%\(\Phi\) \verb+\Phi+\\
+%\(\Psi\) \verb+\Psi+\\
+%\(\Omega\) \verb+\Omega+\\
+%\end{multicols}
+%
+%\section{Símbolos}
+%\begin{multicols}{3}
+%\noindent
+%\(\aleph\) \verb+\aleph+\\
+%\(\hbar\) \verb+\hbar+\\
+%\(\imath\) \verb+\imath+\\
+%\(\jmath\) \verb+\jmath+\\
+%\(\ell\) \verb+\ell+\\
+%\(\wp\) \verb+\wp+\\
+%\(\Re\) \verb+\Re+\\
+%\(\Im\) \verb+\Im+\\
+%\(\partial\) \verb+\partial+\\
+%\(\infty\) \verb+\infty+\\
+%\(\prime\) \verb+\prime+\\
+%\(\emptyset\) \verb+\emptyset+\\
+%\(\nabla\) \verb+\nabla+\\
+%\(\surd\) \verb+\surd+\\
+%\(\top\) \verb+\top+\\
+%\(\bot\) \verb+\bot+\\
+%\(\|\) \verb+\|+\\
+%\(\angle\) \verb+\angle+\\
+%\(\triangle\) \verb+\triangle+\\
+%\(\backslash\) \verb+\backslash+\\
+%\(\forall\) \verb+\forall+\\
+%\(\exists\) \verb+\exists+\\
+%\(\lnot\) \verb+\neg+ ou \verb+\lnot+\\
+%\(\flat\) \verb+\flat+\\
+%\(\natural\) \verb+\natural+\\
+%\(\sharp\) \verb+\sharp+\\
+%\(\clubsuit\) \verb+\clubsuit+\\
+%\(\diamondsuit\) \verb+\diamondsuit+\\
+%\(\heartsuit\) \verb+\heartsuit+\\
+%\(\spadesuit\) \verb+\spadesuit+\\
+%\end{multicols}
+%
+%\section{Operadores Binários}
+%\begin{multicols}{3}
+%\noindent
+%\(\pm\) \verb+\pm+\\
+%\(\mp\) \verb+\mp+\\
+%\(\setminus\) \verb+\setminus+\\
+%\(\cdot\) \verb+\cdot+\\
+%\(\times\) \verb+\times+\\
+%\(\ast\) \verb+\ast+\\
+%\(\star\) \verb+\star+\\
+%\(\diamond\) \verb+\diamond+\\
+%\(\circ\) \verb+\circ+\\
+%\(\bullet\) \verb+\bullet+\\
+%\(\div\) \verb+\div+\\
+%\(\cap\) \verb+\cap+\\
+%\(\cup\) \verb+\cup+\\
+%\(\uplus\) \verb+\uplus+\\
+%\(\sqcap\) \verb+\sqcap+\\
+%\(\sqcup\) \verb+\sqcup+\\
+%\(\triangleleft\) \verb+\triangleleft+\\
+%\(\triangleright\) \verb+\triangleright+\\
+%\(\wr\) \verb+\wr+\\
+%\(\bigcirc\) \verb+\bigcirc+\\
+%\(\bigtriangleup\) \verb+\bigtriangleup+\\
+%\(\bigtriangledown\) \verb+\bigtriangledown+\\
+%\(\vee\) \verb+\vee+\\
+%\(\wedge\) \verb+\wedge+\\
+%\(\oplus\) \verb+\oplus+\\
+%\(\ominus\) \verb+\ominus+\\
+%\(\otimes\) \verb+\otimes+\\
+%\(\oslash\) \verb+\oslash+\\
+%\(\odot\) \verb+\odot+\\
+%\(\dagger\) \verb+\dagger+\\
+%\(\ddagger\) \verb+\ddagger+\\
+%\(\amalg\) \verb+\amalg+\\
+%\end{multicols}
+%
+%\section{Relações}
+%\begin{multicols}{3}
+%\noindent
+%\(\leq\) \verb+\leq+\\
+%\(\prec\) \verb+\prec+\\
+%\(\preceq\) \verb+\preceq+\\
+%\(\ll\) \verb+\ll+\\
+%\(\subset\) \verb+\subset+\\
+%\(\subseteq\) \verb+\subseteq+\\
+%\(\sqsubseteq\) \verb+\sqsubseteq+\\
+%\(\in\) \verb+\in+\\
+%\(\vdash\) \verb+\vdash+\\
+%\(\smile\) \verb+\smile+\\
+%\(\frown\) \verb+\frown+\\
+%\(\propto\) \verb+\propto+\\
+%\(\geq\) \verb+\geq+\\
+%\(\succ\) \verb+\succ+\\
+%\(\succeq\) \verb+\succeq+\\
+%\(\gg\) \verb+\gg+\\
+%\(\supset\) \verb+\supset+\\
+%\(\supseteq\) \verb+\supseteq+\\
+%\(\sqsupseteq\) \verb+\sqsupseteq+\\
+%\(\notin\) \verb+\notin+\\
+%\(\dashv\) \verb+\dashv+\\
+%\(\mid\) \verb+\mid+\\
+%%\(\parallet\) \verb++\\
+%\(\equiv\) \verb+\equiv+\\
+%\(\sim\) \verb+\sim+\\
+%\(\simeq\) \verb+\simeq+\\
+%\(\asymp\) \verb+\asymp+\\
+%\(\approx\) \verb+\approx+\\
+%\(\cong\) \verb+\cong+\\
+%\(\bowtie\) \verb+\bowtie+\\
+%\(\ni\) \verb+\ni+\\
+%\(\models\) \verb+\models+\\
+%\(\doteq\) \verb+\doteq+\\
+%\(\perp\) \verb+\perp+\\
+%\(\not\equiv\) \verb+\not\equiv+\\
+%\(\notin\) \verb+\notin+\\
+%\(\ne\) \verb+\ne+\\
+%\end{multicols}
+%
+%\section{Delimitadores}
+%\begin{multicols}{3}
+%\noindent
+%\((\) \verb+(+\\
+%\()\) \verb+)+\\
+%\(\lbrack\) \verb+\lbrack+\\
+%\(\rbrack\) \verb+\rbrack+\\
+%\(\lbrace\) \verb+\lbrace+ ou \verb+\{+\\
+%\(\rbrace\) \verb+\rbrace+ ou \verb+\}+\\
+%\(\langle\) \verb+\langle+\\
+%\(\rangle\) \verb+\rangle+\\
+%\(\vert\) \verb+\vert+\\
+%\(\Vert\) \verb+\Vert+\\
+%\([\![\) \verb+[\![+\\
+%\(]\!]\) \verb+]\!]+\\
+%\(\lfloor\) \verb+\lfloor+\\
+%\(\rfloor\) \verb+\rfloor+\\
+%\((\!(\) \verb+(\!(+\\
+%\()\!)\) \verb+)\!)+\\
+%\(\lceil\) \verb+\lceil+\\
+%\(\rceil\) \verb+\rceil+\\
+%\(\langle\!\langle\) \verb+\langle\!\langle+\\
+%\(\rangle\!\rangle\) \verb+\rangle\!\rangle+\\
+%\end{multicols}
+%
+%\section{Setas}
+%\begin{multicols}{2}
+%\noindent
+%\(\leftarrow\) \verb+\leftarrow+\\
+%\(\longleftarrow\) \verb+\longleftarrow+\\
+%\(\Leftarrow\) \verb+\Leftarrow+\\
+%\(\Longleftarrow\) \verb+\Longleftarrow+\\
+%\(\rightarrow\) \verb+\rightarrow+\\
+%\(\longrightarrow\) \verb+\longrightarrow+\\
+%\(\Rightarrow\) \verb+\Rightarrow+\\
+%\(\Longrightarrow\) \verb+\Longrightarrow+\\
+%\(\leftrightarrow\) \verb+\leftrightarrow+\\
+%\(\longleftrightarrow\) \verb+\longleftrightarrow+\\
+%\(\Leftrightarrow\) \verb+\Leftrightarrow+\\
+%\(\Longleftrightarrow\) \verb+\Longleftrightarrow+\\
+%\(\mapsto\) \verb+\mapsto+\\
+%\(\longmapsto\) \verb+\longmapsto+\\
+%\(\hookleftarrow\) \verb+\hookleftarroq+\\
+%\(\hookrightarrow\) \verb+\hookrightarrow+\\
+%\(\uparrow\) \verb+\uparrow+\\
+%\(\Uparrow\) \verb+\Uparrow+\\
+%\(\downarrow\) \verb+\downarrow+\\
+%\(\Downarrow\) \verb+\Downarrow+\\
+%\(\updownarrow\) \verb+\updownarrow+\\
+%\(\Updownarrow\) \verb+\Updownarrow+\\
+%\(\nearrow\) \verb+\nearrow+\\
+%\(\searrow\) \verb+\searrow+\\
+%\(\nwarrow\) \verb+\nwarrow+\\
+%\(\swarrow\) \verb+\swarrow+\\
+%\end{multicols}
+%
+%\printindex
+%\Finale
+
+\LoadClass{report}
+% passa a opção do xindy pros pacotes que podem utilizá-lo
+\DeclareOption{xindy}{
+  \PassOptionsToPackage{\CurrentOption}{imakeidx}
+  \PassOptionsToPackage{\CurrentOption}{glossaries}
+}
+
+% opções rascunho e final controlam a exibição da folha
+% de aprovação e ficha catalográfica
+\DeclareOption{rascunho}
+{
+\newif\iflogvar
+}
+
+\DeclareOption{final}
+{
+\newif\iflogvar
+\logvartrue
+}
+
+\ExecuteOptions{final} % final é padrão
+
+\ProcessOptions\relax % processa todas as opções
+
+% tamanho do papel (A4) e margens
+\setlength{\paperheight}{297mm} 
+\setlength{\paperwidth}{210mm}
+\RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+
+% cabecalho e rodape
+\RequirePackage{fancyhdr}
+\fancyhf{}
+\rhead{\thepage}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14.4pt}
+
+% carrega idiomas e caracteres de saída de 8 bits
+\RequirePackage[english,brazil]{babel}
+\RequirePackage[T1]{fontenc}
+
+% espaçamento do texto
+\RequirePackage{setspace}      % pacote para controlar o espacamento
+\onehalfspace                  % espacamento de 1,5 (segundo manual)
+\setlength{\parindent}{1.25cm} % recuo do paragrafo
+
+\renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
+\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
+\RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
+
+\pagenumbering{arabic} % estilo da numeração das páginas
+\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
+\selectlanguage{brazil} % idioma do documento
+
+% linhas orfas e viuvas (verificar o limite)
+\widowpenalty=10000
+\clubpenalty=10000
+
+% outros pacotes
+\RequirePackage{mathtools}     % matematica
+\RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{times}         % Times New Roman como fonte de tudo
+\RequirePackage{graphicx}      % figuras
+\RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
+
+% pacote de algoritmos e tradução do scomandos
+\RequirePackage[plain,portuguese,algochapter,linesnumbered,inoutnumbered]{algorithm2e}
+\SetKwInput{Entrada}{Entrada}
+\SetKwInput{Saida}{Sa\'ida}
+\SetKwInput{Dados}{Dados}
+\SetKwInput{Resultado}{Resultado}
+\SetKw{Ate}{at\'e}
+\SetKw{KwRetorna}{retorna}
+\SetKw{Retorna}{retorna}
+\SetKwBlock{Inicio}{in\'icio}{fim}
+\SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
+\SetKwSwitch{Selec}{Caso}{Outro}{selecione}{faça}{caso}{sen\~ao}{fim caso}{fim selec}
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwFor{ParaPar}{para}{fa\c{c}a em paralelo}{fim para}
+\SetKwFor{ParaCada}{para cada}{fa\c{c}a}{fim para cada}
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
+\SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
+\SetKwRepeat{Repita}{repita}{at\'e}
+
+%outras opções do pacote de algoritmos
+\SetAlgoCaptionSeparator{--} % separador da legenda
+\SetAlCapFnt{\normalfont} % fonte da legenda
+\SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
+% teoremas
+\RequirePackage{amsthm,thmtools}
+\renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
+
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\normalfont\bfseries, notebraces={-- }{},
+bodyfont=\normalfont,
+postheadspace=1em,
+qed=\qedsymbol
+]{feistyle}
+
+% declaração dos principais tipos de teoremas que o usuário pode querer vir a usar
+\declaretheorem[style=feistyle,name=Axioma]{axioma}
+\declaretheorem[style=feistyle,name=Teorema]{teorema}
+\declaretheorem[style=feistyle,name=Lema]{lema}
+\declaretheorem[style=feistyle,name=Hip\'otese]{hipotese}
+\declaretheorem[style=feistyle,name=Proposi\c{c}\~ao]{proposicao}
+\declaretheorem[style=feistyle,name=Conjectura]{conjectura}
+\declaretheorem[style=feistyle,name=Paradoxo]{paradoxo}
+\declaretheorem[style=feistyle,name=Corol\'ario]{corolario}
+\declaretheorem[style=feistyle,name=Defini\c{c}\~ao]{definicao}
+\declaretheorem[style=feistyle,name=Exemplo]{exemplo}
+\declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
+
+% contadores de floats serão contínuos
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{algocf}{chapter}
+\counterwithout{equation}{chapter}
+
+% configuracao da legenda da figura
+\renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
+\renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
+% listas
+\renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+\renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
+\renewcommand{\labelenumi}{\theenumi}                          % continuacao
+ 
+ % troca a numeracao no segundo nivel para letras
+\renewcommand{\theenumii}{--}
+\renewcommand{\labelenumii}{\theenumii}
+
+% divisoes do texto
+\renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+
+\renewcommand{\chapter}{%
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+
+\renewcommand{\section}{% 
+\@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
+
+\renewcommand{\subsection}{% 
+\@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
+
+\renewcommand{\subsubsection}{% 
+\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
+
+\setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
+\setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
+
+\RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
+
+%% configuracao do sumario e listas de tabelas e figuras
+% títulos centralizados, negritos e maiúsculos
+\renewcommand{\cfttoctitlefont}{\clearpage\thispagestyle{empty}\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+% sumário não possui recuo
+\renewcommand{\cftchapindent}{0pt}
+\renewcommand{\cftsecindent}{0pt}
+\renewcommand{\cftsubsecindent}{0pt}
+\renewcommand{\cftsubsubsecindent}{0pt}
+
+\renewcommand{\cftchapfont}{\bfseries} % coloca o titulo do capítulo em negrito
+\renewcommand{\cftchappagefont}{} % o número da página do capítulo não é em negrito
+\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao emm negrito
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
+
+% redefinindo listas de algoritmos e teoremas para formatar seus títulos
+\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
+\renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
+
+\def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
+
+% novas paginas
+% capa
+\renewcommand{\maketitle}{
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+\textbf{
+\MakeUppercase{\@instituicao}\\[\baselineskip]
+\uppercase\expandafter{\@author}
+\vfill
+\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
+\vfill
+\@cidade\\
+\number\year
+\end{center}
+}
+
+% folha de rosto
+\newenvironment{folhaderosto}{
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+\uppercase\expandafter{\@author}\\
+\vspace*{0.45\textheight}
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+\vfill
+\begin{flushright}
+\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+\end{flushright}
+\vfill
+\@cidade\\
+\number\year
+\end{center}}
+
+% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
+% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
+\RequirePackage{pdfpages}
+\RequirePackage{ifthen}
+\newcommand{\folhadeaprovacao}{
+\iflogvar
+  \includepdf{ata.pdf}
+\else
+  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+\fi
+}
+
+% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
+\newcommand{\fichacatalografica}{
+    \addtocounter{page}{-1}
+	\iflogvar
+		\includepdf{ficha.pdf}
+	\else
+		\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+	\fi
+}
+
+% subtítulo
+\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
+
+% cidade (padrão São Bernardo do Campo)
+\def\@cidade{S\~ao Bernardo do Campo}
+\newcommand{\cidade}[1]{\def\@cidade{#1}}
+
+% instituicao (padrão Centro Universitário da FEI)
+\def\@instituicao{Centro Universit\'ario da FEI}
+\newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+
+% dedicatória
+\newcommand{\dedicatoria}[1]{
+\clearpage
+\thispagestyle{empty}
+\begin{flushleft}
+\vspace*{0.5\paperheight\relax}
+\hspace*{0.5\paperwidth\relax}
+\begin{minipage}[l]{0.35 \textwidth}
+#1
+\end{minipage}
+\end{flushleft}
+}
+
+% epígrafe
+\newcommand{\epigrafe}[2]{
+\clearpage
+\thispagestyle{empty}
+\begin{flushleft}
+\vspace*{0.5\paperheight\relax}
+\hspace*{0.4\paperwidth\relax}
+\begin{minipage}[l]{0.5\textwidth}
+\textit{``{#1}''
+\\
+#2}
+\end{minipage}
+\end{flushleft}
+}
+
+% resumo
+\newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
+
+% abstract
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
+
+% agradecimentos
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
+
+% índice
+\RequirePackage{imakeidx}
+\renewcommand{\indexname}{\'Indice}
+\let\oldmakeindex\makeindex
+\let\oldprintindex\printindex
+\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\renewcommand{\chapter}{%
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
+\oldprintindex}%
+
+% pacote para gerar listas (símbolos, abreviaturas, etc)
+\RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
+\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
+\newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+
+\newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
+\newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
+
+% apendice novo
+\renewcommand{\appendix}{%
+\renewcommand{\chaptername}{\appendixname}%
+\setcounter{chapter}{0}% zera o contador do capítulo
+\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
+\renewcommand{\chapter}[1]{% redefine o comando do capítulo
+\stepcounter{chapter}% soma 1 ao contador do capítulo
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{AP\^ENDICE \thechapter\ -- ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+\newpage%
+}%
+}%
+
+% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
+\newcommand{\anexos}{%
+\renewcommand{\chaptername}{Anexo}%
+\setcounter{chapter}{0}%
+\renewcommand{\thechapter}{\Alph{chapter}}%
+\renewcommand{\chapter}[1]{%
+\stepcounter{chapter}%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{ANEXO \thechapter\ -- ##1}\end{center}\vfill%
+\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\newpage%
+}%
+}%
+
+% hyperlinks entre partes do documento
+% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
+\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+
+% referências e citações
+\RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+
+% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
+\renewenvironment{quote}
+               {\begin{singlespace}\list{}{%
+               \fontsize{10pt}{1em}%
+               \leftmargin=2cm \rightmargin=2cm}%
+               \item\relax\ignorespaces}
+               {\endlist\end{singlespace}}
+
+% quotation é igual a quote, porém para citações com mais de um parágrafo.
+\renewenvironment{quotation}
+               {\begin{singlespace}\list{}{%
+               \fontsize{10pt}{1em}%
+               \leftmargin=2cm \rightmargin=2cm%
+               \listparindent .5cm \itemindent}%
+                \item\relax}
+               {\endlist\end{singlespace}}
+
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{%
+\renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
+\clearpage
+\addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+\begin{singlespace}
+\oldbibliography{#1}% adiciona realmente a bibliografia
+\end{singlespace}
+}
