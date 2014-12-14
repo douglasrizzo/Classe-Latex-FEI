@@ -9,12 +9,12 @@ UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all:	$(NAME).pdf clean
 	test -e README.txt && mv README.txt README || exit 0
 $(NAME).pdf: $(NAME).dtx
-	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 	bibtex $(NAME).aux
 	makeindex $(NAME).idx
 	makeglossaries $(NAME)
-	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
-	-pdflatex -shell-escape -recorder -interaction=nonstopmode $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 clean:
 	rm -f $(NAME).{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,sbl,sym,xdy}
 distclean: clean
