@@ -4,15 +4,14 @@ Este repositório contém a classe LaTeX do Centro Universitário da FEI para fo
 No manual, os usuários encontrarão informações detalhadas sobre a utilização da classe, seus comandos e algumas boas práticas para que o trabalho fique no formato desejado pela biblioteca.
 
 ##Arquivos no repositório
-- **fei.cls**: a classe em si, que deve ser adicionada ao diretório do seu projeto. Se você deseja *utilizar* a classe,é esse o arquivo que te interessa;
-- **fei.dtx**: o arquivo documentado do classe, utilizado para instalação através de repositórios de terceiros;
-- **fei.pdf**: manual da classe, gerado utilizando a classe, com uma explicação detalhada de como utilizar a classe;
+- **fei.cls**: a classe;
+- **fei.dtx**: o arquivo documentado do classe;
+- **fei.pdf**: manual para utilização, gerado com a classe;
 - **Makefile**: o arquivo que descompacta o `dtx` nos demais arquivos (manual, classe e README);
-- **modelo.tex**: exemplo básico de documento para ser utilizado como ponto de partida para a escrita de um trabalho;
-- **minted.sty**: classe utilizada no processo de desenvolvimento para que os exemplos de códigos fiquem coloridos
-- **referencias.bib**: arquivo de referências usado nos exemplos.
-- **README**: o arquivo "leiame" da classe, quegerado pelo Makefile e que deve ser enviado para os repositórios internacionais;
-- **README.md**: o arquivo "leiame" do repositório, que você está lendo agora.
+- **fei-template.tex**: exemplo básico de documento para ser utilizado como ponto de partida para a escrita de um trabalho;
+- **referencias.bib**: arquivo de referências usado nos exemplos;
+- **README**: readme da classe;
+- **README.md**: readme do repositório.
 
 ##Licença
 Released under the LaTeX Project Public License v1.3c or later
