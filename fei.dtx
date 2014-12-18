@@ -211,7 +211,7 @@ A declaração da classe é feita da seguinte forma:
 	
 	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \verb+\author{autor}+ e \verb+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \verb+\and+ ou \verb+\\+, como no exemplo:
 	
-\begin{latexcode}
+\begin{verbatim}
 \author{Leonardo \and Douglas}
 \end{verbatim}
 
@@ -668,17 +668,21 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 
 	\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 	
-	Para a utilização de todos os recursos que a classe \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando ferramentas diferentes em ordem específica.
+Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas em ordem específica. Esta sessão descreve estes programas, a ordem na qual eles devem ser utilizados e algumas ferramentas inteligentes que automatizam este processo.
+
+\section{O jeito difícil}
+
+Para compilar o documento manualmente, é preciso executar os seguintes programas na seuginte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
 	
 	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{pdf\LaTeX}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 	
 	onde:
 	
 	\begin{enumerate}
-	\item gera o PDF e arquivos auxiliares básicos;
-	\item lê os arquivos auxiliares criados em \emph{a}, gerando a bibliografia apenas com as referências utilizadas do arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
-	\item lê os arquivos auxiliares, criando um ou mais arquivos de índice. Necessário apenas se houve indexação de palavras para serem adicionadas ao índice;
-	\item lê os arquivos auxiliares, criando um ou mais arquivos de listas. Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+	\item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
+	\item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+	\item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
+	\item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
 	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
 	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}).
 	\end{enumerate}
@@ -686,13 +690,24 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	Um exemplo de comando que executa todas essas funções é o seguinte:
 	
 	\begin{verbatim}
-pdflatex manual.tex
-bibtex manual.aux
-makeindex manual.idx
-makeglossaries manual
-pdflatex manual.tex
-pdflatex manual.tex
+pdflatex documento.tex
+bibtex documento.aux
+makeindex documento.idx
+makeglossaries documento
+pdflatex documento.tex
+pdflatex documento.tex
 	\end{verbatim}
+
+\section{O jeito fácil}
+
+Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Duas dessas ferramentas são o \texttt{latexmk} e o \texttt{rubber}, ambas criadas especificamente para realizar a automatização da compilação de documentos \TeX. Supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual, os comandos seguintes geram um PDF completo.
+
+\begin{description}
+\item[\texttt{latexmk}] \texttt{-pdf -interaction=nonstopmode documento}
+\item[\texttt{rubber}] \texttt{-d documento}
+\end{description}
+
+Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existências desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 	
 	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
 	
@@ -734,7 +749,7 @@ pdflatex manual.tex
 		
 	\begin{enumerate}
 	
-	\item\verb+pdflatex manual.tex+
+	\item\verb+pdflatex documento.tex+
 	\begin{enumerate}
 	\item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
 	\item \texttt{aux}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
@@ -745,19 +760,19 @@ pdflatex manual.tex
 	\item \texttt{toc}: sumário;
 	\end{enumerate}	
 	
-	\item\verb+bibtex manual.aux+
+	\item\verb+bibtex documento.aux+
 	\begin{enumerate}
 	\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
 	\item \texttt{blg}: \emph{log} do \index{Bibtex@Bib\TeX}Bib\TeX.
 	\end{enumerate}	
 	
-	\item\verb+makeindex manual.idx+
+	\item\verb+makeindex documento.idx+
 	\begin{enumerate}
 	\item \texttt{ilg}: \emph{log} do MakeIndex.
 	\item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
 	\end{enumerate}	
 	
-	\item\verb+makeglossaries manual+
+	\item\verb+makeglossaries documento+
 	\begin{enumerate}
 	\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \verb+\printglossaries+;
 	\item \texttt{glg}: \emph{log} do \emph{glossaries}.
