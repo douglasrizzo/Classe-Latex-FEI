@@ -135,8 +135,8 @@ qed=\qedsymbol
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
-\renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\renewcommand{\chapter}{\clearpage%
+\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
