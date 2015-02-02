@@ -150,12 +150,14 @@ qed=\qedsymbol
 \setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
+%% configuracao do sumario e listas de tabelas e figuras
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
-%% configuracao do sumario e listas de tabelas e figuras
-\renewcommand{\cfttoctitlefont}{\clearpage\thispagestyle{empty}\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
+\tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
+
+\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
