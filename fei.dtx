@@ -134,18 +134,21 @@ Abstract goes here.
 \keywords{Keywords. Go. Here.}
 \end{abstract}
 
-\listoffigures
-\listoftables
-\listofalgorithms
-\listoftheorems
-\printglossaries
-\tableofcontents
+{
+	\pagestyle{empty}
+	\listoffigures
+	\listoftables
+	\listofalgorithms
+	\listoftheorems
+	\printglossaries
+	\tableofcontents
+}
 
 \chapter{INTRODUÇÃO}
 
 Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um manual, cuja última versão data de 2007, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu a o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX\ especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
-A versão mais recente da classe, assim como este manual, estão disponíveis através do \emph{GitHub} \url{http://tetamusha.github.io/Classe-Latex-FEI}. O único arquivo necessário é a classe \texttt{fei.cls}, a qual deve ser referenciada pelo arquivo \texttt{tex} do trabalho do aluno.
+A versão mais recente da classe, assim como este manual, estão disponíveis através do \emph{GitHub} \url{http://openfei.github.io/Classe-Latex-FEI}. O único arquivo necessário é a classe \texttt{fei.cls}, a qual deve ser referenciada pelo arquivo \texttt{tex} do trabalho do aluno.
 
 A escrita da classe que formata o texto foi realizada tendo-se como referência principal o manual disponível pela biblioteca (nesta versão, o manual utilizado desde 2007). Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo manual, como algoritmos e teoremas.
 
@@ -1157,13 +1160,15 @@ qed=\qedsymbol
 \setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
+%% configuracao do sumario e listas de tabelas e figuras
 \RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
-%% configuracao do sumario e listas de tabelas e figuras
+\tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
+
 % títulos centralizados, negritos e maiúsculos
-\renewcommand{\cfttoctitlefont}{\clearpage\thispagestyle{empty}\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\clearpage\thispagestyle{empty}\hfill\bf\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
