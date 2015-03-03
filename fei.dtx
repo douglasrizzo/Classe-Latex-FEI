@@ -326,19 +326,20 @@ Abstract goes here.
 	
 	\subsubsection{Figuras}
 	
-	As figuras devem conter, nas primeiras linhas da legenda, uma breve descrição e, na última linha, a fonte da imagem. O \LaTeX\ não vincula nativamente figuras a suas fontes. É necessário inserir uma quebra de linha ao final da legenda para digitar a fonte, como no exemplo da figura \ref{fig:exemplo}.
+	As figuras devem conter, nas primeiras linhas da legenda, uma breve descrição e, na última linha, a fonte da imagem. O \LaTeX\ não vincula nativamente figuras às suas fontes. É necessário inserir uma quebra de linha ao final da legenda para digitar a fonte, como no exemplo da figura \ref{fig:exemplo}. Para que os dados relacionados à fonte da figuras não apareçam na lista de figuras no início do documento, o \LaTeX\ permite que uma legenda secundária seja definida entre colchetes, a qual é usada na lista de figuras no lugar da legenda principal. Esta legenda secundária também pode ser usada para realizar uma descrição mais resumida do que a legenda principal da figura, caso esta seja grande demais para aparecer na lista de figuras.
 	
 	\begin{figure}
 	\centering
 	\rule{2cm}{2cm}
-	\caption{Exemplo de figura com sua fonte.\\Fonte: Autor.} \label{fig:exemplo}
+	\caption[Exemplo de figura com sua fonte.]{Exemplo de figura com sua fonte.\\Fonte: Autor.} \label{fig:exemplo}
 	\end{figure}	
 
 \begin{verbatim}
 	\begin{figure}
 	\centering
 	\includegraphics[...]{...}
-	\caption{Exemplo de figura com sua fonte.\\Fonte: Autor.}
+	\caption[Exemplo de figura com sua fonte.]
+		{Exemplo de figura com sua fonte.\\Fonte: Autor.}
 	\end{figure}
 \end{verbatim}	
 	
