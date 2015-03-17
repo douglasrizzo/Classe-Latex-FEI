@@ -275,7 +275,7 @@ A quem se deseja agradecer.
     
     \subsection{Resumo e \emph{abstract}}
     
-    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{portuges}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
 
 \begin{verbatim}
 \begin{resumo}
@@ -1048,7 +1048,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \setlength{\headheight}{14.4pt}
 
 % carrega idiomas e caracteres de saída de 8 bits
-\RequirePackage[english,brazil]{babel}
+\RequirePackage[english,portuges]{babel}
 \RequirePackage[T1]{fontenc}
 
 % espaçamento do texto
@@ -1062,7 +1062,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \pagenumbering{arabic} % estilo da numeração das páginas
 \pagestyle{fancy} % estilo dos cabeçalhos/rodapés
-\selectlanguage{brazil} % idioma do documento
+\selectlanguage{portuges} % idioma do documento
 
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
@@ -1291,7 +1291,7 @@ qed=\qedsymbol
 \newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{portuges}}
 
 % agradecimentos
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
