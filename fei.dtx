@@ -275,7 +275,7 @@ A quem se deseja agradecer.
     
     \subsection{Resumo e \emph{abstract}}
     
-    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+    O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{portuges}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
 
 \begin{verbatim}
 \begin{resumo}
@@ -376,7 +376,28 @@ Abstract goes here.
 	
 	\subsubsection{Algoritmos}
     
-    Apesar de estar ausente no manual, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura
+    Apesar de estar ausente no manual, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura.
+	A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram traduzidos para o português e, logo após, um exemplo de como usar alguns desses comandos. Para mais informações, consulte o manual do \texttt{algorithm2e}.
+	
+\begin{verbatim}
+\SetKwInput{Entrada}{Entrada}
+\SetKwInput{Saida}{Sa\'ida}
+\SetKwInput{Dados}{Dados}
+\SetKwInput{Resultado}{Resultado}
+\SetKw{Ate}{at\'e}
+\SetKw{Retorna}{retorna}
+\SetKwBlock{Inicio}{in\'icio}{fim}
+\SetKwIF{Se}{SenaoSe}{Senao}
+	{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
+\SetKwSwitch{Selec}{Caso}{Outro}
+	{selecione}{faça}{caso}{sen\~ao}{fim caso}{fim selec}
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwFor{ParaPar}{para}{fa\c{c}a em paralelo}{fim para}
+\SetKwFor{ParaCada}{para cada}{fa\c{c}a}{fim para cada}
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
+\SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
+\SetKwRepeat{Repita}{repita}{at\'e}
+\end{verbatim}
     
     Exemplo:
 
@@ -1048,7 +1069,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \setlength{\headheight}{14.4pt}
 
 % carrega idiomas e caracteres de saída de 8 bits
-\RequirePackage[english,brazil]{babel}
+\RequirePackage[english,portuges]{babel}
 \RequirePackage[T1]{fontenc}
 
 % espaçamento do texto
@@ -1062,7 +1083,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \pagenumbering{arabic} % estilo da numeração das páginas
 \pagestyle{fancy} % estilo dos cabeçalhos/rodapés
-\selectlanguage{brazil} % idioma do documento
+\selectlanguage{portuges} % idioma do documento
 
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
@@ -1075,14 +1096,13 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
-% pacote de algoritmos e tradução do scomandos
+% pacote de algoritmos e tradução dos comandos
 \RequirePackage[plain,portuguese,algochapter,linesnumbered,inoutnumbered]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
 \SetKwInput{Dados}{Dados}
 \SetKwInput{Resultado}{Resultado}
 \SetKw{Ate}{at\'e}
-\SetKw{KwRetorna}{retorna}
 \SetKw{Retorna}{retorna}
 \SetKwBlock{Inicio}{in\'icio}{fim}
 \SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
@@ -1291,7 +1311,7 @@ qed=\qedsymbol
 \newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{portuges}}
 
 % agradecimentos
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}

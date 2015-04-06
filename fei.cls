@@ -47,7 +47,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14.4pt}
 
-\RequirePackage[english,brazil]{babel}
+\RequirePackage[english,portuges]{babel}
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{setspace}      % pacote para controlar o espacamento
@@ -60,7 +60,7 @@
 
 \pagenumbering{arabic} % estilo da numeração das páginas
 \pagestyle{fancy} % estilo dos cabeçalhos/rodapés
-\selectlanguage{brazil} % idioma do documento
+\selectlanguage{portuges} % idioma do documento
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -77,7 +77,6 @@
 \SetKwInput{Dados}{Dados}
 \SetKwInput{Resultado}{Resultado}
 \SetKw{Ate}{at\'e}
-\SetKw{KwRetorna}{retorna}
 \SetKw{Retorna}{retorna}
 \SetKwBlock{Inicio}{in\'icio}{fim}
 \SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
@@ -263,7 +262,7 @@ qed=\qedsymbol
 
 \newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{portuges}}
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
 
