@@ -77,7 +77,6 @@
 \SetKwInput{Dados}{Dados}
 \SetKwInput{Resultado}{Resultado}
 \SetKw{Ate}{at\'e}
-\SetKw{KwRetorna}{retorna}
 \SetKw{Retorna}{retorna}
 \SetKwBlock{Inicio}{in\'icio}{fim}
 \SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}

@@ -376,7 +376,28 @@ Abstract goes here.
 	
 	\subsubsection{Algoritmos}
     
-    Apesar de estar ausente no manual, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura
+    Apesar de estar ausente no manual, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura.
+	A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram traduzidos para o português e, logo após, um exemplo de como usar alguns desses comandos. Para mais informações, consulte o manual do \texttt{algorithm2e}.
+	
+\begin{verbatim}
+\SetKwInput{Entrada}{Entrada}
+\SetKwInput{Saida}{Sa\'ida}
+\SetKwInput{Dados}{Dados}
+\SetKwInput{Resultado}{Resultado}
+\SetKw{Ate}{at\'e}
+\SetKw{Retorna}{retorna}
+\SetKwBlock{Inicio}{in\'icio}{fim}
+\SetKwIF{Se}{SenaoSe}{Senao}
+	{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
+\SetKwSwitch{Selec}{Caso}{Outro}
+	{selecione}{faça}{caso}{sen\~ao}{fim caso}{fim selec}
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}
+\SetKwFor{ParaPar}{para}{fa\c{c}a em paralelo}{fim para}
+\SetKwFor{ParaCada}{para cada}{fa\c{c}a}{fim para cada}
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
+\SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
+\SetKwRepeat{Repita}{repita}{at\'e}
+\end{verbatim}
     
     Exemplo:
 
@@ -1082,7 +1103,6 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \SetKwInput{Dados}{Dados}
 \SetKwInput{Resultado}{Resultado}
 \SetKw{Ate}{at\'e}
-\SetKw{KwRetorna}{retorna}
 \SetKw{Retorna}{retorna}
 \SetKwBlock{Inicio}{in\'icio}{fim}
 \SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~ao}{sen\~ao se}{sen\~ao}{fim se}
