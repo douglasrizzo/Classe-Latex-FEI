@@ -150,7 +150,7 @@ qed=\qedsymbol
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
 %% configuracao do sumario e listas de tabelas e figuras
-\RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
+\RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
 %% sumário não possui recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
@@ -168,6 +168,12 @@ qed=\qedsymbol
 \renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
 \renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
 \renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
+
+\newcommand\sumario{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
+
+
+
+
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
