@@ -150,7 +150,16 @@ qed=\qedsymbol
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
 %% configuracao do sumario e listas de tabelas e figuras
-\RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
+\RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
+
+\tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
+
+\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftafterlottitle}{\hfill}
+
 %% sumário não possui recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
