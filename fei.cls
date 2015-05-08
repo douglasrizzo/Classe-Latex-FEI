@@ -150,7 +150,7 @@ qed=\qedsymbol
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
 
 %% configuracao do sumario e listas de tabelas e figuras
-\RequirePackage{tocloft} % para poder fazer mais coisas no sumario e nas listas
+\RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
 \tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
 
@@ -160,19 +160,29 @@ qed=\qedsymbol
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
+%% sumário não possui recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
 \renewcommand{\cftsubsecindent}{0pt}
 \renewcommand{\cftsubsubsecindent}{0pt}
-
-\renewcommand{\cftchapfont}{\bfseries} % coloca o titulo do capítulo em negrito
-\renewcommand{\cftchappagefont}{} % o número da página do capítulo não é em negrito
-\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo da secao emm negrito
+\renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
+\renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
+\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
+\renewcommand{\contentsname}{Sum\'ario}
+\renewcommand{\tableofcontents}{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
+\renewcommand{\listoftables}{\part*{\listtablename}\thispagestyle{empty}\@starttoc{lot}}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
 \renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
 \renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
+
+\newcommand\sumario{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
+
+
+
+
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
