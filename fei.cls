@@ -51,7 +51,7 @@
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{setspace}      % pacote para controlar o espacamento
-\onehalfspace                  % espacamento de 1,5 (segundo manual)
+\linespread{1.45}    % espacamento de 1,5 (para o word - A biblioteca espera trabalhos feitos no word??)
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -286,9 +286,12 @@ qed=\qedsymbol
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
-\RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[nomain,acronym,nonumberlist]{glossaries}
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+\setglossarystyle{alttree}
+\glssetwidest[0]{}
+\glssetwidest[1]{aaaaaaaaaaaa}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -319,7 +322,7 @@ qed=\qedsymbol
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
-\RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)(abnt-repeated-author-omit=yes substitui nomes repetidos por ____.)
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
