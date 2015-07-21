@@ -51,7 +51,7 @@
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{setspace}      % pacote para controlar o espacamento
-\onehalfspace                  % espacamento de 1,5 (segundo manual)
+\linespread{1.45}%
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -319,7 +319,7 @@ qed=\qedsymbol
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
-\RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%

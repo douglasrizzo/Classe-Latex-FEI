@@ -586,7 +586,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	Exemplo:
 	
 	\begin{quote}		
-	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think 'are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
+	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
 	\end{quote}
 
 	\chapter{ÍNDICES}\label{chap:indice}
@@ -1071,7 +1071,8 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 % espaçamento do texto
 \RequirePackage{setspace}      % pacote para controlar o espacamento
-\onehalfspace                  % espacamento de 1,5 (segundo manual)
+% espacamento de 1,5 (mais parecido com o padrão do Word)
+\linespread{1.45}%
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -1378,7 +1379,8 @@ qed=\qedsymbol
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % referências e citações
-\RequirePackage[alf,abnt-emphasize=bf]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
