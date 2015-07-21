@@ -143,7 +143,7 @@ Abstract goes here.
 
 \chapter{INTRODUÇÃO}
 
-Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um manual, cuja última versão data de 2007, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu a o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX\ especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
+Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um manual, cuja última versão data de 2007, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX\ especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
 A versão mais recente da classe, assim como este manual, estão disponíveis através do \emph{GitHub} \url{http://openfei.github.io/Classe-Latex-FEI}. O único arquivo necessário é a classe \texttt{fei.cls}, a qual deve ser referenciada pelo arquivo \texttt{tex} do trabalho do aluno.
 
@@ -617,7 +617,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	
-	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor sendo dado um arquivo como exemplo utilizado pelo template fei-template.tex (\verb+lista_simbolos.tex+). As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 	
@@ -650,7 +650,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\verb+\newglossaryentry{1}{parent={2},type=simbolos,+
 	
-	\verb+name={3},sort=4,description={5}}+, onde:
+	\verb+name={3},sort={4},description={5}}+, onde:
 	
 	\begin{enumerate}
 	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
@@ -1072,8 +1072,8 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 % espaçamento do texto
 \RequirePackage{setspace}      % pacote para controlar o espacamento
-\linespread{1.45}			   % espacamento de 1,5 (para o word - A biblioteca espera trabalhos feitos no word??)
-%\onehalfspace                  % espacamento de 1,5 (para o latex)
+\linespread{1.45}			   % espacamento de 1,5 (segundo o word - A biblioteca espera trabalhos feitos no word??)
+%\onehalfspace                  % espacamento de 1,5 (segundo o latex)
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -1341,8 +1341,13 @@ qed=\qedsymbol
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
+% hyperlinks entre partes do documento
+% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
+% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
+\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[nomain,acronym,nonumberlist]{glossaries}%nogroupskip
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 %estilo usado como base
@@ -1381,12 +1386,8 @@ qed=\qedsymbol
 }%
 }%
 
-% hyperlinks entre partes do documento
-% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
-
 % referências e citações
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)(abnt-repeated-author-omit=yes substitui nomes repetidos por ____.)
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
