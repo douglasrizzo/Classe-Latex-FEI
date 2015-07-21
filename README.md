@@ -7,7 +7,7 @@ No manual, os usuários encontrarão informações detalhadas sobre a utilizaç�
 
 ##Arquivos no repositório
 - **fei.cls**: a classe;
-- **fei.dtx**: o arquivo documentado do classe;
+- **fei.dtx**: o arquivo documentado da classe;
 - **fei.pdf**: manual para utilização, gerado com a classe;
 - **Makefile**: o arquivo que descompacta o `dtx` nos demais arquivos (manual, classe e README);
 - **fei-template.tex**: exemplo básico de documento para ser utilizado como ponto de partida para a escrita de um trabalho;
