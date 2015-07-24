@@ -169,7 +169,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{graphicx}: importação e utilização de imagens;
         \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{hyperref}: gera os links entre referências no PDF;
-        \item\texttt{setspace}: espaçamento entre linhas;
+        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
         \item\texttt{caption}: altera a formatação de certas legendas;
         \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
         \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
@@ -698,17 +698,17 @@ Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necess�
 
 Para compilar o documento manualmente, é preciso executar os seguintes programas na seuginte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
 	
-	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{pdf\LaTeX}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
+	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeGlossaries}}_c \to \operatorname*{\text{pdf\LaTeX}}_d \to \operatorname*{\text{MakeIndex}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 	
 	onde:
 	
 	\begin{enumerate}
 	\item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
 	\item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+  \item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+  \item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
 	\item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
-	\item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
-	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
-	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}).
+  \item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
 	\end{enumerate}
 	
 	Um exemplo de comando que executa todas essas funções é o seguinte:
@@ -716,9 +716,9 @@ Para compilar o documento manualmente, é preciso executar os seguintes programa
 	\begin{verbatim}
 pdflatex documento.tex
 bibtex documento.aux
-makeindex documento.idx
 makeglossaries documento
 pdflatex documento.tex
+makeindex documento.idx
 pdflatex documento.tex
 	\end{verbatim}
 
@@ -731,7 +731,7 @@ Existem diversas ferramentas que automatizam o processo de compilação de um do
 \item[\texttt{rubber}] \texttt{-d documento}
 \end{description}
 
-Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existências desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
+Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 	
 	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
 	
@@ -1072,7 +1072,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 % espaçamento do texto
 \RequirePackage{setspace}      % pacote para controlar o espacamento
 % espacamento de 1,5 (mais parecido com o padrão do Word)
-\linespread{1.45}%
+\spacing{1.45}%
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto

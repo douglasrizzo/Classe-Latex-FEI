@@ -51,7 +51,7 @@
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{setspace}      % pacote para controlar o espacamento
-\linespread{1.45}%
+\spacing{1.45}%
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
