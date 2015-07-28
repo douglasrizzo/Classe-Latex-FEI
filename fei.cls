@@ -38,28 +38,28 @@
 
 \setlength{\paperheight}{297mm}
 \setlength{\paperwidth}{210mm}
+\renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
+\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
 \RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 
 \RequirePackage{fancyhdr}
+\pagenumbering{arabic} % estilo da numeração das páginas
+\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
 \fancyhf{}
-\rhead{\thepage}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headrulewidth}{0pt}
+\fancyhead[RO,LE]{\footnotesize\thepage}% numero da página em fonte menor que a do texto
 \setlength{\headheight}{14.4pt}
 
 \RequirePackage[english,portuges]{babel}
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{setspace}      % pacote para controlar o espacamento
-\linespread{1.45}%
+\spacing{1.45}%
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
-\renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
-\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
 \RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
 
-\pagenumbering{arabic} % estilo da numeração das páginas
-\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
 \selectlanguage{portuges} % idioma do documento
 
 \widowpenalty=10000
@@ -144,7 +144,7 @@ qed=\qedsymbol
 \@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 \renewcommand{\subsubsection}{%
-\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
 
 \setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
@@ -168,15 +168,28 @@ qed=\qedsymbol
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
 \renewcommand{\cftsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecfont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
+
+\setlength{\cftfignumwidth}{5em}
+\setlength{\cfttabnumwidth}{5em}
+\renewcommand{\cftfigpresnum}{Figura }
+\renewcommand{\cfttabpresnum}{Tabela }
 
 \renewcommand{\contentsname}{Sum\'ario}
 \renewcommand{\tableofcontents}{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
 \renewcommand{\listoftables}{\part*{\listtablename}\thispagestyle{empty}\@starttoc{lot}}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
-\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
-\renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
+
+\renewcommand{\listofalgorithms}{\begingroup
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{Algoritmo~\oldnumberline}%
+\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
+\renewcommand{\listoftheorems}{\begingroup%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{Teorema~\oldnumberline}%
+\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
 
 \newcommand\sumario{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
 

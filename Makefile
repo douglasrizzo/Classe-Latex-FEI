@@ -15,9 +15,9 @@ distclean: clean
 $(NAME).pdf: $(NAME).dtx
 	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 	bibtex $(NAME).aux
-	makeindex $(NAME).idx
 	makeglossaries $(NAME)
 	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
+	makeindex $(NAME).idx
 	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 inst: all
 	mkdir -p $(UTREE)/{tex,source,doc}/latex/$(NAME)
