@@ -89,8 +89,7 @@
 \SetKwRepeat{Repita}{repita}{at\'e}
 
 \SetAlgoCaptionSeparator{--} % separador da legenda
-\SetAlCapFnt{\normalfont} % fonte da legenda
-\SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
+\SetAlCapFnt{\footnotesize} % fonte da legenda
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
@@ -172,12 +171,14 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{5em}
-\setlength{\cfttabnumwidth}{5em}
-\renewcommand{\cftfigpresnum}{Figura }
+\setlength{\cftfignumwidth}{6em}
+\setlength{\cfttabnumwidth}{4.5em}
+\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao }
 \renewcommand{\cfttabpresnum}{Tabela }
 
 \renewcommand{\contentsname}{Sum\'ario}
+\addto\captionsportuges{%
+  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}}
 \renewcommand{\tableofcontents}{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
 \renewcommand{\listoftables}{\part*{\listtablename}\thispagestyle{empty}\@starttoc{lot}}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
