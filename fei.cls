@@ -54,8 +54,8 @@
 \RequirePackage[english,portuges]{babel}
 \RequirePackage[T1]{fontenc}
 
-\RequirePackage{setspace}      % pacote para controlar o espacamento
-\spacing{1.45}%
+\RequirePackage{setspace}
+\spacing{1.45}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
@@ -300,7 +300,9 @@ qed=\qedsymbol
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
-\RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+
+\RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}%nogroupskip
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 
@@ -330,8 +332,6 @@ qed=\qedsymbol
 \newpage%
 }%
 }%
-
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 \RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
 
