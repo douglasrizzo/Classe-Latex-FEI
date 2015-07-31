@@ -350,14 +350,21 @@ qed=\qedsymbol
                 \item\relax}
                {\endlist\end{singlespace}}
 
+\newlength{\bibitemsep}\setlength{\bibitemsep}{18pt}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt} % zera o espaço entre parágrafos
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibparskip}%
+  \setlength{\itemsep}{\bibitemsep}%
+}
+
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-\clearpage
-\addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
-\begin{singlespace}
-\oldbibliography{#1}% adiciona realmente a bibliografia
-\end{singlespace}
+  \clearpage%
+  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
 %% Copyright (C) 2014 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
