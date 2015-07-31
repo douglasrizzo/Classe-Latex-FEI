@@ -143,7 +143,7 @@ Abstract goes here.
 
 \chapter{INTRODUÇÃO}
 
-Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um manual, cuja última versão data de 2007, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu a o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX\ especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
+Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um manual, cuja última versão data de 2007, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX\ especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
 A versão mais recente da classe, assim como este manual, estão disponíveis através do \emph{GitHub} \url{http://openfei.github.io/Classe-Latex-FEI}. O único arquivo necessário é a classe \texttt{fei.cls}, a qual deve ser referenciada pelo arquivo \texttt{tex} do trabalho do aluno.
 
@@ -617,7 +617,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	
-	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor sendo dado um arquivo como exemplo utilizado pelo template fei-template.tex (\verb+lista_simbolos.tex+). As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 	
@@ -648,18 +648,19 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	A indexação de símbolos é feita utilizando o comando
 	
-	\verb+\newglossaryentry{1}{type=simbolos,+
+	\verb+\newglossaryentry{1}{parent={2},type=simbolos,+
 	
-	\verb+name={2},sort=3,description={4}}+, onde:
+	\verb+name={3},sort={4},description={5}}+, onde:
 	
 	\begin{enumerate}
 	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
-	\item 2: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo);
-	\item 3: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
-	\item 4: a descrição do símbolo, que aparecerá na lista.
+	\item 2: tipo do símbolo; usado para separar letras gregas e subscritos das demais (Cf. exemplo abaixo);
+	\item 3: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo);
+	\item 4: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
+	\item 5: a descrição do símbolo, que aparecerá na lista.
 	\end{enumerate}
 	
-	Exemplo: \verb+\newglossaryentry{pi}{type=simbolos,+
+	Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=simbolos,+
 	
 			 \verb+name={\ensuremath{\pi}},sort=p,+
 			 
@@ -1074,9 +1075,9 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \RequirePackage[T1]{fontenc}
 
 % espaçamento do texto
-\RequirePackage{setspace}      % pacote para controlar o espacamento
+\RequirePackage{setspace}
 % espacamento de 1,5 (mais parecido com o padrão do Word)
-\spacing{1.45}%
+\spacing{1.45}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
@@ -1356,8 +1357,13 @@ qed=\qedsymbol
 \@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
+% hyperlinks entre partes do documento
+% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
+% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
+\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}%nogroupskip
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 
@@ -1389,10 +1395,6 @@ qed=\qedsymbol
 \newpage%
 }%
 }%
-
-% hyperlinks entre partes do documento
-% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
