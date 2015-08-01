@@ -26,6 +26,14 @@
 \newif\iflogvar
 }
 
+\newif\ifsublist
+\sublistfalse
+
+\DeclareOption{sublist}
+{
+  \sublisttrue
+}
+
 \DeclareOption{final}
 {
 \newif\iflogvar
@@ -171,7 +179,7 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{6em}
+\setlength{\cftfignumwidth}{7em}
 \setlength{\cfttabnumwidth}{4.5em}
 \renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao }
 \renewcommand{\cfttabpresnum}{Tabela }
@@ -302,7 +310,18 @@ qed=\qedsymbol
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
-\RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}%nogroupskip
+\ifsublist
+  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  %estilo usado como base
+  \setglossarystyle{alttree}
+  % Configuracao de identacao do nivel 0 (titulos)
+  \glssetwidest[0]{}
+  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+  \glssetwidest[1]{aaaaaaaaaaaa}
+\else
+  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\fi
+
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 

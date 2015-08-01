@@ -102,13 +102,14 @@ and the derived files           fei.pdf and
 \makeindex
 \makeglossaries
 
-\begin{document}
 \newacronym{fei}{FEI}{Fundação Educacional Inaciana}
 \newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
 \newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
+
+\begin{document}
 
 \maketitle
 
@@ -204,7 +205,8 @@ A declaração da classe é feita da seguinte forma:
 
 	\begin{enumerate}
 	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
-	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice}).
+	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
+  \item \textt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist}.
 	\end{enumerate}
 	
 	Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens margens direita e esquerda das páginas, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
@@ -621,7 +623,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 	
-		\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
+	\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
 	
 	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \verb+\makeglossaries+ ao preâmbulo de seu texto.
 	
@@ -686,6 +688,17 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	\end{enumerate}
 	
 	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
+
+  \section{Sub-listas de símbolos}\label{sec:sublist}
+  Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de sub-listas se símbolos. Para que sub-listas sejam usadas, basta que a opção \texttt{sublist} seja passada à classe. Neste modo, os símbolos devem ser inseridos em \emph{categorias}. O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacocte \texttt{glossaries}.
+
+  \begin{verbatim}
+  \newglossaryentry{greek}{name={Letras gregas},
+    description={\nopostdesc},sort=b}
+  \newglossaryentry{deltap}{parent=greek,type=simbolos,
+    name={\ensuremath{\Delta P}},sort=p,
+    description={pressure drop, $Pa$}}
+  \end{verbatim}
 	
 	\section{Imprimindo as listas}
 	
@@ -1043,6 +1056,14 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \newif\iflogvar
 }
 
+\newif\ifsublist
+\sublistfalse
+
+\DeclareOption{sublist}
+{
+  \sublisttrue
+}
+
 \DeclareOption{final}
 {
 \newif\iflogvar
@@ -1205,7 +1226,7 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{6em}
+\setlength{\cftfignumwidth}{7em}
 \setlength{\cfttabnumwidth}{4.5em}
 \renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao }
 \renewcommand{\cfttabpresnum}{Tabela }
@@ -1363,7 +1384,18 @@ qed=\qedsymbol
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}%nogroupskip
+\ifsublist
+  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  %estilo usado como base
+  \setglossarystyle{alttree}
+  % Configuracao de identacao do nivel 0 (titulos)
+  \glssetwidest[0]{}
+  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+  \glssetwidest[1]{aaaaaaaaaaaa}
+\else
+  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\fi
+
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 
