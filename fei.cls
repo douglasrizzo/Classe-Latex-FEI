@@ -161,13 +161,12 @@ qed=\qedsymbol
 
 \tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
 
-\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
-%% sumário não possui recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
 \renewcommand{\cftsubsecindent}{0pt}
@@ -179,19 +178,20 @@ qed=\qedsymbol
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{7em}
-\setlength{\cfttabnumwidth}{4.5em}
-\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao }
-\renewcommand{\cfttabpresnum}{Tabela }
+\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{4.5em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 
-\renewcommand{\contentsname}{Sum\'ario}
+
 \addto\captionsportuges{%
-  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}}
-\renewcommand{\tableofcontents}{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
-\renewcommand{\listoftables}{\part*{\listtablename}\thispagestyle{empty}\@starttoc{lot}}
-\renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
+  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand\contentsname{Sum\'ario}}
+\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
+\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
 
-\renewcommand{\listofalgorithms}{\begingroup
+\renewcommand{\listofalgorithms}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Algoritmo~\oldnumberline}%
 \part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
@@ -199,12 +199,6 @@ qed=\qedsymbol
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Teorema~\oldnumberline}%
 \part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
-
-\newcommand\sumario{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
-
-
-
-
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
