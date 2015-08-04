@@ -13,12 +13,12 @@ clean:
 distclean: clean
 	rm -f *.{pdf,cls} README README.txt
 $(NAME).pdf: $(NAME).dtx
-	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
 	bibtex $(NAME).aux
 	makeglossaries $(NAME)
-	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 	makeindex $(NAME).idx
-	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
 inst: all
 	mkdir -p $(UTREE)/{tex,source,doc}/latex/$(NAME)
 	cp $(NAME).dtx $(UTREE)/source/latex/$(NAME)
