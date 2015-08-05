@@ -179,7 +179,7 @@ qed=\qedsymbol
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
 \setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{4.5em} % espaço onde a palavra "Tabela" é escrita
+\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
 \renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 
