@@ -102,13 +102,14 @@ and the derived files           fei.pdf and
 \makeindex
 \makeglossaries
 
-\begin{document}
 \newacronym{fei}{FEI}{Fundação Educacional Inaciana}
 \newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
 \newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
+
+\begin{document}
 
 \maketitle
 
@@ -139,7 +140,7 @@ Abstract goes here.
 \listofalgorithms
 \listoftheorems
 \printglossaries
-\sumario
+\tableofcontents
 
 \chapter{INTRODUÇÃO}
 
@@ -169,7 +170,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{graphicx}: importação e utilização de imagens;
         \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{hyperref}: gera os links entre referências no PDF;
-        \item\texttt{setspace}: espaçamento entre linhas;
+        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
         \item\texttt{caption}: altera a formatação de certas legendas;
         \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
         \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
@@ -204,7 +205,8 @@ A declaração da classe é feita da seguinte forma:
 
 	\begin{enumerate}
 	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
-	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice}).
+	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
+  \item \textt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist}.
 	\end{enumerate}
 	
 	Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens margens direita e esquerda das páginas, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
@@ -297,7 +299,7 @@ Abstract goes here.
     \hline 
     \textbf{Elemento} & \textbf{Comando} \\ 
     \hline 
-	Sumário & \verb+\tableofcontents+ \\ 
+	  Sumário & \verb+\tableofcontents+ \\ 
     \hline 
     Lista de Figuras & \verb+\listoffigures+ \\ 
     \hline 
@@ -586,16 +588,16 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	Exemplo:
 	
 	\begin{quote}		
-	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think 'are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
+	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
 	\end{quote}
 
 	\chapter{ÍNDICES}\label{chap:indice}
 	
-	Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante em todas as instalações do \LaTeX. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou a cedilha -- não serão organizados corretamente. Para solucionar este problemas, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
+	Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante de todas as instalações do \LaTeX. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou cedilha -- não serão organizados corretamente. Para solucionar este problema, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
 	
 	Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \verb+\documentclass[xindy]{fei}+
 	
-	Como o \emph{xindy} não é parte integrante do \LaTeX, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}.
+	Como o \emph{xindy} não é parte integrante do \LaTeX, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}. Também é necessário executar um passo adicional na compilação do projeto, o qual é explicado no capítulo \ref{chap:compilando}.
 	
 	\section{Sinalizando a criação dos arquivos de índice}
 	
@@ -621,7 +623,7 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 	
-		\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
+	\section{Sinalizando a criação dos arquivos de listas de símbolos e abreviaturas}
 	
 	Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \verb+\makeglossaries+ ao preâmbulo de seu texto.
 	
@@ -686,30 +688,41 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	\end{enumerate}
 	
 	Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
+
+  \section{Sub-listas de símbolos}\label{sec:sublist}
+  Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de sub-listas se símbolos. Para que sub-listas sejam usadas, basta que a opção \texttt{sublist} seja passada à classe. Neste modo, os símbolos devem ser inseridos em \emph{categorias}. O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacocte \texttt{glossaries}.
+
+  \begin{verbatim}
+  \newglossaryentry{greek}{name={Letras gregas},
+    description={\nopostdesc},sort=b}
+  \newglossaryentry{deltap}{parent=greek,type=simbolos,
+    name={\ensuremath{\Delta P}},sort=p,
+    description={pressure drop, $Pa$}}
+  \end{verbatim}
 	
 	\section{Imprimindo as listas}
 	
 	O comando \verb+\printglossaries+ imprime ambas as listas em sequência.
 
-	\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
+\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 	
 Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas em ordem específica. Esta sessão descreve estes programas, a ordem na qual eles devem ser utilizados e algumas ferramentas inteligentes que automatizam este processo.
 
 \section{O jeito difícil}
 
-Para compilar o documento manualmente, é preciso executar os seguintes programas na seuginte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
+Para compilar o documento manualmente, é preciso executar os seguintes programas na seguinte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
 	
-	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeIndex}}_c \to \operatorname*{\text{MakeGlossaries}}_d \to \operatorname*{\text{pdf\LaTeX}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
+	\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeGlossaries}}_c \to \operatorname*{\text{pdf\LaTeX}}_d \to \operatorname*{\text{MakeIndex}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 	
 	onde:
 	
 	\begin{enumerate}
 	\item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
 	\item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+  \item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+  \item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
 	\item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
-	\item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
-	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
-	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}).
+  \item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
 	\end{enumerate}
 	
 	Um exemplo de comando que executa todas essas funções é o seguinte:
@@ -717,11 +730,13 @@ Para compilar o documento manualmente, é preciso executar os seguintes programa
 	\begin{verbatim}
 pdflatex documento.tex
 bibtex documento.aux
-makeindex documento.idx
 makeglossaries documento
 pdflatex documento.tex
+makeindex documento.idx
 pdflatex documento.tex
 	\end{verbatim}
+
+Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \verb+-shell-escape+ ao pdf\LaTeX, para que ele possa executar comandos no \emph{shell} do Linux.
 
 \section{O jeito fácil}
 
@@ -732,7 +747,7 @@ Existem diversas ferramentas que automatizam o processo de compilação de um do
 \item[\texttt{rubber}] \texttt{-d documento}
 \end{description}
 
-Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existências desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
+Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 	
 	\chapter{INSTALAÇÃO DOS PACOTES E PROGRAMAS}	\label{chap:instalacao}
 	
@@ -1043,6 +1058,14 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \newif\iflogvar
 }
 
+\newif\ifsublist
+\sublistfalse
+
+\DeclareOption{sublist}
+{
+  \sublisttrue
+}
+
 \DeclareOption{final}
 {
 \newif\iflogvar
@@ -1056,14 +1079,18 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 % tamanho do papel (A4) e margens
 \setlength{\paperheight}{297mm} 
 \setlength{\paperwidth}{210mm}
+\renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
+\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
 \RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
 
 % cabecalho e rodape
 \RequirePackage{fancyhdr}
+\pagenumbering{arabic} % estilo da numeração das páginas
+\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
 \fancyhf{}
-\rhead{\thepage}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headrulewidth}{0pt}
+\fancyhead[RO,LE]{\footnotesize\thepage}% numero da página em fonte menor que a do texto
 \setlength{\headheight}{14.4pt}
 
 % carrega idiomas e caracteres de saída de 8 bits
@@ -1071,17 +1098,13 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \RequirePackage[T1]{fontenc}
 
 % espaçamento do texto
-\RequirePackage{setspace}      % pacote para controlar o espacamento
-\linespread{1.45}			   % espacamento de 1,5 (segundo o word - A biblioteca espera trabalhos feitos no word??)
-%\onehalfspace                  % espacamento de 1,5 (segundo o latex)
+\RequirePackage{setspace}
+% espacamento de 1,5 (mais parecido com o padrão do Word)
+\spacing{1.45}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
-\renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
-\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
 \RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
 
-\pagenumbering{arabic} % estilo da numeração das páginas
-\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
 \selectlanguage{portuges} % idioma do documento
 
 % linhas orfas e viuvas (verificar o limite)
@@ -1115,8 +1138,8 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 %outras opções do pacote de algoritmos
 \SetAlgoCaptionSeparator{--} % separador da legenda
-\SetAlCapFnt{\normalfont} % fonte da legenda
-\SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
+\SetAlCapFnt{\footnotesize} % fonte da legenda
+% \SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
 % teoremas
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
@@ -1176,7 +1199,7 @@ qed=\qedsymbol
 \@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 \renewcommand{\subsubsection}{% 
-\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
 
 \setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
 \setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
@@ -1186,13 +1209,14 @@ qed=\qedsymbol
 
 \tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
 
-\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
+% formata títulos do sumário e listas de figuras e tabelas
+\renewcommand{\cfttoctitlefont}{\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
-%% sumário não possui recuo
+% entradas no sumário não possuem recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
 \renewcommand{\cftsubsecindent}{0pt}
@@ -1201,28 +1225,39 @@ qed=\qedsymbol
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
 \renewcommand{\cftsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecfont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-% redefinindo listas de algoritmos e teoremas para formatar seus títulos
-\renewcommand{\contentsname}{Sum\'ario}
-\renewcommand{\tableofcontents}{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
-\renewcommand{\listoftables}{\part*{\listtablename}\thispagestyle{empty}\@starttoc{lot}}
-\renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
-\renewcommand{\listofalgorithms}{\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}}
-\renewcommand{\listoftheorems}{\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}}
+\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{4.5em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 
-\newcommand\sumario{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
+% o código para a remoção da numeração das páginas do sumários e das listas em
+% geral foi retirado daqui:
+% https://tex.stackexchange.com/questions/129608/page-numbering-problem/129614#129614
 
-% coisas que não funcionaram para redefinir '\tableofcontents'
-% \renewcommand\tableofcontents{\newpage\begin{center}\part*{Sum\'ario}\end{center}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
+% redefine sumário e listas de figuras e tabelas, removendo numeração das
+% páginas e adicionando os títulos certos das páginas
+\addto\captionsportuges{%
+  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand\contentsname{Sum\'ario}}
+\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
+\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
 
-% \let\tableofcontents\sumario
-
-% \def\tableofcontents{\newpage\begin{center}\part*{Sum\'ario}\end{center}\@starttoc{toc}\thispagestyle{empty}\pagestyle{fancy}}
-
-% o comando de mudar o nome do sumário também não funcionou
-%\renewcommand{\contentsname}{Sum\'ario}
+% redefinindo listas de algoritmos e teoremas para formatar os títulos das
+% páginas e adicionar 'algoritmo' e 'teorema' antes dos números de cada entrada
+% das listas
+\renewcommand{\listofalgorithms}{\begingroup%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{Algoritmo~\oldnumberline}%
+\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
+\renewcommand{\listoftheorems}{\begingroup%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{Teorema~\oldnumberline}%
+\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
@@ -1347,15 +1382,20 @@ qed=\qedsymbol
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\RequirePackage[nomain,acronym,nonumberlist]{glossaries}%nogroupskip
+\ifsublist
+  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  %estilo usado como base
+  \setglossarystyle{alttree}
+  % Configuracao de identacao do nivel 0 (titulos)
+  \glssetwidest[0]{}
+  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+  \glssetwidest[1]{aaaaaaaaaaaa}
+\else
+  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\fi
+
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
-%estilo usado como base
-\setglossarystyle{alttree}
-% Configuracao de identacao do nivel 0 (titulos)
-\glssetwidest[0]{}
-% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
-\glssetwidest[1]{aaaaaaaaaaaa}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -1387,7 +1427,8 @@ qed=\qedsymbol
 }%
 
 % referências e citações
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite} %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
@@ -1406,13 +1447,24 @@ qed=\qedsymbol
                 \item\relax}
                {\endlist\end{singlespace}}
 
+% espaçamento entre itens da bibliografia
+% qualquer um dos dois comandos abaixo modifica o espaçamento entre referências bibliográficas
+% o primeiro modifica o espaçamento entre itens e o segundo, entre parágrafos
+% pode-se mudar um ou o outro, dependendo da influência que eles terão na formatação geral do trabalho
+\newlength{\bibitemsep}\setlength{\bibitemsep}{18pt}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt} % zera o espaço entre parágrafos
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibparskip}%
+  \setlength{\itemsep}{\bibitemsep}%
+}
+
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-\clearpage
-\addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
-\begin{singlespace}
-\oldbibliography{#1}% adiciona realmente a bibliografia
-\end{singlespace}
+  \clearpage%
+  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %</class>
