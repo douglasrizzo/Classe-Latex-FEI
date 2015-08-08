@@ -186,12 +186,6 @@ qed=\qedsymbol
 \renewcommand{\cftfigaftersnum}{ -} % traço na frente da escrita que precede as entradas na lista de ilustrações
 \renewcommand{\cfttabaftersnum}{ -} % traço na frente da escrita que precede as entradas na lista de tabelas
 
-\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{4.5em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
-\renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
-
-
 
 \addto\captionsportuges{%
   \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
