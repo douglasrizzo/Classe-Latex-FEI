@@ -66,7 +66,7 @@
 \spacing{1.45}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
-\RequirePackage[font={singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
+\RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
 \selectlanguage{portuges} % idioma do documento
 
