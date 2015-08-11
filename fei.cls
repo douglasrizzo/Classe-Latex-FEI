@@ -26,6 +26,14 @@
 \newif\iflogvar
 }
 
+\newif\ifsublist
+\sublistfalse
+
+\DeclareOption{sublist}
+{
+  \sublisttrue
+}
+
 \DeclareOption{final}
 {
 \newif\iflogvar
@@ -54,11 +62,11 @@
 \RequirePackage[english,portuges]{babel}
 \RequirePackage[T1]{fontenc}
 
-\RequirePackage{setspace}      % pacote para controlar o espacamento
-\spacing{1.45}%
+\RequirePackage{setspace}
+\spacing{1.45}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
-\RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
+\RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
 \selectlanguage{portuges} % idioma do documento
 
@@ -89,8 +97,7 @@
 \SetKwRepeat{Repita}{repita}{at\'e}
 
 \SetAlgoCaptionSeparator{--} % separador da legenda
-\SetAlCapFnt{\normalfont} % fonte da legenda
-\SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
+\SetAlCapFnt{\footnotesize} % fonte da legenda
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
@@ -135,54 +142,65 @@ qed=\qedsymbol
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\section}{%
-\@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
+\@startsection{section}{1}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{%
-\@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsection}{2}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
 
 \renewcommand{\subsubsection}{%
-\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+\@startsection{subsubsection}{3}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it\bf}}
 
-\setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
-\setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
+\renewcommand{\paragraph}{%
+\@startsection{paragraph}{4}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+
+\setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
+\setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
 
 %% configuracao do sumario e listas de tabelas e figuras
 \RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
 
 \tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
 
-\renewcommand{\cfttoctitlefont}{\clearpage\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\clearpage\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\clearpage\hfill\bf\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\hfil\bf\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\hfill\bf\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\hfill\bf\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftafterlottitle}{\hfill}
 
-%% sumário não possui recuo
 \renewcommand{\cftchapindent}{0pt}
 \renewcommand{\cftsecindent}{0pt}
 \renewcommand{\cftsubsecindent}{0pt}
 \renewcommand{\cftsubsubsecindent}{0pt}
+\renewcommand{\cftparaindent}{0pt}
+
+\renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
-\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo das secoes em negrito
-\renewcommand{\cftsubsubsecfont}{\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{5em}
-\setlength{\cfttabnumwidth}{5em}
-\renewcommand{\cftfigpresnum}{Figura }
-\renewcommand{\cfttabpresnum}{Tabela }
+\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
+\renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
+\renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
-\renewcommand{\contentsname}{Sum\'ario}
-\renewcommand{\tableofcontents}{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
-\renewcommand{\listoftables}{\part*{\listtablename}\thispagestyle{empty}\@starttoc{lot}}
-\renewcommand{\listoffigures}{\part*{\listfigurename}\thispagestyle{empty}\@starttoc{lof}}
 
-\renewcommand{\listofalgorithms}{\begingroup
+\addto\captionsportuges{%
+  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand\contentsname{Sum\'ario}}
+\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
+\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
+
+\renewcommand{\listofalgorithms}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Algoritmo~\oldnumberline}%
 \part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
@@ -190,12 +208,6 @@ qed=\qedsymbol
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Teorema~\oldnumberline}%
 \part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
-
-\newcommand\sumario{\part*{Sum\'ario}\thispagestyle{empty}\@starttoc{toc}}
-
-
-
-
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
@@ -251,6 +263,8 @@ qed=\qedsymbol
 
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
+\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
+
 \def\@cidade{S\~ao Bernardo do Campo}
 \newcommand{\cidade}[1]{\def\@cidade{#1}}
 
@@ -262,8 +276,8 @@ qed=\qedsymbol
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{0.5\paperheight\relax}
-\hspace*{0.5\paperwidth\relax}
-\begin{minipage}[l]{0.35 \textwidth}
+\hspace*{0.4\paperwidth\relax}
+\begin{minipage}[l]{0.5\textwidth}
 #1
 \end{minipage}
 \end{flushleft}
@@ -276,9 +290,7 @@ qed=\qedsymbol
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
-\textit{``{#1}''
-\\
-#2}
+``{#1}''\\#2
 \end{minipage}
 \end{flushleft}
 }
@@ -296,10 +308,23 @@ qed=\qedsymbol
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
 \renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
-\RequirePackage[nogroupskip,nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+
+\ifsublist
+  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  %estilo usado como base
+  \setglossarystyle{alttree}
+  % Configuracao de identacao do nivel 0 (titulos)
+  \glssetwidest[0]{}
+  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+  \glssetwidest[1]{aaaaaaaaaaaa}
+\else
+  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\fi
+
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 
@@ -312,7 +337,7 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{AP\^ENDICE \thechapter\ -- ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
 \addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
@@ -324,13 +349,11 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{ANEXO \thechapter\ -- ##1}\end{center}\vfill%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
 \addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
-
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 \RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
 
@@ -349,14 +372,21 @@ qed=\qedsymbol
                 \item\relax}
                {\endlist\end{singlespace}}
 
+\newlength{\bibitemsep}\setlength{\bibitemsep}{18pt}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt} % zera o espaço entre parágrafos
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibparskip}%
+  \setlength{\itemsep}{\bibitemsep}%
+}
+
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-\clearpage
-\addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
-\begin{singlespace}
-\oldbibliography{#1}% adiciona realmente a bibliografia
-\end{singlespace}
+  \clearpage%
+  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
 %% Copyright (C) 2014 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
