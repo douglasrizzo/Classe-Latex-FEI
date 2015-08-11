@@ -207,11 +207,10 @@ A declaração da classe é feita da seguinte forma:
 	\begin{enumerate}
 	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
 	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
-  \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist}.
+  \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressas em formato frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
 	\end{enumerate}
 	
-	Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens margens direita e esquerda das páginas, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
-
 	\subsection{Nome do autor e título}
 	
 	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \verb+\author{autor}+ e \verb+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \verb+\and+ ou \verb+\\+, como no exemplo:
