@@ -142,7 +142,7 @@ qed=\qedsymbol
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{0}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
 \renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
@@ -306,7 +306,7 @@ qed=\qedsymbol
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
 \renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{0}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
