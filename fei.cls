@@ -177,21 +177,24 @@ qed=\qedsymbol
 \renewcommand{\cftparaindent}{0pt}
 
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
+\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
+\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecnumwidth}{2.5em}
 \renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\setlength{\cftfignumwidth}{6.0em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{6.0em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigpresnum}{Figura } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 \renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
-
 
 \addto\captionsportuges{%
   \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
@@ -338,7 +341,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -350,7 +353,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -385,7 +388,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{section}{\hspace{\cftsubsubsecnumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
