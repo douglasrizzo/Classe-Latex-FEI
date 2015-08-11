@@ -123,6 +123,7 @@ Manual da classe \LaTeX\ do Centro Universitário da FEI para criação de traba
 \begin{agradecimentos}
 Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX\ e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
 \end{agradecimentos}
+\dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
@@ -206,7 +207,7 @@ A declaração da classe é feita da seguinte forma:
 	\begin{enumerate}
 	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
 	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
-  \item \textt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist}.
+  \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist}.
 	\end{enumerate}
 	
 	Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens margens direita e esquerda das páginas, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
@@ -312,7 +313,7 @@ Abstract goes here.
     Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\ 
     \hline 
     \end{tabular}
-    \caption*{Fonte: Autor}
+    \smallcaption{Fonte: Autor}
 \end{table}
 
 	\section{Texto}\label{sec:texto}
@@ -325,26 +326,34 @@ Abstract goes here.
 	
 	\subsubsection{Figuras}
 	
-	As figuras devem conter, nas primeiras linhas da legenda, uma breve descrição e, na última linha, a fonte da imagem. O \LaTeX\ não vincula nativamente figuras às suas fontes. É necessário inserir uma quebra de linha ao final da legenda para digitar a fonte, como no exemplo da figura \ref{fig:exemplo}. Para que os dados relacionados à fonte da figuras não apareçam na lista de figuras no início do documento, o \LaTeX\ permite que uma legenda secundária seja definida entre colchetes, a qual é usada na lista de figuras no lugar da legenda principal. Esta legenda secundária também pode ser usada para realizar uma descrição mais resumida do que a legenda principal da figura, caso esta seja grande demais para aparecer na lista de figuras.
-	
+	A partir de 2015, o guia de formatação da biblioteca padroniza as legendas de figuras e tabelas com a mesma formatação. Na parte superior da figura, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo da figura, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior da figura, utiliza-se o comando \verb+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \verb+\smallcaption{}+, o qual constitui uma interface simples para a formatação diferenciada da legenda inferior e, caso desejado, pode ser substituído por:
+
+  \begin{verbatim}
+\captionsetup{font=small}
+\caption*{...}
+  \end{verbatim}
+
+  A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como o a inserção das legendas superior e inferior utilizando a formatação nativa.
+
 	\begin{figure}
 	\centering
-	\rule{2cm}{2cm}
-	\caption[Exemplo de figura com sua fonte.]{Exemplo de figura com sua fonte.\\Fonte: Autor.} \label{fig:exemplo}
-	\end{figure}	
+	\caption{Exemplo de figura com sua fonte.}
+  \rule{2cm}{2cm}
+  \smallcaption{Fonte: Autor}\label{fig:exemplo}
+	\end{figure}
 
 \begin{verbatim}
 	\begin{figure}
 	\centering
+  \caption{Exemplo de figura com sua fonte.}
 	\includegraphics[...]{...}
-	\caption[Exemplo de figura com sua fonte.]
-		{Exemplo de figura com sua fonte.\\Fonte: Autor.}
+	\smallcaption{Fonte: Autor.}
 	\end{figure}
 \end{verbatim}	
 	
 	\subsubsection{Tabelas}
 
-	O manual da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, o pacote \texttt{caption} redefine o comando \verb+\caption{}+ e disponibiliza o comando novo \verb+\caption*{}+. O primeiro, situado acima da tabela, representará a legenda principal e aparecerá na lista de tabelas. Já o segundo é formatado da mesma forma que uma legenda comum, porém não aparece na lista de tabelas e não recebe numeração. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
+	Da mesma forma que figuras, o manual da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, deve-se utilizar o mesmo processo descrito para as figuras. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
 
 \begin{verbatim}
 \begin{table}[ht!]
@@ -352,7 +361,7 @@ Abstract goes here.
 	\begin{tabular}{|c|c|c|c|}
 		[...]
 	\end{tabular}
-	\caption*{Fonte: Autor}
+  \smallcaption{Fonte: Autor.}
 \end{table}
 \end{verbatim}
 
@@ -370,7 +379,7 @@ Abstract goes here.
     \(y_3\) & 0 & 0 & 1 \\ 
     \hline 
     \end{tabular}
-    \caption*{Fonte: Autor}
+    \smallcaption{Fonte: Autor}
 \end{table}
 	
 	\subsubsection{Algoritmos}
@@ -424,9 +433,7 @@ Abstract goes here.
 }
 
 \Retorna \(Y\)
-
-\caption{Exemplo de algoritmo usando algorithm2e em português.}
-\label{lst:alg}
+\caption{Exemplo de algoritmo usando algorithm2e em português.}\label{lst:alg}
 \end{algorithm}
 	
 	\subsubsection{Equações}
@@ -1103,7 +1110,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \spacing{1.45}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
-\RequirePackage[font={small,singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
+\RequirePackage[font={singlespacing},justification=justified,labelsep=endash]{caption} % fontes das legendas
 
 \selectlanguage{portuges} % idioma do documento
 
@@ -1189,20 +1196,26 @@ qed=\qedsymbol
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
+% não há recuo no título de nenhum nível de nenhuma seção
+% títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
 \renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{0}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
 
+% demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
 \renewcommand{\section}{% 
-\@startsection{section}{1}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
+\@startsection{section}{1}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{% 
-\@startsection{subsection}{2}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}}}
+\@startsection{subsection}{2}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
 
 \renewcommand{\subsubsection}{% 
-\@startsection{subsubsection}{3}{0pt}{2\baselineskip}{2\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+\@startsection{subsubsection}{3}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it\bf}}
 
-\setcounter{secnumdepth}{3} % numerar divisões até o terceiro nível (subsubsection)
-\setcounter{tocdepth}{3} % incluir divisões no sumário até o terceiro nível (subsubsection)
+\renewcommand{\paragraph}{% 
+\@startsection{paragraph}{4}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+
+\setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
+\setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
 
 %% configuracao do sumario e listas de tabelas e figuras
 \RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
@@ -1221,11 +1234,15 @@ qed=\qedsymbol
 \renewcommand{\cftsecindent}{0pt}
 \renewcommand{\cftsubsecindent}{0pt}
 \renewcommand{\cftsubsubsecindent}{0pt}
+\renewcommand{\cftparaindent}{0pt}
+
+\renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 %
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
-\renewcommand{\cftsecfont}{\bfseries} % coloca o titulo das secoes em negrito
-\renewcommand{\cftsubsubsecfont}{\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
@@ -1320,6 +1337,8 @@ qed=\qedsymbol
 % subtítulo
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
+\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
+
 % cidade (padrão São Bernardo do Campo)
 \def\@cidade{S\~ao Bernardo do Campo}
 \newcommand{\cidade}[1]{\def\@cidade{#1}}
@@ -1334,8 +1353,8 @@ qed=\qedsymbol
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{0.5\paperheight\relax}
-\hspace*{0.5\paperwidth\relax}
-\begin{minipage}[l]{0.35 \textwidth}
+\hspace*{0.4\paperwidth\relax}
+\begin{minipage}[l]{0.5\textwidth}
 #1
 \end{minipage}
 \end{flushleft}
@@ -1349,9 +1368,7 @@ qed=\qedsymbol
 \vspace*{0.5\paperheight\relax}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
-\textit{``{#1}''
-\\
-#2}
+``{#1}''\\#2
 \end{minipage}
 \end{flushleft}
 }
@@ -1373,7 +1390,7 @@ qed=\qedsymbol
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
 \renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{12pt}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
+\@startsection{chapter}{0}{0pt}{0}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
 
 % hyperlinks entre partes do documento
@@ -1407,7 +1424,7 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{AP\^ENDICE \thechapter\ -- ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
 \addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
@@ -1420,7 +1437,7 @@ qed=\qedsymbol
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{ANEXO \thechapter\ -- ##1}\end{center}\vfill%
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
 \addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
