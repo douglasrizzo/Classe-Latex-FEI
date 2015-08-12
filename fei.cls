@@ -318,6 +318,8 @@ qed=\qedsymbol
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
   %estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
