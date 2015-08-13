@@ -91,7 +91,7 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,xindy,arial]{\jobname}
+\documentclass[rascunho,xindy]{\jobname}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
@@ -107,8 +107,7 @@ and the derived files           fei.pdf and
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
-\newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
-
+\newacronym{ctan}{CTAN}{\textit{Comprehens
 \begin{document}
 
 \maketitle
@@ -784,24 +783,15 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
   \section{FONTE ARIAL}
 
-  Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX\ como o Mik\TeX\ e o \TeX\ Live. Para utilizá-las, é necessário instalá-las separadamente no Linux, ou importar a fonte Arial original, no Windows.
+  Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX\ como o Mik\TeX\ e o \TeX\ Live. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
 
-  No Linux, é necessário baixar um script que instala fontes não-gratuitas:
-
-\begin{verbatim}
-wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
-sudo texlua install-getnonfreefonts
-getnonfreefonts --all
-\end{verbatim}
+  \begin{itemize}
+  \item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
+  \item Instalar o script usando o aplicativo \texttt{texlua}: \verb+texlua install-getnonfreefonts+;
+  \item Rodar o script: \verb+getnonfreefonts --all+.
+  \end{itemize}
 
   Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \verb+\documentclass[arial]{fei}+.
-
-  No Windows, é preciso adicionar as seguintes linhas no cabeçalho do arquivo \texttt{tex} para que ele importe as fontes nativas do sistema operacional:
-
-\begin{verbatim}
-\usepackage{fontspec}
-\setmainfont{Arial}
-\end{verbatim}
 	
 	\chapter{LEITURA COMPLEMENTAR}
 	
