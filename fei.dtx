@@ -91,7 +91,7 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,xindy]{\jobname}
+\documentclass[rascunho,xindy,arial]{\jobname}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
@@ -168,6 +168,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
         \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
         \item\texttt{times}: carrega fonte Times New Roman;
+        \item\texttt{uarial}: carrega fonte URW Arial;
         \item\texttt{graphicx}: importação e utilização de imagens;
         \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{hyperref}: gera os links entre referências no PDF;
@@ -780,6 +781,27 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 	\section{MAC OS}
 	
 	No Mac, o \LaTeX\ pode ser instalado através do Mac\TeX\ (\url{http://tug.org/mactex/}), uma compilação completa do \TeX\ Live para Mac.
+
+  \section{FONTE ARIAL}
+
+  Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX\ como o Mik\TeX\ e o \TeX\ Live. Para utilizá-las, é necessário instalá-las separadamente no Linux, ou importar a fonte Arial original, no Windows.
+
+  No Linux, é necessário baixar um script que instala fontes não-gratuitas:
+
+\begin{verbatim}
+wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+sudo texlua install-getnonfreefonts
+getnonfreefonts --all
+\end{verbatim}
+
+  Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \verb+\documentclass[arial]{fei}+.
+
+  No Windows, é preciso adicionar as seguintes linhas no cabeçalho do arquivo \texttt{tex} para que ele importe as fontes nativas do sistema operacional:
+
+\begin{verbatim}
+\usepackage{fontspec}
+\setmainfont{Arial}
+\end{verbatim}
 	
 	\chapter{LEITURA COMPLEMENTAR}
 	
@@ -1066,10 +1088,21 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \newif\ifsublist
 \sublistfalse
-
 \DeclareOption{sublist}
 {
   \sublisttrue
+}
+
+\newif\ifarial
+\arialfalse
+\DeclareOption{arial}
+{
+  \arialtrue
+}
+
+\DeclareOption{times}
+{
+  \arialfalse
 }
 
 \DeclareOption{final}
@@ -1078,7 +1111,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \logvartrue
 }
 
-\ExecuteOptions{final} % final é padrão
+\ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -1120,7 +1153,15 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 % outros pacotes
 \RequirePackage{mathtools}     % matematica
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
-\RequirePackage{times}         % Times New Roman como fonte de tudo
+
+\ifarial
+  % \RequirePackage{helvet}
+  \usepackage[scaled]{uarial}
+  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\else
+  \RequirePackage{times} % usar fonte times no texto todo
+\fi
+
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
