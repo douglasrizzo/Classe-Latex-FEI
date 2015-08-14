@@ -107,8 +107,7 @@ and the derived files           fei.pdf and
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
-\newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
-
+\newacronym{ctan}{CTAN}{\textit{Comprehens
 \begin{document}
 
 \maketitle
@@ -168,6 +167,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
         \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
         \item\texttt{times}: carrega fonte Times New Roman;
+        \item\texttt{uarial}: carrega fonte URW Arial;
         \item\texttt{graphicx}: importação e utilização de imagens;
         \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{hyperref}: gera os links entre referências no PDF;
@@ -207,11 +207,10 @@ A declaração da classe é feita da seguinte forma:
 	\begin{enumerate}
 	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
 	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
-  \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist}.
+  \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressas em formato frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
 	\end{enumerate}
 	
-	Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens margens direita e esquerda das páginas, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
-
 	\subsection{Nome do autor e título}
 	
 	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \verb+\author{autor}+ e \verb+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \verb+\and+ ou \verb+\\+, como no exemplo:
@@ -781,6 +780,18 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 	\section{MAC OS}
 	
 	No Mac, o \LaTeX\ pode ser instalado através do Mac\TeX\ (\url{http://tug.org/mactex/}), uma compilação completa do \TeX\ Live para Mac.
+
+  \section{FONTE ARIAL}
+
+  Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX\ como o Mik\TeX\ e o \TeX\ Live. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
+
+  \begin{itemize}
+  \item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
+  \item Instalar o script usando o aplicativo \texttt{texlua}: \verb+texlua install-getnonfreefonts+;
+  \item Rodar o script: \verb+getnonfreefonts --all+.
+  \end{itemize}
+
+  Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \verb+\documentclass[arial]{fei}+.
 	
 	\chapter{LEITURA COMPLEMENTAR}
 	
@@ -1067,10 +1078,21 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \newif\ifsublist
 \sublistfalse
-
 \DeclareOption{sublist}
 {
   \sublisttrue
+}
+
+\newif\ifarial
+\arialfalse
+\DeclareOption{arial}
+{
+  \arialtrue
+}
+
+\DeclareOption{times}
+{
+  \arialfalse
 }
 
 \DeclareOption{final}
@@ -1079,7 +1101,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \logvartrue
 }
 
-\ExecuteOptions{final} % final é padrão
+\ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -1121,7 +1143,15 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 % outros pacotes
 \RequirePackage{mathtools}     % matematica
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
-\RequirePackage{times}         % Times New Roman como fonte de tudo
+
+\ifarial
+  % \RequirePackage{helvet}
+  \usepackage[scaled]{uarial}
+  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\else
+  \RequirePackage{times} % usar fonte times no texto todo
+\fi
+
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 

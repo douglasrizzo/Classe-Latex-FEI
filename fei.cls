@@ -28,10 +28,21 @@
 
 \newif\ifsublist
 \sublistfalse
-
 \DeclareOption{sublist}
 {
   \sublisttrue
+}
+
+\newif\ifarial
+\arialfalse
+\DeclareOption{arial}
+{
+  \arialtrue
+}
+
+\DeclareOption{times}
+{
+  \arialfalse
 }
 
 \DeclareOption{final}
@@ -40,7 +51,7 @@
 \logvartrue
 }
 
-\ExecuteOptions{final} % final é padrão
+\ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -75,7 +86,15 @@
 
 \RequirePackage{mathtools}     % matematica
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
-\RequirePackage{times}         % Times New Roman como fonte de tudo
+
+\ifarial
+  % \RequirePackage{helvet}
+  \usepackage[scaled]{uarial}
+  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\else
+  \RequirePackage{times} % usar fonte times no texto todo
+\fi
+
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
