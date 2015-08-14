@@ -260,24 +260,24 @@ qed=\qedsymbol
 }
 
 \newcommand{\folhaderosto}{
-	\clearpage
-	\thispagestyle{empty}
-	\begin{center}
-		\uppercase\expandafter{\@author}\\
-		\vspace*{0.328\textheight}
-		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-		\vspace*{0.145\textheight}
-		\begin{flushright}
-			\begin{minipage}{0.55\textwidth}{
-				\begin{singlespace}
-					\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia, orientado pelo Prof. Dr. \@orientador.
-				\end{singlespace}}
-			\end{minipage}
-		\end{flushright}
-		\vfill
-		\@cidade\\
-		\number\year
-	\end{center}}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+\uppercase\expandafter{\@author}\\
+\vspace*{0.328\textheight}
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+\vspace*{0.145\textheight}
+\begin{flushright}
+\begin{minipage}{0.55\textwidth}{
+\begin{singlespace}
+\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia, orientado pelo Prof. Dr. \@orientador.
+\end{singlespace}}
+\end{minipage}
+\end{flushright}
+\vfill
+\@cidade\\
+\number\year
+\end{center}}
 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
@@ -289,41 +289,41 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{center}
-	\uppercase\expandafter{\@author}\\
-	\vspace*{0.115\textheight}
-	\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-	
-	\vspace{0.06\textheight}
-	\begin{minipage}{\textwidth}
-		\begin{singlespace}
-			\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia.
-		\end{singlespace}
-	\end{minipage}
-	
-	\vspace*{0.07\textheight}
-	Comiss\~ao julgadora
-	
-	\vspace*{0.07\textheight}
-	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-	
-	\vspace*{0.005\textheight}
-	Orientador e Presidente
-	
-	\vspace*{0.075\textheight}
-	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-	
-	\vspace*{0.005\textheight}
-	Examinador (1)
-	
-	\vspace*{0.075\textheight}
-	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-	
-	\vspace*{0.005\textheight}
-	Examinador (2)
-	
-	\vfill
-	\@cidade\\
-	\number\year
+\uppercase\expandafter{\@author}\\
+\vspace*{0.115\textheight}
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+
+\vspace{0.06\textheight}
+\begin{minipage}{\textwidth}
+\begin{singlespace}
+\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia.
+\end{singlespace}
+\end{minipage}
+
+\vspace*{0.07\textheight}
+Comiss\~ao julgadora
+
+\vspace*{0.07\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Orientador e Presidente
+
+\vspace*{0.075\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Examinador (1)
+
+\vspace*{0.075\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Examinador (2)
+
+\vfill
+\@cidade\\
+\number\year
 \end{center}
 \fi
 }
