@@ -51,6 +51,18 @@
 \logvartrue
 }
 
+\DeclareOption{dissertacao}
+{
+	\def\@tipo{Disserta\c{c}\~ao de Mestrado}
+	\def\@grau{Mestre }
+}
+
+\DeclareOption{tese}
+{
+	\def\@tipo{Tese de Doutorado}
+	\def\@grau{Doutor }
+}
+
 \ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
@@ -88,11 +100,11 @@
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
 
 \ifarial
-  % \RequirePackage{helvet}
-  \usepackage[scaled]{uarial}
-  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+% \RequirePackage{helvet}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
-  \RequirePackage{times} % usar fonte times no texto todo
+\RequirePackage{times} % usar fonte times no texto todo
 \fi
 
 \RequirePackage{graphicx}      % figuras
@@ -237,32 +249,35 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{center}
-\textbf{
 \MakeUppercase{\@instituicao}\\[\baselineskip]
 \uppercase\expandafter{\@author}
 \vfill
-\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
+\textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
 \number\year
 \end{center}
 }
 
-\newenvironment{folhaderosto}{
-\clearpage
-\thispagestyle{empty}
-\begin{center}
-\uppercase\expandafter{\@author}\\
-\vspace*{0.45\textheight}
-\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vfill
-\begin{flushright}
-\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
-\end{flushright}
-\vfill
-\@cidade\\
-\number\year
-\end{center}}
+\newcommand{\folhaderosto}{
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\uppercase\expandafter{\@author}\\
+		\vspace*{0.328\textheight}
+		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+		\vspace*{0.145\textheight}
+		\begin{flushright}
+			\begin{minipage}{0.55\textwidth}{
+				\begin{singlespace}
+					\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia, orientado pelo Prof. Dr. \@orientador.
+				\end{singlespace}}
+				\end{minipage}
+		\end{flushright}
+		\vfill
+		\@cidade\\
+		\number\year
+	\end{center}}
 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
@@ -270,7 +285,46 @@ qed=\qedsymbol
 \iflogvar
   \includepdf{ata.pdf}
 \else
-  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+%\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+	\uppercase\expandafter{\@author}\\
+	\vspace*{0.115\textheight}
+	\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+	
+	\vspace{0.06\textheight}
+	\begin{minipage}{\textwidth}
+		\begin{singlespace}
+			\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia.
+		\end{singlespace}
+	\end{minipage}
+	
+	\vspace*{0.07\textheight}
+	Comiss\~ao julgadora
+	
+	\vspace*{0.07\textheight}
+	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	
+	\vspace*{0.005\textheight}
+	Orientador e Presidente
+	
+	\vspace*{0.075\textheight}
+	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	
+	\vspace*{0.005\textheight}
+	Examinador (1)
+	
+	\vspace*{0.075\textheight}
+	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	
+	\vspace*{0.005\textheight}
+	Examinador (2)
+	
+	\vfill
+	\@cidade\\
+	\number\year
+\end{center}
 \fi
 }
 
@@ -292,6 +346,8 @@ qed=\qedsymbol
 
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+
+\newcommand{\orientador}[1]{\def\@orientador{#1}}
 
 \newcommand{\dedicatoria}[1]{
 \clearpage
