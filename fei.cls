@@ -100,11 +100,11 @@
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
 
 \ifarial
- % \RequirePackage{helvet}
- \usepackage[scaled]{uarial}
- \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+  % \RequirePackage{helvet}
+  \usepackage[scaled]{uarial}
+  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
- \RequirePackage{times} % usar fonte times no texto todo
+  \RequirePackage{times} % usar fonte times no texto todo
 \fi
 
 \RequirePackage{graphicx}      % figuras
