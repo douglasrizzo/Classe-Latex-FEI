@@ -5,4 +5,4 @@ install:
   - sudo apt-get -y install texlive texlive-science texlive-lang-portuguese texlive-publishers texlive-extra-utils xindy
 
 script:
-  - make fei.pdf templates clean
+  - make
