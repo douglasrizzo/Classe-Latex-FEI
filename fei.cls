@@ -370,7 +370,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -382,7 +382,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -417,7 +417,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
