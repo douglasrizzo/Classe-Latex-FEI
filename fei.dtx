@@ -1303,13 +1303,13 @@ qed=\qedsymbol
 
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 %
-\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
+%\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
-\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
-\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
+%\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
+%\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
-\renewcommand{\cftsubsubsecnumwidth}{3em}
+%\renewcommand{\cftsubsubsecnumwidth}{3em}
 \renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
@@ -1610,7 +1610,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{section}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %</class>
