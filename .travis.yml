@@ -1,6 +1,7 @@
 language: java
 
 install:
+  - wget https://raw.githubusercontent.com/abntex/abntex2/master/tex/latex/abntex2/abntex2abrev.sty
   - wget https://raw.githubusercontent.com/abntex/abntex2/master/tex/latex/abntex2/abntex2cite.sty
   - sudo apt-add-repository "deb http://ppa.launchpad.net/texlive-backports/ppa/ubuntu precise main"
   - sudo apt-get update -qq
