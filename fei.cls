@@ -51,6 +51,18 @@
 \logvartrue
 }
 
+\DeclareOption{dissertacao}
+{
+	\def\@tipo{Disserta\c{c}\~ao de Mestrado}
+	\def\@grau{Mestre }
+}
+
+\DeclareOption{tese}
+{
+	\def\@tipo{Tese de Doutorado}
+	\def\@grau{Doutor }
+}
+
 \ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
@@ -196,21 +208,24 @@ qed=\qedsymbol
 \renewcommand{\cftparaindent}{0pt}
 
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
+\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
+\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecnumwidth}{2.5em}
 \renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\setlength{\cftfignumwidth}{6.0em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{6.0em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigpresnum}{Figura } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 \renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
-
 
 \addto\captionsportuges{%
   \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
@@ -234,27 +249,30 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{center}
-\textbf{
 \MakeUppercase{\@instituicao}\\[\baselineskip]
 \uppercase\expandafter{\@author}
 \vfill
-\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
+\textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
 \number\year
 \end{center}
 }
 
-\newenvironment{folhaderosto}{
+\newcommand{\folhaderosto}{
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
-\vspace*{0.45\textheight}
+\vspace*{0.328\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vfill
+\vspace*{0.145\textheight}
 \begin{flushright}
-\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+\begin{minipage}{0.55\textwidth}{
+\begin{singlespace}
+\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia, orientado pelo Prof. Dr. \@orientador.
+\end{singlespace}}
+\end{minipage}
 \end{flushright}
 \vfill
 \@cidade\\
@@ -267,7 +285,46 @@ qed=\qedsymbol
 \iflogvar
   \includepdf{ata.pdf}
 \else
-  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+%\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+\uppercase\expandafter{\@author}\\
+\vspace*{0.115\textheight}
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+
+\vspace{0.06\textheight}
+\begin{minipage}{\textwidth}
+\begin{singlespace}
+\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia.
+\end{singlespace}
+\end{minipage}
+
+\vspace*{0.07\textheight}
+Comiss\~ao julgadora
+
+\vspace*{0.07\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Orientador e Presidente
+
+\vspace*{0.075\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Examinador (1)
+
+\vspace*{0.075\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Examinador (2)
+
+\vfill
+\@cidade\\
+\number\year
+\end{center}
 \fi
 }
 
@@ -289,6 +346,8 @@ qed=\qedsymbol
 
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+
+\newcommand{\orientador}[1]{\def\@orientador{#1}}
 
 \newcommand{\dedicatoria}[1]{
 \clearpage
@@ -334,6 +393,8 @@ qed=\qedsymbol
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
   %estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
@@ -357,7 +418,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -369,7 +430,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -404,7 +465,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{section}{\hspace{\cftsubsubsecnumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
