@@ -1,4 +1,4 @@
-\documentclass[dissertacao,rascunho]{fei}
+\documentclass[rascunho]{fei}
 \usepackage[utf8]{inputenc}
 
 %%%% -- Configuracoes Iniciais
@@ -10,6 +10,7 @@
 
 \title{Título do Trabalho}
 \subtitulo{subtítulo}
+<<<<<<< HEAD
 
 % Padroes: Sao Bernardo do Campo / Centro Universitario da FEI - especificar caso necessario alterar
 %\cidade{Cidade}
@@ -18,6 +19,11 @@
 % nome do orientador com titulo
 \orientador{Nome do orientador}
 %\orientadora{Nome da orientadora}
+=======
+% \cidade{Cidade}
+% \instituicao{Instituição de Ensino}
+% \orientador{Nome do orientador}
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
 
 %%%% -- Entradas Listas de Abreviaturas e Simbolos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,14 +42,17 @@
 \newglossaryentry{out}{type=simbolos,name={\ensuremath{o}},sort=out,description={outlet}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \makeindex
+\makeindex
 \makeglossaries
 
 \begin{document}
 
 \maketitle
 
-\folhaderosto
+\begin{folhaderosto}
+Dissertação de Mestrado apresentada ao Centro Universitário da FEI para obtenção do título de Mestre em Engenharia Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
+\end{folhaderosto}
+
 \fichacatalografica
 \folhadeaprovacao
 \dedicatoria{A quem eu quero dedicar o texto.}
@@ -86,15 +95,12 @@ Vivamus vel erat erat. Integer venenatis nisl velit, vel commodo lectus condimen
 \keywords{Keywords. Go. Here.}
 \end{abstract}
 
-{
-	\pagestyle{empty}
-	%\listoffigures
-	\listoftables
-	\listofalgorithms
-	\glsaddall
-	\printglossaries
-	\tableofcontents
-}
+\listoffigures
+\listoftables
+\listofalgorithms
+\glsaddall
+\printglossaries
+\tableofcontents
 
 \chapter{LOREM IPSUM}
 

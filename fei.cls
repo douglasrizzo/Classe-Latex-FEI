@@ -51,6 +51,7 @@
 \logvartrue
 }
 
+<<<<<<< HEAD
 \DeclareOption{man}
 {
 \def\@tipo{Manual da classe \LaTeX\ do Centro Universit\'ario da FEI para cria\c{c}\~ao de trabalhos acad\^emicos }
@@ -80,6 +81,11 @@
 \def\@tipo{Tese de Doutorado, apresentada }
 \def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
 }
+=======
+
+
+
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
 
 \ExecuteOptions{final,times} % final e times são padrão
 
@@ -225,14 +231,20 @@ qed=\qedsymbol
 \renewcommand{\cftsubsubsecindent}{0pt}
 \renewcommand{\cftparaindent}{0pt}
 
+\renewcommand{\cftchapnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftparanumwidth}{4em}
+
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
-\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
-\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
-\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+<<<<<<< HEAD
 \renewcommand{\cftsubsubsecnumwidth}{3em}
+=======
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
 \renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
@@ -279,25 +291,30 @@ qed=\qedsymbol
 \end{center}
 }
 
-\newcommand{\folhaderosto}{
+\newenvironment{folhaderosto}{
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
-\vspace*{0.328\textheight}
+\vspace*{0.45\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vspace*{0.145\textheight}
+\vfill
 \begin{flushright}
+<<<<<<< HEAD
 \begin{minipage}{0.55\textwidth}{
 \begin{singlespace}
 \@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, \ifthenelse{\isundefined{\@autora}}{orientado }{orientada } \ifthenelse{\isundefined{\@orientador}}{}{\@orientador}\ifthenelse{\isundefined{\@orientadora}}{}{\@orientadora}.
 \end{singlespace}}
 \end{minipage}
+=======
+\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
 \end{flushright}
 \vfill
 \@cidade\\
 \number\year
 \end{center}}
+
 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
@@ -305,6 +322,7 @@ qed=\qedsymbol
 \iflogvar
 \includepdf{ata.pdf}
 \else
+<<<<<<< HEAD
 \clearpage
 \thispagestyle{empty}
 \begin{center}
@@ -344,6 +362,9 @@ Examinador (2)
 \@cidade\\
 \number\year
 \end{center}
+=======
+  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
 \fi
 }
 
@@ -366,6 +387,7 @@ Examinador (2)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
+<<<<<<< HEAD
 \newcommand{\orientador}[1]{\def\@orientador{pelo Prof. #1}}
 
 \newcommand{\orientadora}[1]{\def\@orientadora{pela Prof.$^a$ #1}}
@@ -373,6 +395,9 @@ Examinador (2)
 \newcommand{\autora}{\def\@autora{}}
 
 \newcommand{\curso}[1]{\def\@curso{#1}}
+=======
+
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
 
 \newcommand{\dedicatoria}[1]{
 \clearpage
@@ -418,10 +443,14 @@ Examinador (2)
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+<<<<<<< HEAD
   % remove espaco em branco no inicio das listas
   \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
   \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
   % estilo usado como base
+=======
+  %estilo usado como base
+>>>>>>> cb5e6ea340facb8e57ec2625453b08339ab8c736
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
   \glssetwidest[0]{}
@@ -444,7 +473,7 @@ Examinador (2)
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -456,7 +485,7 @@ Examinador (2)
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -491,7 +520,7 @@ Examinador (2)
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{section}{\hspace{\cftsubsubsecnumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 

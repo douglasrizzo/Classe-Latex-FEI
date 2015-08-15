@@ -1106,25 +1106,25 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 	\def\@grau{}
 }
 
-\DeclareOption{tcc}
+\DeclareOption{bacharelado}
 {
 	\def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado }
 	\def\@grau{Bacharel }
 }
 
-\DeclareOption{monografia}
+\DeclareOption{especializacao}
 {
 	\def\@tipo{Monografia, apresentada }
 	\def\@grau{Especialista }
 }
 
-\DeclareOption{dissertacao}
+\DeclareOption{mestrado}
 {
 	\def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada }
 	\def\@grau{Mestre }
 }
 
-\DeclareOption{tese}
+\DeclareOption{doutorado}
 {
 	\def\@tipo{Tese de Doutorado, apresentada }
 	\def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
@@ -1295,6 +1295,12 @@ qed=\qedsymbol
 \renewcommand{\cftsubsubsecindent}{0pt}
 \renewcommand{\cftparaindent}{0pt}
 
+\renewcommand{\cftchapnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftparanumwidth}{4em}
+
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 %
 \renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
@@ -1464,8 +1470,8 @@ qed=\qedsymbol
 % sexo do autor (\autora)
 \newcommand{\autora}{\def\@autora{}}
 
-% curso
-\newcommand{\curso}[1]{\def\@curso{#1}}
+ \def\@curso{Coisa Nenhuma}
+ \newcommand{\curso}[1]{\def\@curso{#1}}
 
 % dedicatória
 \newcommand{\dedicatoria}[1]{
@@ -1548,7 +1554,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -1561,7 +1567,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -1604,7 +1610,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{section}{\hspace{\cftsubsubsecnumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %</class>
