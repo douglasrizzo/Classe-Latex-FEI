@@ -1,8 +1,8 @@
 language: java
-sudo: false
+
 install:
-  - apt-get update -qq
-  - apt-get -y install texlive texlive-latex-recommended texlive-science texlive-lang-portuguese texlive-publishers texlive-extra-utils xindy
+  - sudo apt-get update -qq
+  - sudo apt-get -y install texlive texlive-latex-recommended texlive-science texlive-lang-portuguese texlive-publishers texlive-extra-utils xindy
 
 script:
   - make templates
