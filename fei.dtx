@@ -91,13 +91,14 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,xindy]{\jobname}
+\documentclass[man,rascunho,xindy]{\jobname}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
 \author{Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o guia de 2015 da biblioteca}
+\curso{}
 
 \makeindex
 \makeglossaries
@@ -107,15 +108,13 @@ and the derived files           fei.pdf and
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
-\newacronym{ctan}{CTAN}{\textit{Comprehens
+\newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
+
 \begin{document}
 
 \maketitle
 
-\begin{folhaderosto}
-Manual da classe \LaTeX\ do Centro Universitário da FEI para criação de trabalhos acadêmicos.
-\end{folhaderosto}
-
+\folhaderosto
 \fichacatalografica
 \folhadeaprovacao
 \dedicatoria{A todas as pessoas que venham a utilizar essa classe.}
@@ -1101,6 +1100,36 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \logvartrue
 }
 
+\DeclareOption{man}
+{
+	\def\@tipo{Manual da classe \LaTeX\ do Centro Universit\'ario da FEI para cria\c{c}\~ao de trabalhos acad\^emicos }
+	\def\@grau{}
+}
+
+\DeclareOption{tcc}
+{
+	\def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado }
+	\def\@grau{Bacharel }
+}
+
+\DeclareOption{monografia}
+{
+	\def\@tipo{Monografia, apresentada }
+	\def\@grau{Especialista }
+}
+
+\DeclareOption{dissertacao}
+{
+	\def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada }
+	\def\@grau{Mestre }
+}
+
+\DeclareOption{tese}
+{
+	\def\@tipo{Tese de Doutorado, apresentada }
+	\def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
+}
+
 \ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
@@ -1268,9 +1297,13 @@ qed=\qedsymbol
 
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 %
+\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
+\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsecnumwidth}{3em}
 \renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
@@ -1328,16 +1361,20 @@ qed=\qedsymbol
 }
 
 % folha de rosto
-\newenvironment{folhaderosto}{
+\newcommand{\folhaderosto}{
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
-\vspace*{0.45\textheight}
+\vspace*{0.328\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vfill
+\vspace*{0.145\textheight}
 \begin{flushright}
-\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+\begin{minipage}{0.55\textwidth}{
+\begin{singlespace}
+\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, \ifthenelse{\isundefined{\@autora}}{orientado }{orientada } \ifthenelse{\isundefined{\@orientador}}{}{\@orientador}\ifthenelse{\isundefined{\@orientadora}}{}{\@orientadora}.
+\end{singlespace}}
+\end{minipage}
 \end{flushright}
 \vfill
 \@cidade\\
@@ -1349,11 +1386,50 @@ qed=\qedsymbol
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-\iflogvar
-  \includepdf{ata.pdf}
-\else
-  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
-\fi
+	\iflogvar
+	\includepdf{ata.pdf}
+	\else
+	%\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\uppercase\expandafter{\@author}\\
+		\vspace*{0.115\textheight}
+		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+		
+		\vspace{0.06\textheight}
+		\begin{minipage}{\textwidth}
+			\begin{singlespace}
+				\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso.
+			\end{singlespace}
+		\end{minipage}
+		
+		\vspace*{0.07\textheight}
+		Comiss\~ao julgadora
+		
+		\vspace*{0.07\textheight}
+		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+		
+		\vspace*{0.005\textheight}
+		Orientador e Presidente
+		
+		\vspace*{0.075\textheight}
+		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+		
+		\vspace*{0.005\textheight}
+		Examinador (1)
+		
+		\vspace*{0.075\textheight}
+		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+		
+		\vspace*{0.005\textheight}
+		Examinador (2)
+		
+		\vfill
+		\@cidade\\
+		\number\year
+	\end{center}
+	\fi
 }
 
 % ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
@@ -1378,6 +1454,18 @@ qed=\qedsymbol
 % instituicao (padrão Centro Universitário da FEI)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+
+% nome do orientador com respectivo título (ex Dr. ...)
+\newcommand{\orientador}[1]{\def\@orientador{Prof. #1}}
+
+% nome da orientadora com respectivo título (ex Dr.$^a$ ...)
+\newcommand{\orientadora}[1]{\def\@orientadora{Prof.$^a$ #1}}
+
+% sexo do autor (\autora)
+\newcommand{\autora}{\def\@autora{}}
+
+% curso
+\newcommand{\curso}[1]{\def\@curso{#1}}
 
 % dedicatória
 \newcommand{\dedicatoria}[1]{
@@ -1420,7 +1508,7 @@ qed=\qedsymbol
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
@@ -1457,7 +1545,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -1470,7 +1558,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -1513,7 +1601,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{section}{\hspace{\cftsubsubsecnumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %</class>

@@ -51,16 +51,34 @@
 \logvartrue
 }
 
+\DeclareOption{man}
+{
+\def\@tipo{Manual da classe \LaTeX\ do Centro Universit\'ario da FEI para cria\c{c}\~ao de trabalhos acad\^emicos }
+\def\@grau{}
+}
+
+\DeclareOption{tcc}
+{
+\def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado }
+\def\@grau{Bacharel }
+}
+
+\DeclareOption{monografia}
+{
+\def\@tipo{Monografia, apresentada }
+\def\@grau{Especialista }
+}
+
 \DeclareOption{dissertacao}
 {
-	\def\@tipo{Disserta\c{c}\~ao de Mestrado}
-	\def\@grau{Mestre }
+\def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada }
+\def\@grau{Mestre }
 }
 
 \DeclareOption{tese}
 {
-	\def\@tipo{Tese de Doutorado}
-	\def\@grau{Doutor }
+\def\@tipo{Tese de Doutorado, apresentada }
+\def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
 }
 
 \ExecuteOptions{final,times} % final e times são padrão
@@ -214,18 +232,19 @@ qed=\qedsymbol
 \renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
 \renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
-\renewcommand{\cftsubsubsecnumwidth}{2.5em}
+\renewcommand{\cftsubsubsecnumwidth}{3em}
 \renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{6.0em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{6.0em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigpresnum}{Figura } % escrita que precede cada entrada na lista de ilustrações
+\setlength{\cftfignumwidth}{7em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttabnumwidth}{5.5em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
 \renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
+
 
 \addto\captionsportuges{%
   \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
@@ -249,10 +268,11 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{center}
+\textbf{
 \MakeUppercase{\@instituicao}\\[\baselineskip]
 \uppercase\expandafter{\@author}
 \vfill
-\textbf{\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
+\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
 \number\year
@@ -270,7 +290,7 @@ qed=\qedsymbol
 \begin{flushright}
 \begin{minipage}{0.55\textwidth}{
 \begin{singlespace}
-\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia, orientado pelo Prof. Dr. \@orientador.
+\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, \ifthenelse{\isundefined{\@autora}}{orientado }{orientada } \ifthenelse{\isundefined{\@orientador}}{}{\@orientador}\ifthenelse{\isundefined{\@orientadora}}{}{\@orientadora}.
 \end{singlespace}}
 \end{minipage}
 \end{flushright}
@@ -283,9 +303,8 @@ qed=\qedsymbol
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 \iflogvar
-  \includepdf{ata.pdf}
+\includepdf{ata.pdf}
 \else
-%\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
 \clearpage
 \thispagestyle{empty}
 \begin{center}
@@ -296,7 +315,7 @@ qed=\qedsymbol
 \vspace{0.06\textheight}
 \begin{minipage}{\textwidth}
 \begin{singlespace}
-\@tipo, apresentada ao Centro Universit\'ario da FEI, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em Engenharia.
+\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso.
 \end{singlespace}
 \end{minipage}
 
@@ -347,7 +366,13 @@ Examinador (2)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
-\newcommand{\orientador}[1]{\def\@orientador{#1}}
+\newcommand{\orientador}[1]{\def\@orientador{Prof. #1}}
+
+\newcommand{\orientadora}[1]{\def\@orientadora{Prof.$^a$ #1}}
+
+\newcommand{\autora}{\def\@autora{}}
+
+\newcommand{\curso}[1]{\def\@curso{#1}}
 
 \newcommand{\dedicatoria}[1]{
 \clearpage
@@ -384,7 +409,7 @@ Examinador (2)
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
@@ -393,8 +418,6 @@ Examinador (2)
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
-  \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
   %estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)

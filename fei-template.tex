@@ -1,18 +1,30 @@
 \documentclass[dissertacao,rascunho]{fei}
 \usepackage[utf8]{inputenc}
 
+%%%% -- Configuracoes Iniciais
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \author{Nome do Autor}
+% Descomentar caso autorA
+%\autora
+
 \title{Título do Trabalho}
 \subtitulo{subtítulo}
+
+% Padroes: Sao Bernardo do Campo / Centro Universitario da FEI - especificar caso necessario alterar
 %\cidade{Cidade}
 %\instituicao{Instituição de Ensino}
-\orientador{Nome do orientador}
 
+% nome do orientador com titulo
+\orientador{Nome do orientador}
+%\orientadora{Nome da orientadora}
+
+%%%% -- Entradas Listas de Abreviaturas e Simbolos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	Abreviaturas
+%% -- Abreviaturas
 \newacronym[longplural=Computational Aided Design]{cad}{CAD}{Computational Aided Design}
 \newacronym[longplural=Centro Universitário da FEI]{fei}{FEI}{Centro Universitário da FEI}
-
+%% -- Simbolos
 \newglossaryentry{A}{type=simbolos,name={\ensuremath{A}},sort=a,description={exchanger total heat transfer area, $m^2$}}
 \newglossaryentry{G}{type=simbolos,name={\ensuremath{G}},sort=g,description={exchanger flow-stream mass velocity, $kg/(s m^2)$}}
 \newglossaryentry{f}{type=simbolos,name={\ensuremath{j}},sort=j,description={friction factor, dimensionless}}
