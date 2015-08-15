@@ -366,9 +366,9 @@ Examinador (2)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
-\newcommand{\orientador}[1]{\def\@orientador{Prof. #1}}
+\newcommand{\orientador}[1]{\def\@orientador{pelo Prof. #1}}
 
-\newcommand{\orientadora}[1]{\def\@orientadora{Prof.$^a$ #1}}
+\newcommand{\orientadora}[1]{\def\@orientadora{pela Prof.$^a$ #1}}
 
 \newcommand{\autora}{\def\@autora{}}
 
@@ -418,7 +418,10 @@ Examinador (2)
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
-  %estilo usado como base
+  % remove espaco em branco no inicio das listas
+  \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+  % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
   \glssetwidest[0]{}
