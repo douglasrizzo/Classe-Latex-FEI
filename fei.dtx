@@ -107,7 +107,7 @@ and the derived files           fei.pdf and
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
-\newacronym{ctan}{CTAN}{\textit{Comprehens
+\newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
 \begin{document}
 
 \maketitle
@@ -1101,6 +1101,30 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \logvartrue
 }
 
+% \DeclareOption{bacharelado}
+% {
+%   \def\@tipo{Trabalho de Conclus\~ao de Curso}
+%   \def\@grau{Bacharel}
+% }
+
+% \DeclareOption{especializacao}
+% {
+%   \def\@tipo{Monografia}
+%   \def\@grau{Especialista}
+% }
+
+% \DeclareOption{mestrado}
+% {
+%   \def\@tipo{Disserta\c{c}\~ao de Mestrado}
+%   \def\@grau{Mestre}
+% }
+
+% \DeclareOption{doutorado}
+% {
+%   \def\@tipo{Tese de Doutorado}
+%   \def\@grau{Doutor}
+% }
+
 \ExecuteOptions{final,times} % final e times são padrão
 
 \ProcessOptions\relax % processa todas as opções
@@ -1266,6 +1290,12 @@ qed=\qedsymbol
 \renewcommand{\cftsubsubsecindent}{0pt}
 \renewcommand{\cftparaindent}{0pt}
 
+\renewcommand{\cftchapnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftparanumwidth}{4em}
+
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 %
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
@@ -1344,6 +1374,26 @@ qed=\qedsymbol
 \number\year
 \end{center}}
 
+% \newcommand{\folhaderosto}{
+% \clearpage
+% \thispagestyle{empty}
+% \begin{center}
+% \uppercase\expandafter{\@author}\\
+% \vspace*{0.45\textheight}
+% \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+% \vfill
+% \begin{flushright}
+% \begin{minipage}{0.55\textwidth}{
+% \begin{singlespace}
+% \@tipo, apresentada ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, orientado pelo Prof. Dr. \@orientador.
+% \end{singlespace}}
+% \end{minipage}
+% \end{flushright}
+% \vfill
+% \@cidade\\
+% \number\year
+% \end{center}}
+
 % folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
 % se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
 \RequirePackage{pdfpages}
@@ -1378,6 +1428,12 @@ qed=\qedsymbol
 % instituicao (padrão Centro Universitário da FEI)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+
+% \def\@orientador{Nome do Orientador}
+% \newcommand{\orientador}[1]{\def\@orientador{#1}}
+
+% \def\@curso{Coisa Nenhuma}
+% \newcommand{\curso}[1]{\def\@curso{#1}}
 
 % dedicatória
 \newcommand{\dedicatoria}[1]{
