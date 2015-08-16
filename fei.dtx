@@ -91,14 +91,15 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[man,rascunho,xindy]{\jobname}
+\documentclass[rascunho,doutorado,xindy]{\jobname}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
 \author{Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o guia de 2015 da biblioteca}
-\curso{}
+\advisor{Donald Knuth}
+\curso{Formatação e Tipografia}
 
 \makeindex
 \makeglossaries
@@ -204,13 +205,16 @@ A declaração da classe é feita da seguinte forma:
 	A classe da FEI pode receber as seguintes opções:
 
 	\begin{enumerate}
-	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
-	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
+  \item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
+  \item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
   \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+  \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
+  \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
+  \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
   \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressas em formato frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
 	\end{enumerate}
 	
-	\subsection{Nome do autor e título}
+	\subsection{Nome do autor, e título}
 	
 	O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX\ \verb+\author{autor}+ e \verb+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \verb+\and+ ou \verb+\\+, como no exemplo:
 	
@@ -218,31 +222,28 @@ A declaração da classe é feita da seguinte forma:
 \author{Leonardo \and Douglas}
 \end{verbatim}
 
-    \subsection{Subtítulo (opcional)}
-    
-    Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
-    
-    \subsection{Cidade e Instituição (opcionais)}
-    Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
+  \subsection{Subtítulo (opcional)}
+  
+  Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
+  
+  \subsection{Cidade e Instituição (opcionais)}
+  Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
+
+  \subsection{Nome do orientador}
+
+  O nome do orientador é adicionado automaticamente às folhas de rosto e aprovação. Ele é passado através do comando \verb+\advisor{}+ e deve cocnter todas as titulações do orientador que o aluno deseja que apareçam no texto (e.g. Doutor, Doutora, Mestre etc).
    
-   \section{PRÉ-TEXTO}\label{sec:pretexto}
+  \section{PRÉ-TEXTO}\label{sec:pretexto}
+
+  O pré-texto do documento engloba todos os elementos textuais que precedem o corpo da obra. A seguir são listados os elementos pré-textuais suportados pela classe \texttt{fei.cls} e os respectivos comandos para a criação de cada um deles.
+
+  \subsection{Capa}
+
+  A capa do trabalho é inserida através do comando \verb+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
+
+  \subsection{Folha de rosto}
    
-   O pré-texto do documento engloba todos os elementos textuais que precedem o corpo da obra. A seguir são listados os elementos pré-textuais suportados pela classe \texttt{fei.cls} e os respectivos comandos para a criação de cada um deles.
-   
-   \subsection{Título}
-   
-   A folha de título é inserida através do comando \verb+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
-   
-   \subsection{Folha de rosto}
-   
-   A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabalho escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no guia da biblioteca e deve ser colocado dentro do ambiente \texttt{folhaderosto}. Por exemplo,
-\begin{verbatim}
-\begin{folhaderosto}
-Dissertação de Mestrado apresentada ao Centro Universitário
-da FEI para obtenção do título de Mestre em Engenharia
-Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
-\end{folhaderosto}
-\end{verbatim}
+  A folha de rosto é inserida através do comando \verb+\folhaderosto+ e utiliza todas as informações passadas nos comandos supracitados, como título, subtítulo, nome do autor e orientador, assim como o gênero de ambos, para gerar automaticamente o texto da página.
 
 	\subsection{Ficha catalográfica e folha de aprovação}
 	
@@ -1070,9 +1071,11 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 % opções rascunho e final controlam a exibição da folha
 % de aprovação e ficha catalográfica
+\newif\iflogvar
+\logvartrue
 \DeclareOption{rascunho}
 {
-\newif\iflogvar
+\logvarfalse
 }
 
 \newif\ifsublist
@@ -1083,7 +1086,6 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 }
 
 \newif\ifarial
-\arialfalse
 \DeclareOption{arial}
 {
   \arialtrue
@@ -1094,43 +1096,59 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
   \arialfalse
 }
 
-\DeclareOption{final}
+\newif\iffemaleadvisor
+\DeclareOption{male-advisor}
 {
-\newif\iflogvar
-\logvartrue
+  \femaleadvisorfalse
 }
 
-\DeclareOption{man}
+\DeclareOption{female-advisor}
 {
-	\def\@tipo{Manual da classe \LaTeX\ do Centro Universit\'ario da FEI para cria\c{c}\~ao de trabalhos acad\^emicos }
-	\def\@grau{}
+  \femaleadvisortrue
+}
+
+\newif\iffemaleauthor
+\DeclareOption{male-author}
+{
+  \femaleauthorfalse
+  \def\@advised{Orientado}
+}
+
+\DeclareOption{female-author}
+{
+  \femaleauthortrue
+  \def\@advised{Orientada}
 }
 
 \DeclareOption{bacharelado}
 {
-	\def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado }
-	\def\@grau{Bacharel }
+  \def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado}
+  \def\@grau{Bacharel}
 }
 
 \DeclareOption{especializacao}
 {
-	\def\@tipo{Monografia, apresentada }
-	\def\@grau{Especialista }
+  \def\@tipo{Monografia, apresentada}
+  \def\@grau{Especialista}
 }
 
 \DeclareOption{mestrado}
 {
-	\def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada }
-	\def\@grau{Mestre }
+  \def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada}
+  \def\@grau{Mestre}
 }
 
 \DeclareOption{doutorado}
 {
-	\def\@tipo{Tese de Doutorado, apresentada }
-	\def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
+  \def\@tipo{Tese de Doutorado, apresentada}
+  \iffemaleauthor
+    \def\@grau{Doutora}
+  \else
+    \def\@grau{Doutor}
+  \fi
 }
 
-\ExecuteOptions{final,times} % final e times são padrão
+\ExecuteOptions{times,male-advisor,male-author} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -1378,7 +1396,7 @@ qed=\qedsymbol
 \begin{flushright}
 \begin{minipage}{0.55\textwidth}{
 \begin{singlespace}
-\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, \ifthenelse{\isundefined{\@autora}}{orientado }{orientada } \ifthenelse{\isundefined{\@orientador}}{}{\@orientador}\ifthenelse{\isundefined{\@orientadora}}{}{\@orientadora}.
+\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso, \@advised\ \iffemaleadvisor\ pela \else pelo \fi Prof. \@advisor.
 \end{singlespace}}
 \end{minipage}
 \end{flushright}
@@ -1406,7 +1424,7 @@ qed=\qedsymbol
 		\vspace{0.06\textheight}
 		\begin{minipage}{\textwidth}
 			\begin{singlespace}
-				\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso.
+				\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso.
 			\end{singlespace}
 		\end{minipage}
 		
@@ -1462,16 +1480,10 @@ qed=\qedsymbol
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
 % nome do orientador com respectivo título (ex Dr. ...)
-\newcommand{\orientador}[1]{\def\@orientador{pelo Prof. #1}}
+\newcommand{\advisor}[1]{\def\@advisor{#1}}
 
-% nome da orientadora com respectivo título (ex Dr.$^a$ ...)
-\newcommand{\orientadora}[1]{\def\@orientadora{pela Prof.$^a$ #1}}
-
-% sexo do autor (\autora)
-\newcommand{\autora}{\def\@autora{}}
-
- \def\@curso{Coisa Nenhuma}
- \newcommand{\curso}[1]{\def\@curso{#1}}
+\def\@curso{Coisa Nenhuma}
+\newcommand{\curso}[1]{\def\@curso{#1}}
 
 % dedicatória
 \newcommand{\dedicatoria}[1]{
@@ -1500,13 +1512,13 @@ qed=\qedsymbol
 }
 
 % resumo
-\newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}\selectlanguage{portuges}}
 
 % agradecimentos
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\clearpage\pagestyle{fancy}}
 
 % índice
 \RequirePackage{imakeidx}

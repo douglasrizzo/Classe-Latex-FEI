@@ -21,9 +21,11 @@
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 
+\newif\iflogvar
+\logvartrue
 \DeclareOption{rascunho}
 {
-\newif\iflogvar
+\logvarfalse
 }
 
 \newif\ifsublist
@@ -34,7 +36,6 @@
 }
 
 \newif\ifarial
-\arialfalse
 \DeclareOption{arial}
 {
   \arialtrue
@@ -45,43 +46,59 @@
   \arialfalse
 }
 
-\DeclareOption{final}
+\newif\iffemaleadvisor
+\DeclareOption{male-advisor}
 {
-\newif\iflogvar
-\logvartrue
+  \femaleadvisorfalse
 }
 
-\DeclareOption{man}
+\DeclareOption{female-advisor}
 {
-\def\@tipo{Manual da classe \LaTeX\ do Centro Universit\'ario da FEI para cria\c{c}\~ao de trabalhos acad\^emicos }
-\def\@grau{}
+  \femaleadvisortrue
+}
+
+\newif\iffemaleauthor
+\DeclareOption{male-author}
+{
+  \femaleauthorfalse
+  \def\@advised{Orientado}
+}
+
+\DeclareOption{female-author}
+{
+  \femaleauthortrue
+  \def\@advised{Orientada}
 }
 
 \DeclareOption{bacharelado}
 {
-\def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado }
-\def\@grau{Bacharel }
+  \def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado}
+  \def\@grau{Bacharel}
 }
 
 \DeclareOption{especializacao}
 {
-\def\@tipo{Monografia, apresentada }
-\def\@grau{Especialista }
+  \def\@tipo{Monografia, apresentada}
+  \def\@grau{Especialista}
 }
 
 \DeclareOption{mestrado}
 {
-\def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada }
-\def\@grau{Mestre }
+  \def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada}
+  \def\@grau{Mestre}
 }
 
 \DeclareOption{doutorado}
 {
-\def\@tipo{Tese de Doutorado, apresentada }
-\def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
+  \def\@tipo{Tese de Doutorado, apresentada}
+  \iffemaleauthor
+    \def\@grau{Doutora}
+  \else
+    \def\@grau{Doutor}
+  \fi
 }
 
-\ExecuteOptions{final,times} % final e times são padrão
+\ExecuteOptions{times,male-advisor,male-author} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -292,7 +309,7 @@ qed=\qedsymbol
 \begin{flushright}
 \begin{minipage}{0.55\textwidth}{
 \begin{singlespace}
-\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, \ifthenelse{\isundefined{\@autora}}{orientado }{orientada } \ifthenelse{\isundefined{\@orientador}}{}{\@orientador}\ifthenelse{\isundefined{\@orientadora}}{}{\@orientadora}.
+\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso, \@advised\ \iffemaleadvisor\ pela \else pelo \fi Prof. \@advisor.
 \end{singlespace}}
 \end{minipage}
 \end{flushright}
@@ -317,7 +334,7 @@ qed=\qedsymbol
 \vspace{0.06\textheight}
 \begin{minipage}{\textwidth}
 \begin{singlespace}
-\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso.
+\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso.
 \end{singlespace}
 \end{minipage}
 
@@ -368,14 +385,10 @@ Examinador (2)
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
-\newcommand{\orientador}[1]{\def\@orientador{pelo Prof. #1}}
+\newcommand{\advisor}[1]{\def\@advisor{#1}}
 
-\newcommand{\orientadora}[1]{\def\@orientadora{pela Prof.$^a$ #1}}
-
-\newcommand{\autora}{\def\@autora{}}
-
- \def\@curso{Coisa Nenhuma}
- \newcommand{\curso}[1]{\def\@curso{#1}}
+\def\@curso{Coisa Nenhuma}
+\newcommand{\curso}[1]{\def\@curso{#1}}
 
 \newcommand{\dedicatoria}[1]{
 \clearpage
@@ -401,11 +414,11 @@ Examinador (2)
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}\selectlanguage{portuges}}
 
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\clearpage\pagestyle{fancy}}
 
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
