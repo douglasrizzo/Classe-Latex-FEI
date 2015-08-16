@@ -51,9 +51,35 @@
 \logvartrue
 }
 
+\DeclareOption{man}
+{
+\def\@tipo{Manual da classe \LaTeX\ do Centro Universit\'ario da FEI para cria\c{c}\~ao de trabalhos acad\^emicos }
+\def\@grau{}
+}
 
+\DeclareOption{bacharelado}
+{
+\def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado }
+\def\@grau{Bacharel }
+}
 
+\DeclareOption{especializacao}
+{
+\def\@tipo{Monografia, apresentada }
+\def\@grau{Especialista }
+}
 
+\DeclareOption{mestrado}
+{
+\def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada }
+\def\@grau{Mestre }
+}
+
+\DeclareOption{doutorado}
+{
+\def\@tipo{Tese de Doutorado, apresentada }
+\def\@grau{\ifthenelse{\isundefined{\@autora}}{Doutor }{Doutora }}
+}
 
 \ExecuteOptions{final,times} % final e times são padrão
 
@@ -255,30 +281,71 @@ qed=\qedsymbol
 \end{center}
 }
 
-\newenvironment{folhaderosto}{
+\newcommand{\folhaderosto}{
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
-\vspace*{0.45\textheight}
+\vspace*{0.328\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vfill
+\vspace*{0.145\textheight}
 \begin{flushright}
-\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+\begin{minipage}{0.55\textwidth}{
+\begin{singlespace}
+\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso, \ifthenelse{\isundefined{\@autora}}{orientado }{orientada } \ifthenelse{\isundefined{\@orientador}}{}{\@orientador}\ifthenelse{\isundefined{\@orientadora}}{}{\@orientadora}.
+\end{singlespace}}
+\end{minipage}
 \end{flushright}
 \vfill
 \@cidade\\
 \number\year
 \end{center}}
 
-
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 \iflogvar
-  \includepdf{ata.pdf}
+\includepdf{ata.pdf}
 \else
-  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+\uppercase\expandafter{\@author}\\
+\vspace*{0.115\textheight}
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+
+\vspace{0.06\textheight}
+\begin{minipage}{\textwidth}
+\begin{singlespace}
+\@tipo ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau em \@curso.
+\end{singlespace}
+\end{minipage}
+
+\vspace*{0.07\textheight}
+Comiss\~ao julgadora
+
+\vspace*{0.07\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Orientador e Presidente
+
+\vspace*{0.075\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Examinador (1)
+
+\vspace*{0.075\textheight}
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace*{0.005\textheight}
+Examinador (2)
+
+\vfill
+\@cidade\\
+\number\year
+\end{center}
 \fi
 }
 
@@ -301,7 +368,14 @@ qed=\qedsymbol
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
+\newcommand{\orientador}[1]{\def\@orientador{pelo Prof. #1}}
 
+\newcommand{\orientadora}[1]{\def\@orientadora{pela Prof.$^a$ #1}}
+
+\newcommand{\autora}{\def\@autora{}}
+
+ \def\@curso{Coisa Nenhuma}
+ \newcommand{\curso}[1]{\def\@curso{#1}}
 
 \newcommand{\dedicatoria}[1]{
 \clearpage
@@ -338,7 +412,7 @@ qed=\qedsymbol
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
@@ -347,7 +421,10 @@ qed=\qedsymbol
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
-  %estilo usado como base
+  % remove espaco em branco no inicio das listas
+  \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
+  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+  % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
   \glssetwidest[0]{}
@@ -417,7 +494,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{section}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
