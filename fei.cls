@@ -394,7 +394,7 @@ Examinador (2)
 \clearpage
 \thispagestyle{empty}
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
+\vspace*{\fill}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
 #1
@@ -406,7 +406,7 @@ Examinador (2)
 \clearpage
 \thispagestyle{empty}
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
+\vspace*{\fill}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
 ``{#1}''\\#2
@@ -429,6 +429,10 @@ Examinador (2)
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
+
+\renewcommand{\printglossario}{%
+\pagestyle{empty}\printglossaries\clearpage\pagestyle{fancy}
+}%
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 

@@ -118,11 +118,10 @@ and the derived files           fei.pdf and
 \folhaderosto
 \fichacatalografica
 \folhadeaprovacao
-\dedicatoria{A todas as pessoas que venham a utilizar essa classe.}
+\dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
 \begin{agradecimentos}
 Agradecemos a Donald Knuth pela criação do \TeX, a Leslie Lamport pelo \LaTeX\ e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
 \end{agradecimentos}
-\dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
@@ -1071,11 +1070,11 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 % opções rascunho e final controlam a exibição da folha
 % de aprovação e ficha catalográfica
-\newif\iflogvar
-\logvartrue
+\newif\ifrascunho
+\rascunhotrue
 \DeclareOption{rascunho}
 {
-\logvarfalse
+\rascunhofalse
 }
 
 \newif\ifsublist
@@ -1410,7 +1409,7 @@ qed=\qedsymbol
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-	\iflogvar
+	\ifrascunho
 	\includepdf{ata.pdf}
 	\else
 	%\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
@@ -1459,7 +1458,7 @@ qed=\qedsymbol
 % ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
 \newcommand{\fichacatalografica}{
     \addtocounter{page}{-1}
-	\iflogvar
+	\ifrascunho
 		\includepdf{ficha.pdf}
 	\else
 		\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
@@ -1490,7 +1489,7 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
+\vspace*{\fill}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
 #1
@@ -1503,7 +1502,7 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
+\vspace*{\fill}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
 ``{#1}''\\#2
