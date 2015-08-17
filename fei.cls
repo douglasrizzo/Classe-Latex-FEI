@@ -21,11 +21,11 @@
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 
-\newif\iflogvar
-\logvartrue
+\newif\ifrascunho
+\rascunhotrue
 \DeclareOption{rascunho}
 {
-\logvarfalse
+\rascunhofalse
 }
 
 \newif\ifsublist
@@ -321,7 +321,7 @@ qed=\qedsymbol
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-\iflogvar
+\ifrascunho
 \includepdf{ata.pdf}
 \else
 \clearpage
@@ -368,7 +368,7 @@ Examinador (2)
 
 \newcommand{\fichacatalografica}{
     \addtocounter{page}{-1}
-\iflogvar
+\ifrascunho
 \includepdf{ficha.pdf}
 \else
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
@@ -429,10 +429,6 @@ Examinador (2)
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
-
-\renewcommand{\printglossario}{%
-\pagestyle{empty}\printglossaries\clearpage\pagestyle{fancy}
-}%
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
