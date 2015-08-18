@@ -98,8 +98,8 @@ and the derived files           fei.pdf and
 \author{Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com o guia de 2015 da biblioteca}
-\advisor{Donald Knuth}
-\curso{Formatação e Tipografia}
+% \advisor{Donald Knuth}
+% \curso{Formatação e Tipografia}
 
 \makeindex
 \makeglossaries
@@ -115,7 +115,9 @@ and the derived files           fei.pdf and
 
 \maketitle
 
-\folhaderosto
+\begin{folhaderosto}
+Classe \LaTeX\ da FEI para criação de trabalhos acadêmicos de acordo com o guia de 2015 da biblioteca
+\end{folhaderosto}
 \fichacatalografica
 \folhadeaprovacao
 \dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
@@ -207,9 +209,9 @@ A declaração da classe é feita da seguinte forma:
   \item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
   \item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
   \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
-  \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
-  \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
-  \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
+  % \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
+  % \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
+  % \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
   \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressas em formato frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
 	\end{enumerate}
 	
@@ -227,10 +229,6 @@ A declaração da classe é feita da seguinte forma:
   
   \subsection{Cidade e Instituição (opcionais)}
   Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
-
-  \subsection{Nome do orientador}
-
-  O nome do orientador é adicionado automaticamente às folhas de rosto e aprovação. Ele é passado através do comando \verb+\advisor{}+ e deve cocnter todas as titulações do orientador que o aluno deseja que apareçam no texto (e.g. Doutor, Doutora, Mestre etc).
    
   \section{PRÉ-TEXTO}\label{sec:pretexto}
 
@@ -242,7 +240,14 @@ A declaração da classe é feita da seguinte forma:
 
   \subsection{Folha de rosto}
    
-  A folha de rosto é inserida através do comando \verb+\folhaderosto+ e utiliza todas as informações passadas nos comandos supracitados, como título, subtítulo, nome do autor e orientador, assim como o gênero de ambos, para gerar automaticamente o texto da página.
+  A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabalho escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no guia da biblioteca e deve ser colocado dentro do ambiente \texttt{folhaderosto}. Por exemplo,
+  \begin{verbatim}
+  \begin{folhaderosto}
+  Dissertação de Mestrado apresentada ao Centro Universitário
+  da FEI para obtenção do título de Mestre em Engenharia
+  Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
+  \end{folhaderosto}
+  \end{verbatim}
 
 	\subsection{Ficha catalográfica e folha de aprovação}
 	
@@ -1095,59 +1100,59 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
   \arialfalse
 }
 
-\newif\iffemaleadvisor
-\DeclareOption{male-advisor}
-{
-  \femaleadvisorfalse
-}
+% \newif\iffemaleadvisor
+% \DeclareOption{male-advisor}
+% {
+%   \femaleadvisorfalse
+% }
 
-\DeclareOption{female-advisor}
-{
-  \femaleadvisortrue
-}
+% \DeclareOption{female-advisor}
+% {
+%   \femaleadvisortrue
+% }
 
-\newif\iffemaleauthor
-\DeclareOption{male-author}
-{
-  \femaleauthorfalse
-  \def\@advised{Orientado}
-}
+% \newif\iffemaleauthor
+% \DeclareOption{male-author}
+% {
+%   \femaleauthorfalse
+%   \def\@advised{Orientado}
+% }
 
-\DeclareOption{female-author}
-{
-  \femaleauthortrue
-  \def\@advised{Orientada}
-}
+% \DeclareOption{female-author}
+% {
+%   \femaleauthortrue
+%   \def\@advised{Orientada}
+% }
 
-\DeclareOption{bacharelado}
-{
-  \def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado}
-  \def\@grau{Bacharel}
-}
+% \DeclareOption{bacharelado}
+% {
+%   \def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado}
+%   \def\@grau{Bacharel}
+% }
 
-\DeclareOption{especializacao}
-{
-  \def\@tipo{Monografia, apresentada}
-  \def\@grau{Especialista}
-}
+% \DeclareOption{especializacao}
+% {
+%   \def\@tipo{Monografia, apresentada}
+%   \def\@grau{Especialista}
+% }
 
-\DeclareOption{mestrado}
-{
-  \def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada}
-  \def\@grau{Mestre}
-}
+% \DeclareOption{mestrado}
+% {
+%   \def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada}
+%   \def\@grau{Mestre}
+% }
 
-\DeclareOption{doutorado}
-{
-  \def\@tipo{Tese de Doutorado, apresentada}
-  \iffemaleauthor
-    \def\@grau{Doutora}
-  \else
-    \def\@grau{Doutor}
-  \fi
-}
+% \DeclareOption{doutorado}
+% {
+%   \def\@tipo{Tese de Doutorado, apresentada}
+%   \iffemaleauthor
+%     \def\@grau{Doutora}
+%   \else
+%     \def\@grau{Doutor}
+%   \fi
+% }
 
-\ExecuteOptions{times,male-advisor,male-author} % processa opções-padrão
+\ExecuteOptions{times} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -1383,21 +1388,38 @@ qed=\qedsymbol
 \end{center}
 }
 
+% comando folha de rosto, com texto automatizado
+% \newcommand{\folhaderosto}{
+% \clearpage
+% \thispagestyle{empty}
+% \begin{center}
+% \uppercase\expandafter{\@author}\\
+% \vspace*{0.328\textheight}
+% \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+% \vspace*{0.145\textheight}
+% \begin{flushright}
+% \begin{minipage}{0.55\textwidth}{
+% \begin{singlespace}
+% \@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso, \@advised\ \iffemaleadvisor\ pela \else pelo \fi Prof. \@advisor.
+% \end{singlespace}}
+% \end{minipage}
+% \end{flushright}
+% \vfill
+% \@cidade\\
+% \number\year
+% \end{center}}
+
 % folha de rosto
-\newcommand{\folhaderosto}{
+\newenvironment{folhaderosto}{
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
-\vspace*{0.328\textheight}
+\vspace*{0.45\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vspace*{0.145\textheight}
+\vfill
 \begin{flushright}
-\begin{minipage}{0.55\textwidth}{
-\begin{singlespace}
-\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso, \@advised\ \iffemaleadvisor\ pela \else pelo \fi Prof. \@advisor.
-\end{singlespace}}
-\end{minipage}
+\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
 \end{flushright}
 \vfill
 \@cidade\\
@@ -1412,46 +1434,48 @@ qed=\qedsymbol
 	\ifrascunho
 	\includepdf{ata.pdf}
 	\else
-	%\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
-	\clearpage
-	\thispagestyle{empty}
-	\begin{center}
-		\uppercase\expandafter{\@author}\\
-		\vspace*{0.115\textheight}
-		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+	\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+
+	% abaixo segue um modelo de folha de aprovação, que não pôde ser utilizado devido ás especificidades de cada trabalho
+	% \clearpage
+	% \thispagestyle{empty}
+	% \begin{center}
+	% 	\uppercase\expandafter{\@author}\\
+	% 	\vspace*{0.115\textheight}
+	% 	\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
 		
-		\vspace{0.06\textheight}
-		\begin{minipage}{\textwidth}
-			\begin{singlespace}
-				\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso.
-			\end{singlespace}
-		\end{minipage}
+	% 	\vspace{0.06\textheight}
+	% 	\begin{minipage}{\textwidth}
+	% 		\begin{singlespace}
+	% 			\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso.
+	% 		\end{singlespace}
+	% 	\end{minipage}
 		
-		\vspace*{0.07\textheight}
-		Comiss\~ao julgadora
+	% 	\vspace*{0.07\textheight}
+	% 	Comiss\~ao julgadora
 		
-		\vspace*{0.07\textheight}
-		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	% 	\vspace*{0.07\textheight}
+	% 	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 		
-		\vspace*{0.005\textheight}
-		Orientador e Presidente
+	% 	\vspace*{0.005\textheight}
+	% 	Orientador e Presidente
 		
-		\vspace*{0.075\textheight}
-		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	% 	\vspace*{0.075\textheight}
+	% 	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 		
-		\vspace*{0.005\textheight}
-		Examinador (1)
+	% 	\vspace*{0.005\textheight}
+	% 	Examinador (1)
 		
-		\vspace*{0.075\textheight}
-		\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+	% 	\vspace*{0.075\textheight}
+	% 	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 		
-		\vspace*{0.005\textheight}
-		Examinador (2)
+	% 	\vspace*{0.005\textheight}
+	% 	Examinador (2)
 		
-		\vfill
-		\@cidade\\
-		\number\year
-	\end{center}
+	% 	\vfill
+	% 	\@cidade\\
+	% 	\number\year
+	% \end{center}
 	\fi
 }
 
@@ -1481,6 +1505,7 @@ qed=\qedsymbol
 % nome do orientador com respectivo título (ex Dr. ...)
 \newcommand{\advisor}[1]{\def\@advisor{#1}}
 
+% curso
 \def\@curso{Coisa Nenhuma}
 \newcommand{\curso}[1]{\def\@curso{#1}}
 

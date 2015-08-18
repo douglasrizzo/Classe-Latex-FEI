@@ -46,59 +46,15 @@
   \arialfalse
 }
 
-\newif\iffemaleadvisor
-\DeclareOption{male-advisor}
-{
-  \femaleadvisorfalse
-}
 
-\DeclareOption{female-advisor}
-{
-  \femaleadvisortrue
-}
 
-\newif\iffemaleauthor
-\DeclareOption{male-author}
-{
-  \femaleauthorfalse
-  \def\@advised{Orientado}
-}
 
-\DeclareOption{female-author}
-{
-  \femaleauthortrue
-  \def\@advised{Orientada}
-}
 
-\DeclareOption{bacharelado}
-{
-  \def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado}
-  \def\@grau{Bacharel}
-}
 
-\DeclareOption{especializacao}
-{
-  \def\@tipo{Monografia, apresentada}
-  \def\@grau{Especialista}
-}
 
-\DeclareOption{mestrado}
-{
-  \def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada}
-  \def\@grau{Mestre}
-}
 
-\DeclareOption{doutorado}
-{
-  \def\@tipo{Tese de Doutorado, apresentada}
-  \iffemaleauthor
-    \def\@grau{Doutora}
-  \else
-    \def\@grau{Doutor}
-  \fi
-}
 
-\ExecuteOptions{times,male-advisor,male-author} % processa opções-padrão
+\ExecuteOptions{times} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -298,20 +254,17 @@ qed=\qedsymbol
 \end{center}
 }
 
-\newcommand{\folhaderosto}{
+
+\newenvironment{folhaderosto}{
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
-\vspace*{0.328\textheight}
+\vspace*{0.45\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vspace*{0.145\textheight}
+\vfill
 \begin{flushright}
-\begin{minipage}{0.55\textwidth}{
-\begin{singlespace}
-\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso, \@advised\ \iffemaleadvisor\ pela \else pelo \fi Prof. \@advisor.
-\end{singlespace}}
-\end{minipage}
+\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
 \end{flushright}
 \vfill
 \@cidade\\
@@ -324,45 +277,17 @@ qed=\qedsymbol
 \ifrascunho
 \includepdf{ata.pdf}
 \else
-\clearpage
-\thispagestyle{empty}
-\begin{center}
-\uppercase\expandafter{\@author}\\
-\vspace*{0.115\textheight}
-\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
 
-\vspace{0.06\textheight}
-\begin{minipage}{\textwidth}
-\begin{singlespace}
-\@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso.
-\end{singlespace}
-\end{minipage}
 
-\vspace*{0.07\textheight}
-Comiss\~ao julgadora
 
-\vspace*{0.07\textheight}
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-\vspace*{0.005\textheight}
-Orientador e Presidente
 
-\vspace*{0.075\textheight}
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-\vspace*{0.005\textheight}
-Examinador (1)
 
-\vspace*{0.075\textheight}
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-\vspace*{0.005\textheight}
-Examinador (2)
 
-\vfill
-\@cidade\\
-\number\year
-\end{center}
+
 \fi
 }
 
