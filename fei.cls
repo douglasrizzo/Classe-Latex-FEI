@@ -46,6 +46,11 @@
   \arialfalse
 }
 
+\DeclareOption{algo-as-figure}
+{
+  \PassOptionsToPackage{figure}{algorithm2e}
+}
+
 
 
 

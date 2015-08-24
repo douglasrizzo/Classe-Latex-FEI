@@ -91,7 +91,7 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,doutorado,xindy]{\jobname}
+\documentclass[rascunho,xindy]{\jobname}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
@@ -209,6 +209,7 @@ A declaração da classe é feita da seguinte forma:
   \item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
   \item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
   \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+  \item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
   % \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
   % \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
   % \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
@@ -1098,6 +1099,11 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \DeclareOption{times}
 {
   \arialfalse
+}
+
+\DeclareOption{algo-as-figure}
+{
+  \PassOptionsToPackage{figure}{algorithm2e}
 }
 
 % \newif\iffemaleadvisor
