@@ -36,13 +36,13 @@ zip: all
 templates: all
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
 	bibtex fei-template.aux
-	# makeglossaries fei-template
+	makeglossaries fei-template
 	makeindex fei-template.idx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
 	bibtex fei-template-sublist.aux
-	# makeglossaries fei-template
+	makeglossaries fei-template-sublist
 	makeindex fei-template.idx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
