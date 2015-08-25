@@ -364,9 +364,6 @@ qed=\qedsymbol
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
-  % remove espaco em branco no inicio das listas
-  \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
   % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
@@ -376,6 +373,9 @@ qed=\qedsymbol
 \else
   \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 \fi
+
+\renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
+\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
