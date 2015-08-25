@@ -46,3 +46,4 @@ templates: all
 	makeindex fei-template.idx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
+	make clean
