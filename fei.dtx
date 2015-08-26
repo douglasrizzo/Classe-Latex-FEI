@@ -111,6 +111,18 @@ and the derived files           fei.pdf and
 \newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
 \newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX\ Archive Network}}
 
+\newglossaryentry{h}{type=simbolos, name={\ensuremath{H}}, sort=h, description={Esquema}}
+\newglossaryentry{t}{type=simbolos, name={\ensuremath{t}}, sort=t, description={Geração}}
+\newglossaryentry{m}{type=simbolos, name={\ensuremath{m}}, sort=m, description={número de cadeias pertences a \gls{h} na geração \gls{t}}}
+\newglossaryentry{f}{type=simbolos, name={\ensuremath{f}}, sort=f, description={aptidão média observada de \gls{h}}}
+\newglossaryentry{at}{type=simbolos, name={\ensuremath{a_t}}, sort=a, description={aptidão média observada na geração \gls{t}}}
+\newglossaryentry{p}{type=simbolos, name={\ensuremath{p}}, sort=p, description={probabilidade de ruptura de \gls{h}}}
+\newglossaryentry{oh}{type=simbolos, name={\ensuremath{o}}, sort=o, description={ordem de \gls{h}}}
+\newglossaryentry{l}{type=simbolos, name={\ensuremath{l}}, sort=l, description={tamanho do código}}
+\newglossaryentry{pm}{type=simbolos, name={\ensuremath{p_m}}, sort=pm, description={probabilidade de mutação}}
+\newglossaryentry{pc}{type=simbolos, name={\ensuremath{p_c}}, sort=pc, description={probabilidade de cruzamento}}
+\newglossaryentry{delta}{type=simbolos, name={\ensuremath{\delta}}, sort=delta, description={menor comprimento de \gls{h}}}
+
 \begin{document}
 
 \maketitle
@@ -343,7 +355,7 @@ Abstract goes here.
 	\centering
 	\caption{Exemplo de figura com sua fonte.}
   \rule{2cm}{2cm}
-  \smallcaption{Fonte: Autor}\label{fig:exemplo}
+  \smallcaption{Fonte: \citefloat{lamport1994latex}.}\label{fig:exemplo}
 	\end{figure}
 
 \begin{verbatim}
@@ -576,6 +588,12 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 	
 	\verb+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
 
+  \section{CITAÇÃO PARA \emph{FLOATS}}
+
+  No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \verb+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \verb+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
+
+  \verb+Fonte: \citefloat{galilei_dialogue_1953}.+ \(\to\) Fonte: \citefloat{galilei_dialogue_1953}.
+
 	\section{OUTROS EXEMPLOS}
 
 	\verb+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
@@ -630,7 +648,11 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 
 	\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 	
-	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor sendo dado um arquivo como exemplo utilizado pelo template fei-template.tex (\verb+lista_simbolos.tex+). As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+	Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+
+  \( \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq {\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h}) \over \gls{at}}[1-\gls{p}]. \)
+
+  \( p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh} \gls{pm} \)
 	
 	\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 	
@@ -1106,6 +1128,8 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
   \PassOptionsToPackage{figure}{algorithm2e}
 }
 
+% https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
+
 % \newif\iffemaleadvisor
 % \DeclareOption{male-advisor}
 % {
@@ -1356,9 +1380,6 @@ qed=\qedsymbol
 
 % redefine sumário e listas de figuras e tabelas, removendo numeração das
 % páginas e adicionando os títulos certos das páginas
-\addto\captionsportuges{%
-  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
-  \renewcommand\contentsname{Sum\'ario}}
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
 \renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
@@ -1579,12 +1600,17 @@ qed=\qedsymbol
   \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 \fi
 
-% remove espaco em branco no inicio das listas
-\renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+\addto\captionsportuges{%
+  \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand*{\contentsname}{Sum\'ario}%
+  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}}
 
-\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+
+% remove espaco em branco no inicio das listas
+% \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
+\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+% \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -1618,6 +1644,7 @@ qed=\qedsymbol
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
 \RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}

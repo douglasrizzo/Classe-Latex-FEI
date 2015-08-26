@@ -59,6 +59,7 @@
 
 
 
+
 \ExecuteOptions{times} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
@@ -226,9 +227,6 @@ qed=\qedsymbol
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 
-\addto\captionsportuges{%
-  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
-  \renewcommand\contentsname{Sum\'ario}}
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
 \renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
@@ -374,11 +372,14 @@ qed=\qedsymbol
   \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 \fi
 
-\renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+\addto\captionsportuges{%
+  \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand*{\contentsname}{Sum\'ario}%
+  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}}
 
-\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+
+\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -408,6 +409,7 @@ qed=\qedsymbol
 }%
 
 \RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
