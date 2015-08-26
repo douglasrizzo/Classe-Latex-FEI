@@ -1,7 +1,7 @@
 *~
 *.mw
 fei-*.zip
-fei-template.pdf
+fei-template*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

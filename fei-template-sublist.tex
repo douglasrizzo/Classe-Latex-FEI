@@ -1,56 +1,57 @@
-\documentclass[rascunho,sublist]{fei}
+\documentclass[rascunho,xindy,sublist]{fei}
 \usepackage[utf8]{inputenc}
+
+%%%% -- Configuracoes Iniciais
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Nome do Autor}
 \title{Título do Trabalho}
 \subtitulo{subtítulo}
+
 %\cidade{Cidade}
 %\instituicao{Instituição de Ensino}
 
+%%%% -- Entradas Listas de Abreviaturas e Simbolos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% -- Nao editar
+%%%% -- Titulos - comentar caso a respectiva lista nao seja utilizada
 \newglossaryentry{acro}{name={},description={\nopostdesc},sort=a} %Usado para alinhar a lista de abreviaturas
 \newglossaryentry{geral}{name={Geral},description={\nopostdesc},sort=a}
 \newglossaryentry{greek}{name={Letras gregas},description={\nopostdesc},sort=b}
 \newglossaryentry{sub}{name={Subscritos},description={\nopostdesc},sort=c}
 
-%%%% -- Editar abaixo
-
-%	Abreviaturas
+%% -- Abreviaturas
 \newacronym[longplural=Computational Aided Design,parent=acro]{cad}{CAD}{Computational Aided Design}
 \newacronym[longplural=Centro Universitário da FEI,parent=acro]{fei}{FEI}{Centro Universitário da FEI}
 
-
-%% --- Latin letters
+%% -- Simbolos
+%% -- Latin letters
 %\newglossaryentry{}{parent=geral,type=simbolos,name={},sort=a,description={}
 \newglossaryentry{A}{parent=geral,type=simbolos,name={\ensuremath{A}},sort=a,description={exchanger total heat transfer area, $m^2$}}
 \newglossaryentry{G}{parent=geral,type=simbolos,name={\ensuremath{G}},sort=g,description={exchanger flow-stream mass velocity, $kg/(s m^2)$}}
 \newglossaryentry{f}{parent=geral,type=simbolos,name={\ensuremath{j}},sort=j,description={friction factor, dimensionless}}
 
-%% --- Greek letters
+%% -- Greek letters
 %\newglossaryentry{}{parent=geral,type=simbolos,name={},sort=a,description={}
 \newglossaryentry{deltap}{parent=greek,type=simbolos,name={\ensuremath{\Delta P}},sort=p,description={pressure drop, $Pa$}}
 \newglossaryentry{nu}{parent=greek,type=simbolos,name={\ensuremath{\nu}},sort=b,description={specific volume, $m^3/kg$}}
 \newglossaryentry{beta}{parent=greek,type=simbolos,name={\ensuremath{\beta}},sort=b,description={ratio of free-flow area $A_{ff}$ and frontal area $A_{fr}$ of one side of exchanger, dimensionless}}
 
-%% --- Subscripts
+%% -- Subscripts
 %\newglossaryentry{}{parent=geral,type=simbolos,name={},sort=a,description={}
 \newglossaryentry{fr}{parent=sub,type=simbolos,name={\ensuremath{fr}},sort=fr,description={frontal}}
 \newglossaryentry{in}{parent=sub,type=simbolos,name={\ensuremath{i}},sort=in,description={inlet}}
 \newglossaryentry{out}{parent=sub,type=simbolos,name={\ensuremath{o}},sort=out,description={outlet}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \makeindex
+\makeindex
 \makeglossaries
 
 \begin{document}
 
 \maketitle
-
 \begin{folhaderosto}
-Dissertação/tese de Mestrado/Doutorado apresentada ao Centro Universitário da FEI para obtenção do título de Mestre/Doutor em [Curso], orientado pelo Prof. Dr. [Orientador].
+Dissertação de Mestrado, apresentada ao Centro Universitário da FEI para obtenção do título de Mestre em Engenharia Braquistócrona. Orientado pelo Prof. Dr. Donald Knuth.
 \end{folhaderosto}
-
 \fichacatalografica
 \folhadeaprovacao
 \dedicatoria{A quem eu quero dedicar o texto.}
@@ -93,19 +94,16 @@ Vivamus vel erat erat. Integer venenatis nisl velit, vel commodo lectus condimen
 \keywords{Keywords. Go. Here.}
 \end{abstract}
 
-{
-	\pagestyle{empty}
-	%\listoffigures
-	\listoftables
-	\listofalgorithms
-	\glsaddall
-	\printglossaries
-	\tableofcontents
-}
+\listoffigures
+\listoftables
+\listofalgorithms
+% \glsaddall
+\printglossaries
+\tableofcontents
 
 \chapter{LOREM IPSUM}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean \index{exemplo}exemplo quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec enim porttitor, id rhoncus neque dignissim. Vestibulum sollicitudin turpis sed ligula tincidunt iaculis. Vestibulum condimentum libero erat, laoreet placerat elit ullamcorper a. Nam consectetur euismod risus. Duis quis ultricies velit, ut volutpat augue. Nam ligula sapien, interdum id leo vitae, porta volutpat velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sit amet libero varius, consequat ipsum ac, placerat velit.
 
@@ -115,13 +113,13 @@ Nunc molestie nunc ac lorem dictum, sit amet placerat tellus congue. In sit amet
 \cos (2\theta) = \cos^2 \theta - \sin^2 \theta
 \end{equation}
 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ut dolor erat. Fusce adipiscing interdum eros, in ultrices orci auctor at. Mauris ac ante orci. In nec mauris arcu. In pulvinar tortor a felis interdum pretium. Donec tristique laoreet sollicitudin. Proin erat metus, blandit sed cursus eget, faucibus id nunc. Donec id nisi non mauris tempor tincidunt. Fusce venenatis pulvinar enim. Fusce sit amet tortor nec magna feugiat pharetra ac nec nibh. Praesent non nisi lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum rutrum varius velit, id iaculis ante vestibulum quis. Aenean bibendum sit amet quam ornare mollis. Suspendisse sollicitudin fringilla felis in venenatis.
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ut dolor erat. Fusce adipiscing interdum eros, in ultrices orci auctor at. Mauris ac ante orci. In nec mauris arcu. In pulvinar tortor a felis interdum pretium. Donec tristique laoreet sollicitudin. Proin \gls{A}, \gls{G}, \gls{f}, \gls{deltap}, \gls{nu}, \gls{beta}, \gls{fr}, \gls{in}, \gls{out} erat metus, blandit sed cursus eget, faucibus id nunc. Donec id nisi non mauris tempor tincidunt. Fusce venenatis pulvinar enim. Fusce sit amet tortor nec magna feugiat pharetra ac nec nibh. Praesent non nisi lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum rutrum varius velit, id iaculis ante vestibulum quis. Aenean bibendum sit amet quam ornare mollis. Suspendisse sollicitudin fringilla felis in venenatis.
 
 Vivamus vel erat erat. Integer venenatis nisl velit, vel commodo lectus condimentum ac. Aliquam id magna at tellus sagittis tempus id quis ante. Maecenas bibendum ipsum nec urna condimentum mollis. In venenatis eget nunc ac adipiscing. Vivamus faucibus vel orci mattis egestas. In hac habitasse platea dictumst. Nulla faucibus neque eu fermentum luctus. Duis ipsum nunc, congue vel justo nec, faucibus iaculis erat. Integer sit amet augue nec enim blandit placerat. Sed bibendum feugiat eros.
 
 \section{Class aptent taciti}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, \index{convergência}convergência ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec enim porttitor, id rhoncus neque dignissim. Vestibulum sollicitudin turpis sed ligula tincidunt iaculis. Vestibulum condimentum libero erat, laoreet placerat elit ullamcorper a. Nam consectetur euismod risus. Duis quis ultricies velit, ut volutpat augue. Nam ligula sapien, interdum id leo vitae, porta volutpat velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sit amet libero varius, consequat ipsum ac, placerat velit.
 
@@ -143,7 +141,7 @@ Vivamus vel erat erat. Integer venenatis nisl velit, vel commodo lectus condimen
 	\item Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus.
 \end{enumerate}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et \index{convergência}convergência libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec enim porttitor, id rhoncus neque dignissim. Vestibulum sollicitudin turpis sed ligula tincidunt iaculis. Vestibulum condimentum libero erat, laoreet placerat elit ullamcorper a. Nam consectetur euismod risus. Duis quis ultricies velit, ut volutpat augue. Nam ligula sapien, interdum id leo vitae, porta volutpat velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sit amet libero varius, consequat ipsum ac, placerat velit.
 
@@ -166,7 +164,7 @@ Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec
 
 \section{Class aptent taciti}
 
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ut dolor erat. Fusce adipiscing interdum eros, in ultrices orci auctor at. Mauris ac ante orci. In nec mauris arcu. In pulvinar tortor a felis interdum pretium. Donec tristique laoreet sollicitudin. Proin erat metus, blandit sed cursus eget, faucibus id nunc. Donec id nisi non mauris tempor tincidunt. Fusce venenatis pulvinar enim. Fusce sit amet tortor nec magna feugiat pharetra ac nec nibh. Praesent non nisi lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum rutrum varius velit, id iaculis ante vestibulum quis. Aenean bibendum sit amet quam ornare mollis. Suspendisse sollicitudin fringilla felis in venenatis.
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ut dolor erat. Fusce adipiscing interdum eros, in ultrices orci auctor at. Mauris ac ante orci. In nec mauris arcu. In pulvinar tortor a felis interdum pretium. Donec tristique laoreet sollicitudin. Proin erat metus, blandit sed cursus eget, faucibus id nunc. Donec id nisi non \index{alpha@\(\alpha\)} mauris tempor tincidunt. Fusce venenatis pulvinar enim. Fusce sit amet tortor nec magna feugiat pharetra ac nec nibh. Praesent non nisi lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum rutrum varius velit, id iaculis ante vestibulum quis. Aenean bibendum sit amet quam ornare mollis. Suspendisse sollicitudin fringilla felis in venenatis.
 
 \begin{algorithm}
 \Entrada{Inteiro \(a\)}
@@ -182,6 +180,6 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
 
 \bibliography{referencias}
 
-%\printindex
+\printindex
 
 \end{document}

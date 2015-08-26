@@ -21,26 +21,46 @@
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 
+\newif\ifrascunho
+\rascunhotrue
 \DeclareOption{rascunho}
 {
-\newif\iflogvar
+\rascunhofalse
 }
 
 \newif\ifsublist
 \sublistfalse
-
 \DeclareOption{sublist}
 {
   \sublisttrue
 }
 
-\DeclareOption{final}
+\newif\ifarial
+\DeclareOption{arial}
 {
-\newif\iflogvar
-\logvartrue
+  \arialtrue
 }
 
-\ExecuteOptions{final} % final é padrão
+\DeclareOption{times}
+{
+  \arialfalse
+}
+
+\DeclareOption{algo-as-figure}
+{
+  \PassOptionsToPackage{figure}{algorithm2e}
+}
+
+
+
+
+
+
+
+
+
+
+\ExecuteOptions{times} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
@@ -75,7 +95,15 @@
 
 \RequirePackage{mathtools}     % matematica
 \RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
-\RequirePackage{times}         % Times New Roman como fonte de tudo
+
+\ifarial
+  % \RequirePackage{helvet}
+  \usepackage[scaled]{uarial}
+  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\else
+  \RequirePackage{times} % usar fonte times no texto todo
+\fi
+
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
 
@@ -142,16 +170,16 @@ qed=\qedsymbol
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 \renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{%
-\@startsection{subsection}{2}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bf}}
+\@startsection{subsection}{2}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 \renewcommand{\subsubsection}{%
-\@startsection{subsubsection}{3}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it\bf}}
+\@startsection{subsubsection}{3}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{%
 \@startsection{paragraph}{4}{0pt}{1.5\baselineskip}{1.5\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
@@ -176,6 +204,12 @@ qed=\qedsymbol
 \renewcommand{\cftsubsubsecindent}{0pt}
 \renewcommand{\cftparaindent}{0pt}
 
+\renewcommand{\cftchapnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftsubsubsecnumwidth}{\cftparanumwidth}
+\renewcommand{\cftparanumwidth}{4em}
+
 \renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 \renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
@@ -193,9 +227,6 @@ qed=\qedsymbol
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 
-\addto\captionsportuges{%
-  \renewcommand\listfigurename{Lista de Ilustra\c{c}\~oes}%
-  \renewcommand\contentsname{Sum\'ario}}
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
 \renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
@@ -226,6 +257,7 @@ qed=\qedsymbol
 \end{center}
 }
 
+
 \newenvironment{folhaderosto}{
 \clearpage
 \thispagestyle{empty}
@@ -245,16 +277,26 @@ qed=\qedsymbol
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-\iflogvar
-  \includepdf{ata.pdf}
+\ifrascunho
+\includepdf{ata.pdf}
 \else
-  \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
+
+
+
+
+
+
+
+
+
+
 \fi
 }
 
 \newcommand{\fichacatalografica}{
     \addtocounter{page}{-1}
-\iflogvar
+\ifrascunho
 \includepdf{ficha.pdf}
 \else
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
@@ -271,11 +313,16 @@ qed=\qedsymbol
 \def\@instituicao{Centro Universit\'ario da FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
+\newcommand{\advisor}[1]{\def\@advisor{#1}}
+
+\def\@curso{Coisa Nenhuma}
+\newcommand{\curso}[1]{\def\@curso{#1}}
+
 \newcommand{\dedicatoria}[1]{
 \clearpage
 \thispagestyle{empty}
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
+\vspace*{\fill}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
 #1
@@ -287,7 +334,7 @@ qed=\qedsymbol
 \clearpage
 \thispagestyle{empty}
 \begin{flushleft}
-\vspace*{0.5\paperheight\relax}
+\vspace*{\fill}
 \hspace*{0.4\paperwidth\relax}
 \begin{minipage}[l]{0.5\textwidth}
 ``{#1}''\\#2
@@ -295,18 +342,18 @@ qed=\qedsymbol
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\thispagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{singlespace}\noindent\normalsize}{\end{singlespace}\clearpage\pagestyle{fancy}\selectlanguage{portuges}}
 
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\thispagestyle{empty}}{}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\clearpage\pagestyle{fancy}}
 
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\'INDICE}%
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
 \oldprintindex}%
@@ -315,7 +362,7 @@ qed=\qedsymbol
 
 \ifsublist
   \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
-  %estilo usado como base
+  % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
   \glssetwidest[0]{}
@@ -325,8 +372,14 @@ qed=\qedsymbol
   \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 \fi
 
-\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}
+\addto\captionsportuges{%
+  \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand*{\contentsname}{Sum\'ario}%
+  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}}
+
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+
+\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -338,7 +391,7 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{AP\^ENDICE \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -350,12 +403,13 @@ qed=\qedsymbol
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
 \clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
 
 \RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
@@ -385,7 +439,7 @@ qed=\qedsymbol
 \renewcommand{\bibliography}[1]{%
 \renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
   \clearpage%
-  \addcontentsline{toc}{chapter}{REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \addcontentsline{toc}{section}{\hspace{\cftparanumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
   \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
