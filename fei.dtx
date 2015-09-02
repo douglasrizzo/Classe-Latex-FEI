@@ -181,6 +181,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
         \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
         \item\texttt{times}: carrega fonte Times New Roman;
         \item\texttt{uarial}: carrega fonte URW Arial;
+        \item\texttt{enumitem}: formatação de alíneas;
         \item\texttt{graphicx}: importação e utilização de imagens;
         \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
         \item\texttt{hyperref}: gera os links entre referências no PDF;
@@ -499,6 +500,16 @@ A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese
     Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas
 ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:dependencias}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
 
+\begin{enumerate}
+  \item Primeiro item;
+  \item Segundo item;
+  \begin{enumerate}
+    \item Primeiro sub-item;
+    \item Segundo sub-item.
+  \end{enumerate}
+  \item Terceiro item.
+\end{enumerate}
+
 	\section{PÓS-TEXTO}\label{sec:postexto}
 	
 	Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Este capítulo descreve os comandos para \emph{inserção} destes elementos. Os capítulos seguintes instruirão como \emph{criá-los}.
@@ -773,10 +784,10 @@ Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de
 
 Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Duas dessas ferramentas são o \texttt{latexmk} e o \texttt{rubber}, ambas criadas especificamente para realizar a automatização da compilação de documentos \TeX. Supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual, os comandos seguintes geram um PDF completo.
 
-\begin{description}
-\item[\texttt{latexmk}] \texttt{-pdf -interaction=nonstopmode documento}
-\item[\texttt{rubber}] \texttt{-d documento}
-\end{description}
+\begin{enumerate}
+\item \texttt{latexmk -pdf -interaction=nonstopmode documento}
+\item \texttt{rubber -d documento}
+\end{enumerate}
 
 Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 	
@@ -1185,11 +1196,11 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \ProcessOptions\relax % processa todas as opções
 
 % tamanho do papel (A4) e margens
-\setlength{\paperheight}{297mm} 
-\setlength{\paperwidth}{210mm}
+% \setlength{\paperheight}{297mm} 
+% \setlength{\paperwidth}{210mm}
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-\RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+\RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
 
 % cabecalho e rodape
 \RequirePackage{fancyhdr}
@@ -1293,13 +1304,11 @@ qed=\qedsymbol
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
 % listas
+\RequirePackage{enumitem}
+\setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
+\setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
-\renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
-\renewcommand{\labelenumi}{\theenumi}                          % continuacao
  
- % troca a numeracao no segundo nivel para letras
-\renewcommand{\theenumii}{--}
-\renewcommand{\labelenumii}{\theenumii}
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
@@ -1409,7 +1418,7 @@ qed=\qedsymbol
 \MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
-\number\year
+\number\year%
 \end{center}
 }
 
@@ -1643,14 +1652,14 @@ qed=\qedsymbol
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
 \newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
                \fontsize{10pt}{1em}%
-               \leftmargin=2cm \rightmargin=2cm}%
+               \leftmargin=4cm}%
                \item\relax\ignorespaces}
                {\endlist\end{singlespace}}
 

@@ -64,11 +64,9 @@
 
 \ProcessOptions\relax % processa todas as opções
 
-\setlength{\paperheight}{297mm}
-\setlength{\paperwidth}{210mm}
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-\RequirePackage[top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+\RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
 
 \RequirePackage{fancyhdr}
 \pagenumbering{arabic} % estilo da numeração das páginas
@@ -158,13 +156,10 @@ qed=\qedsymbol
 
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
+\RequirePackage{enumitem}
+\setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
+\setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
-\renewcommand{\theenumi}{\alph{enumi})}                        % deixa as listas com letras no lugar do numero
-\renewcommand{\labelenumi}{\theenumi}                          % continuacao
-
- % troca a numeracao no segundo nivel para letras
-\renewcommand{\theenumii}{--}
-\renewcommand{\labelenumii}{\theenumii}
 
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
@@ -253,7 +248,7 @@ qed=\qedsymbol
 \MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
 \vfill
 \@cidade\\
-\number\year
+\number\year%
 \end{center}
 }
 
@@ -380,6 +375,7 @@ qed=\qedsymbol
 \newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
 
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+\renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
@@ -409,13 +405,13 @@ qed=\qedsymbol
 }%
 }%
 
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes]{abntex2cite}
+\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
 \newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
                \fontsize{10pt}{1em}%
-               \leftmargin=2cm \rightmargin=2cm}%
+               \leftmargin=4cm}%
                \item\relax\ignorespaces}
                {\endlist\end{singlespace}}
 
