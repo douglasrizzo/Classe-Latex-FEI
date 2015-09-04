@@ -377,6 +377,12 @@ qed=\qedsymbol
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
 
+\setglossarystyle{long}
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\glsdescwidth{\linewidth}
+
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
