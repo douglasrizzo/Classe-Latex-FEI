@@ -132,8 +132,7 @@ spaceabove=6pt, spacebelow=6pt,
 headfont=\normalfont\bfseries,
 notefont=\normalfont\bfseries, notebraces={-- }{},
 bodyfont=\normalfont,
-postheadspace=1em,
-qed=\qedsymbol
+postheadspace=1em
 ]{feistyle}
 
 \declaretheorem[style=feistyle,name=Axioma]{axioma}
@@ -356,7 +355,7 @@ qed=\qedsymbol
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 \ifsublist
-  \RequirePackage[nomain,acronym,nonumberlist]{glossaries}
+  \RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
   % estilo usado como base
   \setglossarystyle{alttree}
   % Configuracao de identacao do nivel 0 (titulos)
@@ -364,24 +363,22 @@ qed=\qedsymbol
   % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
   \glssetwidest[1]{aaaaaaaaaaaa}
 \else
-  \RequirePackage[nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+  \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+  \setglossarystyle{long}
+  \renewcommand{\glsnamefont}[1]{\textbf{#1}}
+  \setlength\LTleft{0pt}
+  \setlength\LTright{0pt}
+  \setlength\glsdescwidth{\linewidth}
 \fi
 
 \addto\captionsportuges{%
   \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
   \renewcommand*{\contentsname}{Sum\'ario}%
-  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}}
-
-\newglossary{simbolos}{sym}{sbl}{\hfill Lista de S\'imbolos \hfill \mbox{}}
+  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+  \renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-
-\setglossarystyle{long}
-\renewcommand{\glsnamefont}[1]{\textbf{#1}}
-\setlength\LTleft{0pt}
-\setlength\LTright{0pt}
-\setlength\glsdescwidth{\linewidth}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract

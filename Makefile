@@ -9,7 +9,7 @@ UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all:	$(NAME).pdf clean
 	test -e README.txt && mv README.txt README || exit 0
 clean:
-	rm -f *.{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,sbl,sym,xdy}
+	rm -f *.{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,slg,slo,sls,xdy}
 distclean: clean
 	rm -f *.{pdf,cls} README README.txt
 $(NAME).pdf: $(NAME).dtx
