@@ -122,8 +122,9 @@
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
 
-\SetAlgoCaptionSeparator{--} % separador da legenda
-\SetAlCapFnt{\footnotesize} % fonte da legenda
+\SetAlgoCaptionSeparator{ --} % separador da legenda
+\SetAlCapSty{} % estilo da primeira parte da legenda (remove negrito padrão)
+\SetAlCapFnt{\normalsize} % fonte da primeira parte da legenda
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
