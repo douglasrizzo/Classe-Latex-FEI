@@ -172,33 +172,36 @@ O texto é organizado da seguinte forma: este capítulo termina enumerando os pa
 Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX\ existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados. É necessário enfatizar a necessidade de instalação destes pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX\ (para Windows), Mac\TeX\ (para Mac OS) e \TeX\ Live (para Linux e Mac OS).
     
     \begin{enumerate}
-        \item\texttt{geometry}: mudança do tamanho das margens;
-        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
-        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
         \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
-        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
-        \item\texttt{times}: carrega fonte Times New Roman;
-        \item\texttt{uarial}: carrega fonte URW Arial;
-        \item\texttt{enumitem}: formatação de alíneas;
-        \item\texttt{graphicx}: importação e utilização de imagens;
-        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
-        \item\texttt{hyperref}: gera os links entre referências no PDF;
-        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
+        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
         \item\texttt{caption}: altera a formatação de certas legendas;
-        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
-        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+        \item\texttt{enumitem}: formatação de alíneas;
+        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
+        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+        \item\texttt{geometry}: mudança do tamanho das margens;
+        \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
+        \item\texttt{graphicx}: importação e utilização de imagens;
+        \item\texttt{hyperref}: gera os links entre referências no PDF;
+        \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
         \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
         \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-        \item\index{glossaries@\emph{glossaries}}\texttt{glossaries}: permite a criação de listas de símbolos e abreviaturas;
-        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
+        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+        \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
+        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
         \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
-        \item\texttt{morewrites}:  permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente.
+        \item\texttt{times}: carrega fonte Times New Roman;
+        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
+        \item\texttt{uarial}: carrega fonte URW Arial.
     \end{enumerate}
 
-Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+    Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+
+    Os scripts de alguns programas \TeX\, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
 
 \chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
 
@@ -226,7 +229,7 @@ A declaração da classe é feita da seguinte forma:
   % \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
   % \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
   % \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
-  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressas em formato frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções típicas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade.
+  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções nativas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 	\end{enumerate}
 	
 	\subsection{Nome do autor, e título}
@@ -731,20 +734,22 @@ ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com mar
 
   É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
 
-  \section{SUB-LISTAS DE SÍMBOLOS}\label{sec:sublist}
-  Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de sub-listas se símbolos. Para que sub-listas sejam usadas, basta que a opção \texttt{sublist} seja passada à classe. Neste modo, os símbolos devem ser inseridos em \emph{categorias}. O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
+  \section{HIERARQUIA DE SÍMBOLOS}\label{sec:sublist}
+  Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja utilizado no documento, a opção \texttt{sublist} deve ser passada à classe.
+
+  O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
 
   \begin{verbatim}
   \newglossaryentry{greek}{name={Letras gregas},
-    description={\nopostdesc},sort=b}
+    description={\nopostdesc},sort=a}
   \newglossaryentry{deltap}{parent=greek,type=symbols,
-    name={\ensuremath{\Delta P}},sort=p,
+    name={\ensuremath{\Delta P}},sort=deltap,
     description={pressure drop, $Pa$}}
   \end{verbatim}
 	
 	\section{IMPRIMINDO AS LISTAS}
-	
-	O comando \verb+\printglossaries+ imprime ambas as listas em sequência.
+
+  A lista de abreviaturas pode ser impressa através do comando \verb+\printacronyms+. A lista de símbolos pode ser impressa através do comando \verb+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \verb+\printglossaries+.
 
 \chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 	
