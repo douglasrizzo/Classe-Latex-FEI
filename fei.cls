@@ -46,6 +46,13 @@
   \arialfalse
 }
 
+\newif\iftwoside
+\twosidefalse
+\DeclareOption{twoside}
+{
+  \twosidetrue
+}
+
 \DeclareOption{algo-as-figure}
 {
   \PassOptionsToPackage{figure}{algorithm2e}
@@ -91,8 +98,9 @@
 \widowpenalty=10000
 \clubpenalty=10000
 
-\RequirePackage{mathtools}     % matematica
-\RequirePackage{lmodern}       % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{mathtools} % matematica
+\RequirePackage{lmodern} % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
+\RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
   % \RequirePackage{helvet}
@@ -122,6 +130,7 @@
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
 
+\renewcommand{\@algocf@capt@plain}{above} % legenda acima
 \SetAlgoCaptionSeparator{ --} % separador da legenda
 \SetAlCapSty{} % estilo da primeira parte da legenda (remove negrito padrão)
 \SetAlCapFnt{\normalsize} % fonte da primeira parte da legenda
@@ -161,11 +170,13 @@ postheadspace=1em
 \setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 
-\renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\clearpage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+\renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
-\renewcommand{\chapter}{\clearpage%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\thispagestyle{fancy}\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+\renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+
+\renewcommand{\chapter}{\clearpage\pagestyle{fancy}%
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
@@ -222,24 +233,24 @@ postheadspace=1em
 \renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 
-\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\clearpage\pagestyle{fancy}}
-\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\clearpage\pagestyle{fancy}}
-\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\clearpage\pagestyle{fancy}}
+\renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
+\renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\cleardoublepage}
+\renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\cleardoublepage}
 
 \renewcommand{\listofalgorithms}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Algoritmo~\oldnumberline}%
-\part*{\listalgorithmcfname}\thispagestyle{empty}\@starttoc{loa}\endgroup}
+\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage\endgroup}
+
 \renewcommand{\listoftheorems}{\begingroup%
 \let\oldnumberline\numberline%
 \renewcommand{\numberline}{Teorema~\oldnumberline}%
-\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\endgroup}
+\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
 \renewcommand{\maketitle}{
-\clearpage
-\thispagestyle{empty}
+\pagestyle{empty}
 \begin{center}
 \textbf{
 \MakeUppercase{\@instituicao}\\[\baselineskip]
@@ -250,11 +261,12 @@ postheadspace=1em
 \@cidade\\
 \number\year%
 \end{center}
+\cleardoublepage
 }
 
 
 \newenvironment{folhaderosto}{
-\clearpage
+\setcounter{page}{1}
 \thispagestyle{empty}
 \begin{center}
 \uppercase\expandafter{\@author}\\
@@ -267,34 +279,29 @@ postheadspace=1em
 \vfill
 \@cidade\\
 \number\year
-\end{center}}
+\end{center}%
+\clearpage}
 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 \ifrascunho
-\includepdf{ata.pdf}
+  \includepdf{ata.pdf}\cleardoublepage
 \else
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}
-
-
-
-
-
-
-
-
-
-
+  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
 \fi
 }
 
 \newcommand{\fichacatalografica}{
+  \iftwoside
+  \else
+    % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
     \addtocounter{page}{-1}
+  \fi
 \ifrascunho
-\includepdf{ficha.pdf}
+\includepdf{ficha.pdf}\cleardoublepage
 \else
-\clearpage\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}
+  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
 \fi
 }
 
@@ -314,7 +321,7 @@ postheadspace=1em
 \newcommand{\curso}[1]{\def\@curso{#1}}
 
 \newcommand{\dedicatoria}[1]{
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{\fill}
@@ -326,7 +333,7 @@ postheadspace=1em
 }
 
 \newcommand{\epigrafe}[2]{
-\clearpage
+\cleardoublepage
 \thispagestyle{empty}
 \begin{flushleft}
 \vspace*{\fill}
@@ -337,11 +344,11 @@ postheadspace=1em
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\clearpage\pagestyle{fancy}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\clearpage\pagestyle{fancy}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{portuges}}
 
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\clearpage\pagestyle{fancy}}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{fancy}}
 
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
@@ -370,8 +377,14 @@ postheadspace=1em
 \else
   \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 
-  % alinha abreviaturas e símbolos cocm suas definições
-  \setglossarystyle{long}
+  \newglossarystyle{mylong}{%
+    \setglossarystyle{long}% base this style on the long style
+    \renewenvironment{theglossary}{%
+      \begin{longtable*}{lp{\glsdescwidth}}}%
+    {\end{longtable*}}%
+  }%
+
+  \setglossarystyle{mylong}
   \renewcommand{\glsnamefont}[1]{\textbf{#1}}
   \setlength\LTleft{0pt}
   \setlength\LTright{0pt}
@@ -387,8 +400,8 @@ postheadspace=1em
   \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
   \renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
-\renewcommand*{\glsclearpage}{\pagestyle{empty}\thispagestyle{empty}}
-\renewcommand*{\glossarypostamble}{\thispagestyle{empty}\pagestyle{empty}}
+\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
