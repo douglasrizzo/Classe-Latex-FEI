@@ -9,14 +9,17 @@ UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all:	$(NAME).pdf clean
 	test -e README.txt && mv README.txt README || exit 0
 clean:
-	rm -f *.{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,slg,slo,sls,xdy}
+	rm -f *.{acn,acr,alg,aux,bbl,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,slg,slo,sls,xdy,zip}
 distclean: clean
 	rm -f *.{pdf,cls} README README.txt
 $(NAME).pdf: $(NAME).dtx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
 	bibtex $(NAME).aux
+	texindy $(NAME).idx
 	makeglossaries $(NAME)
-	makeindex $(NAME).idx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
+	texindy $(NAME).idx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape $(NAME).dtx
 inst: all
@@ -31,19 +34,25 @@ install: all
 	sudo cp $(NAME).pdf $(LOCAL)/doc/latex/$(NAME)
 zip: all
 	mkdir $(TDIR)
-	cp $(NAME).{pdf,dtx} fei-template.tex referencias.bib README $(TDIR)
+	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib README $(TDIR)
 	cd $(TEMP); zip -Drq $(PWD)/$(NAME)-$(VERS).zip $(NAME)
 templates: all
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
 	bibtex fei-template.aux
+	texindy fei-template.idx
 	makeglossaries fei-template
-	makeindex fei-template.idx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
+	texindy fei-template.idx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
 	bibtex fei-template-sublist.aux
 	makeglossaries fei-template-sublist
-	makeindex fei-template.idx
+	texindy fei-template.idx
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
+	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
+	texindy fei-template.idx
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
 	-pdflatex -recorder -interaction=nonstopmode -shell-escape fei-template-sublist.tex
 	make clean
