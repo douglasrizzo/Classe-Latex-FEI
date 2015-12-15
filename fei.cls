@@ -312,7 +312,7 @@ postheadspace=1em
 \def\@cidade{S\~ao Bernardo do Campo}
 \newcommand{\cidade}[1]{\def\@cidade{#1}}
 
-\def\@instituicao{Centro Universit\'ario da FEI}
+\def\@instituicao{Centro Universit\'ario FEI}
 \newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
 \newcommand{\advisor}[1]{\def\@advisor{#1}}
@@ -465,7 +465,7 @@ postheadspace=1em
 \oldbibliography{#1}% adiciona realmente a bibliografia
 }
 %% 
-%% Copyright (C) 2014 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2015 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either
