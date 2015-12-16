@@ -159,8 +159,6 @@ Abstract goes here.
 
 Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2015, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
-A versão mais recente da classe, assim como este manual, estão disponíveis através do \emph{GitHub} \url{http://openfei.github.io/Classe-Latex-FEI}. O único arquivo necessário é a classe \texttt{fei.cls}, a qual deve ser referenciada pelo arquivo \texttt{tex} do trabalho do aluno.
-
 A escrita da classe que formata o texto foi realizada tendo-se como referência principal o guia disponível pela biblioteca (nesta versão, o guia utilizado desde 2015). Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo guia, como algoritmos e teoremas.
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
@@ -173,7 +171,7 @@ Esta seção guia o leitor na instalação do \LaTeX{}, da classe e dos diferent
 
 \subsection{Windows}
 
-A opção mais simples para instalação do \LaTeX{} no Windows é o aplicativo Mik\TeX{} (\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados. Tanto a classe da FEI como todas suas dependências estão disponíveis no Mik\TeX\.
+A opção mais simples para instalação do \LaTeX{} no Windows é o aplicativo Mik\TeX{} (\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados. Tanto a classe da FEI como todas suas dependências estão disponíveis no Mik\TeX{}.
 
 Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX{} para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:dependencias}.
 
@@ -197,11 +195,19 @@ Com a versão mais recente do \TeX{} Live instalada, é possível usar o \textit
 
 No Mac, o \LaTeX{} pode ser instalado através do Mac\TeX{} (\url{http://tug.org/mactex/}), uma compilação completa do \TeX{} Live para Mac.
 
-O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório oficial do \TeX\. Nesse caso, a opção é baixar a classe diretamente do repositório oficial ou da página do projeto no GitHub.
+O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório oficial do \TeX{}. Nesse caso, a opção é baixar a classe diretamente do repositório oficial ou da página do projeto no GitHub.
 
-\subsection{Compilando do fonte}
+\subsection{Compilando do código-fonte}
 
-A classe também pode ser baixada diretamente do GitHub e compilada. O repositório do projeto possui um Makefile para compilação da classe, através do comando \texttt{make}, o qual gera o arquivo \texttt{fei.cls}.
+A classe também pode ser baixada diretamente do GitHub, ou compilada do código-fonte. O repositório do projeto \footnote{\url{http://github.com/douglasrizzo/Classe-Latex-FEI}} possui todos os aruqivos necessários para o procedimento:
+
+\begin{enumerate}
+  \item o arquivo-fonte \texttt{fei.dtx};
+  \item um Makefile para compilação do arquivo-fonte, através do comando \texttt{make};
+  \item a classe \texttt{fei.cls}, pré-compilada.
+\end{enumerate}
+
+O processo de compilação requer que todas as dependências da classe já estejam instaladas. O único arquivo necessário para formatação dos trabalhos acadêmicos é a classe \texttt{fei.cls}, a qual deve ser mantida no mesmo diretório do arquivo \texttt{tex} do trabalho do aluno.
 
 \section{FONTE ARIAL}
 
@@ -218,48 +224,48 @@ Após isso, é necessário utilizar a opção \texttt{arial} na declaração da 
 \section{DEPENDÊNCIAS}\label{sec:dependencias}
 
 Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX{} existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados. É necessário enfatizar a necessidade de instalação destes pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} Live (para Linux e Mac OS).
-    
-    \begin{enumerate}
-        \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-        \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-        \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
-        \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-        \item\texttt{caption}: altera a formatação de certas legendas;
-        \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
-        \item\texttt{enumitem}: formatação de alíneas;
-        \item\texttt{fancyhdr}: formatação dos cabeçalhos;
-        \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
-        \item\texttt{geometry}: mudança do tamanho das margens;
-        \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
-        \item\texttt{graphicx}: importação e utilização de imagens;
-        \item\texttt{hyperref}: gera os links entre referências no PDF;
-        \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
-        \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
-        \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-        \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
-        \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
-        \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
-        \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
-        \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
-        \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
-        \item\texttt{times}: carrega fonte Times New Roman;
-        \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
-        \item\texttt{uarial}: carrega fonte URW Arial.
-    \end{enumerate}
 
-    Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+\begin{enumerate}
+  \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
+  \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
+  \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+  \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
+  \item\texttt{caption}: altera a formatação de certas legendas;
+  \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+  \item\texttt{enumitem}: formatação de alíneas;
+  \item\texttt{fancyhdr}: formatação dos cabeçalhos;
+  \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+  \item\texttt{geometry}: mudança do tamanho das margens;
+  \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
+  \item\texttt{graphicx}: importação e utilização de imagens;
+  \item\texttt{hyperref}: gera os links entre referências no PDF;
+  \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
+  \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
+  \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
+  \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
+  \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+  \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
+  \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+  \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
+  \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
+  \item\texttt{times}: carrega fonte Times New Roman;
+  \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
+  \item\texttt{uarial}: carrega fonte URW Arial.
+\end{enumerate}
 
-    Os scripts de alguns programas \TeX\, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
+Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
+
+Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
 
 \chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
 
 Este capítulo descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem utilizados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem utilizados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, apêndices, anexos e índice remissivo.
-   
-	\section{PREÂMBULO}\label{sec:preambulo}
+ 
+\section{PREÂMBULO}\label{sec:preambulo}
 
-	No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
-	
-	\subsection{Declaração da classe}
+No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
+
+\subsection{Declaração da classe}
 
 A declaração da classe é feita da seguinte forma:
 
@@ -293,7 +299,7 @@ O nome do autor e o título da obra são inseridos utilizando os comandos nativo
 Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
 
 \subsection{Cidade e Instituição (opcionais)}
-Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário da FEI'', respectivamente.
+Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário FEI'', respectivamente.
 
 \section{PRÉ-TEXTO}\label{sec:pretexto}
 
@@ -362,26 +368,26 @@ Abstract goes here.
 A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos usando os comandos nativos do \LaTeX{}, redefinidos para aderirem aos padrões da biblioteca. Também é possível inserir um sumário. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário.
 		
 \begin{table}[ht!]
-    \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
-    \centering
-    \begin{tabular}{|c|c|}
-    \hline 
-    \textbf{Elemento} & \textbf{Comando} \\ 
-    \hline 
-	  Sumário & \verb+\tableofcontents+ \\ 
-    \hline 
-    Lista de Figuras & \verb+\listoffigures+ \\ 
-    \hline 
-    Lista de Tabelas & \verb+\listoftables+ \\ 
-    \hline 
-    Lista de Algoritmos & \verb+\listofalgorithms+ \\ 
-    \hline 
-    Lista de Teoremas & \verb+\listoftheorems+ \\ 
-    \hline 
-    Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\ 
-    \hline 
-    \end{tabular}
-    \smallcaption{Fonte: Autor}
+  \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
+  \centering
+  \begin{tabular}{|c|c|}
+  \hline 
+  \textbf{Elemento} & \textbf{Comando} \\ 
+  \hline 
+  Sumário & \verb+\tableofcontents+ \\ 
+  \hline 
+  Lista de Figuras & \verb+\listoffigures+ \\ 
+  \hline 
+  Lista de Tabelas & \verb+\listoftables+ \\ 
+  \hline 
+  Lista de Algoritmos & \verb+\listofalgorithms+ \\ 
+  \hline 
+  Lista de Teoremas & \verb+\listoftheorems+ \\ 
+  \hline 
+  Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\ 
+  \hline 
+  \end{tabular}
+  \smallcaption{Fonte: Autor}
 \end{table}
 
 \section{TEXTO}\label{sec:texto}
@@ -434,20 +440,20 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 \end{verbatim}
 
 \begin{table}[ht!]
-    \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
-    \centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline 
-    & \(x_1\) & \(x_2\) & \(x_3\) \\ 
-    \hline 
-    \(y_1\) & 1 & 0 & 0 \\ 
-    \hline 
-    \(y_2\) & 0 & 1 & 0 \\ 
-    \hline 
-    \(y_3\) & 0 & 0 & 1 \\ 
-    \hline 
-    \end{tabular}
-    \smallcaption{Fonte: Autor}
+  \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+  \hline 
+  & \(x_1\) & \(x_2\) & \(x_3\) \\ 
+  \hline 
+  \(y_1\) & 1 & 0 & 0 \\ 
+  \hline 
+  \(y_2\) & 0 & 1 & 0 \\ 
+  \hline 
+  \(y_3\) & 0 & 0 & 1 \\ 
+  \hline 
+  \end{tabular}
+  \smallcaption{Fonte: Autor}
 \end{table}
 
 \subsubsection{Algoritmos}
