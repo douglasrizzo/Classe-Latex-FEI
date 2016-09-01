@@ -92,7 +92,6 @@ and the derived files           fei.pdf and
 % \iffalse
 %<*driver>
 \documentclass[rascunho,xindy]{\jobname}
-\usepackage[utf8]{inputenc}
 \usepackage{multicol}
 
 \author{Douglas De Rizzo Meneghetti}
@@ -1111,12 +1110,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \(\swarrow\) \verb+\swarrow+\\
 \end{multicols}
 
-\printindex  
+\printindex
 \end{document}
 %</driver>
 % \fi
 %<*class>
-\NeedsTeXFormat{LaTeX2e} 
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{fei}[2015/09/10 2.0 Modelo da FEI]
 \LoadClass{report}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
@@ -1222,8 +1221,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \ProcessOptions\relax % processa todas as opções
 
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{csquotes}
+
 % tamanho do papel (A4) e margens
-% \setlength{\paperheight}{297mm} 
+% \setlength{\paperheight}{297mm}
 % \setlength{\paperwidth}{210mm}
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
@@ -1240,7 +1242,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \setlength{\headheight}{14.4pt}
 
 % carrega idiomas e caracteres de saída de 8 bits
-\RequirePackage[english,portuges]{babel}
+\RequirePackage[english,brazil]{babel}
 \RequirePackage[T1]{fontenc}
 
 % espaçamento do texto
@@ -1251,7 +1253,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
-\selectlanguage{portuges} % idioma do documento
+\selectlanguage{brazil} % idioma do documento
 
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
@@ -1338,7 +1340,7 @@ postheadspace=1em
 \setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
 \setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
- 
+
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
 % divisoes do texto
@@ -1347,20 +1349,20 @@ postheadspace=1em
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
-\renewcommand{\chapter}{\clearpage\pagestyle{fancy}%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+\renewcommand{\chapter}{\cleardoublepage\pagestyle{fancy}%
+\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 % demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
-\renewcommand{\section}{% 
+\renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
-\renewcommand{\subsection}{% 
+\renewcommand{\subsection}{%
 \@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
-\renewcommand{\subsubsection}{% 
+\renewcommand{\subsubsection}{%
 \@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
-\renewcommand{\paragraph}{% 
+\renewcommand{\paragraph}{%
 \@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
@@ -1569,7 +1571,7 @@ postheadspace=1em
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}}
 
 % abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{brazil}}
 
 % agradecimentos
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{fancy}}
@@ -1599,10 +1601,10 @@ postheadspace=1em
   \glssetwidest[0]{}
   % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
   \glssetwidest[1]{aaaaaaaaaaaa}
-  
+
   % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
   \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
-  
+
 \else
   \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 
@@ -1623,7 +1625,7 @@ postheadspace=1em
   \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
-\addto\captionsportuges{%
+\addto\captionsbrazil{%
   \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
   \renewcommand*{\contentsname}{Sum\'ario}%
   \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
