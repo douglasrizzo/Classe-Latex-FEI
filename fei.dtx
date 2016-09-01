@@ -122,6 +122,9 @@ and the derived files           fei.pdf and
 \newglossaryentry{pc}{type=symbols, name={\ensuremath{p_c}}, sort=pc, description={probabilidade de cruzamento}}
 \newglossaryentry{delta}{type=symbols, name={\ensuremath{\delta}}, sort=delta, description={menor comprimento de \gls{h}}}
 
+\listfiles
+\addbibresource{referencias.bib}
+
 \begin{document}
 
 \maketitle
@@ -156,7 +159,7 @@ Abstract goes here.
 
 \chapter{INTRODUÇÃO}
 
-Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2015, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
+Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2015, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
 A escrita da classe que formata o texto foi realizada tendo-se como referência principal o guia disponível pela biblioteca (nesta versão, o guia utilizado desde 2015). Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo guia, como algoritmos e teoremas.
 
@@ -227,7 +230,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
 \begin{enumerate}
   \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
   \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-  \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+  \item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
   \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
   \item\texttt{caption}: altera a formatação de certas legendas;
   \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
@@ -259,7 +262,7 @@ Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são depe
 \chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
 
 Este capítulo descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem utilizados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem utilizados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, apêndices, anexos e índice remissivo.
- 
+
 \section{PREÂMBULO}\label{sec:preambulo}
 
 No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
@@ -315,7 +318,7 @@ A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabal
 \begin{folhaderosto}
 Dissertação de Mestrado apresentada ao Centro Universitário
 da FEI para obtenção do título de Mestre em Engenharia
-Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
+Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 \end{folhaderosto}
 \end{verbatim}
 
@@ -333,7 +336,7 @@ O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada 
 
 O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
 
-\begin{verbatim}    
+\begin{verbatim}
 \begin{agradecimentos}
 A quem se deseja agradecer.
 \end{agradecimentos}
@@ -348,7 +351,7 @@ Exemplo: \verb+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
 
 \subsection{Resumo e \emph{abstract}}
 
-O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{portuges}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
 
 \begin{verbatim}
 \begin{resumo}
@@ -365,26 +368,26 @@ Abstract goes here.
 \subsection{Listas e sumário}
 
 A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos usando os comandos nativos do \LaTeX{}, redefinidos para aderirem aos padrões da biblioteca. Também é possível inserir um sumário. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário.
-		
+
 \begin{table}[ht!]
   \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
   \centering
   \begin{tabular}{|c|c|}
-  \hline 
-  \textbf{Elemento} & \textbf{Comando} \\ 
-  \hline 
-  Sumário & \verb+\tableofcontents+ \\ 
-  \hline 
-  Lista de Figuras & \verb+\listoffigures+ \\ 
-  \hline 
-  Lista de Tabelas & \verb+\listoftables+ \\ 
-  \hline 
-  Lista de Algoritmos & \verb+\listofalgorithms+ \\ 
-  \hline 
-  Lista de Teoremas & \verb+\listoftheorems+ \\ 
-  \hline 
-  Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\ 
-  \hline 
+  \hline
+  \textbf{Elemento} & \textbf{Comando} \\
+  \hline
+  Sumário & \verb+\tableofcontents+ \\
+  \hline
+  Lista de Figuras & \verb+\listoffigures+ \\
+  \hline
+  Lista de Tabelas & \verb+\listoftables+ \\
+  \hline
+  Lista de Algoritmos & \verb+\listofalgorithms+ \\
+  \hline
+  Lista de Teoremas & \verb+\listoftheorems+ \\
+  \hline
+  Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\
+  \hline
   \end{tabular}
   \smallcaption{Fonte: Autor}
 \end{table}
@@ -422,7 +425,7 @@ A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~
 	\includegraphics[...]{...}
 	\smallcaption{Fonte: Autor.}
 	\end{figure}
-\end{verbatim}	
+\end{verbatim}
 
 \subsubsection{Tabelas}
 
@@ -442,15 +445,15 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
   \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
   \centering
   \begin{tabular}{|c|c|c|c|}
-  \hline 
-  & \(x_1\) & \(x_2\) & \(x_3\) \\ 
-  \hline 
-  \(y_1\) & 1 & 0 & 0 \\ 
-  \hline 
-  \(y_2\) & 0 & 1 & 0 \\ 
-  \hline 
-  \(y_3\) & 0 & 0 & 1 \\ 
-  \hline 
+  \hline
+  & \(x_1\) & \(x_2\) & \(x_3\) \\
+  \hline
+  \(y_1\) & 1 & 0 & 0 \\
+  \hline
+  \(y_2\) & 0 & 1 & 0 \\
+  \hline
+  \(y_3\) & 0 & 0 & 1 \\
+  \hline
   \end{tabular}
   \smallcaption{Fonte: Autor}
 \end{table}
@@ -459,7 +462,7 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 
 Apesar de estar ausente no guia, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura.
 A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram traduzidos para o português e, logo após, um exemplo de como usar alguns desses comandos. Para mais informações, consulte o manual do \texttt{algorithm2e}.
-	
+
 \begin{verbatim}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
@@ -479,7 +482,7 @@ A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram tra
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
 \end{verbatim}
-    
+
     Exemplo:
 
 \begin{verbatim}
@@ -494,7 +497,7 @@ A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram tra
 	\label{lst:alg}
 \end{algorithm}
 \end{verbatim}
-    
+
 \begin{algorithm}
 \Entrada{Vetor \(X\)}
 \Saida{Vetor \(Y\)}
@@ -522,7 +525,7 @@ A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
 \begin{verbatim}
 \begin{equation} \label{eq:euler}
 e^{i\pi}+1=0
-\end{equation}	
+\end{equation}
 \end{verbatim}
 
 \subsubsection{Teoremas}
@@ -614,37 +617,37 @@ As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma 
 \section{CITAÇÃO NO FINAL DE LINHA}
 A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
 
-Exemplo: Este texto deveria ser uma referência \verb+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
+Exemplo: Este texto deveria ser uma referência \verb+\cite{turing50}+. $\to$ Este texto deveria ser uma referência \cite{turing50}.
 
 \section{CITAÇÃO DURANTE O TEXTO}
-Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\citeonline{obra}+ para este caso.
+Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\textcite{obra}+ para este caso.
 
-Exemplo: Segundo \verb+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
+Exemplo: Segundo \verb+\textcite{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \textcite{haykin99a}, este texto deveria ser uma referência.
 
 \section{CITAÇÃO INDIRETA}
 Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 
 Exemplo: \verb+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
 
-\section{CITAÇÃO NO RODAPÉ}
-
-Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \verb+\footciteref{obra}+.
+% \section{CITAÇÃO NO RODAPÉ}
+%
+% Citações no rodapé\footciteref{turing50} são feitas usando o comando \verb+\footciteref{obra}+.
 
 \section{CITAÇÕES MÚLTIPLAS}
 
-Os comandos \verb+\cite{obra_1,...,obra_n}+ e \verb+\citeonline{obra_1,...,obra_m}+ também possibilitam a utilização de citações múltiplas.
+Os comandos \verb+\cites{obra_1}{...}{obra_n}+ e \verb+\textcites{obra_1}{}...}{obra_m}+ também possibilitam a utilização de citações múltiplas.
 
-Exemplos: 
+Exemplos:
 
-\verb+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
+\verb+\cites{Mcc43}{russell_artificial_2010}{haykin99a}+ \(\to\) \cites{Mcc43}{russell_artificial_2010}{haykin99a}.
 
-\verb+\citeonline{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \citeonline{Mcc43,russell_artificial_2010,haykin99a}.
+\verb+\textcites{Mcc43}{russell_artificial_2010}{haykin99a}+ \(\to\) \textcites{Mcc43}{russell_artificial_2010}{haykin99a}.
 
 \section{CITAÇÕES DE CAMPOS ESPECÍFICOS}
 
-Para citar o nome do autor em linha, utilize o comando \verb+\citeauthoronline{obra}+.
+Para citar o nome do autor em linha, utilize o comando \verb+\citeauthor*{obra}+.
 
-\verb+\citeauthoronline{galilei_dialogue_1953}+ \(\to\) \citeauthoronline{galilei_dialogue_1953}
+\verb+\citeauthor*{galilei_dialogue_1953}+ \(\to\) \citeauthor*{galilei_dialogue_1953}
 
 Para citar o nome do autor em letras maiúsculas, utilize\verb+\citeauthor{obra}+.
 
@@ -660,21 +663,21 @@ No caso das citações que devem ser feitas em \emph{floats}, como ilustrações
 
 \verb+Fonte: \citefloat{galilei_dialogue_1953}.+ \(\to\) Fonte: \citefloat{galilei_dialogue_1953}.
 
-\section{OUTROS EXEMPLOS}
-
-\verb+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
-
-\verb+\Ibidem[p.~2]{j:turing50}+ \(\to\) \Ibidem[p.~2]{j:turing50}
-
-\verb+\opcit[p.~2]{j:turing50}+ \(\to\) \opcit[p.~2]{j:turing50}
-
-\verb+\passim{j:turing50}+ \(\to\) \passim{j:turing50}
-
-\verb+\loccit{j:turing50}+ \(\to\) \loccit{j:turing50}
-
-\verb+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
-
-\verb+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
+% \section{OUTROS EXEMPLOS}
+%
+% \verb+\Idem[p.~2]{turing50}+ \(\to\) \Idem[p.~2]{turing50}
+%
+% \verb+\Ibidem[p.~2]{turing50}+ \(\to\) \Ibidem[p.~2]{turing50}
+%
+% \verb+\opcit[p.~2]{turing50}+ \(\to\) \opcit[p.~2]{turing50}
+%
+% \verb+\passim{turing50}+ \(\to\) \passim{turing50}
+%
+% \verb+\loccit{turing50}+ \(\to\) \loccit{turing50}
+%
+% \verb+\cfcite[p.~2]{turing50}+ \(\to\) \cfcite[p.~2]{turing50}
+%
+% \verb+\etseq[p.~2]{turing50}+ \(\to\) \etseq[p.~2]{turing50}
 
 \section{CITAÇÕES COM MAIS DE TRÊS LINHAS}
 
@@ -682,8 +685,8 @@ O único tipo de citação que independe do pacote \texttt{abntex2cite} é a cit
 
 Exemplo:
 
-\begin{quote}		
-I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
+\begin{quote}
+I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{turing50}
 \end{quote}
 
 \chapter{ÍNDICES}\label{chap:indice}
@@ -702,11 +705,11 @@ Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIn
 
 Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \verb+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
 
-Exemplo: [\ldots] a biblioteca do Centro Universitário da \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+Exemplo: [\ldots] a biblioteca do Centro Universitário \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
 
 É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 
-Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \citeonline{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
+Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \textcite{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
 
 \section{IMPRIMINDO O ÍNDICE}
 
@@ -738,9 +741,9 @@ A indexação de abreviaturas é feita utilizando o comando
 Exemplo: \verb+\newacronym[longplural=Associações+
 
 		 \verb+Brasileiras de Normas Técnicas]+
-		 
+
 		 \verb+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
-		 
+
 \section{INDEXANDO SÍMBOLOS}
 
 A indexação de símbolos é feita utilizando o comando
@@ -760,7 +763,7 @@ A indexação de símbolos é feita utilizando o comando
 Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=symbols,+
 
 		 \verb+name={\ensuremath{\pi}},sort=p,+
-		 
+
 		 \verb+description={número irracional que representa [...]}}+
 
 \section{UTILIZANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}
@@ -804,7 +807,7 @@ O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um s�
 A lista de abreviaturas pode ser impressa através do comando \verb+\printacronyms+. A lista de símbolos pode ser impressa através do comando \verb+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \verb+\printglossaries+.
 
 \chapter{COMPILANDO O PROJETO} \label{chap:compilando}
-	
+
 Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas em ordem específica. Esta sessão descreve estes programas, a ordem na qual eles devem ser utilizados e algumas ferramentas inteligentes que automatizam este processo.
 
 \section{O JEITO DIFÍCIL}
@@ -833,7 +836,7 @@ makeglossaries documento
 pdflatex documento.tex
 makeindex documento.idx
 pdflatex documento.tex
-\end{verbatim} 
+\end{verbatim}
 
 Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \verb+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
 
@@ -850,16 +853,16 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \chapter{LEITURA COMPLEMENTAR}
 
-\citeonline{lamport1994latex} e \citeonline{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthoronline{lamport1994latex} o criador do \LaTeXe e \citeauthoronline{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \citeonline{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
+\textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
 
-\bibliography{referencias}
+\printbibliography[heading=rene]
 
 \appendix
 
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
 
 A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
-	
+
 \begin{enumerate}
 
 \item\verb+pdflatex documento.tex+
@@ -871,19 +874,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \item \texttt{loa}: lista de algoritmos;
 \item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
 \item \texttt{toc}: sumário;
-\end{enumerate}	
+\end{enumerate}
 
 \item\verb+bibtex documento.aux+
 \begin{enumerate}
 \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
 \item \texttt{blg}: \emph{log} do \index{Bibtex@Bib\TeX}Bib\TeX{}.
-\end{enumerate}	
+\end{enumerate}
 
 \item\verb+makeindex documento.idx+
 \begin{enumerate}
 \item \texttt{ilg}: \emph{log} do MakeIndex.
 \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
-\end{enumerate}	
+\end{enumerate}
 
 \item\verb+makeglossaries documento+
 \begin{enumerate}
@@ -1669,8 +1672,18 @@ postheadspace=1em
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
-\newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
+\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt, bftitles]{biblatex}
+
+\DefineBibliographyStrings{brazil}{%
+  bibliography = {REFER\^ENCIAS}
+}
+
+\defbibheading{rene}[\bibname]{%
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+}
+
+\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
@@ -1688,24 +1701,4 @@ postheadspace=1em
                \listparindent .5cm \itemindent}%
                 \item\relax}
                {\endlist\end{singlespace}}
-
-% espaçamento entre itens da bibliografia
-% qualquer um dos dois comandos abaixo modifica o espaçamento entre referências bibliográficas
-% o primeiro modifica o espaçamento entre itens e o segundo, entre parágrafos
-% pode-se mudar um ou o outro, dependendo da influência que eles terão na formatação geral do trabalho
-\newlength{\bibitemsep}\setlength{\bibitemsep}{18pt}
-\newlength{\bibparskip}\setlength{\bibparskip}{0pt} % zera o espaço entre parágrafos
-\let\oldthebibliography\thebibliography
-\renewcommand\thebibliography[1]{%
-  \oldthebibliography{#1}%
-  \setlength{\parskip}{\bibparskip}%
-  \setlength{\itemsep}{\bibitemsep}%
-}
-
-\let\oldbibliography\bibliography
-\renewcommand{\bibliography}[1]{%
-\renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\mdseries REFER\^ENCIAS}% adiciona o titulo ao sumario
-\oldbibliography{#1}% adiciona realmente a bibliografia
-}
 %</class>
