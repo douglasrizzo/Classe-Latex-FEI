@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2015/09/10 2.0 Modelo da FEI]
+\ProvidesClass{fei}[2015/09/10 2.0.1 Modelo da FEI]
 \LoadClass{report}
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
