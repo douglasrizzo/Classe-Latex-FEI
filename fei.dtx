@@ -227,7 +227,7 @@ Toda a formatação foi realizada a partir da importação e configuração de p
 \begin{enumerate}
   \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
   \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-  \item\texttt{amsthm}: possibilita criação de teoremas (e derivados); 
+  \item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
   \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
   \item\texttt{caption}: altera a formatação de certas legendas;
   \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
@@ -259,7 +259,7 @@ Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são depe
 \chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
 
 Este capítulo descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem utilizados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem utilizados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, apêndices, anexos e índice remissivo.
- 
+
 \section{PREÂMBULO}\label{sec:preambulo}
 
 No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
@@ -315,7 +315,7 @@ A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabal
 \begin{folhaderosto}
 Dissertação de Mestrado apresentada ao Centro Universitário
 da FEI para obtenção do título de Mestre em Engenharia
-Elétrica, orientado pelo Prof. Dr. Nome do Orientador. 
+Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 \end{folhaderosto}
 \end{verbatim}
 
@@ -333,7 +333,7 @@ O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada 
 
 O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
 
-\begin{verbatim}    
+\begin{verbatim}
 \begin{agradecimentos}
 A quem se deseja agradecer.
 \end{agradecimentos}
@@ -365,26 +365,26 @@ Abstract goes here.
 \subsection{Listas e sumário}
 
 A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos usando os comandos nativos do \LaTeX{}, redefinidos para aderirem aos padrões da biblioteca. Também é possível inserir um sumário. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário.
-		
+
 \begin{table}[ht!]
   \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
   \centering
   \begin{tabular}{|c|c|}
-  \hline 
-  \textbf{Elemento} & \textbf{Comando} \\ 
-  \hline 
-  Sumário & \verb+\tableofcontents+ \\ 
-  \hline 
-  Lista de Figuras & \verb+\listoffigures+ \\ 
-  \hline 
-  Lista de Tabelas & \verb+\listoftables+ \\ 
-  \hline 
-  Lista de Algoritmos & \verb+\listofalgorithms+ \\ 
-  \hline 
-  Lista de Teoremas & \verb+\listoftheorems+ \\ 
-  \hline 
-  Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\ 
-  \hline 
+  \hline
+  \textbf{Elemento} & \textbf{Comando} \\
+  \hline
+  Sumário & \verb+\tableofcontents+ \\
+  \hline
+  Lista de Figuras & \verb+\listoffigures+ \\
+  \hline
+  Lista de Tabelas & \verb+\listoftables+ \\
+  \hline
+  Lista de Algoritmos & \verb+\listofalgorithms+ \\
+  \hline
+  Lista de Teoremas & \verb+\listoftheorems+ \\
+  \hline
+  Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\
+  \hline
   \end{tabular}
   \smallcaption{Fonte: Autor}
 \end{table}
@@ -422,7 +422,7 @@ A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~
 	\includegraphics[...]{...}
 	\smallcaption{Fonte: Autor.}
 	\end{figure}
-\end{verbatim}	
+\end{verbatim}
 
 \subsubsection{Tabelas}
 
@@ -442,15 +442,15 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
   \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
   \centering
   \begin{tabular}{|c|c|c|c|}
-  \hline 
-  & \(x_1\) & \(x_2\) & \(x_3\) \\ 
-  \hline 
-  \(y_1\) & 1 & 0 & 0 \\ 
-  \hline 
-  \(y_2\) & 0 & 1 & 0 \\ 
-  \hline 
-  \(y_3\) & 0 & 0 & 1 \\ 
-  \hline 
+  \hline
+  & \(x_1\) & \(x_2\) & \(x_3\) \\
+  \hline
+  \(y_1\) & 1 & 0 & 0 \\
+  \hline
+  \(y_2\) & 0 & 1 & 0 \\
+  \hline
+  \(y_3\) & 0 & 0 & 1 \\
+  \hline
   \end{tabular}
   \smallcaption{Fonte: Autor}
 \end{table}
@@ -459,7 +459,7 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 
 Apesar de estar ausente no guia, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura.
 A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram traduzidos para o português e, logo após, um exemplo de como usar alguns desses comandos. Para mais informações, consulte o manual do \texttt{algorithm2e}.
-	
+
 \begin{verbatim}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
@@ -479,7 +479,7 @@ A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram tra
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
 \end{verbatim}
-    
+
     Exemplo:
 
 \begin{verbatim}
@@ -494,7 +494,7 @@ A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram tra
 	\label{lst:alg}
 \end{algorithm}
 \end{verbatim}
-    
+
 \begin{algorithm}
 \Entrada{Vetor \(X\)}
 \Saida{Vetor \(Y\)}
@@ -522,7 +522,7 @@ A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
 \begin{verbatim}
 \begin{equation} \label{eq:euler}
 e^{i\pi}+1=0
-\end{equation}	
+\end{equation}
 \end{verbatim}
 
 \subsubsection{Teoremas}
@@ -634,7 +634,7 @@ Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \verb
 
 Os comandos \verb+\cite{obra_1,...,obra_n}+ e \verb+\citeonline{obra_1,...,obra_m}+ também possibilitam a utilização de citações múltiplas.
 
-Exemplos: 
+Exemplos:
 
 \verb+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
 
@@ -682,7 +682,7 @@ O único tipo de citação que independe do pacote \texttt{abntex2cite} é a cit
 
 Exemplo:
 
-\begin{quote}		
+\begin{quote}
 I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
 \end{quote}
 
@@ -738,9 +738,9 @@ A indexação de abreviaturas é feita utilizando o comando
 Exemplo: \verb+\newacronym[longplural=Associações+
 
 		 \verb+Brasileiras de Normas Técnicas]+
-		 
+
 		 \verb+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
-		 
+
 \section{INDEXANDO SÍMBOLOS}
 
 A indexação de símbolos é feita utilizando o comando
@@ -760,7 +760,7 @@ A indexação de símbolos é feita utilizando o comando
 Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=symbols,+
 
 		 \verb+name={\ensuremath{\pi}},sort=p,+
-		 
+
 		 \verb+description={número irracional que representa [...]}}+
 
 \section{UTILIZANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}
@@ -804,7 +804,7 @@ O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um s�
 A lista de abreviaturas pode ser impressa através do comando \verb+\printacronyms+. A lista de símbolos pode ser impressa através do comando \verb+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \verb+\printglossaries+.
 
 \chapter{COMPILANDO O PROJETO} \label{chap:compilando}
-	
+
 Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas em ordem específica. Esta sessão descreve estes programas, a ordem na qual eles devem ser utilizados e algumas ferramentas inteligentes que automatizam este processo.
 
 \section{O JEITO DIFÍCIL}
@@ -833,7 +833,7 @@ makeglossaries documento
 pdflatex documento.tex
 makeindex documento.idx
 pdflatex documento.tex
-\end{verbatim} 
+\end{verbatim}
 
 Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \verb+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
 
@@ -859,7 +859,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
 
 A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
-	
+
 \begin{enumerate}
 
 \item\verb+pdflatex documento.tex+
@@ -871,19 +871,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \item \texttt{loa}: lista de algoritmos;
 \item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
 \item \texttt{toc}: sumário;
-\end{enumerate}	
+\end{enumerate}
 
 \item\verb+bibtex documento.aux+
 \begin{enumerate}
 \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
 \item \texttt{blg}: \emph{log} do \index{Bibtex@Bib\TeX}Bib\TeX{}.
-\end{enumerate}	
+\end{enumerate}
 
 \item\verb+makeindex documento.idx+
 \begin{enumerate}
 \item \texttt{ilg}: \emph{log} do MakeIndex.
 \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
-\end{enumerate}	
+\end{enumerate}
 
 \item\verb+makeglossaries documento+
 \begin{enumerate}
@@ -1116,7 +1116,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2015/09/10 2.0 Modelo da FEI]
+\ProvidesClass{fei}[2015/09/10 2.0.1 Modelo da FEI]
 \LoadClass{report}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{

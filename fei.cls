@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2015/09/10 2.0 Modelo da FEI]
+\ProvidesClass{fei}[2015/09/10 2.0.1 Modelo da FEI]
 \LoadClass{report}
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -71,6 +71,9 @@
 
 \ProcessOptions\relax % processa todas as opções
 
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{csquotes}
+
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
 \RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
@@ -84,7 +87,7 @@
 \fancyhead[RO,LE]{\footnotesize\thepage}% numero da página em fonte menor que a do texto
 \setlength{\headheight}{14.4pt}
 
-\RequirePackage[english,portuges]{babel}
+\RequirePackage[english,brazil]{babel}
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{setspace}
@@ -93,7 +96,7 @@
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
-\selectlanguage{portuges} % idioma do documento
+\selectlanguage{brazil} % idioma do documento
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -175,8 +178,8 @@ postheadspace=1em
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
 \@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
-\renewcommand{\chapter}{\clearpage\pagestyle{fancy}%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+\renewcommand{\chapter}{\cleardoublepage\pagestyle{fancy}%
+\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
@@ -346,7 +349,7 @@ postheadspace=1em
 
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{brazil}}
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{fancy}}
 
@@ -394,7 +397,7 @@ postheadspace=1em
   \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
-\addto\captionsportuges{%
+\addto\captionsbrazil{%
   \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
   \renewcommand*{\contentsname}{Sum\'ario}%
   \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
