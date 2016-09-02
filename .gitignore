@@ -11,6 +11,9 @@ fei-template*.pdf
 *.fls
 *.out
 *.toc
+*.slo
+*.sls
+*.slg
 
 ## Intermediate documents:
 *.dvi

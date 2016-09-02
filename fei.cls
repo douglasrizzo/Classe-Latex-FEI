@@ -434,8 +434,18 @@ postheadspace=1em
 }%
 }%
 
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
-\newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
+\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt, bftitles]{biblatex}
+
+\DefineBibliographyStrings{brazil}{%
+  bibliography = {REFER\^ENCIAS}
+}
+
+\defbibheading{rene}[\bibname]{%
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+}
+
+\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
 \renewenvironment{quote}
                {\begin{singlespace}\list{}{%
@@ -451,22 +461,6 @@ postheadspace=1em
                \listparindent .5cm \itemindent}%
                 \item\relax}
                {\endlist\end{singlespace}}
-
-\newlength{\bibitemsep}\setlength{\bibitemsep}{18pt}
-\newlength{\bibparskip}\setlength{\bibparskip}{0pt} % zera o espaço entre parágrafos
-\let\oldthebibliography\thebibliography
-\renewcommand\thebibliography[1]{%
-  \oldthebibliography{#1}%
-  \setlength{\parskip}{\bibparskip}%
-  \setlength{\itemsep}{\bibitemsep}%
-}
-
-\let\oldbibliography\bibliography
-\renewcommand{\bibliography}[1]{%
-\renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\mdseries REFER\^ENCIAS}% adiciona o titulo ao sumario
-\oldbibliography{#1}% adiciona realmente a bibliografia
-}
 %% 
 %% Copyright (C) 2015 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 

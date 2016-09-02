@@ -122,6 +122,9 @@ and the derived files           fei.pdf and
 \newglossaryentry{pc}{type=symbols, name={\ensuremath{p_c}}, sort=pc, description={probabilidade de cruzamento}}
 \newglossaryentry{delta}{type=symbols, name={\ensuremath{\delta}}, sort=delta, description={menor comprimento de \gls{h}}}
 
+\listfiles
+\addbibresource{referencias.bib}
+
 \begin{document}
 
 \maketitle
@@ -156,7 +159,7 @@ Abstract goes here.
 
 \chapter{INTRODUÇÃO}
 
-Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário da \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2015, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
+Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2015, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
 A escrita da classe que formata o texto foi realizada tendo-se como referência principal o guia disponível pela biblioteca (nesta versão, o guia utilizado desde 2015). Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo guia, como algoritmos e teoremas.
 
@@ -348,7 +351,7 @@ Exemplo: \verb+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
 
 \subsection{Resumo e \emph{abstract}}
 
-O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{portuges}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
 
 \begin{verbatim}
 \begin{resumo}
@@ -614,37 +617,37 @@ As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma 
 \section{CITAÇÃO NO FINAL DE LINHA}
 A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
 
-Exemplo: Este texto deveria ser uma referência \verb+\cite{j:turing50}+. $\to$ Este texto deveria ser uma referência \cite{j:turing50}.
+Exemplo: Este texto deveria ser uma referência \verb+\cite{turing50}+. $\to$ Este texto deveria ser uma referência \cite{turing50}.
 
 \section{CITAÇÃO DURANTE O TEXTO}
-Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\citeonline{obra}+ para este caso.
+Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\textcite{obra}+ para este caso.
 
-Exemplo: Segundo \verb+\citeonline{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \citeonline{haykin99a}, este texto deveria ser uma referência.
+Exemplo: Segundo \verb+\textcite{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \textcite{haykin99a}, este texto deveria ser uma referência.
 
 \section{CITAÇÃO INDIRETA}
 Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 
 Exemplo: \verb+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
 
-\section{CITAÇÃO NO RODAPÉ}
-
-Citações no rodapé\footciteref{j:turing50} são feitas usando o comando \verb+\footciteref{obra}+.
+% \section{CITAÇÃO NO RODAPÉ}
+%
+% Citações no rodapé\footciteref{turing50} são feitas usando o comando \verb+\footciteref{obra}+.
 
 \section{CITAÇÕES MÚLTIPLAS}
 
-Os comandos \verb+\cite{obra_1,...,obra_n}+ e \verb+\citeonline{obra_1,...,obra_m}+ também possibilitam a utilização de citações múltiplas.
+Os comandos \verb+\cites{obra_1}{...}{obra_n}+ e \verb+\textcites{obra_1}{}...}{obra_m}+ também possibilitam a utilização de citações múltiplas.
 
 Exemplos:
 
-\verb+\cite{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \cite{Mcc43,russell_artificial_2010,haykin99a}.
+\verb+\cites{Mcc43}{russell_artificial_2010}{haykin99a}+ \(\to\) \cites{Mcc43}{russell_artificial_2010}{haykin99a}.
 
-\verb+\citeonline{Mcc43,russell_artificial_2010,haykin99a}+ \(\to\) \citeonline{Mcc43,russell_artificial_2010,haykin99a}.
+\verb+\textcites{Mcc43}{russell_artificial_2010}{haykin99a}+ \(\to\) \textcites{Mcc43}{russell_artificial_2010}{haykin99a}.
 
 \section{CITAÇÕES DE CAMPOS ESPECÍFICOS}
 
-Para citar o nome do autor em linha, utilize o comando \verb+\citeauthoronline{obra}+.
+Para citar o nome do autor em linha, utilize o comando \verb+\citeauthor*{obra}+.
 
-\verb+\citeauthoronline{galilei_dialogue_1953}+ \(\to\) \citeauthoronline{galilei_dialogue_1953}
+\verb+\citeauthor*{galilei_dialogue_1953}+ \(\to\) \citeauthor*{galilei_dialogue_1953}
 
 Para citar o nome do autor em letras maiúsculas, utilize\verb+\citeauthor{obra}+.
 
@@ -660,21 +663,21 @@ No caso das citações que devem ser feitas em \emph{floats}, como ilustrações
 
 \verb+Fonte: \citefloat{galilei_dialogue_1953}.+ \(\to\) Fonte: \citefloat{galilei_dialogue_1953}.
 
-\section{OUTROS EXEMPLOS}
-
-\verb+\Idem[p.~2]{j:turing50}+ \(\to\) \Idem[p.~2]{j:turing50}
-
-\verb+\Ibidem[p.~2]{j:turing50}+ \(\to\) \Ibidem[p.~2]{j:turing50}
-
-\verb+\opcit[p.~2]{j:turing50}+ \(\to\) \opcit[p.~2]{j:turing50}
-
-\verb+\passim{j:turing50}+ \(\to\) \passim{j:turing50}
-
-\verb+\loccit{j:turing50}+ \(\to\) \loccit{j:turing50}
-
-\verb+\cfcite[p.~2]{j:turing50}+ \(\to\) \cfcite[p.~2]{j:turing50}
-
-\verb+\etseq[p.~2]{j:turing50}+ \(\to\) \etseq[p.~2]{j:turing50}
+% \section{OUTROS EXEMPLOS}
+%
+% \verb+\Idem[p.~2]{turing50}+ \(\to\) \Idem[p.~2]{turing50}
+%
+% \verb+\Ibidem[p.~2]{turing50}+ \(\to\) \Ibidem[p.~2]{turing50}
+%
+% \verb+\opcit[p.~2]{turing50}+ \(\to\) \opcit[p.~2]{turing50}
+%
+% \verb+\passim{turing50}+ \(\to\) \passim{turing50}
+%
+% \verb+\loccit{turing50}+ \(\to\) \loccit{turing50}
+%
+% \verb+\cfcite[p.~2]{turing50}+ \(\to\) \cfcite[p.~2]{turing50}
+%
+% \verb+\etseq[p.~2]{turing50}+ \(\to\) \etseq[p.~2]{turing50}
 
 \section{CITAÇÕES COM MAIS DE TRÊS LINHAS}
 
@@ -683,7 +686,7 @@ O único tipo de citação que independe do pacote \texttt{abntex2cite} é a cit
 Exemplo:
 
 \begin{quote}
-I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{j:turing50}
+I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{turing50}
 \end{quote}
 
 \chapter{ÍNDICES}\label{chap:indice}
@@ -702,11 +705,11 @@ Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIn
 
 Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \verb+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
 
-Exemplo: [\ldots] a biblioteca do Centro Universitário da \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+Exemplo: [\ldots] a biblioteca do Centro Universitário \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
 
 É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 
-Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \citeonline{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
+Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \textcite{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
 
 \section{IMPRIMINDO O ÍNDICE}
 
@@ -850,9 +853,9 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \chapter{LEITURA COMPLEMENTAR}
 
-\citeonline{lamport1994latex} e \citeonline{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthoronline{lamport1994latex} o criador do \LaTeXe e \citeauthoronline{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \citeonline{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
+\textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
 
-\bibliography{referencias}
+\printbibliography[heading=rene]
 
 \appendix
 
@@ -1669,8 +1672,18 @@ postheadspace=1em
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[alf,abnt-emphasize=bf,abnt-repeated-author-omit=yes,abnt-thesis-year=title]{abntex2cite}
-\newcommand*{\citefloat}[1]{\citeauthoronline{#1}, \citeyear{#1}}
+\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt, bftitles]{biblatex}
+
+\DefineBibliographyStrings{brazil}{%
+  bibliography = {REFER\^ENCIAS}
+}
+
+\defbibheading{rene}[\bibname]{%
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+}
+
+\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
@@ -1688,24 +1701,4 @@ postheadspace=1em
                \listparindent .5cm \itemindent}%
                 \item\relax}
                {\endlist\end{singlespace}}
-
-% espaçamento entre itens da bibliografia
-% qualquer um dos dois comandos abaixo modifica o espaçamento entre referências bibliográficas
-% o primeiro modifica o espaçamento entre itens e o segundo, entre parágrafos
-% pode-se mudar um ou o outro, dependendo da influência que eles terão na formatação geral do trabalho
-\newlength{\bibitemsep}\setlength{\bibitemsep}{18pt}
-\newlength{\bibparskip}\setlength{\bibparskip}{0pt} % zera o espaço entre parágrafos
-\let\oldthebibliography\thebibliography
-\renewcommand\thebibliography[1]{%
-  \oldthebibliography{#1}%
-  \setlength{\parskip}{\bibparskip}%
-  \setlength{\itemsep}{\bibitemsep}%
-}
-
-\let\oldbibliography\bibliography
-\renewcommand{\bibliography}[1]{%
-\renewcommand{\bibname}{\hfill Refer\^encias \hfill\mbox{}}% muda o nome do titulo (modelo da biblioteca)
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\mdseries REFER\^ENCIAS}% adiciona o titulo ao sumario
-\oldbibliography{#1}% adiciona realmente a bibliografia
-}
 %</class>
