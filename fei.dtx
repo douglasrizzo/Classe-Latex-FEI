@@ -122,7 +122,6 @@ and the derived files           fei.pdf and
 \newglossaryentry{pc}{type=symbols, name={\ensuremath{p_c}}, sort=pc, description={probabilidade de cruzamento}}
 \newglossaryentry{delta}{type=symbols, name={\ensuremath{\delta}}, sort=delta, description={menor comprimento de \gls{h}}}
 
-\listfiles
 \addbibresource{referencias.bib}
 
 \begin{document}
@@ -785,7 +784,7 @@ As siglas possuem alguns comandos únicos para serem referenciadas:
 \item \verb+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 \end{enumerate}
 
-Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq {\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h}) \over \gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \verb+\gls{}+ e consequentemente, adicionados na lista de símbolos.
+Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \verb+\gls{}+ e consequentemente, adicionados na lista de símbolos.
 
 É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
 
@@ -1119,21 +1118,20 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2016/09/02 2.0.1 Modelo da FEI]
-\LoadClass{report}
+\ProvidesClass{fei}[2016/09/02 3 Modelo da FEI]
+\LoadClass[a4paper]{memoir}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
-
 % opções rascunho e final controlam a exibição da folha
 % de aprovação e ficha catalográfica
 \newif\ifrascunho
-\rascunhotrue
+\rascunhofalse
 \DeclareOption{rascunho}
 {
-\rascunhofalse
+\rascunhotrue
 }
 
 \newif\ifsublist
@@ -1168,91 +1166,37 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
 
-% \newif\iffemaleadvisor
-% \DeclareOption{male-advisor}
-% {
-%   \femaleadvisorfalse
-% }
-
-% \DeclareOption{female-advisor}
-% {
-%   \femaleadvisortrue
-% }
-
-% \newif\iffemaleauthor
-% \DeclareOption{male-author}
-% {
-%   \femaleauthorfalse
-%   \def\@advised{Orientado}
-% }
-
-% \DeclareOption{female-author}
-% {
-%   \femaleauthortrue
-%   \def\@advised{Orientada}
-% }
-
-% \DeclareOption{bacharelado}
-% {
-%   \def\@tipo{Trabalho de Conclus\~ao de Curso, apresentado}
-%   \def\@grau{Bacharel}
-% }
-
-% \DeclareOption{especializacao}
-% {
-%   \def\@tipo{Monografia, apresentada}
-%   \def\@grau{Especialista}
-% }
-
-% \DeclareOption{mestrado}
-% {
-%   \def\@tipo{Disserta\c{c}\~ao de Mestrado, apresentada}
-%   \def\@grau{Mestre}
-% }
-
-% \DeclareOption{doutorado}
-% {
-%   \def\@tipo{Tese de Doutorado, apresentada}
-%   \iffemaleauthor
-%     \def\@grau{Doutora}
-%   \else
-%     \def\@grau{Doutor}
-%   \fi
-% }
-
 \ExecuteOptions{times} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
 \RequirePackage[utf8]{inputenc}
+% carrega idiomas e caracteres de saída de 8 bits
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english,brazil]{babel}
 \RequirePackage{csquotes}
 
-% tamanho do papel (A4) e margens
-% \setlength{\paperheight}{297mm}
-% \setlength{\paperwidth}{210mm}
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-\RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
+% \RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
+
+% corrige margens usando comandos da classe memoir
+\setlrmarginsandblock{30mm}{20mm}{*}
+\setulmarginsandblock{30mm}{20mm}{*}
+\checkandfixthelayout
+
+\linespread{1.25} % espaçamento entre linhas
+\setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 % cabecalho e rodape
-\RequirePackage{fancyhdr}
-\pagenumbering{arabic} % estilo da numeração das páginas
-\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
-\fancyhf{}
-\renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead[RO,LE]{\footnotesize\thepage}% numero da página em fonte menor que a do texto
-\setlength{\headheight}{14.4pt}
+% \makepagestyle limpa a formatação do cabeçalho e rodapé
+% os nomes usados foram retirados do manual da classe memoir
+\makepagestyle{title} % pagina de titulo
+\makepagestyle{plain} % estilo padrão
+\makeevenhead{plain}{\footnotesize\thepage}{}{}
+\makeoddhead{plain}{}{}{\footnotesize\thepage}
 
-% carrega idiomas e caracteres de saída de 8 bits
-\RequirePackage[english,brazil]{babel}
-\RequirePackage[T1]{fontenc}
-
-% espaçamento do texto
-\RequirePackage{setspace}
-% espacamento de 1,5 (mais parecido com o padrão do Word)
-\spacing{1.45}
-\setlength{\parindent}{1.25cm} % recuo do paragrafo
+\setlength{\headheight}{14.4pt} % remove warning do memoir
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
@@ -1504,9 +1448,9 @@ postheadspace=1em
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 	\ifrascunho
-	  \includepdf{ata.pdf}\cleardoublepage
-	\else
 	  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+	\else
+	  \includepdf{ata.pdf}\cleardoublepage
 	\fi
 }
 
@@ -1518,9 +1462,9 @@ postheadspace=1em
     \addtocounter{page}{-1}
   \fi
 	\ifrascunho
-		\includepdf{ficha.pdf}\cleardoublepage
-	\else
 	  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+	\else
+		\includepdf{ficha.pdf}\cleardoublepage
 	\fi
 }
 
