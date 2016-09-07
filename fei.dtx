@@ -1283,6 +1283,7 @@ postheadspace=1em
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
 % listas
+
 \RequirePackage{enumitem}
 \setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
 \setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
@@ -1292,11 +1293,11 @@ postheadspace=1em
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
-\renewcommand{\chapter}{\cleardoublepage\pagestyle{fancy}%
+\renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
 \@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 % demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
@@ -1315,51 +1316,41 @@ postheadspace=1em
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
 
-%% configuracao do sumario e listas de tabelas e figuras
-\RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
+% remover recuo de todas as entradas no sumário
+\renewcommand{\cftchapterindent}{0pt}
+\renewcommand{\cftsectionindent}{0pt}
+\renewcommand{\cftsubsectionindent}{0pt}
+\renewcommand{\cftsubsubsectionindent}{0pt}
+\renewcommand{\cftparagraphindent}{0pt}
 
-\tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
+% espaçamento igual para a numeração de todos os níveis, causando alinhamento proposital
+\renewcommand{\cftchapternumwidth}{4em}
+\renewcommand{\cftsectionnumwidth}{4em}
+\renewcommand{\cftsubsectionnumwidth}{4em}
+\renewcommand{\cftsubsubsectionnumwidth}{4em}
+\renewcommand{\cftparagraphnumwidth}{4em}
 
-% formata títulos do sumário e listas de figuras e tabelas
-\renewcommand{\cfttoctitlefont}{\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\hfill\bf\MakeUppercase}
-\renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
-% entradas no sumário não possuem recuo
-\renewcommand{\cftchapindent}{0pt}
-\renewcommand{\cftsecindent}{0pt}
-\renewcommand{\cftsubsecindent}{0pt}
-\renewcommand{\cftsubsubsecindent}{0pt}
-\renewcommand{\cftparaindent}{0pt}
-
-\renewcommand{\cftchapnumwidth}{\cftparanumwidth}
-\renewcommand{\cftsecnumwidth}{\cftparanumwidth}
-\renewcommand{\cftsubsecnumwidth}{\cftparanumwidth}
-\renewcommand{\cftsubsubsecnumwidth}{\cftparanumwidth}
-\renewcommand{\cftparanumwidth}{4em}
-
-\renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
-%
+% formatação dos títulos de seções. perceba que não há suporte para títulos com letras maiúsculas
 %\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
-\renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
-\renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
-%\renewcommand{\cftsecnumwidth}{\cftsubsubsecnumwidth}
-%\renewcommand{\cftsubsecnumwidth}{\cftsubsubsecnumwidth}
-\renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
-%\renewcommand{\cftsubsubsecnumwidth}{3em}
-\renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
-\renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
-\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
+\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
+% \renewcommand{\cftsectionfont}{} % titulo de seções deve ser maiusculo, mas não funciona
+\renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
 
-\setlength{\cftfignumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
-\renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
-\renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
-\renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
+\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
+
+\renewcommand{\cftchapterpagefont}{} % o número da página dos capítulos não é em negrito
+
+\setlength{\cftfigurenumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttablenumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigurepresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\renewcommand{\cfttablepresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
+\renewcommand{\cftfigureaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
+\renewcommand{\cfttableaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 % o código para a remoção da numeração das páginas do sumários e das listas em
 % geral foi retirado daqui:
@@ -1388,41 +1379,20 @@ postheadspace=1em
 
 % novas paginas
 % capa
-\renewcommand{\maketitle}{
-\pagestyle{empty}
-\begin{center}
-\textbf{
-\MakeUppercase{\@instituicao}\\[\baselineskip]
-\uppercase\expandafter{\@author}
-\vfill
-\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
-\vfill
-\@cidade\\
+\renewcommand{\maketitle}{%
+\pagestyle{empty}%
+\begin{center}%
+\textbf{%
+\MakeUppercase{\@instituicao}\\[\baselineskip]%
+\uppercase\expandafter{\@author}%
+\vfill%
+\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}%
+\vfill%
+\@cidade\\%
 \number\year%
-\end{center}
+\end{center}%
 \cleardoublepage
 }
-
-% comando folha de rosto, com texto automatizado
-% \newcommand{\folhaderosto}{
-% \clearpage
-% \thispagestyle{empty}
-% \begin{center}
-% \uppercase\expandafter{\@author}\\
-% \vspace*{0.328\textheight}
-% \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-% \vspace*{0.145\textheight}
-% \begin{flushright}
-% \begin{minipage}{0.55\textwidth}{
-% \begin{singlespace}
-% \@tipo\ ao \@instituicao, como parte dos requisitos necess\'arios para obten\c{c}\~ao do t\'itulo de \@grau\ em \@curso, \@advised\ \iffemaleadvisor\ pela \else pelo \fi Prof. \@advisor.
-% \end{singlespace}}
-% \end{minipage}
-% \end{flushright}
-% \vfill
-% \@cidade\\
-% \number\year
-% \end{center}}
 
 % folha de rosto
 \newenvironment{folhaderosto}{
@@ -1594,8 +1564,8 @@ postheadspace=1em
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -1607,9 +1577,9 @@ postheadspace=1em
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
 \phantomsection%
-\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -1623,7 +1593,7 @@ postheadspace=1em
 }
 
 \defbibheading{rene}[\bibname]{%
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
 \hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
 }
 
@@ -1631,18 +1601,18 @@ postheadspace=1em
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
-               {\begin{singlespace}\list{}{%
+               {\begin{SingleSpace}\list{}{%
                \fontsize{10pt}{1em}%
                \leftmargin=4cm}%
                \item\relax\ignorespaces}
-               {\endlist\end{singlespace}}
+               {\endlist\end{SingleSpace}}
 
 % quotation é igual a quote, porém para citações com mais de um parágrafo.
 \renewenvironment{quotation}
-               {\begin{singlespace}\list{}{%
+               {\begin{SingleSpace}\list{}{%
                \fontsize{10pt}{1em}%
                \leftmargin=2cm \rightmargin=2cm%
                \listparindent .5cm \itemindent}%
                 \item\relax}
-               {\endlist\end{singlespace}}
+               {\endlist\end{SingleSpace}}
 %</class>

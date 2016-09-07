@@ -14,18 +14,17 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2016/09/02 2.0.1 Modelo da FEI]
-\LoadClass{report}
+\ProvidesClass{fei}[2016/09/02 3 Modelo da FEI]
+\LoadClass[a4paper]{memoir}
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
   \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
-
 \newif\ifrascunho
-\rascunhotrue
+\rascunhofalse
 \DeclareOption{rascunho}
 {
-\rascunhofalse
+\rascunhotrue
 }
 
 \newif\ifsublist
@@ -59,40 +58,31 @@
 }
 
 
-
-
-
-
-
-
-
-
 \ExecuteOptions{times} % processa opções-padrão
 
 \ProcessOptions\relax % processa todas as opções
 
 \RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english,brazil]{babel}
 \RequirePackage{csquotes}
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-\RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
 
-\RequirePackage{fancyhdr}
-\pagenumbering{arabic} % estilo da numeração das páginas
-\pagestyle{fancy} % estilo dos cabeçalhos/rodapés
-\fancyhf{}
-\renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead[RO,LE]{\footnotesize\thepage}% numero da página em fonte menor que a do texto
-\setlength{\headheight}{14.4pt}
+\setlrmarginsandblock{30mm}{20mm}{*}
+\setulmarginsandblock{30mm}{20mm}{*}
+\checkandfixthelayout
 
-\RequirePackage[english,brazil]{babel}
-\RequirePackage[T1]{fontenc}
-
-\RequirePackage{setspace}
-\spacing{1.45}
+\linespread{1.25} % espaçamento entre linhas
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
+
+\makepagestyle{title} % pagina de titulo
+\makepagestyle{plain} % estilo padrão
+\makeevenhead{plain}{\footnotesize\thepage}{}{}
+\makeoddhead{plain}{}{}{\footnotesize\thepage}
+
+\setlength{\headheight}{14.4pt} % remove warning do memoir
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
@@ -168,6 +158,7 @@ postheadspace=1em
 
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
+
 \RequirePackage{enumitem}
 \setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
 \setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
@@ -176,9 +167,9 @@ postheadspace=1em
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
-\renewcommand{\chapter}{\cleardoublepage\pagestyle{fancy}%
+\renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
 \@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{%
@@ -196,44 +187,36 @@ postheadspace=1em
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
 
-%% configuracao do sumario e listas de tabelas e figuras
-\RequirePackage[titles]{tocloft} % para poder fazer mais coisas no sumario e nas listas
+\renewcommand{\cftchapterindent}{0pt}
+\renewcommand{\cftsectionindent}{0pt}
+\renewcommand{\cftsubsectionindent}{0pt}
+\renewcommand{\cftsubsubsectionindent}{0pt}
+\renewcommand{\cftparagraphindent}{0pt}
 
-\tocloftpagestyle{empty} % remove numeração das páginas controladas pelo tocloft
+\renewcommand{\cftchapternumwidth}{4em}
+\renewcommand{\cftsectionnumwidth}{4em}
+\renewcommand{\cftsubsectionnumwidth}{4em}
+\renewcommand{\cftsubsubsectionnumwidth}{4em}
+\renewcommand{\cftparagraphnumwidth}{4em}
 
-\renewcommand{\cfttoctitlefont}{\hfil\bf\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\hfill\bf\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\hfill\bf\MakeUppercase}
-\renewcommand{\cftafterloftitle}{\hfill}
-\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
-\renewcommand{\cftchapindent}{0pt}
-\renewcommand{\cftsecindent}{0pt}
-\renewcommand{\cftsubsecindent}{0pt}
-\renewcommand{\cftsubsubsecindent}{0pt}
-\renewcommand{\cftparaindent}{0pt}
+\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
+\renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
+\renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
 
-\renewcommand{\cftchapnumwidth}{\cftparanumwidth}
-\renewcommand{\cftsecnumwidth}{\cftparanumwidth}
-\renewcommand{\cftsubsecnumwidth}{\cftparanumwidth}
-\renewcommand{\cftsubsubsecnumwidth}{\cftparanumwidth}
-\renewcommand{\cftparanumwidth}{4em}
-
-\renewcommand{\cftbeforechapskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
-\renewcommand{\cftchapfont}{\bfseries} % coloca o titulo de capítulos em negrito
-\renewcommand{\cftchappagefont}{} % o número da página dos capítulos não é em negrito
-\renewcommand{\cftsubsecfont}{\bfseries} % coloca o titulo das secoes em negrito
-\renewcommand{\cftsubsubsecfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
-\renewcommand{\cftparafont}{\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
+\renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
 
-\setlength{\cftfignumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
-\setlength{\cfttabnumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigpresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
-\renewcommand{\cfttabpresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
-\renewcommand{\cftfigaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
-\renewcommand{\cfttabaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
+\renewcommand{\cftchapterpagefont}{} % o número da página dos capítulos não é em negrito
+
+\setlength{\cftfigurenumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cfttablenumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
+\renewcommand{\cftfigurepresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
+\renewcommand{\cfttablepresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
+\renewcommand{\cftfigureaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
+\renewcommand{\cfttableaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
@@ -252,21 +235,20 @@ postheadspace=1em
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
-\renewcommand{\maketitle}{
-\pagestyle{empty}
-\begin{center}
-\textbf{
-\MakeUppercase{\@instituicao}\\[\baselineskip]
-\uppercase\expandafter{\@author}
-\vfill
-\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}
-\vfill
-\@cidade\\
+\renewcommand{\maketitle}{%
+\pagestyle{empty}%
+\begin{center}%
+\textbf{%
+\MakeUppercase{\@instituicao}\\[\baselineskip]%
+\uppercase\expandafter{\@author}%
+\vfill%
+\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}%
+\vfill%
+\@cidade\\%
 \number\year%
-\end{center}
+\end{center}%
 \cleardoublepage
 }
-
 
 \newenvironment{folhaderosto}{
 \setcounter{page}{1}
@@ -289,9 +271,9 @@ postheadspace=1em
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
 \ifrascunho
-  \includepdf{ata.pdf}\cleardoublepage
-\else
   \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+\else
+  \includepdf{ata.pdf}\cleardoublepage
 \fi
 }
 
@@ -302,9 +284,9 @@ postheadspace=1em
     \addtocounter{page}{-1}
   \fi
 \ifrascunho
-\includepdf{ficha.pdf}\cleardoublepage
-\else
   \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+\else
+\includepdf{ficha.pdf}\cleardoublepage
 \fi
 }
 
@@ -347,20 +329,20 @@ postheadspace=1em
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\noindent\normalsize}{\cleardoublepage\pagestyle{plain}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\begin{spacing}{1.1}\noindent\normalsize}{\end{spacing}\cleardoublepage\pagestyle{fancy}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\noindent\normalsize}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
 
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{fancy}}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
 \RequirePackage{imakeidx}
 \renewcommand{\indexname}{\'Indice}
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
 \renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftsubsubsecnumwidth}\'INDICE}%
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bf\MakeUppercase}}%
+\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
 \oldprintindex}%
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
@@ -415,8 +397,8 @@ postheadspace=1em
 \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
 \renewcommand{\chapter}[1]{% redefine o comando do capítulo
 \stepcounter{chapter}% soma 1 ao contador do capítulo
-\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+\cleardoublepage\phantomsection\thispagestyle{empty}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -427,9 +409,9 @@ postheadspace=1em
 \renewcommand{\thechapter}{\Alph{chapter}}%
 \renewcommand{\chapter}[1]{%
 \stepcounter{chapter}%
-\clearpage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\cleardoublepage\phantomsection\thispagestyle{empty}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
 \phantomsection%
-\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
@@ -441,26 +423,26 @@ postheadspace=1em
 }
 
 \defbibheading{rene}[\bibname]{%
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftparanumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
 \hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
 }
 
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
 \renewenvironment{quote}
-               {\begin{singlespace}\list{}{%
+               {\begin{SingleSpace}\list{}{%
                \fontsize{10pt}{1em}%
                \leftmargin=4cm}%
                \item\relax\ignorespaces}
-               {\endlist\end{singlespace}}
+               {\endlist\end{SingleSpace}}
 
 \renewenvironment{quotation}
-               {\begin{singlespace}\list{}{%
+               {\begin{SingleSpace}\list{}{%
                \fontsize{10pt}{1em}%
                \leftmargin=2cm \rightmargin=2cm%
                \listparindent .5cm \itemindent}%
                 \item\relax}
-               {\endlist\end{singlespace}}
+               {\endlist\end{SingleSpace}}
 %% 
 %% Copyright (C) 2015 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
