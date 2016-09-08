@@ -135,7 +135,7 @@ Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos de acordo com o g
 \folhadeaprovacao
 \dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
 \begin{agradecimentos}
-Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos.
+Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos. Agradecimentos especiais são estendidos aos membros da \TeX{} \emph{Stack Exchange} pela divisão do fardo de criar documentos com belas tipografias. Agradece-se também os mantenedores da \gls{ctan}, por hospedar a classe e garantir sua distribuição em todas as maiores distribuições de \LaTeX{} nos principais sistemas operacionais, além de enviar-me e-mails toda vez que subo uma versão errada da classe.
 \end{agradecimentos}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
@@ -178,15 +178,7 @@ Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX{} pa
 
 \subsection{Linux}
 
-O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX{} Live através do \texttt{apt-get}. O usuário pode optar pela instalação completa, através do pacote \texttt{texlive-full}, ou instalar apenas os seguintes pacotes necessários:
-
-\begin{enumerate}
-\item \texttt{texlive}: pacotes essenciais do \TeX{} Live;
-\item \texttt{texlive-science}: instala pacotes científicos, como \texttt{algorithm2e} e \texttt{mathtools};
-\item \texttt{texlive-lang-portuguese}: idioma português do \texttt{babel};
-\item \texttt{texlive-publishers}: pacote \texttt{abntex2cite} da \gls{abntex};
-\item \index{xindy@\emph{xindy}}\texttt{xindy}: o indexador \emph{xindy}.
-\end{enumerate}
+O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX{} Live através do \texttt{apt-get}. Recomenda-se optar pela instalação completa, através do pacote \texttt{texlive-full}.
 
 É necessário enfatizar que a versão do \TeX{} Live disponível nos repositórios do sistema operacional nem sempre é a versão mais recente, a qual pode sempre ser encontrada na página oficial do \TeX{} Live, \url{https://www.tug.org/texlive/}.
 
@@ -196,17 +188,11 @@ Com a versão mais recente do \TeX{} Live instalada, é possível usar o \textit
 
 No Mac, o \LaTeX{} pode ser instalado através do Mac\TeX{} (\url{http://tug.org/mactex/}), uma compilação completa do \TeX{} Live para Mac.
 
-O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório oficial do \TeX{}. Nesse caso, a opção é baixar a classe diretamente do repositório oficial ou da página do projeto no GitHub.
+O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório oficial do \TeX{}. Nesse caso, a opção é baixar a classe diretamente do \gls{ctan} ou da página do projeto no GitHub.
 
 \subsection{Compilando do código-fonte}
 
-A classe também pode ser baixada diretamente do GitHub, ou compilada do código-fonte. O repositório do projeto \footnote{\url{http://github.com/douglasrizzo/Classe-Latex-FEI}} possui todos os aruqivos necessários para o procedimento:
-
-\begin{enumerate}
-  \item o arquivo-fonte \texttt{fei.dtx};
-  \item um Makefile para compilação do arquivo-fonte, através do comando \texttt{make};
-  \item a classe \texttt{fei.cls}, pré-compilada.
-\end{enumerate}
+A classe também pode ser baixada diretamente do GitHub, ou compilada do código-fonte. O repositório do projeto \footnote{\url{http://github.com/douglasrizzo/Classe-Latex-FEI}} possui todos os arquivos necessários para o procedimento. Para tanto, clone o repositório para um diretório e compile-o usando o Makefile disponível.
 
 O processo de compilação requer que todas as dependências da classe já estejam instaladas. O único arquivo necessário para formatação dos trabalhos acadêmicos é a classe \texttt{fei.cls}, a qual deve ser mantida no mesmo diretório do arquivo \texttt{tex} do trabalho do aluno.
 
@@ -224,37 +210,36 @@ Após isso, é necessário utilizar a opção \texttt{arial} na declaração da 
 
 \section{DEPENDÊNCIAS}\label{sec:dependencias}
 
-Toda a formatação foi realizada a partir da importação e configuração de pacotes já existentes e disponíveis nas diversas distribuições de \index{Latex@\LaTeX}\LaTeX{} existentes. Durante o desenvolvimento desta classe, buscou-se utilizar o menor número de pacotes possíveis e sempre os mais comuns de serem encontrados. É necessário enfatizar a necessidade de instalação destes pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} Live (para Linux e Mac OS).
+A partir da versão 3, aclasse da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
+
+No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} Live (para Linux e Mac OS).
 
 \begin{enumerate}
-  \item\texttt{abntex2cite}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
   \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
   \item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
   \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
+  \item\texttt{biblatex}: pacote que substitui o Bib\TeX{} no tratamento de referências bibliográficas;
+  \item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
   \item\texttt{caption}: altera a formatação de certas legendas;
   \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+  \item\texttt{csquotes}: proporciona suporte a aspas para diferentes idiomas;
   \item\texttt{enumitem}: formatação de alíneas;
-  \item\texttt{fancyhdr}: formatação dos cabeçalhos;
   \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
-  \item\texttt{geometry}: mudança do tamanho das margens;
   \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
   \item\texttt{graphicx}: importação e utilização de imagens;
   \item\texttt{hyperref}: gera os links entre referências no PDF;
   \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
   \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
   \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
+  \item\texttt{inputenc}: permite a entrada de caracteres em formato UTF-8 nos arquivos \texttt{tex};
   \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
   \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
   \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
   \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
-  \item\texttt{setspace}: espaçamento entre linhas aproximado de 1,5 linhas;
   \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
   \item\texttt{times}: carrega fonte Times New Roman;
-  \item\texttt{tocloft}: permite melhor personalização de itens do sumário, lista de figuras e tabelas;
   \item\texttt{uarial}: carrega fonte URW Arial.
 \end{enumerate}
-
-Ainda é necessário importar o pacote \texttt{inputenc}, responsável pela codificação dos arquivos \texttt{tex} de entrada (normalmente \texttt{latin1} ou \texttt{utf8}).
 
 Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
 
@@ -281,10 +266,7 @@ A classe da FEI pode receber as seguintes opções:
 \item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 \item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
-% \item \texttt{bacharelado}, \texttt{especializacao}, \texttt{mestrado}, \texttt{doutorado}: realiza as modificações necessárias nos textos das folhas de rosto e de aprovação;
-% \item \texttt{male-author}/\texttt{female-author}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do autor/autora;
-% \item \texttt{male-advisor}/\texttt{female-advisor}: esta opção altera o texto de páginas geradas automaticamente para que reflitam o gênero do orientador/orientadora;
-\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{report}, a classe da FEI pode receber algumas opções nativas de \texttt{report}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
+\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
@@ -350,7 +332,7 @@ Exemplo: \verb+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
 
 \subsection{Resumo e \emph{abstract}}
 
-O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas por ponto final.
+O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas manualmente por ponto final.
 
 \begin{verbatim}
 \begin{resumo}
@@ -394,6 +376,8 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 \section{TEXTO}\label{sec:texto}
 
 Sob a nomenclatura do guia da biblioteca, o texto pode ser estruturado utilizando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 níveis disponibilizados nativamente pelo \LaTeX: capítulo, seção, subseção, subsubseção e parágrafo. Para isso, são usados os comandos nativos do \LaTeX{} para divisão do texto: \verb+\chapter{...}+, \verb+\section{...}+, \verb+\subsection{...}+, \verb+\subsubsection{...}+ e \verb+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
+
+Ao utilizar \verb+\chapter{...}+ e \verb+\section{...}+, é necessário inserir manualmente os títulos em letras maiúsculas para garantir que os mesmos aparecem em letras maiúsculas tanto no sumário como no texto, garantindo a aderência ao guia.
 
 \subsection{\emph{Floats}}
 
@@ -573,9 +557,11 @@ Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndi
 
 \subsection{Referências bibliográficas}
 
-Para formatar o título da página de referências e adicioná-la ao sumário, utiliza-se o comando \verb+\bibliography{}+, que recebe como parâmetro o caminho para o arquivo \texttt{bib} e formata o título da página como pede o guia da biblioteca.
+A partir da versão 3, a classe da FEI passou a utilizar o pacote \texttt{biblatex-abnt} para realizar a formatação e inserção de referências bibliográficas no formato da ABNT.
 
-Exemplo: \verb+\bibliography{minha_bibliografia.bib}+
+As referências bibliográficas em si devem ser mantidas em um ou mais arquivos de extensão \texttt{bib}, preferencialmente no mesmo diretório do arquivo \texttt{tex} do trabalho. Os arquivos \texttt{bib} utilizados pelo trabalho devem ser referenciados no preâmbulo do texto utilizando o comando \verb+\addbibresource{ref.bib}+. Mais de um arquivo pode ser referenciado,utilizando-se o comando \verb+\addbibresource+ mais de uma vez.
+
+Posteriormente, a inserção da seção de referencias bibliográficas no texto é feita através do comando \verb+\printbibliography+, o qual inserirá todas as obras referenciadas no texto.
 
 \subsection{Apêndices e anexos}
 
@@ -609,9 +595,9 @@ A biblioteca permite a criação de um índice remissivo de palavras, para que e
 
 \chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
 
-O \gls{abntex} (\url{https://code.google.com/p/ABNTex2/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas. Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da \index{FEI}\gls{fei}, foi importado o pacote \texttt{abntex2cite-alf}, que utiliza o modelo autor-data.
+O \gls{abntex} (\url{http://www.abntex.net.br/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas. Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da \index{FEI}\gls{fei}, foi importado o pacote \texttt{biblatex-abnt}, que utiliza o modelo autor-data.
 
-As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \texttt{abntex2cite-alf}.
+As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \texttt{biblatex-abnt}.
 
 \section{CITAÇÃO NO FINAL DE LINHA}
 A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
@@ -626,11 +612,7 @@ Exemplo: Segundo \verb+\textcite{haykin99a}+, este texto deveria ser uma referê
 \section{CITAÇÃO INDIRETA}
 Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 
-Exemplo: \verb+\apud{Mcc43}{russell_artificial_2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell_artificial_2010}.
-
-% \section{CITAÇÃO NO RODAPÉ}
-%
-% Citações no rodapé\footciteref{turing50} são feitas usando o comando \verb+\footciteref{obra}+.
+Exemplo: \verb+\apud{Mcc43}{russell2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell2010}.
 
 \section{CITAÇÕES MÚLTIPLAS}
 
@@ -638,9 +620,9 @@ Os comandos \verb+\cites{obra_1}{...}{obra_n}+ e \verb+\textcites{obra_1}{}...}{
 
 Exemplos:
 
-\verb+\cites{Mcc43}{russell_artificial_2010}{haykin99a}+ \(\to\) \cites{Mcc43}{russell_artificial_2010}{haykin99a}.
+\verb+\cites{Mcc43}{russell2010}{haykin99a}+ \(\to\) \cites{Mcc43}{russell2010}{haykin99a}.
 
-\verb+\textcites{Mcc43}{russell_artificial_2010}{haykin99a}+ \(\to\) \textcites{Mcc43}{russell_artificial_2010}{haykin99a}.
+\verb+\textcites{Mcc43}{russell2010}{haykin99a}+ \(\to\) \textcites{Mcc43}{russell2010}{haykin99a}.
 
 \section{CITAÇÕES DE CAMPOS ESPECÍFICOS}
 
@@ -813,7 +795,7 @@ Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necess�
 
 Para compilar o documento manualmente, é preciso executar os seguintes programas na seguinte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
 
-\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Bib\TeX}}_b \to \operatorname*{\text{MakeGlossaries}}_c \to \operatorname*{\text{pdf\LaTeX}}_d \to \operatorname*{\text{MakeIndex}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
+\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Biber}}_b \to \operatorname*{\text{MakeGlossaries}}_c \to \operatorname*{\text{pdf\LaTeX}}_d \to \operatorname*{\text{MakeIndex}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 
 onde:
 
@@ -830,7 +812,7 @@ Um exemplo de comando que executa todas essas funções é o seguinte:
 
 \begin{verbatim}
 pdflatex documento.tex
-bibtex documento.aux
+biber documento.bcf
 makeglossaries documento
 pdflatex documento.tex
 makeindex documento.idx
@@ -867,7 +849,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \item\verb+pdflatex documento.tex+
 \begin{enumerate}
 \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
-\item \texttt{aux}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
+\item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
 \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
 \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
 \item \texttt{loa}: lista de algoritmos;
@@ -875,10 +857,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \item \texttt{toc}: sumário;
 \end{enumerate}
 
-\item\verb+bibtex documento.aux+
+\item\verb+biber documento.aux+
 \begin{enumerate}
-\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX;
-\item \texttt{blg}: \emph{log} do \index{Bibtex@Bib\TeX}Bib\TeX{}.
+\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
 \end{enumerate}
 
 \item\verb+makeindex documento.idx+
@@ -1178,7 +1159,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
-% \RequirePackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm,bindingoffset=0cm,nofoot]{geometry}
 
 % corrige margens usando comandos da classe memoir
 \setlrmarginsandblock{30mm}{20mm}{*}
