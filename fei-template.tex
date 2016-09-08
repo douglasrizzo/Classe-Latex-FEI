@@ -28,6 +28,8 @@
 \newglossaryentry{out}{type=symbols,name={\ensuremath{o}},sort=out,description={outlet}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\addbibresource{referencias.bib}
+
 \makeindex
 \makeglossaries
 
@@ -134,15 +136,15 @@ Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec
     \caption{Donec accumsan tellus nec enim porttitor} \label{tbl:exemplo}
     \centering
     \begin{tabular}{|c|c|c|c|}
-    \hline 
-     & \(x_1\) & \(x_2\) & \(x_3\) \\ 
-    \hline 
-    \(y_1\) & 1 & 0 & 0 \\ 
-    \hline 
-    \(y_2\) & 0 & 1 & 0 \\ 
-    \hline 
-    \(y_3\) & 0 & 0 & 1 \\ 
-    \hline 
+    \hline
+     & \(x_1\) & \(x_2\) & \(x_3\) \\
+    \hline
+    \(y_1\) & 1 & 0 & 0 \\
+    \hline
+    \(y_2\) & 0 & 1 & 0 \\
+    \hline
+    \(y_3\) & 0 & 0 & 1 \\
+    \hline
     \end{tabular}
     \caption*{Fonte: Autor}
 \end{table}
@@ -159,11 +161,11 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per \index{l
 
 \Retorna \(c\)
 
-\caption{Algoritmo que calcula o teorema de Pitágoras, de acordo com \citeonline{heath1921history}.}
+\caption{Algoritmo que calcula o teorema de Pitágoras, de acordo com \textcite{heath1921history}.}
 \label{lst:alg}
 \end{algorithm}
 
-\bibliography{referencias}
+\printbibliography
 
 \printindex
 
