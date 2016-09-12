@@ -422,6 +422,8 @@ postheadspace=1em
   bibliography = {REFER\^ENCIAS}
 }
 
+\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
+
 \defbibheading{rene}[\bibname]{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
 \hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}

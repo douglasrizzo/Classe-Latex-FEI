@@ -612,7 +612,7 @@ Exemplo: Segundo \verb+\textcite{haykin99a}+, este texto deveria ser uma referê
 \section{CITAÇÃO INDIRETA}
 Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
 
-Exemplo: \verb+\apud{Mcc43}{russell2010}+ formata a citação de forma semelhante a \apud{Mcc43}{russell2010}.
+Exemplo: \verb+\apud{kahneman2011}{stewart2012}+ formata a citação de forma semelhante a \apud{kahneman2011}{stewart2012}.
 
 \section{CITAÇÕES MÚLTIPLAS}
 
@@ -620,9 +620,9 @@ Os comandos \verb+\cites{obra_1}{...}{obra_n}+ e \verb+\textcites{obra_1}{}...}{
 
 Exemplos:
 
-\verb+\cites{Mcc43}{russell2010}{haykin99a}+ \(\to\) \cites{Mcc43}{russell2010}{haykin99a}.
+\verb+\cites{Mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{Mcc43}{kurzweil2013}{haykin99a}.
 
-\verb+\textcites{Mcc43}{russell2010}{haykin99a}+ \(\to\) \textcites{Mcc43}{russell2010}{haykin99a}.
+\verb+\textcites{clarke19932001}{hamlet}{art1}+ \(\to\) \textcites{clarke19932001}{hamlet}{art1}.
 
 \section{CITAÇÕES DE CAMPOS ESPECÍFICOS}
 
@@ -642,7 +642,7 @@ Para citar o ano de uma obra, utilize \verb+\citeyear{obra}+.
 
 No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \verb+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \verb+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
 
-\verb+Fonte: \citefloat{galilei_dialogue_1953}.+ \(\to\) Fonte: \citefloat{galilei_dialogue_1953}.
+\verb+Fonte: \citefloat{kernighan1988}.+ \(\to\) Fonte: \citefloat{kernighan1988}.
 
 % \section{OUTROS EXEMPLOS}
 %
@@ -812,7 +812,7 @@ Um exemplo de comando que executa todas essas funções é o seguinte:
 
 \begin{verbatim}
 pdflatex documento.tex
-biber documento.bcf
+biber documento
 makeglossaries documento
 pdflatex documento.tex
 makeindex documento.idx
