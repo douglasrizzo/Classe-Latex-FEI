@@ -836,7 +836,7 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
 
-\printbibliography[heading=rene]
+\printbibliography
 
 \appendix
 
@@ -1574,8 +1574,8 @@ postheadspace=1em
 
 \renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
 
-\defbibheading{rene}[\bibname]{%
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\bfseries REFER\^ENCIAS}% adiciona o titulo ao sumario
+\defbibheading{bibliography}[\bibname]{%
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
 \hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
 }
 
