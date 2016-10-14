@@ -1362,11 +1362,10 @@ postheadspace=1em
 \renewcommand{\maketitle}{%
 \pagestyle{empty}%
 \begin{center}%
-\textbf{%
 \MakeUppercase{\@instituicao}\\[\baselineskip]%
 \uppercase\expandafter{\@author}%
 \vfill%
-\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}%
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
 \vfill%
 \@cidade\\%
 \number\year%
