@@ -548,7 +548,7 @@ Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos as
     \item Primeiro sub-item;
     \item Segundo sub-item.
   \end{enumerate}
-  \item Terceiro item.
+  \item Terceiro item extremamente grande utilizado para testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2016.
 \end{enumerate}
 
 \section{PÓS-TEXTO}\label{sec:postexto}
@@ -1265,8 +1265,8 @@ postheadspace=1em
 % listas
 
 \RequirePackage{enumitem}
-\setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
-\setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
+\setlist[1]{align=left,labelsep=0.5em,label={\alph*)},ref=\theenumi}
+\setlist[2]{align=left,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
