@@ -160,8 +160,8 @@ postheadspace=1em
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
 
 \RequirePackage{enumitem}
-\setlist[1]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={\alph*)},ref=\theenumi}
-\setlist[2]{align=left,labelindent=\parindent,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
+\setlist[1]{align=left,labelsep=0.5em,label={\alph*)},ref=\theenumi}
+\setlist[2]{align=left,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
@@ -238,11 +238,10 @@ postheadspace=1em
 \renewcommand{\maketitle}{%
 \pagestyle{empty}%
 \begin{center}%
-\textbf{%
 \MakeUppercase{\@instituicao}\\[\baselineskip]%
 \uppercase\expandafter{\@author}%
 \vfill%
-\MakeUppercase{\@title}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}}%
+\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
 \vfill%
 \@cidade\\%
 \number\year%
@@ -258,9 +257,9 @@ postheadspace=1em
 \vspace*{0.45\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
 \vfill
-\begin{flushright}
+\begin{flushright}\begin{SingleSpace}
 \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
-\end{flushright}
+\end{SingleSpace}\end{flushright}
 \vfill
 \@cidade\\
 \number\year
@@ -329,9 +328,9 @@ postheadspace=1em
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}\noindent\normalsize}{\cleardoublepage\pagestyle{plain}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\noindent\normalsize}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
