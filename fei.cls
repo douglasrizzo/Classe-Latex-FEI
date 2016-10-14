@@ -270,24 +270,24 @@ postheadspace=1em
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-\ifrascunho
-  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-\else
-  \includepdf{ata.pdf}\cleardoublepage
-\fi
+    \ifrascunho
+        \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+    \else
+        \includepdf{ata.pdf}\cleardoublepage
+    \fi
 }
 
 \newcommand{\fichacatalografica}{
-  \iftwoside
-  \else
-    % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
-    \addtocounter{page}{-1}
-  \fi
-\ifrascunho
-  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-\else
-\includepdf{ficha.pdf}\cleardoublepage
-\fi
+    \iftwoside
+    \else
+        % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
+        \addtocounter{page}{-1}
+    \fi
+    \ifrascunho
+        \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+    \else
+        \includepdf{ficha.pdf}\cleardoublepage
+    \fi
 }
 
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
