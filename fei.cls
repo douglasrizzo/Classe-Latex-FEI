@@ -328,9 +328,9 @@ postheadspace=1em
 \end{flushleft}
 }
 
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
@@ -369,7 +369,6 @@ postheadspace=1em
   }%
 
   \setglossarystyle{mylong}
-  \renewcommand{\glsnamefont}[1]{\textbf{#1}}
   \setlength\LTleft{0pt}
   \setlength\LTright{0pt}
   \setlength\glsdescwidth{\linewidth}
