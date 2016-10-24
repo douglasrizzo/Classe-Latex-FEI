@@ -215,8 +215,8 @@ postheadspace=1em
 \setlength{\cfttablenumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
 \renewcommand{\cftfigurepresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
 \renewcommand{\cfttablepresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
-\renewcommand{\cftfigureaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de ilustrações
-\renewcommand{\cfttableaftersnum}{ --} % traço na frente da escrita que precede as entradas na lista de tabelas
+\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista de ilustrações
+\renewcommand{\cfttableaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista de tabelas
 
 
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
@@ -415,7 +415,7 @@ postheadspace=1em
 }%
 }%
 
-\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt, bftitles]{biblatex}
+\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
 
 \DefineBibliographyStrings{brazil}{%
   bibliography = {REFER\^ENCIAS}
