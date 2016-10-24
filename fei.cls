@@ -420,6 +420,8 @@ postheadspace=1em
   bibliography = {REFER\^ENCIAS}
 }
 
+\newcommand{\citeonline}[1]{\textcite{#1}}
+
 \renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
 
 \defbibheading{bibliography}[\bibname]{%
