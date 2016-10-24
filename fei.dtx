@@ -1225,7 +1225,24 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \SetAlgoCaptionSeparator{ --} % separador da legenda
 \SetAlCapSty{} % estilo da primeira parte da legenda (remove negrito padrão)
 \SetAlCapFnt{\normalsize} % fonte da primeira parte da legenda
-% \SetAlCapSkip{10pt} % espaçamento entre algoritmo e legenda
+
+% --------------------------------------------------------
+% trecho feito com ajuda do seguinte link
+% http://tex.stackexchange.com/questions/335624/add-en-dash-after-numbering-in-list-of-algorithms
+% lista de algoritmos formatada como lista de figuras
+% usado para que a lista de algoritmos herde os comandos típicos para formatação da LoF
+\let\l@algocf\l@figure
+
+% redefine lista de algoritmos
+\let\oldlistofalgorithms\listofalgorithms
+\renewcommand{\listofalgorithms}{{%
+  \setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+  \renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+  \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+  \part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+}}
+% --------------------------------------------------------
+
 % teoremas
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
@@ -1345,10 +1362,6 @@ postheadspace=1em
 % redefinindo listas de algoritmos e teoremas para formatar os títulos das
 % páginas e adicionar 'algoritmo' e 'teorema' antes dos números de cada entrada
 % das listas
-\renewcommand{\listofalgorithms}{\begingroup%
-\let\oldnumberline\numberline%
-\renewcommand{\numberline}{Algoritmo~\oldnumberline}%
-\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage\endgroup}
 
 \renewcommand{\listoftheorems}{\begingroup%
 \let\oldnumberline\numberline%

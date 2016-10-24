@@ -127,6 +127,17 @@
 \SetAlgoCaptionSeparator{ --} % separador da legenda
 \SetAlCapSty{} % estilo da primeira parte da legenda (remove negrito padrão)
 \SetAlCapFnt{\normalsize} % fonte da primeira parte da legenda
+
+\let\l@algocf\l@figure
+
+\let\oldlistofalgorithms\listofalgorithms
+\renewcommand{\listofalgorithms}{{%
+  \setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+  \renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+  \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+  \part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+}}
+
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
@@ -223,10 +234,6 @@ postheadspace=1em
 \renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\cleardoublepage}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\cleardoublepage}
 
-\renewcommand{\listofalgorithms}{\begingroup%
-\let\oldnumberline\numberline%
-\renewcommand{\numberline}{Algoritmo~\oldnumberline}%
-\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage\endgroup}
 
 \renewcommand{\listoftheorems}{\begingroup%
 \let\oldnumberline\numberline%
