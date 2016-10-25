@@ -164,7 +164,15 @@ A escrita da classe que formata o texto foi realizada tendo-se como referência 
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
-O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \texttt{fei.cls} com todas as suas funcionalidades. O apêndice A explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice B disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
+O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \texttt{fei.cls} com todas as suas funcionalidades. O apêndice A mantém um resgistro de alterações da classe em suas diferentes versões. O apêndice B explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice C disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
+
+\section{NOTA AOS USUÁRIOS ANTIGOS DA CLASSE}
+
+Em sua versão 3, a classe \LaTeX{} da FEI deixa de utilizar o pacote \index{abntex2cite@\emph{abntex2cite}} para formatação de referências e passa a utilizar o novo pacote \index{biblatex-abnt@\emph{biblatex-abnt}}, o qual possui como dependências o pacote \index{biblatex@\emph{biblatex}} e o programa \index{biber@\emph{Biber}}, todos disponíveis nas distribuições comuns do \LaTeX{}.
+
+Isso significa que usuários de versões antigas da classe não mais usarão o comando \texttt{bibtex} para geração das referências e sim o comando \texttt{biber}. Para conferir mais mudanças, ler a seção \ref{subsec:referencias} para se familiarizar com a nova forma de adicionar arquivos \texttt{bib} ao projeto, assim como a seção \ref{sec:dificil}, onde todos os comandos necessários para a compilação de um documento estão disponíveis.
+
+Adicionalmente, os \emph{templates} que acompanham a classe foram devidamente atualizados para exemplificar as mudanças.
 
 \section{INSTALAÇÃO} \label{chap:instalacao}
 
@@ -555,7 +563,7 @@ Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos as
 
 Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Este capítulo descreve os comandos para \emph{inserção} destes elementos. Os capítulos seguintes instruirão como \emph{criá-los}.
 
-\subsection{Referências bibliográficas}
+\subsection{Referências bibliográficas} \label{subsec:referencias}
 
 A partir da versão 3, a classe da FEI passou a utilizar o pacote \texttt{biblatex-abnt} para realizar a formatação e inserção de referências bibliográficas no formato da ABNT.
 
@@ -791,7 +799,7 @@ A lista de abreviaturas pode ser impressa através do comando \verb+\printacrony
 
 Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas em ordem específica. Esta sessão descreve estes programas, a ordem na qual eles devem ser utilizados e algumas ferramentas inteligentes que automatizam este processo.
 
-\section{O JEITO DIFÍCIL}
+\section{O JEITO DIFÍCIL} \label{sec:dificil}
 
 Para compilar o documento manualmente, é preciso executar os seguintes programas na seguinte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
 
@@ -839,6 +847,65 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 \printbibliography
 
 \appendix
+
+
+\chapter{REGISTRO DE ALTERAÇÕES}
+
+Versão 1 (2012):
+
+\begin{itemize}
+    \item Versão inicial;
+    \item Criação de todos os elementos pré-textuais:
+    \begin{itemize}
+        \item Capa;
+        \item Folha de rosto;
+        \item Ficha catalográfica;
+        \item Folha de aprovação;
+        \item Resumo;
+        \item \emph{Abstract};
+        \item Dedicatória;
+        \item Agradecimentos;
+        \item Epígrafe;
+        \item Sumário e listas de figuras e tabelas.
+    \end{itemize}
+    \item Formatação dos títulos de seções até o quarto nível (\texttt{subsubsection});
+    \item Formatação de referências e citações usando o pacote \textt{abntex};
+    \item Criação de apêndices e anexos.
+\end{itemize}
+
+Versão 2 (2013 -- 2015):
+
+\begin{itemize}
+    \item Adição de listas de símbolos e abreviaturas usando o pacote \index{glossaries@\emph{glossaries}};
+    \item Suporte a índice remissivo através do pacote \index{makeindex@\emph{MakeIndex}};
+    \item Uso de um pacote externo de formatação de referências e citações, o \index{abntex2cite@\emph{abntex2cite}};
+    \item Suporte à criação de algoritmos e lista de algoritmos usando o pacote \index{algorithm2e@\emph{algorithm2e}};
+    \item Suporte à criação de teoremas, definições, corolários, provas e afins usando os pacotes \index{amsthm@\emph{amsthm}} e \index{thmtools@\emph{thmtools}};
+    \item suporte à impressão em frente-e-verso com a opção \texttt{twoside};
+    \item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
+    \begin{itemize}
+        \item Uso de negritos na capa e folha de rosto
+        \item Espaçamento entre linhas mais parecido com o do Word;
+        \item Correção das margens superior e inferior de todas as páginas;
+        \item Correção de recuo das alíneas.
+    \end{itemize}
+\end{itemize}
+
+Versão 2 (2015 -- 2016): adaptação ao novo guia de formatação de 2015, com mudanças especialmente nos títulos de seção e sumário.
+
+Versão 3 (2016 -- ):
+
+\begin{itemize}
+    \item Fim do suporte ao \index{abntex2cite@\emph{abntex2cite}} e início de uso do pacote \index{biblatex-abnt@\emph{biblatex-abnt}} para formatação de referências, o qual possui como dependências o pacote \index{biblatex@\emph{biblatex}} e o programa \index{biber@\emph{Biber}};
+    \item Uso da classe \texttt{memoir} como base para a classe da FEI, removendo diversas dependências, como os pacotes \emph{tocloft, fancyhdr, geometry} e \emph{setspace};
+    \item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
+    \begin{itemize}
+        \item Uso de negritos na capa e folha de rosto;
+        \item Remoção do negrito na lista de abreviaturas;
+        \item Adição de hífen na lista de algoritmos;
+        \item Correção de recuo das alíneas.
+    \end{itemize}
+\end{itemize}
 
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
 
