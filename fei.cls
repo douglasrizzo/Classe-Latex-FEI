@@ -178,7 +178,7 @@ postheadspace=1em
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
 \renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
 \@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}

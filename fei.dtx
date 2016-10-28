@@ -869,7 +869,7 @@ Versão 1 (2012):
         \item Sumário e listas de figuras e tabelas.
     \end{itemize}
     \item Formatação dos títulos de seções até o quarto nível (\texttt{subsubsection});
-    \item Formatação de referências e citações usando o pacote \textt{abntex};
+    \item Formatação de referências e citações usando o pacote \texttt{abntex};
     \item Criação de apêndices e anexos.
 \end{itemize}
 
@@ -1357,7 +1357,8 @@ postheadspace=1em
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{2\baselineskip}{2\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
+\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
+% \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
