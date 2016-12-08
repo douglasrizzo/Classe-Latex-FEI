@@ -15,7 +15,7 @@
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{fei}[2016/09/02 3 Modelo da FEI]
-\LoadClass[a4paper]{memoir}
+\LoadClass[a4paper,oneside]{memoir}
 \DeclareOption{xindy}{
   \PassOptionsToPackage{\CurrentOption}{imakeidx}
   \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -64,7 +64,7 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[english,brazil]{babel}
+\RequirePackage[english,portuges]{babel}
 \RequirePackage{csquotes}
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -86,7 +86,7 @@
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
-\selectlanguage{brazil} % idioma do documento
+\selectlanguage{portuges} % idioma do documento
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -337,7 +337,7 @@ postheadspace=1em
 
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{portuges}}
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
@@ -384,7 +384,7 @@ postheadspace=1em
   \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
-\addto\captionsbrazil{%
+\addto\captionsportuges{%
   \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
   \renewcommand*{\contentsname}{Sum\'ario}%
   \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
@@ -423,7 +423,7 @@ postheadspace=1em
 
 \RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
 
-\DefineBibliographyStrings{brazil}{%
+\DefineBibliographyStrings{portuges}{%
   bibliography = {REFER\^ENCIAS}
 }
 
