@@ -2,6 +2,8 @@
 *.mw
 fei-*.zip
 fei-template*.pdf
+README.txt
+fei.ins
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

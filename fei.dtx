@@ -30,7 +30,7 @@ To get the newest version of the class, as well as to know the changes we are do
 \fi
 \def\nameofplainTeX{plain}
 \ifx\fmtname\nameofplainTeX\else
-  \expandafter\begingroup
+	\expandafter\begingroup
 \fi
 %</internal>
 %<*install>
@@ -68,24 +68,24 @@ and the derived files           fei.pdf and
 \endpostamble
 \usedir{tex/latex/fei}
 \generate{
-  \file{\jobname.cls}{\from{\jobname.dtx}{class}}
+	\file{\jobname.cls}{\from{\jobname.dtx}{class}}
 }
 %</install>
 %<install>\endbatchfile
 %<*internal>
 \usedir{source/latex/fei}
 \generate{
-  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+	\file{\jobname.ins}{\from{\jobname.dtx}{install}}
 }
 \nopreamble\nopostamble
 \usedir{doc/latex/fei}
 \generate{
-  \file{README.txt}{\from{\jobname.dtx}{readme}}
+	\file{README.txt}{\from{\jobname.dtx}{readme}}
 }
 \ifx\fmtname\nameofplainTeX
-  \expandafter\endbatchfile
+	\expandafter\endbatchfile
 \else
-  \expandafter\endgroup
+	\expandafter\endgroup
 \fi
 %</internal>
 % \fi
@@ -129,24 +129,24 @@ and the derived files           fei.pdf and
 \maketitle
 
 \begin{folhaderosto}
-Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos de acordo com o guia de 2016 da biblioteca
+	Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos de acordo com o guia de 2016 da biblioteca
 \end{folhaderosto}
 \fichacatalografica
 \folhadeaprovacao
 \dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
 \begin{agradecimentos}
-Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos. Agradecimentos especiais são estendidos aos membros da \TeX{} \emph{Stack Exchange} pela divisão do fardo de criar documentos com belas tipografias. Agradece-se também os mantenedores da \gls{ctan}, por hospedar a classe e garantir sua distribuição em todas as maiores distribuições de \LaTeX{} nos principais sistemas operacionais, além de enviar-me e-mails toda vez que subo uma versão errada da classe.
+	Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos. Agradecimentos especiais são estendidos aos membros da \TeX{} \emph{Stack Exchange} pela divisão do fardo de criar documentos com belas tipografias. Agradece-se também os mantenedores da \gls{ctan}, por hospedar a classe e garantir sua distribuição em todas as maiores distribuições de \LaTeX{} nos principais sistemas operacionais, além de enviar-me e-mails toda vez que subo uma versão errada da classe.
 \end{agradecimentos}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
-O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
-\keywords{\LaTeX{}. FEI.}
+	O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+	\keywords{\LaTeX{}. FEI.}
 \end{resumo}
 
 \begin{abstract}
-Abstract goes here.
-\keywords{Keywords. Go. Here.}
+	Abstract goes here.
+	\keywords{Keywords. Go. Here.}
 \end{abstract}
 
 \listoffigures
@@ -223,30 +223,30 @@ A partir da versão 3, aclasse da FEI foi criada tendo a classe \texttt{memoir} 
 No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} Live (para Linux e Mac OS).
 
 \begin{enumerate}
-  \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-  \item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
-  \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-  \item\texttt{biblatex}: pacote que substitui o Bib\TeX{} no tratamento de referências bibliográficas;
-  \item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-  \item\texttt{caption}: altera a formatação de certas legendas;
-  \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
-  \item\texttt{csquotes}: proporciona suporte a aspas para diferentes idiomas;
-  \item\texttt{enumitem}: formatação de alíneas;
-  \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
-  \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
-  \item\texttt{graphicx}: importação e utilização de imagens;
-  \item\texttt{hyperref}: gera os links entre referências no PDF;
-  \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
-  \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
-  \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-  \item\texttt{inputenc}: permite a entrada de caracteres em formato UTF-8 nos arquivos \texttt{tex};
-  \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
-  \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
-  \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
-  \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
-  \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
-  \item\texttt{times}: carrega fonte Times New Roman;
-  \item\texttt{uarial}: carrega fonte URW Arial.
+	\item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
+	\item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
+	\item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
+	\item\texttt{biblatex}: pacote que substitui o Bib\TeX{} no tratamento de referências bibliográficas;
+	\item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
+	\item\texttt{caption}: altera a formatação de certas legendas;
+	\item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+	\item\texttt{csquotes}: proporciona suporte a aspas para diferentes idiomas;
+	\item\texttt{enumitem}: formatação de alíneas;
+	\item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+	\item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
+	\item\texttt{graphicx}: importação e utilização de imagens;
+	\item\texttt{hyperref}: gera os links entre referências no PDF;
+	\item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
+	\item\texttt{ifthen}: permite a utilização de condições na geração do texto;
+	\item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
+	\item\texttt{inputenc}: permite a entrada de caracteres em formato UTF-8 nos arquivos \texttt{tex};
+	\item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
+	\item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+	\item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
+	\item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+	\item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
+	\item\texttt{times}: carrega fonte Times New Roman;
+	\item\texttt{uarial}: carrega fonte URW Arial.
 \end{enumerate}
 
 Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
@@ -270,11 +270,11 @@ A declaração da classe é feita da seguinte forma:
 A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
-\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
-\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
-\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
-\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
-\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
+	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
+	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
+	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
+	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
@@ -409,10 +409,10 @@ A partir de 2015, o guia de formatação da biblioteca padroniza as legendas de 
 A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior utilizando a formatação nativa.
 
 \begin{figure}
-\centering
-\caption{Exemplo de figura com sua fonte.}
-\rule{2cm}{2cm}
-\smallcaption{Fonte: \citefloat{lamport1994latex}.}\label{fig:exemplo}
+	\centering
+	\caption{Exemplo de figura com sua fonte.}
+	\rule{2cm}{2cm}
+	\smallcaption{Fonte: \citefloat{lamport1994latex}.}\label{fig:exemplo}
 \end{figure}
 
 \begin{verbatim}
@@ -1168,7 +1168,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2016/09/02 3 Modelo da FEI]
+\ProvidesClass{fei}[2016/09/02 3.0.2 Modelo da FEI]
 \LoadClass[a4paper]{memoir}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
