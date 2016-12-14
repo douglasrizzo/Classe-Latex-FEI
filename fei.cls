@@ -15,10 +15,10 @@
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{fei}[2016/09/02 3 Modelo da FEI]
-\LoadClass[a4paper,oneside]{memoir}
+\LoadClass[a4paper]{memoir}
 \DeclareOption{xindy}{
-  \PassOptionsToPackage{\CurrentOption}{imakeidx}
-  \PassOptionsToPackage{\CurrentOption}{glossaries}
+\PassOptionsToPackage{\CurrentOption}{imakeidx}
+\PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 \newif\ifrascunho
 \rascunhofalse
@@ -31,31 +31,37 @@
 \sublistfalse
 \DeclareOption{sublist}
 {
-  \sublisttrue
+\sublisttrue
 }
 
 \newif\ifarial
 \DeclareOption{arial}
 {
-  \arialtrue
+\arialtrue
 }
 
 \DeclareOption{times}
 {
-  \arialfalse
+\arialfalse
 }
 
 \newif\iftwoside
 \twosidefalse
 \DeclareOption{twoside}
 {
-  \twosidetrue
+\twosidetrue
 }
 
 \DeclareOption{algo-as-figure}
 {
-  \PassOptionsToPackage{figure}{algorithm2e}
+\PassOptionsToPackage{figure}{algorithm2e}
 }
+
+\iftwoside
+\PassOptionsToClass{twoside}{memoir}
+\else
+\PassOptionsToClass{oneside}{memoir}
+\fi
 
 
 \ExecuteOptions{times} % processa opções-padrão
@@ -96,11 +102,10 @@
 \RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
-  % \RequirePackage{helvet}
-  \usepackage[scaled]{uarial}
-  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
-  \RequirePackage{times} % usar fonte times no texto todo
+\RequirePackage{times} % usar fonte times no texto todo
 \fi
 
 \RequirePackage{graphicx}      % figuras
@@ -132,10 +137,10 @@
 
 \let\oldlistofalgorithms\listofalgorithms
 \renewcommand{\listofalgorithms}{{%
-  \setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
-  \renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
-  \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
-  \part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+\setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+\renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
 }}
 
 \RequirePackage{amsthm,thmtools}
@@ -276,24 +281,23 @@ postheadspace=1em
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-    \ifrascunho
-        \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-    \else
-        \includepdf{ata.pdf}\cleardoublepage
-    \fi
+\ifrascunho
+\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+\else
+\includepdf{ata.pdf}\cleardoublepage
+\fi
 }
 
 \newcommand{\fichacatalografica}{
-    \iftwoside
-    \else
-        % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
-        \addtocounter{page}{-1}
-    \fi
-    \ifrascunho
-        \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-    \else
-        \includepdf{ficha.pdf}\cleardoublepage
-    \fi
+\iftwoside
+\else
+\addtocounter{page}{-1}
+\fi
+\ifrascunho
+\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+\else
+\includepdf{ficha.pdf}\cleardoublepage
+\fi
 }
 
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
@@ -354,41 +358,36 @@ postheadspace=1em
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 \ifsublist
-  \RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
-  % estilo usado como base
-  \setglossarystyle{alttree}
-  % Configuracao de identacao do nivel 0 (titulos)
-  \glssetwidest[0]{}
-  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
-  \glssetwidest[1]{aaaaaaaaaaaa}
+\RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
+\setglossarystyle{alttree}
+\glssetwidest[0]{}
+\glssetwidest[1]{aaaaaaaaaaaa}
 
-  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \else
-  \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 
-  \newglossarystyle{mylong}{%
-    \setglossarystyle{long}% base this style on the long style
-    \renewenvironment{theglossary}{%
-      \begin{longtable*}{lp{\glsdescwidth}}}%
-    {\end{longtable*}}%
-  }%
+\newglossarystyle{mylong}{%
+\setglossarystyle{long}% base this style on the long style
+\renewenvironment{theglossary}{%
+\begin{longtable*}{lp{\glsdescwidth}}}%
+{\end{longtable*}}%
+}%
 
-  \setglossarystyle{mylong}
-  \setlength\LTleft{0pt}
-  \setlength\LTright{0pt}
-  \setlength\glsdescwidth{\linewidth}
+\setglossarystyle{mylong}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\glsdescwidth{\linewidth}
 
-  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
 \addto\captionsportuges{%
-  \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
-  \renewcommand*{\contentsname}{Sum\'ario}%
-  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
-  \renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+\renewcommand*{\contentsname}{Sum\'ario}%
+\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+\renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
@@ -424,7 +423,7 @@ postheadspace=1em
 \RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
 
 \DefineBibliographyStrings{portuges}{%
-  bibliography = {REFER\^ENCIAS}
+bibliography = {REFER\^ENCIAS}
 }
 
 \newcommand{\citeonline}[1]{\textcite{#1}}
@@ -439,19 +438,19 @@ postheadspace=1em
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
 \renewenvironment{quote}
-               {\begin{SingleSpace}\list{}{%
-               \fontsize{10pt}{1em}%
-               \leftmargin=4cm}%
-               \item\relax\ignorespaces}
-               {\endlist\end{SingleSpace}}
+{\begin{SingleSpace}\list{}{%
+\fontsize{10pt}{1em}%
+\leftmargin=4cm}%
+\item\relax\ignorespaces}
+{\endlist\end{SingleSpace}}
 
 \renewenvironment{quotation}
-               {\begin{SingleSpace}\list{}{%
-               \fontsize{10pt}{1em}%
-               \leftmargin=2cm \rightmargin=2cm%
-               \listparindent .5cm \itemindent}%
-                \item\relax}
-               {\endlist\end{SingleSpace}}
+{\begin{SingleSpace}\list{}{%
+\fontsize{10pt}{1em}%
+\leftmargin=2cm \rightmargin=2cm%
+\listparindent .5cm \itemindent}%
+\item\relax}
+{\endlist\end{SingleSpace}}
 %% 
 %% Copyright (C) 2016 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
