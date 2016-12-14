@@ -1181,37 +1181,37 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \rascunhofalse
 \DeclareOption{rascunho}
 {
-\rascunhotrue
+	\rascunhotrue
 }
 
 \newif\ifsublist
 \sublistfalse
 \DeclareOption{sublist}
 {
-  \sublisttrue
+	\sublisttrue
 }
 
 \newif\ifarial
 \DeclareOption{arial}
 {
-  \arialtrue
+	\arialtrue
 }
 
 \DeclareOption{times}
 {
-  \arialfalse
+	\arialfalse
 }
 
 \newif\iftwoside
 \twosidefalse
 \DeclareOption{twoside}
 {
-  \twosidetrue
+	\twosidetrue
 }
 
 \DeclareOption{algo-as-figure}
 {
-  \PassOptionsToPackage{figure}{algorithm2e}
+	\PassOptionsToPackage{figure}{algorithm2e}
 }
 
 \iftwoside
@@ -1267,11 +1267,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
-  % \RequirePackage{helvet}
-  \usepackage[scaled]{uarial}
-  \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+% \RequirePackage{helvet}
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
-  \RequirePackage{times} % usar fonte times no texto todo
+\RequirePackage{times} % usar fonte times no texto todo
 \fi
 
 \RequirePackage{graphicx}      % figuras
@@ -1311,10 +1311,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % redefine lista de algoritmos
 \let\oldlistofalgorithms\listofalgorithms
 \renewcommand{\listofalgorithms}{{%
-  \setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
-  \renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
-  \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
-  \part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+	\setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+	\renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+	\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+	\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
 }}
 % --------------------------------------------------------
 
@@ -1365,26 +1365,26 @@ postheadspace=1em
 
 % divisoes do texto
 \renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
-\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
+	\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 % \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
 \renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
-\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+	\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 % demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
 \renewcommand{\section}{%
-\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
+	\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{%
-\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+	\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 \renewcommand{\subsubsection}{%
-\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
+	\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{%
-\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+	\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
@@ -1440,250 +1440,250 @@ postheadspace=1em
 % das listas
 
 \renewcommand{\listoftheorems}{\begingroup%
-\let\oldnumberline\numberline%
-\renewcommand{\numberline}{Teorema~\oldnumberline}%
-\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{Teorema~\oldnumberline}%
+	\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
-% novas paginas
-% capa
-\renewcommand{\maketitle}{%
-\pagestyle{empty}%
-\begin{center}%
-\MakeUppercase{\@instituicao}\\[\baselineskip]%
-\uppercase\expandafter{\@author}%
-\vfill%
-\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
-\vfill%
-\@cidade\\%
-\number\year%
-\end{center}%
-\cleardoublepage
-}
+	% novas paginas
+	% capa
+	\renewcommand{\maketitle}{%
+		\pagestyle{empty}%
+		\begin{center}%
+			\MakeUppercase{\@instituicao}\\[\baselineskip]%
+			\uppercase\expandafter{\@author}%
+			\vfill%
+			\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
+			\vfill%
+			\@cidade\\%
+			\number\year%
+		\end{center}%
+		\cleardoublepage
+	}
 
-% folha de rosto
-\newenvironment{folhaderosto}{
-\setcounter{page}{1}
-\thispagestyle{empty}
-\begin{center}
-\uppercase\expandafter{\@author}\\
-\vspace*{0.45\textheight}
-\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vfill
-\begin{flushright}\begin{SingleSpace}
-\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
-\end{SingleSpace}\end{flushright}
-\vfill
-\@cidade\\
-\number\year
-\end{center}%
-\clearpage}
+	% folha de rosto
+	\newenvironment{folhaderosto}{
+		\setcounter{page}{1}
+		\thispagestyle{empty}
+		\begin{center}
+			\uppercase\expandafter{\@author}\\
+			\vspace*{0.45\textheight}
+			\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+			\vfill
+			\begin{flushright}\begin{SingleSpace}
+				\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+				\end{SingleSpace}\end{flushright}
+				\vfill
+				\@cidade\\
+				\number\year
+				\end{center}%
+				\clearpage}
 
-% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
-% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
-\RequirePackage{pdfpages}
-\RequirePackage{ifthen}
-\newcommand{\folhadeaprovacao}{
-    \ifrascunho
-        \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-    \else
-        \includepdf{ata.pdf}\cleardoublepage
-    \fi
-}
+				% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
+				% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
+				\RequirePackage{pdfpages}
+				\RequirePackage{ifthen}
+				\newcommand{\folhadeaprovacao}{
+					\ifrascunho
+					\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+					\else
+					\includepdf{ata.pdf}\cleardoublepage
+					\fi
+				}
 
-% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
-\newcommand{\fichacatalografica}{
-    \iftwoside
-    \else
-        % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
-        \addtocounter{page}{-1}
-    \fi
-    \ifrascunho
-        \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-    \else
-        \includepdf{ficha.pdf}\cleardoublepage
-    \fi
-}
+				% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
+				\newcommand{\fichacatalografica}{
+					\iftwoside
+					\else
+					% se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
+					\addtocounter{page}{-1}
+					\fi
+					\ifrascunho
+					\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+					\else
+					\includepdf{ficha.pdf}\cleardoublepage
+					\fi
+				}
 
-% subtítulo
-\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
+				% subtítulo
+				\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
-\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
+				\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
 
-% cidade (padrão São Bernardo do Campo)
-\def\@cidade{S\~ao Bernardo do Campo}
-\newcommand{\cidade}[1]{\def\@cidade{#1}}
+				% cidade (padrão São Bernardo do Campo)
+				\def\@cidade{S\~ao Bernardo do Campo}
+				\newcommand{\cidade}[1]{\def\@cidade{#1}}
 
-% instituicao (padrão Centro Universitário FEI)
-\def\@instituicao{Centro Universit\'ario FEI}
-\newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+				% instituicao (padrão Centro Universitário FEI)
+				\def\@instituicao{Centro Universit\'ario FEI}
+				\newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
-% nome do orientador com respectivo título (ex Dr. ...)
-\newcommand{\advisor}[1]{\def\@advisor{#1}}
+				% nome do orientador com respectivo título (ex Dr. ...)
+				\newcommand{\advisor}[1]{\def\@advisor{#1}}
 
-% curso
-\def\@curso{Coisa Nenhuma}
-\newcommand{\curso}[1]{\def\@curso{#1}}
+				% curso
+				\def\@curso{Coisa Nenhuma}
+				\newcommand{\curso}[1]{\def\@curso{#1}}
 
-% dedicatória
-\newcommand{\dedicatoria}[1]{
-\cleardoublepage
-\thispagestyle{empty}
-\begin{flushleft}
-\vspace*{\fill}
-\hspace*{0.4\paperwidth\relax}
-\begin{minipage}[l]{0.5\textwidth}
-#1
-\end{minipage}
-\end{flushleft}
-}
+				% dedicatória
+				\newcommand{\dedicatoria}[1]{
+					\cleardoublepage
+					\thispagestyle{empty}
+					\begin{flushleft}
+						\vspace*{\fill}
+						\hspace*{0.4\paperwidth\relax}
+						\begin{minipage}[l]{0.5\textwidth}
+							#1
+						\end{minipage}
+					\end{flushleft}
+				}
 
-% epígrafe
-\newcommand{\epigrafe}[2]{
-\cleardoublepage
-\thispagestyle{empty}
-\begin{flushleft}
-\vspace*{\fill}
-\hspace*{0.4\paperwidth\relax}
-\begin{minipage}[l]{0.5\textwidth}
-``{#1}''\\#2
-\end{minipage}
-\end{flushleft}
-}
+				% epígrafe
+				\newcommand{\epigrafe}[2]{
+					\cleardoublepage
+					\thispagestyle{empty}
+					\begin{flushleft}
+						\vspace*{\fill}
+						\hspace*{0.4\paperwidth\relax}
+						\begin{minipage}[l]{0.5\textwidth}
+							``{#1}''\\#2
+						\end{minipage}
+					\end{flushleft}
+				}
 
-% resumo
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
+				% resumo
+				\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
-% abstract
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{portuges}}
+				% abstract
+				\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{portuges}}
 
-% agradecimentos
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
+				% agradecimentos
+				\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
-% índice
-\RequirePackage{imakeidx}
-\renewcommand{\indexname}{\'Indice}
-\let\oldmakeindex\makeindex
-\let\oldprintindex\printindex
-\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
-\renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
-\oldprintindex}%
+				% índice
+				\RequirePackage{imakeidx}
+				\renewcommand{\indexname}{\'Indice}
+				\let\oldmakeindex\makeindex
+				\let\oldprintindex\printindex
+				\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
+				\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
+					\renewcommand{\chapter}{%
+						\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
+					\oldprintindex}%
 
-% hyperlinks entre partes do documento
-% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
-% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+				% hyperlinks entre partes do documento
+				% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
+				% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
+				\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
-% pacote para gerar listas (símbolos, abreviaturas, etc)
-\ifsublist
-  \RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
-  % estilo usado como base
-  \setglossarystyle{alttree}
-  % Configuracao de identacao do nivel 0 (titulos)
-  \glssetwidest[0]{}
-  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
-  \glssetwidest[1]{aaaaaaaaaaaa}
+				% pacote para gerar listas (símbolos, abreviaturas, etc)
+				\ifsublist
+				\RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
+				% estilo usado como base
+				\setglossarystyle{alttree}
+				% Configuracao de identacao do nivel 0 (titulos)
+				\glssetwidest[0]{}
+				% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+				\glssetwidest[1]{aaaaaaaaaaaa}
 
-  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+				% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+				\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
-\else
-  \RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+				\else
+				\RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 
-  \newglossarystyle{mylong}{%
-    \setglossarystyle{long}% base this style on the long style
-    \renewenvironment{theglossary}{%
-      \begin{longtable*}{lp{\glsdescwidth}}}%
-    {\end{longtable*}}%
-  }%
+				\newglossarystyle{mylong}{%
+					\setglossarystyle{long}% base this style on the long style
+					\renewenvironment{theglossary}{%
+						\begin{longtable*}{lp{\glsdescwidth}}}%
+							{\end{longtable*}}%
+							}%
 
-  \setglossarystyle{mylong}
-  \setlength\LTleft{0pt}
-  \setlength\LTright{0pt}
-  \setlength\glsdescwidth{\linewidth}
+							\setglossarystyle{mylong}
+							\setlength\LTleft{0pt}
+							\setlength\LTright{0pt}
+							\setlength\glsdescwidth{\linewidth}
 
-  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
-\fi
+							% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+							\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+							\fi
 
-\addto\captionsportuges{%
-  \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
-  \renewcommand*{\contentsname}{Sum\'ario}%
-  \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
-  \renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+							\addto\captionsportuges{%
+								\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+								\renewcommand*{\contentsname}{Sum\'ario}%
+								\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+								\renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
-% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
-\renewcommand*{\glsclearpage}{\pagestyle{empty}}
-% remove número de página das listas de símbolos e abreviaturas (executado na última página)
-\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+							% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
+							\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+							% remove número de página das listas de símbolos e abreviaturas (executado na última página)
+							\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 
 
-\newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
-\newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
+							\newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
+							\newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
-% apendice novo
-\renewcommand{\appendix}{%
-\renewcommand{\chaptername}{\appendixname}%
-\setcounter{chapter}{0}% zera o contador do capítulo
-\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
-\renewcommand{\chapter}[1]{% redefine o comando do capítulo
-\stepcounter{chapter}% soma 1 ao contador do capítulo
-\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
-\newpage%
-}%
-}%
+							% apendice novo
+							\renewcommand{\appendix}{%
+								\renewcommand{\chaptername}{\appendixname}%
+								\setcounter{chapter}{0}% zera o contador do capítulo
+								\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
+								\renewcommand{\chapter}[1]{% redefine o comando do capítulo
+									\stepcounter{chapter}% soma 1 ao contador do capítulo
+									\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+									\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+									\newpage%
+								}%
+							}%
 
-% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
-\newcommand{\anexos}{%
-\renewcommand{\chaptername}{Anexo}%
-\setcounter{chapter}{0}%
-\renewcommand{\thechapter}{\Alph{chapter}}%
-\renewcommand{\chapter}[1]{%
-\stepcounter{chapter}%
-\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\phantomsection%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
-\newpage%
-}%
-}%
+							% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
+							\newcommand{\anexos}{%
+								\renewcommand{\chaptername}{Anexo}%
+								\setcounter{chapter}{0}%
+								\renewcommand{\thechapter}{\Alph{chapter}}%
+								\renewcommand{\chapter}[1]{%
+									\stepcounter{chapter}%
+									\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+									\phantomsection%
+									\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+									\newpage%
+								}%
+							}%
 
-% referências e citações
-%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
+							% referências e citações
+							%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+							\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
 
-\DefineBibliographyStrings{portuges}{%
-  bibliography = {REFER\^ENCIAS}
-}
+							\DefineBibliographyStrings{portuges}{%
+								bibliography = {REFER\^ENCIAS}
+							}
 
-\newcommand{\citeonline}[1]{\textcite{#1}}
+							\newcommand{\citeonline}[1]{\textcite{#1}}
 
-\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
+							\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
 
-\defbibheading{bibliography}[\bibname]{%
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
-}
+							\defbibheading{bibliography}[\bibname]{%
+								\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+								\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+							}
 
-\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
+							\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
-% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
-\renewenvironment{quote}
-               {\begin{SingleSpace}\list{}{%
-               \fontsize{10pt}{1em}%
-               \leftmargin=4cm}%
-               \item\relax\ignorespaces}
-               {\endlist\end{SingleSpace}}
+							% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
+							\renewenvironment{quote}
+							{\begin{SingleSpace}\list{}{%
+								\fontsize{10pt}{1em}%
+								\leftmargin=4cm}%
+								\item\relax\ignorespaces}
+							{\endlist\end{SingleSpace}}
 
-% quotation é igual a quote, porém para citações com mais de um parágrafo.
-\renewenvironment{quotation}
-               {\begin{SingleSpace}\list{}{%
-               \fontsize{10pt}{1em}%
-               \leftmargin=2cm \rightmargin=2cm%
-               \listparindent .5cm \itemindent}%
-                \item\relax}
-               {\endlist\end{SingleSpace}}
-%</class>
+							% quotation é igual a quote, porém para citações com mais de um parágrafo.
+							\renewenvironment{quotation}
+							{\begin{SingleSpace}\list{}{%
+								\fontsize{10pt}{1em}%
+								\leftmargin=2cm \rightmargin=2cm%
+								\listparindent .5cm \itemindent}%
+								\item\relax}
+							{\endlist\end{SingleSpace}}
+							%</class>
