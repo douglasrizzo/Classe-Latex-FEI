@@ -1172,8 +1172,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \LoadClass[a4paper]{memoir}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
-  \PassOptionsToPackage{\CurrentOption}{imakeidx}
-  \PassOptionsToPackage{\CurrentOption}{glossaries}
+	\PassOptionsToPackage{\CurrentOption}{imakeidx}
+	\PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 % opções rascunho e final controlam a exibição da folha
 % de aprovação e ficha catalográfica
@@ -1213,6 +1213,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 {
   \PassOptionsToPackage{figure}{algorithm2e}
 }
+
+\iftwoside
+\PassOptionsToClass{twoside}{memoir}
+\else
+\PassOptionsToClass{oneside}{memoir}
+\fi
 
 % https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
 
