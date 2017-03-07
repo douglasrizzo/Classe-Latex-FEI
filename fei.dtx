@@ -1178,37 +1178,21 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % de aprovação e ficha catalográfica
 \newif\ifrascunho
 \rascunhofalse
-\DeclareOption{rascunho}
-{
-	\rascunhotrue
-}
+\DeclareOption{rascunho}{\rascunhotrue}
 
 \newif\ifsublist
 \sublistfalse
-\DeclareOption{sublist}
-{
-	\sublisttrue
-}
+\DeclareOption{sublist}{\sublisttrue}
 
 \newif\ifarial
-\DeclareOption{arial}
-{
-	\arialtrue
-}
+\DeclareOption{arial}{\arialtrue}
+\DeclareOption{times}{\arialfalse}
 
-\DeclareOption{times}
-{
-	\arialfalse
-}
 \newif\ifoneside
 \DeclareOption{oneside}{\onesidetrue}
 \DeclareOption{twoside}{\onesidefalse}
 
-
-\DeclareOption{algo-as-figure}
-{
-	\PassOptionsToPackage{figure}{algorithm2e}
-}
+\DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
 % Assume that any unknown option will be understood by the base class:
 % \DeclareOption*{%
