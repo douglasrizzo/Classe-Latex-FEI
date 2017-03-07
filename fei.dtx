@@ -1168,7 +1168,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\LoadClass[a4paper]{memoir}
 \ProvidesClass{fei}[2017/03/07 3.0.3 Modelo da FEI]
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
@@ -1201,30 +1200,39 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 {
 	\arialfalse
 }
+\newif\ifoneside
+\DeclareOption{oneside}{\onesidetrue}
+\DeclareOption{twoside}{\onesidefalse}
 
-\newif\iftwoside
-\twosidefalse
-\DeclareOption{twoside}
-{
-	\twosidetrue
-}
 
 \DeclareOption{algo-as-figure}
 {
 	\PassOptionsToPackage{figure}{algorithm2e}
 }
 
-\iftwoside
-\PassOptionsToClass{twoside}{memoir}
-\else
-\PassOptionsToClass{oneside}{memoir}
-\fi
+% Assume that any unknown option will be understood by the base class:
+% \DeclareOption*{%
+% 	\ClassWarning{fei}{fei class doesn't recognize \CurrentOption. Passing it to memoir.}
+% 	\PassOptionsToClass{\CurrentOption}{memoir}%
+% }
 
 % https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
 
 \ExecuteOptions{times} % processa opções-padrão
+\PassOptionsToClass{a4paper}{memoir}
+
+% processa opções-padrão
+% oneside é padrão na classe da FEI, apesar de twoside ser padrão na classe base, memoir
+\ExecuteOptions{oneside,times}
 
 \ProcessOptions\relax % processa todas as opções
+
+% depois de muitos erros tentando passar opções para a classe após carregá-la, a solução encontrada foi carregá-la com todas as opções de uma vez
+\ifoneside
+\LoadClass[oneside]{memoir}
+\else
+\LoadClass{memoir}
+\fi
 
 \RequirePackage[utf8]{inputenc}
 % carrega idiomas e caracteres de saída de 8 bits
@@ -1267,7 +1275,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
-% \RequirePackage{helvet}
 \usepackage[scaled]{uarial}
 \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
@@ -1494,7 +1501,7 @@ postheadspace=1em
 
 				% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
 				\newcommand{\fichacatalografica}{
-					\iftwoside
+					\if@twoside
 					\else
 					% se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
 					\addtocounter{page}{-1}
