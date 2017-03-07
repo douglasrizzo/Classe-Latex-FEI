@@ -14,59 +14,42 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2016/09/02 3.0.2 Modelo da FEI]
-\LoadClass[a4paper]{memoir}
+\ProvidesClass{fei}[2017/03/07 3.0.3 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 \newif\ifrascunho
 \rascunhofalse
-\DeclareOption{rascunho}
-{
-\rascunhotrue
-}
+\DeclareOption{rascunho}{\rascunhotrue}
 
 \newif\ifsublist
 \sublistfalse
-\DeclareOption{sublist}
-{
-\sublisttrue
-}
+\DeclareOption{sublist}{\sublisttrue}
 
 \newif\ifarial
-\DeclareOption{arial}
-{
-\arialtrue
-}
+\DeclareOption{arial}{\arialtrue}
+\DeclareOption{times}{\arialfalse}
 
-\DeclareOption{times}
-{
-\arialfalse
-}
+\newif\ifoneside
+\DeclareOption{oneside}{\onesidetrue}
+\DeclareOption{twoside}{\onesidefalse}
 
-\newif\iftwoside
-\twosidefalse
-\DeclareOption{twoside}
-{
-\twosidetrue
-}
-
-\DeclareOption{algo-as-figure}
-{
-\PassOptionsToPackage{figure}{algorithm2e}
-}
-
-\iftwoside
-\PassOptionsToClass{twoside}{memoir}
-\else
-\PassOptionsToClass{oneside}{memoir}
-\fi
+\DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
 
-\ExecuteOptions{times} % processa opções-padrão
+
+\PassOptionsToClass{a4paper}{memoir}
+
+\ExecuteOptions{oneside,times}
 
 \ProcessOptions\relax % processa todas as opções
+
+\ifoneside
+\LoadClass[oneside]{memoir}
+\else
+\LoadClass{memoir}
+\fi
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
@@ -198,7 +181,7 @@ postheadspace=1em
 \@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{%
-\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\itshape}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
@@ -289,7 +272,7 @@ postheadspace=1em
 }
 
 \newcommand{\fichacatalografica}{
-\iftwoside
+\if@twoside
 \else
 \addtocounter{page}{-1}
 \fi
@@ -466,7 +449,7 @@ bibliography = {REFER\^ENCIAS}
 %% 
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
-%%                                 fei.cls.
+%% fei.cls.
 %% 
 %%
 %% End of file `fei.cls'.
