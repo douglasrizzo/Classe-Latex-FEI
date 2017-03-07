@@ -1202,7 +1202,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
 
-\ExecuteOptions{times} % processa opções-padrão
 \PassOptionsToClass{a4paper}{memoir}
 
 % processa opções-padrão
@@ -1375,7 +1374,7 @@ postheadspace=1em
 	\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{%
-	\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\it}}
+	\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\itshape}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
