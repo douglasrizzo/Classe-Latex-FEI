@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/07 3.0.3 Modelo da FEI]
+\ProvidesClass{fei}[2017/03/14 3.0.4 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -53,7 +53,7 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[english,portuges]{babel}
+\RequirePackage[english,brazil]{babel}
 \RequirePackage{csquotes}
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -75,7 +75,7 @@
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
-\selectlanguage{portuges} % idioma do documento
+\selectlanguage{brazil} % idioma do documento
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -324,7 +324,7 @@ postheadspace=1em
 
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{portuges}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
@@ -366,7 +366,7 @@ postheadspace=1em
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 
-\addto\captionsportuges{%
+\addto\captionsbrazil{%
 \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
 \renewcommand*{\contentsname}{Sum\'ario}%
 \renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
@@ -398,14 +398,15 @@ postheadspace=1em
 \stepcounter{chapter}%
 \cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
 \phantomsection%
-\addcontentsline{toc}{chapter}{ANEXO \Alph{chapter} -- ##1}%
+\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
 \newpage%
 }%
 }%
 
 \RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
+\setlength{\bibitemsep}{1.0\baselineskip}
 
-\DefineBibliographyStrings{portuges}{%
+\DefineBibliographyStrings{brazil}{%
 bibliography = {REFER\^ENCIAS}
 }
 
@@ -449,7 +450,7 @@ bibliography = {REFER\^ENCIAS}
 %% 
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
-%% fei.cls.
+%%                                 fei.cls.
 %% 
 %%
 %% End of file `fei.cls'.
