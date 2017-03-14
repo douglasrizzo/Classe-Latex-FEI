@@ -1220,7 +1220,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage[utf8]{inputenc}
 % carrega idiomas e caracteres de saída de 8 bits
 \RequirePackage[T1]{fontenc}
-\RequirePackage[english,portuges]{babel}
+\RequirePackage[english,brazil]{babel}
 \RequirePackage{csquotes}
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
@@ -1246,7 +1246,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
 
-\selectlanguage{portuges} % idioma do documento
+\selectlanguage{brazil} % idioma do documento
 
 % linhas orfas e viuvas (verificar o limite)
 \widowpenalty=10000
@@ -1546,7 +1546,7 @@ postheadspace=1em
 				\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
 				% abstract
-				\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{portuges}}
+				\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
 
 				% agradecimentos
 				\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
@@ -1599,7 +1599,7 @@ postheadspace=1em
 							\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 							\fi
 
-							\addto\captionsportuges{%
+							\addto\captionsbrazil{%
 								\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
 								\renewcommand*{\contentsname}{Sum\'ario}%
 								\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
@@ -1645,7 +1645,7 @@ postheadspace=1em
 							%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
 							\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
 
-							\DefineBibliographyStrings{portuges}{%
+							\DefineBibliographyStrings{brazil}{%
 								bibliography = {REFER\^ENCIAS}
 							}
 
