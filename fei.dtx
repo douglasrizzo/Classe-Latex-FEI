@@ -909,6 +909,78 @@ Versão 3 (2016 -- ):
 	      \end{itemize}
 \end{itemize}
 
+\chapter{\emph{HACKS} ÚTEIS}
+
+Existem alguns casos específicos nos quais técnicas de formatação avançadas ou redefinições de comandos são requeridas. Não existe forma simples de disponibilizar os recursos listados neste apêndice aos usuários da classe, então o apêndice ensinará os usuários a realizar personalizações básicas na classe, assim como fazer formatações menos convencionais que sejam necessárias para aderir as padrões da biblioteca.
+
+\section{MUDANDO OS NOMES DAS LISTAS}
+
+Frequentemente o(a) orientador(a) ou um(a) bibliotecário(a) decide contrariar todas as regras escritas no guia de formatação, assim como as normas da \gls{abnt}, e deseja que determinadas listas possuam nomes específicos. Este apêndice ensina os usuários a modificar os nomes das listas que são geradas no preâmbulo, assim como os nomes que precedem cada item dessas listas.
+
+Os comandos abaixo definem os nomes nas entradas das listas de ilustrações e tabelas.
+
+\begin{verbatim}
+% espaço onde a palavra "Ilustração" é escrita
+\setlength{\cftfigurenumwidth}{7.2em}
+% espaço onde a palavra "Tabela" é escrita
+\setlength{\cfttablenumwidth}{5.7em}
+% escrita que precede cada entrada na lista de ilustrações
+\renewcommand{\cftfigurepresnum}{Ilustra\c{c}\~ao }
+% escrita que precede cada entrada na lista de tabelas
+\renewcommand{\cfttablepresnum}{Tabela }
+\end{verbatim}
+
+Por exemplo, para transformar ``Ilustração 1'', ``Ilustração 2'' etc. em ``Figura 1,'' ``Figura 2'' etc. na lista de ilustrações, inclua o seguinte comando no preâmbulo de seu trabalho.
+
+\begin{verbatim}
+\renewcommand{\cftfigurepresnum}{Figura }
+\setlength{\cftfigurenumwidth}{5.7em}
+\end{verbatim}
+
+O comando abaixo define os nomes das listas de ilustrações, sumário, lista de abreviaturas e lista de símbolos para o idioma português brasileiro.
+
+\begin{verbatim}
+\addto\captionsbrazil{%
+\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+\renewcommand*{\contentsname}{Sum\'ario}%
+\renewcommand*{\acronymname}%
+	{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+\renewcommand*{\glssymbolsgroupname}%
+	{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+\end{verbatim}
+
+Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do comando \verb+\addto\captionsbrazil{...}+. Assim como no exemplo anterior, isso deve ser feito no preâmbulo do trabalho. O exemplo abaixo renomeia a lista de ilustrações para ``Lista de Figuras'':
+
+\begin{verbatim}
+\addto\captionsbrazil{%
+\renewcommand*{\listfigurename}{Lista de Figuras}}
+\end{verbatim}
+
+\section{ALINHANDO FIGURA E LEGENDA}
+
+\begin{figure}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\caption{Exemplo de fonte com sua figura.}
+		\rule{\textwidth}{2cm}
+		\smallcaption{Fonte: Autor.}\label{fig:exemplo_alinhado}
+	\end{minipage}
+\end{figure}
+
+Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda corretamente sem utilizar recuos é através do uso do ambiente \texttt{minipage}, como mostrado abaixo. A figura \ref{fig:exemplo_alinhado} mostra o resultado. Neste formato, para mudar o tamanho da figura, muda-se o tamanho da \texttt{minipage}.
+
+\begin{verbatim}
+\begin{figure}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\caption{Exemplo de fonte com sua figura.}
+		\rule{\textwidth}{2cm}
+		\includegraphics[width=\textwidth]{...}
+		\smallcaption{Fonte: Autor.}\label{fig:exemplo_alinhado}
+	\end{minipage}
+\end{figure}
+\end{verbatim}
+
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
 
 A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
