@@ -1728,7 +1728,8 @@ postheadspace=1em
 
 							\defbibheading{bibliography}[\bibname]{%
 								\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-								\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+								\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}%
+								\urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
 							}
 
 							\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
