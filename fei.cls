@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/14 3.0.4 Modelo da FEI]
+\ProvidesClass{fei}[2017/03/18 3.0.5 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -403,7 +403,7 @@ postheadspace=1em
 }%
 }%
 
-\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
+\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
@@ -416,7 +416,8 @@ bibliography = {REFER\^ENCIAS}
 
 \defbibheading{bibliography}[\bibname]{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}%
+\urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
 }
 
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
