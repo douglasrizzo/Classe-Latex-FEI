@@ -332,7 +332,7 @@ postheadspace=1em
 \renewcommand{\indexname}{\'Indice}
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
-\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
+\renewcommand{\makeindex}{\oldmakeindex[title=\noindent\hfill\'INDICE\hfill\mbox{}]}
 \renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
@@ -369,8 +369,8 @@ postheadspace=1em
 \addto\captionsbrazil{%
 \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
 \renewcommand*{\contentsname}{Sum\'ario}%
-\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
-\renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
+\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
@@ -416,7 +416,7 @@ bibliography = {REFER\^ENCIAS}
 
 \defbibheading{bibliography}[\bibname]{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}%
+\noindent\hfill\textbf{REFER\^ENCIAS}\hfill\mbox{}%
 \urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
 }
 
