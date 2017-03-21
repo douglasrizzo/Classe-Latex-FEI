@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/18 3.0.5 Modelo da FEI]
+\ProvidesClass{fei}[2017/03/20 3.0.6 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -437,7 +437,7 @@ bibliography = {REFER\^ENCIAS}
 \item\relax}
 {\endlist\end{SingleSpace}}
 %% 
-%% Copyright (C) 2016 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2017 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either
