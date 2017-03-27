@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/20 3.0.6 Modelo da FEI]
+\ProvidesClass{fei}[2017/03/27 3.0.6 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -451,7 +451,7 @@ bibliography = {REFER\^ENCIAS}
 %% 
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
-%%                                 fei.cls.
+%% fei.cls.
 %% 
 %%
 %% End of file `fei.cls'.
