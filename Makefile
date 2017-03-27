@@ -56,3 +56,7 @@ templates: all
 	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
 	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
 	make clean
+format:
+	mv fei.dtx tmp.cls
+	latexindent -w tmp.cls
+	mv tmp.cls fei.dtx
