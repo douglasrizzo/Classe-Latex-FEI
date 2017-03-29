@@ -39,7 +39,7 @@
 
 
 
-\PassOptionsToClass{a4paper}{memoir}
+\PassOptionsToClass{a5paper}{memoir}
 
 \ExecuteOptions{oneside,times}
 
@@ -451,7 +451,7 @@ bibliography = {REFER\^ENCIAS}
 %% 
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
-%% fei.cls.
+%%                                 fei.cls.
 %% 
 %%
 %% End of file `fei.cls'.

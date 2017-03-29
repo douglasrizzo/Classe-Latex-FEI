@@ -93,6 +93,28 @@ and the derived files           fei.pdf and
 %<*driver>
 \documentclass[rascunho,xindy,oneside]{\jobname}
 \usepackage{multicol}
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily,
+columns=flexible,
+breaklines=true,
+literate=
+  {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+	{Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
 
 \author{Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos}
@@ -212,11 +234,11 @@ Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial
 
 \begin{itemize}
 	\item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
-	\item Instalar o script usando o aplicativo \texttt{texlua}: \verb+texlua install-getnonfreefonts+;
-	\item Rodar o script: \verb+getnonfreefonts --all+.
+	\item Instalar o script usando o aplicativo \texttt{texlua}: \lstinline+texlua install-getnonfreefonts+;
+	\item Rodar o script: \lstinline+getnonfreefonts --all+.
 \end{itemize}
 
-Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \verb+\documentclass[arial]{fei}+.
+Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \lstinline+\documentclass[arial]{fei}+.
 
 \section{DEPENDÊNCIAS}\label{sec:dependencias}
 
@@ -265,9 +287,9 @@ No preâmbulo do texto são declaradas as propriedades globais do documento, com
 
 A declaração da classe é feita da seguinte forma:
 
-\begin{verbatim}
+\begin{lstlisting}
 \documentclass[opções]{fei}
-\end{verbatim}
+\end{lstlisting}
 
 A classe da FEI pode receber as seguintes opções:
 
@@ -281,22 +303,22 @@ A classe da FEI pode receber as seguintes opções:
 
 \subsection{Nome do autor, e título}
 
-O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX{} \verb+\author{autor}+ e \verb+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \verb+\and+ ou \verb+\\+, como no exemplo:
+O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX{} \lstinline+\author{autor}+ e \lstinline+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \lstinline+\and+ ou \lstinline+\\+, como no exemplo:
 
-\begin{verbatim}
+\begin{lstlisting}
 \author{Leonardo \and Douglas}
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Subtítulo (opcional)}
 
-Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \verb+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \verb+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
+Uma vez que as normas da biblioteca demandam formatações específicas para o título e subtítulo do documento (título em letras maiúsculas na capa, seguido do subtítulo em letras normais, separados por ``:''), foi criado o comando \lstinline+\subtitulo{}+, o qual recebe o texto referente ao subtítulo do texto. Este comando pode ser usado, preferencialmente, após o comando \lstinline+\title{}+ no preâmbulo do documento. Título e subtítulo também aparecem na folha de rosto.
 
 \subsection{Cidade e Instituição (opcionais)}
-Os comandos \verb+\cidade{}+ e \verb+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário FEI'', respectivamente.
+Os comandos \lstinline+\cidade{}+ e \lstinline+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário FEI'', respectivamente.
 
 \subsection{Arquivos de referências bibliográficas}\label{subsec:referencias-pre}
 
-Em \TeX{}, as referências bibliográficas são mantidas em um ou mais arquivos de extensão \texttt{bib}, preferencialmente no mesmo diretório do arquivo \texttt{tex} do trabalho. Os arquivos \texttt{bib} utilizados pelo trabalho devem ser referenciados no preâmbulo do texto utilizando o comando \verb+\addbibresource{ref.bib}+. Mais de um arquivo pode ser referenciado, utilizando-se o comando \verb+\addbibresource{}+ mais de uma vez.
+Em \TeX{}, as referências bibliográficas são mantidas em um ou mais arquivos de extensão \texttt{bib}, preferencialmente no mesmo diretório do arquivo \texttt{tex} do trabalho. Os arquivos \texttt{bib} utilizados pelo trabalho devem ser referenciados no preâmbulo do texto utilizando o comando \lstinline+\addbibresource{ref.bib}+. Mais de um arquivo pode ser referenciado, utilizando-se o comando \lstinline+\addbibresource{}+ mais de uma vez.
 
 Para saber como imprimir a lista de referências bibliográficas na seção pós-textual so trabalho, confira a seção \ref{subsec:referencias-pos}.
 
@@ -306,51 +328,51 @@ O pré-texto do documento engloba todos os elementos textuais que precedem o cor
 
 \subsection{Capa}
 
-A capa do trabalho é inserida através do comando \verb+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \verb+\author{}+, o título em \verb+\title{}+, o subtítulo de \verb+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
+A capa do trabalho é inserida através do comando \lstinline+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \lstinline+\author{}+, o título em \lstinline+\title{}+, o subtítulo de \lstinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
 
 \subsection{Folha de rosto}
 
 A folha de rosto recebe um texto pré-definido, de acordo com o nível do trabalho escrito (monografia, dissertação ou tese). Este texto pode ser encontrado no guia da biblioteca e deve ser colocado dentro do ambiente \texttt{folhaderosto}. Por exemplo,
-\begin{verbatim}
+\begin{lstlisting}
 \begin{folhaderosto}
 Dissertação de Mestrado apresentada ao Centro Universitário
 da FEI para obtenção do título de Mestre em Engenharia
 Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 \end{folhaderosto}
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Ficha catalográfica e folha de aprovação}
 
-Os comandos \verb+\fichacatalografica+ e \verb+\folhadeaprovacao+ inserem, respectivamente, a ficha catalográfica e a folha de aprovação do trabalho no local onde o comando foi chamado. O comando  \verb+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \verb+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
+Os comandos \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ inserem, respectivamente, a ficha catalográfica e a folha de aprovação do trabalho no local onde o comando foi chamado. O comando  \lstinline+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \lstinline+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
 
-Caso você ainda não possua estes arquivos, mas queira visualizar o documento com páginas que demarquem a posição das futuras folha de aprovação e ficha catalográfica, é possível compilar o projeto passando a opção \texttt{rascunho} na declaração da classe, da seguinte forma: \verb+\documentclass[rascunho]{fei}+.
+Caso você ainda não possua estes arquivos, mas queira visualizar o documento com páginas que demarquem a posição das futuras folha de aprovação e ficha catalográfica, é possível compilar o projeto passando a opção \texttt{rascunho} na declaração da classe, da seguinte forma: \lstinline+\documentclass[rascunho]{fei}+.
 
 \subsection{Dedicatória}
 
-O comando \verb+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo guia da biblioteca. Por exemplo: \\ \verb+\dedicatoria{A quem eu quero dedicar o texto}+.
+O comando \lstinline+\dedicatoria{}+ recebe um argumento com a dedicatória desejada e o insere na posição especificada pelo guia da biblioteca. Por exemplo: \\ \lstinline+\dedicatoria{A quem eu quero dedicar o texto}+.
 
 \subsection{Agradecimentos}
 
 O ambiente de agradecimentos não possui nenhuma propriedade especial, somente centraliza o título e deixa o texto que se encontra entre seu \texttt{begin} e \texttt{end} na formatação esperada.
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{agradecimentos}
 A quem se deseja agradecer.
 \end{agradecimentos}
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Epígrafe}
 A epígrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epígrafe e o segundo o autor da mesma.
 
-\emph{Nota:} O guia da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \verb+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
+\emph{Nota:} O guia da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \lstinline+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
 
-Exemplo: \verb+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
+Exemplo: \lstinline+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
 
 \subsection{Resumo e \emph{abstract}}
 
-O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \verb+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \verb+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \verb+\palavraschave{...}+ e no \emph{abstract}, o comando \verb+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas manualmente por ponto final.
+O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \lstinline+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \lstinline+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \lstinline+\palavraschave{...}+ e no \emph{abstract}, o comando \lstinline+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas manualmente por ponto final.
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{resumo}
 Resumo vem aqui.
 \palavraschave{\LaTeX{}. FEI.}
@@ -360,7 +382,7 @@ Resumo vem aqui.
 Abstract goes here.
 \keyword{Keywords. Go. Here.}
 \end{abstract}
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Listas e sumário}
 
@@ -373,17 +395,17 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 		\hline
 		\textbf{Elemento}                  & \textbf{Comando}        \\
 		\hline
-		Sumário                           & \verb+\tableofcontents+ \\
+		Sumário                           & \lstinline+\tableofcontents+ \\
 		\hline
-		Lista de Figuras                   & \verb+\listoffigures+ \\
+		Lista de Figuras                   & \lstinline+\listoffigures+ \\
 		\hline
-		Lista de Tabelas                   & \verb+\listoftables+ \\
+		Lista de Tabelas                   & \lstinline+\listoftables+ \\
 		\hline
-		Lista de Algoritmos                & \verb+\listofalgorithms+ \\
+		Lista de Algoritmos                & \lstinline+\listofalgorithms+ \\
 		\hline
-		Lista de Teoremas                  & \verb+\listoftheorems+ \\
+		Lista de Teoremas                  & \lstinline+\listoftheorems+ \\
 		\hline
-		Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\
+		Listas de Abreviaturas e Símbolos & \lstinline+\printglossaries+ \\
 		\hline
 	\end{tabular}
 	\smallcaption{Fonte: Autor}
@@ -391,9 +413,9 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 
 \section{TEXTO}\label{sec:texto}
 
-Sob a nomenclatura do guia da biblioteca, o texto pode ser estruturado utilizando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 níveis disponibilizados nativamente pelo \LaTeX: capítulo, seção, subseção, subsubseção e parágrafo. Para isso, são usados os comandos nativos do \LaTeX{} para divisão do texto: \verb+\chapter{...}+, \verb+\section{...}+, \verb+\subsection{...}+, \verb+\subsubsection{...}+ e \verb+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
+Sob a nomenclatura do guia da biblioteca, o texto pode ser estruturado utilizando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 níveis disponibilizados nativamente pelo \LaTeX: capítulo, seção, subseção, subsubseção e parágrafo. Para isso, são usados os comandos nativos do \LaTeX{} para divisão do texto: \lstinline+\chapter{...}+, \lstinline+\section{...}+, \lstinline+\subsection{...}+, \lstinline+\subsubsection{...}+ e \lstinline+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
 
-Ao utilizar \verb+\chapter{...}+ e \verb+\section{...}+, é necessário inserir manualmente os títulos em letras maiúsculas para garantir que os mesmos aparecem em letras maiúsculas tanto no sumário como no texto, garantindo a aderência ao guia.
+Ao utilizar \lstinline+\chapter{...}+ e \lstinline+\section{...}+, é necessário inserir manualmente os títulos em letras maiúsculas para garantir que os mesmos aparecem em letras maiúsculas tanto no sumário como no texto, garantindo a aderência ao guia.
 
 \subsection{\emph{Floats}}
 
@@ -401,12 +423,12 @@ As regras da biblioteca definem formatações distintas para os diferentes tipos
 
 \subsubsection{Figuras}
 
-A partir de 2015, o guia de formatação da biblioteca padroniza as legendas de figuras e tabelas com a mesma formatação. Na parte superior da figura, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo da figura, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior da figura, utiliza-se o comando \verb+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \verb+\smallcaption{}+, o qual constitui uma interface simples para a formatação diferenciada da legenda inferior e, caso desejado, pode ser substituído por:
+A partir de 2015, o guia de formatação da biblioteca padroniza as legendas de figuras e tabelas com a mesma formatação. Na parte superior da figura, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo da figura, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior da figura, utiliza-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \lstinline+\smallcaption{}+, o qual constitui uma interface simples para a formatação diferenciada da legenda inferior e, caso desejado, pode ser substituído por:
 
-\begin{verbatim}
+\begin{lstlisting}
 \captionsetup{font=small}
 \caption*{...}
-\end{verbatim}
+\end{lstlisting}
 
 A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior utilizando a formatação nativa.
 
@@ -417,20 +439,20 @@ A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~
 	\smallcaption{Fonte: \citefloat{lamport1994latex}.}\label{fig:exemplo}
 \end{figure}
 
-\begin{verbatim}
+\begin{lstlisting}
 	\begin{figure}
 	\centering
   \caption{Exemplo de figura com sua fonte.}
 	\includegraphics[...]{...}
 	\smallcaption{Fonte: Autor.}
 	\end{figure}
-\end{verbatim}
+\end{lstlisting}
 
 \subsubsection{Tabelas}
 
 Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, deve-se utilizar o mesmo processo descrito para as figuras. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{table}[ht!]
 	\caption{Legenda da tabela}
 	\begin{tabular}{|c|c|c|c|}
@@ -438,7 +460,7 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 	\end{tabular}
   \smallcaption{Fonte: Autor.}
 \end{table}
-\end{verbatim}
+\end{lstlisting}
 
 \begin{table}[ht!]
 	\caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
@@ -462,7 +484,7 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 Apesar de estar ausente no guia, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura.
 A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram traduzidos para o português e, logo após, um exemplo de como usar alguns desses comandos. Para mais informações, consulte o manual do \texttt{algorithm2e}.
 
-\begin{verbatim}
+\begin{lstlisting}
 \SetKwInput{Entrada}{Entrada}
 \SetKwInput{Saida}{Sa\'ida}
 \SetKwInput{Dados}{Dados}
@@ -480,11 +502,11 @@ A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram tra
 \SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}
 \SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}
 \SetKwRepeat{Repita}{repita}{at\'e}
-\end{verbatim}
+\end{lstlisting}
 
 Exemplo:
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{algorithm}
 	\Entrada{Vetor \(X\)}
 	\Saida{Vetor \(Y\)}
@@ -495,7 +517,7 @@ Exemplo:
 	\caption{Exemplo de algoritmo usando algorithm2e em português.}
 	\label{lst:alg}
 \end{algorithm}
-\end{verbatim}
+\end{lstlisting}
 
 \begin{algorithm}
 	\Entrada{Vetor \(X\)}
@@ -513,7 +535,7 @@ Exemplo:
 
 \subsubsection{Equações}
 
-O guia da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \verb+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \verb+\ref{}+, porém com a adição dos parênteses.
+O guia da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \lstinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \lstinline+\ref{}+, porém com a adição dos parênteses.
 
 \begin{equation} \label{eq:euler}
 	e^{i\pi}+1=0
@@ -521,21 +543,21 @@ O guia da biblioteca também dita que todas as equações devem vir acompanhadas
 
 A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{equation} \label{eq:euler}
 e^{i\pi}+1=0
 \end{equation}
-\end{verbatim}
+\end{lstlisting}
 
 \subsubsection{Teoremas}
 
 É comum encontrar, na literatura de exatas, teoremas e seus derivados, tipografados de maneira diferenciada. Em \LaTeX{}, a classe \texttt{amsthm} permite que teoremas sejam escritos em seus próprios ambientes e formatados de acordo, como no seguinte exemplo:
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{teorema}
 Exemplo de teorema.
 \end{teorema}
-\end{verbatim}
+\end{lstlisting}
 
 Resultado:
 
@@ -545,7 +567,7 @@ Resultado:
 
 Caso um teorema possua um nome ou referência, essa informação pode ser passada entre colchetes, como uma opção do ambiente:
 
-\verb+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
+\lstinline+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
 
 \begin{teorema}[Teorema de Pitágoras \cite{heath1921history}] \label{thm:ex2}
 	Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
@@ -573,25 +595,25 @@ Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndi
 
 \subsection{Referências bibliográficas} \label{subsec:referencias-pos}
 
-A lista de referências bibliográficas, contidas em um ou mais arquivos \texttt{bib} e referenciadas assim como descrito na seção \ref{subsec:referencias-pre}, é inserida no trabalho através do comando \verb+\printbibliography+. Repare, contudo, que apenas as obras referenciadas no texto através dos comandos de citação são listadas nas referências bibliográficas.
+A lista de referências bibliográficas, contidas em um ou mais arquivos \texttt{bib} e referenciadas assim como descrito na seção \ref{subsec:referencias-pre}, é inserida no trabalho através do comando \lstinline+\printbibliography+. Repare, contudo, que apenas as obras referenciadas no texto através dos comandos de citação são listadas nas referências bibliográficas.
 
 \subsection{Apêndices e anexos}
 
-O \LaTeX{} possui o comando nativo \verb+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
+O \LaTeX{} possui o comando nativo \lstinline+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
 
-\begin{verbatim}
-	\chapter{Último capítulo}
-	...
-	\appendix
-	\chapter{Primeiro apêndice}
-	...
-	\chapter{Segundo apêndice}
-	...
-\end{verbatim}
+\begin{lstlisting}
+\chapter{Último capítulo}
+...
+\appendix
+\chapter{Primeiro apêndice}
+...
+\chapter{Segundo apêndice}
+...
+\end{lstlisting}
 
-Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para declarar anexos. Para isso, foi criado o comando \verb+\anexos+ que transforma os capítulos subsequentes em anexos.
+Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para declarar anexos. Para isso, foi criado o comando \lstinline+\anexos+ que transforma os capítulos subsequentes em anexos.
 
-\begin{verbatim}
+\begin{lstlisting}
 	\chapter{Último capítulo ou anexo}
 	...
 	\anexos
@@ -599,11 +621,11 @@ Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para decl
 	...
 	\chapter{Segundo anexo}
 	...
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Índice}
 
-A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \verb+\printindex+.
+A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \lstinline+\printindex+.
 
 \chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
 
@@ -612,65 +634,65 @@ O \gls{abntex} (\url{http://www.abntex.net.br/}) é um conjunto de macros (coman
 As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \texttt{biblatex-abnt}.
 
 \section{CITAÇÃO NO FINAL DE LINHA}
-A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \verb+\cite{obra}+.
+A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \lstinline+\cite{obra}+.
 
-Exemplo: Este texto deveria ser uma referência \verb+\cite{turing50}+. $\to$ Este texto deveria ser uma referência \cite{turing50}.
+Exemplo: Este texto deveria ser uma referência \lstinline+\cite{turing50}+. $\to$ Este texto deveria ser uma referência \cite{turing50}.
 
 \section{CITAÇÃO DURANTE O TEXTO}
-Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \verb+\textcite{obra}+ para este caso.
+Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \lstinline+\textcite{obra}+ para este caso.
 
-Exemplo: Segundo \verb+\textcite{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \textcite{haykin99a}, este texto deveria ser uma referência.
+Exemplo: Segundo \lstinline+\textcite{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \textcite{haykin99a}, este texto deveria ser uma referência.
 
 \section{CITAÇÃO INDIRETA}
-Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \verb+\apud{obra_inacessivel}{obra_acessivel}+.
+Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \lstinline+\apud{obra_inacessivel}{obra_acessivel}+.
 
-Exemplo: \verb+\apud{kahneman2011}{stewart2012}+ formata a citação de forma semelhante a \apud{kahneman2011}{stewart2012}.
+Exemplo: \lstinline+\apud{kahneman2011}{stewart2012}+ formata a citação de forma semelhante a \apud{kahneman2011}{stewart2012}.
 
 \section{CITAÇÕES MÚLTIPLAS}
 
-Os comandos \verb+\cites{obra_1}{...}{obra_n}+ e \verb+\textcites{obra_1}{}...}{obra_m}+ também possibilitam a utilização de citações múltiplas.
+Os comandos \lstinline+\cites{obra_1}{...}{obra_n}+ e \lstinline+\textcites{obra_1}{}...}{obra_m}+ também possibilitam a utilização de citações múltiplas.
 
 Exemplos:
 
-\verb+\cites{Mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{Mcc43}{kurzweil2013}{haykin99a}.
+\lstinline+\cites{Mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{Mcc43}{kurzweil2013}{haykin99a}.
 
-\verb+\textcites{clarke19932001}{hamlet}{art1}+ \(\to\) \textcites{clarke19932001}{hamlet}{art1}.
+\lstinline+\textcites{clarke19932001}{hamlet}{art1}+ \(\to\) \textcites{clarke19932001}{hamlet}{art1}.
 
 \section{CITAÇÕES DE CAMPOS ESPECÍFICOS}
 
-Para citar o nome do autor em linha, utilize o comando \verb+\citeauthor*{obra}+.
+Para citar o nome do autor em linha, utilize o comando \lstinline+\citeauthor*{obra}+.
 
-\verb+\citeauthor*{galilei_dialogue_1953}+ \(\to\) \citeauthor*{galilei_dialogue_1953}
+\lstinline+\citeauthor*{galilei_dialogue_1953}+ \(\to\) \citeauthor*{galilei_dialogue_1953}
 
-Para citar o nome do autor em letras maiúsculas, utilize\verb+\citeauthor{obra}+.
+Para citar o nome do autor em letras maiúsculas, utilize\lstinline+\citeauthor{obra}+.
 
-\verb+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
+\lstinline+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
 
-Para citar o ano de uma obra, utilize \verb+\citeyear{obra}+.
+Para citar o ano de uma obra, utilize \lstinline+\citeyear{obra}+.
 
-\verb+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
+\lstinline+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
 
 \section{CITAÇÃO PARA \emph{FLOATS}}
 
-No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \verb+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \verb+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
+No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \lstinline+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \lstinline+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
 
-\verb+Fonte: \citefloat{kernighan1988}.+ \(\to\) Fonte: \citefloat{kernighan1988}.
+\lstinline+Fonte: \citefloat{kernighan1988}.+ \(\to\) Fonte: \citefloat{kernighan1988}.
 
 % \section{OUTROS EXEMPLOS}
 %
-% \verb+\Idem[p.~2]{turing50}+ \(\to\) \Idem[p.~2]{turing50}
+% \lstinline+\Idem[p.~2]{turing50}+ \(\to\) \Idem[p.~2]{turing50}
 %
-% \verb+\Ibidem[p.~2]{turing50}+ \(\to\) \Ibidem[p.~2]{turing50}
+% \lstinline+\Ibidem[p.~2]{turing50}+ \(\to\) \Ibidem[p.~2]{turing50}
 %
-% \verb+\opcit[p.~2]{turing50}+ \(\to\) \opcit[p.~2]{turing50}
+% \lstinline+\opcit[p.~2]{turing50}+ \(\to\) \opcit[p.~2]{turing50}
 %
-% \verb+\passim{turing50}+ \(\to\) \passim{turing50}
+% \lstinline+\passim{turing50}+ \(\to\) \passim{turing50}
 %
-% \verb+\loccit{turing50}+ \(\to\) \loccit{turing50}
+% \lstinline+\loccit{turing50}+ \(\to\) \loccit{turing50}
 %
-% \verb+\cfcite[p.~2]{turing50}+ \(\to\) \cfcite[p.~2]{turing50}
+% \lstinline+\cfcite[p.~2]{turing50}+ \(\to\) \cfcite[p.~2]{turing50}
 %
-% \verb+\etseq[p.~2]{turing50}+ \(\to\) \etseq[p.~2]{turing50}
+% \lstinline+\etseq[p.~2]{turing50}+ \(\to\) \etseq[p.~2]{turing50}
 
 \section{CITAÇÕES COM MAIS DE TRÊS LINHAS}
 
@@ -694,19 +716,19 @@ Já nos trabalhos de \textcite{duan2012large,duan2012reduced,duan2014functional}
 
 Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante de todas as instalações do \LaTeX{}. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou cedilha -- não serão organizados corretamente. Para solucionar este problema, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
 
-Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \verb+\documentclass[xindy]{fei}+
+Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \lstinline+\documentclass[xindy]{fei}+
 
 Como o \emph{xindy} não é parte integrante do \LaTeX{}, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}. Também é necessário executar um passo adicional na compilação do projeto, o qual é explicado no capítulo \ref{chap:compilando}.
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE ÍNDICE}
 
-Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \verb+\makeindex+ ao preâmbulo de seu texto.
+Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeindex+ ao preâmbulo de seu texto.
 
 \section{INDEXANDO PALAVRAS}
 
-Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \verb+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
+Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \lstinline+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
 
-Exemplo: [\ldots] a biblioteca do Centro Universitário \verb+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \verb+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+Exemplo: [\ldots] a biblioteca do Centro Universitário \lstinline+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \lstinline+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
 
 É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 
@@ -714,23 +736,23 @@ Para aprender dicas avançadas na criação de índices mais complexos, recomend
 
 \section{IMPRIMINDO O ÍNDICE}
 
-A impressão do índice é feita utilizando o comando \verb+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
+A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
 
 \chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 
-Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \verb+\input+ ou \verb+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 
 \emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE LISTAS DE SÍMBOLOS E ABREVIATURAS}
 
-Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \verb+\makeglossaries+ ao preâmbulo de seu texto.
+Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeglossaries+ ao preâmbulo de seu texto.
 
 \section{INDEXANDO ABREVIATURAS}
 
 A indexação de abreviaturas é feita utilizando o comando
 
-\verb+\newacronym[longplural=1]{2}{3}{4}+, onde:
+\lstinline+\newacronym[longplural=1]{2}{3}{4}+, onde:
 
 \begin{enumerate}
 	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
@@ -739,73 +761,73 @@ A indexação de abreviaturas é feita utilizando o comando
 	\item 4: o significado a abreviatura, escrito por extenso.
 \end{enumerate}
 
-Exemplo: \verb+\newacronym[longplural=Associações+
+Exemplo: \lstinline+\newacronym[longplural=Associações+
 
-\verb+Brasileiras de Normas Técnicas]+
+\lstinline+Brasileiras de Normas Técnicas]+
 
-\verb+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
+\lstinline+{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}+
 
 \section{INDEXANDO SÍMBOLOS}
 
 A indexação de símbolos é feita utilizando o comando
 
-\verb+\newglossaryentry{1}{parent={2},type=symbols,+
+\lstinline+\newglossaryentry{1}{parent={2},type=symbols,+
 
-\verb+name={3},sort={4},description={5}}+, onde:
+\lstinline+name={3},sort={4},description={5}}+, onde:
 
 \begin{enumerate}
 	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
 	\item 2: tipo do símbolo; usado para separar letras gregas e subscritos das demais (Cf. exemplo abaixo);
-	\item 3: o símbolo; caso a notação matemática seja necessária, use \verb+\ensuremath{2}+ (Cf. exemplo abaixo);
+	\item 3: o símbolo; caso a notação matemática seja necessária, use \lstinline+\ensuremath{2}+ (Cf. exemplo abaixo);
 	\item 4: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
 	\item 5: a descrição do símbolo, que aparecerá na lista.
 \end{enumerate}
 
-Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=symbols,+
+Exemplo: \lstinline+\newglossaryentry{pi}{parent=greek,type=symbols,+
 
-\verb+name={\ensuremath{\pi}},sort=p,+
+\lstinline+name={\ensuremath{\pi}},sort=p,+
 
-\verb+description={número irracional que representa [...]}}+
+\lstinline+description={número irracional que representa [...]}}+
 
 \section{UTILIZANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}
 
 O pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 
 \begin{enumerate}
-	\item \verb+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
-	\item \verb+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
-	\item \verb+\glspl{<rotulo>}+: imprime a entrada no plural;
-	\item \verb+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
+	\item \lstinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
+	\item \lstinline+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
+	\item \lstinline+\glspl{<rotulo>}+: imprime a entrada no plural;
+	\item \lstinline+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
 \end{enumerate}
 
 As siglas possuem alguns comandos únicos para serem referenciadas:
 
 \begin{enumerate}
-	\item \verb+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
-	\item \verb+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
-	\item \verb+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
+	\item \lstinline+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
+	\item \lstinline+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
+	\item \lstinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 \end{enumerate}
 
-Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \verb+\gls{}+ e consequentemente, adicionados na lista de símbolos.
+Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
 
-É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \verb+\glsaddall+ no corpo do texto.
+É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
 
 \section{HIERARQUIA DE SÍMBOLOS}\label{sec:sublist}
 Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja utilizado no documento, a opção \texttt{sublist} deve ser passada à classe.
 
 O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
 
-\begin{verbatim}
-  \newglossaryentry{greek}{name={Letras gregas},
-    description={\nopostdesc},sort=a}
-  \newglossaryentry{deltap}{parent=greek,type=symbols,
-    name={\ensuremath{\Delta P}},sort=deltap,
-    description={pressure drop, $Pa$}}
-\end{verbatim}
+\begin{lstlisting}
+\newglossaryentry{greek}{name={Letras gregas},
+  description={\nopostdesc},sort=a}
+\newglossaryentry{deltap}{parent=greek,type=symbols,
+  name={\ensuremath{\Delta P}},sort=deltap,
+  description={pressure drop, $Pa$}}
+\end{lstlisting}
 
 \section{IMPRIMINDO AS LISTAS}
 
-A lista de abreviaturas pode ser impressa através do comando \verb+\printacronyms+. A lista de símbolos pode ser impressa através do comando \verb+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \verb+\printglossaries+.
+A lista de abreviaturas pode ser impressa através do comando \lstinline+\printacronyms+. A lista de símbolos pode ser impressa através do comando \lstinline+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \lstinline+\printglossaries+.
 
 \chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 
@@ -830,16 +852,16 @@ onde:
 
 Um exemplo de comando que executa todas essas funções é o seguinte:
 
-\begin{verbatim}
+\begin{lstlisting}
 pdflatex documento.tex
 biber documento
 makeglossaries documento
 pdflatex documento.tex
 makeindex documento.idx
 pdflatex documento.tex
-\end{verbatim}
+\end{lstlisting}
 
-Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \verb+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
+Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \lstinline+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
 
 \section{O JEITO FÁCIL}
 
@@ -931,7 +953,7 @@ Frequentemente o(a) orientador(a) ou um(a) bibliotecário(a) decide contrariar t
 
 Os comandos abaixo definem os nomes nas entradas das listas de ilustrações e tabelas.
 
-\begin{verbatim}
+\begin{lstlisting}
 % espaço onde a palavra "Ilustração" é escrita
 \setlength{\cftfigurenumwidth}{7.2em}
 % espaço onde a palavra "Tabela" é escrita
@@ -940,18 +962,18 @@ Os comandos abaixo definem os nomes nas entradas das listas de ilustrações e t
 \renewcommand{\cftfigurepresnum}{Ilustra\c{c}\~ao }
 % escrita que precede cada entrada na lista de tabelas
 \renewcommand{\cfttablepresnum}{Tabela }
-\end{verbatim}
+\end{lstlisting}
 
 Por exemplo, para transformar ``Ilustração 1'', ``Ilustração 2'' etc. em ``Figura 1,'' ``Figura 2'' etc. na lista de ilustrações, inclua o seguinte comando no preâmbulo de seu trabalho.
 
-\begin{verbatim}
+\begin{lstlisting}
 \renewcommand{\cftfigurepresnum}{Figura }
 \setlength{\cftfigurenumwidth}{5.7em}
-\end{verbatim}
+\end{lstlisting}
 
 O comando abaixo define os nomes das listas de ilustrações, sumário, lista de abreviaturas e lista de símbolos para o idioma português brasileiro.
 
-\begin{verbatim}
+\begin{lstlisting}
 \addto\captionsbrazil{%
 \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
 \renewcommand*{\contentsname}{Sum\'ario}%
@@ -959,14 +981,14 @@ O comando abaixo define os nomes das listas de ilustrações, sumário, lista de
 	{\hfill Lista de Abreviaturas \hfill \mbox{}}%
 \renewcommand*{\glssymbolsgroupname}%
 	{\hfill Lista de S\'imbolos \hfill \mbox{}}}
-\end{verbatim}
+\end{lstlisting}
 
-Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do comando \verb+\addto\captionsbrazil{...}+. Assim como no exemplo anterior, isso deve ser feito no preâmbulo do trabalho. O exemplo abaixo renomeia a lista de ilustrações para ``Lista de Figuras'':
+Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do comando \lstinline+\addto\captionsbrazil{...}+. Assim como no exemplo anterior, isso deve ser feito no preâmbulo do trabalho. O exemplo abaixo renomeia a lista de ilustrações para ``Lista de Figuras'':
 
-\begin{verbatim}
+\begin{lstlisting}
 \addto\captionsbrazil{%
 \renewcommand*{\listfigurename}{Lista de Figuras}}
-\end{verbatim}
+\end{lstlisting}
 
 \section{ALINHANDO FIGURA E LEGENDA}
 
@@ -981,7 +1003,7 @@ Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do com
 
 Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda corretamente sem utilizar recuos é através do uso do ambiente \texttt{minipage}, como mostrado abaixo. A figura \ref{fig:exemplo_alinhado} mostra o resultado. Neste formato, para mudar o tamanho da figura, muda-se o tamanho da \texttt{minipage}.
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{figure}
 	\centering
 	\begin{minipage}{.5\textwidth}
@@ -991,7 +1013,7 @@ Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda c
 		\smallcaption{Fonte: Autor.}\label{fig:exemplo_alinhado}
 	\end{minipage}
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
 
@@ -999,7 +1021,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \begin{enumerate}
 
-	\item\verb+pdflatex documento.tex+
+	\item\lstinline+pdflatex documento.tex+
 	      \begin{enumerate}
 		      \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
 		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
@@ -1010,20 +1032,20 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		      \item \texttt{toc}: sumário;
 	      \end{enumerate}
 
-	\item\verb+biber documento.aux+
+	\item\lstinline+biber documento.aux+
 	      \begin{enumerate}
 		      \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
 	      \end{enumerate}
 
-	\item\verb+makeindex documento.idx+
+	\item\lstinline+makeindex documento.idx+
 	      \begin{enumerate}
 		      \item \texttt{ilg}: \emph{log} do MakeIndex.
-		      \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
+		      \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \lstinline+\printindex+;
 	      \end{enumerate}
 
-	\item\verb+makeglossaries documento+
+	\item\lstinline+makeglossaries documento+
 	      \begin{enumerate}
-		      \item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \verb+\printglossaries+;
+		      \item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \lstinline+\printglossaries+;
 		      \item \texttt{glg}: \emph{log} do \emph{glossaries}.
 	      \end{enumerate}
 \end{enumerate}
@@ -1033,217 +1055,217 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \section{LETRAS GREGAS}
 \begin{multicols}{3}
 	\noindent
-	\(\alpha\) \verb+\alpha+\\
-	\(\beta\) \verb+\beta+\\
-	\(\gamma\) \verb+\gamma+\\
-	\(\delta\) \verb+\delta+\\
-	\(\epsilon\) \verb+\epsilon+\\
-	\(\varepsilon\) \verb+\varepsilon+\\
-	\(\zeta\) \verb+\zeta+\\
-	\(\eta\) \verb+\eta+\\
-	\(\theta\) \verb+\theta+\\
-	\(\vartheta\) \verb+\vartheta+\\
-	\(\iota\) \verb+\iota+\\
-	\(\kappa\) \verb+\kappa+\\
-	\(\lambda\) \verb+\lambda+\\
-	\(\mu\) \verb+\mu+\\
-	\(\nu\) \verb+\nu+\\
-	\(\xi\) \verb+\xi+\\
-	\(\o\) \verb+\o+\\
-	\(\pi\) \verb+\pi+\\
-	\(\varpi\) \verb+\varpi+\\
-	\(\rho\) \verb+\rho+\\
-	\(\Gamma\) \verb+\Gamma+\\
-	\(\Delta\) \verb+\Delta+\\
-	\(\Theta\) \verb+\Theta+\\
-	\(\Lambda\) \verb+\Lambda+\\
-	\(\Xi\) \verb+\Xi+\\
-	\(\Pi\) \verb+\Pi+\\
-	\(\Sigma\) \verb+\Sigma+\\
-	\(\Upsilon\) \verb+\Upsilon+\\
-	\(\varrho\) \verb+\varrho+\\
-	\(\sigma\) \verb+\sigma+\\
-	\(\varsigma\) \verb+\varsigma+\\
-	\(\tau\) \verb+\tau+\\
-	\(\upsilon\) \verb+\upsilon+\\
-	\(\phi\) \verb+\phi+\\
-	\(\varphi\) \verb+\varphi+\\
-	\(\chi\) \verb+\chi+\\
-	\(\psi\) \verb+\psi+\\
-	\(\omega\) \verb+\omega+\\
-	\(\Phi\) \verb+\Phi+\\
-	\(\Psi\) \verb+\Psi+\\
-	\(\Omega\) \verb+\Omega+\\
+	\(\alpha\) \lstinline+\alpha+\\
+	\(\beta\) \lstinline+\beta+\\
+	\(\gamma\) \lstinline+\gamma+\\
+	\(\delta\) \lstinline+\delta+\\
+	\(\epsilon\) \lstinline+\epsilon+\\
+	\(\varepsilon\) \lstinline+\varepsilon+\\
+	\(\zeta\) \lstinline+\zeta+\\
+	\(\eta\) \lstinline+\eta+\\
+	\(\theta\) \lstinline+\theta+\\
+	\(\vartheta\) \lstinline+\vartheta+\\
+	\(\iota\) \lstinline+\iota+\\
+	\(\kappa\) \lstinline+\kappa+\\
+	\(\lambda\) \lstinline+\lambda+\\
+	\(\mu\) \lstinline+\mu+\\
+	\(\nu\) \lstinline+\nu+\\
+	\(\xi\) \lstinline+\xi+\\
+	\(\o\) \lstinline+\o+\\
+	\(\pi\) \lstinline+\pi+\\
+	\(\varpi\) \lstinline+\varpi+\\
+	\(\rho\) \lstinline+\rho+\\
+	\(\Gamma\) \lstinline+\Gamma+\\
+	\(\Delta\) \lstinline+\Delta+\\
+	\(\Theta\) \lstinline+\Theta+\\
+	\(\Lambda\) \lstinline+\Lambda+\\
+	\(\Xi\) \lstinline+\Xi+\\
+	\(\Pi\) \lstinline+\Pi+\\
+	\(\Sigma\) \lstinline+\Sigma+\\
+	\(\Upsilon\) \lstinline+\Upsilon+\\
+	\(\varrho\) \lstinline+\varrho+\\
+	\(\sigma\) \lstinline+\sigma+\\
+	\(\varsigma\) \lstinline+\varsigma+\\
+	\(\tau\) \lstinline+\tau+\\
+	\(\upsilon\) \lstinline+\upsilon+\\
+	\(\phi\) \lstinline+\phi+\\
+	\(\varphi\) \lstinline+\varphi+\\
+	\(\chi\) \lstinline+\chi+\\
+	\(\psi\) \lstinline+\psi+\\
+	\(\omega\) \lstinline+\omega+\\
+	\(\Phi\) \lstinline+\Phi+\\
+	\(\Psi\) \lstinline+\Psi+\\
+	\(\Omega\) \lstinline+\Omega+\\
 \end{multicols}
 
 \section{SÍMBOLOS}
 \begin{multicols}{3}
 	\noindent
-	\(\aleph\) \verb+\aleph+\\
-	\(\hbar\) \verb+\hbar+\\
-	\(\imath\) \verb+\imath+\\
-	\(\jmath\) \verb+\jmath+\\
-	\(\ell\) \verb+\ell+\\
-	\(\wp\) \verb+\wp+\\
-	\(\Re\) \verb+\Re+\\
-	\(\Im\) \verb+\Im+\\
-	\(\partial\) \verb+\partial+\\
-	\(\infty\) \verb+\infty+\\
-	\(\prime\) \verb+\prime+\\
-	\(\emptyset\) \verb+\emptyset+\\
-	\(\nabla\) \verb+\nabla+\\
-	\(\surd\) \verb+\surd+\\
-	\(\top\) \verb+\top+\\
-	\(\bot\) \verb+\bot+\\
-	\(\|\) \verb+\|+\\
-	\(\angle\) \verb+\angle+\\
-	\(\triangle\) \verb+\triangle+\\
-	\(\backslash\) \verb+\backslash+\\
-	\(\forall\) \verb+\forall+\\
-	\(\exists\) \verb+\exists+\\
-	\(\lnot\) \verb+\neg+ ou \verb+\lnot+\\
-	\(\flat\) \verb+\flat+\\
-	\(\natural\) \verb+\natural+\\
-	\(\sharp\) \verb+\sharp+\\
-	\(\clubsuit\) \verb+\clubsuit+\\
-	\(\diamondsuit\) \verb+\diamondsuit+\\
-	\(\heartsuit\) \verb+\heartsuit+\\
-	\(\spadesuit\) \verb+\spadesuit+\\
+	\(\aleph\) \lstinline+\aleph+\\
+	\(\hbar\) \lstinline+\hbar+\\
+	\(\imath\) \lstinline+\imath+\\
+	\(\jmath\) \lstinline+\jmath+\\
+	\(\ell\) \lstinline+\ell+\\
+	\(\wp\) \lstinline+\wp+\\
+	\(\Re\) \lstinline+\Re+\\
+	\(\Im\) \lstinline+\Im+\\
+	\(\partial\) \lstinline+\partial+\\
+	\(\infty\) \lstinline+\infty+\\
+	\(\prime\) \lstinline+\prime+\\
+	\(\emptyset\) \lstinline+\emptyset+\\
+	\(\nabla\) \lstinline+\nabla+\\
+	\(\surd\) \lstinline+\surd+\\
+	\(\top\) \lstinline+\top+\\
+	\(\bot\) \lstinline+\bot+\\
+	\(\|\) \lstinline+\|+\\
+	\(\angle\) \lstinline+\angle+\\
+	\(\triangle\) \lstinline+\triangle+\\
+	\(\backslash\) \lstinline+\backslash+\\
+	\(\forall\) \lstinline+\forall+\\
+	\(\exists\) \lstinline+\exists+\\
+	\(\lnot\) \lstinline+\neg+ ou \lstinline+\lnot+\\
+	\(\flat\) \lstinline+\flat+\\
+	\(\natural\) \lstinline+\natural+\\
+	\(\sharp\) \lstinline+\sharp+\\
+	\(\clubsuit\) \lstinline+\clubsuit+\\
+	\(\diamondsuit\) \lstinline+\diamondsuit+\\
+	\(\heartsuit\) \lstinline+\heartsuit+\\
+	\(\spadesuit\) \lstinline+\spadesuit+\\
 \end{multicols}
 
 \section{OPERADORES BINÁRIOS}
 \begin{multicols}{3}
 	\noindent
-	\(\pm\) \verb+\pm+\\
-	\(\mp\) \verb+\mp+\\
-	\(\setminus\) \verb+\setminus+\\
-	\(\cdot\) \verb+\cdot+\\
-	\(\times\) \verb+\times+\\
-	\(\ast\) \verb+\ast+\\
-	\(\star\) \verb+\star+\\
-	\(\diamond\) \verb+\diamond+\\
-	\(\circ\) \verb+\circ+\\
-	\(\bullet\) \verb+\bullet+\\
-	\(\div\) \verb+\div+\\
-	\(\cap\) \verb+\cap+\\
-	\(\cup\) \verb+\cup+\\
-	\(\uplus\) \verb+\uplus+\\
-	\(\sqcap\) \verb+\sqcap+\\
-	\(\sqcup\) \verb+\sqcup+\\
-	\(\triangleleft\) \verb+\triangleleft+\\
-	\(\triangleright\) \verb+\triangleright+\\
-	\(\wr\) \verb+\wr+\\
-	\(\bigcirc\) \verb+\bigcirc+\\
-	\(\bigtriangleup\) \verb+\bigtriangleup+\\
-	\(\bigtriangledown\) \verb+\bigtriangledown+\\
-	\(\vee\) \verb+\vee+\\
-	\(\wedge\) \verb+\wedge+\\
-	\(\oplus\) \verb+\oplus+\\
-	\(\ominus\) \verb+\ominus+\\
-	\(\otimes\) \verb+\otimes+\\
-	\(\oslash\) \verb+\oslash+\\
-	\(\odot\) \verb+\odot+\\
-	\(\dagger\) \verb+\dagger+\\
-	\(\ddagger\) \verb+\ddagger+\\
-	\(\amalg\) \verb+\amalg+\\
+	\(\pm\) \lstinline+\pm+\\
+	\(\mp\) \lstinline+\mp+\\
+	\(\setminus\) \lstinline+\setminus+\\
+	\(\cdot\) \lstinline+\cdot+\\
+	\(\times\) \lstinline+\times+\\
+	\(\ast\) \lstinline+\ast+\\
+	\(\star\) \lstinline+\star+\\
+	\(\diamond\) \lstinline+\diamond+\\
+	\(\circ\) \lstinline+\circ+\\
+	\(\bullet\) \lstinline+\bullet+\\
+	\(\div\) \lstinline+\div+\\
+	\(\cap\) \lstinline+\cap+\\
+	\(\cup\) \lstinline+\cup+\\
+	\(\uplus\) \lstinline+\uplus+\\
+	\(\sqcap\) \lstinline+\sqcap+\\
+	\(\sqcup\) \lstinline+\sqcup+\\
+	\(\triangleleft\) \lstinline+\triangleleft+\\
+	\(\triangleright\) \lstinline+\triangleright+\\
+	\(\wr\) \lstinline+\wr+\\
+	\(\bigcirc\) \lstinline+\bigcirc+\\
+	\(\bigtriangleup\) \lstinline+\bigtriangleup+\\
+	\(\bigtriangledown\) \lstinline+\bigtriangledown+\\
+	\(\vee\) \lstinline+\vee+\\
+	\(\wedge\) \lstinline+\wedge+\\
+	\(\oplus\) \lstinline+\oplus+\\
+	\(\ominus\) \lstinline+\ominus+\\
+	\(\otimes\) \lstinline+\otimes+\\
+	\(\oslash\) \lstinline+\oslash+\\
+	\(\odot\) \lstinline+\odot+\\
+	\(\dagger\) \lstinline+\dagger+\\
+	\(\ddagger\) \lstinline+\ddagger+\\
+	\(\amalg\) \lstinline+\amalg+\\
 \end{multicols}
 
 \section{RELAÇÕES}
 \begin{multicols}{3}
 	\noindent
-	\(\leq\) \verb+\leq+\\
-	\(\prec\) \verb+\prec+\\
-	\(\preceq\) \verb+\preceq+\\
-	\(\ll\) \verb+\ll+\\
-	\(\subset\) \verb+\subset+\\
-	\(\subseteq\) \verb+\subseteq+\\
-	\(\sqsubseteq\) \verb+\sqsubseteq+\\
-	\(\in\) \verb+\in+\\
-	\(\vdash\) \verb+\vdash+\\
-	\(\smile\) \verb+\smile+\\
-	\(\frown\) \verb+\frown+\\
-	\(\propto\) \verb+\propto+\\
-	\(\geq\) \verb+\geq+\\
-	\(\succ\) \verb+\succ+\\
-	\(\succeq\) \verb+\succeq+\\
-	\(\gg\) \verb+\gg+\\
-	\(\supset\) \verb+\supset+\\
-	\(\supseteq\) \verb+\supseteq+\\
-	\(\sqsupseteq\) \verb+\sqsupseteq+\\
-	\(\notin\) \verb+\notin+\\
-	\(\dashv\) \verb+\dashv+\\
-	\(\mid\) \verb+\mid+\\
-	%\(\parallet\) \verb++\\
-	\(\equiv\) \verb+\equiv+\\
-	\(\sim\) \verb+\sim+\\
-	\(\simeq\) \verb+\simeq+\\
-	\(\asymp\) \verb+\asymp+\\
-	\(\approx\) \verb+\approx+\\
-	\(\cong\) \verb+\cong+\\
-	\(\bowtie\) \verb+\bowtie+\\
-	\(\ni\) \verb+\ni+\\
-	\(\models\) \verb+\models+\\
-	\(\doteq\) \verb+\doteq+\\
-	\(\perp\) \verb+\perp+\\
-	\(\not\equiv\) \verb+\not\equiv+\\
-	\(\notin\) \verb+\notin+\\
-	\(\ne\) \verb+\ne+\\
+	\(\leq\) \lstinline+\leq+\\
+	\(\prec\) \lstinline+\prec+\\
+	\(\preceq\) \lstinline+\preceq+\\
+	\(\ll\) \lstinline+\ll+\\
+	\(\subset\) \lstinline+\subset+\\
+	\(\subseteq\) \lstinline+\subseteq+\\
+	\(\sqsubseteq\) \lstinline+\sqsubseteq+\\
+	\(\in\) \lstinline+\in+\\
+	\(\vdash\) \lstinline+\vdash+\\
+	\(\smile\) \lstinline+\smile+\\
+	\(\frown\) \lstinline+\frown+\\
+	\(\propto\) \lstinline+\propto+\\
+	\(\geq\) \lstinline+\geq+\\
+	\(\succ\) \lstinline+\succ+\\
+	\(\succeq\) \lstinline+\succeq+\\
+	\(\gg\) \lstinline+\gg+\\
+	\(\supset\) \lstinline+\supset+\\
+	\(\supseteq\) \lstinline+\supseteq+\\
+	\(\sqsupseteq\) \lstinline+\sqsupseteq+\\
+	\(\notin\) \lstinline+\notin+\\
+	\(\dashv\) \lstinline+\dashv+\\
+	\(\mid\) \lstinline+\mid+\\
+	%\(\parallet\) \lstinline++\\
+	\(\equiv\) \lstinline+\equiv+\\
+	\(\sim\) \lstinline+\sim+\\
+	\(\simeq\) \lstinline+\simeq+\\
+	\(\asymp\) \lstinline+\asymp+\\
+	\(\approx\) \lstinline+\approx+\\
+	\(\cong\) \lstinline+\cong+\\
+	\(\bowtie\) \lstinline+\bowtie+\\
+	\(\ni\) \lstinline+\ni+\\
+	\(\models\) \lstinline+\models+\\
+	\(\doteq\) \lstinline+\doteq+\\
+	\(\perp\) \lstinline+\perp+\\
+	\(\not\equiv\) \lstinline+\not\equiv+\\
+	\(\notin\) \lstinline+\notin+\\
+	\(\ne\) \lstinline+\ne+\\
 \end{multicols}
 
 \section{DELIMITADORES}
 \begin{multicols}{3}
 	\noindent
-	\((\) \verb+(+\\
-	\()\) \verb+)+\\
-	\(\lbrack\) \verb+\lbrack+\\
-	\(\rbrack\) \verb+\rbrack+\\
-	\(\lbrace\) \verb+\lbrace+ ou \verb+\{+\\
-	\(\rbrace\) \verb+\rbrace+ ou \verb+\}+\\
-	\(\langle\) \verb+\langle+\\
-	\(\rangle\) \verb+\rangle+\\
-	\(\vert\) \verb+\vert+\\
-	\(\Vert\) \verb+\Vert+\\
-	\([\![\) \verb+[\![+\\
-	\(]\!]\) \verb+]\!]+\\
-	\(\lfloor\) \verb+\lfloor+\\
-	\(\rfloor\) \verb+\rfloor+\\
-	\((\!(\) \verb+(\!(+\\
-	\()\!)\) \verb+)\!)+\\
-	\(\lceil\) \verb+\lceil+\\
-	\(\rceil\) \verb+\rceil+\\
-	\(\langle\!\langle\) \verb+\langle\!\langle+\\
-	\(\rangle\!\rangle\) \verb+\rangle\!\rangle+\\
+	\((\) \lstinline+(+\\
+	\()\) \lstinline+)+\\
+	\(\lbrack\) \lstinline+\lbrack+\\
+	\(\rbrack\) \lstinline+\rbrack+\\
+	\(\lbrace\) \lstinline+\lbrace+ ou \lstinline+\{+\\
+	\(\rbrace\) \lstinline+\rbrace+ ou \lstinline+\}+\\
+	\(\langle\) \lstinline+\langle+\\
+	\(\rangle\) \lstinline+\rangle+\\
+	\(\vert\) \lstinline+\vert+\\
+	\(\Vert\) \lstinline+\Vert+\\
+	\([\![\) \lstinline+[\![+\\
+	\(]\!]\) \lstinline+]\!]+\\
+	\(\lfloor\) \lstinline+\lfloor+\\
+	\(\rfloor\) \lstinline+\rfloor+\\
+	\((\!(\) \lstinline+(\!(+\\
+	\()\!)\) \lstinline+)\!)+\\
+	\(\lceil\) \lstinline+\lceil+\\
+	\(\rceil\) \lstinline+\rceil+\\
+	\(\langle\!\langle\) \lstinline+\langle\!\langle+\\
+	\(\rangle\!\rangle\) \lstinline+\rangle\!\rangle+\\
 \end{multicols}
 
 \section{SETAS}
 \begin{multicols}{2}
 	\noindent
-	\(\leftarrow\) \verb+\leftarrow+\\
-	\(\longleftarrow\) \verb+\longleftarrow+\\
-	\(\Leftarrow\) \verb+\Leftarrow+\\
-	\(\Longleftarrow\) \verb+\Longleftarrow+\\
-	\(\rightarrow\) \verb+\rightarrow+\\
-	\(\longrightarrow\) \verb+\longrightarrow+\\
-	\(\Rightarrow\) \verb+\Rightarrow+\\
-	\(\Longrightarrow\) \verb+\Longrightarrow+\\
-	\(\leftrightarrow\) \verb+\leftrightarrow+\\
-	\(\longleftrightarrow\) \verb+\longleftrightarrow+\\
-	\(\Leftrightarrow\) \verb+\Leftrightarrow+\\
-	\(\Longleftrightarrow\) \verb+\Longleftrightarrow+\\
-	\(\mapsto\) \verb+\mapsto+\\
-	\(\longmapsto\) \verb+\longmapsto+\\
-	\(\hookleftarrow\) \verb+\hookleftarroq+\\
-	\(\hookrightarrow\) \verb+\hookrightarrow+\\
-	\(\uparrow\) \verb+\uparrow+\\
-	\(\Uparrow\) \verb+\Uparrow+\\
-	\(\downarrow\) \verb+\downarrow+\\
-	\(\Downarrow\) \verb+\Downarrow+\\
-	\(\updownarrow\) \verb+\updownarrow+\\
-	\(\Updownarrow\) \verb+\Updownarrow+\\
-	\(\nearrow\) \verb+\nearrow+\\
-	\(\searrow\) \verb+\searrow+\\
-	\(\nwarrow\) \verb+\nwarrow+\\
-	\(\swarrow\) \verb+\swarrow+\\
+	\(\leftarrow\) \lstinline+\leftarrow+\\
+	\(\longleftarrow\) \lstinline+\longleftarrow+\\
+	\(\Leftarrow\) \lstinline+\Leftarrow+\\
+	\(\Longleftarrow\) \lstinline+\Longleftarrow+\\
+	\(\rightarrow\) \lstinline+\rightarrow+\\
+	\(\longrightarrow\) \lstinline+\longrightarrow+\\
+	\(\Rightarrow\) \lstinline+\Rightarrow+\\
+	\(\Longrightarrow\) \lstinline+\Longrightarrow+\\
+	\(\leftrightarrow\) \lstinline+\leftrightarrow+\\
+	\(\longleftrightarrow\) \lstinline+\longleftrightarrow+\\
+	\(\Leftrightarrow\) \lstinline+\Leftrightarrow+\\
+	\(\Longleftrightarrow\) \lstinline+\Longleftrightarrow+\\
+	\(\mapsto\) \lstinline+\mapsto+\\
+	\(\longmapsto\) \lstinline+\longmapsto+\\
+	\(\hookleftarrow\) \lstinline+\hookleftarroq+\\
+	\(\hookrightarrow\) \lstinline+\hookrightarrow+\\
+	\(\uparrow\) \lstinline+\uparrow+\\
+	\(\Uparrow\) \lstinline+\Uparrow+\\
+	\(\downarrow\) \lstinline+\downarrow+\\
+	\(\Downarrow\) \lstinline+\Downarrow+\\
+	\(\updownarrow\) \lstinline+\updownarrow+\\
+	\(\Updownarrow\) \lstinline+\Updownarrow+\\
+	\(\nearrow\) \lstinline+\nearrow+\\
+	\(\searrow\) \lstinline+\searrow+\\
+	\(\nwarrow\) \lstinline+\nwarrow+\\
+	\(\swarrow\) \lstinline+\swarrow+\\
 \end{multicols}
 
 \printindex
