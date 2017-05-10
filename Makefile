@@ -9,7 +9,7 @@ UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all:	$(NAME).pdf clean
 	test -e README.txt && mv README.txt README || exit 0
 clean:
-	rm -f *.{acn,acr,alg,aux,bcf,bbl,bcf,blg,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,run.xml,slg,slo,sls,xdy,zip}
+	rm -f *.{acn,acr,alg,aux,bcf,bbl,bcf,blg,fdb_latexmk,fls,glg,glo,gls,glsdefs,hd,idx,ilg,ind,ins,ist,log,toc,loa,loe,lof,lot,mw,out,run.xml,slg,slo,sls,xdy,zip}
 distclean: clean
 	rm -f *.{pdf,cls} README README.txt
 $(NAME).pdf: $(NAME).dtx
@@ -56,3 +56,7 @@ templates: all
 	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
 	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
 	make clean
+format:
+	mv fei.dtx tmp.cls
+	latexindent -w tmp.cls
+	mv tmp.cls fei.dtx

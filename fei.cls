@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/14 3.0.4 Modelo da FEI]
+\ProvidesClass{fei}[2017/03/27 3.0.6 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -333,7 +333,7 @@ postheadspace=1em
 \renewcommand{\indexname}{\'Indice}
 \let\oldmakeindex\makeindex
 \let\oldprintindex\printindex
-\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
+\renewcommand{\makeindex}{\oldmakeindex[title=\noindent\hfill\'INDICE\hfill\mbox{}]}
 \renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
@@ -370,8 +370,8 @@ postheadspace=1em
 \addto\captionsbrazil{%
 \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
 \renewcommand*{\contentsname}{Sum\'ario}%
-\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
-\renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
+\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
@@ -404,7 +404,7 @@ postheadspace=1em
 }%
 }%
 
-\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
+\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
@@ -417,7 +417,8 @@ bibliography = {REFER\^ENCIAS}
 
 \defbibheading{bibliography}[\bibname]{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
+\noindent\hfill\textbf{REFER\^ENCIAS}\hfill\mbox{}%
+\urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
 }
 
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
@@ -437,7 +438,7 @@ bibliography = {REFER\^ENCIAS}
 \item\relax}
 {\endlist\end{SingleSpace}}
 %% 
-%% Copyright (C) 2016 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2017 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either
@@ -451,7 +452,7 @@ bibliography = {REFER\^ENCIAS}
 %% 
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
-%%                                 fei.cls.
+%% fei.cls.
 %% 
 %%
 %% End of file `fei.cls'.

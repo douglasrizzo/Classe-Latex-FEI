@@ -2,31 +2,31 @@
 % !TEX program  = pdfLaTeX
 %<*internal>
 \iffalse
-%</internal>
-%<*readme>
------------------------------------------------------------------------------------------------------
-fei --- Class for the creation of academic works under the typographic rules of FEI University Center
-Author: Douglas De Rizzo Meneghetti
-E-mail: douglasrizzo@fei.edu.br
+	%</internal>
+	%<*readme>
+	-----------------------------------------------------------------------------------------------------
+	fei --- Class for the creation of academic works under the typographic rules of FEI University Center
+	Author: Douglas De Rizzo Meneghetti
+	E-mail: douglasrizzo@fei.edu.br
 
-Released under the LaTeX Project Public License v1.3c or later
-See http://www.latex-project.org/lppl.txt
------------------------------------------------------------------------------------------------------
+	Released under the LaTeX Project Public License v1.3c or later
+	See http://www.latex-project.org/lppl.txt
+	-----------------------------------------------------------------------------------------------------
 
-fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
+	fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
 
-fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as ABNT NBR 10520:2002 (Citations) and ABNT NBR 6023:2002 (Bibligraphic References).
+	fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as ABNT NBR 10520:2002 (Citations) and ABNT NBR 6023:2002 (Bibligraphic References).
 
-In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
+	In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
 
-##License
-Released under the LaTeX Project Public License v1.3c or later
-See http://www.latex-project.org/lppl.txt
+	##License
+	Released under the LaTeX Project Public License v1.3c or later
+	See http://www.latex-project.org/lppl.txt
 
-##Latest releases and version control
-To get the newest version of the class, as well as to know the changes we are doing to the class and its functionalities, visit https://douglasrizzo.github.io/Classe-Latex-FEI/.
-%</readme>
-%<*internal>
+	##Latest releases and version control
+	To get the newest version of the class, as well as to know the changes we are doing to the class and its functionalities, visit https://douglasrizzo.github.io/Classe-Latex-FEI/.
+	%</readme>
+	%<*internal>
 \fi
 \def\nameofplainTeX{plain}
 \ifx\fmtname\nameofplainTeX\else
@@ -49,7 +49,7 @@ See http://www.latex-project.org/lppl.txt
 \endpreamble
 \postamble
 
-Copyright (C) 2016 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+Copyright (C) 2017 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License (LPPL), either
@@ -157,6 +157,8 @@ and the derived files           fei.pdf and
 \tableofcontents
 
 \chapter{INTRODUÇÃO}
+
+\glsaddall
 
 Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2016, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
 
@@ -369,19 +371,19 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 	\centering
 	\begin{tabular}{|c|c|}
 		\hline
-		\textbf{Elemento}                  & \textbf{Comando}         \\
+		\textbf{Elemento}                  & \textbf{Comando}        \\
 		\hline
-		Sumário                           & \verb+\tableofcontents+  \\
+		Sumário                           & \verb+\tableofcontents+ \\
 		\hline
-		Lista de Figuras                   & \verb+\listoffigures+    \\
+		Lista de Figuras                   & \verb+\listoffigures+ \\
 		\hline
-		Lista de Tabelas                   & \verb+\listoftables+     \\
+		Lista de Tabelas                   & \verb+\listoftables+ \\
 		\hline
 		Lista de Algoritmos                & \verb+\listofalgorithms+ \\
 		\hline
-		Lista de Teoremas                  & \verb+\listoftheorems+   \\
+		Lista de Teoremas                  & \verb+\listoftheorems+ \\
 		\hline
-		Listas de Abreviaturas e Símbolos & \verb+\printglossaries+  \\
+		Listas de Abreviaturas e Símbolos & \verb+\printglossaries+ \\
 		\hline
 	\end{tabular}
 	\smallcaption{Fonte: Autor}
@@ -559,8 +561,8 @@ Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos as
 	\item Primeiro item;
 	\item Segundo item;
 	      \begin{enumerate}
-	      	\item Primeiro sub-item;
-	      	\item Segundo sub-item.
+		      \item Primeiro sub-item;
+		      \item Segundo sub-item.
 	      \end{enumerate}
 	\item Terceiro item extremamente grande utilizado para testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2016.
 \end{enumerate}
@@ -680,6 +682,14 @@ Exemplo:
 	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{turing50}
 \end{quote}
 
+\section{CITAÇÕES DE MÚLTIPLAS OBRAS COM MESMO AUTOR}
+
+Essa seção demonstra a formatação de citações quando o(s) primeiro(s) autor(es) de uma obra é(são) o(s) mesmo(s).
+
+Por exemplo, os trabalhos de \textcite{rocha2005brain,rocha2014brain,rocha2016eeg} possuem todos o mesmo primeiro autor; os dois primeiros trabalhos possuem os mesmos primeiro e segundo autores. Por ser possível diferenciar entre as obras através das diferentes datas, não é necessário adicionar nenhuma informação extra à citação. Citações entre parênteses para os mesmos trabalhos tomam a seguinte forma: \cite{rocha2005brain, rocha2014brain,rocha2016eeg}.
+
+Já nos trabalhos de \textcite{duan2012large,duan2012reduced,duan2014functional}, é necessário diferenciar as duas primeiras obras devido às datas semelhantes. Citações entre parênteses para os mesmos trabalhos tomam a seguinte forma: \cite{duan2012large,duan2012reduced,duan2014functional}.
+
 \chapter{ÍNDICES}\label{chap:indice}
 
 Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante de todas as instalações do \LaTeX{}. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou cedilha -- não serão organizados corretamente. Para solucionar este problema, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
@@ -741,7 +751,7 @@ A indexação de símbolos é feita utilizando o comando
 
 \verb+\newglossaryentry{1}{parent={2},type=symbols,+
 
-	\verb+name={3},sort={4},description={5}}+, onde:
+\verb+name={3},sort={4},description={5}}+, onde:
 
 \begin{enumerate}
 	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
@@ -753,9 +763,9 @@ A indexação de símbolos é feita utilizando o comando
 
 Exemplo: \verb+\newglossaryentry{pi}{parent=greek,type=symbols,+
 
-	\verb+name={\ensuremath{\pi}},sort=p,+
+\verb+name={\ensuremath{\pi}},sort=p,+
 
-	\verb+description={número irracional que representa [...]}}+
+\verb+description={número irracional que representa [...]}}+
 
 \section{UTILIZANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}
 
@@ -846,6 +856,8 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 
 \textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
 
+Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usuários são os da classe \texttt{memoir}\footnote{\url{http://ctan.org/pkg/memoir}} e do pacote \texttt{biblatex-abnt}\footnote{\url{http://ctan.org/pkg/biblatex-abnt}}.
+
 \printbibliography
 
 \appendix
@@ -859,16 +871,16 @@ Versão 1 (2012):
 	\item Versão inicial;
 	\item Criação de todos os elementos pré-textuais:
 	      \begin{itemize}
-	      	\item Capa;
-	      	\item Folha de rosto;
-	      	\item Ficha catalográfica;
-	      	\item Folha de aprovação;
-	      	\item Resumo;
-	      	\item \emph{Abstract};
-	      	\item Dedicatória;
-	      	\item Agradecimentos;
-	      	\item Epígrafe;
-	      	\item Sumário e listas de figuras e tabelas.
+		      \item Capa;
+		      \item Folha de rosto;
+		      \item Ficha catalográfica;
+		      \item Folha de aprovação;
+		      \item Resumo;
+		      \item \emph{Abstract};
+		      \item Dedicatória;
+		      \item Agradecimentos;
+		      \item Epígrafe;
+		      \item Sumário e listas de figuras e tabelas.
 	      \end{itemize}
 	\item Formatação dos títulos de seções até o quarto nível (\texttt{subsubsection});
 	\item Formatação de referências e citações usando o pacote \texttt{abntex};
@@ -886,10 +898,10 @@ Versão 2 (2013 -- 2015):
 	\item suporte à impressão em frente-e-verso com a opção \texttt{twoside};
 	\item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
 	      \begin{itemize}
-	      	\item Uso de negritos na capa e folha de rosto
-	      	\item Espaçamento entre linhas mais parecido com o do Word;
-	      	\item Correção das margens superior e inferior de todas as páginas;
-	      	\item Correção de recuo das alíneas.
+		      \item Uso de negritos na capa e folha de rosto
+		      \item Espaçamento entre linhas mais parecido com o do Word;
+		      \item Correção das margens superior e inferior de todas as páginas;
+		      \item Correção de recuo das alíneas.
 	      \end{itemize}
 \end{itemize}
 
@@ -902,10 +914,10 @@ Versão 3 (2016 -- ):
 	\item Uso da classe \texttt{memoir} como base para a classe da FEI, removendo diversas dependências, como os pacotes \emph{tocloft, fancyhdr, geometry} e \emph{setspace};
 	\item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
 	      \begin{itemize}
-	      	\item Uso de negritos na capa e folha de rosto;
-	      	\item Remoção do negrito na lista de abreviaturas;
-	      	\item Adição de hífen na lista de algoritmos;
-	      	\item Correção de recuo das alíneas.
+		      \item Uso de negritos na capa e folha de rosto;
+		      \item Remoção do negrito na lista de abreviaturas;
+		      \item Adição de hífen na lista de algoritmos;
+		      \item Correção de recuo das alíneas.
 	      \end{itemize}
 \end{itemize}
 
@@ -988,32 +1000,32 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \begin{enumerate}
 
 	\item\verb+pdflatex documento.tex+
-	\begin{enumerate}
-		\item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
-		\item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
-		\item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
-		\item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
-		\item \texttt{loa}: lista de algoritmos;
-		\item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
-		\item \texttt{toc}: sumário;
-	\end{enumerate}
+	      \begin{enumerate}
+		      \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
+		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
+		      \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
+		      \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
+		      \item \texttt{loa}: lista de algoritmos;
+		      \item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
+		      \item \texttt{toc}: sumário;
+	      \end{enumerate}
 
 	\item\verb+biber documento.aux+
-	\begin{enumerate}
-		\item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
-	\end{enumerate}
+	      \begin{enumerate}
+		      \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
+	      \end{enumerate}
 
 	\item\verb+makeindex documento.idx+
-	\begin{enumerate}
-		\item \texttt{ilg}: \emph{log} do MakeIndex.
-		\item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
-	\end{enumerate}
+	      \begin{enumerate}
+		      \item \texttt{ilg}: \emph{log} do MakeIndex.
+		      \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \verb+\printindex+;
+	      \end{enumerate}
 
 	\item\verb+makeglossaries documento+
-	\begin{enumerate}
-		\item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \verb+\printglossaries+;
-		\item \texttt{glg}: \emph{log} do \emph{glossaries}.
-	\end{enumerate}
+	      \begin{enumerate}
+		      \item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \verb+\printglossaries+;
+		      \item \texttt{glg}: \emph{log} do \emph{glossaries}.
+	      \end{enumerate}
 \end{enumerate}
 
 \chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}} \label{chap:simbolos}
@@ -1240,7 +1252,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/14 3.0.4 Modelo da FEI]
+\ProvidesClass{fei}[2017/03/27 3.0.6 Modelo da FEI]
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
 	\PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -1284,9 +1296,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % depois de muitos erros tentando passar opções para a classe após carregá-la, a solução encontrada foi carregá-la com todas as opções de uma vez
 \ifoneside
-\LoadClass[oneside]{memoir}
+	\LoadClass[oneside]{memoir}
 \else
-\LoadClass{memoir}
+	\LoadClass{memoir}
 \fi
 
 \RequirePackage[utf8]{inputenc}
@@ -1330,10 +1342,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
-\usepackage[scaled]{uarial}
-\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+	\usepackage[scaled]{uarial}
+	\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
-\RequirePackage{times} % usar fonte times no texto todo
+	\RequirePackage{times} % usar fonte times no texto todo
 \fi
 
 \RequirePackage{graphicx}      % figuras
@@ -1373,11 +1385,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % redefine lista de algoritmos
 \let\oldlistofalgorithms\listofalgorithms
 \renewcommand{\listofalgorithms}{{%
-	\setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
-	\renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
-	\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
-	\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
-}}
+			\setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+			\renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+			\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+			\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+		}}
 % --------------------------------------------------------
 
 % teoremas
@@ -1385,12 +1397,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
 \declaretheoremstyle[
-spaceabove=6pt, spacebelow=6pt,
-headfont=\normalfont\bfseries,
-notefont=\normalfont\bfseries, notebraces={-- }{},
-bodyfont=\normalfont,
-postheadspace=1em
-% qed=\qedsymbol
+	spaceabove=6pt, spacebelow=6pt,
+	headfont=\normalfont\bfseries,
+	notefont=\normalfont\bfseries, notebraces={-- }{},
+	bodyfont=\normalfont,
+	postheadspace=1em
+	% qed=\qedsymbol
 ]{feistyle}
 
 % declaração dos principais tipos de teoremas que o usuário pode querer vir a usar
@@ -1508,245 +1520,246 @@ postheadspace=1em
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
-	% novas paginas
-	% capa
-	\renewcommand{\maketitle}{%
-		\pagestyle{empty}%
-		\begin{center}%
-			\MakeUppercase{\@instituicao}\\[\baselineskip]%
-			\uppercase\expandafter{\@author}%
-			\vfill%
-			\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
-			\vfill%
-			\@cidade\\%
-			\number\year%
-		\end{center}%
-		\cleardoublepage
-	}
+% novas paginas
+% capa
+\renewcommand{\maketitle}{%
+	\pagestyle{empty}%
+	\begin{center}%
+		\MakeUppercase{\@instituicao}\\[\baselineskip]%
+		\uppercase\expandafter{\@author}%
+		\vfill%
+		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
+		\vfill%
+		\@cidade\\%
+		\number\year%
+	\end{center}%
+	\cleardoublepage
+}
 
-	% folha de rosto
-	\newenvironment{folhaderosto}{
-		\setcounter{page}{1}
-		\thispagestyle{empty}
-		\begin{center}
-			\uppercase\expandafter{\@author}\\
-			\vspace*{0.45\textheight}
-			\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-			\vfill
-			\begin{flushright}\begin{SingleSpace}
+% folha de rosto
+\newenvironment{folhaderosto}{
+	\setcounter{page}{1}
+	\thispagestyle{empty}
+	\begin{center}
+		\uppercase\expandafter{\@author}\\
+		\vspace*{0.45\textheight}
+		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+		\vfill
+		\begin{flushright}\begin{SingleSpace}
 				\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
-				\end{SingleSpace}\end{flushright}
-				\vfill
-				\@cidade\\
-				\number\year
-				\end{center}%
-				\clearpage}
+			\end{SingleSpace}\end{flushright}
+		\vfill
+		\@cidade\\
+		\number\year
+	\end{center}%
+	\clearpage}
 
-				% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
-				% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
-				\RequirePackage{pdfpages}
-				\RequirePackage{ifthen}
-				\newcommand{\folhadeaprovacao}{
-					\ifrascunho
-					\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-					\else
-					\includepdf{ata.pdf}\cleardoublepage
-					\fi
-				}
+% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
+% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
+\RequirePackage{pdfpages}
+\RequirePackage{ifthen}
+\newcommand{\folhadeaprovacao}{
+	\ifrascunho
+		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+	\else
+		\includepdf{ata.pdf}\cleardoublepage
+	\fi
+}
 
-				% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
-				\newcommand{\fichacatalografica}{
-					\if@twoside
-					\else
-					% se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
-					\addtocounter{page}{-1}
-					\fi
-					\ifrascunho
-					\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-					\else
-					\includepdf{ficha.pdf}\cleardoublepage
-					\fi
-				}
+% ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
+\newcommand{\fichacatalografica}{
+	\if@twoside
+	\else
+		% se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
+		\addtocounter{page}{-1}
+	\fi
+	\ifrascunho
+		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+	\else
+		\includepdf{ficha.pdf}\cleardoublepage
+	\fi
+}
 
-				% subtítulo
-				\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
+% subtítulo
+\newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
-				\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
+\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
 
-				% cidade (padrão São Bernardo do Campo)
-				\def\@cidade{S\~ao Bernardo do Campo}
-				\newcommand{\cidade}[1]{\def\@cidade{#1}}
+% cidade (padrão São Bernardo do Campo)
+\def\@cidade{S\~ao Bernardo do Campo}
+\newcommand{\cidade}[1]{\def\@cidade{#1}}
 
-				% instituicao (padrão Centro Universitário FEI)
-				\def\@instituicao{Centro Universit\'ario FEI}
-				\newcommand{\instituicao}[1]{\def\@instituicao{#1}}
+% instituicao (padrão Centro Universitário FEI)
+\def\@instituicao{Centro Universit\'ario FEI}
+\newcommand{\instituicao}[1]{\def\@instituicao{#1}}
 
-				% nome do orientador com respectivo título (ex Dr. ...)
-				\newcommand{\advisor}[1]{\def\@advisor{#1}}
+% nome do orientador com respectivo título (ex Dr. ...)
+\newcommand{\advisor}[1]{\def\@advisor{#1}}
 
-				% curso
-				\def\@curso{Coisa Nenhuma}
-				\newcommand{\curso}[1]{\def\@curso{#1}}
+% curso
+\def\@curso{Coisa Nenhuma}
+\newcommand{\curso}[1]{\def\@curso{#1}}
 
-				% dedicatória
-				\newcommand{\dedicatoria}[1]{
-					\cleardoublepage
-					\thispagestyle{empty}
-					\begin{flushleft}
-						\vspace*{\fill}
-						\hspace*{0.4\paperwidth\relax}
-						\begin{minipage}[l]{0.5\textwidth}
-							#1
-						\end{minipage}
-					\end{flushleft}
-				}
+% dedicatória
+\newcommand{\dedicatoria}[1]{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\begin{flushleft}
+		\vspace*{\fill}
+		\hspace*{0.4\paperwidth\relax}
+		\begin{minipage}[l]{0.5\textwidth}
+			#1
+		\end{minipage}
+	\end{flushleft}
+}
 
-				% epígrafe
-				\newcommand{\epigrafe}[2]{
-					\cleardoublepage
-					\thispagestyle{empty}
-					\begin{flushleft}
-						\vspace*{\fill}
-						\hspace*{0.4\paperwidth\relax}
-						\begin{minipage}[l]{0.5\textwidth}
-							``{#1}''\\#2
-						\end{minipage}
-					\end{flushleft}
-				}
+% epígrafe
+\newcommand{\epigrafe}[2]{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\begin{flushleft}
+		\vspace*{\fill}
+		\hspace*{0.4\paperwidth\relax}
+		\begin{minipage}[l]{0.5\textwidth}
+			``{#1}''\\#2
+		\end{minipage}
+	\end{flushleft}
+}
 
-				% resumo
-				\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
+% resumo
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
-				% abstract
-				\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
+% abstract
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
 
-				% agradecimentos
-				\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
+% agradecimentos
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
-				% índice
-				\RequirePackage{imakeidx}
-				\renewcommand{\indexname}{\'Indice}
-				\let\oldmakeindex\makeindex
-				\let\oldprintindex\printindex
-				\renewcommand{\makeindex}{\oldmakeindex[title=\hfill \'INDICE \hfill \mbox{}]}
-				\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
-					\renewcommand{\chapter}{%
-						\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
-					\oldprintindex}%
+% índice
+\RequirePackage{imakeidx}
+\renewcommand{\indexname}{\'Indice}
+\let\oldmakeindex\makeindex
+\let\oldprintindex\printindex
+\renewcommand{\makeindex}{\oldmakeindex[title=\noindent\hfill\'INDICE\hfill\mbox{}]}
+\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
+	\renewcommand{\chapter}{%
+		\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
+	\oldprintindex}%
 
-				% hyperlinks entre partes do documento
-				% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
-				% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
-				\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+% hyperlinks entre partes do documento
+% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
+% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
+\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
-				% pacote para gerar listas (símbolos, abreviaturas, etc)
-				\ifsublist
-				\RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
-				% estilo usado como base
-				\setglossarystyle{alttree}
-				% Configuracao de identacao do nivel 0 (titulos)
-				\glssetwidest[0]{}
-				% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
-				\glssetwidest[1]{aaaaaaaaaaaa}
+% pacote para gerar listas (símbolos, abreviaturas, etc)
+\ifsublist
+	\RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
+	% estilo usado como base
+	\setglossarystyle{alttree}
+	% Configuracao de identacao do nivel 0 (titulos)
+	\glssetwidest[0]{}
+	% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+	\glssetwidest[1]{aaaaaaaaaaaa}
 
-				% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-				\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+	% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+	\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
-				\else
-				\RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\else
+	\RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
 
-				\newglossarystyle{mylong}{%
-					\setglossarystyle{long}% base this style on the long style
-					\renewenvironment{theglossary}{%
-						\begin{longtable*}{lp{\glsdescwidth}}}%
-							{\end{longtable*}}%
-							}%
+	\newglossarystyle{mylong}{%
+		\setglossarystyle{long}% base this style on the long style
+		\renewenvironment{theglossary}{%
+			\begin{longtable*}{lp{\glsdescwidth}}}%
+				{\end{longtable*}}%
+	}%
 
-							\setglossarystyle{mylong}
-							\setlength\LTleft{0pt}
-							\setlength\LTright{0pt}
-							\setlength\glsdescwidth{\linewidth}
+	\setglossarystyle{mylong}
+	\setlength\LTleft{0pt}
+	\setlength\LTright{0pt}
+	\setlength\glsdescwidth{\linewidth}
 
-							% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-							\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
-							\fi
+	% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+	\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+\fi
 
-							\addto\captionsbrazil{%
-								\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
-								\renewcommand*{\contentsname}{Sum\'ario}%
-								\renewcommand*{\acronymname}{\hfill Lista de Abreviaturas \hfill \mbox{}}%
-								\renewcommand*{\glssymbolsgroupname}{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+\addto\captionsbrazil{%
+	\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+	\renewcommand*{\contentsname}{Sum\'ario}%
+	\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
+	\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
-							% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
-							\renewcommand*{\glsclearpage}{\pagestyle{empty}}
-							% remove número de página das listas de símbolos e abreviaturas (executado na última página)
-							\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
+\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+% remove número de página das listas de símbolos e abreviaturas (executado na última página)
+\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 
 
-							\newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
-							\newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
+\newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
+\newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
-							% apendice novo
-							\renewcommand{\appendix}{%
-								\renewcommand{\chaptername}{\appendixname}%
-								\setcounter{chapter}{0}% zera o contador do capítulo
-								\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
-								\renewcommand{\chapter}[1]{% redefine o comando do capítulo
-									\stepcounter{chapter}% soma 1 ao contador do capítulo
-									\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-									\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
-									\newpage%
-								}%
-							}%
+% apendice novo
+\renewcommand{\appendix}{%
+	\renewcommand{\chaptername}{\appendixname}%
+	\setcounter{chapter}{0}% zera o contador do capítulo
+	\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
+	\renewcommand{\chapter}[1]{% redefine o comando do capítulo
+		\stepcounter{chapter}% soma 1 ao contador do capítulo
+		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+		\newpage%
+	}%
+}%
 
-							% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
-							\newcommand{\anexos}{%
-								\renewcommand{\chaptername}{Anexo}%
-								\setcounter{chapter}{0}%
-								\renewcommand{\thechapter}{\Alph{chapter}}%
-								\renewcommand{\chapter}[1]{%
-									\stepcounter{chapter}%
-									\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-									\phantomsection%
-									\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
-									\newpage%
-								}%
-							}%
+% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
+\newcommand{\anexos}{%
+	\renewcommand{\chaptername}{Anexo}%
+	\setcounter{chapter}{0}%
+	\renewcommand{\thechapter}{\Alph{chapter}}%
+	\renewcommand{\chapter}[1]{%
+		\stepcounter{chapter}%
+		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+		\phantomsection%
+		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
+		\newpage%
+	}%
+}%
 
-							% referências e citações
-							%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-							\RequirePackage[backend=biber, safeinputenc=true, isbn=false, doi=false, style=abnt]{biblatex}
-							\setlength{\bibitemsep}{1.0\baselineskip}
+% referências e citações
+%abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
+\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt]{biblatex}
+\setlength{\bibitemsep}{1.0\baselineskip}
 
-							\DefineBibliographyStrings{brazil}{%
-								bibliography = {REFER\^ENCIAS}
-							}
+\DefineBibliographyStrings{brazil}{%
+	bibliography = {REFER\^ENCIAS}
+}
 
-							\newcommand{\citeonline}[1]{\textcite{#1}}
+\newcommand{\citeonline}[1]{\textcite{#1}}
 
-							\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
+\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
 
-							\defbibheading{bibliography}[\bibname]{%
-								\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-								\hfill \textbf{REFER\^ENCIAS} \hfill\mbox{}
-							}
+\defbibheading{bibliography}[\bibname]{%
+	\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+	\noindent\hfill\textbf{REFER\^ENCIAS}\hfill\mbox{}%
+	\urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
+}
 
-							\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
+\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
 
-							% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
-							\renewenvironment{quote}
-							{\begin{SingleSpace}\list{}{%
-								\fontsize{10pt}{1em}%
-								\leftmargin=4cm}%
-								\item\relax\ignorespaces}
-							{\endlist\end{SingleSpace}}
+% modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
+\renewenvironment{quote}
+{\begin{SingleSpace}\list{}{%
+			\fontsize{10pt}{1em}%
+			\leftmargin=4cm}%
+		\item\relax\ignorespaces}
+		{\endlist\end{SingleSpace}}
 
-							% quotation é igual a quote, porém para citações com mais de um parágrafo.
-							\renewenvironment{quotation}
-							{\begin{SingleSpace}\list{}{%
-								\fontsize{10pt}{1em}%
-								\leftmargin=2cm \rightmargin=2cm%
-								\listparindent .5cm \itemindent}%
-								\item\relax}
-							{\endlist\end{SingleSpace}}
-							%</class>
+% quotation é igual a quote, porém para citações com mais de um parágrafo.
+\renewenvironment{quotation}
+{\begin{SingleSpace}\list{}{%
+			\fontsize{10pt}{1em}%
+			\leftmargin=2cm \rightmargin=2cm%
+			\listparindent .5cm \itemindent}%
+		\item\relax}
+		{\endlist\end{SingleSpace}}
+%</class>
