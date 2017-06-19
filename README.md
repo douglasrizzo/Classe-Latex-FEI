@@ -25,7 +25,11 @@ See http://www.latex-project.org/lppl.txt
 ##Controle de versão
 Para saber as mudanças entre essa versão e as anteriores, [clique aqui](https://github.com/douglasrizzo/Classe-Latex-FEI/commits/master).
 
+##Comunidade
+Para receber anúncios de novas versões da classe ou tirar dúvidas e conversar com outros usuários de <span class="texhtml" style="font-family: 'CMU Serif', cmr10, LMRoman10-Regular, 'Nimbus Roman No9 L', 'Times New Roman', Times, serif;">L<span style="text-transform: uppercase; font-size: 70%; margin-left: -0.36em; vertical-align: 0.3em; line-height: 0; margin-right: -0.15em;">a</span>T<span style="text-transform: uppercase; margin-left: -0.1667em; vertical-align: -0.5ex; line-height: 0; margin-right: -0.125em;">e</span>X</span>, se inscreva no nosso [Google Groups][grupo-google].
+
 [fei-ctan]: http://ctan.org/pkg/fei
+[grupo-google]: https://groups.google.com/forum/#!forum/grupo-latex-fei
 [texlive]: https://www.tug.org/texlive/
 [miktex]: http://miktex.org/
 [latex-fei]: https://github.com/douglasrizzo/Classe-Latex-FEI
