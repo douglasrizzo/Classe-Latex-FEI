@@ -39,7 +39,7 @@
 
 
 
-\PassOptionsToClass{a5paper}{memoir}
+\PassOptionsToClass{a4paper}{memoir}
 
 \ExecuteOptions{oneside,times}
 
@@ -161,7 +161,13 @@ postheadspace=1em
 \RequirePackage{enumitem}
 \setlist[1]{align=left,leftmargin=2.25cm,labelsep=0.5em,label={\alph*)},ref=\theenumi}
 \setlist[2]{align=left,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
-\renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+
+\let\myenumerate\enumerate
+\let\endmyenumerate\endenumerate
+\tightlists
+
+\renewenvironment{itemize}{\begin{myenumerate}}{\end{myenumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+\renewenvironment{enumerate}{\begin{myenumerate}}{\end{myenumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
