@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/03/27 3.0.6 Modelo da FEI]
+\ProvidesClass{fei}[2017/06/19 3.0.7 Modelo da FEI]
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
@@ -162,12 +162,10 @@ postheadspace=1em
 \setlist[1]{align=left,leftmargin=2.25cm,labelsep=0.5em,label={\alph*)},ref=\theenumi}
 \setlist[2]{align=left,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
 
-\let\myenumerate\enumerate
-\let\endmyenumerate\endenumerate
 \tightlists
 
-\renewenvironment{itemize}{\begin{myenumerate}}{\end{myenumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
-\renewenvironment{enumerate}{\begin{myenumerate}}{\end{myenumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+ % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+\renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}}
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
