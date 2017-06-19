@@ -1450,12 +1450,17 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % configuracao da legenda da figura
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
-% listas
 
+% alíneas
 \RequirePackage{enumitem}
 \setlist[1]{align=left,leftmargin=2.25cm,labelsep=0.5em,label={\alph*)},ref=\theenumi}
 \setlist[2]{align=left,labelwidth=*,labelsep=0.5em,label={--},ref=\theenumii}
-\renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}} % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+
+% comando de memoir para remover o espaço vertical entre itens
+\tightlists
+
+ % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+\renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}}
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
