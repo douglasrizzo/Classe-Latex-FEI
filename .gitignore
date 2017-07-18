@@ -110,3 +110,5 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+*.bak[0-9]*
