@@ -14,18 +14,30 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/06/19 3.0.7 Modelo da FEI]
+\ProvidesClass{fei}[2017/07/18 4.0.0 Modelo da FEI]
+
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries}
 }
-\newif\ifrascunho
-\rascunhofalse
-\DeclareOption{rascunho}{\rascunhotrue}
 
+\newif\ifglossaries
+\glossariesfalse
+\DeclareOption{symbols}{
+\glossariestrue
+\PassOptionsToPackage{\CurrentOption}{glossaries}
+}
+\DeclareOption{acronym}{
+\glossariestrue
+\PassOptionsToPackage{\CurrentOption}{glossaries}
+}
 \newif\ifsublist
 \sublistfalse
 \DeclareOption{sublist}{\sublisttrue}
+
+\newif\ifrascunho
+\rascunhofalse
+\DeclareOption{rascunho}{\rascunhotrue}
 
 \newif\ifarial
 \DeclareOption{arial}{\arialtrue}
@@ -164,7 +176,6 @@ postheadspace=1em
 
 \tightlists
 
- % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}}
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
@@ -344,8 +355,9 @@ postheadspace=1em
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
+\ifglossaries
 \ifsublist
-\RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
+\RequirePackage[nomain,nonumberlist]{glossaries}
 \setglossarystyle{alttree}
 \glssetwidest[0]{}
 \glssetwidest[1]{aaaaaaaaaaaa}
@@ -353,7 +365,7 @@ postheadspace=1em
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \else
-\RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+\RequirePackage[nomain,nonumberlist,nogroupskip]{glossaries}
 
 \newglossarystyle{mylong}{%
 \setglossarystyle{long}% base this style on the long style
@@ -368,6 +380,7 @@ postheadspace=1em
 \setlength\glsdescwidth{\linewidth}
 
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+\fi
 \fi
 
 \addto\captionsbrazil{%
@@ -455,7 +468,7 @@ bibliography = {REFER\^ENCIAS}
 %% 
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
-%%                                 fei.cls.
+%% fei.cls.
 %% 
 %%
 %% End of file `fei.cls'.

@@ -32,7 +32,7 @@ install: all
 	sudo cp $(NAME).dtx $(LOCAL)/source/latex/$(NAME)
 	sudo cp $(NAME).cls $(LOCAL)/tex/latex/$(NAME)
 	sudo cp $(NAME).cls $(LOCAL)/doc/latex/$(NAME)
-$(NAME)-$(VERS).zip: all
+zip: all
 	mkdir $(TDIR)
 	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib README $(TDIR)
 	cd $(TEMP); zip -Drq $(PWD)/$(NAME)-$(VERS).zip $(NAME)

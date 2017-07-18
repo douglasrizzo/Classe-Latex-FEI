@@ -63,7 +63,7 @@ Douglas De Rizzo Meneghetti.
 
 This work consists of the file  fei.dtx,
 and the derived files           fei.pdf and
-                                fei.cls.
+fei.cls.
 
 \endpostamble
 \usedir{tex/latex/fei}
@@ -91,7 +91,7 @@ and the derived files           fei.pdf and
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,xindy,oneside]{\jobname}
+\documentclass[rascunho,xindy,oneside,symbols,acronym]{\jobname}
 \usepackage{multicol}
 \usepackage{listings}
 \lstset{
@@ -99,21 +99,21 @@ basicstyle=\ttfamily,
 columns=flexible,
 breaklines=true,
 literate=
-  {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
-	{Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
-  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
-  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+	{ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+{Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
 }
 
 \author{Douglas De Rizzo Meneghetti}
@@ -283,7 +283,7 @@ Este capítulo descreve os comandos disponibilizados pela classe. Ele é separad
 
 No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
 
-\subsection{Declaração da classe}
+\subsection{Declaração da classe} \label{subsec:documentclass}
 
 A declaração da classe é feita da seguinte forma:
 
@@ -299,6 +299,8 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
+	\item \texttt{acronym}: opção passada ao pacote \texttt{glossaries} para a configuração da lista de abreviaturas;
+	\item \texttt{symbols}: opção passada ao pacote \texttt{glossaries} para a configuração da lista de símbolos.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
@@ -722,7 +724,7 @@ Como o \emph{xindy} não é parte integrante do \LaTeX{}, ensinamos como instal�
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE ÍNDICE}
 
-Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeindex+ ao preâmbulo de seu texto.
+Para que o \LaTeX{} crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeindex+ ao preâmbulo de seu texto.
 
 \section{INDEXANDO PALAVRAS}
 
@@ -740,13 +742,15 @@ A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o
 
 \chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 
-Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas duas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 
 \emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE LISTAS DE SÍMBOLOS E ABREVIATURAS}
 
-Para que o LaTeX crie os arquivos auxiliares  que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeglossaries+ ao preâmbulo de seu texto.
+Para que a classe da FEI configure a formatação das listas de acordo com o padrão da biblioteca, é necessário passar as opções \texttt{acronym}, para abreviaturas e \texttt{symbols}, para símbolos, na declaração da classe (vide seção \ref{subsec:documentclass}). Caso abreviaturas e símbolos sejam indexados e as opções não sejam passadas, um erro é gerado. Caso as opções sejam passadas mas nenhum item seja adicionado às listas, serão geradas páginas em branco.
+
+Para que o \LaTeX{} crie os arquivos auxiliares que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeglossaries+ ao preâmbulo de seu texto.
 
 \section{INDEXANDO ABREVIATURAS}
 
@@ -1274,21 +1278,38 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/06/19 3.0.7 Modelo da FEI]
+\ProvidesClass{fei}[2017/07/18 4.0.0 Modelo da FEI]
+
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
 	\PassOptionsToPackage{\CurrentOption}{imakeidx}
 	\PassOptionsToPackage{\CurrentOption}{glossaries}
 }
+
+%------------------------------------------------------------
+\newif\ifglossaries
+\glossariesfalse
+% opção para configurar a lista de símbolos
+\DeclareOption{symbols}{
+	\glossariestrue
+	\PassOptionsToPackage{\CurrentOption}{glossaries}
+}
+% opção para configurar a lista de abreviaturas
+\DeclareOption{acronym}{
+	\glossariestrue
+	\PassOptionsToPackage{\CurrentOption}{glossaries}
+}
+% opção para criar sub-listas de símbolos
+\newif\ifsublist
+\sublistfalse
+\DeclareOption{sublist}{\sublisttrue}
+%------------------------------------------------------------
+
 % opções rascunho e final controlam a exibição da folha
 % de aprovação e ficha catalográfica
 \newif\ifrascunho
 \rascunhofalse
 \DeclareOption{rascunho}{\rascunhotrue}
-
-\newif\ifsublist
-\sublistfalse
-\DeclareOption{sublist}{\sublisttrue}
 
 \newif\ifarial
 \DeclareOption{arial}{\arialtrue}
@@ -1459,7 +1480,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % comando de memoir para remover o espaço vertical entre itens
 \tightlists
 
- % troca o itemize pelo enumerate (seguindo o manual da biblioteca)
+% troca o itemize pelo enumerate (seguindo o manual da biblioteca)
 \renewenvironment{itemize}{\begin{enumerate}}{\end{enumerate}}
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
@@ -1679,35 +1700,37 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
-\ifsublist
-	\RequirePackage[symbols,nomain,acronym,nonumberlist]{glossaries}
-	% estilo usado como base
-	\setglossarystyle{alttree}
-	% Configuracao de identacao do nivel 0 (titulos)
-	\glssetwidest[0]{}
-	% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
-	\glssetwidest[1]{aaaaaaaaaaaa}
+\ifglossaries
+	\ifsublist
+		\RequirePackage[nomain,nonumberlist]{glossaries}
+		% estilo usado como base
+		\setglossarystyle{alttree}
+		% Configuracao de identacao do nivel 0 (titulos)
+		\glssetwidest[0]{}
+		% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+		\glssetwidest[1]{aaaaaaaaaaaa}
 
-	% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-	\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+		% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
-\else
-	\RequirePackage[symbols,nomain,acronym,nonumberlist,nogroupskip]{glossaries}
+	\else
+		\RequirePackage[nomain,nonumberlist,nogroupskip]{glossaries}
 
-	\newglossarystyle{mylong}{%
-		\setglossarystyle{long}% base this style on the long style
-		\renewenvironment{theglossary}{%
-			\begin{longtable*}{lp{\glsdescwidth}}}%
-				{\end{longtable*}}%
-	}%
+		\newglossarystyle{mylong}{%
+			\setglossarystyle{long}% base this style on the long style
+			\renewenvironment{theglossary}{%
+				\begin{longtable*}{lp{\glsdescwidth}}}%
+					{\end{longtable*}}%
+		}%
 
-	\setglossarystyle{mylong}
-	\setlength\LTleft{0pt}
-	\setlength\LTright{0pt}
-	\setlength\glsdescwidth{\linewidth}
+		\setglossarystyle{mylong}
+		\setlength\LTleft{0pt}
+		\setlength\LTright{0pt}
+		\setlength\glsdescwidth{\linewidth}
 
-	% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-	\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+		% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+	\fi
 \fi
 
 \addto\captionsbrazil{%
