@@ -6,7 +6,7 @@ TDIR = $(TEMP)/$(NAME)
 VERS = $(shell ltxfileinfo -v $(NAME).cls)
 LOCAL = $(shell kpsewhich --var-value TEXMFLOCAL)
 UTREE = $(shell kpsewhich --var-value TEXMFHOME)
-all:	| format $(NAME).cls clean
+all:	| $(NAME).cls clean
 	test -e README.txt && mv README.txt README || exit 0
 clean:
 	git clean -Xdf
