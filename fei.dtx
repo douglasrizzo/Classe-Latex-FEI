@@ -1735,19 +1735,21 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
 		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 	\fi
+	% traduz alguns comandos próprios do glossaries
+	\addto\captionsbrazil{%
+		\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
+		\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
+
+	% redefine comandos do glossaries
+	% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
+	\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+	% remove número de página das listas de símbolos e abreviaturas (executado na última página)
+	\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 \fi
 
 \addto\captionsbrazil{%
 	\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
-	\renewcommand*{\contentsname}{Sum\'ario}%
-	\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
-	\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
-
-% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
-\renewcommand*{\glsclearpage}{\pagestyle{empty}}
-% remove número de página das listas de símbolos e abreviaturas (executado na última página)
-\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
-
+	\renewcommand*{\contentsname}{Sum\'ario}}%
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
