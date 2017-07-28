@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/07/18 4.0.0 Modelo da FEI]
+\ProvidesClass{fei}[2017/07/28 4.0.1 Modelo da FEI]
 
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -381,16 +381,17 @@ postheadspace=1em
 
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
-\fi
-
 \addto\captionsbrazil{%
-\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
-\renewcommand*{\contentsname}{Sum\'ario}%
 \renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
 \renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+\fi
+
+\addto\captionsbrazil{%
+\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+\renewcommand*{\contentsname}{Sum\'ario}}%
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
