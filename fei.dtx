@@ -19,12 +19,12 @@
 
 	In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
 
-	##License
+	# License
 	Released under the LaTeX Project Public License v1.3c or later
 	See http://www.latex-project.org/lppl.txt
 
-	##Latest releases and version control
-	To get the newest version of the class, as well as to know the changes we are doing to the class and its functionalities, visit https://douglasrizzo.github.io/Classe-Latex-FEI/.
+	# Latest releases and version control
+	CTAN is always the place to go to get the stable version of the class. To know the changes done to the class and get previous and developments versions, visit https://ww.github.com/douglasrizzo/Classe-Latex-FEI/.
 	%</readme>
 	%<*internal>
 \fi
@@ -121,6 +121,10 @@ literate=
 \subtitulo{de acordo com o guia de 2016 da biblioteca}
 % \advisor{Donald Knuth}
 % \curso{Formatação e Tipografia}
+
+\newcommand{\bigvindex}[1]{\index{#1@\emph{#1}}\emph{#1}}
+\newcommand{\vindex}[1]{\index{#1}#1}
+\newcommand{\cfcite}[1]{(Cf. \cite*{#1})}
 
 \makeindex
 \makeglossaries
@@ -295,12 +299,12 @@ A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
 	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
-	\item \texttt{xindy}: configura o \index{xindy@\emph{xindy}}\emph{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
+	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
-	\item \texttt{acronym}: opção passada ao pacote \texttt{glossaries} para a configuração da lista de abreviaturas;
-	\item \texttt{symbols}: opção passada ao pacote \texttt{glossaries} para a configuração da lista de símbolos.
+	\item \texttt{acronym}: sinaliza a configuração da lista de abreviaturas;
+	\item \texttt{symbols}: sinaliza a configuração da lista de símbolos.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
@@ -716,7 +720,7 @@ Já nos trabalhos de \textcite{duan2012large,duan2012reduced,duan2014functional}
 
 \chapter{ÍNDICES}\label{chap:indice}
 
-Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante de todas as instalações do \LaTeX{}. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou cedilha -- não serão organizados corretamente. Para solucionar este problema, usuários de Linux possuem como opção secundária o \index{xindy@\emph{xindy}}\emph{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
+Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante de todas as instalações do \LaTeX{}. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou cedilha -- não serão organizados corretamente. Para solucionar este problema, usuários de Linux possuem como opção secundária o \bigvindex{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
 
 Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \lstinline+\documentclass[xindy]{fei}+
 
@@ -742,7 +746,7 @@ A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o
 
 \chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 
-Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \bigvindex{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 
 \emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 
@@ -750,7 +754,7 @@ Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote 
 
 Para que a classe da FEI configure a formatação das listas de acordo com o padrão da biblioteca, é necessário passar as opções \texttt{acronym}, para abreviaturas e \texttt{symbols}, para símbolos, na declaração da classe (vide seção \ref{subsec:documentclass}). Caso abreviaturas e símbolos sejam indexados e as opções não sejam passadas, um erro é gerado. Caso as opções sejam passadas mas nenhum item seja adicionado às listas, serão geradas páginas em branco.
 
-Para que o \LaTeX{} crie os arquivos auxiliares que serão lidos pelo \emph{glossaries}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeglossaries+ ao preâmbulo de seu texto.
+Para que o \LaTeX{} crie os arquivos auxiliares que serão lidos pelo \emph{glossaries}, é necessário sinalizar a criação deles ao compilador. Isso é feito adicionando o comando \lstinline+\makeglossaries+ ao preâmbulo de seu texto.
 
 \section{INDEXANDO ABREVIATURAS}
 
@@ -795,7 +799,7 @@ Exemplo: \lstinline+\newglossaryentry{pi}{parent=greek,type=symbols,+
 
 \section{UTILIZANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}
 
-O pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
+O pacote \bigvindex{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 
 \begin{enumerate}
 	\item \lstinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
@@ -814,7 +818,7 @@ As siglas possuem alguns comandos únicos para serem referenciadas:
 
 Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
 
-É importante ressaltar que o pacote \index{glossaries@\emph{glossaries}}\emph{glossaries} adiciona às listas somente os termos que foram utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
+É importante ressaltar que o pacote \bigvindex{glossaries} adiciona às listas somente os termos que forem utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
 
 \section{HIERARQUIA DE SÍMBOLOS}\label{sec:sublist}
 Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja utilizado no documento, a opção \texttt{sublist} deve ser passada à classe.
@@ -865,7 +869,7 @@ makeindex documento.idx
 pdflatex documento.tex
 \end{lstlisting}
 
-Caso o \index{xindy@\emph{xindy}}\emph{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \lstinline+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
+Caso o \bigvindex{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \lstinline+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
 
 \section{O JEITO FÁCIL}
 
@@ -936,7 +940,7 @@ Versão 2 (2015 -- 2016): adaptação ao novo guia de formatação de 2015, com 
 Versão 3 (2016 -- ):
 
 \begin{itemize}
-	\item Fim do suporte ao \index{abntex2cite@\emph{abntex2cite}}\emph{abntex2cite} e início de uso do pacote \index{biblatex-abnt@\emph{biblatex-abnt}}\emph{biblatex-abnt} para formatação de referências, o qual possui como dependências o pacote \index{biblatex@\emph{biblatex}}\emph{biblatex} e o programa \index{biber@\emph{Biber}}\emph{Biber};
+	\item Fim do suporte ao \bigvindex{abntex2cite} e início de uso do pacote \bigvindex{biblatex-abnt} para formatação de referências, o qual possui como dependências o pacote \bigvindex{biblatex} e o programa \index{biber@\emph{Biber}}\emph{Biber};
 	\item Uso da classe \texttt{memoir} como base para a classe da FEI, removendo diversas dependências, como os pacotes \emph{tocloft, fancyhdr, geometry} e \emph{setspace};
 	\item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
 	      \begin{itemize}
