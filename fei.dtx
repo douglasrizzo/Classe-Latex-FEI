@@ -196,7 +196,7 @@ O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista o
 
 \section{NOTA AOS USUÁRIOS ANTIGOS DA CLASSE}
 
-Em sua versão 3, a classe \LaTeX{} da FEI deixa de utilizar o pacote \texttt{biblatex-abnt}\index{abntex2cite@\emph{abntex2cite}} para formatação de referências e passa a utilizar o novo pacote \texttt{biblatex-abnt}\index{biblatex-abnt@\emph{biblatex-abnt}}, o qual possui como dependências o pacote \texttt{biblatex}\index{biblatex@\emph{biblatex}} e o programa \emph{Biber}\index{biber@\emph{Biber}}, todos disponíveis nas distribuições comuns do \LaTeX{}.
+A partir da versão 3, a classe \LaTeX{} da FEI deixa de utilizar o pacote \texttt{abntex2cite}\index{abntex2cite@\emph{abntex2cite}} para formatação de referências e passa a utilizar o novo pacote \texttt{biblatex-abnt}\index{biblatex-abnt@\emph{biblatex-abnt}}, o qual possui como dependências o pacote \texttt{biblatex}\index{biblatex@\emph{biblatex}} e o programa \emph{Biber}\index{biber@\emph{Biber}}, todos disponíveis nas distribuições comuns do \LaTeX{}.
 
 Isso significa que usuários de versões antigas da classe não mais usarão o comando \texttt{bibtex} para geração das referências e sim o comando \texttt{biber}. Para conferir mais mudanças, ler as seções \ref{subsec:referencias-pre} e \ref{subsec:referencias-pos} para se familiarizar com a nova forma de adicionar arquivos \texttt{bib} ao projeto e imprimir as referências, assim como a seção \ref{sec:dificil}, onde todos os comandos necessários para a compilação de um documento estão disponíveis.
 
@@ -1796,8 +1796,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \defbibheading{bibliography}[\bibname]{%
 	\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-	\noindent\hfill\textbf{REFER\^ENCIAS}\hfill\mbox{}%
-	\urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
+	\part*{REFER\^ENCIAS}
+	\urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
 }
 
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
