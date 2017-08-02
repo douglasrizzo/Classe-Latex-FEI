@@ -180,7 +180,7 @@ postheadspace=1em
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
-\renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
+\renewcommand{\part}{%
 \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
 \renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
@@ -421,7 +421,7 @@ postheadspace=1em
 }%
 }%
 
-\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt]{biblatex}
+\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt,extrayear]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
@@ -430,12 +430,11 @@ bibliography = {REFER\^ENCIAS}
 
 \newcommand{\citeonline}[1]{\textcite{#1}}
 
-\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
 
 \defbibheading{bibliography}[\bibname]{%
 \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-\noindent\hfill\textbf{REFER\^ENCIAS}\hfill\mbox{}%
-\urlstyle{same} % URLs nas referências devem ter a mesma fonte do texto
+\part*{REFER\^ENCIAS}
+\urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
 }
 
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}

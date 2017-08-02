@@ -399,17 +399,17 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 	\centering
 	\begin{tabular}{|c|c|}
 		\hline
-		\textbf{Elemento}                  & \textbf{Comando}        \\
+		\textbf{Elemento}                 & \textbf{Comando}        \\
 		\hline
 		Sumário                           & \lstinline+\tableofcontents+ \\
 		\hline
-		Lista de Figuras                   & \lstinline+\listoffigures+ \\
+		Lista de Figuras                  & \lstinline+\listoffigures+ \\
 		\hline
-		Lista de Tabelas                   & \lstinline+\listoftables+ \\
+		Lista de Tabelas                  & \lstinline+\listoftables+ \\
 		\hline
-		Lista de Algoritmos                & \lstinline+\listofalgorithms+ \\
+		Lista de Algoritmos               & \lstinline+\listofalgorithms+ \\
 		\hline
-		Lista de Teoremas                  & \lstinline+\listoftheorems+ \\
+		Lista de Teoremas                 & \lstinline+\listoftheorems+ \\
 		\hline
 		Listas de Abreviaturas e Símbolos & \lstinline+\printglossaries+ \\
 		\hline
@@ -1489,10 +1489,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
-% divisoes do texto
-\renewcommand{\part}{% não usado no texto, só para algumas páginas (resumo, abstract, agradecimentos...)
+% divisoes do texto, formata o título de páginas como resumo, abstract, agradecimentos etc.
+\renewcommand{\part}{%
 	\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
-% \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bf\MakeUppercase}}
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
@@ -1783,7 +1782,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt]{biblatex}
+\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt, extrayear]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
@@ -1792,7 +1791,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \newcommand{\citeonline}[1]{\textcite{#1}}
 
-\renewcommand*{\bibfont}{\raggedright} % bibliografia alinhada à esquerda
+% bibliografia alinhada à esquerda
+% não é mais necessário na versão 3.1 do biblatex-abnt
+% \renewcommand*{\bibfont}{\raggedright}
 
 \defbibheading{bibliography}[\bibname]{%
 	\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
