@@ -105,6 +105,7 @@
 
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
+\RequirePackage[table,xcdraw]{xcolor}    % Insere a cor em tabelas
 
 \RequirePackage[plain,portuguese,algochapter,linesnumbered,inoutnumbered]{algorithm2e}
 \SetKwInput{Entrada}{Entrada}
