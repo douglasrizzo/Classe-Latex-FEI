@@ -248,12 +248,12 @@ postheadspace=1em
 \renewcommand{\maketitle}{%
 \pagestyle{empty}%
 \begin{center}%
-\MakeUppercase{\@instituicao}\\[\baselineskip]%
+\MakeUppercase{\@instituicao}\\[0.5em]%
 \uppercase\expandafter{\@author}%
 \vfill%
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
 \vfill%
-\@cidade\\%
+\@cidade\\[0.5em]%
 \number\year%
 \end{center}%
 \cleardoublepage
@@ -267,11 +267,11 @@ postheadspace=1em
 \vspace*{0.45\textheight}
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
 \vfill
-\begin{flushright}\begin{SingleSpace}
+\begin{flushright}
 \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
-\end{SingleSpace}\end{flushright}
+\end{flushright}
 \vfill
-\@cidade\\
+\@cidade\\[0.5em]
 \number\year
 \end{center}%
 \clearpage}
