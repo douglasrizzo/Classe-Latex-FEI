@@ -316,25 +316,26 @@ postheadspace=1em
 \newcommand{\dedicatoria}[1]{
 \cleardoublepage
 \thispagestyle{empty}
-\begin{flushleft}
 \vspace*{\fill}
-\hspace*{0.4\paperwidth\relax}
-\begin{minipage}[l]{0.5\textwidth}
+\begin{flushright}
+\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
 #1
 \end{minipage}
-\end{flushleft}
+\end{flushright}
 }
 
 \newcommand{\epigrafe}[2]{
 \cleardoublepage
 \thispagestyle{empty}
-\begin{flushleft}
 \vspace*{\fill}
-\hspace*{0.4\paperwidth\relax}
-\begin{minipage}[l]{0.5\textwidth}
-``{#1}''\\#2
+\begin{flushright}
+\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
+``{#1}''
+\begin{flushright}
+#2
+\end{flushright
 \end{minipage}
-\end{flushleft}
+\end{flushright}
 }
 
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
