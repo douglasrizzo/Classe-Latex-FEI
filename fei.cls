@@ -434,7 +434,13 @@
  }%
 }%
 
-\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt, extrayear]{biblatex}
+\RequirePackage[backend=biber,
+                safeinputenc=true,
+                uniquelist=false,
+                isbn=false,
+                doi=false,
+                style=abnt,
+                extradate]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
