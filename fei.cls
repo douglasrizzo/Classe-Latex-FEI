@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/09/26 4.1 Modelo da FEI]
+\ProvidesClass{fei}[2018/03/02 4.1.1 Modelo da FEI]
 
 \DeclareOption{xindy}{
  \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -434,7 +434,13 @@
  }%
 }%
 
-\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt, extrayear]{biblatex}
+\RequirePackage[backend=biber,
+                safeinputenc=true,
+                uniquelist=false,
+                isbn=false,
+                doi=false,
+                style=abnt,
+                extradate]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%

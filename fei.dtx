@@ -1282,7 +1282,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2017/09/26 4.1 Modelo da FEI]
+\ProvidesClass{fei}[2018/03/02 4.1.1 Modelo da FEI]
 
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
@@ -1784,7 +1784,13 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-\RequirePackage[backend=biber, safeinputenc=true, uniquelist=false, isbn=false, doi=false, style=abnt, extrayear]{biblatex}
+\RequirePackage[backend=biber,
+                safeinputenc=true,
+                uniquelist=false,
+                isbn=false,
+                doi=false,
+                style=abnt,
+                extradate]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
