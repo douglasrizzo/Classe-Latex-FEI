@@ -439,8 +439,7 @@
                 uniquelist=false,
                 isbn=false,
                 doi=false,
-                style=abnt,
-                extradate]{biblatex}
+                style=abnt]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
