@@ -16,10 +16,10 @@ pages:
     paths:
     - public
 
-build:
-  script:
-    - latexmk -pdf fei.dtx fei-template.tex fei-template-sublist.tex
+# build:
+#   script:
+#     - latexmk -pdf fei.dtx fei-template.tex fei-template-sublist.tex
 
-  artifacts:
-    paths:
-      - "*.pdf"
+#   artifacts:
+#     paths:
+#       - "*.pdf"
