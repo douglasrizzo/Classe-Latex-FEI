@@ -5,12 +5,13 @@ image: tetamusha/latex
 
 pages:
   stage: deploy
-  only: master
+  only:
+    - master
 
   script:
-  - mkdir .public
-  - cp -r docs/* .public
-  - mv .public public
+    - mkdir .public
+    - cp -r docs/* .public
+    - mv .public public
   artifacts:
     paths:
     - public
