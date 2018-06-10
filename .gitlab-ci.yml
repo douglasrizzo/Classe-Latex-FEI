@@ -3,16 +3,10 @@
 # possible alternative: https://github.com/natlownes/docker-latex
 image: tetamusha/latex
 
-build:
-  script:
-    - latexmk -pdf fei.dtx fei-template.tex fei-template-sublist.tex
-
-  artifacts:
-    paths:
-      - "*.pdf"
-
 pages:
   stage: deploy
+  only: master
+
   script:
   - mkdir .public
   - cp -r docs/* .public
@@ -20,5 +14,11 @@ pages:
   artifacts:
     paths:
     - public
-  only:
-  - master
+
+build:
+  script:
+    - latexmk -pdf fei.dtx fei-template.tex fei-template-sublist.tex
+
+  artifacts:
+    paths:
+      - "*.pdf"
