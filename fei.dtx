@@ -1699,6 +1699,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
   \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
  \oldprintindex}%
 
+\begin{filecontents*}{\jobname.xmpdata}
+\Title        {Classe LaTeX FEI}
+\Author       {Douglas De Rizzo Meneghetti}
+\Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
+\Keywords     {manual\sep
+               latex\sep
+               tipografia}
+\Publisher    {Baking International}
+\Subject      {This is where you put the abstract.}
+\end{filecontents*}
+
+\usepackage[a-1b,mathxmp]{pdfx}
+
 % hyperlinks entre partes do documento
 % deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
 % funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos

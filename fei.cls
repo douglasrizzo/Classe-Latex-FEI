@@ -357,6 +357,19 @@
   \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
  \oldprintindex}%
 
+\begin{filecontents*}{\jobname.xmpdata}
+\Title        {Classe LaTeX FEI}
+\Author       {Douglas De Rizzo Meneghetti}
+\Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
+\Keywords     {manual\sep
+               latex\sep
+               tipografia}
+\Publisher    {Baking International}
+\Subject      {This is where you put the abstract.}
+\end{filecontents*}
+
+\usepackage[a-1b,mathxmp]{pdfx}
+
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 \ifglossaries
