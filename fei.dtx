@@ -1282,7 +1282,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/03/02 4.1.1 Modelo da FEI]
+\ProvidesClass{fei}[2018-09-12 4.2 Modelo da FEI]
 
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
@@ -1362,7 +1362,35 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \setulmarginsandblock{30mm}{20mm}{*}
 \checkandfixthelayout
 
-\linespread{1.25} % espaçamento entre linhas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A POLEMICA DO ESPACAMENTO DE "UM E MEIO"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% these are the commands provided by memoir
+% \OnehalfSpacing
+% \DoubleSpacing
+
+% these commands exist natively on LaTeX
+% the values below are magically recommended for one half and double spacing
+% more on their values here https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Line_Spacing
+% \linespread{1.3}
+% \linespread{1.6}
+
+% this is the value I visually found closer to Word one-half spacing
+% it also adds no extra dependencies
+\linespread{1.5}
+
+% to use the setspace package with memoir, these lines must be added
+% \DisemulatePackage{setspace}
+% \usepackage{setspace}
+
+% then the linespread command presents a totally different behavior
+% also, this command is provided by setspace, which seems promising
+% \spacing{1.5}
+% setspace also provides
+% \onehalfspacing
+% \doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 % cabecalho e rodape
@@ -1699,18 +1727,18 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
   \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
  \oldprintindex}%
 
-\begin{filecontents*}{\jobname.xmpdata}
-\Title        {Classe LaTeX FEI}
-\Author       {Douglas De Rizzo Meneghetti}
-\Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
-\Keywords     {manual\sep
-               latex\sep
-               tipografia}
-\Publisher    {Baking International}
-\Subject      {This is where you put the abstract.}
-\end{filecontents*}
+% \begin{filecontents*}{\jobname.xmpdata}
+% \Title        {Classe LaTeX FEI}
+% \Author       {Douglas De Rizzo Meneghetti}
+% \Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
+% \Keywords     {manual\sep
+%                latex\sep
+%                tipografia}
+% \Publisher    {Baking International}
+% \Subject      {This is where you put the abstract.}
+% \end{filecontents*}
 
-\usepackage[a-1b,mathxmp]{pdfx}
+% \usepackage[a-1b,mathxmp]{pdfx} 
 
 % hyperlinks entre partes do documento
 % deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei

@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/03/02 4.1.1 Modelo da FEI]
+\ProvidesClass{fei}[2018-09-12 4.2 Modelo da FEI]
 
 \DeclareOption{xindy}{
  \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -75,7 +75,8 @@
 \setulmarginsandblock{30mm}{20mm}{*}
 \checkandfixthelayout
 
-\linespread{1.25} % espaçamento entre linhas
+
+\linespread{1.5}
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
 
 \makepagestyle{title} % pagina de titulo
@@ -357,18 +358,7 @@
   \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
  \oldprintindex}%
 
-\begin{filecontents*}{\jobname.xmpdata}
-\Title        {Classe LaTeX FEI}
-\Author       {Douglas De Rizzo Meneghetti}
-\Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
-\Keywords     {manual\sep
-               latex\sep
-               tipografia}
-\Publisher    {Baking International}
-\Subject      {This is where you put the abstract.}
-\end{filecontents*}
 
-\usepackage[a-1b,mathxmp]{pdfx}
 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
