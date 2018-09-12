@@ -1558,10 +1558,13 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
+\def\uppcs{\expandafter\uppercaseA\expandafter{\iffalse}\fi}
+\long\def\uppercaseA#1{\uppercase{#1}\egroup}
+
 % formatação dos títulos de seções. perceba que não há suporte para títulos com letras maiúsculas
 %\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
-\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
-% \renewcommand{\cftsectionfont}{} % titulo de seções deve ser maiusculo, mas não funciona
+\renewcommand{\cftchapterfont}{\bfseries\uppcs} % coloca o titulo de capítulos em negrito
+\renewcommand{\cftsectionfont}{\uppcs} % titulo de seções deve ser maiusculo e funciona
 \renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
 \renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
