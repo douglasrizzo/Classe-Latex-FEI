@@ -1,0 +1,31 @@
+%%%% -- Entradas Listas de Abreviaturas e Simbolos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% -- Titulos - comentar caso a respectiva lista nao seja utilizada
+\newglossaryentry{acro}{name={},description={\nopostdesc},sort=a} %Usado para alinhar a lista de abreviaturas
+\newglossaryentry{geral}{name={Geral},description={\nopostdesc},sort=a}
+\newglossaryentry{greek}{name={Letras gregas},description={\nopostdesc},sort=b}
+\newglossaryentry{sub}{name={Subscritos},description={\nopostdesc},sort=c}
+
+%% -- Abreviaturas
+\newacronym[longplural=Computational Aided Design,parent=acro]{cad}{CAD}{Computational Aided Design}
+\newacronym[longplural=Centro Universitário da FEI,parent=acro]{fei}{FEI}{Centro Universitário da FEI}
+
+%% -- Simbolos
+%% -- Latin letters
+%\newglossaryentry{}{parent=geral,type=symbols,name={},sort=a,description={}
+\newglossaryentry{A}{parent=geral,type=symbols,name={\ensuremath{A}},sort=a,description={exchanger total heat transfer area, $m^2$}}
+\newglossaryentry{G}{parent=geral,type=symbols,name={\ensuremath{G}},sort=g,description={exchanger flow-stream mass velocity, $kg/(s m^2)$}}
+\newglossaryentry{f}{parent=geral,type=symbols,name={\ensuremath{j}},sort=j,description={friction factor, dimensionless}}
+
+%% -- Greek letters
+%\newglossaryentry{}{parent=geral,type=symbols,name={},sort=a,description={}
+\newglossaryentry{deltap}{parent=greek,type=symbols,name={\ensuremath{\Delta P}},sort=p,description={pressure drop, $Pa$}}
+\newglossaryentry{nu}{parent=greek,type=symbols,name={\ensuremath{\nu}},sort=b,description={specific volume, $m^3/kg$}}
+\newglossaryentry{beta}{parent=greek,type=symbols,name={\ensuremath{\beta}},sort=b,description={ratio of free-flow area $A_{ff}$ and frontal area $A_{fr}$ of one side of exchanger, dimensionless}}
+
+%% -- Subscripts
+%\newglossaryentry{}{parent=geral,type=symbols,name={},sort=a,description={}
+\newglossaryentry{fr}{parent=sub,type=symbols,name={\ensuremath{fr}},sort=fr,description={frontal}}
+\newglossaryentry{in}{parent=sub,type=symbols,name={\ensuremath{i}},sort=in,description={inlet}}
+\newglossaryentry{out}{parent=sub,type=symbols,name={\ensuremath{o}},sort=out,description={outlet}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
