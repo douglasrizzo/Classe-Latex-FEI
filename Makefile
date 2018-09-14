@@ -6,12 +6,8 @@ TDIR = $(TEMP)/$(NAME)
 VERS = $(shell ltxfileinfo -v $(NAME).cls)
 LOCAL = $(shell kpsewhich --var-value TEXMFLOCAL)
 UTREE = $(shell kpsewhich --var-value TEXMFHOME)
-all:	| $(NAME).cls clean
+all: | $(NAME).cls clean
 	test -e README.txt && mv README.txt README || exit 0
-clean:
-	git clean -Xdf
-distclean: clean
-	rm -f *.{pdf,cls} README README.txt
 $(NAME).cls: $(NAME).dtx
 	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 	biber $(NAME).bcf
@@ -22,6 +18,14 @@ $(NAME).cls: $(NAME).dtx
 	texindy $(NAME).idx
 	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 	-pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
+clean:
+	git clean -Xdf
+format:
+	cp fei.dtx tmp.cls
+	latexindent -w tmp.cls
+	mv tmp.cls fei.dtx
+distclean: clean
+	rm -f *.{pdf,cls} README README.txt
 inst: all
 	mkdir -p $(UTREE)/{tex,source,doc}/latex/$(NAME)
 	cp $(NAME).dtx $(UTREE)/source/latex/$(NAME)
@@ -36,26 +40,90 @@ zip: all
 	mkdir $(TDIR)
 	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib README $(TDIR)
 	cd $(TEMP); zip -Drq $(PWD)/$(NAME)-$(VERS).zip $(NAME)
-templates: $(NAME).cls
-	-pdflatex -recorder -interaction=nonstopmode fei-template.tex
-	biber fei-template.bcf
-	texindy fei-template.idx
-	makeglossaries fei-template
-	-pdflatex -recorder -interaction=nonstopmode fei-template.tex
-	-pdflatex -recorder -interaction=nonstopmode fei-template.tex
-	texindy fei-template.idx
-	-pdflatex -recorder -interaction=nonstopmode fei-template.tex
-	-pdflatex -recorder -interaction=nonstopmode fei-template.tex
-	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
-	biber fei-template-sublist.bcf
-	makeglossaries fei-template-sublist
-	texindy fei-template.idx
-	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
-	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
-	texindy fei-template.idx
-	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
-	-pdflatex -recorder -interaction=nonstopmode fei-template-sublist.tex
-format:
-	cp fei.dtx tmp.cls
-	latexindent -w tmp.cls
-	mv tmp.cls fei.dtx
+templates: | $(NAME).dtx test
+	cp tests/full-template.tex fei-template.tex
+	cp tests/full-template-sublist.tex fei-template-sublist.tex
+test:
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/subtitulo.tex \
+		tests/pieces/acronimos.tex \
+		tests/pieces/simbolos.tex \
+		tests/pieces/addbibresource.tex \
+		tests/pieces/makeindex.tex \
+		tests/pieces/makeglossaries.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/titulo.tex \
+		tests/pieces/folha-de-rosto.tex \
+		tests/pieces/cat-aprov.tex \
+		tests/pieces/dedicatoria.tex \
+		tests/pieces/agradecimentos.tex \
+		tests/pieces/epigrafe.tex \
+		tests/pieces/resumo.tex \
+		tests/pieces/abstract.tex \
+		tests/pieces/tables.tex \
+		tests/pieces/first-chapter-title.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/document-text.tex \
+		tests/pieces/printbibliography.tex \
+		tests/pieces/printindex.tex \
+		tests/pieces/end-document.tex > tests/full-template.tex
+
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-sublist.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/subtitulo.tex \
+		tests/pieces/acronimos-simbolos-sublist.tex \
+		tests/pieces/addbibresource.tex \
+		tests/pieces/makeindex.tex \
+		tests/pieces/makeglossaries.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/titulo.tex \
+		tests/pieces/folha-de-rosto.tex \
+		tests/pieces/cat-aprov.tex \
+		tests/pieces/dedicatoria.tex \
+		tests/pieces/agradecimentos.tex \
+		tests/pieces/epigrafe.tex \
+		tests/pieces/resumo.tex \
+		tests/pieces/abstract.tex \
+		tests/pieces/tables.tex \
+		tests/pieces/first-chapter-title.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/document-text.tex \
+		tests/pieces/printbibliography.tex \
+		tests/pieces/printindex.tex \
+		tests/pieces/end-document.tex > tests/full-template-sublist.tex
+
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/addbibresource.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/titulo.tex \
+		tests/pieces/folha-de-rosto.tex \
+		tests/pieces/cat-aprov.tex \
+		tests/pieces/resumo.tex \
+		tests/pieces/abstract.tex \
+		tests/pieces/tables.tex \
+		tests/pieces/first-chapter-title.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/document-text.tex \
+		tests/pieces/printbibliography.tex \
+		tests/pieces/end-document.tex > tests/only-required.tex
+
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/end-document.tex > tests/only-text.tex
+
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/addbibresource.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/first-chapter-title.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/document-text.tex \
+		tests/pieces/end-document.tex > tests/only-text-and-titles.tex
+
+	cp referencias.bib tests
+	latexmk -pdf tests/*.tex
+	rm tests/referencias.bib
