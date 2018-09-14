@@ -2,35 +2,35 @@
 % !TEX program  = pdfLaTeX
 %<*internal>
 \iffalse
- %</internal>
- %<*readme>
- -----------------------------------------------------------------------------------------------------
- fei --- Class for the creation of academic works under the typographic rules of FEI University Center
- Author: Douglas De Rizzo Meneghetti
- E-mail: douglasrizzo@fei.edu.br
+	%</internal>
+	%<*readme>
+	-----------------------------------------------------------------------------------------------------
+	fei --- Class for the creation of academic works under the typographic rules of FEI University Center
+	Author: Douglas De Rizzo Meneghetti
+	E-mail: douglasrizzo@fei.edu.br
 
- Released under the LaTeX Project Public License v1.3c or later
- See http://www.latex-project.org/lppl.txt
- -----------------------------------------------------------------------------------------------------
+	Released under the LaTeX Project Public License v1.3c or later
+	See http://www.latex-project.org/lppl.txt
+	-----------------------------------------------------------------------------------------------------
 
- fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
+	fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
 
- fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as ABNT NBR 10520:2002 (Citations) and ABNT NBR 6023:2002 (Bibligraphic References).
+	fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as ABNT NBR 10520:2002 (Citations) and ABNT NBR 6023:2002 (Bibligraphic References).
 
- In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
+	In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
 
- # License
- Released under the LaTeX Project Public License v1.3c or later
- See http://www.latex-project.org/lppl.txt
+	# License
+	Released under the LaTeX Project Public License v1.3c or later
+	See http://www.latex-project.org/lppl.txt
 
- # Latest releases and version control
- CTAN is always the place to go to get the stable version of the class. To know the changes done to the class and get previous and developments versions, visit https://ww.github.com/douglasrizzo/Classe-Latex-FEI/.
- %</readme>
- %<*internal>
+	# Latest releases and version control
+	CTAN is always the place to go to get the stable version of the class. To know the changes done to the class and get previous and developments versions, visit https://ww.github.com/douglasrizzo/Classe-Latex-FEI/.
+	%</readme>
+	%<*internal>
 \fi
 \def\nameofplainTeX{plain}
 \ifx\fmtname\nameofplainTeX\else
- \expandafter\begingroup
+	\expandafter\begingroup
 \fi
 %</internal>
 %<*install>
@@ -68,24 +68,24 @@ fei.cls.
 \endpostamble
 \usedir{tex/latex/fei}
 \generate{
- \file{\jobname.cls}{\from{\jobname.dtx}{class}}
+	\file{\jobname.cls}{\from{\jobname.dtx}{class}}
 }
 %</install>
 %<install>\endbatchfile
 %<*internal>
 \usedir{source/latex/fei}
 \generate{
- \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+	\file{\jobname.ins}{\from{\jobname.dtx}{install}}
 }
 \nopreamble\nopostamble
 \usedir{doc/latex/fei}
 \generate{
- \file{README.txt}{\from{\jobname.dtx}{readme}}
+	\file{README.txt}{\from{\jobname.dtx}{readme}}
 }
 \ifx\fmtname\nameofplainTeX
- \expandafter\endbatchfile
+	\expandafter\endbatchfile
 \else
- \expandafter\endgroup
+	\expandafter\endgroup
 \fi
 %</internal>
 % \fi
@@ -99,7 +99,7 @@ basicstyle=\ttfamily,
 columns=flexible,
 breaklines=true,
 literate=
- {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+	{ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
 {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
 {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
@@ -155,24 +155,24 @@ literate=
 \maketitle
 
 \begin{folhaderosto}
- Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos de acordo com o guia de 2016 da biblioteca
+	Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos de acordo com o guia de 2016 da biblioteca
 \end{folhaderosto}
 \fichacatalografica
 \folhadeaprovacao
 \dedicatoria{Esta dedicatória está aqui para que a função de dedicatória seja testada.}
 \begin{agradecimentos}
- Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos. Agradecimentos especiais são estendidos aos membros da \TeX{} \emph{Stack Exchange} pela divisão do fardo de criar documentos com belas tipografias. Agradece-se também os mantenedores da \gls{ctan}, por hospedar a classe e garantir sua distribuição em todas as maiores distribuições de \LaTeX{} nos principais sistemas operacionais, além de enviar-me e-mails toda vez que subo uma versão errada da classe.
+	Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos. Agradecimentos especiais são estendidos aos membros da \TeX{} \emph{Stack Exchange} pela divisão do fardo de criar documentos com belas tipografias. Agradece-se também os mantenedores da \gls{ctan}, por hospedar a classe e garantir sua distribuição em todas as maiores distribuições de \LaTeX{} nos principais sistemas operacionais, além de enviar-me e-mails toda vez que subo uma versão errada da classe.
 \end{agradecimentos}
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
- O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
- \keywords{\LaTeX{}. FEI.}
+	O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+	\keywords{\LaTeX{}. FEI.}
 \end{resumo}
 
 \begin{abstract}
- Abstract goes here.
- \keywords{Keywords. Go. Here.}
+	Abstract goes here.
+	\keywords{Keywords. Go. Here.}
 \end{abstract}
 
 \listoffigures
@@ -237,9 +237,9 @@ O processo de compilação requer que todas as dependências da classe já estej
 Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX{} como o Mik\TeX{} e o \TeX{} Live. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
 
 \begin{itemize}
- \item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
- \item Instalar o script usando o aplicativo \texttt{texlua}: \lstinline+texlua install-getnonfreefonts+;
- \item Rodar o script: \lstinline+getnonfreefonts --all+.
+	\item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
+	\item Instalar o script usando o aplicativo \texttt{texlua}: \lstinline+texlua install-getnonfreefonts+;
+	\item Rodar o script: \lstinline+getnonfreefonts --all+.
 \end{itemize}
 
 Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \lstinline+\documentclass[arial]{fei}+.
@@ -251,30 +251,30 @@ A partir da versão 3, aclasse da FEI foi criada tendo a classe \texttt{memoir} 
 No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} Live (para Linux e Mac OS).
 
 \begin{enumerate}
- \item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
- \item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
- \item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
- \item\texttt{biblatex}: pacote que substitui o Bib\TeX{} no tratamento de referências bibliográficas;
- \item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
- \item\texttt{caption}: altera a formatação de certas legendas;
- \item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
- \item\texttt{csquotes}: proporciona suporte a aspas para diferentes idiomas;
- \item\texttt{enumitem}: formatação de alíneas;
- \item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
- \item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
- \item\texttt{graphicx}: importação e utilização de imagens;
- \item\texttt{hyperref}: gera os links entre referências no PDF;
- \item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
- \item\texttt{ifthen}: permite a utilização de condições na geração do texto;
- \item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
- \item\texttt{inputenc}: permite a entrada de caracteres em formato UTF-8 nos arquivos \texttt{tex};
- \item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
- \item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
- \item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
- \item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
- \item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
- \item\texttt{times}: carrega fonte Times New Roman;
- \item\texttt{uarial}: carrega fonte URW Arial.
+	\item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
+	\item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
+	\item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
+	\item\texttt{biblatex}: pacote que substitui o Bib\TeX{} no tratamento de referências bibliográficas;
+	\item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
+	\item\texttt{caption}: altera a formatação de certas legendas;
+	\item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
+	\item\texttt{csquotes}: proporciona suporte a aspas para diferentes idiomas;
+	\item\texttt{enumitem}: formatação de alíneas;
+	\item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
+	\item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
+	\item\texttt{graphicx}: importação e utilização de imagens;
+	\item\texttt{hyperref}: gera os links entre referências no PDF;
+	\item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
+	\item\texttt{ifthen}: permite a utilização de condições na geração do texto;
+	\item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
+	\item\texttt{inputenc}: permite a entrada de caracteres em formato UTF-8 nos arquivos \texttt{tex};
+	\item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
+	\item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
+	\item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
+	\item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+	\item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
+	\item\texttt{times}: carrega fonte Times New Roman;
+	\item\texttt{uarial}: carrega fonte URW Arial.
 \end{enumerate}
 
 Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
@@ -298,13 +298,13 @@ A declaração da classe é feita da seguinte forma:
 A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
- \item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
- \item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
- \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
- \item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
- \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
- \item \texttt{acronym}: sinaliza a configuração da lista de abreviaturas;
- \item \texttt{symbols}: sinaliza a configuração da lista de símbolos.
+	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
+	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
+	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
+	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
+	\item \texttt{acronym}: sinaliza a configuração da lista de abreviaturas;
+	\item \texttt{symbols}: sinaliza a configuração da lista de símbolos.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
@@ -395,26 +395,26 @@ Abstract goes here.
 A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, teoremas, abreviaturas e símbolos usando os comandos nativos do \LaTeX{}, redefinidos para aderirem aos padrões da biblioteca. Também é possível inserir um sumário. A tabela \ref{tbl:substituicoes} enumera os comandos para inserção das listas e do sumário.
 
 \begin{table}[ht!]
- \caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
- \centering
- \begin{tabular}{|c|c|}
-  \hline
-  \textbf{Elemento}                 & \textbf{Comando}        \\
-  \hline
-  Sumário                           & \lstinline+\tableofcontents+ \\
-  \hline
-  Lista de Figuras                  & \lstinline+\listoffigures+ \\
-  \hline
-  Lista de Tabelas                  & \lstinline+\listoftables+ \\
-  \hline
-  Lista de Algoritmos               & \lstinline+\listofalgorithms+ \\
-  \hline
-  Lista de Teoremas                 & \lstinline+\listoftheorems+ \\
-  \hline
-  Listas de Abreviaturas e Símbolos & \lstinline+\printglossaries+ \\
-  \hline
- \end{tabular}
- \smallcaption{Fonte: Autor}
+	\caption{Listas e os comandos para imprimi-las} \label{tbl:substituicoes}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Elemento}                 & \textbf{Comando}        \\
+		\hline
+		Sumário                           & \lstinline+\tableofcontents+ \\
+		\hline
+		Lista de Figuras                  & \lstinline+\listoffigures+ \\
+		\hline
+		Lista de Tabelas                  & \lstinline+\listoftables+ \\
+		\hline
+		Lista de Algoritmos               & \lstinline+\listofalgorithms+ \\
+		\hline
+		Lista de Teoremas                 & \lstinline+\listoftheorems+ \\
+		\hline
+		Listas de Abreviaturas e Símbolos & \lstinline+\printglossaries+ \\
+		\hline
+	\end{tabular}
+	\smallcaption{Fonte: Autor}
 \end{table}
 
 \section{TEXTO}\label{sec:texto}
@@ -439,10 +439,10 @@ A partir de 2015, o guia de formatação da biblioteca padroniza as legendas de 
 A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior utilizando a formatação nativa.
 
 \begin{figure}
- \centering
- \caption{Exemplo de figura com sua fonte.}
- \rule{2cm}{2cm}
- \smallcaption{Fonte: \citefloat{lamport1994latex}.}\label{fig:exemplo}
+	\centering
+	\caption{Exemplo de figura com sua fonte.}
+	\rule{2cm}{2cm}
+	\smallcaption{Fonte: \citefloat{lamport1994latex}.}\label{fig:exemplo}
 \end{figure}
 
 \begin{lstlisting}
@@ -469,20 +469,20 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 \end{lstlisting}
 
 \begin{table}[ht!]
- \caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
- \centering
- \begin{tabular}{|c|c|c|c|}
-  \hline
-          & \(x_1\) & \(x_2\) & \(x_3\) \\
-  \hline
-  \(y_1\) & 1       & 0       & 0       \\
-  \hline
-  \(y_2\) & 0       & 1       & 0       \\
-  \hline
-  \(y_3\) & 0       & 0       & 1       \\
-  \hline
- \end{tabular}
- \smallcaption{Fonte: Autor}
+	\caption{Exemplo de tabela com legenda acima e fonte abaixo} \label{tbl:exemplo}
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		        & \(x_1\) & \(x_2\) & \(x_3\) \\
+		\hline
+		\(y_1\) & 1       & 0       & 0       \\
+		\hline
+		\(y_2\) & 0       & 1       & 0       \\
+		\hline
+		\(y_3\) & 0       & 0       & 1       \\
+		\hline
+	\end{tabular}
+	\smallcaption{Fonte: Autor}
 \end{table}
 
 \subsubsection{Algoritmos}
@@ -526,17 +526,17 @@ Exemplo:
 \end{lstlisting}
 
 \begin{algorithm}
- \Entrada{Vetor \(X\)}
- \Saida{Vetor \(Y\)}
+	\Entrada{Vetor \(X\)}
+	\Saida{Vetor \(Y\)}
 
- \ParaCada{variável \(x_i \in X\)}{
+	\ParaCada{variável \(x_i \in X\)}{
 
-  \(y_i = x_i^2\)
+		\(y_i = x_i^2\)
 
- }
+	}
 
- \Retorna \(Y\)
- \caption{Exemplo de algoritmo usando algorithm2e em português.}\label{lst:alg}
+	\Retorna \(Y\)
+	\caption{Exemplo de algoritmo usando algorithm2e em português.}\label{lst:alg}
 \end{algorithm}
 
 \subsubsection{Equações}
@@ -544,7 +544,7 @@ Exemplo:
 O guia da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \lstinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \lstinline+\ref{}+, porém com a adição dos parênteses.
 
 \begin{equation} \label{eq:euler}
- e^{i\pi}+1=0
+	e^{i\pi}+1=0
 \end{equation}
 
 A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
@@ -568,7 +568,7 @@ Exemplo de teorema.
 Resultado:
 
 \begin{teorema}\label{thm:ex1}
- Exemplo de teorema.
+	Exemplo de teorema.
 \end{teorema}
 
 Caso um teorema possua um nome ou referência, essa informação pode ser passada entre colchetes, como uma opção do ambiente:
@@ -576,7 +576,7 @@ Caso um teorema possua um nome ou referência, essa informação pode ser passad
 \lstinline+\begin{teorema}[Teorema de Pitágoras \cite{obra}]+
 
 \begin{teorema}[Teorema de Pitágoras \cite{heath1921history}] \label{thm:ex2}
- Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
+	Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
 \end{teorema}
 
 A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese, proposicao, conjectura, paradoxo, corolario, definicao} e \emph{exemplo}, com chamada e numeração em negrito e texto com formatação padrão, como nos teoremas \ref{thm:ex1} e \ref{thm:ex2}. Também há o ambiente \emph{prova}, utilizado para se demonstrar alguma propriedade mencionada, o qual não é numerado e tem sua chamada em itálico. O término de um teorema, denominado ``como se queria demonstrar'' (CQD), do latim \gls{qed}, é representado pelo símbolo \qedsymbol, denominado ``lápide''.
@@ -586,13 +586,13 @@ A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese
 Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:dependencias}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
 
 \begin{enumerate}
- \item Primeiro item;
- \item Segundo item;
-       \begin{enumerate}
-        \item Primeiro sub-item;
-        \item Segundo sub-item.
-       \end{enumerate}
- \item Terceiro item extremamente grande utilizado para testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2016.
+	\item Primeiro item;
+	\item Segundo item;
+	      \begin{enumerate}
+		      \item Primeiro sub-item;
+		      \item Segundo sub-item.
+	      \end{enumerate}
+	\item Terceiro item extremamente grande utilizado para testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2016.
 \end{enumerate}
 
 \section{PÓS-TEXTO}\label{sec:postexto}
@@ -707,7 +707,7 @@ O único tipo de citação que independe do pacote \texttt{abntex2cite} é a cit
 Exemplo:
 
 \begin{quote}
- I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{turing50}
+	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{turing50}
 \end{quote}
 
 \section{CITAÇÕES DE MÚLTIPLAS OBRAS COM MESMO AUTOR}
@@ -763,10 +763,10 @@ A indexação de abreviaturas é feita utilizando o comando
 \lstinline+\newacronym[longplural=1]{2}{3}{4}+, onde:
 
 \begin{enumerate}
- \item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
- \item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto;
- \item 3: a abreviatura em si;
- \item 4: o significado a abreviatura, escrito por extenso.
+	\item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
+	\item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto;
+	\item 3: a abreviatura em si;
+	\item 4: o significado a abreviatura, escrito por extenso.
 \end{enumerate}
 
 Exemplo: \lstinline+\newacronym[longplural=Associações+
@@ -784,11 +784,11 @@ A indexação de símbolos é feita utilizando o comando
 \lstinline+name={3},sort={4},description={5}}+, onde:
 
 \begin{enumerate}
- \item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
- \item 2: tipo do símbolo; usado para separar letras gregas e subscritos das demais (Cf. exemplo abaixo);
- \item 3: o símbolo; caso a notação matemática seja necessária, use \lstinline+\ensuremath{2}+ (Cf. exemplo abaixo);
- \item 4: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
- \item 5: a descrição do símbolo, que aparecerá na lista.
+	\item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
+	\item 2: tipo do símbolo; usado para separar letras gregas e subscritos das demais (Cf. exemplo abaixo);
+	\item 3: o símbolo; caso a notação matemática seja necessária, use \lstinline+\ensuremath{2}+ (Cf. exemplo abaixo);
+	\item 4: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
+	\item 5: a descrição do símbolo, que aparecerá na lista.
 \end{enumerate}
 
 Exemplo: \lstinline+\newglossaryentry{pi}{parent=greek,type=symbols,+
@@ -802,18 +802,18 @@ Exemplo: \lstinline+\newglossaryentry{pi}{parent=greek,type=symbols,+
 O pacote \bigvindex{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 
 \begin{enumerate}
- \item \lstinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
- \item \lstinline+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
- \item \lstinline+\glspl{<rotulo>}+: imprime a entrada no plural;
- \item \lstinline+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
+	\item \lstinline+\gls{<rotulo>}+: imprime a entrada em letras minúsculas;
+	\item \lstinline+\Gls{<rotulo>}+: imprime a entrada em letras maiúsculas;
+	\item \lstinline+\glspl{<rotulo>}+: imprime a entrada no plural;
+	\item \lstinline+\Glspl{<rotulo>}+: imprime a entrada no plural e em letras maiúsculas.
 \end{enumerate}
 
 As siglas possuem alguns comandos únicos para serem referenciadas:
 
 \begin{enumerate}
- \item \lstinline+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
- \item \lstinline+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
- \item \lstinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
+	\item \lstinline+\acrfull{<rotulo>}+ imprime a abreviatura completa \(\to\) \acrfull{fei};
+	\item \lstinline+\acrlong{<rotulo>}+ imprime a parte por extenso da abreviatura \(\to\) \acrlong{fei};
+	\item \lstinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 \end{enumerate}
 
 Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
@@ -850,12 +850,12 @@ Para compilar o documento manualmente, é preciso executar os seguintes programa
 onde:
 
 \begin{enumerate}
- \item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
- \item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
- \item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
- \item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
- \item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
- \item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
+	\item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
+	\item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+	\item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
+	\item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
+	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
 \end{enumerate}
 
 Um exemplo de comando que executa todas essas funções é o seguinte:
@@ -876,8 +876,8 @@ Caso o \bigvindex{xindy} esteja sendo usado como o motor de indexação, é nece
 Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX{}, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Duas dessas ferramentas são o \texttt{latexmk} e o \texttt{rubber}, ambas criadas especificamente para realizar a automatização da compilação de documentos \TeX{}. Supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual, os comandos seguintes geram um PDF completo.
 
 \begin{enumerate}
- \item \texttt{latexmk -pdf -interaction=nonstopmode documento}
- \item \texttt{rubber -d documento}
+	\item \texttt{latexmk -pdf -interaction=nonstopmode documento}
+	\item \texttt{rubber -d documento}
 \end{enumerate}
 
 Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
@@ -898,41 +898,41 @@ Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usu
 Versão 1 (2012):
 
 \begin{itemize}
- \item Versão inicial;
- \item Criação de todos os elementos pré-textuais:
-       \begin{itemize}
-        \item Capa;
-        \item Folha de rosto;
-        \item Ficha catalográfica;
-        \item Folha de aprovação;
-        \item Resumo;
-        \item \emph{Abstract};
-        \item Dedicatória;
-        \item Agradecimentos;
-        \item Epígrafe;
-        \item Sumário e listas de figuras e tabelas.
-       \end{itemize}
- \item Formatação dos títulos de seções até o quarto nível (\texttt{subsubsection});
- \item Formatação de referências e citações usando o pacote \texttt{abntex};
- \item Criação de apêndices e anexos.
+	\item Versão inicial;
+	\item Criação de todos os elementos pré-textuais:
+	      \begin{itemize}
+		      \item Capa;
+		      \item Folha de rosto;
+		      \item Ficha catalográfica;
+		      \item Folha de aprovação;
+		      \item Resumo;
+		      \item \emph{Abstract};
+		      \item Dedicatória;
+		      \item Agradecimentos;
+		      \item Epígrafe;
+		      \item Sumário e listas de figuras e tabelas.
+	      \end{itemize}
+	\item Formatação dos títulos de seções até o quarto nível (\texttt{subsubsection});
+	\item Formatação de referências e citações usando o pacote \texttt{abntex};
+	\item Criação de apêndices e anexos.
 \end{itemize}
 
 Versão 2 (2013 -- 2015):
 
 \begin{itemize}
- \item Adição de listas de símbolos e abreviaturas usando o pacote \index{glossaries@\emph{glossaries}};
- \item Suporte a índice remissivo através do pacote \index{makeindex@\emph{MakeIndex}};
- \item Uso de um pacote externo de formatação de referências e citações, o \index{abntex2cite@\emph{abntex2cite}};
- \item Suporte à criação de algoritmos e lista de algoritmos usando o pacote \index{algorithm2e@\emph{algorithm2e}};
- \item Suporte à criação de teoremas, definições, corolários, provas e afins usando os pacotes \index{amsthm@\emph{amsthm}} e \index{thmtools@\emph{thmtools}};
- \item suporte à impressão em frente-e-verso com a opção \texttt{twoside};
- \item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
-       \begin{itemize}
-        \item Uso de negritos na capa e folha de rosto
-        \item Espaçamento entre linhas mais parecido com o do Word;
-        \item Correção das margens superior e inferior de todas as páginas;
-        \item Correção de recuo das alíneas.
-       \end{itemize}
+	\item Adição de listas de símbolos e abreviaturas usando o pacote \index{glossaries@\emph{glossaries}};
+	\item Suporte a índice remissivo através do pacote \index{makeindex@\emph{MakeIndex}};
+	\item Uso de um pacote externo de formatação de referências e citações, o \index{abntex2cite@\emph{abntex2cite}};
+	\item Suporte à criação de algoritmos e lista de algoritmos usando o pacote \index{algorithm2e@\emph{algorithm2e}};
+	\item Suporte à criação de teoremas, definições, corolários, provas e afins usando os pacotes \index{amsthm@\emph{amsthm}} e \index{thmtools@\emph{thmtools}};
+	\item suporte à impressão em frente-e-verso com a opção \texttt{twoside};
+	\item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
+	      \begin{itemize}
+		      \item Uso de negritos na capa e folha de rosto
+		      \item Espaçamento entre linhas mais parecido com o do Word;
+		      \item Correção das margens superior e inferior de todas as páginas;
+		      \item Correção de recuo das alíneas.
+	      \end{itemize}
 \end{itemize}
 
 Versão 2 (2015 -- 2016): adaptação ao novo guia de formatação de 2015, com mudanças especialmente nos títulos de seção e sumário.
@@ -940,15 +940,15 @@ Versão 2 (2015 -- 2016): adaptação ao novo guia de formatação de 2015, com 
 Versão 3 (2016 -- ):
 
 \begin{itemize}
- \item Fim do suporte ao \bigvindex{abntex2cite} e início de uso do pacote \bigvindex{biblatex-abnt} para formatação de referências, o qual possui como dependências o pacote \bigvindex{biblatex} e o programa \index{biber@\emph{Biber}}\emph{Biber};
- \item Uso da classe \texttt{memoir} como base para a classe da FEI, removendo diversas dependências, como os pacotes \emph{tocloft, fancyhdr, geometry} e \emph{setspace};
- \item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
-       \begin{itemize}
-        \item Uso de negritos na capa e folha de rosto;
-        \item Remoção do negrito na lista de abreviaturas;
-        \item Adição de hífen na lista de algoritmos;
-        \item Correção de recuo das alíneas.
-       \end{itemize}
+	\item Fim do suporte ao \bigvindex{abntex2cite} e início de uso do pacote \bigvindex{biblatex-abnt} para formatação de referências, o qual possui como dependências o pacote \bigvindex{biblatex} e o programa \index{biber@\emph{Biber}}\emph{Biber};
+	\item Uso da classe \texttt{memoir} como base para a classe da FEI, removendo diversas dependências, como os pacotes \emph{tocloft, fancyhdr, geometry} e \emph{setspace};
+	\item Diversas correções baseadas em dissertações corrigidas pela biblioteca:
+	      \begin{itemize}
+		      \item Uso de negritos na capa e folha de rosto;
+		      \item Remoção do negrito na lista de abreviaturas;
+		      \item Adição de hífen na lista de algoritmos;
+		      \item Correção de recuo das alíneas.
+	      \end{itemize}
 \end{itemize}
 
 \chapter{\emph{HACKS} ÚTEIS}
@@ -1001,12 +1001,12 @@ Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do com
 \section{ALINHANDO FIGURA E LEGENDA}
 
 \begin{figure}
- \centering
- \begin{minipage}{.5\textwidth}
-  \caption{Exemplo de fonte com sua figura.}
-  \rule{\textwidth}{2cm}
-  \smallcaption{Fonte: Autor.}\label{fig:exemplo_alinhado}
- \end{minipage}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\caption{Exemplo de fonte com sua figura.}
+		\rule{\textwidth}{2cm}
+		\smallcaption{Fonte: Autor.}\label{fig:exemplo_alinhado}
+	\end{minipage}
 \end{figure}
 
 Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda corretamente sem utilizar recuos é através do uso do ambiente \texttt{minipage}, como mostrado abaixo. A figura \ref{fig:exemplo_alinhado} mostra o resultado. Neste formato, para mudar o tamanho da figura, muda-se o tamanho da \texttt{minipage}.
@@ -1029,251 +1029,251 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \begin{enumerate}
 
- \item\lstinline+pdflatex documento.tex+
-       \begin{enumerate}
-        \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
-        \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
-        \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
-        \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
-        \item \texttt{loa}: lista de algoritmos;
-        \item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
-        \item \texttt{toc}: sumário;
-       \end{enumerate}
+	\item\lstinline+pdflatex documento.tex+
+	      \begin{enumerate}
+		      \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
+		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
+		      \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
+		      \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
+		      \item \texttt{loa}: lista de algoritmos;
+		      \item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
+		      \item \texttt{toc}: sumário;
+	      \end{enumerate}
 
- \item\lstinline+biber documento.aux+
-       \begin{enumerate}
-        \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
-       \end{enumerate}
+	\item\lstinline+biber documento.aux+
+	      \begin{enumerate}
+		      \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
+	      \end{enumerate}
 
- \item\lstinline+makeindex documento.idx+
-       \begin{enumerate}
-        \item \texttt{ilg}: \emph{log} do MakeIndex.
-        \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \lstinline+\printindex+;
-       \end{enumerate}
+	\item\lstinline+makeindex documento.idx+
+	      \begin{enumerate}
+		      \item \texttt{ilg}: \emph{log} do MakeIndex.
+		      \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \lstinline+\printindex+;
+	      \end{enumerate}
 
- \item\lstinline+makeglossaries documento+
-       \begin{enumerate}
-        \item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \lstinline+\printglossaries+;
-        \item \texttt{glg}: \emph{log} do \emph{glossaries}.
-       \end{enumerate}
+	\item\lstinline+makeglossaries documento+
+	      \begin{enumerate}
+		      \item \texttt{acr,sbl,gls}:  contém, em linguagem \emph{tex}, a formação das listas a serem inseridas na chamada a \lstinline+\printglossaries+;
+		      \item \texttt{glg}: \emph{log} do \emph{glossaries}.
+	      \end{enumerate}
 \end{enumerate}
 
 \chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}} \label{chap:simbolos}
 
 \section{LETRAS GREGAS}
 \begin{multicols}{3}
- \noindent
- \(\alpha\) \lstinline+\alpha+\\
- \(\beta\) \lstinline+\beta+\\
- \(\gamma\) \lstinline+\gamma+\\
- \(\delta\) \lstinline+\delta+\\
- \(\epsilon\) \lstinline+\epsilon+\\
- \(\varepsilon\) \lstinline+\varepsilon+\\
- \(\zeta\) \lstinline+\zeta+\\
- \(\eta\) \lstinline+\eta+\\
- \(\theta\) \lstinline+\theta+\\
- \(\vartheta\) \lstinline+\vartheta+\\
- \(\iota\) \lstinline+\iota+\\
- \(\kappa\) \lstinline+\kappa+\\
- \(\lambda\) \lstinline+\lambda+\\
- \(\mu\) \lstinline+\mu+\\
- \(\nu\) \lstinline+\nu+\\
- \(\xi\) \lstinline+\xi+\\
- \(\o\) \lstinline+\o+\\
- \(\pi\) \lstinline+\pi+\\
- \(\varpi\) \lstinline+\varpi+\\
- \(\rho\) \lstinline+\rho+\\
- \(\Gamma\) \lstinline+\Gamma+\\
- \(\Delta\) \lstinline+\Delta+\\
- \(\Theta\) \lstinline+\Theta+\\
- \(\Lambda\) \lstinline+\Lambda+\\
- \(\Xi\) \lstinline+\Xi+\\
- \(\Pi\) \lstinline+\Pi+\\
- \(\Sigma\) \lstinline+\Sigma+\\
- \(\Upsilon\) \lstinline+\Upsilon+\\
- \(\varrho\) \lstinline+\varrho+\\
- \(\sigma\) \lstinline+\sigma+\\
- \(\varsigma\) \lstinline+\varsigma+\\
- \(\tau\) \lstinline+\tau+\\
- \(\upsilon\) \lstinline+\upsilon+\\
- \(\phi\) \lstinline+\phi+\\
- \(\varphi\) \lstinline+\varphi+\\
- \(\chi\) \lstinline+\chi+\\
- \(\psi\) \lstinline+\psi+\\
- \(\omega\) \lstinline+\omega+\\
- \(\Phi\) \lstinline+\Phi+\\
- \(\Psi\) \lstinline+\Psi+\\
- \(\Omega\) \lstinline+\Omega+\\
+	\noindent
+	\(\alpha\) \lstinline+\alpha+\\
+	\(\beta\) \lstinline+\beta+\\
+	\(\gamma\) \lstinline+\gamma+\\
+	\(\delta\) \lstinline+\delta+\\
+	\(\epsilon\) \lstinline+\epsilon+\\
+	\(\varepsilon\) \lstinline+\varepsilon+\\
+	\(\zeta\) \lstinline+\zeta+\\
+	\(\eta\) \lstinline+\eta+\\
+	\(\theta\) \lstinline+\theta+\\
+	\(\vartheta\) \lstinline+\vartheta+\\
+	\(\iota\) \lstinline+\iota+\\
+	\(\kappa\) \lstinline+\kappa+\\
+	\(\lambda\) \lstinline+\lambda+\\
+	\(\mu\) \lstinline+\mu+\\
+	\(\nu\) \lstinline+\nu+\\
+	\(\xi\) \lstinline+\xi+\\
+	\(\o\) \lstinline+\o+\\
+	\(\pi\) \lstinline+\pi+\\
+	\(\varpi\) \lstinline+\varpi+\\
+	\(\rho\) \lstinline+\rho+\\
+	\(\Gamma\) \lstinline+\Gamma+\\
+	\(\Delta\) \lstinline+\Delta+\\
+	\(\Theta\) \lstinline+\Theta+\\
+	\(\Lambda\) \lstinline+\Lambda+\\
+	\(\Xi\) \lstinline+\Xi+\\
+	\(\Pi\) \lstinline+\Pi+\\
+	\(\Sigma\) \lstinline+\Sigma+\\
+	\(\Upsilon\) \lstinline+\Upsilon+\\
+	\(\varrho\) \lstinline+\varrho+\\
+	\(\sigma\) \lstinline+\sigma+\\
+	\(\varsigma\) \lstinline+\varsigma+\\
+	\(\tau\) \lstinline+\tau+\\
+	\(\upsilon\) \lstinline+\upsilon+\\
+	\(\phi\) \lstinline+\phi+\\
+	\(\varphi\) \lstinline+\varphi+\\
+	\(\chi\) \lstinline+\chi+\\
+	\(\psi\) \lstinline+\psi+\\
+	\(\omega\) \lstinline+\omega+\\
+	\(\Phi\) \lstinline+\Phi+\\
+	\(\Psi\) \lstinline+\Psi+\\
+	\(\Omega\) \lstinline+\Omega+\\
 \end{multicols}
 
 \section{SÍMBOLOS}
 \begin{multicols}{3}
- \noindent
- \(\aleph\) \lstinline+\aleph+\\
- \(\hbar\) \lstinline+\hbar+\\
- \(\imath\) \lstinline+\imath+\\
- \(\jmath\) \lstinline+\jmath+\\
- \(\ell\) \lstinline+\ell+\\
- \(\wp\) \lstinline+\wp+\\
- \(\Re\) \lstinline+\Re+\\
- \(\Im\) \lstinline+\Im+\\
- \(\partial\) \lstinline+\partial+\\
- \(\infty\) \lstinline+\infty+\\
- \(\prime\) \lstinline+\prime+\\
- \(\emptyset\) \lstinline+\emptyset+\\
- \(\nabla\) \lstinline+\nabla+\\
- \(\surd\) \lstinline+\surd+\\
- \(\top\) \lstinline+\top+\\
- \(\bot\) \lstinline+\bot+\\
- \(\|\) \lstinline+\|+\\
- \(\angle\) \lstinline+\angle+\\
- \(\triangle\) \lstinline+\triangle+\\
- \(\backslash\) \lstinline+\backslash+\\
- \(\forall\) \lstinline+\forall+\\
- \(\exists\) \lstinline+\exists+\\
- \(\lnot\) \lstinline+\neg+ ou \lstinline+\lnot+\\
- \(\flat\) \lstinline+\flat+\\
- \(\natural\) \lstinline+\natural+\\
- \(\sharp\) \lstinline+\sharp+\\
- \(\clubsuit\) \lstinline+\clubsuit+\\
- \(\diamondsuit\) \lstinline+\diamondsuit+\\
- \(\heartsuit\) \lstinline+\heartsuit+\\
- \(\spadesuit\) \lstinline+\spadesuit+\\
+	\noindent
+	\(\aleph\) \lstinline+\aleph+\\
+	\(\hbar\) \lstinline+\hbar+\\
+	\(\imath\) \lstinline+\imath+\\
+	\(\jmath\) \lstinline+\jmath+\\
+	\(\ell\) \lstinline+\ell+\\
+	\(\wp\) \lstinline+\wp+\\
+	\(\Re\) \lstinline+\Re+\\
+	\(\Im\) \lstinline+\Im+\\
+	\(\partial\) \lstinline+\partial+\\
+	\(\infty\) \lstinline+\infty+\\
+	\(\prime\) \lstinline+\prime+\\
+	\(\emptyset\) \lstinline+\emptyset+\\
+	\(\nabla\) \lstinline+\nabla+\\
+	\(\surd\) \lstinline+\surd+\\
+	\(\top\) \lstinline+\top+\\
+	\(\bot\) \lstinline+\bot+\\
+	\(\|\) \lstinline+\|+\\
+	\(\angle\) \lstinline+\angle+\\
+	\(\triangle\) \lstinline+\triangle+\\
+	\(\backslash\) \lstinline+\backslash+\\
+	\(\forall\) \lstinline+\forall+\\
+	\(\exists\) \lstinline+\exists+\\
+	\(\lnot\) \lstinline+\neg+ ou \lstinline+\lnot+\\
+	\(\flat\) \lstinline+\flat+\\
+	\(\natural\) \lstinline+\natural+\\
+	\(\sharp\) \lstinline+\sharp+\\
+	\(\clubsuit\) \lstinline+\clubsuit+\\
+	\(\diamondsuit\) \lstinline+\diamondsuit+\\
+	\(\heartsuit\) \lstinline+\heartsuit+\\
+	\(\spadesuit\) \lstinline+\spadesuit+\\
 \end{multicols}
 
 \section{OPERADORES BINÁRIOS}
 \begin{multicols}{3}
- \noindent
- \(\pm\) \lstinline+\pm+\\
- \(\mp\) \lstinline+\mp+\\
- \(\setminus\) \lstinline+\setminus+\\
- \(\cdot\) \lstinline+\cdot+\\
- \(\times\) \lstinline+\times+\\
- \(\ast\) \lstinline+\ast+\\
- \(\star\) \lstinline+\star+\\
- \(\diamond\) \lstinline+\diamond+\\
- \(\circ\) \lstinline+\circ+\\
- \(\bullet\) \lstinline+\bullet+\\
- \(\div\) \lstinline+\div+\\
- \(\cap\) \lstinline+\cap+\\
- \(\cup\) \lstinline+\cup+\\
- \(\uplus\) \lstinline+\uplus+\\
- \(\sqcap\) \lstinline+\sqcap+\\
- \(\sqcup\) \lstinline+\sqcup+\\
- \(\triangleleft\) \lstinline+\triangleleft+\\
- \(\triangleright\) \lstinline+\triangleright+\\
- \(\wr\) \lstinline+\wr+\\
- \(\bigcirc\) \lstinline+\bigcirc+\\
- \(\bigtriangleup\) \lstinline+\bigtriangleup+\\
- \(\bigtriangledown\) \lstinline+\bigtriangledown+\\
- \(\vee\) \lstinline+\vee+\\
- \(\wedge\) \lstinline+\wedge+\\
- \(\oplus\) \lstinline+\oplus+\\
- \(\ominus\) \lstinline+\ominus+\\
- \(\otimes\) \lstinline+\otimes+\\
- \(\oslash\) \lstinline+\oslash+\\
- \(\odot\) \lstinline+\odot+\\
- \(\dagger\) \lstinline+\dagger+\\
- \(\ddagger\) \lstinline+\ddagger+\\
- \(\amalg\) \lstinline+\amalg+\\
+	\noindent
+	\(\pm\) \lstinline+\pm+\\
+	\(\mp\) \lstinline+\mp+\\
+	\(\setminus\) \lstinline+\setminus+\\
+	\(\cdot\) \lstinline+\cdot+\\
+	\(\times\) \lstinline+\times+\\
+	\(\ast\) \lstinline+\ast+\\
+	\(\star\) \lstinline+\star+\\
+	\(\diamond\) \lstinline+\diamond+\\
+	\(\circ\) \lstinline+\circ+\\
+	\(\bullet\) \lstinline+\bullet+\\
+	\(\div\) \lstinline+\div+\\
+	\(\cap\) \lstinline+\cap+\\
+	\(\cup\) \lstinline+\cup+\\
+	\(\uplus\) \lstinline+\uplus+\\
+	\(\sqcap\) \lstinline+\sqcap+\\
+	\(\sqcup\) \lstinline+\sqcup+\\
+	\(\triangleleft\) \lstinline+\triangleleft+\\
+	\(\triangleright\) \lstinline+\triangleright+\\
+	\(\wr\) \lstinline+\wr+\\
+	\(\bigcirc\) \lstinline+\bigcirc+\\
+	\(\bigtriangleup\) \lstinline+\bigtriangleup+\\
+	\(\bigtriangledown\) \lstinline+\bigtriangledown+\\
+	\(\vee\) \lstinline+\vee+\\
+	\(\wedge\) \lstinline+\wedge+\\
+	\(\oplus\) \lstinline+\oplus+\\
+	\(\ominus\) \lstinline+\ominus+\\
+	\(\otimes\) \lstinline+\otimes+\\
+	\(\oslash\) \lstinline+\oslash+\\
+	\(\odot\) \lstinline+\odot+\\
+	\(\dagger\) \lstinline+\dagger+\\
+	\(\ddagger\) \lstinline+\ddagger+\\
+	\(\amalg\) \lstinline+\amalg+\\
 \end{multicols}
 
 \section{RELAÇÕES}
 \begin{multicols}{3}
- \noindent
- \(\leq\) \lstinline+\leq+\\
- \(\prec\) \lstinline+\prec+\\
- \(\preceq\) \lstinline+\preceq+\\
- \(\ll\) \lstinline+\ll+\\
- \(\subset\) \lstinline+\subset+\\
- \(\subseteq\) \lstinline+\subseteq+\\
- \(\sqsubseteq\) \lstinline+\sqsubseteq+\\
- \(\in\) \lstinline+\in+\\
- \(\vdash\) \lstinline+\vdash+\\
- \(\smile\) \lstinline+\smile+\\
- \(\frown\) \lstinline+\frown+\\
- \(\propto\) \lstinline+\propto+\\
- \(\geq\) \lstinline+\geq+\\
- \(\succ\) \lstinline+\succ+\\
- \(\succeq\) \lstinline+\succeq+\\
- \(\gg\) \lstinline+\gg+\\
- \(\supset\) \lstinline+\supset+\\
- \(\supseteq\) \lstinline+\supseteq+\\
- \(\sqsupseteq\) \lstinline+\sqsupseteq+\\
- \(\notin\) \lstinline+\notin+\\
- \(\dashv\) \lstinline+\dashv+\\
- \(\mid\) \lstinline+\mid+\\
- %\(\parallet\) \lstinline++\\
- \(\equiv\) \lstinline+\equiv+\\
- \(\sim\) \lstinline+\sim+\\
- \(\simeq\) \lstinline+\simeq+\\
- \(\asymp\) \lstinline+\asymp+\\
- \(\approx\) \lstinline+\approx+\\
- \(\cong\) \lstinline+\cong+\\
- \(\bowtie\) \lstinline+\bowtie+\\
- \(\ni\) \lstinline+\ni+\\
- \(\models\) \lstinline+\models+\\
- \(\doteq\) \lstinline+\doteq+\\
- \(\perp\) \lstinline+\perp+\\
- \(\not\equiv\) \lstinline+\not\equiv+\\
- \(\notin\) \lstinline+\notin+\\
- \(\ne\) \lstinline+\ne+\\
+	\noindent
+	\(\leq\) \lstinline+\leq+\\
+	\(\prec\) \lstinline+\prec+\\
+	\(\preceq\) \lstinline+\preceq+\\
+	\(\ll\) \lstinline+\ll+\\
+	\(\subset\) \lstinline+\subset+\\
+	\(\subseteq\) \lstinline+\subseteq+\\
+	\(\sqsubseteq\) \lstinline+\sqsubseteq+\\
+	\(\in\) \lstinline+\in+\\
+	\(\vdash\) \lstinline+\vdash+\\
+	\(\smile\) \lstinline+\smile+\\
+	\(\frown\) \lstinline+\frown+\\
+	\(\propto\) \lstinline+\propto+\\
+	\(\geq\) \lstinline+\geq+\\
+	\(\succ\) \lstinline+\succ+\\
+	\(\succeq\) \lstinline+\succeq+\\
+	\(\gg\) \lstinline+\gg+\\
+	\(\supset\) \lstinline+\supset+\\
+	\(\supseteq\) \lstinline+\supseteq+\\
+	\(\sqsupseteq\) \lstinline+\sqsupseteq+\\
+	\(\notin\) \lstinline+\notin+\\
+	\(\dashv\) \lstinline+\dashv+\\
+	\(\mid\) \lstinline+\mid+\\
+	%\(\parallet\) \lstinline++\\
+	\(\equiv\) \lstinline+\equiv+\\
+	\(\sim\) \lstinline+\sim+\\
+	\(\simeq\) \lstinline+\simeq+\\
+	\(\asymp\) \lstinline+\asymp+\\
+	\(\approx\) \lstinline+\approx+\\
+	\(\cong\) \lstinline+\cong+\\
+	\(\bowtie\) \lstinline+\bowtie+\\
+	\(\ni\) \lstinline+\ni+\\
+	\(\models\) \lstinline+\models+\\
+	\(\doteq\) \lstinline+\doteq+\\
+	\(\perp\) \lstinline+\perp+\\
+	\(\not\equiv\) \lstinline+\not\equiv+\\
+	\(\notin\) \lstinline+\notin+\\
+	\(\ne\) \lstinline+\ne+\\
 \end{multicols}
 
 \section{DELIMITADORES}
 \begin{multicols}{3}
- \noindent
- \((\) \lstinline+(+\\
- \()\) \lstinline+)+\\
- \(\lbrack\) \lstinline+\lbrack+\\
- \(\rbrack\) \lstinline+\rbrack+\\
- \(\lbrace\) \lstinline+\lbrace+ ou \lstinline+\{+\\
- \(\rbrace\) \lstinline+\rbrace+ ou \lstinline+\}+\\
- \(\langle\) \lstinline+\langle+\\
- \(\rangle\) \lstinline+\rangle+\\
- \(\vert\) \lstinline+\vert+\\
- \(\Vert\) \lstinline+\Vert+\\
- \([\![\) \lstinline+[\![+\\
- \(]\!]\) \lstinline+]\!]+\\
- \(\lfloor\) \lstinline+\lfloor+\\
- \(\rfloor\) \lstinline+\rfloor+\\
- \((\!(\) \lstinline+(\!(+\\
- \()\!)\) \lstinline+)\!)+\\
- \(\lceil\) \lstinline+\lceil+\\
- \(\rceil\) \lstinline+\rceil+\\
- \(\langle\!\langle\) \lstinline+\langle\!\langle+\\
- \(\rangle\!\rangle\) \lstinline+\rangle\!\rangle+\\
+	\noindent
+	\((\) \lstinline+(+\\
+	\()\) \lstinline+)+\\
+	\(\lbrack\) \lstinline+\lbrack+\\
+	\(\rbrack\) \lstinline+\rbrack+\\
+	\(\lbrace\) \lstinline+\lbrace+ ou \lstinline+\{+\\
+	\(\rbrace\) \lstinline+\rbrace+ ou \lstinline+\}+\\
+	\(\langle\) \lstinline+\langle+\\
+	\(\rangle\) \lstinline+\rangle+\\
+	\(\vert\) \lstinline+\vert+\\
+	\(\Vert\) \lstinline+\Vert+\\
+	\([\![\) \lstinline+[\![+\\
+	\(]\!]\) \lstinline+]\!]+\\
+	\(\lfloor\) \lstinline+\lfloor+\\
+	\(\rfloor\) \lstinline+\rfloor+\\
+	\((\!(\) \lstinline+(\!(+\\
+	\()\!)\) \lstinline+)\!)+\\
+	\(\lceil\) \lstinline+\lceil+\\
+	\(\rceil\) \lstinline+\rceil+\\
+	\(\langle\!\langle\) \lstinline+\langle\!\langle+\\
+	\(\rangle\!\rangle\) \lstinline+\rangle\!\rangle+\\
 \end{multicols}
 
 \section{SETAS}
 \begin{multicols}{2}
- \noindent
- \(\leftarrow\) \lstinline+\leftarrow+\\
- \(\longleftarrow\) \lstinline+\longleftarrow+\\
- \(\Leftarrow\) \lstinline+\Leftarrow+\\
- \(\Longleftarrow\) \lstinline+\Longleftarrow+\\
- \(\rightarrow\) \lstinline+\rightarrow+\\
- \(\longrightarrow\) \lstinline+\longrightarrow+\\
- \(\Rightarrow\) \lstinline+\Rightarrow+\\
- \(\Longrightarrow\) \lstinline+\Longrightarrow+\\
- \(\leftrightarrow\) \lstinline+\leftrightarrow+\\
- \(\longleftrightarrow\) \lstinline+\longleftrightarrow+\\
- \(\Leftrightarrow\) \lstinline+\Leftrightarrow+\\
- \(\Longleftrightarrow\) \lstinline+\Longleftrightarrow+\\
- \(\mapsto\) \lstinline+\mapsto+\\
- \(\longmapsto\) \lstinline+\longmapsto+\\
- \(\hookleftarrow\) \lstinline+\hookleftarroq+\\
- \(\hookrightarrow\) \lstinline+\hookrightarrow+\\
- \(\uparrow\) \lstinline+\uparrow+\\
- \(\Uparrow\) \lstinline+\Uparrow+\\
- \(\downarrow\) \lstinline+\downarrow+\\
- \(\Downarrow\) \lstinline+\Downarrow+\\
- \(\updownarrow\) \lstinline+\updownarrow+\\
- \(\Updownarrow\) \lstinline+\Updownarrow+\\
- \(\nearrow\) \lstinline+\nearrow+\\
- \(\searrow\) \lstinline+\searrow+\\
- \(\nwarrow\) \lstinline+\nwarrow+\\
- \(\swarrow\) \lstinline+\swarrow+\\
+	\noindent
+	\(\leftarrow\) \lstinline+\leftarrow+\\
+	\(\longleftarrow\) \lstinline+\longleftarrow+\\
+	\(\Leftarrow\) \lstinline+\Leftarrow+\\
+	\(\Longleftarrow\) \lstinline+\Longleftarrow+\\
+	\(\rightarrow\) \lstinline+\rightarrow+\\
+	\(\longrightarrow\) \lstinline+\longrightarrow+\\
+	\(\Rightarrow\) \lstinline+\Rightarrow+\\
+	\(\Longrightarrow\) \lstinline+\Longrightarrow+\\
+	\(\leftrightarrow\) \lstinline+\leftrightarrow+\\
+	\(\longleftrightarrow\) \lstinline+\longleftrightarrow+\\
+	\(\Leftrightarrow\) \lstinline+\Leftrightarrow+\\
+	\(\Longleftrightarrow\) \lstinline+\Longleftrightarrow+\\
+	\(\mapsto\) \lstinline+\mapsto+\\
+	\(\longmapsto\) \lstinline+\longmapsto+\\
+	\(\hookleftarrow\) \lstinline+\hookleftarroq+\\
+	\(\hookrightarrow\) \lstinline+\hookrightarrow+\\
+	\(\uparrow\) \lstinline+\uparrow+\\
+	\(\Uparrow\) \lstinline+\Uparrow+\\
+	\(\downarrow\) \lstinline+\downarrow+\\
+	\(\Downarrow\) \lstinline+\Downarrow+\\
+	\(\updownarrow\) \lstinline+\updownarrow+\\
+	\(\Updownarrow\) \lstinline+\Updownarrow+\\
+	\(\nearrow\) \lstinline+\nearrow+\\
+	\(\searrow\) \lstinline+\searrow+\\
+	\(\nwarrow\) \lstinline+\nwarrow+\\
+	\(\swarrow\) \lstinline+\swarrow+\\
 \end{multicols}
 
 \printindex
@@ -1282,12 +1282,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018-09-12 4.2 Modelo da FEI]
+\ProvidesClass{fei}[2018/09/12 4.2 Modelo da FEI]
 
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
- \PassOptionsToPackage{\CurrentOption}{imakeidx}
- \PassOptionsToPackage{\CurrentOption}{glossaries}
+	\PassOptionsToPackage{\CurrentOption}{imakeidx}
+	\PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 
 %------------------------------------------------------------
@@ -1295,13 +1295,13 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \glossariesfalse
 % opção para configurar a lista de símbolos
 \DeclareOption{symbols}{
- \glossariestrue
- \PassOptionsToPackage{\CurrentOption}{glossaries}
+	\glossariestrue
+	\PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 % opção para configurar a lista de abreviaturas
 \DeclareOption{acronym}{
- \glossariestrue
- \PassOptionsToPackage{\CurrentOption}{glossaries}
+	\glossariestrue
+	\PassOptionsToPackage{\CurrentOption}{glossaries}
 }
 % opção para criar sub-listas de símbolos
 \newif\ifsublist
@@ -1343,9 +1343,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % depois de muitos erros tentando passar opções para a classe após carregá-la, a solução encontrada foi carregá-la com todas as opções de uma vez
 \ifoneside
- \LoadClass[oneside]{memoir}
+	\LoadClass[oneside]{memoir}
 \else
- \LoadClass{memoir}
+	\LoadClass{memoir}
 \fi
 
 \RequirePackage[utf8]{inputenc}
@@ -1375,20 +1375,24 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \linespread{1.3}
 % \linespread{1.6}
 
-% this is the value I visually found closer to Word one-half spacing
-% it also adds no extra dependencies
-\linespread{1.5}
-
-% to use the setspace package with memoir, these lines must be added
+% another option is the setspace package
+% to use it with memoir, these lines must be added
 % \DisemulatePackage{setspace}
 % \usepackage{setspace}
 
-% then the linespread command presents a totally different behavior
-% also, this command is provided by setspace, which seems promising
+% these command are provided by setspace, which seem promising
 % \spacing{1.5}
-% setspace also provides
 % \onehalfspacing
 % \doublespacing
+
+% here is a comparison of the different commands
+% \OnehalfSpacing  = setspace + \linespread{1.25}
+% \linespread{1.5} = setspace + \spacing{1.5}
+% \DoubleSpacing   = setspace + \onehalfspacing
+
+% this is the value I visually found closer to Word one-half spacing
+% it also adds no extra dependencies
+\linespread{1.5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{1.25cm} % recuo do paragrafo
@@ -1417,10 +1421,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage{icomma} % vírgula como separador decimal
 
 \ifarial
- \usepackage[scaled]{uarial}
- \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+	\usepackage[scaled]{uarial}
+	\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \else
- \RequirePackage{times} % usar fonte times no texto todo
+	\RequirePackage{times} % usar fonte times no texto todo
 \fi
 
 \RequirePackage{graphicx}      % figuras
@@ -1460,11 +1464,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % redefine lista de algoritmos
 \let\oldlistofalgorithms\listofalgorithms
 \renewcommand{\listofalgorithms}{{%
-   \setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
-   \renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
-   \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
-   \part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
-  }}
+			\setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+			\renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+			\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+			\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+		}}
 % --------------------------------------------------------
 
 % teoremas
@@ -1472,12 +1476,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
 \declaretheoremstyle[
- spaceabove=6pt, spacebelow=6pt,
- headfont=\normalfont\bfseries,
- notefont=\normalfont\bfseries, notebraces={-- }{},
- bodyfont=\normalfont,
- postheadspace=1em
- % qed=\qedsymbol
+	spaceabove=6pt, spacebelow=6pt,
+	headfont=\normalfont\bfseries,
+	notefont=\normalfont\bfseries, notebraces={-- }{},
+	bodyfont=\normalfont,
+	postheadspace=1em
+	% qed=\qedsymbol
 ]{feistyle}
 
 % declaração dos principais tipos de teoremas que o usuário pode querer vir a usar
@@ -1519,25 +1523,25 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % divisoes do texto, formata o título de páginas como resumo, abstract, agradecimentos etc.
 \renewcommand{\part}{%
- \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
+	\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
 \renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
- \@startsection{chapter}{0}{0pt}{1pt}{1pt}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+	\@startsection{chapter}{0}{0pt}{1pt}{1pt}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
 
 % demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
 \renewcommand{\section}{%
- \@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
+	\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
 
 \renewcommand{\subsection}{%
- \@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+	\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 \renewcommand{\subsubsection}{%
- \@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
+	\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
 
 \renewcommand{\paragraph}{%
- \@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\itshape}}
+	\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\itshape}}
 
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
@@ -1593,45 +1597,45 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % das listas
 
 \renewcommand{\listoftheorems}{\begingroup%
- \let\oldnumberline\numberline%
- \renewcommand{\numberline}{Teorema~\oldnumberline}%
- \part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{Teorema~\oldnumberline}%
+	\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
 % novas paginas
 % capa
 \renewcommand{\maketitle}{%
- \pagestyle{empty}%
- \begin{center}%
-  \MakeUppercase{\@instituicao}\\[0.5em]%
-  \uppercase\expandafter{\@author}%
-  \vfill%
-  \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
-  \vfill%
-  \@cidade\\[0.5em]%
-  \number\year%
- \end{center}%
- \cleardoublepage
+	\pagestyle{empty}%
+	\begin{center}%
+		\MakeUppercase{\@instituicao}\\[0.5em]%
+		\uppercase\expandafter{\@author}%
+		\vfill%
+		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
+		\vfill%
+		\@cidade\\[0.5em]%
+		\number\year%
+	\end{center}%
+	\cleardoublepage
 }
 
 % folha de rosto
 \newenvironment{folhaderosto}{
- \setcounter{page}{1}
- \thispagestyle{empty}
- \begin{center}
-  \uppercase\expandafter{\@author}\\
-  \vspace*{0.45\textheight}
-  \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-  \vfill
-  \begin{flushright}
-   \begin{minipage}{0.55\textwidth}}{\end{minipage}{}
-  \end{flushright}
-  \vfill
-  \@cidade\\[0.5em]
-  \number\year
- \end{center}%
- \clearpage
+	\setcounter{page}{1}
+	\thispagestyle{empty}
+	\begin{center}
+		\uppercase\expandafter{\@author}\\
+		\vspace*{0.45\textheight}
+		\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+		\vfill
+		\begin{flushright}
+			\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+		\end{flushright}
+		\vfill
+		\@cidade\\[0.5em]
+		\number\year
+	\end{center}%
+	\clearpage
 }
 
 % folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
@@ -1639,25 +1643,25 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
- \ifrascunho
-  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
- \else
-  \includepdf{ata.pdf}\cleardoublepage
- \fi
+	\ifrascunho
+		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+	\else
+		\includepdf{ata.pdf}\cleardoublepage
+	\fi
 }
 
 % ficha catalográfica: funciona da mesma forma da folha de aprovação, só que procura o arquivo *ficha.pdf*
 \newcommand{\fichacatalografica}{
- \if@twoside
- \else
-  % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
-  \addtocounter{page}{-1}
- \fi
- \ifrascunho
-  \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
- \else
-  \includepdf{ficha.pdf}\cleardoublepage
- \fi
+	\if@twoside
+	\else
+		% se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
+		\addtocounter{page}{-1}
+	\fi
+	\ifrascunho
+		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+	\else
+		\includepdf{ficha.pdf}\cleardoublepage
+	\fi
 }
 
 % subtítulo
@@ -1682,29 +1686,29 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % dedicatória
 \newcommand{\dedicatoria}[1]{
- \cleardoublepage
- \thispagestyle{empty}
- \vspace*{\fill}
- \begin{flushright}
-  \begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
-   #1
-  \end{minipage}
- \end{flushright}
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{flushright}
+		\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
+			#1
+		\end{minipage}
+	\end{flushright}
 }
 
 % epígrafe
 \newcommand{\epigrafe}[2]{
- \cleardoublepage
- \thispagestyle{empty}
- \vspace*{\fill}
- \begin{flushright}
-  \begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
-   ``{#1}''
-   \begin{flushright}
-    #2
-   \end{flushright}
-  \end{minipage}
- \end{flushright}
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{flushright}
+		\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
+			``{#1}''
+			\begin{flushright}
+				#2
+			\end{flushright}
+		\end{minipage}
+	\end{flushright}
 }
 
 % resumo
@@ -1723,9 +1727,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \let\oldprintindex\printindex
 \renewcommand{\makeindex}{\oldmakeindex[title=\noindent\hfill\'INDICE\hfill\mbox{}]}
 \renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
- \renewcommand{\chapter}{%
-  \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
- \oldprintindex}%
+	\renewcommand{\chapter}{%
+		\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
+	\oldprintindex}%
 
 % \begin{filecontents*}{\jobname.xmpdata}
 % \Title        {Classe LaTeX FEI}
@@ -1738,7 +1742,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \Subject      {This is where you put the abstract.}
 % \end{filecontents*}
 
-% \usepackage[a-1b,mathxmp]{pdfx} 
+% \usepackage[a-1b]{pdfx} 
 
 % hyperlinks entre partes do documento
 % deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
@@ -1747,94 +1751,94 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
 \ifglossaries
- \ifsublist
-  \RequirePackage[nomain,nonumberlist]{glossaries}
-  % estilo usado como base
-  \setglossarystyle{alttree}
-  % Configuracao de identacao do nivel 0 (titulos)
-  \glssetwidest[0]{}
-  % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
-  \glssetwidest[1]{aaaaaaaaaaaa}
+	\ifsublist
+		\RequirePackage[nomain,nonumberlist]{glossaries}
+		% estilo usado como base
+		\setglossarystyle{alttree}
+		% Configuracao de identacao do nivel 0 (titulos)
+		\glssetwidest[0]{}
+		% Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+		\glssetwidest[1]{aaaaaaaaaaaa}
 
-  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+		% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
- \else
-  \RequirePackage[nomain,nonumberlist,nogroupskip]{glossaries}
+	\else
+		\RequirePackage[nomain,nonumberlist,nogroupskip]{glossaries}
 
-  \newglossarystyle{mylong}{%
-   \setglossarystyle{long}% base this style on the long style
-   \renewenvironment{theglossary}{%
-    \begin{longtable*}{lp{\glsdescwidth}}}%
-     {\end{longtable*}}%
-  }%
+		\newglossarystyle{mylong}{%
+			\setglossarystyle{long}% base this style on the long style
+			\renewenvironment{theglossary}{%
+				\begin{longtable*}{lp{\glsdescwidth}}}%
+					{\end{longtable*}}%
+		}%
 
-  \setglossarystyle{mylong}
-  \setlength\LTleft{0pt}
-  \setlength\LTright{0pt}
-  \setlength\glsdescwidth{\linewidth}
+		\setglossarystyle{mylong}
+		\setlength\LTleft{0pt}
+		\setlength\LTright{0pt}
+		\setlength\glsdescwidth{\linewidth}
 
-  % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
-  \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
- \fi
- % traduz alguns comandos próprios do glossaries
- \addto\captionsbrazil{%
-  \renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
-  \renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
+		% remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+	\fi
+	% traduz alguns comandos próprios do glossaries
+	\addto\captionsbrazil{%
+		\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
+		\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
 
- % redefine comandos do glossaries
- % remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
- \renewcommand*{\glsclearpage}{\pagestyle{empty}}
- % remove número de página das listas de símbolos e abreviaturas (executado na última página)
- \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+	% redefine comandos do glossaries
+	% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
+	\renewcommand*{\glsclearpage}{\pagestyle{empty}}
+	% remove número de página das listas de símbolos e abreviaturas (executado na última página)
+	\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 \fi
 
 \addto\captionsbrazil{%
- \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
- \renewcommand*{\contentsname}{Sum\'ario}}%
+	\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+	\renewcommand*{\contentsname}{Sum\'ario}}%
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
 % apendice novo
 \renewcommand{\appendix}{%
- \renewcommand{\chaptername}{\appendixname}%
- \setcounter{chapter}{0}% zera o contador do capítulo
- \renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
- \renewcommand{\chapter}[1]{% redefine o comando do capítulo
-  \stepcounter{chapter}% soma 1 ao contador do capítulo
-  \cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-  \addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
-  \newpage%
- }%
+	\renewcommand{\chaptername}{\appendixname}%
+	\setcounter{chapter}{0}% zera o contador do capítulo
+	\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
+	\renewcommand{\chapter}[1]{% redefine o comando do capítulo
+		\stepcounter{chapter}% soma 1 ao contador do capítulo
+		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+		\newpage%
+	}%
 }%
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
 \newcommand{\anexos}{%
- \renewcommand{\chaptername}{Anexo}%
- \setcounter{chapter}{0}%
- \renewcommand{\thechapter}{\Alph{chapter}}%
- \renewcommand{\chapter}[1]{%
-  \stepcounter{chapter}%
-  \cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-  \phantomsection%
-  \addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
-  \newpage%
- }%
+	\renewcommand{\chaptername}{Anexo}%
+	\setcounter{chapter}{0}%
+	\renewcommand{\thechapter}{\Alph{chapter}}%
+	\renewcommand{\chapter}[1]{%
+		\stepcounter{chapter}%
+		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+		\phantomsection%
+		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
+		\newpage%
+	}%
 }%
 
 % referências e citações
 %abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
 \RequirePackage[backend=biber,
-                safeinputenc=true,
-                uniquelist=false,
-                isbn=false,
-                doi=false,
-                style=abnt]{biblatex}
+	safeinputenc=true,
+	uniquelist=false,
+	isbn=false,
+	doi=false,
+	style=abnt]{biblatex}
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
- bibliography = {REFER\^ENCIAS}
+	bibliography = {REFER\^ENCIAS}
 }
 
 \newcommand{\citeonline}[1]{\textcite{#1}}
@@ -1844,9 +1848,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \renewcommand*{\bibfont}{\raggedright}
 
 \defbibheading{bibliography}[\bibname]{%
- \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
- \part*{REFER\^ENCIAS}
- \urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
+	\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+	\part*{REFER\^ENCIAS}
+	\urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
 }
 
 \newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
@@ -1854,17 +1858,17 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
 {\begin{SingleSpace}\list{}{%
-   \fontsize{10pt}{1em}%
-   \leftmargin=4cm}%
-  \item\relax\ignorespaces}
-  {\endlist\end{SingleSpace}}
+			\fontsize{10pt}{1em}%
+			\leftmargin=4cm}%
+		\item\relax\ignorespaces}
+		{\endlist\end{SingleSpace}}
 
 % quotation é igual a quote, porém para citações com mais de um parágrafo.
 \renewenvironment{quotation}
 {\begin{SingleSpace}\list{}{%
-   \fontsize{10pt}{1em}%
-   \leftmargin=2cm \rightmargin=2cm%
-   \listparindent .5cm \itemindent}%
-  \item\relax}
-  {\endlist\end{SingleSpace}}
+			\fontsize{10pt}{1em}%
+			\leftmargin=2cm \rightmargin=2cm%
+			\listparindent .5cm \itemindent}%
+		\item\relax}
+		{\endlist\end{SingleSpace}}
 %</class>
