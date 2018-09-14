@@ -1,21 +1,25 @@
+
 \documentclass[rascunho,xindy,acronym,symbols]{fei}
+
 \usepackage[utf8]{inputenc}
 
 %%%% -- Configuracoes Iniciais
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Nome do Autor}
-\title{Título do Trabalho}
-\subtitulo{subtítulo}
-
 %\cidade{Cidade}
 %\instituicao{Instituição de Ensino}
+\title{Título do Trabalho}
 
+\subtitulo{subtítulo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% -- Entradas Listas de Abreviaturas e Simbolos
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% -- Abreviaturas
 \newacronym[longplural=Computational Aided Design]{cad}{CAD}{Computational Aided Design}
 \newacronym[longplural=Centro Universitário da FEI]{fei}{FEI}{Centro Universitário da FEI}
+
 %% -- Simbolos
 \newglossaryentry{A}{type=symbols,name={\ensuremath{A}},sort=a,description={exchanger total heat transfer area, $m^2$}}
 \newglossaryentry{G}{type=symbols,name={\ensuremath{G}},sort=g,description={exchanger flow-stream mass velocity, $kg/(s m^2)$}}
@@ -26,22 +30,27 @@
 \newglossaryentry{fr}{type=symbols,name={\ensuremath{fr}},sort=fr,description={frontal}}
 \newglossaryentry{in}{type=symbols,name={\ensuremath{i}},sort=in,description={inlet}}
 \newglossaryentry{out}{type=symbols,name={\ensuremath{o}},sort=out,description={outlet}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addbibresource{referencias.bib}
 
 \makeindex
+
 \makeglossaries
 
 \begin{document}
 
 \maketitle
+
 \begin{folhaderosto}
 Dissertação de Mestrado, apresentada ao Centro Universitário da FEI para obtenção do título de Mestre em Engenharia Braquistócrona. Orientado pelo Prof. Dr. Donald Knuth.
 \end{folhaderosto}
+
 \fichacatalografica
 \folhadeaprovacao
+
 \dedicatoria{A quem eu quero dedicar o texto.}
+
 \begin{agradecimentos}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
@@ -53,6 +62,7 @@ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
 
 Vivamus vel erat erat. Integer venenatis nisl velit, vel commodo lectus condimentum ac. Aliquam id magna at tellus sagittis tempus id quis ante. Maecenas bibendum ipsum nec urna condimentum mollis. In venenatis eget nunc ac adipiscing. Vivamus faucibus vel orci mattis egestas. In hac habitasse platea dictumst. Nulla faucibus neque eu fermentum luctus. Duis ipsum nunc, congue vel justo nec, faucibus iaculis erat. Integer sit amet augue nec enim blandit placerat. Sed bibendum feugiat eros.
 \end{agradecimentos}
+
 \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
@@ -88,10 +98,6 @@ Vivamus vel erat erat. Integer venenatis nisl velit, vel commodo lectus condimen
 \tableofcontents
 
 \chapter{LOREM IPSUM}
-
-% remova este comando caso não use lista de abreviaturas e símbolos
-% ou se você referenciar os termos com \gls{} no texto
-\glsaddall
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ullamcorper quis laoreet ac, malesuada sed mi. Quisque orci nunc, placerat quis mauris vel, luctus dictum tellus. Ut aliquam dui nunc, quis commodo justo mattis aliquam. Nam congue libero nec dui auctor pharetra. Sed sit amet justo sodales, elementum massa quis, luctus ipsum. Ut et libero mattis, rhoncus nisi vitae, facilisis sapien. Aliquam erat volutpat. Mauris eget libero egestas, ullamcorper leo quis, convallis libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 

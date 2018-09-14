@@ -122,6 +122,7 @@ test:
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
+		tests/pieces/printbibliography.tex \
 		tests/pieces/end-document.tex > tests/only-text-and-titles.tex
 
 	cp referencias.bib tests
