@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/09/12 4.2 Modelo da FEI]
+\ProvidesClass{fei}[2018/09/30 4.3 Modelo da FEI]
 
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -170,7 +170,6 @@ postheadspace=1em
 \declaretheorem[style=feistyle,name=Exemplo]{exemplo}
 \declaretheorem[style=remark,name=Demonstra\c{c}\~ao,qed=\qedsymbol,numbered=no]{prova}
 
-\usepackage{chngcntr}
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 \counterwithout{algocf}{chapter}
@@ -178,6 +177,81 @@ postheadspace=1em
 
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\desenhoname}{Desenho}
+\newfloat[chapter]{desenho}{lof}{\desenhoname}
+\newlistentry{desenho}{lof}{0}
+\counterwithout{desenho}{chapter}
+\renewcommand{\cftdesenhoname}{\desenhoname\space}
+\renewcommand*{\cftdesenhoaftersnum}{\hfill--\hfill}
+\setfloatlocations{desenho}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\esquemaname}{Esquema}
+\newfloat[chapter]{esquema}{lof}{\esquemaname}
+\newlistentry{esquema}{lof}{0}
+\counterwithout{esquema}{chapter}
+\renewcommand{\cftesquemaname}{\esquemaname\space}
+\renewcommand*{\cftesquemaaftersnum}{\hfill--\hfill}
+\setfloatlocations{esquema}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\fotografianame}{Fotografia}
+\newfloat[chapter]{fotografia}{lof}{\fotografianame}
+\newlistentry{fotografia}{lof}{0}
+\counterwithout{fotografia}{chapter}
+\renewcommand{\cftfotografianame}{\fotografianame\space}
+\renewcommand*{\cftfotografiaaftersnum}{\hfill--\hfill}
+\setfloatlocations{fotografia}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\graficoname}{Gráfico}
+\newfloat[chapter]{grafico}{lof}{\graficoname}
+\newlistentry{grafico}{lof}{0}
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+\setfloatlocations{grafico}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\mapaname}{Mapa}
+\newfloat[chapter]{mapa}{lof}{\mapaname}
+\newlistentry{mapa}{lof}{0}
+\counterwithout{mapa}{chapter}
+\renewcommand{\cftmapaname}{\mapaname\space}
+\renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
+\setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\organogramaname}{Organograma}
+\newfloat[chapter]{organograma}{lof}{\organogramaname}
+\newlistentry{organograma}{lof}{0}
+\counterwithout{organograma}{chapter}
+\renewcommand{\cftorganogramaname}{\organogramaname\space}
+\renewcommand*{\cftorganogramaaftersnum}{\hfill--\hfill}
+\setfloatlocations{organograma}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\plantaname}{Planta}
+\newfloat[chapter]{planta}{lof}{\plantaname}
+\newlistentry{planta}{lof}{0}
+\counterwithout{planta}{chapter}
+\renewcommand{\cftplantaname}{\plantaname\space}
+\renewcommand*{\cftplantaaftersnum}{\hfill--\hfill}
+\setfloatlocations{planta}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\quadroname}{Quadro}
+\newfloat[chapter]{quadro}{lof}{\quadroname}
+\newlistentry{quadro}{lof}{0}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space}
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+\setfloatlocations{quadro}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\retratoname}{Retrato}
+\newfloat[chapter]{retrato}{lof}{\retratoname}
+\newlistentry{retrato}{lof}{0}
+\counterwithout{retrato}{chapter}
+\renewcommand{\cftretratoname}{\retratoname\space}
+\renewcommand*{\cftretratoaftersnum}{\hfill--\hfill}
+\setfloatlocations{retrato}{hbtp} % configurando posicionamento padrão
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{enumitem}
 \setlist[1]{align=left,leftmargin=2.25cm,labelsep=0.5em,label={\alph*)},ref=\theenumi}
@@ -234,10 +308,11 @@ postheadspace=1em
 
 \renewcommand{\cftchapterpagefont}{} % o número da página dos capítulos não é em negrito
 
-\setlength{\cftfigurenumwidth}{7.2em} % espaço onde a palavra "Ilustração" é escrita
+\setlength{\cftfigurenumwidth}{5.7em}% espaço onde a palavra "Figura" é escrita
 \setlength{\cfttablenumwidth}{5.7em} % espaço onde a palavra "Tabela" é escrita
-\renewcommand{\cftfigurepresnum}{Ilustra\c{c}\~ao } % escrita que precede cada entrada na lista de ilustrações
-\renewcommand{\cfttablepresnum}{Tabela } % escrita que precede cada entrada na lista de tabelas
+\renewcommand{\cftfigurepresnum}{Figura\space} % escrita que precede cada "figure" na lista de ilustrações
+\renewcommand{\cfttablepresnum}{Tabela\space} % escrita que precede cada entrada na lista de tabelas
+
 \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista de ilustrações
 \renewcommand{\cfttableaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista de tabelas
 
@@ -444,6 +519,14 @@ style=abnt]{biblatex}
 
 \DefineBibliographyStrings{brazil}{%
 bibliography = {REFER\^ENCIAS}
+}
+
+\let\oldprintbibliography\printbibliography
+
+\renewcommand{\printbibliography}{%
+\linespread{1}
+\oldprintbibliography
+\linespread{1.5}
 }
 
 \newcommand{\citeonline}[1]{\textcite{#1}}
