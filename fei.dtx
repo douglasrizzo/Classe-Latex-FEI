@@ -1782,6 +1782,14 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	bibliography = {REFER\^ENCIAS}
 }
 
+\let\oldprintbibliography\printbibliography
+
+\renewcommand{\printbibliography}{%
+	\linespread{1}
+	\oldprintbibliography
+	\linespread{1.5}
+}
+
 \newcommand{\citeonline}[1]{\textcite{#1}}
 
 % bibliografia alinhada à esquerda
