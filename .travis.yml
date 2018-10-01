@@ -3,9 +3,9 @@ sudo: required
 
 language: minimal
 
-install:
-  - sudo apt-get update -qq
-  - sudo apt-get -y install biber latexmk texlive texlive-extra-utils texlive-fonts-recommended texlive-lang-portuguese texlive-latex-extra texlive-latex-recommended texlive-publishers texlive-publishers texlive-science xindy
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -yq install biber latexmk lmodern texlive-bibtex-extra texlive-fonts-recommended texlive-lang-portuguese texlive-latex-extra texlive-latex-recommended texlive-science xindy
 
 script:
   - make fei.cls templates
