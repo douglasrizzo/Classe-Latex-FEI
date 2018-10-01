@@ -425,16 +425,9 @@ Ao utilizar \lstinline+\chapter{...}+ e \lstinline+\section{...}+, é necessári
 
 \subsection{\emph{Floats}}
 
-As regras da biblioteca definem formatações distintas para os diferentes tipos de \emph{float} disponibilizados pelo \LaTeX{}. A seguir, serão descritas as diferentes formas de utilizar cada um deles.
+De acordo com o Wikibook de \LaTeX{}\footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}, \emph{floats} são \emph{containers} para elementos em um documento que não podem ser quebrados entre duas páginas. O \LaTeX{} disponibiliza os \emph{floats} \texttt{figure} e \texttt{table}, cuja presença e utilização já são previstas pelo guia da biblioteca.
 
-\subsubsection{Figuras}
-
-A partir de 2015, o guia de formatação da biblioteca padroniza as legendas de figuras e tabelas com a mesma formatação. Na parte superior da figura, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo da figura, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior da figura, utiliza-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \lstinline+\smallcaption{}+, o qual constitui uma interface simples para a formatação diferenciada da legenda inferior e, caso desejado, pode ser substituído por:
-
-\begin{lstlisting}
-\captionsetup{font=small}
-\caption*{...}
-\end{lstlisting}
+Independente do tipo de float utilizado, a formatação das legendas é realizada da mesma maneira para todos. Na parte superior do \emph{float}, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo do \emph{float}, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior, utiliza-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \lstinline+\smallcaption{}+, o qual constitui uma interface simples para a formatação diferenciada da legenda inferior.
 
 A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior utilizando a formatação nativa.
 
@@ -454,9 +447,7 @@ A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~
 	\end{figure}
 \end{lstlisting}
 
-\subsubsection{Tabelas}
-
-Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às legendas de tabelas: legenda principal em cima da tabela e fonte abaixo. Para satisfazer esta regra, deve-se utilizar o mesmo processo descrito para as figuras. Um exemplo pode ser visto na tabela \ref{tbl:exemplo}.
+O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela criada de tal forma é a tabela \ref{tbl:exemplo}.
 
 \begin{lstlisting}
 \begin{table}[ht!]
@@ -484,6 +475,34 @@ Da mesma forma que figuras, o guia da biblioteca é bem específico quanto às l
 	\end{tabular}
 	\smallcaption{Fonte: Autor}
 \end{table}
+
+\subsubsection{Outras ilustrações}
+
+Além de figuras, a lista de ilustrações prevê a inclusão de novos tipos de \emph{floats}, como desenhos, esquemas, fotografias, gráficos, mapas, organogramas, plantas, quadros, retratos e outros. A classe da FEI disponibiliza uma série de ambientes que podem ser utilizados para declaração de tais \emph{floats}, os quais são inclusos na lista de ilustrações.
+
+Os novos tipos de \emph{floats} disponibilizados pela classe da FEI incluem \texttt{desenho}, \texttt{esquema}, \texttt{fotografia}, \texttt{gráfico}, \texttt{mapa}, \texttt{organograma}, \texttt{planta}, \texttt{quadro} e \texttt{retrato}. Cada um deles é numerado separadamente e todos são listados na lista de ilustrações, como prevê o guia da biblioteca.
+
+A inserção de um desses \emph{floats} é feita de maneira igual à inserção de um \texttt{figure} ou \texttt{table}, porém chamando-se o nome do ambiente desejado. Exemplos destes \emph{floats} sendo utilizados podem ser vistos no gráfico \ref{gra:grafico1}, mapa \ref{map:mapa} e gráfico \ref{gra:grafico2}.
+
+O apêndice A ensina a criar novas categorias de \emph{floats} conforme necessário.
+
+\begin{grafico}
+	\caption{Isto é um gráfico, criado com o ambiente \texttt{grafico}}
+	\rule{4cm}{4cm}
+	\smallcaption{Fonte: Autor}\label{gra:grafico1}
+\end{grafico}
+
+\begin{mapa}
+	\caption{Isto é um mapa, criado com o ambiente \texttt{mapa}}
+	\rule{8cm}{5cm}
+	\smallcaption{Fonte: Autor}\label{map:mapa}
+\end{mapa}
+
+\begin{grafico}
+	\caption{Isto é outro gráfico, que continua a numeração deste tipo de \emph{float}}
+	\rule{4cm}{4cm}
+	\smallcaption{Fonte: Autor}\label{gra:grafico2}
+\end{grafico}
 
 \subsubsection{Algoritmos}
 
@@ -962,6 +981,20 @@ Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda c
 		\smallcaption{Fonte: Autor.}\label{fig:exemplo_alinhado}
 	\end{minipage}
 \end{figure}
+\end{lstlisting}
+
+\section{CRIANDO NOVAS CATEGORIAS DE \emph{FLOATS}}
+
+Para criar uma nova categoria de \emph{float}, a qual será listada na lista de ilustrações, adicione o seguinte código de exemplo ao preâmbulo do documento, alterando as menções a ``mapa'' para criar seu \emph{float}.
+
+\begin{lstlisting}
+\newcommand{\mapaname}{Mapa}
+\newfloat[chapter]{mapa}{lof}{\mapaname}
+\newlistentry{mapa}{lof}{0}
+\counterwithout{mapa}{chapter}
+\renewcommand{\cftmapaname}{\mapaname\space}
+\renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
+\setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
 \end{lstlisting}
 
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
@@ -1447,6 +1480,82 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % configuracao da legenda da figura
 \renewcommand{\figurename}{\fontsize{10pt}{10pt}\selectfont Figura}
 \renewcommand{\tablename}{\fontsize{10pt}{10pt}\selectfont Tabela}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurações para outros floats que aparecem na lista de ilustrações
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\desenhoname}{Desenho}
+\newfloat[chapter]{desenho}{lof}{\desenhoname}
+\newlistentry{desenho}{lof}{0}
+\counterwithout{desenho}{chapter}
+\renewcommand{\cftdesenhoname}{\desenhoname\space}
+\renewcommand*{\cftdesenhoaftersnum}{\hfill--\hfill}
+\setfloatlocations{desenho}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\esquemaname}{Esquema}
+\newfloat[chapter]{esquema}{lof}{\esquemaname}
+\newlistentry{esquema}{lof}{0}
+\counterwithout{esquema}{chapter}
+\renewcommand{\cftesquemaname}{\esquemaname\space}
+\renewcommand*{\cftesquemaaftersnum}{\hfill--\hfill}
+\setfloatlocations{esquema}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\fotografianame}{Fotografia}
+\newfloat[chapter]{fotografia}{lof}{\fotografianame}
+\newlistentry{fotografia}{lof}{0}
+\counterwithout{fotografia}{chapter}
+\renewcommand{\cftfotografianame}{\fotografianame\space}
+\renewcommand*{\cftfotografiaaftersnum}{\hfill--\hfill}
+\setfloatlocations{fotografia}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\graficoname}{Gráfico}
+\newfloat[chapter]{grafico}{lof}{\graficoname}
+\newlistentry{grafico}{lof}{0}
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+\setfloatlocations{grafico}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\mapaname}{Mapa}
+\newfloat[chapter]{mapa}{lof}{\mapaname}
+\newlistentry{mapa}{lof}{0}
+\counterwithout{mapa}{chapter}
+\renewcommand{\cftmapaname}{\mapaname\space}
+\renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
+\setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\organogramaname}{Organograma}
+\newfloat[chapter]{organograma}{lof}{\organogramaname}
+\newlistentry{organograma}{lof}{0}
+\counterwithout{organograma}{chapter}
+\renewcommand{\cftorganogramaname}{\organogramaname\space}
+\renewcommand*{\cftorganogramaaftersnum}{\hfill--\hfill}
+\setfloatlocations{organograma}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\plantaname}{Planta}
+\newfloat[chapter]{planta}{lof}{\plantaname}
+\newlistentry{planta}{lof}{0}
+\counterwithout{planta}{chapter}
+\renewcommand{\cftplantaname}{\plantaname\space}
+\renewcommand*{\cftplantaaftersnum}{\hfill--\hfill}
+\setfloatlocations{planta}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\quadroname}{Quadro}
+\newfloat[chapter]{quadro}{lof}{\quadroname}
+\newlistentry{quadro}{lof}{0}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space}
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+\setfloatlocations{quadro}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\retratoname}{Retrato}
+\newfloat[chapter]{retrato}{lof}{\retratoname}
+\newlistentry{retrato}{lof}{0}
+\counterwithout{retrato}{chapter}
+\renewcommand{\cftretratoname}{\retratoname\space}
+\renewcommand*{\cftretratoaftersnum}{\hfill--\hfill}
+\setfloatlocations{retrato}{hbtp} % configurando posicionamento padrão
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % alíneas
 \RequirePackage{enumitem}
