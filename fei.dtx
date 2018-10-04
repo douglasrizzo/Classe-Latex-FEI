@@ -946,9 +946,9 @@ O comando abaixo define os nomes das listas de ilustrações, sumário, lista de
 \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
 \renewcommand*{\contentsname}{Sum\'ario}%
 \renewcommand*{\acronymname}%
-	{\hfill Lista de Abreviaturas \hfill \mbox{}}%
+	{Lista de Abreviaturas}%
 \renewcommand*{\glssymbolsgroupname}%
-	{\hfill Lista de S\'imbolos \hfill \mbox{}}}
+	{Lista de S\'imbolos}}
 \end{lstlisting}
 
 Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do comando \lstinline+\addto\captionsbrazil{...}+. Assim como no exemplo anterior, isso deve ser feito no preâmbulo do trabalho. O exemplo abaixo renomeia a lista de ilustrações para ``Lista de Figuras'':
@@ -1836,8 +1836,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\fi
 	% traduz alguns comandos próprios do glossaries
 	\addto\captionsbrazil{%
-		\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
-		\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
+		\renewcommand*{\acronymname}{Lista de Abreviaturas}%
+		\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}}
 
 	% redefine comandos do glossaries
 	% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
