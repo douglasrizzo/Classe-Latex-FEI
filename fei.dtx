@@ -1256,7 +1256,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/09/30 4.3 Modelo da FEI]
+\ProvidesClass{fei}[2018/10/03 4.4 Modelo da FEI]
 
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
@@ -1611,10 +1611,22 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
-% formatação dos títulos de seções. perceba que não há suporte para títulos com letras maiúsculas
-%\renewcommand{\cftchapnumwidth}{\cftsubsubsecnumwidth}
+% formatação dos títulos de seções. perceba que não há suporte para títulos com letras maiúsculas quando se usa hyperref
+% ou seja, as linhas abaixo não funcionam
+% \renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito e maiusculo
+% \renewcommand{\cftsectionfont}{\MakeTextUppercase} % titulo de seções em maiusculo
+
+% o hack abaixo é mencionado no manual de memoir, mas não funcionou também, então é ponto pro LaTeX por enquanto...
+% \settocpreprocessor{chapter}{%
+%     \let\tempf@rtoc\f@rtoc% 
+%     \def\f@rtoc{%
+%       \texorpdfstring{\MakeTextUppercase{%
+%         \tempf@rtoc}%
+%       }{\tempf@rtoc}%
+%     }% 
+% }
+
 \renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
-% \renewcommand{\cftsectionfont}{} % titulo de seções deve ser maiusculo, mas não funciona
 \renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
 \renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
@@ -1798,7 +1810,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \usepackage[a-1b]{pdfx} 
 
 % hyperlinks entre partes do documento
-% deve ser o último a ser carregado, exceto pelo abntex2cite, simplesmente porque deu erro quando tentei
+% deveria ser o último a ser carregado, porém...
 % funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
