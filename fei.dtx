@@ -1772,14 +1772,17 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % índice
 \RequirePackage{imakeidx}
-\renewcommand{\indexname}{\'Indice}
-\let\oldmakeindex\makeindex
+\indexsetup{level=\part*}
+\addto\captionsbrazil{%
+	\renewcommand{\indexname}{\'Indice}%
+}
+
 \let\oldprintindex\printindex
-\renewcommand{\makeindex}{\oldmakeindex[title=\noindent\hfill\'INDICE\hfill\mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
+\renewcommand{\printindex}{\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
 	\renewcommand{\chapter}{%
 		\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
-	\oldprintindex}%
+	\oldprintindex%
+}%
 
 % \begin{filecontents*}{\jobname.xmpdata}
 % \Title        {Classe LaTeX FEI}
