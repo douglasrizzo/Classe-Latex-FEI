@@ -133,7 +133,7 @@ literate=
 \newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
 \newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
-\newacronym{qed}{QED}{\textit{quod erat demonstrandum}}
+\newacronym[user1=\emph{quod erat demonstrandum}]{qed}{QED}{como se queria demonstrar}
 \newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX{} Archive Network}}
 
 \newglossaryentry{h}{type=symbols, name={\ensuremath{H}}, sort=h, description={Esquema}}
@@ -1261,7 +1261,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
 	\PassOptionsToPackage{\CurrentOption}{imakeidx}
-	\PassOptionsToPackage{\CurrentOption}{glossaries}
+	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 
 %------------------------------------------------------------
@@ -1270,12 +1270,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % opção para configurar a lista de símbolos
 \DeclareOption{symbols}{
 	\glossariestrue
-	\PassOptionsToPackage{\CurrentOption}{glossaries}
+	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 % opção para configurar a lista de abreviaturas
 \DeclareOption{acronym}{
 	\glossariestrue
-	\PassOptionsToPackage{\CurrentOption}{glossaries}
+	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 % opção para criar sub-listas de símbolos
 \newif\ifsublist
@@ -1800,9 +1800,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
+% glossaries-extra é usado pois permite incluir abreviaturas em seus idiomas originais
+% para uma explicação melhor do motivo de se usar glossaries-extra, 
+% este foi o problema que eu resolvi com ele: https://tex.stackexchange.com/a/77561/30998
 \ifglossaries
 	\ifsublist
-		\RequirePackage[nomain,nonumberlist]{glossaries}
+		\RequirePackage[nomain,nonumberlist,section=part]{glossaries-extra}
 		% estilo usado como base
 		\setglossarystyle{alttree}
 		% Configuracao de identacao do nivel 0 (titulos)
@@ -1814,7 +1817,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 	\else
-		\RequirePackage[nomain,nonumberlist,nogroupskip]{glossaries}
+		\RequirePackage[nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
 
 		\newglossarystyle{mylong}{%
 			\setglossarystyle{long}% base this style on the long style
@@ -1841,6 +1844,17 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\renewcommand*{\glsclearpage}{\pagestyle{empty}}
 	% remove número de página das listas de símbolos e abreviaturas (executado na última página)
 	\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+	% estilo das abreviaturas que permite imprimir a tradução de uma abreviatura em idioma estrangeiro
+	\setabbreviationstyle[acronym]{long-short-user}
+	% listas de simbolos e abreviaturas nao aparecem no sumario
+	\glstocfalse
+
+	% \glscurrentfieldvalue only works with glossaries v4.23 (and above)
+	\renewcommand{\glsxtrpostdescacronym}{%
+	\ifglshasfield{\glsxtruserfield}{\glscurrententrylabel}%
+	{ (\glscurrentfieldvalue)}%
+	{}%
+	}
 \fi
 
 \addto\captionsbrazil{%
