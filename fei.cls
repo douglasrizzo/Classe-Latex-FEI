@@ -14,22 +14,22 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/09/30 4.3 Modelo da FEI]
+\ProvidesClass{fei}[2018/10/03 4.4 Modelo da FEI]
 
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
-\PassOptionsToPackage{\CurrentOption}{glossaries}
+\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 
 \newif\ifglossaries
 \glossariesfalse
 \DeclareOption{symbols}{
 \glossariestrue
-\PassOptionsToPackage{\CurrentOption}{glossaries}
+\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 \DeclareOption{acronym}{
 \glossariestrue
-\PassOptionsToPackage{\CurrentOption}{glossaries}
+\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 \newif\ifsublist
 \sublistfalse
@@ -298,7 +298,16 @@ postheadspace=1em
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
-\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
+
+\settocpreprocessor{chapter}{%
+    \let\tempf@rtoc\f@rtoc%
+    \def\f@rtoc{%
+      \texorpdfstring{\MakeTextUppercase{%
+        \tempf@rtoc}%
+      }{\tempf@rtoc}%
+    }%
+}
+
 \renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
 \renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
@@ -430,14 +439,17 @@ postheadspace=1em
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
 \RequirePackage{imakeidx}
-\renewcommand{\indexname}{\'Indice}
-\let\oldmakeindex\makeindex
+\indexsetup{level=\part*}
+\addto\captionsbrazil{%
+\renewcommand{\indexname}{\'Indice}%
+}
+
 \let\oldprintindex\printindex
-\renewcommand{\makeindex}{\oldmakeindex[title=\noindent\hfill\'INDICE\hfill\mbox{}]}
-\renewcommand{\printindex}{\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
+\renewcommand{\printindex}{\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
 \renewcommand{\chapter}{%
 \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
-\oldprintindex}%
+\oldprintindex%
+}%
 
 
 
@@ -445,7 +457,7 @@ postheadspace=1em
 
 \ifglossaries
 \ifsublist
-\RequirePackage[nomain,nonumberlist]{glossaries}
+\RequirePackage[nomain,nonumberlist,section=part]{glossaries-extra}
 \setglossarystyle{alttree}
 \glssetwidest[0]{}
 \glssetwidest[1]{aaaaaaaaaaaa}
@@ -453,7 +465,7 @@ postheadspace=1em
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \else
-\RequirePackage[nomain,nonumberlist,nogroupskip]{glossaries}
+\RequirePackage[nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
 
 \newglossarystyle{mylong}{%
 \setglossarystyle{long}% base this style on the long style
@@ -470,11 +482,20 @@ postheadspace=1em
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
 \fi
 \addto\captionsbrazil{%
-\renewcommand*{\acronymname}{\noindent\hfill Lista de Abreviaturas \hfill \mbox{}}%
-\renewcommand*{\glssymbolsgroupname}{\noindent\hfill Lista de S\'imbolos \hfill \mbox{}}}
+\renewcommand*{\acronymname}{Lista de Abreviaturas}%
+\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}}
 
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+\setabbreviationstyle[acronym]{long-short-user}
+
+\glstocfalse
+
+\renewcommand{\glsxtrpostdescacronym}{%
+\ifglshasfield{\glsxtruserfield}{\glscurrententrylabel}%
+{ (\glscurrentfieldvalue)}%
+{}%
+}
 \fi
 
 \addto\captionsbrazil{%
