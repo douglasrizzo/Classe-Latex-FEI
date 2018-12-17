@@ -299,15 +299,8 @@ postheadspace=1em
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
 
-\settocpreprocessor{chapter}{%
-    \let\tempf@rtoc\f@rtoc%
-    \def\f@rtoc{%
-      \texorpdfstring{\MakeTextUppercase{%
-        \tempf@rtoc}%
-      }{\tempf@rtoc}%
-    }%
-}
 
+\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
 \renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
 \renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
@@ -542,6 +535,8 @@ style=abnt]{biblatex}
 bibliography = {REFER\^ENCIAS}
 }
 
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
+
 \let\oldprintbibliography\printbibliography
 
 \renewcommand{\printbibliography}{%
@@ -559,7 +554,7 @@ bibliography = {REFER\^ENCIAS}
 \urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
 }
 
-\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
+\newcommand*{\citefloat}[1]{\textcite*{#1}}
 
 \renewenvironment{quote}
 {\begin{SingleSpace}\list{}{%
