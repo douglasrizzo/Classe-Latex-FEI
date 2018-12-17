@@ -1920,6 +1920,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	bibliography = {REFER\^ENCIAS}
 }
 
+% ###############################################################################
+% Alterando o estilo biblatex-abnt
+
+% Encontrar os comandos nos seguintes arquivos e reescrevê-los aqui
+
+% Referências são impressas: https://github.com/abntex/biblatex-abnt/tree/master/latex/bbx
+% Citações: https://github.com/abntex/biblatex-abnt/blob/master/latex/cbx/abnt.cbx
+% Strings literais: https://github.com/abntex/biblatex-abnt/blob/master/latex/lbx/brazilian-abnt.lbx
+% ###############################################################################
+
+% remove <> das URLs (para a versão de 2019 da classe)
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
+
 \let\oldprintbibliography\printbibliography
 
 \renewcommand{\printbibliography}{%
