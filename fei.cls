@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/10/03 4.4 Modelo da FEI]
+\ProvidesClass{fei}[2018/12/17 4.4.1 Modelo da FEI]
 
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -481,7 +481,6 @@ postheadspace=1em
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
 \setabbreviationstyle[acronym]{long-short-user}
-
 \glstocfalse
 
 \renewcommand{\glsxtrpostdescacronym}{%
@@ -535,7 +534,6 @@ style=abnt]{biblatex}
 bibliography = {REFER\^ENCIAS}
 }
 
-\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
 
 \let\oldprintbibliography\printbibliography
 
