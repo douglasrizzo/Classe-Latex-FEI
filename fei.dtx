@@ -679,7 +679,7 @@ Os comandos \lstinline+\cites{obra_1}{...}{obra_n}+ e \lstinline+\textcites{obra
 
 Exemplos:
 
-\lstinline+\cites{Mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{Mcc43}{kurzweil2013}{haykin99a}.
+\lstinline+\cites{mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{mcc43}{kurzweil2013}{haykin99a}.
 
 \lstinline+\textcites{clarke19932001}{hamlet}{art1}+ \(\to\) \textcites{clarke19932001}{hamlet}{art1}.
 
@@ -835,7 +835,7 @@ As siglas possuem alguns comandos únicos para serem referenciadas:
 	\item \lstinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 \end{enumerate}
 
-Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{Goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
+Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
 
 É importante ressaltar que o pacote \bigvindex{glossaries} adiciona às listas somente os termos que forem utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
 
