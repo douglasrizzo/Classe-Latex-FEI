@@ -1940,7 +1940,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
 }
 
-\newcommand*{\citefloat}[1]{\citeauthor*{#1}, \citeyear*{#1}}
+% mantido para fins de compatibilidade com a versão 2 e 3 da classe
+\newcommand*{\citefloat}[1]{\textcite*{#1}}
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
