@@ -14,8 +14,14 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/12/17 4.3.1 Modelo da FEI]
+\ProvidesClass{fei}[2019/02/20 4.4 Modelo da FEI]
 
+\DeclareOption{draft}{
+\PassOptionsToClass{\CurrentOption}{memoir}
+}
+\DeclareOption{final}{
+\PassOptionsToClass{\CurrentOption}{memoir}
+}
 \DeclareOption{xindy}{
 \PassOptionsToPackage{\CurrentOption}{imakeidx}
 \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
@@ -35,9 +41,9 @@
 \sublistfalse
 \DeclareOption{sublist}{\sublisttrue}
 
-\newif\ifrascunho
-\rascunhofalse
-\DeclareOption{rascunho}{\rascunhotrue}
+\newif\ifdeposito
+\depositofalse
+\DeclareOption{deposito}{\depositotrue}
 
 \newif\ifarial
 \DeclareOption{arial}{\arialtrue}
@@ -366,10 +372,10 @@ postheadspace=1em
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-\ifrascunho
-\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-\else
+\ifdeposito
 \includepdf{ata.pdf}\cleardoublepage
+\else
+\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
 \fi
 }
 
@@ -378,10 +384,10 @@ postheadspace=1em
 \else
 \addtocounter{page}{-1}
 \fi
-\ifrascunho
-\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-\else
+\ifdeposito
 \includepdf{ficha.pdf}\cleardoublepage
+\else
+\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
 \fi
 }
 

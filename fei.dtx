@@ -91,7 +91,7 @@ fei.cls.
 % \fi
 % \iffalse
 %<*driver>
-\documentclass[rascunho,xindy,oneside,symbols,acronym]{\jobname}
+\documentclass[draft,xindy,oneside,symbols,acronym]{\jobname}
 \usepackage{multicol}
 \usepackage{listings}
 \lstset{
@@ -298,7 +298,7 @@ A declaração da classe é feita da seguinte forma:
 A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
-	\item \texttt{rascunho}: Caso o autor ainda não possua a folha de aprovação e a ficha catalográfica, esta opção insere páginas demarcando o local que estes documentos tomarão;
+	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfic a e folha de aprovação no diretóri do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
 	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
@@ -349,9 +349,7 @@ Elétrica, orientado pelo Prof. Dr. Nome do Orientador.
 
 \subsection{Ficha catalográfica e folha de aprovação}
 
-Os comandos \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ inserem, respectivamente, a ficha catalográfica e a folha de aprovação do trabalho no local onde o comando foi chamado. O comando  \lstinline+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \lstinline+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
-
-Caso você ainda não possua estes arquivos, mas queira visualizar o documento com páginas que demarquem a posição das futuras folha de aprovação e ficha catalográfica, é possível compilar o projeto passando a opção \texttt{rascunho} na declaração da classe, da seguinte forma: \lstinline+\documentclass[rascunho]{fei}+.
+Os comandos \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ inserem páginas indicativas dos locais onde a ficha catalográfica e a folha de aprovação serão inseridas no trabalho. Caso a opção \lstinline+deposito+ seja passada à classe, o comando \lstinline+\folhadeaprovacao+ procura pelo arquivo \texttt{ata.pdf} na pasta raiz do arquivo \texttt{tex} e o insere no documento. O comando \lstinline+\fichacatalografica+ executa uma função semelhante, procurando pelo arquivo \texttt{ficha.pdf}.
 
 \subsection{Dedicatória}
 
@@ -1256,8 +1254,16 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2018/12/17 4.3.1 Modelo da FEI]
+\ProvidesClass{fei}[2019/02/20 4.4 Modelo da FEI]
 
+% passa a opção draft para a classe
+\DeclareOption{draft}{
+	\PassOptionsToClass{\CurrentOption}{memoir}
+}
+% passa a opção final para a classe
+\DeclareOption{final}{
+	\PassOptionsToClass{\CurrentOption}{memoir}
+}
 % passa a opção do xindy pros pacotes que podem utilizá-lo
 \DeclareOption{xindy}{
 	\PassOptionsToPackage{\CurrentOption}{imakeidx}
@@ -1283,11 +1289,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \DeclareOption{sublist}{\sublisttrue}
 %------------------------------------------------------------
 
-% opções rascunho e final controlam a exibição da folha
+% opção deposito controla a exibição da folha
 % de aprovação e ficha catalográfica
-\newif\ifrascunho
-\rascunhofalse
-\DeclareOption{rascunho}{\rascunhotrue}
+\newif\ifdeposito
+\depositofalse
+\DeclareOption{deposito}{\depositotrue}
 
 \newif\ifarial
 \DeclareOption{arial}{\arialtrue}
@@ -1700,15 +1706,15 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\clearpage
 }
 
-% folha de aprovação: procura o arquivo *ata.pdf* e inclui no texto
-% se a classe recebeu a opção rascunho, deixa um texto no lugar falando que pagina é essa
+% folha de aprovação: deixa um texto no lugar falando que pagina é essa
+% se a classe recebeu a opção deposito, procura o arquivo *ata.pdf* e inclui no texto
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-	\ifrascunho
-		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-	\else
+	\ifdeposito
 		\includepdf{ata.pdf}\cleardoublepage
+	\else
+		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
 	\fi
 }
 
@@ -1719,10 +1725,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		% se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
 		\addtocounter{page}{-1}
 	\fi
-	\ifrascunho
-		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-	\else
+	\ifdeposito
 		\includepdf{ficha.pdf}\cleardoublepage
+	\else
+		\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
 	\fi
 }
 
