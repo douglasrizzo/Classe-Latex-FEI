@@ -94,11 +94,12 @@ fei.cls.
 \begin{filecontents*}{\jobname.xmpdata}
 \Title        {Classe LaTeX FEI}
 \Author       {Douglas De Rizzo Meneghetti}
-\Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
+\Copyright    {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
 \Keywords     {manual\sep
                latex\sep
                tipografia}
 \Publisher    {Baking International}
+\Language     {pt-BR}
 \Subject      {This is where you put the abstract.}
 \end{filecontents*}
 
@@ -283,6 +284,7 @@ No entanto, ainda é necessário enfatizar a necessidade de instalação de algu
 	\item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
 	\item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
 	\item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
+	\item\texttt{pdfx}: gera um PDF sob o padrão PDF/A (mais informações na seção \ref{subsec:pdfa});
 	\item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
 	\item\texttt{times}: carrega fonte Times New Roman;
 	\item\texttt{uarial}: carrega fonte URW Arial.
@@ -298,6 +300,27 @@ Este capítulo descreve os comandos disponibilizados pela classe. Ele é separad
 
 No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
 
+\subsection{Metadados PDF/A} \label{subsec:pdfa}
+
+A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para a arquivamento de documentos PDF e de disponibilização de metadados para busca por mecanismos de busca. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
+
+Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o nome do arquivo .tex principal, porém com extensão .xmpdata, deve existir no diretório-raiz do projeto contendo tais metadados. Os usuários da classe da FEI não precisam criar este documento manualmente, podendo apenas inserir os dados antes do comando \texttt{\documentclass}, modificando os metadados de interesse.
+
+\begin{lstlisting}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title        {Minha tese-dissertação-monografia}
+\Author       {Meu Nome\sep Nome Do Outro Integrante\sep Nome do Terceiro}
+\Copyright    {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
+\Keywords     {manual\sep
+				latex\sep
+				tipografia}
+\Language     {pt-BR}
+\Subject      {Resumo vai aqui em uma única linha corrida.}
+\end{filecontents*}
+\end{lstlisting}
+
+Estes metadados são apenas necessários quando a opção \texttt{pdfa} é utilizada. Uma lista com mais opções de metadados está disponível em \url{https://www.mathstat.dal.ca/~selinger/pdfa/sample.xmpdata}.
+
 \subsection{Declaração da classe} \label{subsec:documentclass}
 
 A declaração da classe é feita da seguinte forma:
@@ -310,7 +333,8 @@ A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
 	\item \texttt{draft}: Essa opção simplifica o processo de compilação do PDF para que ele seja realizado mais rapidamente. A opção beneficia especialmente a compilação de trabalhos com um número elevado de imagens ou que incluam imagens cujos arquivos sejam grandes, uma vez que as imagens não são adicionadas ao PDF. \emph{Hyperlinks} internos (\emph{e.g. links} para seções, citações, símbolos, abreviaturas, figuras, tabelas) também não são inseridos\footnote{Para uma lista mais completa das mudanças advindas do uso da opção \texttt{draft}, cheque o seguinte tópico no StackExchange: \url{https://tex.stackexchange.com/q/49277/30998}.};
-	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfic a e folha de aprovação no diretóri do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
+	\item \texttt{pdfa}: Gera o PDF sob o padrão PDF/A. A opção \texttt{pdfa} toma todas as garantias possíveis para que o \LaTeX{} gere um PDF sob este padrão, porém, o uso de artifícios como fontes não-suportadas ou caracteres desconhecidos em \emph{links} internos no texto podem quebrar o padrão PDF/A. Para checar se seu trabalho adere ao formato PDF/A após sua geração, recomenda-se o uso do software \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}};
+	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica e folha de aprovação no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
 	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
@@ -318,6 +342,8 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{acronym}: sinaliza a configuração da lista de abreviaturas;
 	\item \texttt{symbols}: sinaliza a configuração da lista de símbolos.
 \end{enumerate}
+
+Antes do depósito final do trabalho na biblioteca, é necessário compilar o trabalho utilizando ambas as opções \texttt{pdfa} e \texttt{deposito}.
 
 \subsection{Nome do autor, e título}
 
@@ -1266,7 +1292,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/02/20 4.4 Modelo da FEI]
+\ProvidesClass{fei}[2019/03/15 4.4 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1823,14 +1849,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 }%
 
 \ifpdfa
-	\usepackage[a-1b]{pdfx}
+	\RequirePackage[a-1b]{pdfx}
 \else
 	% hyperlinks entre partes do documento
 	% deveria ser o último a ser carregado, porém...
 	% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
-	\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+	\RequirePackage{hyperref}
 \fi
 
+\hypersetup{%
+	pdftex,%
+	pdfborder={0 0 0},%
+	colorlinks={false}%
+}
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
 % glossaries-extra é usado pois permite incluir abreviaturas em seus idiomas originais
