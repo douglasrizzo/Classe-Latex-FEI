@@ -92,15 +92,13 @@ fei.cls.
 % \iffalse
 %<*driver>
 \begin{filecontents*}{\jobname.xmpdata}
-\Title        {Classe LaTeX FEI}
-\Author       {Douglas De Rizzo Meneghetti}
-\Copyright    {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
-\Keywords     {manual\sep
-               latex\sep
-               tipografia}
-\Publisher    {Baking International}
-\Language     {pt-BR}
-\Subject      {This is where you put the abstract.}
+\Title     {Classe LaTeX FEI}
+\Author    {Douglas De Rizzo Meneghetti}
+\Copyright {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
+\Keywords  {manual\sep latex\sep tipografia}
+\Publisher {Baking International}
+\Language  {pt-BR}
+\Subject   {This is where you put the abstract.}
 \end{filecontents*}
 
 \documentclass[xindy,oneside,symbols,acronym]{\jobname}
@@ -302,20 +300,18 @@ No preâmbulo do texto são declaradas as propriedades globais do documento, com
 
 \subsection{Metadados PDF/A} \label{subsec:pdfa}
 
-A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para a arquivamento de documentos PDF e de disponibilização de metadados para busca por mecanismos de busca. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
+A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para o arquivamento de documentos PDF e disponibilização de metadados para busca por mecanismos de busca. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
 
-Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o nome do arquivo .tex principal, porém com extensão .xmpdata, deve existir no diretório-raiz do projeto contendo tais metadados. Os usuários da classe da FEI não precisam criar este documento manualmente, podendo apenas inserir os dados antes do comando \texttt{\documentclass}, modificando os metadados de interesse.
+Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o nome do arquivo \texttt{.tex} principal, porém com extensão \texttt{.xmpdata}, deve existir no diretório-raiz do projeto contendo tais metadados. Os usuários da classe da FEI não precisam criar este documento manualmente, podendo apenas inserir os dados antes do comando \lstinline+\documentclass+, modificando os metadados de interesse.
 
 \begin{lstlisting}
 \begin{filecontents*}{\jobname.xmpdata}
-\Title        {Minha tese-dissertação-monografia}
-\Author       {Meu Nome\sep Nome Do Outro Integrante\sep Nome do Terceiro}
-\Copyright    {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
-\Keywords     {manual\sep
-				latex\sep
-				tipografia}
-\Language     {pt-BR}
-\Subject      {Resumo vai aqui em uma única linha corrida.}
+\Title     {Minha tese-dissertação-monografia}
+\Author    {Meu Nome\sep Nome Do Outro Integrante\sep Nome do Terceiro}
+\Copyright {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
+\Keywords  {manual\sep latex\sep tipografia}
+\Language  {pt-BR}
+\Subject   {Resumo vai aqui em uma única linha corrida.}
 \end{filecontents*}
 \end{lstlisting}
 
