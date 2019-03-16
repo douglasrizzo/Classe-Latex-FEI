@@ -91,6 +91,17 @@ fei.cls.
 % \fi
 % \iffalse
 %<*driver>
+\begin{filecontents*}{\jobname.xmpdata}
+\Title        {Classe LaTeX FEI}
+\Author       {Douglas De Rizzo Meneghetti}
+\Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
+\Keywords     {manual\sep
+               latex\sep
+               tipografia}
+\Publisher    {Baking International}
+\Subject      {This is where you put the abstract.}
+\end{filecontents*}
+
 \documentclass[rascunho,xindy,oneside,symbols,acronym]{\jobname}
 \usepackage{multicol}
 \usepackage{listings}
@@ -1264,7 +1275,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 
-%------------------------------------------------------------
+%---------------------------------------------------------------
+% opções relacionadas aos pacotes glossaries e glossaries-extra
 \newif\ifglossaries
 \glossariesfalse
 % opção para configurar a lista de símbolos
@@ -1281,7 +1293,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \newif\ifsublist
 \sublistfalse
 \DeclareOption{sublist}{\sublisttrue}
-%------------------------------------------------------------
+%---------------------------------------------------------------
 
 % opções rascunho e final controlam a exibição da folha
 % de aprovação e ficha catalográfica
@@ -1298,6 +1310,13 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \DeclareOption{twoside}{\onesidefalse}
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
+
+\newif\ifpdfa
+\pdfafalse
+% opção para configurar a lista de símbolos
+\DeclareOption{pdfa}{
+	\pdfatrue
+}
 
 % Assume that any unknown option will be understood by the base class:
 % \DeclareOption*{%
@@ -1796,23 +1815,15 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\oldprintindex%
 }%
 
-% \begin{filecontents*}{\jobname.xmpdata}
-% \Title        {Classe LaTeX FEI}
-% \Author       {Douglas De Rizzo Meneghetti}
-% \Copyright    {Copyright \copyright\ 2018 "Douglas De Rizzo Meneghetti"}
-% \Keywords     {manual\sep
-%                latex\sep
-%                tipografia}
-% \Publisher    {Baking International}
-% \Subject      {This is where you put the abstract.}
-% \end{filecontents*}
+\ifpdfa
+	\usepackage[a-1b]{pdfx}
+\else
+	% hyperlinks entre partes do documento
+	% deveria ser o último a ser carregado, porém...
+	% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
+	\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+\fi
 
-% \usepackage[a-1b]{pdfx} 
-
-% hyperlinks entre partes do documento
-% deveria ser o último a ser carregado, porém...
-% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
 % glossaries-extra é usado pois permite incluir abreviaturas em seus idiomas originais
