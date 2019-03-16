@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/02/20 4.4 Modelo da FEI]
+\ProvidesClass{fei}[2019/03/15 4.4 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -54,6 +54,12 @@
 \DeclareOption{twoside}{\onesidefalse}
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
+
+\newif\ifpdfa
+\pdfafalse
+\DeclareOption{pdfa}{
+\pdfatrue
+}
 
 
 
@@ -450,9 +456,17 @@ postheadspace=1em
 \oldprintindex%
 }%
 
+\ifpdfa
+\RequirePackage[a-1b]{pdfx}
+\else
+\RequirePackage{hyperref}
+\fi
 
-
-\RequirePackage[pdftex,pdfborder={0 0 0},colorlinks={false}]{hyperref}
+\hypersetup{%
+pdftex,%
+pdfborder={0 0 0},%
+colorlinks={false}%
+}
 
 \ifglossaries
 \ifsublist
