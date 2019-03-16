@@ -1,5 +1,5 @@
 
-\documentclass[rascunho,xindy,acronym,symbols]{fei}
+\documentclass[xindy,acronym,symbols]{fei}
 
 \usepackage[utf8]{inputenc}
 
@@ -60,20 +60,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam turpis, ull
 Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec enim porttitor, id rhoncus neque dignissim. Vestibulum sollicitudin turpis sed ligula tincidunt iaculis. Vestibulum condimentum libero erat, laoreet placerat elit ullamcorper a. Nam consectetur euismod risus. Duis quis ultricies velit, ut volutpat augue. Nam ligula sapien, interdum id leo vitae, porta volutpat velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sit amet libero varius, consequat ipsum ac, placerat velit.
 
 \begin{table}[ht!]
-    \caption{Donec accumsan tellus nec enim porttitor} \label{tbl:exemplo}
-    \centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-     & \(x_1\) & \(x_2\) & \(x_3\) \\
-    \hline
-    \(y_1\) & 1 & 0 & 0 \\
-    \hline
-    \(y_2\) & 0 & 1 & 0 \\
-    \hline
-    \(y_3\) & 0 & 0 & 1 \\
-    \hline
-    \end{tabular}
-    \caption*{Fonte: Autor}
+	\caption{Donec accumsan tellus nec enim porttitor} \label{tbl:exemplo}
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		        & \(x_1\) & \(x_2\) & \(x_3\) \\
+		\hline
+		\(y_1\) & 1       & 0       & 0       \\
+		\hline
+		\(y_2\) & 0       & 1       & 0       \\
+		\hline
+		\(y_3\) & 0       & 0       & 1       \\
+		\hline
+	\end{tabular}
+	\caption*{Fonte: Autor}
 \end{table}
 
 \section{Class aptent taciti}
@@ -81,15 +81,17 @@ Sed a odio porttitor, lacinia libero vel, egestas sem. Donec accumsan tellus nec
 Class aptent taciti sociosqu ad litora torquent per conubia nostra, per \index{latex@\LaTeX} inceptos himenaeos. Duis ut dolor erat. Fusce adipiscing interdum eros, in ultrices orci auctor at. Mauris ac ante orci. In nec mauris arcu. In pulvinar tortor a felis interdum pretium. Donec tristique laoreet sollicitudin. Proin erat metus, blandit sed cursus eget, faucibus id nunc. Donec id nisi non mauris tempor tincidunt. Fusce venenatis pulvinar enim. Fusce sit amet tortor nec magna feugiat pharetra ac nec nibh. Praesent non nisi lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum rutrum varius velit, id iaculis ante vestibulum quis. Aenean bibendum sit amet quam ornare mollis. Suspendisse sollicitudin fringilla felis in venenatis.
 
 \begin{algorithm}
-\Entrada{Inteiro \(a\)}
-\Saida{Inteiro \(b\)}
+	\Entrada{Inteiro \(a\)}
+	\Saida{Inteiro \(b\)}
 
-\(c=\sqrt{a^2 + b^2}\)
+	\(c=\sqrt{a^2 + b^2}\)
 
-\Retorna \(c\)
+	\Retorna \(c\)
 
-\caption{Algoritmo que calcula o teorema de Pitágoras, de acordo com \textcite{heath1921history}.}
-\label{lst:alg}
+	\caption{Algoritmo que calcula o teorema de Pitágoras, de acordo com \textcite{heath1921history}.}
+	\label{lst:alg}
 \end{algorithm}
+
+\printbibliography
 
 \end{document}

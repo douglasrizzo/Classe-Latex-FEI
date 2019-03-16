@@ -40,11 +40,12 @@ zip: all
 	mkdir $(TDIR)
 	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib README $(TDIR)
 	cd $(TEMP); zip -Drq $(PWD)/$(NAME)-$(VERS).zip $(NAME)
-templates: | $(NAME).dtx test
+templates: | $(NAME).cls test
 	cp tests/full-template.tex fei-template.tex
 	cp tests/full-template-sublist.tex fei-template-sublist.tex
-test:
-	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
+test: $(NAME).cls
+	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
+		tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
@@ -69,7 +70,8 @@ test:
 		tests/pieces/printindex.tex \
 		tests/pieces/end-document.tex > tests/full-template.tex
 
-	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-pdfa.tex \
+	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
+		tests/pieces/documentclass-pdfa.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
@@ -94,7 +96,8 @@ test:
 		tests/pieces/printindex.tex \
 		tests/pieces/end-document.tex > tests/full-template-pdfa.tex
 
-	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-sublist.tex \
+	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
+		tests/pieces/documentclass-sublist.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos-simbolos-sublist.tex \
@@ -150,6 +153,6 @@ test:
 		tests/pieces/printbibliography.tex \
 		tests/pieces/end-document.tex > tests/only-text-and-titles.tex
 
-	cp referencias.bib tests
+	cp $(NAME).cls referencias.bib tests
 	latexmk -pdf tests/*.tex
-	rm tests/referencias.bib
+	rm tests/referencias.bib tests/$(NAME).cls
