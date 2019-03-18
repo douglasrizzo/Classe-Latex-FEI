@@ -41,8 +41,8 @@ zip: all
 	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib README $(TDIR)
 	cd $(TEMP); zip -Drq $(PWD)/$(NAME)-$(VERS).zip $(NAME)
 templates: | $(NAME).cls test
-	cp tests/full-template.tex fei-template.tex
-	cp tests/full-template-sublist.tex fei-template-sublist.tex
+	cp tests/test-full-template.tex fei-template.tex
+	cp tests/test-full-template-sublist.tex fei-template-sublist.tex
 test: $(NAME).cls
 	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
 		tests/pieces/documentclass.tex \
@@ -68,7 +68,7 @@ test: $(NAME).cls
 		tests/pieces/document-text.tex \
 		tests/pieces/printbibliography.tex \
 		tests/pieces/printindex.tex \
-		tests/pieces/end-document.tex > tests/full-template.tex
+		tests/pieces/end-document.tex > tests/test-full-template.tex
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
 		tests/pieces/documentclass-pdfa.tex \
@@ -94,7 +94,7 @@ test: $(NAME).cls
 		tests/pieces/document-text.tex \
 		tests/pieces/printbibliography.tex \
 		tests/pieces/printindex.tex \
-		tests/pieces/end-document.tex > tests/full-template-pdfa.tex
+		tests/pieces/end-document.tex > tests/test-full-template-pdfa.tex
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
 		tests/pieces/documentclass-sublist.tex \
@@ -119,7 +119,7 @@ test: $(NAME).cls
 		tests/pieces/document-text.tex \
 		tests/pieces/printbibliography.tex \
 		tests/pieces/printindex.tex \
-		tests/pieces/end-document.tex > tests/full-template-sublist.tex
+		tests/pieces/end-document.tex > tests/test-full-template-sublist.tex
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
@@ -135,13 +135,13 @@ test: $(NAME).cls
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
 		tests/pieces/printbibliography.tex \
-		tests/pieces/end-document.tex > tests/only-required.tex
+		tests/pieces/end-document.tex > tests/test-only-required.tex
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/begin-document.tex \
 		tests/pieces/first-chapter-text.tex \
-		tests/pieces/end-document.tex > tests/only-text.tex
+		tests/pieces/end-document.tex > tests/test-only-text.tex
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
@@ -151,7 +151,7 @@ test: $(NAME).cls
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
 		tests/pieces/printbibliography.tex \
-		tests/pieces/end-document.tex > tests/only-text-and-titles.tex
+		tests/pieces/end-document.tex > tests/test-only-text-and-titles.tex
 
 	cp $(NAME).cls referencias.bib tests
 	latexmk -pdf tests/*.tex

@@ -4,6 +4,10 @@ fei-*.zip
 fei-template*.pdf
 README.txt
 fei.ins
+tests/test-*.tex
+test-*.pdf
+*.xmpdata
+*.xmpi
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
