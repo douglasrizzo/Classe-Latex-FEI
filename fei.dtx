@@ -300,9 +300,9 @@ No preâmbulo do texto são declaradas as propriedades globais do documento, com
 
 \subsection{Metadados PDF/A} \label{subsec:pdfa}
 
-A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para o arquivamento de documentos PDF e disponibilização de metadados para busca por mecanismos de busca. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
+A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para o arquivamento de documentos PDF e disponibilização dos metadados do documento para buscas. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
 
-Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o nome do arquivo \texttt{.tex} principal, porém com extensão \texttt{.xmpdata}, deve existir no diretório-raiz do projeto contendo tais metadados. Os usuários da classe da FEI não precisam criar este documento manualmente, podendo apenas inserir os dados antes do comando \lstinline+\documentclass+, modificando os metadados de interesse.
+Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o nome do arquivo \texttt{.tex} principal, porém com extensão \texttt{.xmpdata}, deve existir no diretório-raiz do projeto contendo tais metadados. Os usuários da classe da FEI não precisam criar este documento manualmente, podendo apenas inserir as seguintes linhas antes do comando \lstinline+\documentclass+, modificando os metadados de interesse.
 
 \begin{lstlisting}
 \begin{filecontents*}{\jobname.xmpdata}
@@ -315,7 +315,7 @@ Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o
 \end{filecontents*}
 \end{lstlisting}
 
-Estes metadados são apenas necessários quando a opção \texttt{pdfa} é utilizada. Uma lista com mais opções de metadados está disponível em \url{https://www.mathstat.dal.ca/~selinger/pdfa/sample.xmpdata}.
+Estes metadados são apenas necessários quando a opção \texttt{pdfa} da classe é utilizada. Uma lista com mais opções de metadados está disponível em \url{https://www.mathstat.dal.ca/~selinger/pdfa/sample.xmpdata}.
 
 \subsection{Declaração da classe} \label{subsec:documentclass}
 
@@ -329,7 +329,7 @@ A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
 	\item \texttt{draft}: Essa opção simplifica o processo de compilação do PDF para que ele seja realizado mais rapidamente. A opção beneficia especialmente a compilação de trabalhos com um número elevado de imagens ou que incluam imagens cujos arquivos sejam grandes, uma vez que as imagens não são adicionadas ao PDF. \emph{Hyperlinks} internos (\emph{e.g. links} para seções, citações, símbolos, abreviaturas, figuras, tabelas) também não são inseridos\footnote{Para uma lista mais completa das mudanças advindas do uso da opção \texttt{draft}, cheque o seguinte tópico no StackExchange: \url{https://tex.stackexchange.com/q/49277/30998}.};
-	\item \texttt{pdfa}: Gera o PDF sob o padrão PDF/A. A opção \texttt{pdfa} toma todas as garantias possíveis para que o \LaTeX{} gere um PDF sob este padrão, porém, o uso de artifícios como fontes não-suportadas ou caracteres desconhecidos em \emph{links} internos no texto podem quebrar o padrão PDF/A. Para checar se seu trabalho adere ao formato PDF/A após sua geração, recomenda-se o uso do software \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}};
+	\item \texttt{pdfa}: Gera o PDF sob o padrão PDF/A, utilizando o pacote \texttt{pdfx}. A opção \texttt{pdfa} toma todas as garantias possíveis para que o \LaTeX{} gere um PDF sob este padrão, porém, o uso de artifícios como fontes não-suportadas ou caracteres desconhecidos em \emph{links} internos no texto podem quebrar o padrão PDF/A. Para checar se seu trabalho adere ao formato PDF/A após sua geração, recomenda-se o uso do software \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}};
 	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica e folha de aprovação no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
 	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
@@ -343,7 +343,7 @@ Antes do depósito final do trabalho na biblioteca, é necessário compilar o tr
 
 \subsection{Nome do autor, e título}
 
-O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX{} \lstinline+\author{autor}+ e \lstinline+\title{titulo}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \lstinline+\and+ ou \lstinline+\\+, como no exemplo:
+O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX{} \lstinline+\author{author}+ e \lstinline+\title{title}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \lstinline+\and+ ou \lstinline+\\+, como no exemplo:
 
 \begin{lstlisting}
 \author{Leonardo \and Douglas}
