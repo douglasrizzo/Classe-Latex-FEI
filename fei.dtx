@@ -315,7 +315,9 @@ Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o
 \end{filecontents*}
 \end{lstlisting}
 
-Estes metadados são apenas necessários quando a opção \texttt{pdfa} da classe é utilizada. Uma lista com mais opções de metadados está disponível em \url{https://www.mathstat.dal.ca/~selinger/pdfa/sample.xmpdata}.
+Uma lista com mais opções de metadados está disponível em \url{https://www.mathstat.dal.ca/~selinger/pdfa/sample.xmpdata}.
+
+Antes de depositar a versão final do trabalho, recomenda-se checar se o arquivo PDF adere ao formato PDF/A. O software padrão, que também é gratuito e multiplafatorma, para realizar a checagem é o \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}}. Também é possível usar o Adobe Acrobat Pro.
 
 \subsection{Declaração da classe} \label{subsec:documentclass}
 
@@ -329,7 +331,7 @@ A classe da FEI pode receber as seguintes opções:
 
 \begin{enumerate}
 	\item \texttt{draft}: Essa opção simplifica o processo de compilação do PDF para que ele seja realizado mais rapidamente. A opção beneficia especialmente a compilação de trabalhos com um número elevado de imagens ou que incluam imagens cujos arquivos sejam grandes, uma vez que as imagens não são adicionadas ao PDF. \emph{Hyperlinks} internos (\emph{e.g. links} para seções, citações, símbolos, abreviaturas, figuras, tabelas) também não são inseridos\footnote{Para uma lista mais completa das mudanças advindas do uso da opção \texttt{draft}, cheque o seguinte tópico no StackExchange: \url{https://tex.stackexchange.com/q/49277/30998}.};
-	\item \texttt{pdfa}: Gera o PDF sob o padrão PDF/A, utilizando o pacote \texttt{pdfx}. A opção \texttt{pdfa} toma todas as garantias possíveis para que o \LaTeX{} gere um PDF sob este padrão, porém, o uso de artifícios como fontes não-suportadas ou caracteres desconhecidos em \emph{links} internos no texto podem quebrar o padrão PDF/A. Para checar se seu trabalho adere ao formato PDF/A após sua geração, recomenda-se o uso do software \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}};
+	\item \texttt{nopdfa}: desabilita a geração do documento no formato PDF/A. Essa função é disponibilizada para fins de compatibilidade, para que trabalhos antigos que possivelmente sejam corrompidos durante o processo de compilação devido ao padrão PDF/A ainda possam ser compilados;
 	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica e folha de aprovação no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
 	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
@@ -338,8 +340,6 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{acronym}: sinaliza a configuração da lista de abreviaturas;
 	\item \texttt{symbols}: sinaliza a configuração da lista de símbolos.
 \end{enumerate}
-
-Antes do depósito final do trabalho na biblioteca, é necessário compilar o trabalho utilizando ambas as opções \texttt{pdfa} e \texttt{deposito}.
 
 \subsection{Nome do autor, e título}
 
@@ -1288,7 +1288,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/03/15 4.4 Modelo da FEI]
+\ProvidesClass{fei}[2019/03/19 4.4 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1341,10 +1341,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
 \newif\ifpdfa
-\pdfafalse
+\pdfatrue
 % opção para configurar a lista de símbolos
-\DeclareOption{pdfa}{
-	\pdfatrue
+\DeclareOption{nopdfa}{
+	\pdfafalse
 }
 
 % Assume that any unknown option will be understood by the base class:
@@ -1387,33 +1387,34 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A POLEMICA DO ESPACAMENTO DE "UM E MEIO"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% these are the commands provided by memoir
+% os seguintes comandos são disponibilizados pela classe memoir
 % \OnehalfSpacing
 % \DoubleSpacing
 
-% these commands exist natively on LaTeX
-% the values below are magically recommended for one half and double spacing
-% more on their values here https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Line_Spacing
+% esses comandos existem nativamente no LaTeX
+% os valores abaixo são recomendados magicamente para espaçamento de 1,5 e duplo, respectivamente
+% mais sobre esses valores em https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Line_Spacing
 % \linespread{1.3}
 % \linespread{1.6}
 
-% another option is the setspace package
-% to use it with memoir, these lines must be added
+% outra opção é usar o pacote setspace
+% para usá-lo com memoir, precisa-se usar a seguinte configuração
 % \DisemulatePackage{setspace}
 % \usepackage{setspace}
 
-% these command are provided by setspace, which seem promising
+% esses comandos são disponibilizados pelo setspace
 % \spacing{1.5}
 % \onehalfspacing
 % \doublespacing
 
-% here is a comparison of the different commands
-% \OnehalfSpacing  = setspace + \linespread{1.25}
-% \linespread{1.5} = setspace + \spacing{1.5}
-% \DoubleSpacing   = setspace + \onehalfspacing
+% aqui está uma comparação entre os diferentes métodos
+% \OnehalfSpacing  = setspace com \linespread{1.25}
+% \linespread{1.5} = setspace com \spacing{1.5}
+% \DoubleSpacing   = setspace com \onehalfspacing
 
-% this is the value I visually found closer to Word one-half spacing
-% it also adds no extra dependencies
+% esse é o valor que eu considerei que visualmente se parece
+% mais com o espaçamento de 1,5 do Word
+% o comando não possui dependências
 \linespread{1.5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1844,15 +1845,18 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\oldprintindex%
 }%
 
+% antigamente, aqui era carregado o pacote hyperref
+% como, a partir de 2017, a biblioteca exige que os documentos sejam gerados sob o padrão
+% PDF/A, o pacote pdfx é usado no lugar do hyperref por padrão
+% em teoria, o pacote hyperref deveria ser o último a ser carregado, porém
+% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
 \ifpdfa
 	\RequirePackage[a-1b]{pdfx}
 \else
-	% hyperlinks entre partes do documento
-	% deveria ser o último a ser carregado, porém...
-	% funcionou posicionado antes do glossaries, possibilitando links das variaveis para lista de simbolos
 	\RequirePackage{hyperref}
 \fi
 
+% o pacote pdfx carrega o hyperref, então as opções do hyperref são passadas assim agora
 \hypersetup{%
 	pdftex,%
 	pdfborder={0 0 0},%

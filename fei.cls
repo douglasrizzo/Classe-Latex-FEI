@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/03/15 4.4 Modelo da FEI]
+\ProvidesClass{fei}[2019/03/19 4.4 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -56,9 +56,9 @@
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
 \newif\ifpdfa
-\pdfafalse
-\DeclareOption{pdfa}{
 \pdfatrue
+\DeclareOption{nopdfa}{
+\pdfafalse
 }
 
 
