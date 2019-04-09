@@ -510,9 +510,9 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
 
 \subsubsection{Outras ilustrações}
 
-Além de figuras, a lista de ilustrações prevê a inclusão de novos tipos de \emph{floats}, como desenhos, esquemas, fotografias, gráficos, mapas, organogramas, plantas, quadros, retratos e outros. A classe da FEI disponibiliza uma série de ambientes que podem ser utilizados para declaração de tais \emph{floats}, os quais são inclusos na lista de ilustrações.
+Além de figuras, a lista de ilustrações prevê a inclusão de novos tipos de \emph{floats}, como desenhos, esquemas, fotografias, gráficos, mapas, diagramas, organogramas, plantas, quadros, retratos e outros. A classe da FEI disponibiliza uma série de ambientes que podem ser utilizados para declaração de tais \emph{floats}, os quais são inclusos na lista de ilustrações.
 
-Os novos tipos de \emph{floats} disponibilizados pela classe da FEI incluem \texttt{desenho}, \texttt{esquema}, \texttt{fotografia}, \texttt{gráfico}, \texttt{mapa}, \texttt{organograma}, \texttt{planta}, \texttt{quadro} e \texttt{retrato}. Cada um deles é numerado separadamente e todos são listados na lista de ilustrações, como prevê o guia da biblioteca.
+Os novos tipos de \emph{floats} disponibilizados pela classe da FEI incluem \texttt{desenho}, \texttt{esquema}, \texttt{fotografia}, \texttt{gráfico}, \texttt{mapa}, \texttt{diagrama}, \texttt{organograma}, \texttt{planta}, \texttt{quadro} e \texttt{retrato}. Cada um deles é numerado separadamente e todos são listados na lista de ilustrações, como prevê o guia da biblioteca.
 
 A inserção de um desses \emph{floats} é feita de maneira igual à inserção de um \texttt{figure} ou \texttt{table}, porém chamando-se o nome do ambiente desejado. Exemplos destes \emph{floats} sendo utilizados podem ser vistos no gráfico \ref{gra:grafico1}, mapa \ref{map:mapa} e gráfico \ref{gra:grafico2}.
 
@@ -1288,7 +1288,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/03/19 4.4 Modelo da FEI]
+\ProvidesClass{fei}[2019/04/09 4.4.1 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1572,6 +1572,14 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\cftmapaname}{\mapaname\space}
 \renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
 \setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\diagramaname}{Diagrama}
+\newfloat[chapter]{diagrama}{lof}{\diagramaname}
+\newlistentry{diagrama}{lof}{0}
+\counterwithout{diagrama}{chapter}
+\renewcommand{\cftdiagramaname}{\diagramaname\space}
+\renewcommand*{\cftdiagramaaftersnum}{\hfill--\hfill}
+\setfloatlocations{diagrama}{hbtp} % configurando posicionamento padrão
 
 \newcommand{\organogramaname}{Organograma}
 \newfloat[chapter]{organograma}{lof}{\organogramaname}
