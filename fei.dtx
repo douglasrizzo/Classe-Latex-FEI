@@ -510,11 +510,23 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
 
 \subsubsection{Outras ilustrações}
 
-Além de figuras, a lista de ilustrações prevê a inclusão de novos tipos de \emph{floats}, como desenhos, esquemas, fotografias, gráficos, mapas, diagramas, organogramas, plantas, quadros, retratos e outros. A classe da FEI disponibiliza uma série de ambientes que podem ser utilizados para declaração de tais \emph{floats}, os quais são inclusos na lista de ilustrações.
+Além de figuras, a lista de ilustrações prevê a inclusão de outros tipos de \emph{floats}, os quais são representados pelos seguintes ambientes:
 
-Os novos tipos de \emph{floats} disponibilizados pela classe da FEI incluem \texttt{desenho}, \texttt{esquema}, \texttt{fotografia}, \texttt{gráfico}, \texttt{mapa}, \texttt{diagrama}, \texttt{organograma}, \texttt{planta}, \texttt{quadro} e \texttt{retrato}. Cada um deles é numerado separadamente e todos são listados na lista de ilustrações, como prevê o guia da biblioteca.
+\begin{enumerate}
+	\item desenho;
+	\item esquema;
+	\item fotografia;
+	\item gráfico;
+	\item mapa;
+	\item diagrama;
+	\item fluxograma;
+	\item organograma;
+	\item planta;
+	\item quadro;
+	\item retrato.
+\end{enumerate}
 
-A inserção de um desses \emph{floats} é feita de maneira igual à inserção de um \texttt{figure} ou \texttt{table}, porém chamando-se o nome do ambiente desejado. Exemplos destes \emph{floats} sendo utilizados podem ser vistos no gráfico \ref{gra:grafico1}, mapa \ref{map:mapa} e gráfico \ref{gra:grafico2}.
+A inserção de um desses \emph{floats} é feita de maneira igual à inserção de um \texttt{figure} ou \texttt{table}, porém chamando-se o nome do ambiente desejado. Por exemplo, para criar uma ilustração que será listada como um diagrama na lista de ilustrações, deve-se utilizar o ambiente \texttt{diagrama} ao invés de \texttt{figure}. Apesar de serem inseridos na mesma lista, cada \emph{float} é numerado separadamente, como prevê o guia da biblioteca. Exemplos destes \emph{floats} sendo utilizados podem ser vistos no gráfico \ref{gra:grafico1}, mapa \ref{map:mapa} e gráfico \ref{gra:grafico2}.
 
 O apêndice A ensina a criar novas categorias de \emph{floats} conforme necessário.
 
@@ -1288,7 +1300,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/04/09 4.4.1 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/08 4.4.2 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1580,6 +1592,14 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\cftdiagramaname}{\diagramaname\space}
 \renewcommand*{\cftdiagramaaftersnum}{\hfill--\hfill}
 \setfloatlocations{diagrama}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\fluxogramaname}{Fluxograma}
+\newfloat[chapter]{fluxograma}{lof}{\fluxogramaname}
+\newlistentry{fluxograma}{lof}{0}
+\counterwithout{fluxograma}{chapter}
+\renewcommand{\cftfluxogramaname}{\fluxogramaname\space}
+\renewcommand*{\cftfluxogramaaftersnum}{\hfill--\hfill}
+\setfloatlocations{fluxograma}{hbtp} % configurando posicionamento padrão
 
 \newcommand{\organogramaname}{Organograma}
 \newfloat[chapter]{organograma}{lof}{\organogramaname}

@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/04/09 4.4.1 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/08 4.4.2 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -239,6 +239,14 @@ postheadspace=1em
 \renewcommand{\cftdiagramaname}{\diagramaname\space}
 \renewcommand*{\cftdiagramaaftersnum}{\hfill--\hfill}
 \setfloatlocations{diagrama}{hbtp} % configurando posicionamento padrão
+
+\newcommand{\fluxogramaname}{Fluxograma}
+\newfloat[chapter]{fluxograma}{lof}{\fluxogramaname}
+\newlistentry{fluxograma}{lof}{0}
+\counterwithout{fluxograma}{chapter}
+\renewcommand{\cftfluxogramaname}{\fluxogramaname\space}
+\renewcommand*{\cftfluxogramaaftersnum}{\hfill--\hfill}
+\setfloatlocations{fluxograma}{hbtp} % configurando posicionamento padrão
 
 \newcommand{\organogramaname}{Organograma}
 \newfloat[chapter]{organograma}{lof}{\organogramaname}
