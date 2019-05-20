@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/20 4.5 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/20 4.4.3 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -63,7 +63,7 @@
 
 
 
-\PassOptionsToClass{a4paper}{memoir}
+\PassOptionsToClass{a4paper,12pt}{memoir}
 
 \ExecuteOptions{oneside,times}
 
