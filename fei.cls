@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/08 4.4.2 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/20 4.4.3 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -63,7 +63,7 @@
 
 
 
-\PassOptionsToClass{a4paper}{memoir}
+\PassOptionsToClass{a4paper,12pt}{memoir}
 
 \ExecuteOptions{oneside,times}
 
@@ -382,7 +382,10 @@ postheadspace=1em
 \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
 \vfill
 \begin{flushright}
-\begin{minipage}{0.55\textwidth}}{\end{minipage}{}
+\begin{minipage}{\textwidth - 8cm}
+\normalsize
+\begin{SingleSpace}
+}{\end{SingleSpace}\end{minipage}{}
 \end{flushright}
 \vfill
 \@cidade\\[0.5em]
