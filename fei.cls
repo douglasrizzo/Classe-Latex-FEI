@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/20 4.4.3 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/22 4.4.4 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -594,19 +594,20 @@ bibliography = {REFER\^ENCIAS}
 \newcommand*{\citefloat}[1]{\textcite*{#1}}
 
 \renewenvironment{quote}
-{\begin{SingleSpace}\list{}{%
-\fontsize{10pt}{1em}%
-\leftmargin=4cm}%
-\item\relax\ignorespaces}
-{\endlist\end{SingleSpace}}
+{\begin{flushright}
+\begin{minipage}{\textwidth - 4cm}
+\fontsize{10pt}{1em}
+\begin{SingleSpace}
+}{\end{SingleSpace}\end{minipage}{}
+\end{flushright}}
 
 \renewenvironment{quotation}
-{\begin{SingleSpace}\list{}{%
-\fontsize{10pt}{1em}%
-\leftmargin=2cm \rightmargin=2cm%
-\listparindent .5cm \itemindent}%
-\item\relax}
-{\endlist\end{SingleSpace}}
+{\begin{center}
+\begin{minipage}{\textwidth - 4cm}
+\fontsize{10pt}{1em}
+\begin{SingleSpace}\setlength{\parindent}{1cm}
+}{\end{SingleSpace}\end{minipage}{}
+\end{center}}
 %% 
 %% Copyright (C) 2017 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 

@@ -141,10 +141,10 @@ literate=
 
 \newacronym{fei}{FEI}{Fundação Educacional Inaciana}
 \newacronym{abnt}{ABNT}{Associação Brasileira de Normas Técnicas}
-\newacronym{abntex}{abn\TeX}{\textit{Absurd Norms for \TeX}}
+\newacronym{abntex}{abn\TeX}{\emph{Absurd Norms for \TeX}}
 \newacronym{cqd}{CQD}{como se queria demonstrar}
 \newacronym[user1=\emph{quod erat demonstrandum}]{qed}{QED}{como se queria demonstrar}
-\newacronym{ctan}{CTAN}{\textit{Comprehensive \TeX{} Archive Network}}
+\newacronym{ctan}{CTAN}{\emph{Comprehensive \TeX{} Archive Network}}
 
 \newglossaryentry{h}{type=symbols, name={\ensuremath{H}}, sort=h, description={Esquema}}
 \newglossaryentry{t}{type=symbols, name={\ensuremath{t}}, sort=t, description={Geração}}
@@ -196,9 +196,9 @@ literate=
 
 \glsaddall
 
-Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2016, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Guiados por este manual (e mais uma dezena de dissertações corrigidas pelas bibliotecárias), nasceu o arquivo \texttt{fei.cls}, uma classe de documentos \LaTeX{} especializada na criação de trabalhos acadêmicos para alunos da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a formatação complexa do documento a cargo da classe.
+Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia, cuja última versão data de 2016, o qual dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Através deste guia (e algumas dúzias de trabalhos corrigidos pelas bibliotecárias), nasceu a classe \LaTeX{} da \gls{fei}, especializada na criação de trabalhos acadêmicos sob as normas da biblioteca da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a maior parte da formatação complexa do documento a cargo da classe.
 
-A escrita da classe que formata o texto foi realizada tendo-se como referência principal o guia disponível pela biblioteca (nesta versão, o guia utilizado desde 2015). Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo guia, como algoritmos e teoremas.
+A escrita da classe que formata o texto foi realizada tendo-se como referência principal o guia disponível pela biblioteca. Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo guia, como algoritmos e teoremas.
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
@@ -224,15 +224,15 @@ Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX{} pa
 
 \subsection{Linux}
 
-O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX{} Live através do \texttt{apt-get}. Recomenda-se optar pela instalação completa, através do pacote \texttt{texlive-full}.
+O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX{} \emph{Live} através do \texttt{apt-get}. Recomenda-se optar pela instalação completa, através do pacote \texttt{texlive-full}.
 
-É necessário enfatizar que a versão do \TeX{} Live disponível nos repositórios do sistema operacional nem sempre é a versão mais recente, a qual pode sempre ser encontrada na página oficial do \TeX{} Live, \url{https://www.tug.org/texlive/}.
+É necessário enfatizar que a versão do \TeX{} \emph{Live} disponível nos repositórios do sistema operacional nem sempre é a versão mais recente, a qual pode sempre ser encontrada na página oficial do \TeX{} \emph{Live}, \url{https://www.tug.org/texlive/}.
 
-Com a versão mais recente do \TeX{} Live instalada, é possível usar o \textit{\TeX{} Live Manager}, o gerenciador de pacotes do \TeX{} Live, para baixar todos os pacotes necessários, inclusive a classe da FEI, sob o nome \texttt{fei}.
+Com a versão mais recente do \TeX{} \emph{Live} instalada, é possível usar o \emph{\TeX{} Live Manager}, o gerenciador de pacotes do \TeX{} \emph{Live}, para baixar todos os pacotes necessários, inclusive a classe da FEI, sob o nome \texttt{fei}.
 
 \subsection{Mac OS}
 
-No Mac, o \LaTeX{} pode ser instalado através do Mac\TeX{} (\url{http://tug.org/mactex/}), uma compilação completa do \TeX{} Live para Mac.
+No Mac, o \LaTeX{} pode ser instalado através do Mac\TeX{} (\url{http://tug.org/mactex/}), uma compilação completa do \TeX{} \emph{Live} para Mac.
 
 O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório oficial do \TeX{}. Nesse caso, a opção é baixar a classe diretamente do \gls{ctan} ou da página do projeto no GitHub.
 
@@ -244,7 +244,7 @@ O processo de compilação requer que todas as dependências da classe já estej
 
 \section{FONTE ARIAL}
 
-Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX{} como o Mik\TeX{} e o \TeX{} Live. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
+Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX{} como o Mik\TeX{} e o \TeX{} \emph{Live}. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
 
 \begin{itemize}
 	\item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
@@ -258,7 +258,7 @@ Após isso, é necessário utilizar a opção \texttt{arial} na declaração da 
 
 A partir da versão 3, aclasse da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
 
-No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} Live (para Linux e Mac OS).
+No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS).
 
 \begin{enumerate}
 	\item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
@@ -745,7 +745,7 @@ Para citar o ano de uma obra, utilize \lstinline+\citeyear{obra}+.
 
 No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \lstinline+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \lstinline+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
 
-\lstinline+Fonte: \citefloat{kernighan1988}.+ \(\to\) Fonte: \citefloat{kernighan1988}.
+\lstinline+Fonte: \citefloat{Kernighan1988}.+ \(\to\) Fonte: \citefloat{Kernighan1988}.
 
 % \section{OUTROS EXEMPLOS}
 %
@@ -765,13 +765,23 @@ No caso das citações que devem ser feitas em \emph{floats}, como ilustrações
 
 \section{CITAÇÕES COM MAIS DE TRÊS LINHAS}
 
-O único tipo de citação que independe do pacote \texttt{abntex2cite} é a citação com mais de três linhas. De acordo com o guia da biblioteca, ela deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo ao início do parágrafo. No \index{Latex@\LaTeX}\LaTeX{}, os ambientes responsáveis por tais citações são \texttt{quote} (para citações de um parágrafo) e \texttt{quotation} (para citações com mais de um parágrafo).
+De acordo com o guia da biblioteca, a citação direta com mais de 3 linhas deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo no início do parágrafo. O \index{Latex@\LaTeX}\LaTeX{} já disponibiliza os ambientes \texttt{quote}, para citações de um parágrafo, e \texttt{quotation}, para citações com mais de um parágrafo. Para conseguir a formatação especificada pela biblioteca, os usuários da classe da FEI devem utilizar o ambiente \texttt{quote}. O ambiente \texttt{quotation} também foi reestruturado para ficar similar à formatação do ambiente \texttt{quote}, porém, como não há instruções para a realização de citações com mais de um parágrafo no guia da biblioteca, não existe recomendação para seu uso.
 
-Exemplo:
+Exemplo do ambiente \texttt{quote}:
 
 \begin{quote}
 	I propose to consider the question, `Can machines think?' This should begin with definitions of the meaning of the terms `machine' and `think'. The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words `machine' and `think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, `Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words. \cite{turing50}
 \end{quote}
+
+Exemplo do ambiente \texttt{quotation}:
+
+\begin{quotation}
+	The computing world has undergone a revolution since the publication of The C Programming Language in 1978. Big computers are much bigger, and personal computers have capabilities that rival mainframes of a decade ago. During this time, C has changed too, although only modestly, and it has spread far beyond its origins as the language of the UNIX operating system.
+
+	The growing popularity of C, the changes in the language over the years, and the creation of compilers by groups not involved in its design, combined to demonstrate a need for a more precise and more contemporary definition of the language than the first edition of this book provided. In 1983, the American National Standards Institute (ANSI) established a committee whose goal was to produce ``an unambiguous and machine-independent definition of the language C'', while still retaining its spirit. The result is the ANSI standard for C.
+
+	The standard formalizes constructions that were hinted but not described in the first edition, particularly structure assignment and enumerations. It provides a new form of function declaration that permits cross-checking of definition with use. It specifies a standard library, with an extensive set of functions for performing input and output, memory management, string manipulation, and similar tasks. It makes precise the behavior of features that were not spelled out in the original definition, and at the same time states explicitly which aspects of the language remain machine-dependent. \cite{Kernighan1988}
+\end{quotation}
 
 \section{CITAÇÕES DE MÚLTIPLAS OBRAS COM MESMO AUTOR}
 
@@ -1300,7 +1310,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/20 4.4.3 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/22 4.4.4 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -2039,18 +2049,20 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % modifica ambiente quote para citações de um parágrafo com mais de 3 linhas
 \renewenvironment{quote}
-{\begin{SingleSpace}\list{}{%
-			\fontsize{10pt}{1em}%
-			\leftmargin=4cm}%
-		\item\relax\ignorespaces}
-		{\endlist\end{SingleSpace}}
+{\begin{flushright}
+			\begin{minipage}{\textwidth - 4cm}
+				\fontsize{10pt}{1em}
+				\begin{SingleSpace}
+	}{\end{SingleSpace}\end{minipage}{}
+		\end{flushright}}
+
 
 % quotation é igual a quote, porém para citações com mais de um parágrafo.
 \renewenvironment{quotation}
-{\begin{SingleSpace}\list{}{%
-			\fontsize{10pt}{1em}%
-			\leftmargin=2cm \rightmargin=2cm%
-			\listparindent .5cm \itemindent}%
-		\item\relax}
-		{\endlist\end{SingleSpace}}
+{\begin{center}
+			\begin{minipage}{\textwidth - 4cm}
+				\fontsize{10pt}{1em}
+				\begin{SingleSpace}\setlength{\parindent}{1cm}
+	}{\end{SingleSpace}\end{minipage}{}
+\end{center}}
 %</class>
