@@ -671,12 +671,12 @@ A lista de referências bibliográficas, contidas em um ou mais arquivos \texttt
 O \LaTeX{} possui o comando nativo \lstinline+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
 
 \begin{lstlisting}
-\chapter{Último capítulo}
+\chapter{ÚLTIMO CAPÍTULO}
 ...
 \appendix
-\chapter{Primeiro apêndice}
+\chapter{PRIMEIRO APÊNDICE}
 ...
-\chapter{Segundo apêndice}
+\chapter{SEGUNDO APÊNDICE}
 ...
 \end{lstlisting}
 
@@ -1310,7 +1310,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/22 4.4.4 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/24 4.5 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1664,11 +1664,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % não há recuo no título de nenhum nível de nenhuma seção
 % títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
 \renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
-	\@startsection{chapter}{0}{0pt}{1pt}{1pt}{\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}
+	\@startsection{chapter}{0}{0pt}{1pt}{1pt}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 % demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
 \renewcommand{\section}{%
-	\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\MakeUppercase}}
+	\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}}}
 
 \renewcommand{\subsection}{%
 	\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
