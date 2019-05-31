@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/24 4.5 Modelo da FEI]
+\ProvidesClass{fei}[2019/05/31 4.5.1 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -295,7 +295,7 @@ postheadspace=1em
 \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
 \renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
-\@startsection{chapter}{0}{0pt}{1pt}{1pt}{\fontsize{12pt}{14.4pt}\bfseries}}
+\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
 
 \renewcommand{\section}{%
 \@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}}}
