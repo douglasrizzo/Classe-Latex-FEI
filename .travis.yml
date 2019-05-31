@@ -1,11 +1,14 @@
-dist: trusty
+dist: xenial
 sudo: required
 
 language: minimal
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -yq install biber latexmk lmodern texlive-bibtex-extra texlive-fonts-recommended texlive-lang-portuguese texlive-latex-extra texlive-latex-recommended texlive-science xindy
+install:
+ - source ./texlive/texlive_install.sh
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
 
 script:
   - make fei.cls templates
