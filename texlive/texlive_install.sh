@@ -28,57 +28,57 @@ tlmgr install luatex
 # Other contrib packages: done as a block to avoid multiple calls to tlmgr
 # texlive-latex-base is needed to run pdflatex
 tlmgr install adjustbox        \
-              algorithm2e \
-              amsthm \
+              algorithm2e      \
+              amsthm           \
               babel-portuges   \
-              biber \
-              biblatex \
-              biblatex-abnt \
+              biber            \
+              biblatex         \
+              biblatex-abnt    \
               caption          \
-              chngcntr \
+              chngcntr         \
               collectbox       \
-              courier \
-              ec               \
+              courier          \
               csquotes         \
               currfile         \
               datatool         \
               doublestroke     \
+              ec               \
               enumitem         \
               etoolbox         \
               filemod          \
-              fontenc \
-              fp \
+              fontenc          \
+              fp               \
               glossaries       \
               glossaries-extra \
-              graphicx \
+              graphicx         \
+              hyperref         \
               icomma           \
-              iftex            \
               ifetex           \
               ifoddpage        \
+              iftex            \
               imakeidx         \
-              hyperref \
-              l3kernel     \
+              l3kernel         \
               latexmk          \
               lm               \
-              logreq \
+              logreq           \
               mathtools        \
-              mfirstuc         \
               memoir           \
+              mfirstuc         \
               morewrites       \
-              ms \
-              pdfpages       \
+              ms               \
+              pdfpages         \
               pdfx             \
               relsize          \
               standalone       \
               substr           \
-              textcase \
+              textcase         \
               thmtools         \
-              times \
-              tracklang \
+              times            \
+              tracklang        \
               was              \
-              xcolor \
+              xcolor           \
               xfor             \
-              xkeyval \
+              xkeyval          \
               xmpincl          \
               xpatch
 

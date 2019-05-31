@@ -15,9 +15,6 @@ $(NAME).cls: $(NAME).dtx
 	makeglossaries $(NAME)
 	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
-	texindy $(NAME).idx
-	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
-	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
 clean:
 	git clean -Xdf
 format:
