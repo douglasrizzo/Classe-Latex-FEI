@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/31 4.5.1 Modelo da FEI]
+\ProvidesClass{fei}[2019/06/11 4.5.2 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -34,6 +34,10 @@
 \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 \DeclareOption{acronym}{
+\glossariestrue
+\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
+}
+\DeclareOption{record}{
 \glossariestrue
 \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
@@ -609,7 +613,7 @@ bibliography = {REFER\^ENCIAS}
 }{\end{SingleSpace}\end{minipage}{}
 \end{center}}
 %% 
-%% Copyright (C) 2017 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2019 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either

@@ -337,8 +337,9 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
-	\item \texttt{acronym}: sinaliza a configuração da lista de abreviaturas;
-	\item \texttt{symbols}: sinaliza a configuração da lista de símbolos.
+	\item \texttt{acronym}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de abreviaturas no trabalho;
+	\item \texttt{symbols}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de símbolos no trabalho;
+	\item \texttt{record}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de um arquivo \texttt{.bib} para definição de símbolos e abreviaturas, a ser compilado pelo programa \index{bib2gls@\texttt{bib2gls}}\texttt{bib2gls}.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
@@ -1310,7 +1311,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/05/31 4.5.1 Modelo da FEI]
+\ProvidesClass{fei}[2019/06/11 4.5.2 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1337,6 +1338,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 }
 % opção para configurar a lista de abreviaturas
 \DeclareOption{acronym}{
+	\glossariestrue
+	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
+}
+% opção para configurar a lista de abreviaturas
+\DeclareOption{record}{
 	\glossariestrue
 	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
