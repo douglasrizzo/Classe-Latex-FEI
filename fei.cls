@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/06/11 4.5.2 Modelo da FEI]
+\ProvidesClass{fei}[2019/10/03 4.6 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -446,12 +446,12 @@ postheadspace=1em
 \end{flushright}
 }
 
-\newcommand{\epigrafe}[2]{
-\cleardoublepage
-\thispagestyle{empty}
-\vspace*{\fill}
+\newenvironment{epigrafe}{\cleardoublepage\pagestyle{empty}\vspace*{\fill}}{\pagestyle{plain}}
+
+\newcommand{\epig}[2]{
+\vspace{2\baselineskip}
 \begin{flushright}
-\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
 ``{#1}''
 \begin{flushright}
 #2
@@ -459,7 +459,6 @@ postheadspace=1em
 \end{minipage}
 \end{flushright}
 }
-
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
 \renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}

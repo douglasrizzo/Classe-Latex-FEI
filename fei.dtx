@@ -173,7 +173,13 @@ literate=
 \begin{agradecimentos}
 	Agradecemos a Donald Knuth pela criação do \TeX{}, a Leslie Lamport pelo \LaTeX{} e a toda a comunidade de desenvolvedores que continua dando suporte e criando pacotes para melhorar a qualidade dos documentos escritos. Agradecimentos especiais são estendidos aos membros da \TeX{} \emph{Stack Exchange} pela divisão do fardo de criar documentos com belas tipografias. Agradece-se também os mantenedores da \gls{ctan}, por hospedar a classe e garantir sua distribuição em todas as maiores distribuições de \LaTeX{} nos principais sistemas operacionais, além de enviar-me e-mails toda vez que subo uma versão errada da classe.
 \end{agradecimentos}
-\epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
+
+\begin{epigrafe}
+	\epig{Beware of bugs in the above code; I have only proved it correct, not tried it.}{Donald E. Knuth \nocite{knuth77}}
+	\epig{Something is rotten in the state of Denmark.}{William Shakespeare \nocite{shakespeare1885tragedy}}
+\end{epigrafe}
+
+% \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
 	O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
@@ -401,11 +407,19 @@ A quem se deseja agradecer.
 \end{lstlisting}
 
 \subsection{Epígrafe}
-A epígrafe possui um formato especial, da mesma forma que a dedicatória. Este comando recebe dois parâmetros, sendo o primeiro a epígrafe e o segundo o autor da mesma.
+
+A página da epígrafe é criada utilizando o ambiente \texttt{epigrafe}. Dentro deste ambiente, uma ou mais citações podem ser inseridas separadamente utilizando o comando \lstinline+\epig{citacao}{Autor}+. Este comando recebe dois parâmetros, sendo o primeiro a citação em si e o segundo o autor da mesma. Apesar do guia de formatação da biblioteca não mencionar a possibilidade de incluir mais que uma cvitação na epígrafe, a classe da FEI disponibiliza esta opção aos seus usuários
 
 \emph{Nota:} O guia da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \lstinline+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
 
-Exemplo: \lstinline+\epigrafe{Haw-Haw!}{Nelson Muntz \nocite{muntz_book}}+
+Exemplo de declaração da página de epígrafe com duas citações:
+
+\begin{lstlisting}
+\begin{epigrafe}
+\epig{Epígrafe número um]}{Autor da Silva \nocite{obra_1}}
+\epig{Epígrafe número dois]}{Autor de Souza \nocite{obra_2}}
+\end{epigrafe}
+\end{lstlisting}
 
 \subsection{Resumo e \emph{abstract}}
 
@@ -1311,7 +1325,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/06/11 4.5.2 Modelo da FEI]
+\ProvidesClass{fei}[2019/10/03 4.6 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1854,13 +1868,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\end{flushright}
 }
 
-% epígrafe
-\newcommand{\epigrafe}[2]{
-	\cleardoublepage
-	\thispagestyle{empty}
-	\vspace*{\fill}
-	\begin{flushright}
-		\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
+\newenvironment{epigrafe}{\cleardoublepage\pagestyle{empty}\vspace*{\fill}}{\pagestyle{plain}}
+
+\newcommand{\epig}[2]{
+	\vspace{2\baselineskip}
+		\begin{flushright}
+		\begin{minipage}[t]{0.5\textwidth}
 			``{#1}''
 			\begin{flushright}
 				#2
@@ -1868,7 +1881,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		\end{minipage}
 	\end{flushright}
 }
-
 % resumo
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
