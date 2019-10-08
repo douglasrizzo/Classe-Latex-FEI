@@ -41,8 +41,7 @@ templates: | $(NAME).cls test
 	cp tests/test-full-template.tex fei-template.tex
 	cp tests/test-full-template-sublist.tex fei-template-sublist.tex
 test: $(NAME).cls
-	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
-		tests/pieces/documentclass.tex \
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
