@@ -34,6 +34,7 @@ tlmgr install adjustbox        \
               biber            \
               biblatex         \
               biblatex-abnt    \
+              bitset           \
               caption          \
               chngcntr         \
               collectbox       \
@@ -58,7 +59,9 @@ tlmgr install adjustbox        \
               iftex            \
               imakeidx         \
               l3kernel         \
+              l3packages       \
               latexmk          \
+              letltxmacro      \
               lm               \
               logreq           \
               mathtools        \
@@ -66,6 +69,8 @@ tlmgr install adjustbox        \
               mfirstuc         \
               morewrites       \
               ms               \
+              pdfescape        \
+              pdflscape        \
               pdfpages         \
               pdfx             \
               relsize          \
@@ -78,6 +83,7 @@ tlmgr install adjustbox        \
               was              \
               xcolor           \
               xfor             \
+              xindy             \
               xkeyval          \
               xmpincl          \
               xpatch
