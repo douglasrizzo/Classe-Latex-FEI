@@ -182,7 +182,7 @@ literate=
 % \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
-	O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \texttt{fei.cls}. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+	O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \LaTeX{} da FEI. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
 	\keywords{\LaTeX{}. FEI.}
 \end{resumo}
 
@@ -208,7 +208,7 @@ A escrita da classe que formata o texto foi realizada tendo-se como referência 
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
-O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \texttt{fei.cls} com todas as suas funcionalidades. O apêndice A explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice B disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
+O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \LaTeX{} da FEI com todas as suas funcionalidades. O apêndice A explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice B disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
 
 \section{NOTA AOS USUÁRIOS ANTIGOS DA CLASSE}
 
@@ -246,7 +246,7 @@ O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório
 
 A classe também pode ser baixada diretamente do GitHub, ou compilada do código-fonte. O repositório do projeto \footnote{\url{http://github.com/douglasrizzo/Classe-Latex-FEI}} possui todos os arquivos necessários para o procedimento. Para tanto, clone o repositório para um diretório e compile-o usando o Makefile disponível.
 
-O processo de compilação requer que todas as dependências da classe já estejam instaladas. O único arquivo necessário para formatação dos trabalhos acadêmicos é a classe \texttt{fei.cls}, a qual deve ser mantida no mesmo diretório do arquivo \texttt{tex} do trabalho do aluno.
+O processo de compilação requer que todas as dependências da classe já estejam instaladas. O único arquivo necessário para formatação dos trabalhos acadêmicos é a classe \LaTeX{} da FEI, a qual deve ser mantida no mesmo diretório do arquivo \texttt{tex} do trabalho do aluno.
 
 \section{FONTE ARIAL}
 
@@ -264,13 +264,13 @@ Após isso, é necessário utilizar a opção \texttt{arial} na declaração da 
 
 A partir da versão 3, aclasse da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
 
-No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \texttt{fei.cls} depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS).
+No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \LaTeX{} da FEI depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS).
 
 \begin{enumerate}
 	\item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
 	\item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
 	\item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-	\item\texttt{biblatex}: pacote que substitui o Bib\TeX{} no tratamento de referências bibliográficas;
+	\item\texttt{biblatex}: pacote avançado para o tratamento de referências bibliográficas;
 	\item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
 	\item\texttt{caption}: altera a formatação de certas legendas;
 	\item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
@@ -302,7 +302,7 @@ Este capítulo descreve os comandos disponibilizados pela classe. Ele é separad
 
 \section{PREÂMBULO}\label{sec:preambulo}
 
-No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \texttt{fei.cls} contém os seguintes elementos que devem ser declarados no preâmbulo:
+No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \LaTeX{} da FEI contém os seguintes elementos que devem ser declarados no preâmbulo:
 
 \subsection{Metadados PDF/A} \label{subsec:pdfa}
 
@@ -371,7 +371,7 @@ Para saber como imprimir a lista de referências bibliográficas na seção pós
 
 \section{PRÉ-TEXTO}\label{sec:pretexto}
 
-O pré-texto do documento engloba todos os elementos textuais que precedem o corpo da obra. A seguir são listados os elementos pré-textuais suportados pela classe \texttt{fei.cls} e os respectivos comandos para a criação de cada um deles.
+O pré-texto do documento engloba todos os elementos textuais que precedem o corpo da obra. A seguir são listados os elementos pré-textuais suportados pela classe \LaTeX{} da FEI e os respectivos comandos para a criação de cada um deles.
 
 \subsection{Capa}
 
@@ -940,7 +940,7 @@ onde:
 \begin{enumerate}
 	\item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
 	\item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
-	\item cria um ou mais arquivos de listas (de símbolos e siglas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+	\item cria um ou mais arquivos de listas (de símbolos e abreviaturas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
 	\item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
 	\item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
 	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
@@ -1068,14 +1068,14 @@ Para criar uma nova categoria de \emph{float}, a qual será listada na lista de 
 
 \chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
 
-A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \texttt{fei.cls} e todos os seus recursos.
+A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \LaTeX{} da FEI e todos os seus recursos.
 
 \begin{enumerate}
 
 	\item\lstinline+pdflatex documento.tex+
 	      \begin{enumerate}
 		      \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
-		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Bibtex@Bib\TeX}Bib\TeX;
+		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo Biber;
 		      \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
 		      \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
 		      \item \texttt{loa}: lista de algoritmos;
@@ -1085,6 +1085,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 	\item\lstinline+biber documento.aux+
 	      \begin{enumerate}
+		      \item \texttt{bcf}: arquivo de controle do Biber;
 		      \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
 	      \end{enumerate}
 
@@ -1355,7 +1356,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\glossariestrue
 	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
-% opção para configurar a lista de abreviaturas
+% opção para configurar a lista de símbolos como um arquivo .bib
 \DeclareOption{record}{
 	\glossariestrue
 	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
