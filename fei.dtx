@@ -101,7 +101,7 @@ fei.cls.
 \Subject   {This is where you put the abstract.}
 \end{filecontents*}
 
-\documentclass[xindy,oneside,symbols,acronym]{\jobname}
+\documentclass[oneside,symbols,acronym]{\jobname}
 \usepackage{multicol}
 \usepackage{listings}
 \lstset{
@@ -339,7 +339,6 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{draft}: Essa opção simplifica o processo de compilação do PDF para que ele seja realizado mais rapidamente. A opção beneficia especialmente a compilação de trabalhos com um número elevado de imagens ou que incluam imagens cujos arquivos sejam grandes, uma vez que as imagens não são adicionadas ao PDF. \emph{Hyperlinks} internos (\emph{e.g. links} para seções, citações, símbolos, abreviaturas, figuras, tabelas) também não são inseridos\footnote{Para uma lista mais completa das mudanças advindas do uso da opção \texttt{draft}, cheque o seguinte tópico no StackExchange: \url{https://tex.stackexchange.com/q/49277/30998}.};
 	\item \texttt{nopdfa}: desabilita a geração do documento no formato PDF/A. Essa função é disponibilizada para fins de compatibilidade, para que trabalhos antigos que possivelmente sejam corrompidos durante o processo de compilação devido ao padrão PDF/A ainda possam ser compilados;
 	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica e folha de aprovação no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
-	\item \texttt{xindy}: configura o \bigvindex{xindy} como programa de indexação a ser utilizado (mais sobre isso no capítulo \ref{chap:indice});
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
@@ -808,15 +807,13 @@ Já nos trabalhos de \textcite{duan2012large,duan2012reduced,duan2014functional}
 
 \chapter{ÍNDICES}\label{chap:indice}
 
-Assim como as referências são geradas por um programa a parte (o Bib\TeX), a criação de índices remissivos também o é. Neste quesito, o \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex} é o programa pioneiro na geração de índices e é parte integrante de todas as instalações do \LaTeX{}. Contudo, o \emph{MakeIndex} foi codificado com suporte apenas para o idioma inglês, o que significa que palavras que contêm caracteres mais exóticos -- como acentos ou cedilha -- não serão organizados corretamente. Para solucionar este problema, usuários de Linux possuem como opção secundária o \bigvindex{xindy}, um outro gerador de índices que possui as mesmas funcionalidades e aceita os mesmos comandos do \emph{MakeIndex}, porém com suporte a uma infinidade de idiomas.
+Assim como as referências são geradas por um programa a parte (o Biber), a criação de índices remissivos também o é. Neste quesito, a classe da FEI faz uso do programa \bigvindex{xindy} como gerador de índices. Mais especificamente, os programas \texttt{xindy} e \texttt{texindy} são necessários para geração de índices remissivos. O xindy foi selecionado como gerador de índices para a classe da FEI devido ao suporte a diversos e idiomas e indexação de palavras com caracteres mais exóticos -- como acentos ou cedilha.
 
-Para ambos os casos, foi importado o pacote \texttt{imakeidx}, o qual permite selecionar entre o \emph{MakeIndex} e o \emph{xindy} em suas opções. O \emph{MakeIndex} é o motor padrão de indexação; para utilizar o \emph{xindy}, é necessário declarar esta opção ao carregar a classe, da seguinte forma: \lstinline+\documentclass[xindy]{fei}+
-
-Como o \emph{xindy} não é parte integrante do \LaTeX{}, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}. Também é necessário executar um passo adicional na compilação do projeto, o qual é explicado no capítulo \ref{chap:compilando}.
+Em suma, a geração de índices remissivos tem como dependências os programas \texttt{xindy} e \texttt{texindy} e o pacote \texttt{imakeidx} do \LaTeX{}. Como o \emph{xindy} não é parte integrante do \LaTeX{}, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}. Também é necessário executar um passo adicional na compilação do projeto, o qual é explicado no capítulo \ref{chap:compilando}.
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE ÍNDICE}
 
-Para que o \LaTeX{} crie os arquivos auxiliares  que serão lidos pelo \emph{MakeIndex}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeindex+ ao preâmbulo de seu texto.
+Para que o \LaTeX{} crie os arquivos auxiliares  que serão lidos pelo \emph{xindy}, é necessário sinalizar o compilador para que essa criação seja feita. Isso é feito adicionando o comando \lstinline+\makeindex+ ao preâmbulo de seu texto.
 
 \section{INDEXANDO PALAVRAS}
 
@@ -826,11 +823,11 @@ Exemplo: [\ldots] a biblioteca do Centro Universitário \lstinline+\index{FEI}+\
 
 É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 
-Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}) assim como de \textcite{mittelbach_latex_2004}, que disserta tanto sobre o \emph{xindy} como \emph{MakeIndex}.
+Para aprender dicas avançadas na criação de índices mais complexos, recomenda-se a leitura da documentação do pacote \emph{MakeIndex} (\url{http://www.ctan.org/pkg/makeindex}), o pacote original de geração de índices do \LaTeX{}, \textcite{mittelbach_latex_2004} também é uma leitura recomendada, pois disserta tanto sobre o \emph{xindy} como o \emph{MakeIndex}.
 
 \section{IMPRIMINDO O ÍNDICE}
 
-A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o qual, além de imprimir o índice, inclui uma entrada para o mesmo no sumário.
+A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o qual também inclui uma entrada para o mesmo no sumário do documento.
 
 \chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
 
@@ -927,13 +924,35 @@ A lista de abreviaturas pode ser impressa através do comando \lstinline+\printa
 
 \chapter{COMPILANDO O PROJETO} \label{chap:compilando}
 
-Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas em ordem específica. Esta sessão descreve estes programas, a ordem na qual eles devem ser utilizados e algumas ferramentas inteligentes que automatizam este processo.
+Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas. Esta sessão descreve tanto uma maneira automatizada de se compilar o projeto, usando o latexmk, assim como os programas que podem ser chamados manualmente, para fins de depuração..
 
-\section{O JEITO DIFÍCIL} \label{sec:dificil}
+\section{COMPILAÇÃO AUTOMATIZADA} \label{sec:latexmk}
 
-Para compilar o documento manualmente, é preciso executar os seguintes programas na seguinte ordem\footnote{Para uma descrição referente a todos os arquivos gerados no processo de compilação, vide apêndices}.
+Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX{}, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Dentre as ferramentas mais conhecidas estão o \texttt{latexmk}, \texttt{rubber} e \texttt{arara}, criadas especificamente para realizar a automatização da compilação de documentos \TeX{}. Para a classe da FEI, recomenda-se o uso do \texttt{latexmk}. As configurações necessárias são disponibilizadas no arquivo \texttt{.latexmkrc}, o qual deve ser colocado no mesmo diretório que o arquivo \texttt{.tex} principal do documento. O \texttt{latexmk} pode então ser chamado da seguinte forma (supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual):
 
-\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Biber}}_b \to \operatorname*{\text{MakeGlossaries}}_c \to \operatorname*{\text{pdf\LaTeX}}_d \to \operatorname*{\text{MakeIndex}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
+\begin{enumerate}
+	\item \texttt{latexmk -pdf documento.tex}
+\end{enumerate}
+
+Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
+
+\section{COMPILAÇÃO MANUAL} \label{sec:dificil}
+
+A compilação manual do projeto depende dos seguintes programas:
+
+\begin{enumerate}
+	\item \texttt{pdflatex}: gera todos os arquivos auxiliares, utilizados pelos demais programas, assim como uma versão do PDF com os elementos compilados até o momento;
+	\item \texttt{biber}: gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+	\item \texttt{makeglossaries}: cria um ou mais arquivos de listas (de símbolos e abreviaturas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
+	\item \texttt{texindy}: cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
+	\item \texttt{bib2gls}: transforma uma lista de abreviaturas e símbolos, criada utilizando um arquivo \texttt{bib}, em listas de símbolos e abreviaturas a serem processadas pelo \texttt{makeglossaries}.
+\end{enumerate}
+
+A ordem na qual os programas devem ser executados depende de quais funcionalidades da classe da FEI forma utilizadas no documento: a ausência de referências bibliográficas torna desnecessário o uso do \texttt{biber}; a ausência de abreviaturas e símbolos torna denecessário o uso do \texttt{makeglossaries} e a ausência de índice remissivo torna desnecessário o uso do \texttt{texindy}. Ademais, se compilações anteriores modificam a localização de certos elementos já posicionados do texto (e.g. uma palavra indexada na página 30 é ``empurrada'' para a página 31 depois que as citações bibliográficas são inseridas no texto), os programas talvez tenham que ser executados diversas vezes até alcançar-se um PDF correto e estável. Essas preocupações são desnecessárias caso o \texttt{latexmk} seja usado, como descrito na sessão~\ref{sec:latexmk}.
+
+Uma ordem comum para se compilar o projeto é a seguinte:
+
+\[\operatorname*{\text{pdf\LaTeX}}_a \to \operatorname*{\text{Biber}}_b \to \operatorname*{\text{MakeGlossaries}}_c \to \operatorname*{\text{pdf\LaTeX}}_d \to \operatorname*{\text{texindy}}_e \to \operatorname*{\text{pdf\LaTeX}}_f\]
 
 onde:
 
@@ -946,29 +965,16 @@ onde:
 	\item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
 \end{enumerate}
 
-Um exemplo de comando que executa todas essas funções é o seguinte:
+Os comandos equivalentes num terminal no Linux ou Mac OS são os seguintes:
 
 \begin{lstlisting}
-pdflatex documento.tex
+pdflatex --shell-escape documento.tex
 biber documento
 makeglossaries documento
-pdflatex documento.tex
-makeindex documento.idx
-pdflatex documento.tex
+pdflatex --shell-escape documento.tex
+texindy documento.idx
+pdflatex --shell-escape documento.tex
 \end{lstlisting}
-
-Caso o \bigvindex{xindy} esteja sendo usado como o motor de indexação, é necessário passar o parâmetro \lstinline+-shell-escape+ ao pdf\LaTeX{}, para que ele possa executar comandos no \emph{shell} do Linux.
-
-\section{O JEITO FÁCIL}
-
-Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX{}, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Duas dessas ferramentas são o \texttt{latexmk} e o \texttt{rubber}, ambas criadas especificamente para realizar a automatização da compilação de documentos \TeX{}. Supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual, os comandos seguintes geram um PDF completo.
-
-\begin{enumerate}
-	\item \texttt{latexmk -pdf -interaction=nonstopmode documento}
-	\item \texttt{rubber -d documento}
-\end{enumerate}
-
-Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 
 \chapter{LEITURA COMPLEMENTAR}
 
@@ -1089,10 +1095,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		      \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
 	      \end{enumerate}
 
-	\item\lstinline+makeindex documento.idx+
+	\item\lstinline+texindy documento.idx+
 	      \begin{enumerate}
-		      \item \texttt{ilg}: \emph{log} do MakeIndex.
-		      \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \lstinline+\printindex+;
+		      \item \texttt{ind}: contém, em linguagem \emph{tex}, a formação do índice a ser inserida na chamada a \lstinline+\printindex+.
 	      \end{enumerate}
 
 	\item\lstinline+makeglossaries documento+
@@ -1326,7 +1331,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/10/03 4.6 Modelo da FEI]
+\ProvidesClass{fei}[2020/02/09 4.7 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1335,11 +1340,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % passa a opção final para a classe
 \DeclareOption{final}{
 	\PassOptionsToClass{\CurrentOption}{memoir}
-}
-% passa a opção do xindy pros pacotes que podem utilizá-lo
-\DeclareOption{xindy}{
-	\PassOptionsToPackage{\CurrentOption}{imakeidx}
-	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 
 %---------------------------------------------------------------
@@ -1892,7 +1892,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
 % índice
-\RequirePackage{imakeidx}
+\RequirePackage[xindy]{imakeidx}
 \indexsetup{level=\part*}
 \addto\captionsbrazil{%
 	\renewcommand{\indexname}{\'Indice}%
@@ -1929,7 +1929,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % este foi o problema que eu resolvi com ele: https://tex.stackexchange.com/a/77561/30998
 \ifglossaries
 	\ifsublist
-		\RequirePackage[nomain,nonumberlist,section=part]{glossaries-extra}
+		\RequirePackage[xindy,nomain,nonumberlist,section=part]{glossaries-extra}
 		% estilo usado como base
 		\setglossarystyle{alttree}
 		% Configuracao de identacao do nivel 0 (titulos)
@@ -1941,7 +1941,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 	\else
-		\RequirePackage[nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
+		\RequirePackage[xindy,nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
 
 		\newglossarystyle{mylong}{%
 			\setglossarystyle{long}% base this style on the long style

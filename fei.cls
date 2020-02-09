@@ -14,17 +14,13 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2019/10/03 4.6 Modelo da FEI]
+\ProvidesClass{fei}[2020/02/09 4.7 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
 }
 \DeclareOption{final}{
 \PassOptionsToClass{\CurrentOption}{memoir}
-}
-\DeclareOption{xindy}{
-\PassOptionsToPackage{\CurrentOption}{imakeidx}
-\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 
 \newif\ifglossaries
@@ -465,7 +461,7 @@ postheadspace=1em
 
 \newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
 
-\RequirePackage{imakeidx}
+\RequirePackage[xindy]{imakeidx}
 \indexsetup{level=\part*}
 \addto\captionsbrazil{%
 \renewcommand{\indexname}{\'Indice}%
@@ -492,7 +488,7 @@ colorlinks={false}%
 
 \ifglossaries
 \ifsublist
-\RequirePackage[nomain,nonumberlist,section=part]{glossaries-extra}
+\RequirePackage[xindy,nomain,nonumberlist,section=part]{glossaries-extra}
 \setglossarystyle{alttree}
 \glssetwidest[0]{}
 \glssetwidest[1]{aaaaaaaaaaaa}
@@ -500,7 +496,7 @@ colorlinks={false}%
 \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
 \else
-\RequirePackage[nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
+\RequirePackage[xindy,nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
 
 \newglossarystyle{mylong}{%
 \setglossarystyle{long}% base this style on the long style
