@@ -9,12 +9,7 @@ UTREE = $(shell kpsewhich --var-value TEXMFHOME)
 all: | $(NAME).cls clean
 	test -e README.txt && mv README.txt README || exit 0
 $(NAME).cls: $(NAME).dtx
-	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
-	biber $(NAME).bcf
-	texindy $(NAME).idx
-	makeglossaries $(NAME)
-	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
-	pdflatex -recorder -interaction=nonstopmode $(NAME).dtx
+	latexmk -pdf $(NAME).dtx
 clean:
 	git clean -Xdf
 format:
