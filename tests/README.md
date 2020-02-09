@@ -1,11 +1,17 @@
 # Testes
 
-Os testes da classe são feitos usando partes de arquivos `.tex`, presentes no diretório `pieces` e criando documentos inteiros, os quais são posteriormente compilados utilizando a classe da FEI. Os testes possuem os objetivos de:
+O diretório `pieces` contém pedaços de arquivos `.tex`, os quais são unidos, formando diversos tipos diferentes de documentos, para realizar testes da classe da FEI com documentos com diferentes configurações.
 
-* verificar se um documento pode ser compilado sem possuir todas as partes, flexibilizando o uso da classe, além;
-* verificar todas as opções existentes da classe, como sublist, pdfa, deposito etc.
+Os pedaços são concatenados no `Makefile`, no target `tests`, usando o programa `awk`. Os documentos criados testam funcionalidades como:
 
-A criação de novos documentos para teste pode ser feita no `Makefile`, *target* `tests`, seguindo o padrão dos documentos já existentes. Novas partes de documentos podem ser criadas no diretório `pieces` e utilizadas nos testes.
+* criar um documento somente com os itens obrigatórios;
+* com todos os itens;
+* somente frente;
+* frente e verso;
+* padrão `pdfa`;
+* sublista de símbolos.
+
+Os testes possuem os objetivos de verificar se um documento pode ser compilado sem possuir todas as partes, flexibilizando o uso da classe.
 
 ## line spacing
 
