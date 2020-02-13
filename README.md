@@ -7,28 +7,28 @@ Este repositório contém a classe <span class="texhtml" style="font-family: 'CM
 No manual, os usuários encontrarão informações detalhadas sobre a utilização da classe, seus comandos e algumas boas práticas para que o trabalho fique no formato desejado pela biblioteca.
 
 ## Instalação
-A partir de setembro de 2015, a classe foi disponibilizada no [CTAN][fei-ctan], sob o acrônimo `fei`. Usuários que possuem as versões mais recentes do [TeX Live][texlive] e do [MikTeX][miktex] podem baixar a classe usando os gerenciadores de pacotes das respectivas distribuições.
-
-A versão mais recente da classe pode sempre ser encontrada no [GitHub][latex-fei].
+A classe está disponível através do [TeX Live][texlive] (Windows, Linux), [MikTeX][miktex] (Windows) e [MacTeX](https://www.tug.org/mactex/) (Mac OS). Instale uma das distribuições e procure pela classe `fei` no gerenciador de pacotes da distribuição.
+Alternativamente, baixe uma [versão estável][github-releases] do repositório, extraia o arquivo compactado e coloque o arquivo `fei.cls` no mesmo diretório de seu documento `tex`.
 
 ## Utilização
-Em seu formato mais simples, a classe pode ser usada adicionando a linha
+Recomenda-se iniciar um documento através de um dos dois _templates_ [[1]][template] [[2]][template-sublist], testados e prontos para compilação, e consultar eventuais comandos e ambientes no [manual][manual] em PDF.
 
-    \documentclass{fei}
+## Novas versões
+Para receber anúncios de novas versões da classe, utilize a função "Watch" do GitHub no [repositório][github].
 
-no início do documento `.tex`. O [manual][manual] da classe detalha todas as funcionalidades da classe. Dois [modelos][template] [básicos][template-sublist] prontos para compilação e alteração são disponibilizados no repositório.
+## Ajuda e Comunidade
+* O [manual][manual] em PDF é a fonte primária de instrução relacionada ao uso da classe e descreve todos os comandos, opções e ambientes disponíveis.
+* A [wiki][github-wiki] no GitHub aborda dúvidas relacionadas a instalação do LaTeX, fontes didáticas para aprender a linguagem LaTeX e dicas de editores de TeX e ferramentas para facilitar a compilação de projetos grandes.
+* Um [grupo do Google][grupo-google] é disponibilizado para eventuais trocas de informações entre usuários da classe.
 
-##Licença
+## Licença
 Released under the <span class="texhtml" style="font-family: 'CMU Serif', cmr10, LMRoman10-Regular, 'Nimbus Roman No9 L', 'Times New Roman', Times, serif;">L<span style="text-transform: uppercase; font-size: 70%; margin-left: -0.36em; vertical-align: 0.3em; line-height: 0; margin-right: -0.15em;">a</span>T<span style="text-transform: uppercase; margin-left: -0.1667em; vertical-align: -0.5ex; line-height: 0; margin-right: -0.125em;">e</span>X</span> Project Public License v1.3c or later
 See http://www.latex-project.org/lppl.txt
 
-##Controle de versão
-Para saber as mudanças entre essa versão e as anteriores, [clique aqui](https://github.com/douglasrizzo/Classe-Latex-FEI/commits/master).
-
-##Comunidade
-Para receber anúncios de novas versões da classe ou tirar dúvidas e conversar com outros usuários de <span class="texhtml" style="font-family: 'CMU Serif', cmr10, LMRoman10-Regular, 'Nimbus Roman No9 L', 'Times New Roman', Times, serif;">L<span style="text-transform: uppercase; font-size: 70%; margin-left: -0.36em; vertical-align: 0.3em; line-height: 0; margin-right: -0.15em;">a</span>T<span style="text-transform: uppercase; margin-left: -0.1667em; vertical-align: -0.5ex; line-height: 0; margin-right: -0.125em;">e</span>X</span>, se inscreva no nosso [Google Groups][grupo-google].
-
 [fei-ctan]: http://ctan.org/pkg/fei
+[github]: https://github.com/douglasrizzo/Classe-Latex-FEI/
+[github-releases]: https://github.com/douglasrizzo/Classe-Latex-FEI/releases
+[github-wiki]: https://github.com/douglasrizzo/Classe-Latex-FEI/wiki
 [grupo-google]: https://groups.google.com/forum/#!forum/grupo-latex-fei
 [texlive]: https://www.tug.org/texlive/
 [miktex]: http://miktex.org/
