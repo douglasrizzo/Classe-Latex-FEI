@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/02/09 4.7 Modelo da FEI]
+\ProvidesClass{fei}[2020/03/03 4.8 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -49,6 +49,10 @@
 \DeclareOption{arial}{\arialtrue}
 \DeclareOption{times}{\arialfalse}
 
+\newif\ifnumeric
+\numericfalse
+\DeclareOption{numeric}{\numerictrue}
+
 \newif\ifoneside
 \DeclareOption{oneside}{\onesidetrue}
 \DeclareOption{twoside}{\onesidefalse}
@@ -57,9 +61,7 @@
 
 \newif\ifpdfa
 \pdfatrue
-\DeclareOption{nopdfa}{
-\pdfafalse
-}
+\DeclareOption{nopdfa}{\pdfafalse}
 
 
 
@@ -560,12 +562,19 @@ colorlinks={false}%
 }%
 }%
 
+
+\ifnumeric
 \RequirePackage[backend=biber,
 safeinputenc=true,
 uniquelist=false,
-isbn=false,
-doi=false,
+style=abnt-numeric]{biblatex}
+\else
+\RequirePackage[backend=biber,
+safeinputenc=true,
+uniquelist=false,
 style=abnt]{biblatex}
+\fi
+
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
