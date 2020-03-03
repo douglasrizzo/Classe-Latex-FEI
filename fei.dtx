@@ -1081,7 +1081,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\item\lstinline+pdflatex documento.tex+
 	      \begin{enumerate}
 		      \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
-		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo Biber;
+		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Biber}Biber;
 		      \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
 		      \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
 		      \item \texttt{loa}: lista de algoritmos;
@@ -1377,18 +1377,20 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \DeclareOption{arial}{\arialtrue}
 \DeclareOption{times}{\arialfalse}
 
+\newif\ifnumeric
+\numericfalse
+\DeclareOption{numeric}{\numerictrue}
+
 \newif\ifoneside
 \DeclareOption{oneside}{\onesidetrue}
 \DeclareOption{twoside}{\onesidefalse}
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
+% opção para configurar a lista de símbolos
 \newif\ifpdfa
 \pdfatrue
-% opção para configurar a lista de símbolos
-\DeclareOption{nopdfa}{
-	\pdfafalse
-}
+\DeclareOption{nopdfa}{\pdfafalse}
 
 % Assume that any unknown option will be understood by the base class:
 % \DeclareOption*{%
@@ -2017,13 +2019,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % referências e citações
 % abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-% para 2019, poderá ter DOI e ISBN
-\RequirePackage[backend=biber,
-	safeinputenc=true,
-	uniquelist=false,
-	isbn=false,
-	doi=false,
-	style=abnt]{biblatex}
+
+\ifnumeric
+	\RequirePackage[backend=biber,
+		safeinputenc=true,
+		uniquelist=false,
+		style=abnt-numeric]{biblatex}
+\else
+	\RequirePackage[backend=biber,
+		safeinputenc=true,
+		uniquelist=false,
+		style=abnt]{biblatex}
+\fi
+
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
