@@ -340,6 +340,7 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{nopdfa}: desabilita a geração do documento no formato PDF/A. Essa função é disponibilizada para fins de compatibilidade, para que trabalhos antigos que possivelmente sejam corrompidos durante o processo de compilação devido ao padrão PDF/A ainda possam ser compilados;
 	\item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica e folha de aprovação no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
 	\item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
+	\item \texttt{numeric}: troca as citações e referências autor-data para numéricas;
 	\item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 	\item \texttt{acronym}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de abreviaturas no trabalho;
@@ -710,72 +711,52 @@ Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para decl
 
 A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \lstinline+\printindex+.
 
-\chapter{CITAÇÕES USANDO O abn\TeX}\label{chap:referencia}
+\chapter{CITAÇÕES EM FORMATO AUTOR-DATA E NUMÉRICAS} \label{chap:referencia}
 
-O \gls{abntex} (\url{http://www.abntex.net.br/}) é um conjunto de macros (comandos e ambientes) que busca seguir as normas da \index{ABNT}\gls{abnt} para formatos acadêmicos. O pacote completo do \gls{abntex}~fornece tanto uma classe para a formatação do texto quanto um pacote para a formatação das referências bibliográficas. Para a formatação correta das citações e referências de acordo com o padrão da biblioteca da \index{FEI}\gls{fei}, foi importado o pacote \texttt{biblatex-abnt}, que utiliza o modelo autor-data.
+A classe da \index{FEI}\gls{fei} faz uso do pacote \texttt{biblatex-abnt} para inserção de citações ao longo do texto e impressão da lista de referências bibliográficas ao final do texto. O \texttt{biblatex-abnt} é responsável por formatar tanto citações quanto referências bibliográficas sob os padrões da ABNT. A classe da \index{FEI}\gls{fei} realiza algumas modificações no estilo fornecido pelo \texttt{biblatex-abnt} para se adequar ao guia da biblioteca. Por padrão, as citações são feitas no formato autor-data. Para utilizar o formato numérico, adicione a opção \texttt{numeric} à declaração da classe: \lstinline+\documentclass[numeric]{fei}+.
 
-As seções a seguir disponibilizam exemplos dos comandos mais comuns. Para uma lista detalhada, o leitor é referenciado ao manual do \texttt{biblatex-abnt}.
+Os comandos mais comuns de citação são exemplificados abaixo e nas próximas seções. Para uma lista detalhada de todos os comandos tanto do formato autor-data como numérico, o leitor é referenciado ao manual do \texttt{biblatex-abnt} \footnote{\url{https://www.ctan.org/pkg/biblatex-abnt}}. O formato autor-data é mencionado como \texttt{abnt}, enquanto o formato numérico é mencionado na documentação como \texttt{abnt-numeric}.
 
-\section{CITAÇÃO NO FINAL DE LINHA}
-A citação no final de linha deve deixar os nomes dos autores, seguido do ano, entre parenteses e em letras maiúsculas. Este resultado pode ser obtido utilizando o comando \lstinline+\cite{obra}+.
+\begin{itemize}	
+	\item citação no final de linha:
+	
+	\begin{itemize}
+		\item Este texto deveria ser uma referência \lstinline+\cite{turing50}+. $\to$ Este texto deveria ser uma referência \cite{turing50}.
+	\end{itemize}
+	
+	\item citação durante o texto:
+	
+	\begin{itemize}
+		\item Segundo \lstinline+\textcite{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \textcite{haykin99a}, este texto deveria ser uma referência.
+	\end{itemize}
+	
+	\item citação indireta:
+	
+	\begin{itemize}
+		\item \lstinline+\apud{kahneman2011}{stewart2012}+ formata a citação de forma semelhante a \apud{kahneman2011}{stewart2012}.
+	\end{itemize}
+	
+	\item citações múltiplas:
 
-Exemplo: Este texto deveria ser uma referência \lstinline+\cite{turing50}+. $\to$ Este texto deveria ser uma referência \cite{turing50}.
+	\begin{itemize}
+		\item \lstinline+\cites{mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{mcc43}{kurzweil2013}{haykin99a}
+		\item \lstinline+\textcites{clarke19932001}{hamlet}{art1}+ \(\to\) \textcites{clarke19932001}{hamlet}{art1}
+	\end{itemize}
 
-\section{CITAÇÃO DURANTE O TEXTO}
-Para que a citação seja feita durante o texto, o nome do autor é formatado somente com as iniciais maiúsculas e o ano entre parenteses. O pacote da \gls{abntex}~fornece o comando \lstinline+\textcite{obra}+ para este caso.
+	\item citações de campos específicos:
 
-Exemplo: Segundo \lstinline+\textcite{haykin99a}+, este texto deveria ser uma referência. $\to$ Segundo \textcite{haykin99a}, este texto deveria ser uma referência.
-
-\section{CITAÇÃO INDIRETA}
-Quando se deseja citar uma obra a qual o autor não possui acesso direto a ela, pode-se citar uma outra obra que, por sua vez, cita a primeira. O \gls{abntex}~disponibiliza esse tipo de citação através do comando \lstinline+\apud{obra_inacessivel}{obra_acessivel}+.
-
-Exemplo: \lstinline+\apud{kahneman2011}{stewart2012}+ formata a citação de forma semelhante a \apud{kahneman2011}{stewart2012}.
-
-\section{CITAÇÕES MÚLTIPLAS}
-
-Os comandos \lstinline+\cites{obra_1}{...}{obra_n}+ e \lstinline+\textcites{obra_1}{}...}{obra_m}+ também possibilitam a utilização de citações múltiplas.
-
-Exemplos:
-
-\lstinline+\cites{mcc43}{kurzweil2013}{haykin99a}+ \(\to\) \cites{mcc43}{kurzweil2013}{haykin99a}.
-
-\lstinline+\textcites{clarke19932001}{hamlet}{art1}+ \(\to\) \textcites{clarke19932001}{hamlet}{art1}.
-
-\section{CITAÇÕES DE CAMPOS ESPECÍFICOS}
-
-Para citar o nome do autor em linha, utilize o comando \lstinline+\citeauthor*{obra}+.
-
-\lstinline+\citeauthor*{galilei_dialogue_1953}+ \(\to\) \citeauthor*{galilei_dialogue_1953}
-
-Para citar o nome do autor em letras maiúsculas, utilize\lstinline+\citeauthor{obra}+.
-
-\lstinline+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
-
-Para citar o ano de uma obra, utilize \lstinline+\citeyear{obra}+.
-
-\lstinline+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
+	\begin{itemize}
+		\item \lstinline+\citeauthor*{galilei_dialogue_1953}+ \(\to\) \citeauthor*{galilei_dialogue_1953}
+		\item \lstinline+\citeauthor{galilei_dialogue_1953}+ \(\to\) \citeauthor{galilei_dialogue_1953}
+		\item \lstinline+\citeyear{galilei_dialogue_1953}+ \(\to\) \citeyear{galilei_dialogue_1953}
+	\end{itemize}
+\end{itemize}
 
 \section{CITAÇÃO PARA \emph{FLOATS}}
 
 No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \lstinline+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \lstinline+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
 
 \lstinline+Fonte: \citefloat{Kernighan1988}.+ \(\to\) Fonte: \citefloat{Kernighan1988}.
-
-% \section{OUTROS EXEMPLOS}
-%
-% \lstinline+\Idem[p.~2]{turing50}+ \(\to\) \Idem[p.~2]{turing50}
-%
-% \lstinline+\Ibidem[p.~2]{turing50}+ \(\to\) \Ibidem[p.~2]{turing50}
-%
-% \lstinline+\opcit[p.~2]{turing50}+ \(\to\) \opcit[p.~2]{turing50}
-%
-% \lstinline+\passim{turing50}+ \(\to\) \passim{turing50}
-%
-% \lstinline+\loccit{turing50}+ \(\to\) \loccit{turing50}
-%
-% \lstinline+\cfcite[p.~2]{turing50}+ \(\to\) \cfcite[p.~2]{turing50}
-%
-% \lstinline+\etseq[p.~2]{turing50}+ \(\to\) \etseq[p.~2]{turing50}
 
 \section{CITAÇÕES COM MAIS DE TRÊS LINHAS}
 
@@ -1081,7 +1062,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\item\lstinline+pdflatex documento.tex+
 	      \begin{enumerate}
 		      \item \texttt{alg}: \emph{log} do \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex};
-		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo Biber;
+		      \item \texttt{bcf}: arquivo com as referências a serem processadas pelo \index{Biber}Biber;
 		      \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
 		      \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
 		      \item \texttt{loa}: lista de algoritmos;
@@ -1331,7 +1312,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/02/09 4.7 Modelo da FEI]
+\ProvidesClass{fei}[2020/03/03 4.8 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1377,18 +1358,20 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \DeclareOption{arial}{\arialtrue}
 \DeclareOption{times}{\arialfalse}
 
+\newif\ifnumeric
+\numericfalse
+\DeclareOption{numeric}{\numerictrue}
+
 \newif\ifoneside
 \DeclareOption{oneside}{\onesidetrue}
 \DeclareOption{twoside}{\onesidefalse}
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
+% opção para configurar a lista de símbolos
 \newif\ifpdfa
 \pdfatrue
-% opção para configurar a lista de símbolos
-\DeclareOption{nopdfa}{
-	\pdfafalse
-}
+\DeclareOption{nopdfa}{\pdfafalse}
 
 % Assume that any unknown option will be understood by the base class:
 % \DeclareOption*{%
@@ -2017,13 +2000,19 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % referências e citações
 % abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
-% para 2019, poderá ter DOI e ISBN
-\RequirePackage[backend=biber,
-	safeinputenc=true,
-	uniquelist=false,
-	isbn=false,
-	doi=false,
-	style=abnt]{biblatex}
+
+\ifnumeric
+	\RequirePackage[backend=biber,
+		safeinputenc=true,
+		uniquelist=false,
+		style=abnt-numeric]{biblatex}
+\else
+	\RequirePackage[backend=biber,
+		safeinputenc=true,
+		uniquelist=false,
+		style=abnt]{biblatex}
+\fi
+
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
