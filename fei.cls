@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/03/03 4.8 Modelo da FEI]
+\ProvidesClass{fei}[2020/06/28 4.9.1 Modelo da FEI]
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -40,7 +40,6 @@
 \newif\ifsublist
 \sublistfalse
 \DeclareOption{sublist}{\sublisttrue}
-
 \newif\ifdeposito
 \depositofalse
 \DeclareOption{deposito}{\depositotrue}
@@ -56,6 +55,10 @@
 \newif\ifoneside
 \DeclareOption{oneside}{\onesidetrue}
 \DeclareOption{twoside}{\onesidefalse}
+
+\DeclareOption{backrefs}{%
+\PassOptionsToPackage{backref}{biblatex}%
+}
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
@@ -617,7 +620,7 @@ bibliography = {REFER\^ENCIAS}
 }{\end{SingleSpace}\end{minipage}{}
 \end{center}}
 %% 
-%% Copyright (C) 2019 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2020 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either

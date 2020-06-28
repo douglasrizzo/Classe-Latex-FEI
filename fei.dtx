@@ -49,7 +49,7 @@ See http://www.latex-project.org/lppl.txt
 \endpreamble
 \postamble
 
-Copyright (C) 2019 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+Copyright (C) 2020 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License (LPPL), either
@@ -94,7 +94,7 @@ fei.cls.
 \begin{filecontents*}{\jobname.xmpdata}
 \Title     {Classe LaTeX FEI}
 \Author    {Douglas De Rizzo Meneghetti}
-\Copyright {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
+\Copyright {Copyright \copyright\ 2020 "Douglas De Rizzo Meneghetti"}
 \Keywords  {manual\sep latex\sep tipografia}
 \Publisher {Baking International}
 \Language  {pt-BR}
@@ -314,7 +314,7 @@ Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o
 \begin{filecontents*}{\jobname.xmpdata}
 \Title     {Minha tese-dissertação-monografia}
 \Author    {Meu Nome\sep Nome Do Outro Integrante\sep Nome do Terceiro}
-\Copyright {Copyright \copyright\ 2019 "Douglas De Rizzo Meneghetti"}
+\Copyright {Copyright \copyright\ 2020 "Douglas De Rizzo Meneghetti"}
 \Keywords  {manual\sep latex\sep tipografia}
 \Language  {pt-BR}
 \Subject   {Resumo vai aqui em uma única linha corrida.}
@@ -345,6 +345,7 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 	\item \texttt{acronym}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de abreviaturas no trabalho;
 	\item \texttt{symbols}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de símbolos no trabalho;
+	\item \texttt{backrefs}: passa a opção \texttt{backref} ao pacote \texttt{biblatex}, para que ele imprima as páginas nas quais cada trabalho foi citado nas referências bibliográficas. Repare que esta não é uma características prevista no guia de formatação de referências da biblioteca, então use-o somente sob sua conta e risco;
 	\item \texttt{record}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de um arquivo \texttt{.bib} para definição de símbolos e abreviaturas, a ser compilado pelo programa \index{bib2gls@\texttt{bib2gls}}\texttt{bib2gls}.
 \end{enumerate}
 
@@ -967,7 +968,7 @@ Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usu
 
 \appendix
 
-\chapter{\emph{HACKS} ÚTEIS}
+\chapter{\emph{HACKS} ÚTEIS} \label{app:hacks}
 
 Existem alguns casos específicos nos quais técnicas de formatação avançadas ou redefinições de comandos são requeridas. Não existe forma simples de disponibilizar os recursos listados neste apêndice aos usuários da classe, então o apêndice ensinará os usuários a realizar personalizações básicas na classe, assim como fazer formatações menos convencionais que sejam necessárias para aderir as padrões da biblioteca.
 
@@ -1053,7 +1054,7 @@ Para criar uma nova categoria de \emph{float}, a qual será listada na lista de 
 \setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
 \end{lstlisting}
 
-\chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{chap:arquivos}
+\chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{app:arquivos}
 
 A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \LaTeX{} da FEI e todos os seus recursos.
 
@@ -1088,7 +1089,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	      \end{enumerate}
 \end{enumerate}
 
-\chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}} \label{chap:simbolos}
+\chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}} \label{app:simbolos}
 
 \section{LETRAS GREGAS}
 \begin{multicols}{3}
@@ -1312,7 +1313,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/03/03 4.8 Modelo da FEI]
+\ProvidesClass{fei}[2020/06/28 4.9.1 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1347,7 +1348,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \sublistfalse
 \DeclareOption{sublist}{\sublisttrue}
 %---------------------------------------------------------------
-
 % opção deposito controla a exibição da folha
 % de aprovação e ficha catalográfica
 \newif\ifdeposito
@@ -1365,6 +1365,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \newif\ifoneside
 \DeclareOption{oneside}{\onesidetrue}
 \DeclareOption{twoside}{\onesidefalse}
+
+\DeclareOption{backrefs}{%
+	\PassOptionsToPackage{backref}{biblatex}%
+}
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
 
@@ -1888,7 +1892,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\oldprintindex%
 }%
 
-% antigamente, aqui era carregado o pacote hyperref
+% antigamente, aqui era carregado o pacote hyperref.
 % como, a partir de 2017, a biblioteca exige que os documentos sejam gerados sob o padrão
 % PDF/A, o pacote pdfx é usado no lugar do hyperref por padrão
 % em teoria, o pacote hyperref deveria ser o último a ser carregado, porém

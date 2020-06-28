@@ -86,6 +86,56 @@ test: $(NAME).cls
 		tests/pieces/printindex.tex \
 		tests/pieces/end-document.tex > tests/test-full-template-numeric.tex
 
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-backrefs.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/subtitulo.tex \
+		tests/pieces/acronimos.tex \
+		tests/pieces/simbolos.tex \
+		tests/pieces/addbibresource.tex \
+		tests/pieces/makeindex.tex \
+		tests/pieces/makeglossaries.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/titulo.tex \
+		tests/pieces/folha-de-rosto.tex \
+		tests/pieces/cat-aprov.tex \
+		tests/pieces/dedicatoria.tex \
+		tests/pieces/agradecimentos.tex \
+		tests/pieces/epigrafe.tex \
+		tests/pieces/resumo.tex \
+		tests/pieces/abstract.tex \
+		tests/pieces/tables.tex \
+		tests/pieces/first-chapter-title.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/document-text.tex \
+		tests/pieces/printbibliography.tex \
+		tests/pieces/printindex.tex \
+		tests/pieces/end-document.tex > tests/test-full-template-backrefs.tex
+
+	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-numeric-backrefs.tex \
+		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/subtitulo.tex \
+		tests/pieces/acronimos.tex \
+		tests/pieces/simbolos.tex \
+		tests/pieces/addbibresource.tex \
+		tests/pieces/makeindex.tex \
+		tests/pieces/makeglossaries.tex \
+		tests/pieces/begin-document.tex \
+		tests/pieces/titulo.tex \
+		tests/pieces/folha-de-rosto.tex \
+		tests/pieces/cat-aprov.tex \
+		tests/pieces/dedicatoria.tex \
+		tests/pieces/agradecimentos.tex \
+		tests/pieces/epigrafe.tex \
+		tests/pieces/resumo.tex \
+		tests/pieces/abstract.tex \
+		tests/pieces/tables.tex \
+		tests/pieces/first-chapter-title.tex \
+		tests/pieces/first-chapter-text.tex \
+		tests/pieces/document-text.tex \
+		tests/pieces/printbibliography.tex \
+		tests/pieces/printindex.tex \
+		tests/pieces/end-document.tex > tests/test-full-template-numeric-backrefs.tex
+
 	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
 		tests/pieces/documentclass-nopdfa.tex \
 		tests/pieces/inputenc-author-title.tex \
