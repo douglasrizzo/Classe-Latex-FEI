@@ -208,7 +208,7 @@ A escrita da classe que formata o texto foi realizada tendo-se como referência 
 
 Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
-O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \LaTeX{} da FEI com todas as suas funcionalidades. O apêndice A explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice B disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
+O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; o capítulo \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \LaTeX{} da FEI com todas as suas funcionalidades. O apêndice~\label{app:hacks} explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Já o apêndice~\label{app:arquivos} disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}. \label{app:simbolos}
 
 \section{NOTA AOS USUÁRIOS ANTIGOS DA CLASSE}
 
@@ -967,6 +967,7 @@ Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usu
 \printbibliography
 
 \appendix
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
 \chapter{\emph{HACKS} ÚTEIS} \label{app:hacks}
 
@@ -1976,17 +1977,31 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
 % apendice novo
-\renewcommand{\appendix}{%
-	\renewcommand{\chaptername}{\appendixname}%
-	\setcounter{chapter}{0}% zera o contador do capítulo
-	\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
-	\renewcommand{\chapter}[1]{% redefine o comando do capítulo
-		\stepcounter{chapter}% soma 1 ao contador do capítulo
-		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
-		\newpage%
-	}%
-}%
+% \renewcommand{\appendix}{%
+% 	\renewcommand{\chaptername}{\appendixname}%
+% 	\setcounter{chapter}{0}% zera o contador do capítulo
+% 	\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
+% 	\renewcommand{\chapter}[1]{% redefine o comando do capítulo
+% 		\stepcounter{chapter}% soma 1 ao contador do capítulo
+% 		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
+% 		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
+% 		\newpage%
+% 	}%
+% }%
+
+%% chapter style for appendices, text comes on following page
+\makechapterstyle{asuappendix}{%
+% \setlength{\beforechapskip}{-\topfiddle}\setlength{\midchapskip}{1.0\onelineskip}\setlength{\afterchapskip}{1.0\onelineskip}
+\renewcommand*{\chapnamefont}{\normalfont}
+\renewcommand*{\chapnumfont}{\chapnamefont}
+\renewcommand*{\printchaptername}{%
+\chapnamefont\MakeUppercase{\@chapapp}}
+\renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+\renewcommand*{\chaptitlefont}{\normalfont\centering}
+\renewcommand*{\printchapternonum}{}
+\renewcommand*{\afterchaptertitle}{\clearpage}}
+
+\addtodef{\appendix}{}{\chapterstyle{asuappendix}}
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
 \newcommand{\anexos}{%
