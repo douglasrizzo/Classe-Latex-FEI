@@ -1989,9 +1989,21 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % 	}%
 % }%
 
+%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
+\newlength{\linespace}
+\setlength{\linespace}{\baselineskip}
+\newlength{\toptafiddle}
+\setlength{\toptafiddle}{2\linespace}
+\newlength{\bottafiddle}
+\setlength{\bottafiddle}{0pt}
+\newlength{\topfiddle}
+\setlength{\topfiddle}{\toptafiddle}
+\newlength{\botfiddle}
+\setlength{\botfiddle}{\onelineskip}
+
 %% chapter style for appendices, text comes on following page
-\makechapterstyle{asuappendix}{%
-% \setlength{\beforechapskip}{-\topfiddle}\setlength{\midchapskip}{1.0\onelineskip}\setlength{\afterchapskip}{1.0\onelineskip}
+\makechapterstyle{feiappendix}{%
+\setlength{\beforechapskip}{-\topfiddle}\setlength{\midchapskip}{1.0\onelineskip}\setlength{\afterchapskip}{1.0\onelineskip}
 \renewcommand*{\chapnamefont}{\normalfont}
 \renewcommand*{\chapnumfont}{\chapnamefont}
 \renewcommand*{\printchaptername}{%
@@ -2001,7 +2013,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand*{\printchapternonum}{}
 \renewcommand*{\afterchaptertitle}{\clearpage}}
 
-\addtodef{\appendix}{}{\chapterstyle{asuappendix}}
+\addtodef{\appendix}{}{\chapterstyle{feiappendix}}
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
 \newcommand{\anexos}{%
