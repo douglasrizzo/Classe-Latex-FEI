@@ -299,21 +299,73 @@ postheadspace=1em
 \renewcommand{\part}{%
 \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
-\renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
-\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+\makechapterstyle{feichapter}{
+\renewcommand*{\afterchapternum}{\quad}
+\renewcommand*{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
+\renewcommand*{\chapnamefont}{\chapnumfont}
+\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+\renewcommand*{\chapterheadstart}{\vspace*{\beforechapskip}}
+\renewcommand*{\chapternamenum}{}
+\renewcommand*{\chaptitlefont}{\chapnumfont}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\printchapternonum}{}
+\renewcommand*{\printchapternum}{\chapnumfont \thechapter\space}
+\setlength{\afterchapskip}{\baselineskip}
+\setlength{\beforechapskip}{0pt}
+\setlength{\midchapskip}{0pt}
+}
 
-\renewcommand{\section}{%
-\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}}}
+\chapterstyle{feichapter}
 
-\renewcommand{\subsection}{%
-\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+\makechapterstyle{feiappendix}{%
+\renewcommand*{\afterchapternum}{ -- }
+\renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+\renewcommand*{\chapnamefont}{\normalfont\bfseries}
+\renewcommand*{\chapnumfont}{\chapnamefont}
+\renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
+\renewcommand*{\chaptitlefont}{\normalfont\centering}
+\renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
+\renewcommand*{\printchapternonum}{}
+\renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+\setlength{\afterchapskip}{0pt}
+\setlength{\beforechapskip}{0pt}
+\setlength{\midchapskip}{0pt}
+}
 
-\renewcommand{\subsubsection}{%
-\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
+\addtodef{\appendix}{}{%
+\chapterstyle{feiappendix}
+\renewcommand{\cftchaptername}{Ap\^endice\space}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+}
 
-\renewcommand{\paragraph}{%
-\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\itshape}}
+\newcommand{\anexos}{%
+\chapterstyle{feiappendix}
+\renewcommand{\cftchaptername}{Anexo\space}
+\renewcommand{\chaptername}{Anexo}%
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\Alph{chapter}}%
+\renewcommand{\chapter}[1]{%
+\stepcounter{chapter}%
+\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+\phantomsection%
+\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
+\newpage%
+}%
+}%
 
+\setsecheadstyle{\normalfont\MakeUppercase}
+\setsubsecheadstyle{\normalfont\bfseries}
+\setsubsubsecheadstyle{\normalfont\itshape}
+\setparaheadstyle{\normalfont}
+
+\setaftersecskip{\baselineskip}
+\setaftersubsecskip{\baselineskip}
+\setaftersubsubsecskip{\baselineskip}
+\setafterparaskip{\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
 
@@ -355,6 +407,8 @@ postheadspace=1em
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
 \renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\cleardoublepage}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\cleardoublepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \renewcommand{\listoftheorems}{\begingroup%
@@ -539,31 +593,6 @@ colorlinks={false}%
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
-
-\renewcommand{\appendix}{%
-\renewcommand{\chaptername}{\appendixname}%
-\setcounter{chapter}{0}% zera o contador do capítulo
-\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
-\renewcommand{\chapter}[1]{% redefine o comando do capítulo
-\stepcounter{chapter}% soma 1 ao contador do capítulo
-\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
-\newpage%
-}%
-}%
-
-\newcommand{\anexos}{%
-\renewcommand{\chaptername}{Anexo}%
-\setcounter{chapter}{0}%
-\renewcommand{\thechapter}{\Alph{chapter}}%
-\renewcommand{\chapter}[1]{%
-\stepcounter{chapter}%
-\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\phantomsection%
-\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
-\newpage%
-}%
-}%
 
 
 \ifnumeric

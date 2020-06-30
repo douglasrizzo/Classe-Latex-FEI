@@ -967,7 +967,6 @@ Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usu
 \printbibliography
 
 \appendix
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
 \chapter{\emph{HACKS} ÚTEIS} \label{app:hacks}
 
@@ -1670,24 +1669,79 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\part}{%
 	\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
-% não há recuo no título de nenhum nível de nenhuma seção
-% títulos dos capítulos são em negrito, maiúsculo e com distâncias de 1,5 cm do parágrafo que o sucede
-\renewcommand{\chapter}{\cleardoublepage\pagestyle{plain}%
-	\@startsection{chapter}{0}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+% estilo para o cabeçalho dos chapters
+\makechapterstyle{feichapter}{
+	\renewcommand*{\afterchapternum}{\quad}
+	\renewcommand*{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
+	\renewcommand*{\chapnamefont}{\chapnumfont}
+	\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+	\renewcommand*{\chapterheadstart}{\vspace*{\beforechapskip}}
+	\renewcommand*{\chapternamenum}{}
+	\renewcommand*{\chaptitlefont}{\chapnumfont}
+	\renewcommand*{\printchaptername}{}
+	\renewcommand*{\printchapternonum}{}
+	\renewcommand*{\printchapternum}{\chapnumfont \thechapter\space}
+	\setlength{\afterchapskip}{\baselineskip}
+	\setlength{\beforechapskip}{0pt}
+	\setlength{\midchapskip}{0pt}
+}
 
-% demais níveis de seção possuem distância de 1,5 linhas do parágrafo sucessor e predecessor
-\renewcommand{\section}{%
-	\@startsection{section}{1}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}}}
+\chapterstyle{feichapter}
 
-\renewcommand{\subsection}{%
-	\@startsection{subsection}{2}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries}}
+% estilo para cabeçalhos de apêndices e anexos, que também são chapters
+\makechapterstyle{feiappendix}{%
+	\renewcommand*{\afterchapternum}{ -- }
+	\renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+	\renewcommand*{\chapnamefont}{\normalfont\bfseries}
+	\renewcommand*{\chapnumfont}{\chapnamefont}
+	\renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
+	\renewcommand*{\chaptitlefont}{\normalfont\centering}
+	\renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
+	\renewcommand*{\printchapternonum}{}
+	\renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+	\setlength{\afterchapskip}{0pt}
+	\setlength{\beforechapskip}{0pt}
+	\setlength{\midchapskip}{0pt}
+}
 
-\renewcommand{\subsubsection}{%
-	\@startsection{subsubsection}{3}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\bfseries\itshape}}
+\addtodef{\appendix}{}{%
+	\chapterstyle{feiappendix}
+	\renewcommand{\cftchaptername}{Ap\^endice\space}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+}
 
-\renewcommand{\paragraph}{%
-	\@startsection{paragraph}{4}{0pt}{\baselineskip}{\baselineskip}{\fontsize{12pt}{14.4pt}\itshape}}
+% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
+\newcommand{\anexos}{%
+	\chapterstyle{feiappendix}
+	\renewcommand{\cftchaptername}{Anexo\space}
+	\renewcommand{\chaptername}{Anexo}%
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\setcounter{chapter}{0}
+	\renewcommand{\thechapter}{\Alph{chapter}}%
+	\renewcommand{\chapter}[1]{%
+		\stepcounter{chapter}%
+		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+		\phantomsection%
+		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
+		\newpage%
+	}%
+}%
 
+% fontes para cabeçalhos das demais seções
+\setsecheadstyle{\normalfont\MakeUppercase}
+\setsubsecheadstyle{\normalfont\bfseries}
+\setsubsubsecheadstyle{\normalfont\itshape}
+\setparaheadstyle{\normalfont}
+
+% espaçamento após cabeçalhos das seções
+\setaftersecskip{\baselineskip}
+\setaftersubsecskip{\baselineskip}
+\setaftersubsubsecskip{\baselineskip}
+\setafterparaskip{\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{secnumdepth}{4} % numerar divisões até o quarto nível (paragraph)
 \setcounter{tocdepth}{4} % incluir divisões no sumário até o quarto nível (paragraph)
 
@@ -1749,6 +1803,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\tableofcontents}{\part*{\contentsname}\pagestyle{empty}\@starttoc{toc}\cleardoublepage}
 \renewcommand{\listoftables}{\part*{\listtablename}\pagestyle{empty}\@starttoc{lot}\cleardoublepage}
 \renewcommand{\listoffigures}{\part*{\listfigurename}\pagestyle{empty}\@starttoc{lof}\cleardoublepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % redefinindo listas de algoritmos e teoremas para formatar os títulos das
 % páginas e adicionar 'algoritmo' e 'teorema' antes dos números de cada entrada
@@ -1975,59 +2032,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
-
-% apendice novo
-% \renewcommand{\appendix}{%
-% 	\renewcommand{\chaptername}{\appendixname}%
-% 	\setcounter{chapter}{0}% zera o contador do capítulo
-% 	\renewcommand{\thechapter}{\Alph{chapter}}% deixa o contador do capítulo em alfabético
-% 	\renewcommand{\chapter}[1]{% redefine o comando do capítulo
-% 		\stepcounter{chapter}% soma 1 ao contador do capítulo
-% 		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{AP\^ENDICE \thechapter\ --} ##1}\end{center}\vfill% adiciona uma folha com a letra e título do apêndice
-% 		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}AP\^ENDICE \Alph{chapter} -- ##1}%
-% 		\newpage%
-% 	}%
-% }%
-
-%% the fiddle lengths (..ta.. for title/approval page, others for prelims)
-\newlength{\linespace}
-\setlength{\linespace}{\baselineskip}
-\newlength{\toptafiddle}
-\setlength{\toptafiddle}{2\linespace}
-\newlength{\bottafiddle}
-\setlength{\bottafiddle}{0pt}
-\newlength{\topfiddle}
-\setlength{\topfiddle}{\toptafiddle}
-\newlength{\botfiddle}
-\setlength{\botfiddle}{\onelineskip}
-
-%% chapter style for appendices, text comes on following page
-\makechapterstyle{feiappendix}{%
-\setlength{\beforechapskip}{-\topfiddle}\setlength{\midchapskip}{1.0\onelineskip}\setlength{\afterchapskip}{1.0\onelineskip}
-\renewcommand*{\chapnamefont}{\normalfont}
-\renewcommand*{\chapnumfont}{\chapnamefont}
-\renewcommand*{\printchaptername}{%
-\chapnamefont\MakeUppercase{\@chapapp}}
-\renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
-\renewcommand*{\chaptitlefont}{\normalfont\centering}
-\renewcommand*{\printchapternonum}{}
-\renewcommand*{\afterchaptertitle}{\clearpage}}
-
-\addtodef{\appendix}{}{\chapterstyle{feiappendix}}
-
-% anexo (funciona da mesma forma do apendice, soh alterando os nomes)
-\newcommand{\anexos}{%
-	\renewcommand{\chaptername}{Anexo}%
-	\setcounter{chapter}{0}%
-	\renewcommand{\thechapter}{\Alph{chapter}}%
-	\renewcommand{\chapter}[1]{%
-		\stepcounter{chapter}%
-		\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-		\phantomsection%
-		\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
-		\newpage%
-	}%
-}%
 
 % referências e citações
 % abnTeX alfabético com títulos das publicações em negrito nas referências (como no modelo antigo da ABNT)
