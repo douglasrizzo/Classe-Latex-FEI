@@ -570,11 +570,13 @@ colorlinks={false}%
 \RequirePackage[backend=biber,
 safeinputenc=true,
 uniquelist=false,
+doi=true,
 style=abnt-numeric]{biblatex}
 \else
 \RequirePackage[backend=biber,
 safeinputenc=true,
 uniquelist=false,
+doi=true,
 style=abnt]{biblatex}
 \fi
 
