@@ -1313,7 +1313,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/07/26 4.10 Modelo da FEI]
+\ProvidesClass{fei}[2020/07/26 4.10.1 Modelo da FEI]
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -2010,12 +2010,14 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 		safeinputenc=true,
 		uniquelist=false,
 		doi=true,
+		repeatfields=true,
 		style=abnt-numeric]{biblatex}
 \else
 	\RequirePackage[backend=biber,
 		safeinputenc=true,
 		uniquelist=false,
 		doi=true,
+		repeatfields=true,
 		style=abnt]{biblatex}
 \fi
 
