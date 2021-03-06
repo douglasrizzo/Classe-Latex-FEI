@@ -1389,6 +1389,11 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\glossariestrue
 	\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
+% opção para configurar a lista de símbolos como um arquivo .bib
+\DeclareOption{abbr-shortcuts}{
+	\glossariestrue
+	\PassOptionsToPackage{shortcuts=abbr}{glossaries-extra}
+}
 % opção para criar sub-listas de símbolos
 \newif\ifsublist
 \sublistfalse
