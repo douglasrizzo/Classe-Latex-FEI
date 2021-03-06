@@ -101,7 +101,7 @@ fei.cls.
 \Subject   {This is where you put the abstract.}
 \end{filecontents*}
 
-\documentclass[oneside,symbols,acronym]{\jobname}
+\documentclass[oneside,symbols,acronym,font=times]{\jobname}
 \usepackage{multicol}
 \usepackage{listings}
 \lstset{
@@ -250,7 +250,7 @@ O processo de compilação requer que todas as dependências da classe já estej
 
 \section{FONTE ARIAL}
 
-Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições \LaTeX{} como o Mik\TeX{} e o \TeX{} \emph{Live}. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
+Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições do \LaTeX{} como o Mik\TeX{} e o \TeX{} \emph{Live}. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
 
 \begin{itemize}
 	\item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
@@ -258,41 +258,46 @@ Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial
 	\item Rodar o script: \lstinline+getnonfreefonts --all+.
 \end{itemize}
 
-Após isso, é necessário utilizar a opção \texttt{arial} na declaração da classe, no início do arquivo \texttt{tex}: \lstinline+\documentclass[arial]{fei}+.
+Após isso, é possível utilizar a opção \texttt{font=arial} na declaração da classe, no início do arquivo \texttt{tex}: \lstinline+\documentclass[font=arial]{fei}+.
+
+Alternativamente, é possível usar a fonte Arimo, uma versão aberta da fonte Arial disponibilizada nas principais distribuições de \LaTeX{}. Para isso, basta ter o pacote \texttt{arimo} instalado e utilizar a opção \texttt{font=arimo} na declaração da classe.
 
 \section{DEPENDÊNCIAS}\label{sec:dependencias}
 
-A partir da versão 3, aclasse da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
+A partir da versão 3, a classe da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
 
-No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados e descritos mais abaixo, dos quais a classe \LaTeX{} da FEI depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS).
-
-\begin{enumerate}
-	\item\texttt{algorithm2e}: provê comandos para a escrita de algoritmos;
-	\item\texttt{amsthm}: possibilita criação de teoremas (e derivados);
-	\item\texttt{babel}: escolha de línguas (importado pacote para português e inglês);
-	\item\texttt{biblatex}: pacote avançado para o tratamento de referências bibliográficas;
-	\item\texttt{biblatex-abnt}: formata citações e referências de acordo com o padrão \index{ABNT}\gls{abnt} 6023;
-	\item\texttt{caption}: altera a formatação de certas legendas;
-	\item\texttt{chngcntr}: redefine a numeração dos \emph{floats} -- tabelas, figuras, algoritmos e equações;
-	\item\texttt{csquotes}: proporciona suporte a aspas para diferentes idiomas;
-	\item\texttt{enumitem}: formatação de alíneas;
-	\item\texttt{fontenc}: codificação 8 bits para as fontes de saída do PDF (normalmente, elas têm 7 bits);
-	\item\texttt{glossaries}\index{glossaries@\emph{glossaries}}: permite a criação de listas de símbolos e abreviaturas;
-	\item\texttt{graphicx}: importação e utilização de imagens;
-	\item\texttt{hyperref}: gera os links entre referências no PDF;
-	\item\texttt{icomma}: define a vírgula como separador de decimais no ambiente matemático (padrão português brasileiro);
-	\item\texttt{ifthen}: permite a utilização de condições na geração do texto;
-	\item\texttt{imakeidx}: permite a criação de um índice remissivo ao fim do texto;
-	\item\texttt{inputenc}: permite a entrada de caracteres em formato UTF-8 nos arquivos \texttt{tex};
-	\item\texttt{lmodern}: carrega a família de fontes \emph{Latin Modern}, que possui maior abrangência de caracteres;
-	\item\texttt{mathtools}: extensões para facilitar a escrita de fórmulas matemáticas (inclui o pacote \texttt{amsmath});
-	\item\texttt{morewrites}: permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente;
-	\item\texttt{pdfpages}: faz a inclusão de páginas em PDF no documento final;
-	\item\texttt{pdfx}: gera um PDF sob o padrão PDF/A (mais informações na seção \ref{subsec:pdfa});
-	\item\texttt{thmtools}: conjunto de macros para o pacote \texttt{amsthm};
-	\item\texttt{times}: carrega fonte Times New Roman;
-	\item\texttt{uarial}: carrega fonte URW Arial.
-\end{enumerate}
+No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados mais abaixo, dos quais a classe \LaTeX{} da FEI depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS):\footnote{Como uma ironia do destino, o guia da biblioteca permite alíneas alfabéticas e a lista de pacotes possui mais de 26 itens, o que impede que ela seja representada como uma alínea.}
+\texttt{algorithm2e},
+\texttt{amsthm},
+\texttt{arimo},
+\texttt{babel},
+\texttt{biblatex},
+\texttt{biblatex-abnt},
+\texttt{caption},
+\texttt{chngcntr},
+\texttt{csquotes},
+\texttt{enumitem},
+\texttt{fontenc},
+\texttt{glossaries},
+\texttt{glossaries-extra},
+\texttt{graphicx},
+\texttt{hyperref},
+\texttt{icomma},
+\texttt{ifthen},
+\texttt{imakeidx},
+\texttt{inputenc},
+\texttt{kvoptions},
+\texttt{lmodern},
+\texttt{mathtools},
+\texttt{mfirstuc},
+\texttt{microtype},
+\texttt{morewrites},
+\texttt{newtx},
+\texttt{pdfpages},
+\texttt{pdfx},
+\texttt{thmtools},
+\texttt{urwchancal} e
+\texttt{xfor}.
 
 Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
 
@@ -345,7 +350,7 @@ A classe da FEI pode receber as seguintes opções:
 	\item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
 	\item \texttt{acronym}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de abreviaturas no trabalho;
 	\item \texttt{symbols}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de símbolos no trabalho;
-	\item \texttt{backrefs}: passa a opção \texttt{backref} ao pacote \texttt{biblatex}, para que ele imprima as páginas nas quais cada trabalho foi citado nas referências bibliográficas. Repare que esta não é uma características prevista no guia de formatação de referências da biblioteca, então use-o somente sob sua conta e risco;
+	\item \texttt{backrefs}: passa a opção \texttt{backref} ao pacote \texttt{biblatex}, para que ele imprima as páginas nas quais cada trabalho foi citado nas referências bibliográficas. Repare que esta não é uma funcionalidade prevista no guia de formatação de referências da biblioteca, então use-o somente sob sua conta e risco;
 	\item \texttt{record}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de um arquivo \texttt{.bib} para definição de símbolos e abreviaturas, a ser compilado pelo programa \index{bib2gls@\texttt{bib2gls}}\texttt{bib2gls}.
 \end{enumerate}
 
@@ -1313,7 +1318,48 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/07/26 4.10.1 Modelo da FEI]
+\ProvidesClass{fei}[2021/02/17 4.10.2 Modelo da FEI]
+
+\RequirePackage{kvoptions}
+\DeclareStringOption[times]{font}
+
+% Implementations for option "font"
+\@namedef{fei@font@times}{%
+	\RequirePackage{newtxtext}%
+}
+\@namedef{fei@font@arial}{%
+\RequirePackage[scaled]{uarial}%
+\renewcommand*\familydefault{\sfdefault}%
+}
+
+\@namedef{fei@font@arimo}{%
+\RequirePackage[sfdefault]{arimo}
+}
+
+% Evaluate option settings
+\newcommand*{\fei@evaluate}[1]{%
+  % Check, if option value in \<prefix>@<option> exists
+  \@ifundefined{fei@#1}{%
+    % Should not happen
+    \PackageError{fei}{Evaluating unknown option `#1'}\@ehc
+  }{%
+    % Check, if there is an implementation for the value of the option
+    % in macro \<prefix>@<option>@<value>
+    \@ifundefined{fei@#1@\csname fei@#1\endcsname}{%
+      \PackageError{fei}{%
+        Unknown option setting: #1=%
+        \csname fei@#1\endcsname
+      }\@ehc
+    }{%
+      % Call the implementation for the value
+      \csname fei@#1@%
+              \csname fei@#1\endcsname
+      \endcsname
+      \relax
+    }%
+  }%
+}
+\fei@evaluate{font}
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1354,10 +1400,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \depositofalse
 \DeclareOption{deposito}{\depositotrue}
 
-\newif\ifarial
-\DeclareOption{arial}{\arialtrue}
-\DeclareOption{times}{\arialfalse}
-
 \newif\ifnumeric
 \numericfalse
 \DeclareOption{numeric}{\numerictrue}
@@ -1389,9 +1431,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % processa opções-padrão
 % oneside é padrão na classe da FEI, apesar de twoside ser padrão na classe base, memoir
-\ExecuteOptions{oneside,times}
+\ExecuteOptions{oneside}
 
 \ProcessOptions\relax % processa todas as opções
+\ProcessKeyvalOptions*
 
 % depois de muitos erros tentando passar opções para a classe após carregá-la, a solução encontrada foi carregá-la com todas as opções de uma vez
 \ifoneside
@@ -1472,13 +1515,6 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \RequirePackage{mathtools} % matematica
 \RequirePackage{lmodern} % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
 \RequirePackage{icomma} % vírgula como separador decimal
-
-\ifarial
-	\usepackage[scaled]{uarial}
-	\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
-\else
-	\RequirePackage{times} % usar fonte times no texto todo
-\fi
 
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
@@ -1948,7 +1984,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	% traduz alguns comandos próprios do glossaries
 	\addto\captionsbrazil{%
 		\renewcommand*{\acronymname}{Lista de Abreviaturas}%
-		\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}}
+		\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}%
+	}
 
 	% redefine comandos do glossaries
 	% remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
