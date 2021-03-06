@@ -19,42 +19,6 @@
 \RequirePackage{kvoptions}
 \DeclareStringOption[times]{font}
 
-\@namedef{fei@font@times}{%
-\RequirePackage{newtxtext}%
-}
-\@namedef{fei@font@arial}{%
-\RequirePackage[scaled]{uarial}%
-\renewcommand*\familydefault{\sfdefault}%
-}
-
-\@namedef{fei@font@arimo}{%
-\RequirePackage[sfdefault]{arimo}
-}
-
-\newcommand*{\fei@evaluate}[1]{%
-  % Check, if option value in \<prefix>@<option> exists
-  \@ifundefined{fei@#1}{%
-    % Should not happen
-    \PackageError{fei}{Evaluating unknown option `#1'}\@ehc
-  }{%
-    % Check, if there is an implementation for the value of the option
-    % in macro \<prefix>@<option>@<value>
-    \@ifundefined{fei@#1@\csname fei@#1\endcsname}{%
-      \PackageError{fei}{%
-        Unknown option setting: #1=%
-        \csname fei@#1\endcsname
-      }\@ehc
-    }{%
-      % Call the implementation for the value
-      \csname fei@#1@%
-              \csname fei@#1\endcsname
-      \endcsname
-      \relax
-    }%
-  }%
-}
-\fei@evaluate{font}
-
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
 }
@@ -111,8 +75,47 @@
 
 \ExecuteOptions{oneside}
 
-\ProcessOptions\relax % processa todas as opções
+\ProcessOptions\relax
 \ProcessKeyvalOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\@namedef{fei@font@times}{%
+\RequirePackage{newtxtext}%
+}
+\@namedef{fei@font@arial}{%
+\RequirePackage[scaled]{uarial}%
+\renewcommand*\familydefault{\sfdefault}%
+}
+
+\@namedef{fei@font@arimo}{%
+\RequirePackage[sfdefault]{arimo}
+}
+
+\newcommand*{\fei@evaluate}[1]{%
+  % Check, if option value in \<prefix>@<option> exists
+  \@ifundefined{fei@#1}{%
+    % Should not happen
+    \PackageError{fei}{Evaluating unknown option `#1'}\@ehc
+  }{%
+    % Check, if there is an implementation for the value of the option
+    % in macro \<prefix>@<option>@<value>
+    \@ifundefined{fei@#1@\csname fei@#1\endcsname}{%
+      \PackageError{fei}{%
+        Unknown option setting: #1=%
+        \csname fei@#1\endcsname
+      }\@ehc
+    }{%
+      % Call the implementation for the value
+      \csname fei@#1@%
+              \csname fei@#1\endcsname
+      \endcsname
+      \relax
+    }%
+  }%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fei@evaluate{font}
 
 \ifoneside
 \LoadClass[oneside]{memoir}
@@ -623,6 +626,8 @@ style=abnt]{biblatex}
 bibliography = {REFER\^ENCIAS}
 }
 
+
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
 
 \let\oldprintbibliography\printbibliography
 

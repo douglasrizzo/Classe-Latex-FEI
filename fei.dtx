@@ -1320,46 +1320,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{fei}[2021/02/17 4.10.2 Modelo da FEI]
 
+% cria a opção chave-valor font, com valor padrão times
 \RequirePackage{kvoptions}
 \DeclareStringOption[times]{font}
-
-% Implementations for option "font"
-\@namedef{fei@font@times}{%
-	\RequirePackage{newtxtext}%
-}
-\@namedef{fei@font@arial}{%
-\RequirePackage[scaled]{uarial}%
-\renewcommand*\familydefault{\sfdefault}%
-}
-
-\@namedef{fei@font@arimo}{%
-\RequirePackage[sfdefault]{arimo}
-}
-
-% Evaluate option settings
-\newcommand*{\fei@evaluate}[1]{%
-  % Check, if option value in \<prefix>@<option> exists
-  \@ifundefined{fei@#1}{%
-    % Should not happen
-    \PackageError{fei}{Evaluating unknown option `#1'}\@ehc
-  }{%
-    % Check, if there is an implementation for the value of the option
-    % in macro \<prefix>@<option>@<value>
-    \@ifundefined{fei@#1@\csname fei@#1\endcsname}{%
-      \PackageError{fei}{%
-        Unknown option setting: #1=%
-        \csname fei@#1\endcsname
-      }\@ehc
-    }{%
-      % Call the implementation for the value
-      \csname fei@#1@%
-              \csname fei@#1\endcsname
-      \endcsname
-      \relax
-    }%
-  }%
-}
-\fei@evaluate{font}
 
 % passa a opção draft para a classe
 \DeclareOption{draft}{
@@ -1438,8 +1401,56 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % oneside é padrão na classe da FEI, apesar de twoside ser padrão na classe base, memoir
 \ExecuteOptions{oneside}
 
-\ProcessOptions\relax % processa todas as opções
+% processa todas as opções
+\ProcessOptions\relax
 \ProcessKeyvalOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% processa opções passadas como pares chave-valor
+% essa técnica foi tirada daqui: https://tex.stackexchange.com/a/249102/30998
+
+% fei é o nome do grupo de parâmetros criado pelo kvoptions
+% font é o nome do parâmetro string que eu criei lá em cima
+% o terceiro termo é o valor que o parâmetro pode assumir
+\@namedef{fei@font@times}{%
+	\RequirePackage{newtxtext}%
+}
+\@namedef{fei@font@arial}{%
+\RequirePackage[scaled]{uarial}%
+\renewcommand*\familydefault{\sfdefault}%
+}
+
+\@namedef{fei@font@arimo}{%
+\RequirePackage[sfdefault]{arimo}
+}
+
+% aqui avalia as opções
+% serve pra mais do que font, basta implementar acima
+\newcommand*{\fei@evaluate}[1]{%
+  % Check, if option value in \<prefix>@<option> exists
+  \@ifundefined{fei@#1}{%
+    % Should not happen
+    \PackageError{fei}{Evaluating unknown option `#1'}\@ehc
+  }{%
+    % Check, if there is an implementation for the value of the option
+    % in macro \<prefix>@<option>@<value>
+    \@ifundefined{fei@#1@\csname fei@#1\endcsname}{%
+      \PackageError{fei}{%
+        Unknown option setting: #1=%
+        \csname fei@#1\endcsname
+      }\@ehc
+    }{%
+      % Call the implementation for the value
+      \csname fei@#1@%
+              \csname fei@#1\endcsname
+      \endcsname
+      \relax
+    }%
+  }%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% manda avaliar o comando font
+\fei@evaluate{font}
 
 % depois de muitos erros tentando passar opções para a classe após carregá-la, a solução encontrada foi carregá-la com todas as opções de uma vez
 \ifoneside
@@ -2079,9 +2090,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % Citações: https://github.com/abntex/biblatex-abnt/blob/master/latex/cbx/abnt.cbx
 % Strings literais: https://github.com/abntex/biblatex-abnt/blob/master/latex/lbx/brazilian-abnt.lbx
 % ###############################################################################
-% 
+
 % remove <> das URLs (para a versão de 2019 da classe)
-% \DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
 
 \let\oldprintbibliography\printbibliography
 
