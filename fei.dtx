@@ -667,7 +667,7 @@ A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese
 
 \subsection{Alíneas}
 
-Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Para que não houvesse problemas de formatação, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate} e este passa a utilizar letras para a sequência de items (como utilizado na seção~\ref{sec:dependencias}). Alíneas em segundo nível são iniciadas pelo caractere \emph{en dash} (--).
+Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Esse comportamento é incorporado ao ambiente \texttt{enumerate}, o qual é utilizado por padrão no \LaTeX{} para alíneas numeradas ou ordenadas alfabeticamente. Uma vez que o guia da biblioteca não preve outro tipo de alínea, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate}, não havendo diferenças práticas entre os dois. Uma vez que não há recomendações para formatações de alíneas aninhadas, optou-se por iniciar alíneas de segundo nível utilizando o caractere \emph{en dash} (--).
 
 \begin{enumerate}
 	\item Primeiro item;
