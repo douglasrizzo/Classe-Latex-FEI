@@ -219,6 +219,15 @@ test: $(NAME).cls
 		tests/pieces/printbibliography.tex \
 		tests/pieces/end-document.tex > tests/test-only-text-and-titles.tex
 
-	cp $(NAME).cls referencias.bib tests
-	latexmk -pdf tests/*.tex
+	cp $(NAME).cls referencias.bib tests	
+	latexmk -pdf tests/test-full-template.tex &
+	latexmk -pdf tests/test-full-template-numeric.tex &
+	latexmk -pdf tests/test-full-template-backrefs.tex &
+	latexmk -pdf tests/test-full-template-numeric-backrefs.tex &
+	latexmk -pdf tests/test-full-template-nopdfa.tex &
+	latexmk -pdf tests/test-full-template-sublist.tex &
+	latexmk -pdf tests/test-only-required.tex &
+	latexmk -pdf tests/test-only-text.tex &
+	latexmk -pdf tests/test-only-text-and-titles.tex &
+	wait
 	rm tests/referencias.bib tests/$(NAME).cls

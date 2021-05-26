@@ -14,7 +14,10 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2020/06/28 4.9.1 Modelo da FEI]
+\ProvidesClass{fei}[2021/02/17 4.10.2 Modelo da FEI]
+
+\RequirePackage{kvoptions}
+\DeclareStringOption[times]{font}
 
 \DeclareOption{draft}{
 \PassOptionsToClass{\CurrentOption}{memoir}
@@ -37,16 +40,16 @@
 \glossariestrue
 \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
+\DeclareOption{abbr-shortcuts}{
+\glossariestrue
+\PassOptionsToPackage{shortcuts=abbr}{glossaries-extra}
+}
 \newif\ifsublist
 \sublistfalse
 \DeclareOption{sublist}{\sublisttrue}
 \newif\ifdeposito
 \depositofalse
 \DeclareOption{deposito}{\depositotrue}
-
-\newif\ifarial
-\DeclareOption{arial}{\arialtrue}
-\DeclareOption{times}{\arialfalse}
 
 \newif\ifnumeric
 \numericfalse
@@ -70,9 +73,49 @@
 
 \PassOptionsToClass{a4paper,12pt}{memoir}
 
-\ExecuteOptions{oneside,times}
+\ExecuteOptions{oneside}
 
-\ProcessOptions\relax % processa todas as opções
+\ProcessOptions\relax
+\ProcessKeyvalOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\@namedef{fei@font@times}{%
+\RequirePackage{newtxtext}%
+}
+\@namedef{fei@font@arial}{%
+\RequirePackage[scaled]{uarial}%
+\renewcommand*\familydefault{\sfdefault}%
+}
+
+\@namedef{fei@font@arimo}{%
+\RequirePackage[sfdefault]{arimo}
+}
+
+\newcommand*{\fei@evaluate}[1]{%
+  % Check, if option value in \<prefix>@<option> exists
+  \@ifundefined{fei@#1}{%
+    % Should not happen
+    \PackageError{fei}{Evaluating unknown option `#1'}\@ehc
+  }{%
+    % Check, if there is an implementation for the value of the option
+    % in macro \<prefix>@<option>@<value>
+    \@ifundefined{fei@#1@\csname fei@#1\endcsname}{%
+      \PackageError{fei}{%
+        Unknown option setting: #1=%
+        \csname fei@#1\endcsname
+      }\@ehc
+    }{%
+      % Call the implementation for the value
+      \csname fei@#1@%
+              \csname fei@#1\endcsname
+      \endcsname
+      \relax
+    }%
+  }%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fei@evaluate{font}
 
 \ifoneside
 \LoadClass[oneside]{memoir}
@@ -82,6 +125,7 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{microtype}
 \RequirePackage[english,brazil]{babel}
 \RequirePackage{csquotes}
 
@@ -121,13 +165,6 @@
 \RequirePackage{mathtools} % matematica
 \RequirePackage{lmodern} % Latin Modern, fontes tipográficas mais recentes que as do Knuth (Computer Modern)
 \RequirePackage{icomma} % vírgula como separador decimal
-
-\ifarial
-\usepackage[scaled]{uarial}
-\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
-\else
-\RequirePackage{times} % usar fonte times no texto todo
-\fi
 
 \RequirePackage{graphicx}      % figuras
 \RequirePackage{morewrites}    % permite ao LaTeX escrever em mais de 16 arquivos auxiliares simultaneamente
@@ -573,7 +610,8 @@ colorlinks={false}%
 \fi
 \addto\captionsbrazil{%
 \renewcommand*{\acronymname}{Lista de Abreviaturas}%
-\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}}
+\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}%
+}
 
 \renewcommand*{\glsclearpage}{\pagestyle{empty}}
 \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
@@ -599,11 +637,15 @@ colorlinks={false}%
 \RequirePackage[backend=biber,
 safeinputenc=true,
 uniquelist=false,
+doi=true,
+repeatfields=true,
 style=abnt-numeric]{biblatex}
 \else
 \RequirePackage[backend=biber,
 safeinputenc=true,
 uniquelist=false,
+doi=true,
+repeatfields=true,
 style=abnt]{biblatex}
 \fi
 
@@ -613,6 +655,8 @@ style=abnt]{biblatex}
 bibliography = {REFER\^ENCIAS}
 }
 
+
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\addspace\url{#1}} %
 
 \let\oldprintbibliography\printbibliography
 

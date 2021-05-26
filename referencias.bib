@@ -1,27 +1,14 @@
-@Book{shakespeare1885tragedy,
-  title={Tragedy of Hamlet, prince of Denmark},
-  author={Shakespeare, William},
-  year={1885},
-  publisher={SR Winchell \& Company}
-}
-
-@Unpublished{knuth77,
-  title={Notes on the van Emde Boas construction of priority deques: an instructive use of recursion},
-  author={Knuth, Donald Ervin},
-  year={1977},
-  month=mar,
-  note={Classroom notes}
-}
 
 @Book{art1,
   title         = {The Art of Computer Programming: Fundamental algorithms},
-  author        = {Donald Knuth},
+  author        = {Knuth, Donald Ervin},
   year          = 1997,
   publisher     = {Addison-Wesley},
   url           = {https://books.google.com.br/books?id=B31GAAAAYAAJ},
-  number        = {v. 1},
   lccn          = 97002147,
-  series        = {Addison-Wesley series in computer science and information processing}
+  number        = {v. 1},
+  series        = {Addison-Wesley series in computer science and information processing},
+  isbn          = 9780201896831
 }
 
 @Book{assange2012,
@@ -29,23 +16,9 @@
   author        = {Assange, Julian and Appelbaum, Jacob and Müller-Maguhn, Andy and Zimmermann, Jérémie},
   year          = 2012,
   publisher     = {OR Books},
-  shorttitle    = {Cypherpunks},
-}@Book{Kernighan1988,
-  author    = {Brian W. Kernighan and Dennis M. Ritchie},
-  title     = {The C Programming Language},
-  year      = {1988},
-  date      = {1988-03-22},
-  publisher = {Microsoft Press},
-  isbn      = {0131103628},
-  pagetotal = {274},
-  url       = {https://www.ebook.de/de/product/3237142/brian_w_kernighan_dennis_m_ritchie_the_c_programming_language.html},
-  urldate   = {2016-02-24},
-  ean       = {9780131103627},
-  file      = {:Kernighan1988 - The C Programming Language.pdf:},
-  groups    = {Unfiled},
-  keywords  = {classics,programming},
-  timestamp = {2019-01-17},
+  shorttitle    = {Cypherpunks}
 }
+
 @Book{clarke19932001,
   title         = {2001, a Space Odyssey},
   author        = {Arthur Charles Clarke and Kubrick, Stanley},
@@ -60,7 +33,7 @@
   title         = {Large-scale brain networks in board game experts: insights from a domain-related task and task-free resting state},
   author        = {Duan, Xujun and Liao, Wei and Liang, Dongmei and Qiu, Lihua and Gao, Qing and Liu, Chengyi and Gong, Qiyong and Chen, Huafu},
   year          = 2012,
-  journal       = {PloS one},
+  journaltitle  = {PloS one},
   publisher     = {Public Library of Science},
   volume        = 7,
   pages         = {e32532},
@@ -71,7 +44,7 @@
   title         = {Reduced caudate volume and enhanced striatal-DMN integration in chess experts},
   author        = {Duan, Xujun and He, Sheng and Liao, Wei and Liang, Dongmei and Qiu, Lihua and Wei, Luqing and Li, Yuan and Liu, Chengyi and Gong, Qiyong and Chen, Huafu},
   year          = 2012,
-  journal       = {Neuroimage},
+  journaltitle  = {Neuroimage},
   publisher     = {Elsevier},
   volume        = 60,
   pages         = {1280--1286},
@@ -82,7 +55,7 @@
   title         = {Functional organization of intrinsic connectivity networks in Chinese-chess experts},
   author        = {Duan, Xujun and Long, Zhiliang and Chen, Huafu and Liang, Dongmei and Qiu, Lihua and Huang, Xiaoqi and Liu, Timon Cheng-Yi and Gong, Qiyong},
   year          = 2014,
-  journal       = {Brain research},
+  journaltitle  = {Brain research},
   publisher     = {Elsevier},
   volume        = 1558,
   pages         = {33--43}
@@ -153,6 +126,31 @@
   publisher     = {Macmillan}
 }
 
+@Book{Kernighan1988,
+  title         = {The C Programming Language},
+  author        = {Brian W. Kernighan and Dennis M. Ritchie},
+  year          = 1988,
+  publisher     = {Microsoft Press},
+  url           = {https://www.ebook.de/de/product/3237142/brian_w_kernighan_dennis_m_ritchie_the_c_programming_language.html},
+  urlaccessdate = {2016-02-24},
+  date          = {1988-03-22},
+  isbn          = 0131103628,
+  pagetotal     = 274,
+  ean           = 9780131103627,
+  file          = {:Kernighan1988 - The C Programming Language.pdf:},
+  groups        = {Unfiled},
+  keywords      = {classics,programming},
+  timestamp     = {2019-01-17}
+}
+
+@Unpublished{knuth77,
+  title         = {Notes on the van Emde Boas construction of priority deques: an instructive use of recursion},
+  author        = {Knuth, Donald Ervin},
+  year          = 1977,
+  month         = mar,
+  note          = {Classroom notes}
+}
+
 @Book{kurzweil2013,
   title         = {How to create a mind: the secret of human thought revealed},
   author        = {Kurzweil, Ray},
@@ -183,7 +181,7 @@
   title         = {A logical calculus of the ideas immanent in nervous activity},
   author        = {Warren McCulloch and Walter Pitts},
   year          = 1943,
-  journal       = {Bulletin of Mathematical Biophysic},
+  journaltitle  = {Bulletin of Mathematical Biophysic},
   pages         = {115--133},
   keywords      = {imported},
   number        = 5
@@ -201,7 +199,7 @@
   title         = {Brain mappings of the arithmetic processing in children and adults},
   author        = {Rocha, Fabio and Rocha, Armando F and Massad, Eduardo and Menezes, Renee},
   year          = 2005,
-  journal       = {Cognitive Brain Research},
+  journaltitle  = {Cognitive Brain Research},
   publisher     = {Elsevier},
   volume        = 22,
   pages         = {359--372},
@@ -219,10 +217,9 @@
 
 @Article{rocha2016eeg,
   title         = {EEG acquisition and processing for cognitive brain mapping during chess problem solving},
-  author        = {Rocha, Fabio and de Magalhaes Junior, Roberto Goncalves and Horta, Thomas Oliveira and Cesar, Fabio Henrique Goncalves and D'Israel, David Maurice and da Silva, Wilson and Thomaz,
-                  Carlos Eduardo},
+  author        = {Rocha, Fabio and de Magalhaes Junior, Roberto Goncalves and Horta, Thomas Oliveira and Cesar, Fabio Henrique Goncalves and D'Israel, David Maurice and da Silva, Wilson and Thomaz, Carlos Eduardo},
   year          = 2016,
-  journal       = {IEEE Latin America Transactions},
+  journaltitle  = {IEEE Latin America Transactions},
   publisher     = {IEEE},
   volume        = 14,
   pages         = {1129--1134},
@@ -240,6 +237,13 @@
   language      = {English}
 }
 
+@Book{shakespeare1885tragedy,
+  title         = {Tragedy of Hamlet, prince of Denmark},
+  author        = {Shakespeare, William},
+  year          = 1885,
+  publisher     = {SR Winchell \& Company}
+}
+
 @Book{stewart2012,
   title         = {Calculus - 7th edition},
   author        = {Stewart, James},
@@ -254,7 +258,7 @@
   title         = {Computing Machinery and Intelligence},
   author        = {Alan Turing},
   year          = 1950,
-  journal       = {Mind},
+  journaltitle  = {Mind},
   volume        = 59,
   pages         = {433--460}
 }
