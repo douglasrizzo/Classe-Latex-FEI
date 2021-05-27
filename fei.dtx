@@ -1776,16 +1776,22 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 % estilo para cabeçalhos de apêndices e anexos, que também são chapters
 \makechapterstyle{feiappendix}{%
+  % en-dash após número
   \renewcommand*{\afterchapternum}{ -- }
+  % centraliza texto verticalmente e limpa o resto da página
   \renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+  % "Apêndice  [número]" em negrito
   \renewcommand*{\chapnamefont}{\normalfont\bfseries}
   \renewcommand*{\chapnumfont}{\chapnamefont}
+  % inicia a página vazia e adiciona espaço vertical para centralizar o texto
   \renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
+  % Fonte normal, texto centralizado horizontalmente
   \renewcommand*{\chaptitlefont}{\normalfont\centering}
+  % a palavra "Apêndice" na página de título, em maísculas
   \renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
-  \renewcommand*{\printchapternonum}{}
-  \renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+  % O título em si, que o usuário digita
   \renewcommand{\printchaptertitle}[1]{\chaptitlefont\MakeUppercase{##1}}
+  % some com tudo isso, já que o espaçamento é feito com centering e vfill
   \setlength{\afterchapskip}{0pt}
   \setlength{\beforechapskip}{0pt}
   \setlength{\midchapskip}{0pt}
