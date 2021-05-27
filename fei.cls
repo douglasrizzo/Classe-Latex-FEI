@@ -342,7 +342,7 @@
   \renewcommand*{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
   \renewcommand*{\chapnamefont}{\chapnumfont}
   \renewcommand*{\chapnumfont}{\normalfont\bfseries}
-  \renewcommand*{\chapterheadstart}{\vspace*{\beforechapskip}}
+  \renewcommand*{\chapterheadstart}{\pagestyle{plain}}
   \renewcommand*{\chapternamenum}{}
   \renewcommand*{\chaptitlefont}{\chapnumfont}
   \renewcommand*{\printchaptername}{}
@@ -551,7 +551,7 @@
   \end{flushright}
 }
 
-\newenvironment{epigrafe}{\cleardoublepage\pagestyle{empty}\vspace*{\fill}}{\pagestyle{plain}}
+\newenvironment{epigrafe}{\cleardoublepage\thispagestyle{empty}\vspace*{\fill}}{}
 
 \newcommand{\epig}[2]{
   \vspace{2\baselineskip}
@@ -564,11 +564,11 @@
     \end{minipage}
   \end{flushright}
 }
-\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
+\newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\setlength{\parindent}{1.25cm}}
 
-\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\pagestyle{plain}\selectlanguage{brazil}}
+\renewenvironment{abstract}{\selectlanguage{english}\part*{Abstract}\pagestyle{empty}\setlength{\parindent}{1.25cm}}{\cleardoublepage\selectlanguage{brazil}}
 
-\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}}
+\newenvironment{agradecimentos}{\part*{Agradecimentos}\pagestyle{empty}}{\cleardoublepage}
 
 \RequirePackage[xindy]{imakeidx}
 \indexsetup{level=\part*}
