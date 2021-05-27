@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/05/26 4.10.3 Modelo da FEI]
+\ProvidesClass{fei}[2021/05/26 4.10.2 Modelo da FEI]
 
 \RequirePackage{kvoptions}
 \DeclareStringOption[times]{font}
@@ -357,25 +357,44 @@
 \chapterstyle{feichapter}
 
 \makechapterstyle{feiappendix}{%
+  % en-dash após número
   \renewcommand*{\afterchapternum}{ -- }
+  % centraliza texto verticalmente e limpa o resto da página
   \renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+  % "Apêndice  [número]" em negrito
   \renewcommand*{\chapnamefont}{\normalfont\bfseries}
   \renewcommand*{\chapnumfont}{\chapnamefont}
+  % inicia a página vazia e adiciona espaço vertical para centralizar o texto
   \renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
+  % Fonte normal, texto centralizado horizontalmente
   \renewcommand*{\chaptitlefont}{\normalfont\centering}
+  % a palavra "Apêndice" na página de título, em maísculas
   \renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
-  \renewcommand*{\printchapternonum}{}
-  \renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+  % O título em si, que o usuário digita
   \renewcommand{\printchaptertitle}[1]{\chaptitlefont\MakeUppercase{##1}}
+  % some com tudo isso, já que o espaçamento é feito com centering e vfill
   \setlength{\afterchapskip}{0pt}
   \setlength{\beforechapskip}{0pt}
   \setlength{\midchapskip}{0pt}
 }
 
-\addtodef{\appendix}{}{%
-  \chapterstyle{feiappendix}
-  \renewcommand{\cftchaptername}{Ap\^endice\space}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\appto\appendix{%
+  % use o estilo criado acima para a página de abertura de um apêndice
+  \chapterstyle{feiappendix}%
+  % não numera nada abaixo de chapter nos apêndices
+  \setsecnumdepth{chapter}%
+  % hack do egreg para mudar o que é escrito antes do título do apêndice no sumário
+  % https://tex.stackexchange.com/a/34285/30998
+  \addtocontents{toc}{\protect\reformchapapp}%
+}
+
+\newcommand{\reformchapapp}{%
+  % não adiciona nada abaixo de chapter no sumário, depois que começam os apêndices
+  \setcounter{tocdepth}{0}%
+  % esse é o comando que insere o número do capítulo no sumário, antes do nome do apêndice
+  % eu coloco um espaço em branco e escrevo APÊNDICE [NÚMERO] -- "
+  % [NÚMERO] é formatado em alfabético automaticamente pelo memoir, na definição deles de \appendix
+  \renewcommand{\chapternumberline}[1]{\hspace{\cftchapternumwidth}\MakeUppercase{\appendixname}\ ##1 -- }%
 }
 
 \newcommand{\anexos}{%
@@ -396,8 +415,8 @@
 
 \setsecheadstyle{\normalfont\MakeUppercase}
 \setsubsecheadstyle{\normalfont\bfseries}
-\setsubsubsecheadstyle{\normalfont\itshape}
-\setparaheadstyle{\normalfont}
+\setsubsubsecheadstyle{\normalfont\bfseries\itshape}
+\setparaheadstyle{\normalfont\itshape}
 
 \setaftersecskip{\baselineskip}
 \setaftersubsecskip{\baselineskip}
@@ -415,17 +434,18 @@
 \renewcommand{\cftsubsubsectionindent}{0pt}
 \renewcommand{\cftparagraphindent}{0pt}
 
-\renewcommand{\cftchapternumwidth}{4em}
-\renewcommand{\cftsectionnumwidth}{4em}
-\renewcommand{\cftsubsectionnumwidth}{4em}
-\renewcommand{\cftsubsubsectionnumwidth}{4em}
-\renewcommand{\cftparagraphnumwidth}{4em}
+\newlength{\tocnumwidth}
+\setlength{\tocnumwidth}{4em}
+\renewcommand{\cftchapternumwidth}{\tocnumwidth}
+\renewcommand{\cftsectionnumwidth}{\tocnumwidth}
+\renewcommand{\cftsubsectionnumwidth}{\tocnumwidth}
+\renewcommand{\cftsubsubsectionnumwidth}{\tocnumwidth}
+\renewcommand{\cftparagraphnumwidth}{\tocnumwidth}
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito e maiusculo
 
 \settocpreprocessor{chapter}{%
   \let\tempf@rtoc\f@rtoc%
@@ -592,7 +612,10 @@
 \hypersetup{%
   pdftex,%
   pdfborder={0 0 0},%
-  colorlinks={false}%
+  colorlinks={false},%
+  % cria "bookmarks" no PDF até o 4° nível,
+  % independente do valor de tocdepth, que eu mudo em alguns lugares
+  bookmarksdepth=4%
 }
 
 \ifglossaries

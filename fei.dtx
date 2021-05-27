@@ -15,8 +15,7 @@
 
   fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
 
-  fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as ABNT NBR 10520:2002 (Citations) and ABNT NBR 6023:2002 (Bibligraphic References).
-
+  fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as NBR 14724:2011, NBR 6028:2003, NBR 10522:1988, NBR 6024:2012, NBR 6023:2002 and NBR 6034:2004.
   In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
 
   # License
@@ -483,7 +482,7 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 
 Sob a nomenclatura do guia da biblioteca, o texto pode ser estruturado utilizando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 níveis disponibilizados nativamente pelo \LaTeX: capítulo, seção, subseção, subsubseção e parágrafo. Para isso, são usados os comandos nativos do \LaTeX{} para divisão do texto: \lstinline+\chapter{...}+, \lstinline+\section{...}+, \lstinline+\subsection{...}+, \lstinline+\subsubsection{...}+ e \lstinline+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
 
-Ao utilizar \lstinline+\chapter{...}+ e \lstinline+\section{...}+, é necessário inserir manualmente os títulos em letras maiúsculas para garantir que os mesmos aparecem em letras maiúsculas tanto no sumário como no texto, garantindo a aderência ao guia.
+Apenas ao utilizar \lstinline+\section{...}+, é necessário inserir manualmente os títulos em letras maiúsculas para garantir que os mesmos aparecem em letras maiúsculas tanto no sumário como no texto, garantindo a aderência ao guia.
 
 \subsection{\emph{Floats}}
 
@@ -1350,7 +1349,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/05/26 4.10.3 Modelo da FEI]
+\ProvidesClass{fei}[2021/05/26 4.10.2 Modelo da FEI]
 
 % cria a opção chave-valor font, com valor padrão times
 \RequirePackage{kvoptions}
@@ -1837,8 +1836,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % fontes para cabeçalhos das demais seções
 \setsecheadstyle{\normalfont\MakeUppercase}
 \setsubsecheadstyle{\normalfont\bfseries}
-\setsubsubsecheadstyle{\normalfont\itshape}
-\setparaheadstyle{\normalfont}
+\setsubsubsecheadstyle{\normalfont\bfseries\itshape}
+\setparaheadstyle{\normalfont\itshape}
 
 % espaçamento após cabeçalhos das seções
 \setaftersecskip{\baselineskip}
@@ -1860,11 +1859,13 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \renewcommand{\cftparagraphindent}{0pt}
 
 % espaçamento igual para a numeração de todos os níveis, causando alinhamento proposital
-\renewcommand{\cftchapternumwidth}{4em}
-\renewcommand{\cftsectionnumwidth}{4em}
-\renewcommand{\cftsubsectionnumwidth}{4em}
-\renewcommand{\cftsubsubsectionnumwidth}{4em}
-\renewcommand{\cftparagraphnumwidth}{4em}
+\newlength{\tocnumwidth}
+\setlength{\tocnumwidth}{4em}
+\renewcommand{\cftchapternumwidth}{\tocnumwidth}
+\renewcommand{\cftsectionnumwidth}{\tocnumwidth}
+\renewcommand{\cftsubsectionnumwidth}{\tocnumwidth}
+\renewcommand{\cftsubsubsectionnumwidth}{\tocnumwidth}
+\renewcommand{\cftparagraphnumwidth}{\tocnumwidth}
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
@@ -1873,8 +1874,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % https://tex.stackexchange.com/a/399861
 
 % não há suporte para títulos com letras maiúsculas quando se usa hyperref
-% ou seja, as linhas abaixo não funcionam
-\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito e maiusculo
+% ou seja, a linha abaixo não funcionam
 % \renewcommand{\cftsectionfont}{\MakeTextUppercase} % titulo de seções em maiusculo
 
 % o hack abaixo é mencionado no manual de memoir, mas só funciona com chapter e não com outros elementos de mesmo nível...
@@ -2074,7 +2074,10 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \hypersetup{%
   pdftex,%
   pdfborder={0 0 0},%
-  colorlinks={false}%
+  colorlinks={false},%
+  % cria "bookmarks" no PDF até o 4° nível,
+  % independente do valor de tocdepth, que eu mudo em alguns lugares
+  bookmarksdepth=4%
 }
 
 % pacote para gerar listas (símbolos, abreviaturas, etc)
