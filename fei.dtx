@@ -198,7 +198,7 @@ literate=
 \printglossaries
 \tableofcontents
 
-\chapter{INTRODUÇÃO}
+\chapter{Introdução}
 
 \glsaddall%
 Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia que dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Através deste guia (e algumas dúzias de trabalhos corrigidos pelas bibliotecárias), nasceu a classe \LaTeX{} da \gls{fei}, especializada na criação de trabalhos acadêmicos sob as normas da biblioteca da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a maior parte da formatação complexa do documento a cargo da classe.
@@ -217,7 +217,8 @@ Isso significa que usuários de versões antigas da classe não mais usarão o c
 
 Adicionalmente, os \emph{templates} que acompanham a classe foram devidamente atualizados para exemplificar as mudanças.
 
-\section{INSTALAÇÃO} \label{chap:instalacao}
+\section{INSTALAÇÃO}%
+\label{chap:instalacao}
 
 Esta seção guia o leitor na instalação do \LaTeX{}, da classe e dos diferentes pacotes e programas necessários para utilizar todas as funcionalidades dela.
 
@@ -261,7 +262,8 @@ Após isso, é possível utilizar a opção \texttt{font=arial} na declaração 
 
 Alternativamente, é possível usar a fonte Arimo, uma versão aberta da fonte Arial disponibilizada nas principais distribuições de \LaTeX{}. Para isso, basta ter o pacote \texttt{arimo} instalado e utilizar a opção \texttt{font=arimo} na declaração da classe.
 
-\section{DEPENDÊNCIAS}\label{sec:dependencias}
+\section{DEPENDÊNCIAS}%
+\label{sec:dependencias}
 
 A partir da versão 3, a classe da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
 
@@ -300,15 +302,18 @@ No entanto, ainda é necessário enfatizar a necessidade de instalação de algu
 
 Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são dependentes da linguagem \index{Perl}Perl, a qual vem instalada por padrão em alguns sistemas operacionais. Para os usuários de Windows, no entanto, o Perl deve ser instalado separadamente e pode ser encontrado em \url{https://www.perl.org/}.
 
-\chapter{COMANDOS E AMBIENTES}\label{chap:comandos}
+\chapter{Comandos e ambientes}%
+\label{chap:comandos}
 
 Este capítulo descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem utilizados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem utilizados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, apêndices, anexos e índice remissivo.
 
-\section{PREÂMBULO}\label{sec:preambulo}
+\section{PREÂMBULO}%
+\label{sec:preambulo}
 
 No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \LaTeX{} da FEI contém os seguintes elementos que devem ser declarados no preâmbulo:
 
-\subsection{Metadados PDF/A} \label{subsec:pdfa}
+\subsection{Metadados PDF/A}%
+\label{subsec:pdfa}
 
 A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para o arquivamento de documentos PDF e disponibilização dos metadados do documento para buscas. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
 
@@ -329,7 +334,8 @@ Uma lista com mais opções de metadados está disponível em \url{https://www.m
 
 Antes de depositar a versão final do trabalho, recomenda-se checar se o arquivo PDF adere ao formato PDF/A. O software padrão, que também é gratuito e multiplafatorma, para realizar a checagem é o \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}}. Também é possível usar o Adobe Acrobat Pro.
 
-\subsection{Declaração da classe} \label{subsec:documentclass}
+\subsection{Declaração da classe}%
+\label{subsec:documentclass}
 
 A declaração da classe é feita da seguinte forma:
 
@@ -368,13 +374,15 @@ Uma vez que as normas da biblioteca demandam formatações específicas para o t
 \subsection{Cidade e Instituição (opcionais)}
 Os comandos \lstinline+\cidade{}+ e \lstinline+\instituicao{}+ recebem os nomes da cidade e instituição de ensino para substituí-los na capa e folha de rosto. São comandos opcionais criados por questão de compatibilidade, ou caso outras instituições queiram usar a classe. Seus valores-padrão são ``São Bernardo do Campo'' e ``Centro Universitário FEI'', respectivamente.
 
-\subsection{Arquivos de referências bibliográficas}\label{subsec:referencias-pre}
+\subsection{Arquivos de referências bibliográficas}%
+\label{subsec:referencias-pre}
 
 Em \TeX{}, as referências bibliográficas são mantidas em um ou mais arquivos de extensão \texttt{bib}, preferencialmente no mesmo diretório do arquivo \texttt{tex} do trabalho. Os arquivos \texttt{bib} utilizados pelo trabalho devem ser referenciados no preâmbulo do texto utilizando o comando \lstinline+\addbibresource{ref.bib}+. Mais de um arquivo pode ser referenciado, utilizando-se o comando \lstinline+\addbibresource{}+ mais de uma vez.
 
 Para saber como imprimir a lista de referências bibliográficas na seção pós-textual so trabalho, confira a seção \ref{subsec:referencias-pos}.
 
-\section{PRÉ-TEXTO}\label{sec:pretexto}
+\section{PRÉ-TEXTO}%
+\label{sec:pretexto}
 
 O pré-texto do documento engloba todos os elementos textuais que precedem o corpo da obra. A seguir são listados os elementos pré-textuais suportados pela classe \LaTeX{} da FEI e os respectivos comandos para a criação de cada um deles.
 
@@ -469,7 +477,8 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 	\smallcaption{Fonte: Autor}
 \end{table}
 
-\section{TEXTO}\label{sec:texto}
+\section{TEXTO}%
+\label{sec:texto}
 
 Sob a nomenclatura do guia da biblioteca, o texto pode ser estruturado utilizando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 níveis disponibilizados nativamente pelo \LaTeX: capítulo, seção, subseção, subsubseção e parágrafo. Para isso, são usados os comandos nativos do \LaTeX{} para divisão do texto: \lstinline+\chapter{...}+, \lstinline+\section{...}+, \lstinline+\subsection{...}+, \lstinline+\subsubsection{...}+ e \lstinline+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
 
@@ -626,14 +635,16 @@ Exemplo:
 
 O guia da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \lstinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \lstinline+\ref{}+, porém com a adição dos parênteses.
 
-\begin{equation} \label{eq:euler}
+\begin{equation}%
+\label{eq:euler}
 	e^{i\pi}+1=0
 \end{equation}
 
 A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
 
 \begin{lstlisting}
-\begin{equation} \label{eq:euler}
+\begin{equation}%
+\label{eq:euler}
 e^{i\pi}+1=0
 \end{equation}
 \end{lstlisting}
@@ -650,7 +661,8 @@ Exemplo de teorema.
 
 Resultado:
 
-\begin{teorema}\label{thm:ex1}
+\begin{teorema}%
+\label{thm:ex1}
 	Exemplo de teorema.
 \end{teorema}
 
@@ -678,11 +690,13 @@ Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos as
 	\item Terceiro item extremamente grande utilizado para testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2020.
 \end{enumerate}
 
-\section{PÓS-TEXTO}\label{sec:postexto}
+\section{PÓS-TEXTO}%
+\label{sec:postexto}
 
 Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Este capítulo descreve os comandos para \emph{inserção} destes elementos. Os capítulos seguintes instruirão como \emph{criá-los}.
 
-\subsection{Referências bibliográficas} \label{subsec:referencias-pos}
+\subsection{Referências bibliográficas}%
+\label{subsec:referencias-pos}
 
 A lista de referências bibliográficas, contidas em um ou mais arquivos \texttt{bib} e referenciadas assim como descrito na seção \ref{subsec:referencias-pre}, é inserida no trabalho através do comando \lstinline+\printbibliography+. Repare, contudo, que apenas as obras referenciadas no texto através dos comandos de citação são listadas nas referências bibliográficas.
 
@@ -716,7 +730,8 @@ Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para decl
 
 A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \lstinline+\printindex+.
 
-\chapter{CITAÇÕES EM FORMATO AUTOR-DATA E NUMÉRICAS} \label{chap:referencia}
+\chapter{Citações em formato autor data e numéricas}%
+\label{chap:referencia}
 
 A classe da \index{FEI}\gls{fei} faz uso do pacote \texttt{biblatex-abnt} para inserção de citações ao longo do texto e impressão da lista de referências bibliográficas ao final do texto. O \texttt{biblatex-abnt} é responsável por formatar tanto citações quanto referências bibliográficas sob os padrões da ABNT. A classe da \index{FEI}\gls{fei} realiza algumas modificações no estilo fornecido pelo \texttt{biblatex-abnt} para se adequar ao guia da biblioteca. Por padrão, as citações são feitas no formato autor-data. Para utilizar o formato numérico, adicione a opção \texttt{numeric} à declaração da classe: \lstinline+\documentclass[numeric]{fei}+.
 
@@ -791,7 +806,8 @@ Por exemplo, os trabalhos de \textcite{rocha2005brain,rocha2014brain,rocha2016ee
 
 Já nos trabalhos de \textcite{duan2012large,duan2012reduced,duan2014functional}, é necessário diferenciar as duas primeiras obras devido às datas semelhantes. Citações entre parênteses para os mesmos trabalhos tomam a seguinte forma: \cite{duan2012large,duan2012reduced,duan2014functional}.
 
-\chapter{ÍNDICES}\label{chap:indice}
+\chapter{Índices}%
+\label{chap:indice}
 
 Assim como as referências são geradas por um programa a parte (o Biber), a criação de índices remissivos também o é. Neste quesito, a classe da FEI faz uso do programa \bigvindex{xindy} como gerador de índices. Mais especificamente, os programas \texttt{xindy} e \texttt{texindy} são necessários para geração de índices remissivos. O xindy foi selecionado como gerador de índices para a classe da FEI devido ao suporte a diversos e idiomas e indexação de palavras com caracteres mais exóticos -- como acentos ou cedilha.
 
@@ -815,7 +831,8 @@ Para aprender dicas avançadas na criação de índices mais complexos, recomend
 
 A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o qual também inclui uma entrada para o mesmo no sumário do documento.
 
-\chapter{LISTAS DE SÍMBOLOS E ABREVIATURAS} \label{chap:listas}
+\chapter{Listas de símbolos e abreviaturas}%
+\label{chap:listas}
 
 Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \bigvindex{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
 
@@ -891,7 +908,8 @@ Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são
 
 É importante ressaltar que o pacote \bigvindex{glossaries} adiciona às listas somente os termos que forem utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
 
-\section{HIERARQUIA DE SÍMBOLOS}\label{sec:sublist}
+\section{HIERARQUIA DE SÍMBOLOS}%
+\label{sec:sublist}
 Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja utilizado no documento, a opção \texttt{sublist} deve ser passada à classe.
 
 O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
@@ -908,11 +926,13 @@ O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um s�
 
 A lista de abreviaturas pode ser impressa através do comando \lstinline+\printacronyms+. A lista de símbolos pode ser impressa através do comando \lstinline+\printsymbols+. Todas as listas criadas através do pacote \texttt{glossaries}, inclusive as definidas pelo próprio usuário, podem ser impressas sequencialmente através do comando \lstinline+\printglossaries+.
 
-\chapter{COMPILANDO O PROJETO} \label{chap:compilando}
+\chapter{Compilando o projeto}%
+\label{chap:compilando}
 
 Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas. Esta sessão descreve tanto uma maneira automatizada de se compilar o projeto, usando o latexmk, assim como os programas que podem ser chamados manualmente, para fins de depuração..
 
-\section{COMPILAÇÃO AUTOMATIZADA} \label{sec:latexmk}
+\section{COMPILAÇÃO AUTOMATIZADA}%
+\label{sec:latexmk}
 
 Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX{}, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Dentre as ferramentas mais conhecidas estão o \texttt{latexmk}, \texttt{rubber} e \texttt{arara}, criadas especificamente para realizar a automatização da compilação de documentos \TeX{}. Para a classe da FEI, recomenda-se o uso do \texttt{latexmk}. As configurações necessárias são disponibilizadas no arquivo \texttt{.latexmkrc}, o qual deve ser colocado no mesmo diretório que o arquivo \texttt{.tex} principal do documento. O \texttt{latexmk} pode então ser chamado da seguinte forma (supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual):
 
@@ -922,7 +942,8 @@ Existem diversas ferramentas que automatizam o processo de compilação de um do
 
 Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário especificar o nome do documento, assim como nunca é necessário deixar explícito tanto ao \texttt{latexmk} quanto ao \texttt{rubber} se o documento sendo compilado possui bibliografia, índices ou listas. Os programas detectam a existência desses construtos adicionais examinando os arquivos auxiliares gerados durante o processo e executam todos os comandos apropriados na ordem certa e o número suficiente de vezes.
 
-\section{COMPILAÇÃO MANUAL} \label{sec:dificil}
+\section{COMPILAÇÃO MANUAL}%
+\label{sec:dificil}
 
 A compilação manual do projeto depende dos seguintes programas:
 
@@ -962,7 +983,7 @@ texindy documento.idx
 pdflatex --shell-escape documento.tex
 \end{lstlisting}
 
-\chapter{LEITURA COMPLEMENTAR}
+\chapter{Leitura complementar}
 
 \textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
 
@@ -972,7 +993,8 @@ Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usu
 
 \appendix
 
-\chapter{\emph{HACKS} ÚTEIS} \label{app:hacks}
+\chapter{\emph{Hacks} úteis}%
+\label{app:hacks}
 
 Existem alguns casos específicos nos quais técnicas de formatação avançadas ou redefinições de comandos são requeridas. Não existe forma simples de disponibilizar os recursos listados neste apêndice aos usuários da classe, então o apêndice ensinará os usuários a realizar personalizações básicas na classe, assim como fazer formatações menos convencionais que sejam necessárias para aderir as padrões da biblioteca.
 
@@ -1058,7 +1080,8 @@ Para criar uma nova categoria de \emph{float}, a qual será listada na lista de 
 \setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
 \end{lstlisting}
 
-\chapter{ARQUIVOS CRIADOS PELO PROCESSO DE COMPILAÇÃO} \label{app:arquivos}
+\chapter{Arquivos criados pelo processo de compilação}%
+\label{app:arquivos}
 
 A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \LaTeX{} da FEI e todos os seus recursos.
 
@@ -1093,7 +1116,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	      \end{enumerate}
 \end{enumerate}
 
-\chapter{REFERÊNCIA DE SÍMBOLOS \TeX{}} \label{app:simbolos}
+\chapter{Referência de símbolos \TeX{}}%
+\label{app:simbolos}
 
 \section{LETRAS GREGAS}
 \begin{multicols}{3}
@@ -1733,6 +1757,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\renewcommand*{\printchaptername}{}
 	\renewcommand*{\printchapternonum}{}
 	\renewcommand*{\printchapternum}{\chapnumfont \thechapter\space}
+	\renewcommand{\printchaptertitle}[1]{\chaptitlefont\MakeUppercase{##1}}
 	\setlength{\afterchapskip}{\baselineskip}
 	\setlength{\beforechapskip}{0pt}
 	\setlength{\midchapskip}{0pt}
@@ -1751,6 +1776,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 	\renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
 	\renewcommand*{\printchapternonum}{}
 	\renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+	\renewcommand{\printchaptertitle}[1]{\chaptitlefont\MakeUppercase{##1}}
 	\setlength{\afterchapskip}{0pt}
 	\setlength{\beforechapskip}{0pt}
 	\setlength{\midchapskip}{0pt}
@@ -1813,20 +1839,22 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
-% formatação dos títulos de seções. perceba que não há suporte para títulos com letras maiúsculas quando se usa hyperref
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% O PROBLEMA MILENAR: ENTRADAS EM MAIÚSCULAS NO SUMÁRIO
+% https://tex.stackexchange.com/a/399861
+
+% não há suporte para títulos com letras maiúsculas quando se usa hyperref
 % ou seja, as linhas abaixo não funcionam
-% \renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito e maiusculo
+\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito e maiusculo
 % \renewcommand{\cftsectionfont}{\MakeTextUppercase} % titulo de seções em maiusculo
 
-% o hack abaixo é mencionado no manual de memoir, mas não funcionou também, então é ponto pro LaTeX por enquanto...
-% \settocpreprocessor{chapter}{%
-%     \let\tempf@rtoc\f@rtoc% 
-%     \def\f@rtoc{%
-%       \texorpdfstring{\MakeTextUppercase{%
-%         \tempf@rtoc}%
-%       }{\tempf@rtoc}%
-%     }% 
-% }
+% o hack abaixo é mencionado no manual de memoir, mas só funciona com chapter e não com outros elementos de mesmo nível...
+\settocpreprocessor{chapter}{%
+\let\tempf@rtoc\f@rtoc%
+\def\f@rtoc{%
+\texorpdfstring{\MakeTextUppercase{\tempf@rtoc}}{\tempf@rtoc}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
