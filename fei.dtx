@@ -1797,10 +1797,24 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
   \setlength{\midchapskip}{0pt}
 }
 
-\addtodef{\appendix}{}{%
-  \chapterstyle{feiappendix}
-  \renewcommand{\cftchaptername}{Ap\^endice\space}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\appto\appendix{%
+  % use o estilo criado acima para a página de abertura de um apêndice
+  \chapterstyle{feiappendix}%
+  % não numera nada abaixo de chapter nos apêndices
+  \setsecnumdepth{chapter}%
+  % hack do egreg para mudar o que é escrito antes do título do apêndice no sumário
+  % https://tex.stackexchange.com/a/34285/30998
+  \addtocontents{toc}{\protect\reformchapapp}%
+}
+
+% esse comando é adicionado no arquivo .toc assim que o comando \appendix é chamado
+\newcommand{\reformchapapp}{%
+  % não adiciona nada abaixo de chapter no sumário, depois que começam os apêndices
+  \setcounter{tocdepth}{0}%
+  % esse é o comando que insere o número do capítulo no sumário, antes do nome do apêndice
+  % eu coloco um espaço em branco e escrevo APÊNDICE [NÚMERO] -- "
+  % [NÚMERO] é formatado em alfabético automaticamente pelo memoir, na definição deles de \appendix
+  \renewcommand{\chapternumberline}[1]{\hspace{\cftchapternumwidth}\MakeUppercase{\appendixname}\ ##1 -- }%
 }
 
 % anexo (funciona da mesma forma do apendice, soh alterando os nomes)
