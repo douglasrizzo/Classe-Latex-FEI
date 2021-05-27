@@ -14,35 +14,35 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/02/17 4.10.2 Modelo da FEI]
+\ProvidesClass{fei}[2021/05/26 4.10.3 Modelo da FEI]
 
 \RequirePackage{kvoptions}
 \DeclareStringOption[times]{font}
 
 \DeclareOption{draft}{
-\PassOptionsToClass{\CurrentOption}{memoir}
+  \PassOptionsToClass{\CurrentOption}{memoir}
 }
 \DeclareOption{final}{
-\PassOptionsToClass{\CurrentOption}{memoir}
+  \PassOptionsToClass{\CurrentOption}{memoir}
 }
 
 \newif\ifglossaries
 \glossariesfalse
 \DeclareOption{symbols}{
-\glossariestrue
-\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
+  \glossariestrue
+  \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 \DeclareOption{acronym}{
-\glossariestrue
-\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
+  \glossariestrue
+  \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 \DeclareOption{record}{
-\glossariestrue
-\PassOptionsToPackage{\CurrentOption}{glossaries-extra}
+  \glossariestrue
+  \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
 \DeclareOption{abbr-shortcuts}{
-\glossariestrue
-\PassOptionsToPackage{shortcuts=abbr}{glossaries-extra}
+  \glossariestrue
+  \PassOptionsToPackage{shortcuts=abbr}{glossaries-extra}
 }
 \newif\ifsublist
 \sublistfalse
@@ -60,7 +60,7 @@
 \DeclareOption{twoside}{\onesidefalse}
 
 \DeclareOption{backrefs}{%
-\PassOptionsToPackage{backref}{biblatex}%
+  \PassOptionsToPackage{backref}{biblatex}%
 }
 
 \DeclareOption{algo-as-figure}{\PassOptionsToPackage{figure}{algorithm2e}}%
@@ -81,15 +81,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \@namedef{fei@font@times}{%
-\RequirePackage{newtxtext}%
+  \RequirePackage{newtxtext}%
 }
 \@namedef{fei@font@arial}{%
-\RequirePackage[scaled]{uarial}%
-\renewcommand*\familydefault{\sfdefault}%
+  \RequirePackage[scaled]{uarial}%
+  \renewcommand*\familydefault{\sfdefault}%
 }
 
 \@namedef{fei@font@arimo}{%
-\RequirePackage[sfdefault]{arimo}
+  \RequirePackage[sfdefault]{arimo}
 }
 
 \newcommand*{\fei@evaluate}[1]{%
@@ -108,7 +108,7 @@
     }{%
       % Call the implementation for the value
       \csname fei@#1@%
-              \csname fei@#1\endcsname
+      \csname fei@#1\endcsname
       \endcsname
       \relax
     }%
@@ -118,9 +118,9 @@
 \fei@evaluate{font}
 
 \ifoneside
-\LoadClass[oneside]{memoir}
+  \LoadClass[oneside]{memoir}
 \else
-\LoadClass{memoir}
+  \LoadClass{memoir}
 \fi
 
 \RequirePackage[utf8]{inputenc}
@@ -195,21 +195,22 @@
 
 \let\oldlistofalgorithms\listofalgorithms
 \renewcommand{\listofalgorithms}{{%
-\setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
-\renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
-\renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
-\part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
-}}
+      \setlength{\cftfigurenumwidth}{6.2em} % espaço onde a palavra "Algoritmo" é escrita
+      \renewcommand{\cftfigurepresnum}{Algoritmo } % escrita que precede cada entrada na lista
+      \renewcommand{\cftfigureaftersnum}{\hfill--\hfill} % traço na frente da escrita que precede as entradas na lista
+      \part*{\listalgorithmcfname}\pagestyle{empty}\@starttoc{loa}\cleardoublepage % titulo com formato padrão de todas as listas
+    }}
 
 \RequirePackage{amsthm,thmtools}
 \renewcommand{\listtheoremname}{Lista de Teoremas} % traduz nome da lista de teoremas
 
 \declaretheoremstyle[
-spaceabove=6pt, spacebelow=6pt,
-headfont=\normalfont\bfseries,
-notefont=\normalfont\bfseries, notebraces={-- }{},
-bodyfont=\normalfont,
-postheadspace=1em
+  spaceabove=6pt, spacebelow=6pt,
+  headfont=\normalfont\bfseries,
+  notefont=\normalfont\bfseries, notebraces={-- }{},
+  bodyfont=\normalfont,
+  postheadspace=1em
+  % qed=\qedsymbol
 ]{feistyle}
 
 \declaretheorem[style=feistyle,name=Axioma]{axioma}
@@ -334,61 +335,63 @@ postheadspace=1em
 \renewcommand{\floatpagefraction}{.8} % página terá apenas floats se o float ocupar pelo menos 80% da página
 
 \renewcommand{\part}{%
-\@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
+  \@startsection{part}{-1}{0pt}{\baselineskip}{\baselineskip}{\cleardoublepage\fontsize{12pt}{14.4pt}\centering\bfseries\MakeUppercase}}
 
 \makechapterstyle{feichapter}{
-\renewcommand*{\afterchapternum}{\quad}
-\renewcommand*{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
-\renewcommand*{\chapnamefont}{\chapnumfont}
-\renewcommand*{\chapnumfont}{\normalfont\bfseries}
-\renewcommand*{\chapterheadstart}{\vspace*{\beforechapskip}}
-\renewcommand*{\chapternamenum}{}
-\renewcommand*{\chaptitlefont}{\chapnumfont}
-\renewcommand*{\printchaptername}{}
-\renewcommand*{\printchapternonum}{}
-\renewcommand*{\printchapternum}{\chapnumfont \thechapter\space}
-\setlength{\afterchapskip}{\baselineskip}
-\setlength{\beforechapskip}{0pt}
-\setlength{\midchapskip}{0pt}
+  \renewcommand*{\afterchapternum}{\quad}
+  \renewcommand*{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
+  \renewcommand*{\chapnamefont}{\chapnumfont}
+  \renewcommand*{\chapnumfont}{\normalfont\bfseries}
+  \renewcommand*{\chapterheadstart}{\vspace*{\beforechapskip}}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\chaptitlefont}{\chapnumfont}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\printchapternonum}{}
+  \renewcommand*{\printchapternum}{\chapnumfont \thechapter\space}
+  \renewcommand{\printchaptertitle}[1]{\chaptitlefont\MakeUppercase{##1}}
+  \setlength{\afterchapskip}{\baselineskip}
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\midchapskip}{0pt}
 }
 
 \chapterstyle{feichapter}
 
 \makechapterstyle{feiappendix}{%
-\renewcommand*{\afterchapternum}{ -- }
-\renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
-\renewcommand*{\chapnamefont}{\normalfont\bfseries}
-\renewcommand*{\chapnumfont}{\chapnamefont}
-\renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
-\renewcommand*{\chaptitlefont}{\normalfont\centering}
-\renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
-\renewcommand*{\printchapternonum}{}
-\renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
-\setlength{\afterchapskip}{0pt}
-\setlength{\beforechapskip}{0pt}
-\setlength{\midchapskip}{0pt}
+  \renewcommand*{\afterchapternum}{ -- }
+  \renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+  \renewcommand*{\chapnamefont}{\normalfont\bfseries}
+  \renewcommand*{\chapnumfont}{\chapnamefont}
+  \renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
+  \renewcommand*{\chaptitlefont}{\normalfont\centering}
+  \renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\@chapapp}}
+  \renewcommand*{\printchapternonum}{}
+  \renewcommand*{\printchapternum}{\centering\chapnumfont \thechapter}
+  \renewcommand{\printchaptertitle}[1]{\chaptitlefont\MakeUppercase{##1}}
+  \setlength{\afterchapskip}{0pt}
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\midchapskip}{0pt}
 }
 
 \addtodef{\appendix}{}{%
-\chapterstyle{feiappendix}
-\renewcommand{\cftchaptername}{Ap\^endice\space}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+  \chapterstyle{feiappendix}
+  \renewcommand{\cftchaptername}{Ap\^endice\space}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 }
 
 \newcommand{\anexos}{%
-\chapterstyle{feiappendix}
-\renewcommand{\cftchaptername}{Anexo\space}
-\renewcommand{\chaptername}{Anexo}%
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
-\setcounter{chapter}{0}
-\renewcommand{\thechapter}{\Alph{chapter}}%
-\renewcommand{\chapter}[1]{%
-\stepcounter{chapter}%
-\cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
-\phantomsection%
-\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
-\newpage%
-}%
+  \chapterstyle{feiappendix}
+  \renewcommand{\cftchaptername}{Anexo\space}
+  \renewcommand{\chaptername}{Anexo}%
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+  \setcounter{chapter}{0}
+  \renewcommand{\thechapter}{\Alph{chapter}}%
+  \renewcommand{\chapter}[1]{%
+    \stepcounter{chapter}%
+    \cleardoublepage\phantomsection\thispagestyle{empty}\mbox{}\vfill\begin{center}\MakeUppercase{\textbf{ANEXO \thechapter\ --} ##1}\end{center}\vfill%
+    \phantomsection%
+    \addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}ANEXO \Alph{chapter} -- ##1}%
+    \newpage%
+  }%
 }%
 
 \setsecheadstyle{\normalfont\MakeUppercase}
@@ -420,7 +423,16 @@ postheadspace=1em
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito e maiusculo
+
+\settocpreprocessor{chapter}{%
+  \let\tempf@rtoc\f@rtoc%
+  \def\f@rtoc{%
+    \texorpdfstring{\MakeTextUppercase{\tempf@rtoc}}{\tempf@rtoc}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
 \renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
@@ -449,67 +461,68 @@ postheadspace=1em
 
 
 \renewcommand{\listoftheorems}{\begingroup%
-\let\oldnumberline\numberline%
-\renewcommand{\numberline}{Teorema~\oldnumberline}%
-\part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
+  \let\oldnumberline\numberline%
+  \renewcommand{\numberline}{Teorema~\oldnumberline}%
+  \part*{\listtheoremname}\thispagestyle{empty}\@starttoc{loe}\cleardoublepage\endgroup}
 
 \def\and{\\} % modifica função do comando \and para ele ser usado na declaração de múltiplos autores
 
 \renewcommand{\maketitle}{%
-\pagestyle{empty}%
-\begin{center}%
-\MakeUppercase{\@instituicao}\\[0.5em]%
-\uppercase\expandafter{\@author}%
-\vfill%
-\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
-\vfill%
-\@cidade\\[0.5em]%
-\number\year%
-\end{center}%
-\cleardoublepage
+  \pagestyle{empty}%
+  \begin{center}%
+    \MakeUppercase{\@instituicao}\\[0.5em]%
+    \uppercase\expandafter{\@author}%
+    \vfill%
+    \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}%
+    \vfill%
+    \@cidade\\[0.5em]%
+    \number\year%
+  \end{center}%
+  \cleardoublepage
 }
 
 \newenvironment{folhaderosto}{
-\setcounter{page}{1}
-\thispagestyle{empty}
-\begin{center}
-\uppercase\expandafter{\@author}\\
-\vspace*{0.45\textheight}
-\textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
-\vfill
-\begin{flushright}
-\begin{minipage}{\textwidth - 8cm}
-\normalsize
-\begin{SingleSpace}
-}{\end{SingleSpace}\end{minipage}{}
-\end{flushright}
-\vfill
-\@cidade\\[0.5em]
-\number\year
-\end{center}%
-\clearpage
+  \setcounter{page}{1}
+  \thispagestyle{empty}
+  \begin{center}
+    \uppercase\expandafter{\@author}\\
+    \vspace*{0.45\textheight}
+    \textbf{\MakeUppercase{\@title}}\ifthenelse{\isundefined{\@subtitulo}}{}{: \@subtitulo}
+    \vfill
+    \begin{flushright}
+      \begin{minipage}{\textwidth - 8cm}
+        \normalsize
+        \begin{SingleSpace}
+          }{\end{SingleSpace}\end{minipage}{}
+    \end{flushright}
+    \vfill
+    \@cidade\\[0.5em]
+    \number\year
+  \end{center}%
+  \clearpage
 }
 
 \RequirePackage{pdfpages}
 \RequirePackage{ifthen}
 \newcommand{\folhadeaprovacao}{
-\ifdeposito
-\includepdf{ata.pdf}\cleardoublepage
-\else
-\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
-\fi
+  \ifdeposito
+    \includepdf{ata.pdf}\cleardoublepage
+  \else
+    \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Folha de aprova\c{c}\~{a}o\end{Huge}\vfill\end{center}\cleardoublepage
+  \fi
 }
 
 \newcommand{\fichacatalografica}{
-\if@twoside
-\else
-\addtocounter{page}{-1}
-\fi
-\ifdeposito
-\includepdf{ficha.pdf}\cleardoublepage
-\else
-\thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
-\fi
+  \if@twoside
+  \else
+    % se não for frente e verso, a ficha catalográfica não é contada no verso da folha de rosto
+    \addtocounter{page}{-1}
+  \fi
+  \ifdeposito
+    \includepdf{ficha.pdf}\cleardoublepage
+  \else
+    \thispagestyle{empty}\mbox{}\vfill\begin{center}\begin{Huge}Ficha catalogr\'{a}fica\end{Huge}\vfill\end{center}\cleardoublepage
+  \fi
 }
 
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
@@ -528,28 +541,28 @@ postheadspace=1em
 \newcommand{\curso}[1]{\def\@curso{#1}}
 
 \newcommand{\dedicatoria}[1]{
-\cleardoublepage
-\thispagestyle{empty}
-\vspace*{\fill}
-\begin{flushright}
-\begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
-#1
-\end{minipage}
-\end{flushright}
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{flushright}
+    \begin{minipage}[t][0.5\textheight][c]{0.5\textwidth}
+      #1
+    \end{minipage}
+  \end{flushright}
 }
 
 \newenvironment{epigrafe}{\cleardoublepage\pagestyle{empty}\vspace*{\fill}}{\pagestyle{plain}}
 
 \newcommand{\epig}[2]{
-\vspace{2\baselineskip}
-\begin{flushright}
-\begin{minipage}[t]{0.5\textwidth}
-``{#1}''
-\begin{flushright}
-#2
-\end{flushright}
-\end{minipage}
-\end{flushright}
+  \vspace{2\baselineskip}
+  \begin{flushright}
+    \begin{minipage}[t]{0.5\textwidth}
+      ``{#1}''
+      \begin{flushright}
+        #2
+      \end{flushright}
+    \end{minipage}
+  \end{flushright}
 }
 \newenvironment{resumo}{\part*{Resumo}\pagestyle{empty}}{\cleardoublepage\pagestyle{plain}\setlength{\parindent}{1.25cm}}
 
@@ -560,99 +573,111 @@ postheadspace=1em
 \RequirePackage[xindy]{imakeidx}
 \indexsetup{level=\part*}
 \addto\captionsbrazil{%
-\renewcommand{\indexname}{\'Indice}%
+  \renewcommand{\indexname}{\'Indice}%
 }
 
 \let\oldprintindex\printindex
 \renewcommand{\printindex}{\clearpage\phantomsection\addcontentsline{toc}{chapter}{\hspace{\cftchapternumwidth}\'INDICE}%
-\renewcommand{\chapter}{%
-\@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
-\oldprintindex%
+  \renewcommand{\chapter}{%
+    \@startsection{chapter}{0}{0pt}{0pt}{1.5cm}{\clearpage\fontsize{12pt}{14.4pt}\bfseries\MakeUppercase}}%
+  \oldprintindex%
 }%
 
 \ifpdfa
-\RequirePackage[a-1b]{pdfx}
+  \RequirePackage[a-1b]{pdfx}
 \else
-\RequirePackage{hyperref}
+  \RequirePackage{hyperref}
 \fi
 
 \hypersetup{%
-pdftex,%
-pdfborder={0 0 0},%
-colorlinks={false}%
+  pdftex,%
+  pdfborder={0 0 0},%
+  colorlinks={false}%
 }
 
 \ifglossaries
-\ifsublist
-\RequirePackage[xindy,nomain,nonumberlist,section=part]{glossaries-extra}
-\setglossarystyle{alttree}
-\glssetwidest[0]{}
-\glssetwidest[1]{aaaaaaaaaaaa}
+  \ifsublist
+    \RequirePackage[xindy,nomain,nonumberlist,section=part]{glossaries-extra}
+    % estilo usado como base
+    \setglossarystyle{alttree}
+    % Configuracao de identacao do nivel 0 (titulos)
+    \glssetwidest[0]{}
+    % Configuracao de identacao do nivel 1 (a lista de simbolos em si)
+    \glssetwidest[1]{aaaaaaaaaaaa}
 
-\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
+    % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+    \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}\vspace*{-2\baselineskip}}
 
-\else
-\RequirePackage[xindy,nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
+  \else
+    \RequirePackage[xindy,nomain,nonumberlist,section=part,nogroupskip]{glossaries-extra}
 
-\newglossarystyle{mylong}{%
-\setglossarystyle{long}% base this style on the long style
-\renewenvironment{theglossary}{%
-\begin{longtable*}{lp{\glsdescwidth}}}%
-{\end{longtable*}}%
-}%
+    \newglossarystyle{mylong}{%
+      \setglossarystyle{long}% base this style on the long style
+      \renewenvironment{theglossary}{%
+        \begin{longtable*}{lp{\glsdescwidth}}}%
+          {\end{longtable*}}%
+    }%
 
-\setglossarystyle{mylong}
-\setlength\LTleft{0pt}
-\setlength\LTright{0pt}
-\setlength\glsdescwidth{\linewidth}
+    \setglossarystyle{mylong}
+    \setlength\LTleft{0pt}
+    \setlength\LTright{0pt}
+    \setlength\glsdescwidth{\linewidth}
 
-\renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+    % remove número de página das listas de símbolos e abreviaturas (executado na primeira página)
+    \renewcommand*{\glossarypreamble}{\thispagestyle{empty}\pagestyle{empty}}
+  \fi
+  % traduz alguns comandos próprios do glossaries
+  \addto\captionsbrazil{%
+    \renewcommand*{\acronymname}{Lista de Abreviaturas}%
+    \renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}%
+  }
+
+  % redefine comandos do glossaries
+  % remove número de página das listas de símbolos e abreviaturas (executado nas demais páginas)
+  \renewcommand*{\glsclearpage}{\pagestyle{empty}}
+  % remove número de página das listas de símbolos e abreviaturas (executado na última página)
+  \renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
+  % estilo das abreviaturas que permite imprimir a tradução de uma abreviatura em idioma estrangeiro
+  \setabbreviationstyle[acronym]{long-short-user}
+  % listas de simbolos e abreviaturas nao aparecem no sumario
+  \glstocfalse
+
+  % \glscurrentfieldvalue only works with glossaries v4.23 (and above)
+  \renewcommand{\glsxtrpostdescacronym}{%
+    \ifglshasfield{\glsxtruserfield}{\glscurrententrylabel}%
+    { (\glscurrentfieldvalue)}%
+    {}%
+  }
 \fi
-\addto\captionsbrazil{%
-\renewcommand*{\acronymname}{Lista de Abreviaturas}%
-\renewcommand*{\glssymbolsgroupname}{Lista de S\'imbolos}%
-}
-
-\renewcommand*{\glsclearpage}{\pagestyle{empty}}
-\renewcommand*{\glossarypostamble}{\pagestyle{empty}\cleardoublepage}
-\setabbreviationstyle[acronym]{long-short-user}
-\glstocfalse
-
-\renewcommand{\glsxtrpostdescacronym}{%
-\ifglshasfield{\glsxtruserfield}{\glscurrententrylabel}%
-{ (\glscurrentfieldvalue)}%
-{}%
-}
-\fi
 
 \addto\captionsbrazil{%
-\renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
-\renewcommand*{\contentsname}{Sum\'ario}}%
+  \renewcommand*{\listfigurename}{Lista de Ilustra\c{c}\~oes}%
+  \renewcommand*{\contentsname}{Sum\'ario}}%
 
 \newcommand{\palavraschave}[1]{\mbox{}\\\noindent Palavras-chave: #1}% o resumo pede palavras chave no final
 \newcommand{\keywords}[1]{\mbox{}\\\noindent Keywords: #1}% mesma coisa, mas pro abstract
 
 
 \ifnumeric
-\RequirePackage[backend=biber,
-safeinputenc=true,
-uniquelist=false,
-doi=true,
-repeatfields=true,
-style=abnt-numeric]{biblatex}
+  \RequirePackage[backend=biber,
+    safeinputenc=true,
+    uniquelist=false,
+    doi=true,
+    repeatfields=true,
+    style=abnt-numeric]{biblatex}
 \else
-\RequirePackage[backend=biber,
-safeinputenc=true,
-uniquelist=false,
-doi=true,
-repeatfields=true,
-style=abnt]{biblatex}
+  \RequirePackage[backend=biber,
+    safeinputenc=true,
+    uniquelist=false,
+    doi=true,
+    repeatfields=true,
+    style=abnt]{biblatex}
 \fi
 
 \setlength{\bibitemsep}{1.0\baselineskip}
 
 \DefineBibliographyStrings{brazil}{%
-bibliography = {REFER\^ENCIAS}
+  bibliography = {REFER\^ENCIAS}
 }
 
 
@@ -661,37 +686,37 @@ bibliography = {REFER\^ENCIAS}
 \let\oldprintbibliography\printbibliography
 
 \renewcommand{\printbibliography}{%
-\linespread{1}
-\oldprintbibliography
-\linespread{1.5}
+  \linespread{1}
+  \oldprintbibliography
+  \linespread{1.5}
 }
 
 \newcommand{\citeonline}[1]{\textcite{#1}}
 
 
 \defbibheading{bibliography}[\bibname]{%
-\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
-\part*{REFER\^ENCIAS}
-\urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
+  \clearpage\phantomsection\addcontentsline{toc}{chapter}{\bfseries\hspace{\cftchapternumwidth}REFER\^ENCIAS}% adiciona o titulo ao sumario
+  \part*{REFER\^ENCIAS}
+  \urlstyle{same}% URLs nas referências devem ter a mesma fonte do texto
 }
 
 \newcommand*{\citefloat}[1]{\textcite*{#1}}
 
 \renewenvironment{quote}
 {\begin{flushright}
-\begin{minipage}{\textwidth - 4cm}
-\fontsize{10pt}{1em}
-\begin{SingleSpace}
-}{\end{SingleSpace}\end{minipage}{}
-\end{flushright}}
+    \begin{minipage}{\textwidth - 4cm}
+      \fontsize{10pt}{1em}
+      \begin{SingleSpace}
+        }{\end{SingleSpace}\end{minipage}{}
+  \end{flushright}}
 
 \renewenvironment{quotation}
 {\begin{center}
-\begin{minipage}{\textwidth - 4cm}
-\fontsize{10pt}{1em}
-\begin{SingleSpace}\setlength{\parindent}{1cm}
-}{\end{SingleSpace}\end{minipage}{}
-\end{center}}
+    \begin{minipage}{\textwidth - 4cm}
+      \fontsize{10pt}{1em}
+      \begin{SingleSpace}\setlength{\parindent}{1cm}
+        }{\end{SingleSpace}\end{minipage}{}
+  \end{center}}
 %% 
 %% Copyright (C) 2020 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
