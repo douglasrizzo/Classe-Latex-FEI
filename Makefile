@@ -6,10 +6,8 @@ TDIR = $(TEMP)/$(NAME)
 VERS = $(shell ltxfileinfo -v $(NAME).cls)
 LOCAL = $(shell kpsewhich --var-value TEXMFLOCAL)
 UTREE = $(shell kpsewhich --var-value TEXMFHOME)
-all: | $(NAME).cls clean
-	test -e README.txt && mv README.txt README || exit 0
-$(NAME).cls: $(NAME).dtx
-	latexmk -pdf $(NAME).dtx
+$(NAME).cls README.txt $(NAME).pdf: $(NAME).dtx
+	latexmk -pdf $(NAME).dtx -gg
 clean:
 	git clean -Xdf
 format:
@@ -17,25 +15,26 @@ format:
 	latexindent -w tmp.cls
 	mv tmp.cls fei.dtx
 distclean: clean
-	rm -f *.{pdf,cls} README README.txt
-inst: all
+	rm -f *.{pdf,cls} README.txt fei-template.tex fei-template-sublist.tex $(NAME)-$(VERS).zip
+inst: $(NAME).cls
 	mkdir -p $(UTREE)/{tex,source,doc}/latex/$(NAME)
 	cp $(NAME).dtx $(UTREE)/source/latex/$(NAME)
 	cp $(NAME).cls $(UTREE)/tex/latex/$(NAME)
 	cp $(NAME).cls $(UTREE)/doc/latex/$(NAME)
-install: all
+install: $(NAME).cls
 	sudo mkdir -p $(LOCAL)/{tex,source,doc}/latex/$(NAME)
 	sudo cp $(NAME).dtx $(LOCAL)/source/latex/$(NAME)
 	sudo cp $(NAME).cls $(LOCAL)/tex/latex/$(NAME)
 	sudo cp $(NAME).cls $(LOCAL)/doc/latex/$(NAME)
-zip: all
+zip: $(NAME).cls $(NAME).pdf fei-template.tex fei-template-sublist.tex README.txt
 	mkdir $(TDIR)
-	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib README $(TDIR)
+	cp README.txt $(TDIR)/README
+	cp $(NAME).{pdf,dtx} fei-template*.tex referencias.bib $(TDIR)
 	cd $(TEMP); zip -Drq $(PWD)/$(NAME)-$(VERS).zip $(NAME)
-templates: | $(NAME).cls test
+templates fei-template.tex fei-template-sublist.tex: tests/test-full-template.tex tests/test-full-template-sublist.tex
 	cp tests/test-full-template.tex fei-template.tex
 	cp tests/test-full-template-sublist.tex fei-template-sublist.tex
-test: $(NAME).cls
+tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME).cls
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/subtitulo.tex \
@@ -220,14 +219,13 @@ test: $(NAME).cls
 		tests/pieces/end-document.tex > tests/test-only-text-and-titles.tex
 
 	cp $(NAME).cls referencias.bib tests	
-	latexmk -pdf tests/test-full-template.tex &
-	latexmk -pdf tests/test-full-template-numeric.tex &
-	latexmk -pdf tests/test-full-template-backrefs.tex &
-	latexmk -pdf tests/test-full-template-numeric-backrefs.tex &
-	latexmk -pdf tests/test-full-template-nopdfa.tex &
-	latexmk -pdf tests/test-full-template-sublist.tex &
-	latexmk -pdf tests/test-only-required.tex &
-	latexmk -pdf tests/test-only-text.tex &
-	latexmk -pdf tests/test-only-text-and-titles.tex &
-	wait
+	latexmk -pdf tests/test-full-template.tex
+	latexmk -pdf tests/test-full-template-numeric.tex
+	latexmk -pdf tests/test-full-template-backrefs.tex
+	latexmk -pdf tests/test-full-template-numeric-backrefs.tex
+	latexmk -pdf tests/test-full-template-nopdfa.tex
+	latexmk -pdf tests/test-full-template-sublist.tex
+	latexmk -pdf tests/test-only-required.tex
+	latexmk -pdf tests/test-only-text.tex
+	latexmk -pdf tests/test-only-text-and-titles.tex
 	rm tests/referencias.bib tests/$(NAME).cls
