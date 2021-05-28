@@ -11,4 +11,4 @@ cache:
     - $HOME/.texlive
 
 script:
-  - make fei.cls templates
+  - make templates

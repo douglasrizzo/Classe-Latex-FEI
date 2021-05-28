@@ -3,9 +3,10 @@
 # ele foi criado utilizando os exemplos disponíveis em:
 # https://www.ctan.org/tex-archive/support/latexmk/example_rcfiles
 
+$pdf_mode = '1';
 $pdflatex = 'pdflatex --shell-escape %O %S';
-push @generated_exts, 'slg', 'slo', 'sls';
-push @generated_exts, 'bbl', 'loa', 'ins', 'loe', 'mw', 'run.xml', 'xdy';
+push @generated_exts, 'slg', 'slo', 'sls', 'bbl', 'loa', 'ins', 'loe', 'mw', 'run.xml', 'xdy';
+$clean_ext = "bbl";
 
 # não usamos o makeindex, mas sim o texindy
 add_cus_dep('idx', 'ind', 0, 'texindy');
