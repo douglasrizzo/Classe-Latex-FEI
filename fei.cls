@@ -741,7 +741,7 @@
         }{\end{SingleSpace}\end{minipage}{}
   \end{center}}
 %% 
-%% Copyright (C) 2020 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2021 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either
