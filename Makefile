@@ -52,7 +52,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/epigrafe.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
@@ -77,7 +77,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/epigrafe.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
@@ -102,7 +102,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/epigrafe.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
@@ -127,7 +127,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/epigrafe.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
@@ -153,7 +153,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/epigrafe.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
@@ -178,7 +178,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/epigrafe.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \
@@ -195,7 +195,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 		tests/pieces/cat-aprov.tex \
 		tests/pieces/resumo.tex \
 		tests/pieces/abstract.tex \
-		tests/pieces/tables.tex \
+		tests/pieces/tocloftasa.tex \
 		tests/pieces/first-chapter-title.tex \
 		tests/pieces/first-chapter-text.tex \
 		tests/pieces/document-text.tex \

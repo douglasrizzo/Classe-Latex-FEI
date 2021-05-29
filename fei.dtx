@@ -475,7 +475,7 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
     Listas de Abreviaturas e Símbolos & \lstinline+\printglossaries+ \\
     \hline
   \end{tabular}
-  \smallcaption{Fonte: Autor}
+  \smallcaption{Fonte: o Autor}
 \end{table}
 
 \section{TEXTO}%
@@ -489,7 +489,7 @@ Apenas ao utilizar \lstinline+\section{...}+, é necessário inserir manualmente
 
 De acordo com o Wikibook de \LaTeX{}\footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}, \emph{floats} são \emph{containers} para elementos em um documento que não podem ser quebrados entre duas páginas. O \LaTeX{} disponibiliza os \emph{floats} \texttt{figure} e \texttt{table}, cuja presença e utilização já são previstas pelo guia da biblioteca.
 
-Independente do tipo de float utilizado, a formatação das legendas é realizada da mesma maneira para todos. Na parte superior do \emph{float}, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo do \emph{float}, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior, utiliza-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \lstinline+\smallcaption{}+, o qual constitui uma interface simples para a formatação diferenciada da legenda inferior.
+Independente do tipo de float utilizado, a formatação das legendas é realizada da mesma maneira para todos. Na parte superior do \emph{float}, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo do \emph{float}, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior, utiliza-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \lstinline+\smallcaption{}+, o qual constitui uma interface simples para a formatação da legenda inferior.
 
 A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior utilizando a formatação nativa.
 
@@ -506,7 +506,7 @@ A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~
 	\centering
   \caption{Exemplo de figura com sua fonte}
 	\includegraphics[...]{...}
-	\smallcaption{Fonte: Autor}
+	\smallcaption{Fonte: o Autor}
 	\end{figure}
 \end{lstlisting}
 
@@ -518,7 +518,7 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
 	\begin{tabular}{|c|c|c|c|}
 		[...]
 	\end{tabular}
-  \smallcaption{Fonte: Autor}
+  \smallcaption{Fonte: o Autor}
 \end{table}
 \end{lstlisting}
 
@@ -537,10 +537,11 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
     \(y_3\) & 0       & 0       & 1       \\
     \hline
   \end{tabular}
-  \smallcaption{Fonte: Autor}
+  \smallcaption{Fonte: o Autor}
 \end{table}
 
-\subsubsection{Outras ilustrações}
+\subsubsection{Outras ilustrações}%
+\label{sec:outras-ilusts}
 
 Além de figuras, a lista de ilustrações prevê a inclusão de outros tipos de \emph{floats}, os quais são representados pelos seguintes ambientes:
 
@@ -563,24 +564,24 @@ A inserção de um desses \emph{floats} é feita de maneira igual à inserção 
 O apêndice A ensina a criar novas categorias de \emph{floats} conforme necessário.
 
 \begin{grafico}
-  \caption{Isto é um gráfico, criado com o ambiente \texttt{grafico}}
-  \rule{4cm}{4cm}
-  \smallcaption{Fonte: Autor}%
+  \caption{Isto é um gráfico, criado com o ambiente \texttt{grafico}}%
   \label{gra:grafico1}
+  \rule{4cm}{4cm}
+  \smallcaption{Fonte: o Autor}
 \end{grafico}
 
 \begin{mapa}
-  \caption{Isto é um mapa, criado com o ambiente \texttt{mapa}}
-  \rule{8cm}{5cm}
-  \smallcaption{Fonte: Autor}%
+  \caption{Isto é um mapa, criado com o ambiente \texttt{mapa}}%
   \label{map:mapa}
+  \rule{8cm}{5cm}
+  \smallcaption{Fonte: o Autor}
 \end{mapa}
 
 \begin{grafico}
-  \caption{Isto é outro gráfico, que continua a numeração deste tipo de \emph{float}}
-  \rule{4cm}{4cm}
-  \smallcaption{Fonte: Autor}%
+  \caption{Isto é outro gráfico, que continua a numeração deste tipo de \emph{float}}%
   \label{gra:grafico2}
+  \rule{4cm}{4cm}
+  \smallcaption{Fonte: o Autor}
 \end{grafico}
 
 \subsubsection{Algoritmos}
@@ -1053,10 +1054,10 @@ Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do com
 \begin{figure}
   \centering
   \begin{minipage}{.5\textwidth}
-    \caption{Exemplo de fonte com sua figura}
-    \rule{\textwidth}{2cm}
-    \smallcaption{Fonte: Autor}%
+    \caption{Exemplo de fonte com sua figura}%
     \label{fig:exemplo_alinhado}
+    \rule{\textwidth}{2cm}
+    \smallcaption{Fonte: o Autor}
   \end{minipage}
 \end{figure}
 
@@ -1066,11 +1067,10 @@ Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda c
 \begin{figure}
 	\centering
 	\begin{minipage}{.5\textwidth}
-		\caption{Exemplo de fonte com sua figura}
-		\rule{\textwidth}{2cm}
+		\caption{Exemplo de fonte com sua figura}%
+    \label{fig:exemplo_alinhado}
 		\includegraphics[width=\textwidth]{...}
-		\smallcaption{Fonte: Autor.}%
-\label{fig:exemplo_alinhado}
+		\smallcaption{Fonte: o Autor.}
 	\end{minipage}
 \end{figure}
 \end{lstlisting}
