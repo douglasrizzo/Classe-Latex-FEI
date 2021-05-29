@@ -1995,7 +1995,8 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % subtítulo
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
-\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
+\newcommand{\smallcaption}[1]{{\par\small%
+      \begin{flushleft}#1\end{flushleft}}}
 
 % cidade (padrão São Bernardo do Campo)
 \def\@cidade{S\~ao Bernardo do Campo}
