@@ -273,7 +273,6 @@ No entanto, ainda é necessário enfatizar a necessidade de instalação de algu
 \texttt{babel},
 \texttt{biblatex},
 \texttt{biblatex-abnt},
-\texttt{caption},
 \texttt{chngcntr},
 \texttt{csquotes},
 \texttt{enumitem},
@@ -743,7 +742,7 @@ A biblioteca permite a criação de um índice remissivo de palavras, para que e
 
 A classe da \index{FEI}\gls{fei} faz uso do pacote \texttt{biblatex-abnt} para inserção de citações ao longo do texto e impressão da lista de referências bibliográficas ao final do texto. O \texttt{biblatex-abnt} é responsável por formatar tanto citações quanto referências bibliográficas sob os padrões da ABNT. A classe da \index{FEI}\gls{fei} realiza algumas modificações no estilo fornecido pelo \texttt{biblatex-abnt} para se adequar ao guia da biblioteca. Por padrão, as citações são feitas no formato autor-data. Para utilizar o formato numérico, adicione a opção \texttt{numeric} à declaração da classe: \lstinline+\documentclass[numeric]{fei}+.
 
-Os comandos mais comuns de citação são exemplificados abaixo e nas próximas seções. Para uma lista detalhada de todos os comandos tanto do formato autor-data como numérico, o leitor é referenciado ao manual do \texttt{biblatex-abnt} \footnote{\url{https://www.ctan.org/pkg/biblatex-abnt}}. O formato autor-data é mencionado como \texttt{abnt}, enquanto o formato numérico é mencionado na documentação como \texttt{abnt-numeric}.
+Os comandos mais comuns de citação são exemplificados abaixo e nas próximas seções. Para uma lista detalhada de todos os comandos tanto do formato autor-data como numérico, o leitor é referenciado ao manual do \texttt{biblatex-abnt} \footnote{\url{https://www.ctan.org/pkg/biblatex-abnt}}. O formato autor-data é mencionado na documentação como \texttt{abnt}, enquanto o formato numérico é chamado de \texttt{abnt-numeric}.
 
 \begin{itemize}
   \item citação no final de linha:
@@ -1552,7 +1551,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \setlength{\headheight}{14.4pt} % remove warning do memoir
 
-\RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
+% formatação das legendas, separador é um traço
+\captiondelim{ -- }
+% alinhada à esquerda
+\captionstyle{\raggedright}
+% alinhada após a palavra "Figura", "Tabela" etc
+\hangcaption
 
 \selectlanguage{brazil} % idioma do documento
 

@@ -155,7 +155,9 @@
 
 \setlength{\headheight}{14.4pt} % remove warning do memoir
 
-\RequirePackage[font={singlespacing},format=hang, justification=raggedright,labelsep=endash,singlelinecheck=false]{caption} % fontes das legendas
+\captiondelim{ -- }
+\captionstyle{\raggedright}
+\hangcaption
 
 \selectlanguage{brazil} % idioma do documento
 
@@ -547,7 +549,8 @@
 
 \newcommand{\subtitulo}[1]{\def\@subtitulo{#1}}
 
-\newcommand{\smallcaption}[1]{\captionsetup{font=small}\caption*{#1}}
+\newcommand{\smallcaption}[1]{{\par\small%
+      \begin{flushleft}#1\end{flushleft}}}
 
 \def\@cidade{S\~ao Bernardo do Campo}
 \newcommand{\cidade}[1]{\def\@cidade{#1}}
@@ -636,12 +639,12 @@
 
     \newglossarystyle{mylong}{%
       \setglossarystyle{long}% base this style on the long style
-      \renewenvironment{theglossary}{%
-        \begin{longtable*}{lp{\glsdescwidth}}}%
-          {\end{longtable*}}%
+      % \renewenvironment{theglossary}{%
+      %   \begin{longtable*}{lp{\glsdescwidth}}}%
+      %     {\end{longtable*}}%
     }%
 
-    \setglossarystyle{mylong}
+    \setglossarystyle{long}
     \setlength\LTleft{0pt}
     \setlength\LTright{0pt}
     \setlength\glsdescwidth{\linewidth}
