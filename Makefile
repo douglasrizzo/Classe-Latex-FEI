@@ -34,7 +34,7 @@ zip: $(NAME).cls $(NAME).pdf fei-template.tex fei-template-sublist.tex README.tx
 templates fei-template.tex fei-template-sublist.tex: tests/test-full-template.tex tests/test-full-template-sublist.tex
 	cp tests/test-full-template.tex fei-template.tex
 	cp tests/test-full-template-sublist.tex fei-template-sublist.tex
-tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME).cls
+tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME).cls tests/pieces/*.tex
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
 		tests/pieces/newsubfloatfigure.tex \
