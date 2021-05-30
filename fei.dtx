@@ -131,6 +131,8 @@ literate=
 % \advisor{Donald Knuth}
 % \curso{Formatação e Tipografia}
 
+\newsubfloat{figure}
+
 \newcommand{\bigvindex}[1]{\index{#1@\emph{#1}}\emph{#1}}
 \newcommand{\vindex}[1]{\index{#1}#1}
 \newcommand{\cfcite}[1]{(Cf. \cite*{#1})}
@@ -582,6 +584,48 @@ O apêndice A ensina a criar novas categorias de \emph{floats} conforme necessá
   \rule{4cm}{4cm}
   \smallcaption{Fonte: o Autor}
 \end{grafico}
+
+\subsubsection{\emph{Subfloats}}
+
+A classe da FEI permite a inserção de subfloats da mesma forma que a classe \emph{memoir}, sem a necessidade de incluir pacotes adicionais. No preâmbulo de seu documento, inclua o comando \verb+\newsubfloat{<tipo_de_float>}+ para indicar que \emph{subfloats} serão utilizados ao longo do documento, onde \texttt{<tipo\_de\_float>} deve ser trocado por \texttt{figure}, \texttt{table} ou um dos outros \emph{floats} apresentados na seção~\ref{sec:outras-ilusts}. Também é possível utilizar o pacote \texttt{subfig} (não recomendo o \texttt{subcaption}), mas ele não é compatível com o comando \verb+\newsubfloat{<tipo_de_float>}+, então os dois estilos não podem ser misturados no mesmo documento.
+
+O código abaixo exemplifica a inserção de duas subfiguras no mesmo ambiente \texttt{figure}. A figura~\ref{fig:subfloats} resulta do uso do código. As subfiguras podem ser referenciadas através de suas \emph{labels}, resultando em \ref{fig:subfloat-1} e \ref{fig:subfloat-2}.
+
+\begin{verbatim}
+\begin{figure}
+  \caption{Múltiplos \emph{floats}}%
+  \label{fig:h-subfloats}
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \rule{2cm}{2cm}
+    \subcaption{First text \label{fig:h-subfloat-1}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \rule{2cm}{2cm}
+    \subcaption{Second text \label{fig:h-subfloat-2}}
+  \end{minipage}
+  \smallcaption{Fonte: o Autor}
+\end{figure}
+\end{verbatim}
+
+\begin{figure}
+  \caption{Múltiplos \emph{floats}}%
+  \label{fig:h-subfloats}
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \rule{2cm}{2cm}
+    \subcaption{First text \label{fig:h-subfloat-1}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \rule{2cm}{2cm}
+    \subcaption{Second text \label{fig:h-subfloat-2}}
+  \end{minipage}
+  \smallcaption{Fonte: o Autor}
+\end{figure}
 
 \subsubsection{Algoritmos}
 
@@ -1087,6 +1131,128 @@ Para criar uma nova categoria de \emph{float}, a qual será listada na lista de 
 \renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
 \setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
 \end{lstlisting}
+
+\chapter{Mais exemplos de \emph{subfloats}}
+
+O código a seguir insere 4 imagens num padrão quadriculado, cujo resultado é exemplificado na figura~\ref{fig:q-subfloats}. O código posterior a este insere 4 imagens na vertical, tomando a totalidade da página, como na figura~\ref{fig:v-subfloats}.
+
+\begin{verbatim}
+\begin{figure}
+  \caption{Quatro subfiguras}%
+  \label{fig:q-subfloats}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Uma figura \label{fig:q-subfloat-1}}
+  \end{minipage}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Outra figura \label{fig:q-subfloat-2}}
+  \end{minipage}
+
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Mais uma figura \label{fig:q-subfloat-3}}
+  \end{minipage}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Última figura \label{fig:q-subfloat-4}}
+  \end{minipage}
+
+  \smallcaption{Fonte: Autor}
+\end{figure}
+\end{verbatim}
+
+\begin{verbatim}
+\begin{figure}
+  \caption{Subfiguras na vertical}
+  \label{fig:v-subfloats}
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Uma figura \label{fig:v-subfloat-1}}
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Outra figura \label{fig:v-subfloat-2}}
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Mais uma figura \label{fig:v-subfloat-3}}
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Última figura \label{fig:v-subfloat-4}}
+  \end{minipage}
+  \smallcaption{Fonte: Autor}
+\end{figure}
+\end{verbatim}
+
+\begin{figure}
+  \caption{Quatro subfiguras}%
+  \label{fig:q-subfloats}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Uma figura \label{fig:q-subfloat-1}}
+  \end{minipage}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Outra figura \label{fig:q-subfloat-2}}
+  \end{minipage}
+
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Mais uma figura \label{fig:q-subfloat-3}}
+  \end{minipage}
+  \begin{minipage}{.49\textwidth}
+    \centering
+    \rule{4cm}{2cm}
+    \subcaption{Última figura \label{fig:q-subfloat-4}}
+  \end{minipage}
+
+  \smallcaption{Fonte: Autor}
+\end{figure}
+
+\begin{figure}
+  \caption{Subfiguras na vertical}
+  \label{fig:v-subfloats}
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Uma figura \label{fig:v-subfloat-1}}
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Outra figura \label{fig:v-subfloat-2}}
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Mais uma figura \label{fig:v-subfloat-3}}
+  \end{minipage}
+
+  \begin{minipage}{\textwidth}
+    \centering
+    \rule{.75\textwidth}{.195\textheight}
+    \subcaption{Última figura \label{fig:v-subfloat-4}}
+  \end{minipage}
+  \smallcaption{Fonte: Autor}
+\end{figure}
 
 \chapter{Arquivos criados pelo processo de compilação}%
 \label{app:arquivos}

@@ -37,6 +37,7 @@ templates fei-template.tex fei-template-sublist.tex: tests/test-full-template.te
 tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME).cls
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
 		tests/pieces/simbolos.tex \
@@ -62,6 +63,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-numeric.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
 		tests/pieces/simbolos.tex \
@@ -87,6 +89,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-backrefs.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
 		tests/pieces/simbolos.tex \
@@ -112,6 +115,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass-numeric-backrefs.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
 		tests/pieces/simbolos.tex \
@@ -138,6 +142,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
 		tests/pieces/documentclass-nopdfa.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos.tex \
 		tests/pieces/simbolos.tex \
@@ -164,6 +169,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 	awk 'FNR==1{print ""}{print}' tests/pieces/pdfa-xmpdata-filecontents.tex \
 		tests/pieces/documentclass-sublist.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/subtitulo.tex \
 		tests/pieces/acronimos-simbolos-sublist.tex \
 		tests/pieces/addbibresource.tex \
@@ -188,6 +194,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/addbibresource.tex \
 		tests/pieces/begin-document.tex \
 		tests/pieces/titulo.tex \
@@ -210,6 +217,7 @@ tests tests/test-full-template.tex tests/test-full-template-sublist.tex: $(NAME)
 
 	awk 'FNR==1{print ""}{print}' tests/pieces/documentclass.tex \
 		tests/pieces/inputenc-author-title.tex \
+		tests/pieces/newsubfloatfigure.tex \
 		tests/pieces/addbibresource.tex \
 		tests/pieces/begin-document.tex \
 		tests/pieces/first-chapter-title.tex \
