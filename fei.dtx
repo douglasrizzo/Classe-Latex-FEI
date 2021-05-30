@@ -1,9 +1,12 @@
+% LTeX: enabled=false
 % \iffalse meta-comment
 % !TEX program  = pdfLaTeX
 %<*internal>
 \iffalse
 %</internal>
 %<*readme>
+% LTeX: language=en-US
+% LTeX: enabled=true
 -----------------------------------------------------------------------------------------------------
 fei --- Class for the creation of academic works under the typographic rules of FEI University Center
 Author: Douglas De Rizzo Meneghetti
@@ -13,7 +16,7 @@ Released under the LaTeX Project Public License v1.3c or later
 See http://www.latex-project.org/lppl.txt
 -----------------------------------------------------------------------------------------------------
 
-fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, masters dissertation or phd thesis, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
+fei is a class created by graduate students and LaTeX enthusiasts that allow students from FEI University Center to create their academic works, be it a monograph, master's thesis or PhD dissertation, under the typographic rules of the institution. The class makes it possible to create a full academic work, supporting functionalities such as cover, title page, catalog entry, dedication, summary, lists of figures, tables, algorithms, acronyms and symbols, multiple authors, index, references, appendices and attachments.
 
 fei is loosely based in the Brazilian National Standards Organization (Associação Brasileira de Normas Técnicas, ABNT) standards for the creation of academic works, such as NBR 14724:2011, NBR 6028:2003, NBR 10522:1988, NBR 6024:2012, NBR 6023:2002 and NBR 6034:2004.
 In the manual, users will find detailed information regarding the class commands, environments and best practices to create an academic text of good quality. We also made available a few template files which students may use as a starting point for their texts.
@@ -24,6 +27,7 @@ See http://www.latex-project.org/lppl.txt
 
 # Latest releases and version control
 CTAN is always the place to go to get the stable version of the class. To know the changes done to the class and get previous and developments versions, visit https://www.github.com/douglasrizzo/Classe-Latex-FEI/.
+% LTeX: enabled=false
 %</readme>
 %<*internal>
 \fi
@@ -37,6 +41,7 @@ CTAN is always the place to go to get the stable version of the class. To know t
 \keepsilent
 \askforoverwritefalse
 \preamble
+% LTeX: enabled=true
 -----------------------------------------------------------------------------------------------------
 fei --- Class for the creation of academic works under the typographic rules of FEI University Center
 Author: Douglas De Rizzo Meneghetti
@@ -63,7 +68,7 @@ Douglas De Rizzo Meneghetti.
 This work consists of the file  fei.dtx,
 and the derived files           fei.pdf and
 fei.cls.
-
+% LTeX: enabled=false
 \endpostamble
 \usedir{tex/latex/fei}
 \generate{
@@ -124,7 +129,8 @@ literate=
 {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
 {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
 }
-
+% LTeX: language=pt-BR
+% LTeX: enabled=true
 \author{Douglas De Rizzo Meneghetti}
 \title{Classe \LaTeX{} da FEI para criação de trabalhos acadêmicos}
 \subtitulo{de acordo com os guias de março de 2020 da biblioteca}
@@ -183,7 +189,7 @@ literate=
 % \epigrafe{A good scientist is a person with original ideas. A good engineer is a person who makes a design that works with as few original ideas as possible. There are no prima donnas in engineering.}{Freeman Dyson \nocite{dyson_disturbing_1979}}
 
 \begin{resumo}
-  O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Utilizado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \LaTeX{} da FEI. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
+  O \TeX{} é um sistema de formatação de textos baseado em uma \emph{mark-up language}, criado em 1978 por Donald Knuth e ampliado com uma série de macros por Leslie Lamport, dando à luz o \LaTeX{}. Usado com frequência na área acadêmica, foram criadas classes em \LaTeX{} para satisfazer às regras de formatação dos mais variados órgãos, sociedades, institutos e universidades. Baseada nos padrões da ABNT, a biblioteca da FEI criou seu próprio guia para formatação de trabalhos acadêmicos, o qual originou, extra-oficialmente, a classe \LaTeX{} da FEI. Neste guia, os usuários serão guiados no uso dessa classe, desde a criação de elementos pré-textuais (capa, folha de rosto, ficha catalográfica, epígrafe, dedicatória, sumário, listas de figuras, tabelas, algoritmos, siglas e símbolos), passando pelo corpo do texto e elementos pós-textuais (índice remissivo, referências bibliográficas, apêndices e anexos) e terminando com uma explicação referente à instalação dos pré-requisitos e compilação de um trabalho dissertativo com todos os recursos que a classe pode oferecer.
   \keywords{\LaTeX{}. FEI.}
 \end{resumo}
 
@@ -202,56 +208,27 @@ literate=
 \chapter{Introdução}
 
 \glsaddall%
-Inspirado nas diversas normas da \index{ABNT}\gls{abnt} para produção de trabalhos acadêmicos, a biblioteca do Centro Universitário \index{FEI}\gls{fei} criou um guia que dita as regras que os alunos devem seguir na formatação de suas monografias, dissertações e teses. Através deste guia (e algumas dúzias de trabalhos corrigidos pelas bibliotecárias), nasceu a classe \LaTeX{} da \gls{fei}, especializada na criação de trabalhos acadêmicos sob as normas da biblioteca da \gls{fei}. Com ela, os alunos podem utilizar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a maior parte da formatação complexa do documento a cargo da classe.
+A biblioteca do Centro Universitário \index{FEI}\gls{fei} disponibiliza um guia de formatação de monografias de graduação, mestrado e doutorado. Usando tanto o guia, como algumas dúzias de trabalhos corrigidos pelas bibliotecárias e e-mails e visitas incessantes da minha parte à biblioteca, nasceu a classe \LaTeX{} da \gls{fei}, especializada na criação de trabalhos acadêmicos sob as normas da biblioteca da \gls{fei}. Com ela, os alunos podem usar seus conhecimentos em \LaTeX{} para criar seus documentos, deixando a maior parte da formatação complexa do documento a cargo da classe. Espera-se que os autores tenham menos trabalho com a formatação do texto do que com a escrita do mesmo.
 
-A escrita da classe que formata o texto foi realizada tendo-se como referência principal o guia disponível pela biblioteca. Trabalhos corrigidos e reuniões subsequentes com as bibliotecárias também serviram de referencial para refinar algumas funcionalidades da classe, assim como realizar adições não cobertas pelo guia, como algoritmos e teoremas.
+A classe redefine alguns comandos e ambientes pré-existentes do \LaTeX{} e cria novos comandos e ambientes. Todos eles são descritos neste manual.
 
-Para facilitar a escrita do texto final, alguns comandos/ambientes já existentes foram modificados e novos comandos e ambientes foram adicionados. Desta forma, espera-se que o autor tenha menos trabalho com a formatação do texto do que com a escrita do mesmo.
+Este manual é organizado da seguinte forma: a seção \ref{chap:introducao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; a seção \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos usados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto usando a classe \LaTeX{} da FEI com todas as suas funcionalidades. O apêndice~\ref{app:hacks} descreve alguns \emph{hacks} úteis para usuários da classe que precisam realizar as customizações mais corriqueiras na formatação de seus trabalhos Já o apêndice~\ref{app:arquivos} explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Por último, o apêndice~\ref{app:simbolos} disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
 
-O texto é organizado da seguinte forma: a seção \ref{chap:instalacao} lista os passos para instalação do \LaTeX{}, da classe e de suas dependências nos principais sistemas operacionais; a seção \ref{chap:comandos} enumera os comandos e ambientes, tanto novos quanto redefinidos do \LaTeX{}, necessários para a criação do corpo do trabalho acadêmico; a seção \ref{chap:referencia} explica o uso do abn\TeX{} e exemplifica o uso de seus diversos comandos de citação; a seção \ref{chap:indice} disserta sobre os programas necessários para a criação do índice remissivo e os comandos utilizados para se indexar termos no decorrer do texto; a seção \ref{chap:listas} explica ao autor como criar listas de abreviaturas e símbolos; a seção \ref{chap:compilando} ensina a compilar um projeto utilizando a classe \LaTeX{} da FEI com todas as suas funcionalidades. O apêndice~\ref{app:hacks} descreve alguns \emph{hacks} úteis para usuários da classe que precisam realizar as customizações mais corriqueiras na formatação de seus trabalhos Já o apêndice~\ref{app:arquivos} explica cada um dos arquivos criados pelo processo de compilação, com o propósito de instruir e exemplificar o uso de um apêndice. Por último, o apêndice~\ref{app:simbolos} disponibiliza uma lista dos principais símbolos matemáticos disponíveis no \TeX{}.
+\section{DÚVIDAS, PROBLEMAS E CONTRIBUIÇÕES}%
+\label{chap:faq}
 
-\section{NOTA AOS USUÁRIOS ANTIGOS DA CLASSE}
+Este manual descreve como produzir um documento usando a classe da FEI. Caso tenha dúvidas relacionadas a editores de texto, serviços online (como o Overleaf\index{Overleaf}), problemas frequentes de compilação ou geração de referências, existe uma wiki\index{wiki} no GitHub\index{GitHub}: \url{https://github.com/douglasrizzo/Classe-Latex-FEI/wiki}
 
-A partir da versão 3, a classe \LaTeX{} da FEI deixa de utilizar o pacote \texttt{abntex2cite}\index{abntex2cite@\emph{abntex2cite}} para formatação de referências e passa a utilizar o novo pacote \texttt{biblatex-abnt}\index{biblatex-abnt@\emph{biblatex-abnt}}, o qual possui como dependências o pacote \texttt{biblatex}\index{biblatex@\emph{biblatex}} e o programa \emph{Biber}\index{biber@\emph{Biber}}, todos disponíveis nas distribuições comuns do \LaTeX{}.
-
-Isso significa que usuários de versões antigas da classe não mais usarão o comando \texttt{bibtex} para geração das referências e sim o comando \texttt{biber}. Para conferir mais mudanças, ler as seções \ref{subsec:referencias-pre} e \ref{subsec:referencias-pos} para se familiarizar com a nova forma de adicionar arquivos \texttt{bib} ao projeto e imprimir as referências, assim como a seção \ref{sec:dificil}, onde todos os comandos necessários para a compilação de um documento estão disponíveis.
-
-Adicionalmente, os \emph{templates} que acompanham a classe foram devidamente atualizados para exemplificar as mudanças.
+Os \emph{issues} do GitHub\index{GitHub} listam os problemas já conhecidos que a classe tem. Lá é o local preferencial para reportar problemas relacionados a ela: \url{https://github.com/douglasrizzo/Classe-Latex-FEI/issues}
 
 \section{INSTALAÇÃO}%
 \label{chap:instalacao}
 
-Esta seção guia o leitor na instalação do \LaTeX{}, da classe e dos diferentes pacotes e programas necessários para utilizar todas as funcionalidades dela.
-
-\subsection{Windows}
-
-A opção mais simples para instalação do \LaTeX{} no Windows é o aplicativo Mik\TeX{} (\url{http://miktex.org}). Tenha certeza de escolher a opção que permite ao software baixar pacotes em falta do repositório online e, na primeira vez que compilar seu projeto, todos os pacotes serão baixados. Tanto a classe da FEI como todas suas dependências estão disponíveis no Mik\TeX{}.
-
-Alternativamente, é possível utilizar o gerenciador de pacotes do Mik\TeX{} para selecionar os pacotes a serem baixados. A lista destes pacotes está disponível na seção \ref{sec:dependencias}.
-
-\subsection{Linux}
-
-O \LaTeX~é frequentemente disponibilizado para as maiores distribuições Linux por meio de seus gerenciadores de pacotes. No Ubuntu, por exemplo, é necessária a instalação do \TeX{} \emph{Live} através do \texttt{apt-get}. Recomenda-se optar pela instalação completa, através do pacote \texttt{texlive-full}.
-
-É necessário enfatizar que a versão do \TeX{} \emph{Live} disponível nos repositórios do sistema operacional nem sempre é a versão mais recente, a qual pode sempre ser encontrada na página oficial do \TeX{} \emph{Live}, \url{https://www.tug.org/texlive/}.
-
-Com a versão mais recente do \TeX{} \emph{Live} instalada, é possível usar o \emph{\TeX{} Live Manager}, o gerenciador de pacotes do \TeX{} \emph{Live}, para baixar todos os pacotes necessários, inclusive a classe da FEI, sob o nome \texttt{fei}.
-
-\subsection{Mac OS}
-
-No Mac, o \LaTeX{} pode ser instalado através do Mac\TeX{} (\url{http://tug.org/mactex/}), uma compilação completa do \TeX{} \emph{Live} para Mac.
-
-O Mac\TeX{} nem sempre possui a versão mais recente dos pacotes do repositório oficial do \TeX{}. Nesse caso, a opção é baixar a classe diretamente do \gls{ctan} ou da página do projeto no GitHub.
-
-\subsection{Compilando do código-fonte}
-
-A classe também pode ser baixada diretamente do GitHub, ou compilada do código-fonte. O repositório do projeto \footnote{\url{http://github.com/douglasrizzo/Classe-Latex-FEI}} possui todos os arquivos necessários para o procedimento. Para tanto, clone o repositório para um diretório e compile-o usando o Makefile disponível.
-
-O processo de compilação requer que todas as dependências da classe já estejam instaladas. O único arquivo necessário para formatação dos trabalhos acadêmicos é a classe \LaTeX{} da FEI, a qual deve ser mantida no mesmo diretório do arquivo \texttt{tex} do trabalho do aluno.
+A instalação do \LaTeX{} e da classe foram movidas para a Wiki, cujo endereço está disponível na seção~\ref{chap:faq}.
 
 \section{FONTE ARIAL}
 
-Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial não são disponibilizadas nativamente por distribuições do \LaTeX{} como o Mik\TeX{} e o \TeX{} \emph{Live}. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
+Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial\index{Arial} não são disponibilizadas nativamente por distribuições do \LaTeX{} como o Mik\TeX{} e o \TeX{} \emph{Live}. Para utilizá-las, é necessário instalá-las separadamente. As instruções para instalação das fontes estão disponíveis no site do \TeX \emph{Users Group}\footnote{http://tug.org/fonts/getnonfreefonts/}.
 
 \begin{itemize}
   \item Fazer download do script\footnote{http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts};
@@ -259,16 +236,16 @@ Por ser uma fonte True Type de autoria da Microsoft, as fontes da família Arial
   \item Rodar o script: \lstinline+getnonfreefonts --all+.
 \end{itemize}
 
-Após isso, é possível utilizar a opção \texttt{font=arial} na declaração da classe, no início do arquivo \texttt{tex}: \lstinline+\documentclass[font=arial]{fei}+.
+Após isso, é possível usar a opção \texttt{font=arial} na declaração da classe, no início do arquivo \texttt{tex}: \lstinline+\documentclass[font=arial]{fei}+.
 
-Alternativamente, é possível usar a fonte Arimo, uma versão aberta da fonte Arial disponibilizada nas principais distribuições de \LaTeX{}. Para isso, basta ter o pacote \texttt{arimo} instalado e utilizar a opção \texttt{font=arimo} na declaração da classe.
+Alternativamente, é possível usar a fonte Arimo\index{Arimo}, uma versão aberta da fonte Arial disponibilizada nas principais distribuições de \LaTeX{}. Para isso, basta ter o pacote \texttt{arimo} instalado e usar a opção \texttt{font=arimo} na declaração da classe.
 
 \section{DEPENDÊNCIAS}%
 \label{sec:dependencias}
 
-A partir da versão 3, a classe da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe da FEI fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
+A partir da versão 3, a classe da FEI foi criada tendo a classe \texttt{memoir} como base, o que permitiu com que a classe fosse personalizada, em sua maioria, através do uso de comandos nativos do \LaTeX{}, reduzindo o número de pacotes do qual ela depende.
 
-No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados mais abaixo, dos quais a classe \LaTeX{} da FEI depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS):\footnote{Como uma ironia do destino, o guia da biblioteca permite alíneas alfabéticas e a lista de pacotes possui mais de 26 itens, o que impede que ela seja representada como uma alínea.}
+No entanto, ainda é necessário enfatizar a necessidade de instalação de alguns pacotes, listados abaixo, dos quais a classe \LaTeX{} da FEI depende para seu funcionamento correto. Estes pacotes estão disponíveis nas distribuições do Mik\TeX{} (para Windows), Mac\TeX{} (para Mac OS) e \TeX{} \emph{Live} (para Linux e Mac OS):\footnote{Como uma ironia do destino, o guia da biblioteca permite alíneas alfabéticas e a lista de pacotes possui mais de 26 itens, o que impede que ela seja representada como uma alínea.}
 \texttt{algorithm2e},
 \texttt{amsthm},
 \texttt{arimo},
@@ -305,17 +282,23 @@ Os scripts de alguns programas \TeX{}, como o \texttt{makeglossaries}, são depe
 \chapter{Comandos e ambientes}%
 \label{chap:comandos}
 
-Este capítulo descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem utilizados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem utilizados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, apêndices, anexos e índice remissivo.
+Esta seção descreve os comandos disponibilizados pela classe. Ele é separado em quatro seções: a seção \ref{sec:preambulo} disserta sobre os comandos a serem usados antes do início do texto; a seção \ref{sec:pretexto} auxilia na declaração dos elementos pré-textuais do documento; a seção \ref{sec:texto} descreve a estrutura do texto e outros elementos a serem usados durante a produção deste, como \emph{floats}; a seção \ref{sec:postexto} disserta sobre os elementos pós-textuais, a saber, referências, apêndices, anexos e índice remissivo.
 
 \section{PREÂMBULO}%
 \label{sec:preambulo}
 
-No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem utilizados no decorrer do texto. O preâmbulo da classe \LaTeX{} da FEI contém os seguintes elementos que devem ser declarados no preâmbulo:
+No preâmbulo do texto são declaradas as propriedades globais do documento, como a classe que rege a formatação geral do texto e novos comandos a serem usados no decorrer do texto. O preâmbulo da classe \LaTeX{} da FEI contém os seguintes elementos que devem ser declarados no preâmbulo:
 
 \subsection{Metadados PDF/A}%
 \label{subsec:pdfa}
 
-A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato específico para o arquivamento de documentos PDF e disponibilização dos metadados do documento para buscas. Para realizar o depósito do trabalho na biblioteca, é necessário que o trabalho esteja no padrão PDF/A.
+A partir de 2017, os trabalhos depositados na biblioteca da instituição devem aderir ao padrão PDF/A, um formato voltado ao arquivamento de documentos PDF e disponibilização dos metadados e texto do documento para buscas.
+
+A classe da FEI implementa a forma mais bem suportada de aderência ao padrão PDF/A disponível na comunidade \TeX{}, através do pacote \texttt{xpdf}. Contudo, a aderência total ao padrão é praticamente impossível sem minar as liberdades dos usuários com relação a como criam seus textos.
+
+Por exemplo, o padrão PDF/A é quebrado caso um usuário insira figuras em formato vetorial, como EPS e PDF, caso essas figuras não estejam em conformidade com o padrão PDF/A. O padrão também e quebrado caso novas fontes ou símbolos sejam usados no documento, casos esses não possam ser convertidos para Unicode.
+
+Dito isso, a forma correta de \emph{tentar} a aderência ao padrão é a que se segue.
 
 Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o nome do arquivo \texttt{.tex} principal, porém com extensão \texttt{.xmpdata}, deve existir no diretório-raiz do projeto contendo tais metadados. Os usuários da classe da FEI não precisam criar este documento manualmente, podendo apenas inserir as seguintes linhas antes do comando \lstinline+\documentclass+, modificando os metadados de interesse.
 
@@ -323,7 +306,7 @@ Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o
 \begin{filecontents*}{\jobname.xmpdata}
 \Title     {Minha tese-dissertação-monografia}
 \Author    {Meu Nome\sep Nome Do Outro Integrante\sep Nome do Terceiro}
-\Copyright {Copyright \copyright\ 2020 "Douglas De Rizzo Meneghetti"}
+\Copyright {Copyright \copyright\ 2021 "Douglas De Rizzo Meneghetti"}
 \Keywords  {manual\sep latex\sep tipografia}
 \Language  {pt-BR}
 \Subject   {Resumo vai aqui em uma única linha corrida.}
@@ -332,7 +315,7 @@ Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o
 
 Uma lista com mais opções de metadados está disponível em \url{https://www.mathstat.dal.ca/~selinger/pdfa/sample.xmpdata}.
 
-Antes de depositar a versão final do trabalho, recomenda-se checar se o arquivo PDF adere ao formato PDF/A. O software padrão, que também é gratuito e multiplafatorma, para realizar a checagem é o \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}}. Também é possível usar o Adobe Acrobat Pro.
+Para se validar a aderência ao formato PDF/A, recomenda-se o uso do \emph{veraPDF}\footnote{\url{https://verapdf.org/software/}}, um software padrão, gratuito e multiplafatorma. Também é possível usar o Adobe Acrobat Pro.
 
 \subsection{Declaração da classe}%
 \label{subsec:documentclass}
@@ -348,24 +331,24 @@ A classe da FEI pode receber as seguintes opções:
 \begin{enumerate}
   \item \texttt{draft}: Essa opção simplifica o processo de compilação do PDF para que ele seja realizado mais rapidamente. A opção beneficia especialmente a compilação de trabalhos com um número elevado de imagens ou que incluam imagens cujos arquivos sejam grandes, uma vez que as imagens não são adicionadas ao PDF. \emph{Hyperlinks} internos (\emph{e.g. links} para seções, citações, símbolos, abreviaturas, figuras, tabelas) também não são inseridos\footnote{Para uma lista mais completa das mudanças advindas do uso da opção \texttt{draft}, cheque o seguinte tópico no StackExchange: \url{https://tex.stackexchange.com/q/49277/30998}.};
   \item \texttt{nopdfa}: desabilita a geração do documento no formato PDF/A. Essa função é disponibilizada para fins de compatibilidade, para que trabalhos antigos que possivelmente sejam corrompidos durante o processo de compilação devido ao padrão PDF/A ainda possam ser compilados;
-  \item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica e folha de aprovação no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
+  \item \texttt{deposito}: Procura por arquivos PDF referentes à ficha catalográfica\index{ficha catalográfica} e folha de aprovação\index{folha de aprovação} no diretório do documento e os insere nos locais em que \lstinline+\fichacatalografica+ e \lstinline+\folhadeaprovacao+ são chamados. Caso contrário, insere páginas indicativas, para fins de contagem de número de páginas;
   \item \texttt{sublist}: configura o pacote \texttt{glossaries} para que sub-listas de símbolos sejam usadas. Mais sobre sub-listas na seção \ref{sec:sublist};
   \item \texttt{numeric}: troca as citações e referências autor-data para numéricas;
   \item \texttt{algo-as-figure}: configura o pacote \texttt{algorithm2e} para que algoritmos sejam listados na lista de ilustrações. Essa configuração é preferível, uma vez que a formatação das legendas e da lista de algoritmos, no presente, não condiz com as recomendações do guia da biblioteca;
-  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, permitindo realizar uma impressão frente-e-verso de melhor qualidade. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
+  \item \texttt{twoside}: a atualização de 2015 do guia da biblioteca recomenda que trabalhos acadêmicos com mais de 100 páginas sejam impressos em formato \index{frente-e-verso}frente-e-verso. Por ser derivada da classe \texttt{memoir}, a classe da FEI pode receber algumas opções nativas de \texttt{memoir}. Um exemplo de opção que pode ser útil é \texttt{twoside}, a qual alterna o tamanho das margens direita e esquerda das páginas, assim como a posição da numeração, gerando um documento frente-e-verso da forma correta. Alterações adicionais foram realizadas para que todos os elementos pré-textuais sejam corretamente iniciados nas páginas ímpares, como recomenda o guia e a norma. É importante reparar, contudo, que a utilização de \texttt{twoside} acarreta no aumento do número de páginas, uma vez que os versos de algumas páginas no pré-texto podem ser deixados em branco em prol da norma.
   \item \texttt{acronym}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de abreviaturas no trabalho;
   \item \texttt{symbols}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de símbolos no trabalho;
-  \item \texttt{backrefs}: passa a opção \texttt{backref} ao pacote \texttt{biblatex}, para que ele imprima as páginas nas quais cada trabalho foi citado nas referências bibliográficas. Repare que esta não é uma funcionalidade prevista no guia de formatação de referências da biblioteca, então use-o somente sob sua conta e risco;
+  \item \texttt{backrefs}: passa a opção \texttt{backref} ao pacote \texttt{biblatex}, para que ele imprima as páginas nas quais cada trabalho foi citado nas referências bibliográficas. Esta não é uma funcionalidade prevista no guia de formatação de referências da biblioteca, mas pode ser útil no caso de bancas que gostam de checar se o aluno citou de fato todos os documentos listados nas referências. Apenas lembre-se de tirar isso antes da entrega final;
   \item \texttt{record}: passado para o pacote \texttt{glossaries-extra}, sinaliza o uso de um arquivo \texttt{.bib} para definição de símbolos e abreviaturas, a ser compilado pelo programa \index{bib2gls@\texttt{bib2gls}}\texttt{bib2gls};
-  \item \texttt{abbr-shortcuts}: ativa a opção \texttt{shortcuts=abbr} para o pacote \texttt{glossaries-extra}, permitindo referenciar abreviaturas por comandos menores, como \verb+\ab+, \verb+\as+, \verb+\al+, \verb+\af+, \verb+\abp+, \verb+\asp+, \verb+\alp+ e \verb+\afp+. Ver seção 4.3 do manual do \texttt{glossaries-extra}.
+  \item \texttt{abbr-shortcuts}: ativa a opção \texttt{shortcuts=abbr} para o pacote \texttt{glossaries-extra}. Ver seção~\ref{sec:citar-abrevs-simbs} e seção 4.3 do manual do \texttt{glossaries-extra} para mais informações.
 \end{enumerate}
 
 \subsection{Nome do autor, e título}
 
-O nome do autor e o título da obra são inseridos utilizando os comandos nativos do \LaTeX{} \lstinline+\author{author}+ e \lstinline+\title{title}+. Eles são posteriormente utilizados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \lstinline+\and+ ou \lstinline+\\+, como no exemplo:
+O nome do autor e o título da obra são inseridos usando os comandos nativos do \LaTeX{} \lstinline+\author{author}+ e \lstinline+\title{title}+. Eles são posteriormente usados na criação da capa e folha de rosto do trabalho, formatados sob as normas da biblioteca. Para trabalhos com mais de um autor, os nomes dos autores devem ser separados pelo comando \lstinline+\and+ ou \lstinline+\\+, como no exemplo:
 
 \begin{lstlisting}
-\author{Leonardo \and Douglas}
+\author{Leonardo Anjoletto Ferreira \and Douglas De Rizzo Meneghetti}
 \end{lstlisting}
 
 \subsection{Subtítulo (opcional)}
@@ -378,7 +361,7 @@ Os comandos \lstinline+\cidade{}+ e \lstinline+\instituicao{}+ recebem os nomes 
 \subsection{Arquivos de referências bibliográficas}%
 \label{subsec:referencias-pre}
 
-Em \TeX{}, as referências bibliográficas são mantidas em um ou mais arquivos de extensão \texttt{bib}, preferencialmente no mesmo diretório do arquivo \texttt{tex} do trabalho. Os arquivos \texttt{bib} utilizados pelo trabalho devem ser referenciados no preâmbulo do texto utilizando o comando \lstinline+\addbibresource{ref.bib}+. Mais de um arquivo pode ser referenciado, utilizando-se o comando \lstinline+\addbibresource{}+ mais de uma vez.
+Em \TeX{}, as referências bibliográficas são mantidas em um ou mais arquivos de extensão \texttt{bib}, preferencialmente no mesmo diretório do arquivo \texttt{tex} do trabalho. Os arquivos \texttt{bib} usados pelo trabalho devem ser referenciados no preâmbulo do texto usando o comando \lstinline+\addbibresource{ref.bib}+. Mais de um arquivo pode ser referenciado, usando-se o comando \lstinline+\addbibresource{}+ mais de uma vez.
 
 Para saber como imprimir a lista de referências bibliográficas na seção pós-textual so trabalho, confira a seção \ref{subsec:referencias-pos}.
 
@@ -389,7 +372,7 @@ O pré-texto do documento engloba todos os elementos textuais que precedem o cor
 
 \subsection{Capa}
 
-A capa do trabalho é inserida através do comando \lstinline+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando utiliza o nome fornecido em \lstinline+\author{}+, o título em \lstinline+\title{}+, o subtítulo de \lstinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
+A capa do trabalho é inserida através do comando \lstinline+\maketitle+, o qual foi modificado para criar uma página no formato da biblioteca. O comando usa o nome fornecido em \lstinline+\author{}+, o título em \lstinline+\title{}+, o subtítulo de \lstinline+\subtitulo{}+ juntamente com o ano corrente para gerar a capa.
 
 \subsection{Folha de rosto}
 
@@ -422,7 +405,7 @@ A quem se deseja agradecer.
 
 \subsection{Epígrafe}
 
-A página da epígrafe é criada utilizando o ambiente \texttt{epigrafe}. Dentro deste ambiente, uma ou mais citações podem ser inseridas separadamente utilizando o comando \lstinline+\epig{citacao}{Autor}+. Este comando recebe dois parâmetros, sendo o primeiro a citação em si e o segundo o autor da mesma. Apesar do guia de formatação da biblioteca não mencionar a possibilidade de incluir mais que uma cvitação na epígrafe, a classe da FEI disponibiliza esta opção aos seus usuários
+A página da epígrafe é criada usando o ambiente \texttt{epigrafe}. Dentro deste ambiente, uma ou mais citações podem ser inseridas separadamente usando o comando \lstinline+\epig{citacao}{Autor}+. Este comando recebe dois parâmetros, sendo o primeiro a citação em si e o segundo o autor da mesma. Apesar do guia de formatação da biblioteca não mencionar a possibilidade de incluir mais que uma cvitação na epígrafe, a classe da FEI disponibiliza esta opção aos seus usuários
 
 \emph{Nota:} O guia da FEI requer que a referência da epígrafe esteja presente no final do trabalho. O comando \lstinline+\nocite{obra}+ pode ser usado para que a referência apareça ao final do texto, sem aparecer na epígrafe.
 
@@ -437,7 +420,7 @@ Exemplo de declaração da página de epígrafe com duas citações:
 
 \subsection{Resumo e \emph{abstract}}
 
-O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \lstinline+\selectlanguage{english}+ no início, enquanto \texttt{resumo} utiliza \lstinline+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes utilizando, no resumo, o comando \lstinline+\palavraschave{...}+ e no \emph{abstract}, o comando \lstinline+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas manualmente por ponto final.
+O ambiente \texttt{resumo} é destinado à inserção do resumo em português do trabalho, enquanto o ambiente \texttt{abstract} contém o resumo em inglês. A única diferença entre os dois ambientes está no fato de \texttt{abstract} possuir o comando \lstinline+\selectlanguage{english}+ no início, enquanto \texttt{resumo} usa \lstinline+\selectlanguage{brazil}+. Palavras-chave podem ser inseridas ao final desses ambientes usando, no resumo, o comando \lstinline+\palavraschave{...}+ e no \emph{abstract}, o comando \lstinline+\keyword{...}+. Lembrando que as palavras-chave devem ser separadas manualmente por ponto final.
 
 \begin{lstlisting}
 \begin{resumo}
@@ -482,17 +465,17 @@ A classe da FEI permite a impressão de listas de figuras, tabelas, algoritmos, 
 \section{TEXTO}%
 \label{sec:texto}
 
-Sob a nomenclatura do guia da biblioteca, o texto pode ser estruturado utilizando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 níveis disponibilizados nativamente pelo \LaTeX: capítulo, seção, subseção, subsubseção e parágrafo. Para isso, são usados os comandos nativos do \LaTeX{} para divisão do texto: \lstinline+\chapter{...}+, \lstinline+\section{...}+, \lstinline+\subsection{...}+, \lstinline+\subsubsection{...}+ e \lstinline+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
+O texto pode ser estruturado usando até 5 níveis de títulos de seção. Isso se traduz no uso dos 5 comandos de seccionamento do texto disponibilizados nativamente pelo \LaTeX: \lstinline+\chapter{...}+, \lstinline+\section{...}+, \lstinline+\subsection{...}+, \lstinline+\subsubsection{...}+ e \lstinline+\paragraph{...}+. Estes comandos inserem os títulos de suas respectivas divisões de acordo com o guia e são usados posteriormente na criação automática do sumário.
 
-Apenas ao utilizar \lstinline+\section{...}+, é necessário inserir manualmente os títulos em letras maiúsculas para garantir que os mesmos aparecem em letras maiúsculas tanto no sumário como no texto, garantindo a aderência ao guia.
+Apenas ao usar \lstinline+\section{...}+, é necessário inserir manualmente os títulos em caixa alta\index{caixa alta} para garantir que os mesmos aparecem em caixa alta\index{caixa alta} tanto no sumário como no texto, garantindo a aderência ao guia.
 
 \subsection{\emph{Floats}}
 
 De acordo com o Wikibook de \LaTeX{}\footnote{\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}, \emph{floats} são \emph{containers} para elementos em um documento que não podem ser quebrados entre duas páginas. O \LaTeX{} disponibiliza os \emph{floats} \texttt{figure} e \texttt{table}, cuja presença e utilização já são previstas pelo guia da biblioteca.
 
-Independente do tipo de float utilizado, a formatação das legendas é realizada da mesma maneira para todos. Na parte superior do \emph{float}, coloca-se seu título, numeração e legenda em tamanho padrão 12 e, abaixo do \emph{float}, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior, utiliza-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, foi criado o comando \lstinline+\smallcaption{}+, o qual constitui uma interface simples para a formatação da legenda inferior.
+Independente do tipo de \emph{float} usado, a formatação das legendas é realizada da mesma maneira para todos. Na parte superior do \emph{float}, coloca-se seu título (\emph{e.g.} ``Figura'' ou ``Tabela''), numeração, traço e legenda em tamanho padrão 12 e, abaixo do \emph{float}, coloca-se sua fonte em tamanho 10. Para a criação da legenda superior, usa-se o comando \lstinline+\caption{}+, enquanto que, para a legenda inferior, usa-se o comando \lstinline+\smallcaption{}+.
 
-A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior utilizando a formatação nativa.
+A figura \ref{fig:exemplo} demonstra a inserção de uma figura usando o \LaTeX~, assim como a inserção das legendas superior e inferior usando a formatação nativa.
 
 \begin{figure}
   \centering
@@ -516,7 +499,7 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
 \begin{lstlisting}
 \begin{table}[ht!]
 	\caption{Legenda da tabela}
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{[...]}
 		[...]
 	\end{tabular}
   \smallcaption{Fonte: o Autor}
@@ -527,8 +510,7 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
   \caption{Exemplo de tabela com legenda acima e fonte abaixo}%
   \label{tbl:exemplo}
   \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
+  \begin{tabular}{c|c|c|c}
             & \(x_1\) & \(x_2\) & \(x_3\) \\
     \hline
     \(y_1\) & 1       & 0       & 0       \\
@@ -536,7 +518,6 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
     \(y_2\) & 0       & 1       & 0       \\
     \hline
     \(y_3\) & 0       & 0       & 1       \\
-    \hline
   \end{tabular}
   \smallcaption{Fonte: o Autor}
 \end{table}
@@ -544,7 +525,7 @@ O código abaixo exemplifica a criação de uma tabela. Um exemplo de tabela cri
 \subsubsection{Outras ilustrações}%
 \label{sec:outras-ilusts}
 
-Além de figuras, a lista de ilustrações prevê a inclusão de outros tipos de \emph{floats}, os quais são representados pelos seguintes ambientes:
+Além de figuras, a lista de ilustrações prevê a inclusão de qualquer outra categoria de ilustrações. A lista abaixo indica uma coleção de ambientes que permitem inserir diversos tipos de \emph{floats}, os quais também aparecerão na lista de ilustrações:
 
 \begin{enumerate}
   \item desenho;
@@ -560,7 +541,7 @@ Além de figuras, a lista de ilustrações prevê a inclusão de outros tipos de
   \item retrato.
 \end{enumerate}
 
-A inserção de um desses \emph{floats} é feita de maneira igual à inserção de um \texttt{figure} ou \texttt{table}, porém chamando-se o nome do ambiente desejado. Por exemplo, para criar uma ilustração que será listada como um diagrama na lista de ilustrações, deve-se utilizar o ambiente \texttt{diagrama} ao invés de \texttt{figure}. Apesar de serem inseridos na mesma lista, cada \emph{float} é numerado separadamente, como prevê o guia da biblioteca. Exemplos destes \emph{floats} sendo utilizados podem ser vistos no gráfico \ref{gra:grafico1}, mapa \ref{map:mapa} e gráfico \ref{gra:grafico2}.
+A inserção de um desses \emph{floats} é feita de maneira igual à inserção de uma \texttt{figure} ou \texttt{table}, porém chamando-se o nome do ambiente desejado. Por exemplo, para criar uma ilustração que será listada como um diagrama na lista de ilustrações, deve-se usar o ambiente \texttt{diagrama} ao invés de \texttt{figure}. Apesar de serem inseridos na mesma lista, cada \emph{float} é numerado separadamente, como prevê o guia da biblioteca. Exemplos destes \emph{floats} sendo usados podem ser vistos no gráfico \ref{gra:grafico1}, mapa \ref{map:mapa} e gráfico \ref{gra:grafico2}.
 
 O apêndice A ensina a criar novas categorias de \emph{floats} conforme necessário.
 
@@ -585,30 +566,80 @@ O apêndice A ensina a criar novas categorias de \emph{floats} conforme necessá
   \smallcaption{Fonte: o Autor}
 \end{grafico}
 
+\subsubsection{Quadros}
+
+Quadros são ``tabelas fechadas de todos os lados'' (interprete esta definição como preferir). Duas formas de criá-los são com os ambientes \texttt{tabular} ou \texttt{framed}, dentro de um ambiente \texttt{quadro}. O quadro \ref{qdr:exemplo-1} usa o ambiente \texttt{tabular}. Compare-o com a tabela~\ref{tbl:exemplo} e perceba que a diferença são as bordas superior e inferior (feitas com \verb+\hline+) e as laterais.
+
+\begin{quadro}
+  \caption{Quadro feito com os ambientes \texttt{quadro} e \texttt{tabular}}%
+  \label{qdr:exemplo-1}
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    & \(x_1\) & \(x_2\) & \(x_3\) \\
+    \hline
+    \(y_1\) & 1       & 0       & 0       \\
+    \hline
+    \(y_2\) & 0       & 1       & 0       \\
+    \hline
+    \(y_3\) & 0       & 0       & 1       \\
+    \hline
+  \end{tabular}
+  \smallcaption{Fonte: o Autor}
+\end{quadro}
+
+O quadro \ref{qdr:exemplo-2} usa o ambiente \texttt{framed}, cujo código é disponibilizado abaixo.
+
+\begin{quadro}
+  \caption{Quadro feito com os ambientes \texttt{quadro} e \texttt{framed}}%
+  \label{qdr:exemplo-2}
+  \centering
+  \begin{framed}
+    Oi, eu sou um quadro.
+  \end{framed}
+  \smallcaption{Fonte: o Autor}
+\end{quadro}
+
+\begin{lstlisting}
+\begin{quadro}
+\caption{Quadro feito com os ambientes \texttt{quadro} e \texttt{framed}}%
+\label{qdr:exemplo-2}
+\centering
+\begin{framed}
+  Oi, eu sou um quadro.
+\end{framed}
+\smallcaption{Fonte: o Autor}
+\end{quadro}
+\end{lstlisting}
+
 \subsubsection{\emph{Subfloats}}
 
-A classe da FEI permite a inserção de subfloats da mesma forma que a classe \emph{memoir}, sem a necessidade de incluir pacotes adicionais. No preâmbulo de seu documento, inclua o comando \verb+\newsubfloat{<tipo_de_float>}+ para indicar que \emph{subfloats} serão utilizados ao longo do documento, onde \texttt{<tipo\_de\_float>} deve ser trocado por \texttt{figure}, \texttt{table} ou um dos outros \emph{floats} apresentados na seção~\ref{sec:outras-ilusts}. Também é possível utilizar o pacote \texttt{subfig} (não recomendo o \texttt{subcaption}), mas ele não é compatível com o comando \verb+\newsubfloat{<tipo_de_float>}+, então os dois estilos não podem ser misturados no mesmo documento.
+A classe da FEI suporta a inserção de \emph{subfloats} da mesma forma que a classe \emph{memoir}, sem a necessidade de incluir pacotes adicionais. No preâmbulo de seu documento, inclua o comando \verb+\newsubfloat{<tipo_de_float>}+ para indicar que \emph{subfloats} serão usados ao longo do documento, onde \texttt{<tipo\_de\_float>} deve ser trocado por \texttt{figure}, \texttt{table} ou um dos outros \emph{floats} apresentados na seção~\ref{sec:outras-ilusts}. Também é possível usar o pacote \texttt{subfig} (não recomendo o uso do pacote \texttt{subcaption}), mas ele não é compatível com o comando \verb+\newsubfloat{<tipo_de_float>}+, então os dois estilos de inserção de \emph{subfloats} não podem ser misturados no mesmo documento.
 
-O código abaixo exemplifica a inserção de duas subfiguras no mesmo ambiente \texttt{figure}. A figura~\ref{fig:subfloats} resulta do uso do código. As subfiguras podem ser referenciadas através de suas \emph{labels}, resultando em \ref{fig:subfloat-1} e \ref{fig:subfloat-2}.
+\paragraph{Um exemplo de \emph{subfloat} (e de seção quinária)}
 
-\begin{verbatim}
+O trecho abaixo exemplifica a inserção de duas subfiguras no mesmo ambiente \texttt{figure}. A figura~\ref{fig:h-subfloats} resulta do uso deste código. As subfiguras podem ser referenciadas através de suas \emph{labels}, resultando em \ref{fig:h-subfloat-1} e \ref{fig:h-subfloat-2}.
+
+O apêndice~\ref{app:mais-subfloats} tem mais exemplos com outras disposições de \emph{subfloats}.
+
+\begin{lstlisting}
 \begin{figure}
   \caption{Múltiplos \emph{floats}}%
   \label{fig:h-subfloats}
   \begin{minipage}{0.3\textwidth}
     \centering
     \rule{2cm}{2cm}
-    \subcaption{First text \label{fig:h-subfloat-1}}
+    \subcaption{Uma caixa preta \label{fig:h-subfloat-1}}
   \end{minipage}
   \hfill
   \begin{minipage}{0.3\textwidth}
     \centering
     \rule{2cm}{2cm}
-    \subcaption{Second text \label{fig:h-subfloat-2}}
+    \subcaption{Outra caixa preta \label{fig:h-subfloat-2}}
   \end{minipage}
   \smallcaption{Fonte: o Autor}
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
 \begin{figure}
   \caption{Múltiplos \emph{floats}}%
@@ -616,20 +647,21 @@ O código abaixo exemplifica a inserção de duas subfiguras no mesmo ambiente \
   \begin{minipage}{0.3\textwidth}
     \centering
     \rule{2cm}{2cm}
-    \subcaption{First text \label{fig:h-subfloat-1}}
+    \subcaption{Uma caixa preta \label{fig:h-subfloat-1}}
   \end{minipage}
   \hfill
   \begin{minipage}{0.3\textwidth}
     \centering
     \rule{2cm}{2cm}
-    \subcaption{Second text \label{fig:h-subfloat-2}}
+    \subcaption{Outra caixa preta \label{fig:h-subfloat-2}}
   \end{minipage}
   \smallcaption{Fonte: o Autor}
 \end{figure}
 
 \subsubsection{Algoritmos}
 
-Apesar de estar ausente no guia, a biblioteca permite a inserção de algoritmos no corpo do texto. O pacote \texttt{algorithm2e} fornece diversos comandos para a escrita e formatação de pseudo-códigos em diversos idiomas. A formatação configurada na classe da FEI reflete as recomendações da biblioteca e padrões encontrados na literatura.
+Apesar de estar ausente no guia, a biblioteca permite a inserção de pseudo-código no corpo do texto, contanto que sejam formatados da mesma forma que outros \emph{floats}. A classe da FEI importa e configura o pacote \texttt{algorithm2e}, de forma que sua formação seja compatível com o guia.
+
 A lista a seguir contém todos os comandos do \texttt{algorithm2e} que foram traduzidos para o português e, logo após, um exemplo de como usar alguns desses comandos. Para mais informações, consulte o manual do \texttt{algorithm2e}.
 
 \begin{lstlisting}
@@ -684,14 +716,14 @@ Exemplo:
 
 \subsubsection{Equações}
 
-O guia da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto utilizando o comando \lstinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \lstinline+\ref{}+, porém com a adição dos parênteses.
+O guia da biblioteca também dita que todas as equações devem vir acompanhadas de numeração entre parênteses. O ambiente \texttt{equation} insere essa numeração à direita da equação. Adicionalmente, o pacote \texttt{mathtools} permite que uma equação seja referenciada durante o texto usando o comando \lstinline+\eqref{label_da_equacao}+, cuja funcionalidade é semelhante à do comando \lstinline+\ref{}+, porém com a adição dos parênteses.
 
-\begin{equation}%
+\begin{equation}
   \label{eq:euler}
   e^{i\pi}+1=0
 \end{equation}
 
-A equação \eqref{eq:euler} foi criada utilizando o seguinte código:
+A equação \eqref{eq:euler} foi criada usando o seguinte código:
 
 \begin{lstlisting}
 \begin{equation}%
@@ -725,11 +757,11 @@ Caso um teorema possua um nome ou referência, essa informação pode ser passad
   Em qualquer triângulo retângulo, o quadrado do comprimento da hipotenusa é igual à soma dos quadrados dos comprimentos dos catetos.
 \end{teorema}
 
-A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese, proposicao, conjectura, paradoxo, corolario, definicao} e \emph{exemplo}, com chamada e numeração em negrito e texto com formatação padrão, como nos teoremas \ref{thm:ex1} e \ref{thm:ex2}. Também há o ambiente \emph{prova}, utilizado para se demonstrar alguma propriedade mencionada, o qual não é numerado e tem sua chamada em itálico. O término de um teorema, denominado ``como se queria demonstrar'' (CQD), do latim \gls{qed}, é representado pelo símbolo \qedsymbol, denominado ``lápide''.
+A classe da FEI disponibiliza os ambientes \emph{axioma, teorema, lema, hipotese, proposicao, conjectura, paradoxo, corolario, definicao} e \emph{exemplo}, com chamada e numeração em negrito e texto com formatação padrão, como nos teoremas \ref{thm:ex1} e \ref{thm:ex2}. Também há o ambiente \emph{prova}, usado para se demonstrar alguma propriedade mencionada, o qual não é numerado e tem sua chamada em itálico. O término de um teorema, denominado ``como se queria demonstrar'' (CQD), do latim \gls{qed}, é representado pelo símbolo \qedsymbol, denominado ``lápide''.
 
 \subsection{Alíneas}
 
-Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se utilizar alíneas ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Esse comportamento é incorporado ao ambiente \texttt{enumerate}, o qual é utilizado por padrão no \LaTeX{} para alíneas numeradas ou ordenadas alfabeticamente. Uma vez que o guia da biblioteca não preve outro tipo de alínea, o ambiente \texttt{itemize} foi redirecionado para utilizar o \texttt{enumerate}, não havendo diferenças práticas entre os dois. Uma vez que não há recomendações para formatações de alíneas aninhadas, optou-se por iniciar alíneas de segundo nível utilizando o caractere \emph{en dash} (--).
+Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos assuntos dentro de uma seção, deve-se usar alíneas ordenadas alfabeticamente por letras minúsculas seguidas de parênteses com margem de 1,25 cm''. Esse comportamento é incorporado ao ambiente \texttt{enumerate}, o qual é usado por padrão no \LaTeX{} para alíneas numeradas ou ordenadas alfabeticamente. Uma vez que o guia da biblioteca não preve outro tipo de alínea, o ambiente \texttt{itemize} foi redirecionado para usar o \texttt{enumerate}, não havendo diferenças práticas entre os dois. Uma vez que não há recomendações para formatações de alíneas aninhadas, optou-se por iniciar alíneas de segundo nível usando o caractere \emph{en dash} (--).
 
 \begin{enumerate}
   \item Primeiro item;
@@ -738,13 +770,13 @@ Segundo o padrão da biblioteca, ``se houver necessidade de enumerar diversos as
           \item Primeiro sub-item;
           \item Segundo sub-item.
         \end{enumerate}
-  \item Terceiro item extremamente grande utilizado para testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2020.
+  \item Terceiro item extremamente grande usaara testar se as linhas das alíneas são alinhadas verticalmente no início, como demanda o guia de 2020.
 \end{enumerate}
 
 \section{PÓS-TEXTO}%
 \label{sec:postexto}
 
-Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Este capítulo descreve os comandos para \emph{inserção} destes elementos. Os capítulos seguintes instruirão como \emph{criá-los}.
+Fazem parte dos elementos pós-textuais as referências bibliográficas, apêndices, anexos e o índice remissivo. Esta seção descreve os comandos para \emph{inserção} destes elementos. As seções seguintes instruirão como \emph{criá-los}.
 
 \subsection{Referências bibliográficas}%
 \label{subsec:referencias-pos}
@@ -753,7 +785,7 @@ A lista de referências bibliográficas, contidas em um ou mais arquivos \texttt
 
 \subsection{Apêndices e anexos}
 
-O \LaTeX{} possui o comando nativo \lstinline+\appendix+ que, quando utilizado, transforma os capítulos subsequentes em apêndices.
+O \LaTeX{} possui o comando nativo \lstinline+\appendix+ que, quando usado, transforma os \emph{chapters} subsequentes em apêndices.
 
 \begin{lstlisting}
 \chapter{ÚLTIMO CAPÍTULO}
@@ -768,7 +800,7 @@ O \LaTeX{} possui o comando nativo \lstinline+\appendix+ que, quando utilizado, 
 Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para declarar anexos. Para isso, foi criado o comando \lstinline+\anexos+ que transforma os capítulos subsequentes em anexos.
 
 \begin{lstlisting}
-	\chapter{Último capítulo ou anexo}
+	\chapter{Último capítulo ou apêndice}
 	...
 	\anexos
 	\chapter{Primeiro anexo}
@@ -779,12 +811,12 @@ Ao contrário dos apêndices, o \LaTeX{} não possui um comando nativo para decl
 
 \subsection{Índice}
 
-A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. O capítulo, \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \lstinline+\printindex+.
+A biblioteca permite a criação de um índice remissivo de palavras, para que estas sejam encontradas com maior facilidade no decorrer do trabalho. A seção \ref{chap:indice} explica com detalhes os diferentes programas e comandos envolvidos na indexação de palavras e compilação dos arquivos de índices, mas, por motivos de completude, o comando para se imprimir o índice é \lstinline+\printindex+.
 
-\chapter{Citações em formato autor data e numéricas}%
+\chapter{Citações em formato autor-data e numéricas}%
 \label{chap:referencia}
 
-A classe da \index{FEI}\gls{fei} faz uso do pacote \texttt{biblatex-abnt} para inserção de citações ao longo do texto e impressão da lista de referências bibliográficas ao final do texto. O \texttt{biblatex-abnt} é responsável por formatar tanto citações quanto referências bibliográficas sob os padrões da ABNT. A classe da \index{FEI}\gls{fei} realiza algumas modificações no estilo fornecido pelo \texttt{biblatex-abnt} para se adequar ao guia da biblioteca. Por padrão, as citações são feitas no formato autor-data. Para utilizar o formato numérico, adicione a opção \texttt{numeric} à declaração da classe: \lstinline+\documentclass[numeric]{fei}+.
+A classe da \index{FEI}\gls{fei} faz uso do pacote \texttt{biblatex-abnt} para inserção de citações ao longo do texto e impressão da lista de referências bibliográficas ao final do texto. O \texttt{biblatex-abnt} é responsável por formatar tanto citações quanto referências bibliográficas sob os padrões da ABNT. A classe da \index{FEI}\gls{fei} realiza algumas modificações no estilo fornecido pelo \texttt{biblatex-abnt} para se adequar ao guia da biblioteca. Por padrão, as citações são feitas no formato autor-data. Para usar o formato numérico, adicione a opção \texttt{numeric} à declaração da classe: \lstinline+\documentclass[numeric]{fei}+.
 
 Os comandos mais comuns de citação são exemplificados abaixo e nas próximas seções. Para uma lista detalhada de todos os comandos tanto do formato autor-data como numérico, o leitor é referenciado ao manual do \texttt{biblatex-abnt} \footnote{\url{https://www.ctan.org/pkg/biblatex-abnt}}. O formato autor-data é mencionado na documentação como \texttt{abnt}, enquanto o formato numérico é chamado de \texttt{abnt-numeric}.
 
@@ -825,13 +857,13 @@ Os comandos mais comuns de citação são exemplificados abaixo e nas próximas 
 
 \section{CITAÇÃO PARA \emph{FLOATS}}
 
-No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \lstinline+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser utilizado dentro de \lstinline+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
+No caso das citações que devem ser feitas em \emph{floats}, como ilustrações e tabelas, foi criado o comando \lstinline+\citefloat{}+ um comando específico que reflete as recomendações da biblioteca. O objetivo principal deste comando é ser usado dentro de \lstinline+\smallcaption{}+, para que a fonte do \emph{float} seja referenciada corretamente.
 
 \lstinline+Fonte: \citefloat{Kernighan1988}.+ \(\to\) Fonte: \citefloat{Kernighan1988}.
 
 \section{CITAÇÕES COM MAIS DE TRÊS LINHAS}
 
-De acordo com o guia da biblioteca, a citação direta com mais de 3 linhas deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo no início do parágrafo. O \index{Latex@\LaTeX}\LaTeX{} já disponibiliza os ambientes \texttt{quote}, para citações de um parágrafo, e \texttt{quotation}, para citações com mais de um parágrafo. Para conseguir a formatação especificada pela biblioteca, os usuários da classe da FEI devem utilizar o ambiente \texttt{quote}. O ambiente \texttt{quotation} também foi reestruturado para ficar similar à formatação do ambiente \texttt{quote}, porém, como não há instruções para a realização de citações com mais de um parágrafo no guia da biblioteca, não existe recomendação para seu uso.
+De acordo com o guia da biblioteca, a citação direta com mais de 3 linhas deve ter recuo de 4 cm da margem esquerda, letra de tamanho 10 pt, espaçamento simples e não deve conter aspas nem recuo no início do parágrafo. O \index{Latex@\LaTeX}\LaTeX{} já disponibiliza os ambientes \texttt{quote}, para citações de um parágrafo, e \texttt{quotation}, para citações com mais de um parágrafo. Para conseguir a formatação especificada pela biblioteca, os usuários da classe da FEI devem usaambiente \texttt{quote}. O ambiente \texttt{quotation} também foi reestruturado para ficar similar à formatação do ambiente \texttt{quote}, porém, como não há instruções para a realização de citações com mais de um parágrafo no guia da biblioteca, não existe recomendação para seu uso.
 
 Exemplo do ambiente \texttt{quote}:
 
@@ -862,7 +894,7 @@ Já nos trabalhos de \textcite{duan2012large,duan2012reduced,duan2014functional}
 
 Assim como as referências são geradas por um programa a parte (o Biber), a criação de índices remissivos também o é. Neste quesito, a classe da FEI faz uso do programa \bigvindex{xindy} como gerador de índices. Mais especificamente, os programas \texttt{xindy} e \texttt{texindy} são necessários para geração de índices remissivos. O xindy foi selecionado como gerador de índices para a classe da FEI devido ao suporte a diversos e idiomas e indexação de palavras com caracteres mais exóticos -- como acentos ou cedilha.
 
-Em suma, a geração de índices remissivos tem como dependências os programas \texttt{xindy} e \texttt{texindy} e o pacote \texttt{imakeidx} do \LaTeX{}. Como o \emph{xindy} não é parte integrante do \LaTeX{}, ensinamos como instalá-lo no capítulo \ref{chap:instalacao}. Também é necessário executar um passo adicional na compilação do projeto, o qual é explicado no capítulo \ref{chap:compilando}.
+Em suma, a geração de índices remissivos tem como dependências os programas \texttt{xindy} e \texttt{texindy} e o pacote \texttt{imakeidx} do \LaTeX{}. Como o \emph{xindy} não é parte integrante do \LaTeX{}, é necessário instalá-lo usando o gerenciador de pacotes de sua distribuição. Também é necessário executar um passo adicional na compilação do projeto, o qual é explicado na seção \ref{chap:compilando}.
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE ÍNDICE}
 
@@ -872,7 +904,7 @@ Para que o \LaTeX{} crie os arquivos auxiliares  que serão lidos pelo \emph{xin
 
 Para que uma palavra apareça posteriormente no índice, é necessário indexá-la. Para isso, usa-se o comando \lstinline+\index{palavra}+, o qual inclui ``palavra'' no arquivo auxiliar de indexação.
 
-Exemplo: [\ldots] a biblioteca do Centro Universitário \lstinline+\index{FEI}+\index{FEI}\gls{fei} utiliza um modelo baseado na norma da \lstinline+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
+Exemplo: [\ldots] a biblioteca do Centro Universitário \lstinline+\index{FEI}+\index{FEI}\gls{fei} usamodelo baseado na norma da \lstinline+\index{ABNT}+\index{ABNT}\gls{abnt} [\ldots]
 
 É possível indexar uma palavra mais de uma vez, para que todas as páginas nas quais esta palavra apareceu apareçam no índice.
 
@@ -880,14 +912,16 @@ Para aprender dicas avançadas na criação de índices mais complexos, recomend
 
 \section{IMPRIMINDO O ÍNDICE}
 
-A impressão do índice é feita utilizando o comando \lstinline+\printindex+, o qual também inclui uma entrada para o mesmo no sumário do documento.
+A impressão do índice é feita usando o comando \lstinline+\printindex+, o qual também inclui uma entrada para o mesmo no sumário do documento.
 
 \chapter{Listas de símbolos e abreviaturas}%
 \label{chap:listas}
 
-Para a criação das listas de símbolos e abreviaturas, foi utilizado o pacote \bigvindex{glossaries}, responsável por indexar termos de diferentes categorias e gerar listas destes termos. Ao contrário do índice, que indexa as palavras no decorrer do texto, o pacote \emph{glossaries} exige que os termos sejam declarados antes de serem referenciados durante o texto. Uma boa prática para organizar tais termos consiste em declará-los ao início do documento, ou em um documento separado, o qual pode ser chamado utilizando os comandos \lstinline+\input+ ou \lstinline+\include+. Estas opções ficam a cargo do leitor. As próximas seções ensinarão os comandos básicos para indexação de símbolos e abreviaturas.
+A classe usa o pacote \bigvindex{glossaries-extra} para a criação das listas de símbolos e abreviaturas. Ao contrário do índice, que indexa as palavras no decorrer do texto, o \emph{glossaries-extra} necessita que os termos sejam declarados antes de serem referenciados no texto. Uma boa prática para organizar tais termos consiste em declará-los no início do documento, ou em um documento separado, o qual pode ser chamado usando o comando \lstinline+\input+ ou \lstinline+\loadglsentries+.
 
-\emph{Nota:} assim como descrito no capítulo \ref{chap:indice}, o pacote \emph{glossaries} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
+A classe da FEI também é comppatível com o pacote \texttt{bib2gls}\index{bib2gls@\texttt{bib2gls}}, que permite que usuários mantenham bases de abreviaturas e símbolos em formato \texttt{.bib}. Para isso, use a opção \texttt{record} da classe. O uso do \texttt{bib2gls} não é explicado neste manual, mas seu manual está disponível no \gls{ctan}. As citações às entradas mantidas pelo \texttt{bib2gls} podem ser feitas normalmente, como descrito na seção~\ref{sec:citar-abrevs-simbs}. A compilação pode ser automatizada pelo arquivo \texttt{.latexmkrc}\index{.latexmkrc@\texttt{.latexmkrc}} disponível no GitHub da classe.
+
+\emph{Nota:} assim como descrito na seção \ref{chap:indice}, o pacote \emph{glossaries-extra} depende das ferramentas \index{makeindex@\emph{MakeIndex}}\emph{MakeIndex}.
 
 \section{SINALIZANDO A CRIAÇÃO DOS ARQUIVOS DE LISTAS DE SÍMBOLOS E ABREVIATURAS}
 
@@ -897,13 +931,13 @@ Para que o \LaTeX{} crie os arquivos auxiliares que serão lidos pelo \emph{glos
 
 \section{INDEXANDO ABREVIATURAS}
 
-A indexação de abreviaturas é feita utilizando o comando
+A indexação de abreviaturas é feita usando o comando
 
 \lstinline+\newacronym[longplural=1]{2}{3}{4}+, onde:
 
 \begin{enumerate}
   \item 1: o significado a abreviatura no plural, escrito por extenso (\emph{opcional});
-  \item 2: código que será utilizado para referenciar a abreviatura no decorrer do texto;
+  \item 2: código que será usado para referenciar a abreviatura no decorrer do texto;
   \item 3: a abreviatura em si;
   \item 4: o significado a abreviatura, escrito por extenso.
 \end{enumerate}
@@ -916,14 +950,14 @@ Exemplo: \lstinline+\newacronym[longplural=Associações+
 
 \section{INDEXANDO SÍMBOLOS}
 
-A indexação de símbolos é feita utilizando o comando
+A indexação de símbolos é feita usando o comando
 
 \lstinline+\newglossaryentry{1}{parent={2},type=symbols,+
 
 \lstinline+name={3},sort={4},description={5}}+, onde:
 
 \begin{enumerate}
-  \item 1: código que será utilizado para referenciar a abreviatura no decorrer do texto);
+  \item 1: código que será usado para referenciar a abreviatura no decorrer do texto);
   \item 2: tipo do símbolo; usado para separar letras gregas e subscritos das demais (Cf. exemplo abaixo);
   \item 3: o símbolo; caso a notação matemática seja necessária, use \lstinline+\ensuremath{2}+ (Cf. exemplo abaixo);
   \item 4: uma sequência de caracteres para indicar a ordenação alfabética do símbolo na lista;
@@ -936,7 +970,8 @@ Exemplo: \lstinline+\newglossaryentry{pi}{parent=greek,type=symbols,+
 
 \lstinline+description={número irracional que representa [...]}}+
 
-\section{UTILIZANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}
+\section{USANDO ABREVIATURAS E SÍMBOLOS INDEXADOS}%
+\label{sec:citar-abrevs-simbs}
 
 O pacote \bigvindex{glossaries} disponibiliza os seguintes comandos para chamar os itens indexados durante o texto:
 
@@ -955,13 +990,15 @@ As siglas possuem alguns comandos únicos para serem referenciadas:
   \item \lstinline+\acrshort{<rotulo>}+ imprime apenas a abreviatura \(\to\) \acrshort{fei}.
 \end{enumerate}
 
-Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser utilizados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos utilizados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
+Também é possível ativar os atalhos do pacote \texttt{glossaries-extra}, consistindo de comandos menores para referenciar abreviaturas, passando a opção \texttt{abbr-shortcuts} para a classe. Ver seção 4.3 do manual do \texttt{glossaries-extra} para uma lista desses atalhos, os quais de extrema utilidade para quem usa muitas abreviaturas.
 
-É importante ressaltar que o pacote \bigvindex{glossaries} adiciona às listas somente os termos que forem utilizados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
+Repare que, no caso das siglas, quando estas são usadas pela primeira vez, são impressas a definição seguida da sigla entre parênteses. Nas demais vezes, a sigla aparecerá sozinha. Já os símbolos podem ser usados dentro de equações, ou na definição de outros símbolos, como no seguinte exemplo \cite{goldberg1989}, \[ \operatorname{E}(\gls{m}(\gls{h},\gls{t}+1)) \geq \frac{\gls{m}(\gls{h},\gls{t}) \gls{f}(\gls{h})}{\gls{at}}[1-\gls{p}], \] onde \[ p = \frac{\gls{delta}(\gls{h})}{\gls{l}-1}\gls{pc} + \gls{oh}(\gls{h}) \gls{pm}. \] Os símbolos usados nas equações são cadastrados no início do arquivo, inseridos com o comando \lstinline+\gls{}+ e consequentemente, adicionados na lista de símbolos.
+
+É importante ressaltar que o pacote \bigvindex{glossaries} adiciona às listas somente os termos que forem usados durante o texto. Para que todos os termos declarados apareçam, basta usar o comando \lstinline+\glsaddall+ no corpo do texto.
 
 \section{HIERARQUIA DE SÍMBOLOS}%
 \label{sec:sublist}
-Atendendo à demanda de alunos que utilizam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja utilizado no documento, a opção \texttt{sublist} deve ser passada à classe.
+Atendendo à demanda de alunos que usam uma quantidade muito extensa de símbolos em seus trabalhos, a classe da FEI passou a suportar o uso de listas se símbolos que permitam a ordenação hierárquica dos símbolos. Esta adição foi feita através do uso do estilo \texttt{alttree} do pacote \texttt{glossaries}. Para que este estilo seja usado no documento, a opção \texttt{sublist} deve ser passada à classe.
 
 O exemplo abaixo demonstra como criar uma categoria de símbolos e inserir um símbolo nela. Mais de uma categoria de símbolos pode ser criada. Para mais exemplos, consulte os arquivos de exemplo do repositório ou o manual do pacote \texttt{glossaries}.
 
@@ -980,12 +1017,12 @@ A lista de abreviaturas pode ser impressa através do comando \lstinline+\printa
 \chapter{Compilando o projeto}%
 \label{chap:compilando}
 
-Para utilizar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto utilizando diferentes programas. Esta sessão descreve tanto uma maneira automatizada de se compilar o projeto, usando o latexmk, assim como os programas que podem ser chamados manualmente, para fins de depuração..
+Para usar todos os recursos que a \texttt{fei.cls} disponibiliza, é necessário compilar o projeto usando diferentes programas. Esta sessão descreve tanto uma maneira automatizada de se compilar o projeto, usando o latexmk, assim como os programas que podem ser chamados manualmente, para fins de depuração..
 
 \section{COMPILAÇÃO AUTOMATIZADA}%
 \label{sec:latexmk}
 
-Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX{}, abstraindo o usuário da complexidade de utilizar todos os programas menores que geram o arquivo final. Dentre as ferramentas mais conhecidas estão o \texttt{latexmk}, \texttt{rubber} e \texttt{arara}, criadas especificamente para realizar a automatização da compilação de documentos \TeX{}. Para a classe da FEI, recomenda-se o uso do \texttt{latexmk}. As configurações necessárias são disponibilizadas no arquivo \texttt{.latexmkrc}, o qual deve ser colocado no mesmo diretório que o arquivo \texttt{.tex} principal do documento. O \texttt{latexmk} pode então ser chamado da seguinte forma (supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual):
+Existem diversas ferramentas que automatizam o processo de compilação de um documento em \LaTeX{}, abstraindo o usuário da complexidade de usar todos os programas menores que geram o arquivo final. Dentre as ferramentas mais conhecidas estão o \texttt{latexmk}, \texttt{rubber} e \texttt{arara}, criadas especificamente para realizar a automatização da compilação de documentos \TeX{}. Para a classe da FEI, recomenda-se o uso do \texttt{latexmk}. As configurações necessárias são disponibilizadas no arquivo \texttt{.latexmkrc}, o qual deve ser colocado no mesmo diretório que o arquivo \texttt{.tex} principal do documento. O \texttt{latexmk} pode então ser chamado da seguinte forma (supondo que haja um arquivo chamado \texttt{documento.tex} no diretório atual):
 
 \begin{enumerate}
   \item \texttt{latexmk -pdf documento.tex}
@@ -999,14 +1036,14 @@ Caso haja apenas um arquivo \texttt{tex} no diretório, não é necessário espe
 A compilação manual do projeto depende dos seguintes programas:
 
 \begin{enumerate}
-  \item \texttt{pdflatex}: gera todos os arquivos auxiliares, utilizados pelos demais programas, assim como uma versão do PDF com os elementos compilados até o momento;
-  \item \texttt{biber}: gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+  \item \texttt{pdflatex}: gera todos os arquivos auxiliares, usados pelos demais programas, assim como uma versão do PDF com os elementos compilados até o momento;
+  \item \texttt{biber}: gera a bibliografia lendo o arquivo \texttt{bib} usado. Necessário apenas se citações e referências forem usadas no texto;
   \item \texttt{makeglossaries}: cria um ou mais arquivos de listas (de símbolos e abreviaturas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
   \item \texttt{texindy}: cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
-  \item \texttt{bib2gls}: transforma uma lista de abreviaturas e símbolos, criada utilizando um arquivo \texttt{bib}, em listas de símbolos e abreviaturas a serem processadas pelo \texttt{makeglossaries}.
+  \item \texttt{bib2gls}: transforma uma lista de abreviaturas e símbolos, criada usando um arquivo \texttt{bib}, em listas de símbolos e abreviaturas a serem processadas pelo \texttt{makeglossaries}.
 \end{enumerate}
 
-A ordem na qual os programas devem ser executados depende de quais funcionalidades da classe da FEI forma utilizadas no documento: a ausência de referências bibliográficas torna desnecessário o uso do \texttt{biber}; a ausência de abreviaturas e símbolos torna denecessário o uso do \texttt{makeglossaries} e a ausência de índice remissivo torna desnecessário o uso do \texttt{texindy}. Ademais, se compilações anteriores modificam a localização de certos elementos já posicionados do texto (e.g. uma palavra indexada na página 30 é ``empurrada'' para a página 31 depois que as citações bibliográficas são inseridas no texto), os programas talvez tenham que ser executados diversas vezes até alcançar-se um PDF correto e estável. Essas preocupações são desnecessárias caso o \texttt{latexmk} seja usado, como descrito na sessão~\ref{sec:latexmk}.
+A ordem na qual os programas devem ser executados depende de quais funcionalidades da classe da FEI forma usadas no documento: a ausência de referências bibliográficas torna desnecessário o uso do \texttt{biber}; a ausência de abreviaturas e símbolos torna denecessário o uso do \texttt{makeglossaries} e a ausência de índice remissivo torna desnecessário o uso do \texttt{texindy}. Ademais, se compilações anteriores modificam a localização de certos elementos já posicionados do texto (e.g. uma palavra indexada na página 30 é ``empurrada'' para a página 31 depois que as citações bibliográficas são inseridas no texto), os programas talvez tenham que ser executados diversas vezes até alcançar-se um PDF correto e estável. Essas preocupações são desnecessárias caso o \texttt{latexmk} seja usado, como descrito na sessão~\ref{sec:latexmk}.
 
 Uma ordem comum para se compilar o projeto é a seguinte:
 
@@ -1015,10 +1052,10 @@ Uma ordem comum para se compilar o projeto é a seguinte:
 onde:
 
 \begin{enumerate}
-  \item gera arquivos auxiliares básicos, utilizados pelos demais programas, e uma versão inicial do PDF;
-  \item gera a bibliografia lendo o arquivo \texttt{bib} utilizado. Necessário apenas se citações e referências forem usadas no texto;
+  \item gera arquivos auxiliares básicos, usados pelos demais programas, e uma versão inicial do PDF;
+  \item gera a bibliografia lendo o arquivo \texttt{bib} usado. Necessário apenas se citações e referências forem usadas no texto;
   \item cria um ou mais arquivos de listas (de símbolos e abreviaturas). Necessário apenas se houve indexação e utilização de símbolos e abreviaturas no texto;
-  \item atualiza todas as referências através do texto, utilizando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
+  \item atualiza todas as referências através do texto, usando os arquivos gerados em \emph{b}, \emph{c} e \emph{d} (\emph{desnecessário se os passos b -- d não foram realizados});
   \item cria um ou mais arquivos de índice. Necessário apenas se houver indexação de palavras para serem adicionadas ao índice;
   \item gera o PDF final (\emph{desnecessário se os passos b -- e não foram realizados}), incluindo o índice gerado no passo anterior.
 \end{enumerate}
@@ -1036,7 +1073,7 @@ pdflatex --shell-escape documento.tex
 
 \chapter{Leitura complementar}
 
-\textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes utilizados pelo \LaTeX{}, assim como seus manuais.
+\textcite{lamport1994latex} e \textcite{mittelbach_latex_2004} descrevem de maneira completa o \LaTeX: seus comandos, funcionalidades e programas adicionais que interagem com ele, como o Bib\TeX{}, \emph{MakeIndex}, \emph{xindy} entre outros, sendo \citeauthor*{lamport1994latex} o criador do \LaTeXe e \citeauthor*{mittelbach_latex_2004} os atuais mantenedores do \LaTeXe\ e do projeto do \LaTeX{} 3. \textcite{lshort} mantém um guia atualizado de \LaTeX{} em seu site, disponível em PDF para download gratuito. O livro \emph{open-source} de \LaTeX{} no Wikibooks \url{http://en.wikibooks.org/wiki/LaTeX/} também é uma ótima fonte de busca para comandos e pacotes. A \gls{ctan} \url{http://ctan.org} é o repositório online para todos os pacotes usados pelo \LaTeX{}, assim como seus manuais.
 
 Manuais complementares da Classe \LaTeX{} da FEI de possível interesse para usuários são os da classe \texttt{memoir}\footnote{\url{http://ctan.org/pkg/memoir}} e do pacote \texttt{biblatex-abnt}\footnote{\url{http://ctan.org/pkg/biblatex-abnt}}.
 
@@ -1104,7 +1141,7 @@ Para redefinir qualquer um destes valores, é necessário fazê-lo dentro do com
   \end{minipage}
 \end{figure}
 
-Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda corretamente sem utilizar recuos é através do uso do ambiente \texttt{minipage}, como mostrado abaixo. A figura \ref{fig:exemplo_alinhado} mostra o resultado. Neste formato, para mudar o tamanho da figura, muda-se o tamanho da \texttt{minipage}.
+Uma forma de se alinhar as legendas de uma figura com sua extremidade esquerda corretamente sem usar recuos é através do uso do ambiente \texttt{minipage}, como mostrado abaixo. A figura \ref{fig:exemplo_alinhado} mostra o resultado. Neste formato, para mudar o tamanho da figura, muda-se o tamanho da \texttt{minipage}.
 
 \begin{lstlisting}
 \begin{figure}
@@ -1132,11 +1169,12 @@ Para criar uma nova categoria de \emph{float}, a qual será listada na lista de 
 \setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
 \end{lstlisting}
 
-\chapter{Mais exemplos de \emph{subfloats}}
+\chapter{Mais exemplos de \emph{subfloats}}%
+\label{app:mais-subfloats}
 
 O código a seguir insere 4 imagens num padrão quadriculado, cujo resultado é exemplificado na figura~\ref{fig:q-subfloats}. O código posterior a este insere 4 imagens na vertical, tomando a totalidade da página, como na figura~\ref{fig:v-subfloats}.
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{figure}
   \caption{Quatro subfiguras}%
   \label{fig:q-subfloats}
@@ -1164,9 +1202,9 @@ O código a seguir insere 4 imagens num padrão quadriculado, cujo resultado é 
 
   \smallcaption{Fonte: Autor}
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{figure}
   \caption{Subfiguras na vertical}
   \label{fig:v-subfloats}
@@ -1195,7 +1233,7 @@ O código a seguir insere 4 imagens num padrão quadriculado, cujo resultado é 
   \end{minipage}
   \smallcaption{Fonte: Autor}
 \end{figure}
-\end{verbatim}
+\end{lstlisting}
 
 \begin{figure}
   \caption{Quatro subfiguras}%
@@ -1257,7 +1295,7 @@ O código a seguir insere 4 imagens num padrão quadriculado, cujo resultado é 
 \chapter{Arquivos criados pelo processo de compilação}%
 \label{app:arquivos}
 
-A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento utilizando a classe \LaTeX{} da FEI e todos os seus recursos.
+A seguir, as descrições dos arquivos auxiliares gerados durante o processo de compilação de um documento usando a classe \LaTeX{} da FEI e todos os seus recursos.
 
 \begin{enumerate}
 
@@ -1268,14 +1306,14 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
     \item \texttt{glo,acn,sym}: listas de abreviaturas e símbolos.
     \item \texttt{idx}: arquivo com os termos a serem adicionados no índice pelo \emph{MakeIndex};
     \item \texttt{loa}: lista de algoritmos;
-    \item \texttt{out}: atalhos (\emph{bookmarks}) utilizados pelo leitor de PDF.
+    \item \texttt{out}: atalhos (\emph{bookmarks}) usados pelo leitor de PDF.
     \item \texttt{toc}: sumário;
   \end{enumerate}
 
   \item\lstinline+biber documento.aux+
   \begin{enumerate}
     \item \texttt{bcf}: arquivo de controle do Biber;
-    \item \texttt{bbl}: arquivo contendo as citações utilizadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
+    \item \texttt{bbl}: arquivo contendo as citações usadas no texto, prontas a serem incluídas na próxima execução do pdf\LaTeX.
   \end{enumerate}
 
   \item\lstinline+texindy documento.idx+
@@ -1511,11 +1549,12 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 
 \printindex
 \end{document}
+% LTeX: enabled=false
 %</driver>
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/05/26 4.10.2 Modelo da FEI]
+\ProvidesClass{fei}[2021/05/30 4.10.3 Modelo da FEI]
 
 % cria a opção chave-valor font, com valor padrão times
 \RequirePackage{kvoptions}
@@ -1549,7 +1588,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
   \glossariestrue
   \PassOptionsToPackage{\CurrentOption}{glossaries-extra}
 }
-% opção para configurar a lista de símbolos como um arquivo .bib
+% opção para habilitar os atalhos para citação de abreviaturas
 \DeclareOption{abbr-shortcuts}{
   \glossariestrue
   \PassOptionsToPackage{shortcuts=abbr}{glossaries-extra}

@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/05/26 4.10.2 Modelo da FEI]
+\ProvidesClass{fei}[2021/05/30 4.10.3 Modelo da FEI]
 
 \RequirePackage{kvoptions}
 \DeclareStringOption[times]{font}
@@ -759,6 +759,5 @@
 %% This work consists of the file  fei.dtx,
 %% and the derived files           fei.pdf and
 %% fei.cls.
-%% 
 %%
 %% End of file `fei.cls'.
