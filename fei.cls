@@ -128,6 +128,7 @@
 \RequirePackage{microtype}
 \RequirePackage[english,brazil]{babel}
 \RequirePackage{csquotes}
+\RequirePackage{indentfirst}
 
 \renewcommand{\normalsize}{\fontsize{12pt}{14.4pt}\selectfont} % fonte do texto
 \renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % fonte das notas de rodapé
