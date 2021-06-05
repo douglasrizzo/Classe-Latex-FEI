@@ -1,0 +1,23 @@
+name: Unit tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install TeXLive
+        # Actually pick a version, do not point on master, or the build won't be reproducible
+        uses: DanySK/setup-texlive-action@0.1.1
+        # You can omit the following if the default path is ok with you
+        with:
+          requirements-file: .github/texlive/requirements.txt
+      # - name: Install other necessary software
+      #   run: |
+      #     sudo apt-get install -y latexmk biber
+      - name: Generate templates
+        run: |
+          make templates

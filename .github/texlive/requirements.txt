@@ -1,0 +1,8 @@
+texlive-bibtex-extra
+texlive-fonts-extra
+texlive-latex-base
+texlive-lang-portuguese
+texlive-science
+biber
+latexmk
+xindy
