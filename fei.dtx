@@ -53,7 +53,7 @@ See http://www.latex-project.org/lppl.txt
 \endpreamble
 \postamble
 
-Copyright (C) 2021 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+Copyright (C) 2022 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License (LPPL), either
@@ -105,7 +105,7 @@ fei.cls.
   \Subject   {This is where you put the abstract.}
 \end{filecontents*}
 
-\documentclass[oneside,symbols,acronym,font=times]{\jobname}
+\documentclass[nopdfa,oneside,symbols,acronym,font=times]{\jobname}
 \usepackage{multicol}
 \usepackage{listings}
 \lstset{
@@ -306,7 +306,7 @@ Para que o arquivo PDF seja gerado com os metadados relevantes, um arquivo com o
 \begin{filecontents*}{\jobname.xmpdata}
 \Title     {Minha tese-dissertação-monografia}
 \Author    {Meu Nome\sep Nome Do Outro Integrante\sep Nome do Terceiro}
-\Copyright {Copyright \copyright\ 2021 "Douglas De Rizzo Meneghetti"}
+\Copyright {Copyright \copyright\ 2022 "Douglas De Rizzo Meneghetti"}
 \Keywords  {manual\sep latex\sep tipografia}
 \Language  {pt-BR}
 \Subject   {Resumo vai aqui em uma única linha corrida.}
@@ -1554,7 +1554,7 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 % \fi
 %<*class>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/05/30 4.10.3 Modelo da FEI]
+\ProvidesClass{fei}[2022/12/23 4.10.4 Modelo da FEI]
 
 % cria a opção chave-valor font, com valor padrão times
 \RequirePackage{kvoptions}

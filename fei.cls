@@ -14,7 +14,7 @@
 %% See http://www.latex-project.org/lppl.txt
 %% -----------------------------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fei}[2021/05/30 4.10.3 Modelo da FEI]
+\ProvidesClass{fei}[2022/12/23 4.10.4 Modelo da FEI]
 
 \RequirePackage{kvoptions}
 \DeclareStringOption[times]{font}
@@ -362,8 +362,8 @@
 \makechapterstyle{feiappendix}{%
   % en-dash após número
   \renewcommand*{\afterchapternum}{ -- }
-  % centraliza texto verticalmente e limpa o resto da página
-  % \renewcommand*{\afterchaptertitle}{\null\vfill\clearpage}
+  % centraliza texto verticalmente e limpa o resto da página, apenas depois de ter inserido a entrada no TOC
+  % https://tex.stackexchange.com/a/321565
   \renewcommand*{\mempostaddchaptertotochook}{\null\vfill\clearpage}
   % "Apêndice  [número]" em negrito
   \renewcommand*{\chapnamefont}{\normalfont\bfseries}
@@ -747,7 +747,7 @@
         }{\end{SingleSpace}\end{minipage}{}
   \end{center}}
 %% 
-%% Copyright (C) 2021 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
+%% Copyright (C) 2022 by Douglas De Rizzo Meneghetti <douglasrizzo@fei.edu.br>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either
