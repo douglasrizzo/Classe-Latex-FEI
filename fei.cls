@@ -369,7 +369,7 @@
   \renewcommand*{\chapnamefont}{\normalfont\bfseries}
   \renewcommand*{\chapnumfont}{\chapnamefont}
   % inicia a página vazia e adiciona espaço vertical para centralizar o texto
-  \renewcommand*{\chapterheadstart}{\thispagestyle{empty}\hbox{}\vfill}
+  \renewcommand*{\chapterheadstart}{\thispagestyle{empty}\null\vfill}
   % Fonte normal, texto centralizado horizontalmente
   \renewcommand*{\chaptitlefont}{\normalfont\centering}
   % a palavra "Apêndice" na página de título, em maísculas
