@@ -457,10 +457,11 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\cftchapterfont}{\bfseries} % coloca o titulo de capítulos em negrito
-\renewcommand{\cftsubsectionfont}{\bfseries} % coloca o titulo das secoes em negrito
-\renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % coloca o titulo das secoes em negrito
-\renewcommand{\cftparagraphfont}{\itshape} % coloca o titulo das secoes em negrito
+\renewcommand{\cftchapterfont}{\bfseries} % titulo de capítulos em negrito
+\renewcommand{\cftsectionfont}{\uppercase} % título das seções em maiúsculo
+\renewcommand{\cftsubsectionfont}{\bfseries} % titulo das subseções em negrito
+\renewcommand{\cftsubsubsectionfont}{\bfseries\itshape} % titulo das subsubseções em negrito e itálico
+\renewcommand{\cftparagraphfont}{\itshape} % titulo das subsubsubseções em itálico
 
 \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para partes
 \renewcommand{\cftchapterleader}{\cftdotfill{\cftdotsep}} % pontos no sumário para capítulos
