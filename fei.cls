@@ -363,7 +363,8 @@
   % en-dash após número
   \renewcommand*{\afterchapternum}{ -- }
   % centraliza texto verticalmente e limpa o resto da página
-  \renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+  % \renewcommand*{\afterchaptertitle}{\null\vfill\clearpage}
+  \renewcommand*{\mempostaddchaptertotochook}{\null\vfill\clearpage}
   % "Apêndice  [número]" em negrito
   \renewcommand*{\chapnamefont}{\normalfont\bfseries}
   \renewcommand*{\chapnumfont}{\chapnamefont}

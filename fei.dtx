@@ -1988,8 +1988,9 @@ A seguir, as descrições dos arquivos auxiliares gerados durante o processo de 
 \makechapterstyle{feiappendix}{%
   % en-dash após número
   \renewcommand*{\afterchapternum}{ -- }
-  % centraliza texto verticalmente e limpa o resto da página
-  \renewcommand*{\afterchaptertitle}{\hbox{}\vfill\clearpage}
+  % centraliza texto verticalmente e limpa o resto da página, apenas depois de ter inserido a entrada no TOC
+  % https://tex.stackexchange.com/a/321565
+  \renewcommand*{\mempostaddchaptertotochook}{\null\vfill\clearpage}
   % "Apêndice  [número]" em negrito
   \renewcommand*{\chapnamefont}{\normalfont\bfseries}
   \renewcommand*{\chapnumfont}{\chapnamefont}
