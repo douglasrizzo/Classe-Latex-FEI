@@ -448,6 +448,8 @@
 
 \renewcommand{\cftbeforechapterskip}{0pt} % remove recuo antes de entradas de capítulos no sumário
 
+\renewcommand{\insertchapterspace}{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
